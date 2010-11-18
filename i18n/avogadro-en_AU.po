@@ -1,13 +1,16 @@
-# Marcus D. Hanwell <mdh55@pitt.edu>, 2008.
-# Marcus D. Hanwell <marcus@cryos.org>, 2009.
+# English (Australia) translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: _avogadro-en_GB\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2010-05-05 19:03+0000\n"
-"Last-Translator: melvinor <Unknown>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-06-14 07:11+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English (Australia) <en_AU@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,13 +38,6 @@ msgid ""
 "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
 "PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версия приложения: %2<br/><br/>Версия библиотеки: "
-"%3<br/><br/> Версия Open Babel: %4<br/><br/> Версия Qt: %5<br/><br/>Более "
-"подробная информация доступна по адресу <a "
-"href=\"http://avogadro.openmolecules.net/\">Домашняя страница "
-"Avogadro</a>.<br/><br/>Программа предоставляется КАК ЕСТЬ БЕЗ КАКОЙ-ЛИБО "
-"ГАРАНТИИ, ВКЛЮЧАЯ ГАРАНТИЮ ДИЗАЙНА, КОММЕРЧЕСКОГО ПРИМЕНЕНИЯ И ПРИГОДНОСТИ "
-"ДЛЯ КОНКРЕТНОГО ПРИМЕНЕНИЯ.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -87,39 +83,39 @@ msgstr "Open File"
 
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr ""
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr "This system does not support OpenGL."
+msgstr ""
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr "System has OpenGL support."
+msgstr ""
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
 msgid "About to test OpenGL capabilities."
-msgstr "About to test OpenGL capabilities."
+msgstr ""
 
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr "OpenGL capabilities found: "
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr "Double Buffering."
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr "Direct Rendering."
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr "Antialiasing."
+msgstr ""
 
 #: src/main.cpp:254
 #, qt-format
@@ -145,13 +141,6 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
@@ -934,7 +923,7 @@ msgstr "Esc"
 #. i18n: file: src/mainwindow.ui:416
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr "Set &Background Color..."
+msgstr "Set &Background Colour..."
 
 #. i18n: file: src/mainwindow.ui:421
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1269,26 +1258,9 @@ msgstr "Fog:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Brian Burns,Gabriel Ruiz,Jen Ockwell,Marcus D. "
-"Hanwell,kuede, ,Launchpad Contributions:,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede,melvinor, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Ken Sharp,Marcus D. Hanwell,kuede,melvinor, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,Ken Sharp,melvinor"
+",Launchpad Contributions:,Ken Sharp, ,Launchpad Contributions:,Avogadro "
+"Team,Ken Sharp"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,bburns@aundae.com,debianmaster@gmail.com,jenfraggleubuntu@googlemail.com,,,"
-",,bburns@aundae.com,debianmaster@gmail.com,,jenfraggleubuntu@googlemail.com,,"
-",,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,,"
+msgstr ",,,,,avogadro-devel@lists.sourceforge.net,"

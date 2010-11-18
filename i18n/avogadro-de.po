@@ -10,18 +10,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
+"X-Launchpad-Export-Date: 2010-11-18 02:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "OK"
+msgstr "Okay"
 
 #: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git Revisions-Nr: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
@@ -37,10 +37,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:854 src/mainwindow.cpp:904
+#: src/mainwindow.cpp:926 src/mainwindow.cpp:1089 src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1265 src/mainwindow.cpp:1493 src/mainwindow.cpp:2690
+#: src/mainwindow.cpp:3191 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -69,15 +69,14 @@ msgstr "Atome entfernen"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:739
+#: src/importdialog.cpp:175 src/mainwindow.cpp:744
 msgid "Open File"
 msgstr "Datei öffnen"
 
-#: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
 msgstr "Avogadro"
@@ -102,22 +101,19 @@ msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
 msgstr "Unterstützung für OpenGL gefunden: "
 
-#: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
 msgstr "Doppelpufferung."
 
-#: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
 msgstr "Direktwiedergabe."
 
-#: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
 msgstr "Kanten glätten"
 
-#: src/main.cpp:249
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -151,7 +147,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
-msgstr "Nachrichten"
+msgstr "Meldungen"
 
 #: src/mainwindow.cpp:374
 msgid "Window"
@@ -169,9 +165,9 @@ msgstr "Strg+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
 msgid "Bring All to Front"
-msgstr "Alle nach vorne bringen"
+msgstr "Alle in den Vordergrund"
 
 #: src/mainwindow.cpp:670
 msgid "&Tool Settings..."
@@ -191,97 +187,97 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Strg+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
 msgid "Common molecule formats"
-msgstr "übliche Molekularformate"
+msgstr "Gängige Molekül-Formate"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:1512
 msgid "All files"
 msgstr "Alle Dateien"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:726
-msgid "Computational Chemistry Output"
-msgstr "Computerchemie-Ausgabe"
-
-#: src/mainwindow.cpp:727
-msgid "Crystallographic Interchange CIF"
-msgstr "kristallografischer Austausch CIF"
-
-#: src/mainwindow.cpp:728
-msgid "GAMESS-US Output"
-msgstr "GAMESS-US Ausgabe"
-
-#: src/mainwindow.cpp:729
-msgid "Gaussian 98/03 Output"
-msgstr "Gaussian 98/03 Ausgabe"
-
-#: src/mainwindow.cpp:730
-msgid "Gaussian Formatted Checkpoint"
-msgstr "formatierter Gaussian Checkpoint"
-
 #: src/mainwindow.cpp:731
+msgid "Computational Chemistry Output"
+msgstr "Computational Chemistry Output"
+
+#: src/mainwindow.cpp:732
+msgid "Crystallographic Interchange CIF"
+msgstr "Crystallographic Interchange CIF"
+
+#: src/mainwindow.cpp:733
+msgid "GAMESS-US Output"
+msgstr "GAMESS-US Output"
+
+#: src/mainwindow.cpp:734
+msgid "Gaussian 98/03 Output"
+msgstr "Gaussian 98/03 Output"
+
+#: src/mainwindow.cpp:735
+msgid "Gaussian Formatted Checkpoint"
+msgstr "Gaussian Formatted Checkpoint"
+
+#: src/mainwindow.cpp:736
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:737
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:733
+#: src/mainwindow.cpp:738
 msgid "NWChem Output"
-msgstr "NWChem Ausgabe"
+msgstr "NWChem Output"
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
+#: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "unbenannt"
+msgstr "Unbenannt"
 
-#: src/mainwindow.cpp:826
+#: src/mainwindow.cpp:831
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Lade %1..."
 
 # %1 is a filename
-#: src/mainwindow.cpp:830
+#: src/mainwindow.cpp:835
 #, qt-format
 msgid "Loading %1..."
 msgstr "Lade %1..."
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Lesen der Moleküldatei gescheitert, Datei %1."
 
-#: src/mainwindow.cpp:873
+#: src/mainwindow.cpp:878
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Multi-Molekül-Datei wird gelesen. Das kann eine Weile dauern..."
 
-#: src/mainwindow.cpp:900
+#: src/mainwindow.cpp:905
 msgid "This file does not contain 3D coordinates."
 msgstr "Diese Datei enthält keine 3D Koordinaten"
 
-#: src/mainwindow.cpp:904
+#: src/mainwindow.cpp:909
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Soll Avogadro die ungefähre geometrische Anordnung berechnen?"
 
-#: src/mainwindow.cpp:922
+#: src/mainwindow.cpp:927
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -289,200 +285,200 @@ msgstr ""
 "Diese Datei enthält keine 3D-Koordinaten.\n"
 "Darstellung und Bearbeitung werden nur eingeschränkt funktionieren."
 
-#: src/mainwindow.cpp:974
+#: src/mainwindow.cpp:979
 msgid "Select Molecule to View"
 msgstr "Molekül zur Darstellung wählen"
 
-#: src/mainwindow.cpp:999
+#: src/mainwindow.cpp:1004
 msgid "Molecule Title"
 msgstr "Molekülbezeichnung"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1082
 msgid "Atoms: "
 msgstr "Atome: "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1083
 msgid " Bonds: "
 msgstr " Bindungen: "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1099
 msgid "File Loaded..."
 msgstr "Datei geladen..."
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1112
 msgid "Do you want to save the changes you made in the document?"
 msgstr ""
 "Wollen Sie die Änderungen speichern, die Sie in dem Dokument vorgenommen "
 "haben?"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1121
 msgid "Your changes will be lost if you don't save them."
 msgstr "Ihre Änderungen gehen verloren wenn Sie nicht speichern."
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1125
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Strg+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1126
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Strg+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1128
 msgid "Save..."
-msgstr "Speichern..."
+msgstr "Sichern …"
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1128 src/savedialog.cpp:65
 msgid "Save"
-msgstr "Speichern"
+msgstr "Sichern"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1211
 msgid "GAMESS Input"
-msgstr "GAMESS Eingabe"
+msgstr "GAMESS Input"
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1212
 msgid "Gaussian Cartesian Input"
-msgstr "Gaussian kartesische Eingabe"
+msgstr "Gaussian Cartesian Input"
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1213
 msgid "Gaussian Z-matrix Input"
-msgstr "Gaussian Z-Matrix Eingabe"
+msgstr "Gaussian Z-Matrix Input"
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1214
 msgid "MDL SDfile"
-msgstr "MDL SDF-Datei"
+msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1216
 msgid "NWChem Input"
-msgstr "NWChem Eingabe"
+msgstr "NWChem Input"
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1221
 msgid "Save Molecule As"
-msgstr "Speichere Molekül als"
+msgstr "Sichere Molekül als…"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1430
 msgid "Common image formats"
 msgstr "übliche Dateiformate für Bilder"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1434
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1436
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
 msgid "Export Bitmap Graphics"
 msgstr "Bilddatei exportieren"
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1494
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Datei %1 konnte nicht gespeichert werden."
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1509
 msgid "Common vector image formats"
 msgstr "übliche Vektorbilddateien"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1514
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1515
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1660
 #, qt-format
 msgid "Untitled %1"
 msgstr "Unbenannt %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1765
 msgid "Unable to paste molecule."
 msgstr "Einfügen des Moleküls fehlgeschlagen."
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1794
 msgid "Paste failed (format unavailable)."
 msgstr "Einfügen fehlgeschlagen (Format nicht verfügbar)."
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2077
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopieren fehlgeschlagen (mdl nicht verfügbar)."
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
+#: src/mainwindow.cpp:2833
 #, qt-format
 msgid "View %1"
 msgstr "Ansicht %1"
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2263
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Ansicht %1"
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2272
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Abgetrennte Ansicht"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2438
 msgid "Normal Size"
 msgstr "Normale Ansicht"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2451
 msgid "Full Screen"
-msgstr "Vollbild"
+msgstr "Ganzer Bildschirm"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2549
 msgid "Ctrl+Backspace"
-msgstr "Strg+Leertaste"
+msgstr "Strg+Rückschritt"
 
-#: src/mainwindow.cpp:2677
+#: src/mainwindow.cpp:2683
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2689
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3145
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3150
 msgid "Duplicate"
 msgstr "Duplizieren"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3155
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3183
 msgid "No tools or engines loaded."
 msgstr "Keine Werkzeuge oder Engine geladen."
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3185
 msgid "No engines loaded."
 msgstr "Keine Engine geladen."
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3187
 msgid "No tools loaded."
 msgstr "Keine Werkzeuge geladen."
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3188
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -490,17 +486,17 @@ msgstr ""
 " Es ist unwahrscheinlich, dass Avogadro korrekt funktionieren wird. Bitte "
 "beheben Sie den Fehler."
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3232
 msgid "Objects"
 msgstr "Objekte"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3238 :321
 msgid "Colors"
 msgstr "Farben"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3271
 msgid " copy"
 msgstr " Kopieren"
 
@@ -521,25 +517,25 @@ msgid "Description:\n"
 msgstr "Beschreibung:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Molekül"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Atome"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Bindungen"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Reste"
@@ -553,13 +549,13 @@ msgid "bond %1"
 msgstr "Bindung %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Beschriftung"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Benutzerauswahlen"
 
@@ -636,7 +632,7 @@ msgstr "Suche nach Aktualisierungen im Internet gescheitert"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr "Seite hat nicht geantwortet oder anderer Fehler."
+msgstr "Netzwerk-Zeitüberschreitung oder anderer Fehler."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
@@ -707,7 +703,7 @@ msgstr "Der Auswahl zuordnen"
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr "Importiere Molküldatei"
+msgstr "Moleküldatei importieren"
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -727,7 +723,7 @@ msgstr "Format:"
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr "Automatisch an Erweiterung erkennen"
+msgstr "Automatisch nach Erweiterung"
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
@@ -742,7 +738,7 @@ msgstr "Erkenne Bindungsordnung"
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr "Koordinaten in Ångstroms"
+msgstr "Koordinaten in Ångström"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
@@ -777,12 +773,12 @@ msgstr "Einstellungen"
 #. i18n: file: src/mainwindow.ui:85
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr "Werkzeugleiste"
+msgstr "Werkzeugleisten"
 
 #. i18n: file: src/mainwindow.ui:94
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr "&Struktur"
+msgstr "&Erstellen"
 
 #. i18n: file: src/mainwindow.ui:99
 #. i18n: ectx: property (title), widget (QMenu, menuView)
@@ -807,7 +803,7 @@ msgstr "&Auswahl"
 #. i18n: file: src/mainwindow.ui:156
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr "Hauptleiste"
+msgstr "Haupt-Werkzeugliste"
 
 #. i18n: file: src/mainwindow.ui:193
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
@@ -821,7 +817,7 @@ msgstr "Projektbaum"
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
-msgstr "Anzeige-Typen"
+msgstr "Darstellungsarten"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
@@ -857,7 +853,7 @@ msgstr "Strg+Q"
 #. i18n: file: src/mainwindow.ui:297
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr "Zuletzt"
+msgstr "Letzte"
 
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -893,7 +889,7 @@ msgstr "Strg+W"
 #. i18n: file: src/mainwindow.ui:365
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr "&Speichern"
+msgstr "&Sichern"
 
 #. i18n: file: src/mainwindow.ui:356
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -903,7 +899,7 @@ msgstr "Strg+S"
 #. i18n: file: src/mainwindow.ui:374
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr "Speichern &als..."
+msgstr "Sichern unter…"
 
 #. i18n: file: src/mainwindow.ui:377
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -913,7 +909,7 @@ msgstr "Strg+Umschalt+S"
 #. i18n: file: src/mainwindow.ui:386
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr "Urzustand wiederherstellen"
+msgstr "Zur letzten Version"
 
 #. i18n: file: src/mainwindow.ui:395
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -923,7 +919,7 @@ msgstr "&Grafiken..."
 #. i18n: file: src/mainwindow.ui:404
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr "&Vollbild"
+msgstr "&Vollbildansicht"
 
 #. i18n: file: src/mainwindow.ui:407
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -943,7 +939,7 @@ msgstr "&Über"
 #. i18n: file: src/mainwindow.ui:433
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
-msgstr "Rückgängig"
+msgstr "Widerr&ufen"
 
 #. i18n: file: src/mainwindow.ui:436
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -953,7 +949,7 @@ msgstr "Strg+Z"
 #. i18n: file: src/mainwindow.ui:445
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr "&Wiederherstellen"
+msgstr "&Wiederholen"
 
 #. i18n: file: src/mainwindow.ui:448
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -1013,7 +1009,7 @@ msgstr "Löschen"
 #. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Backspace"
-msgstr "Rücktaste"
+msgstr "Rückschritt"
 
 #. i18n: file: src/mainwindow.ui:531
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1043,7 +1039,7 @@ msgstr "Avogadro einrichten..."
 #. i18n: file: src/mainwindow.ui:562
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr "Anleitungen"
+msgstr "Tutorien"
 
 #. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1063,12 +1059,12 @@ msgstr "Debug-Informationen"
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
-msgstr "Avogadro-Hilfe"
+msgstr "Avogadro Hilfe"
 
 #. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
-msgstr "Veröffentlichungsdetails"
+msgstr "Versionshinweise"
 
 #. i18n: file: src/mainwindow.ui:605
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1078,7 +1074,7 @@ msgstr "Fehler melden"
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "Häufige Fragen"
+msgstr "Häufig gestellte Fragen"
 
 #. i18n: file: src/mainwindow.ui:615
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1128,7 +1124,7 @@ msgstr "Alle Moleküle in der Datei..."
 #. i18n: file: src/mainwindow.ui:688
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
-msgstr "Anzeigetypen zurücksetzen"
+msgstr "Darstellungsarten zurücksetzen"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1159,42 +1155,42 @@ msgstr "Baumartikel"
 #. i18n: file: src/projecttreeeditor.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
-msgstr "Typ"
+msgstr "Art"
 
 #. i18n: file: src/projecttreeeditor.ui:48
 #. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
-msgstr "Neuer Artikel"
+msgstr "Neuer Eintrag"
 
 #. i18n: file: src/projecttreeeditor.ui:51
 #. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
-msgstr "&Neuer Artikel"
+msgstr "&Neuer Eintrag"
 
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
-msgstr "Neuer Unterartikel"
+msgstr "Neuer Untereintrag"
 
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr "Neuer &Unterartikel"
+msgstr "Neuer &Untereintrag"
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
-msgstr "Artikel löschen"
+msgstr "Eintrag entfernen"
 
 #. i18n: file: src/projecttreeeditor.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
-msgstr "&Artikel löschen"
+msgstr "Eintrag &entfernen"
 
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr "Bewege Artikel nach links (vor Vorgängerartikel)"
+msgstr "Eintrag nach links verschieben (vor Stammeintrag)"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
@@ -1216,7 +1212,7 @@ msgstr "R"
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
-msgstr "Element nach oben verschieben"
+msgstr "Eintrag nach oben verschieben"
 
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
@@ -1226,7 +1222,7 @@ msgstr "U"
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
-msgstr "Element nach unten verschieben"
+msgstr "Eintrag nach unten verschieben"
 
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
@@ -1253,14 +1249,14 @@ msgstr "Allgemein"
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr "Qualität"
+msgstr "Qualität:"
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
 #. i18n: file: src/settingsdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
-msgstr "Globale Renderqualität einstellen"
+msgstr "Globale Darstellungsqualität einstellen."
 
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
@@ -1281,7 +1277,19 @@ msgstr ""
 "Markgraf,Thomas_T,dlonie,kuede,mogli,soc, ,Launchpad "
 "Contributions:,Alexander Minges,Geoff Hutchison,HUWagner,Hans "
 "Christof,Keruskerfuerst,Lunix,Photon,Thomas_T,dlonie,kuede,mikeL,mogli,soc, "
-",Launchpad Contributions:,Avogadro Team,BBO,Margit,mucku"
+",Launchpad Contributions:,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Margit,Photon,Steve "
+"M.,Thomas_T,dlonie,kuede,mikeL,mogli,soc, ,Launchpad "
+"Contributions:,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Margit,Photon,Steve "
+"M.,Thomas_T,dlonie,kuede,mikeL,mogli,soc, ,Launchpad Contributions:,Aleixo "
+"Sánchez,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Margit,Photon,Simon "
+"Janich,Steve M.,Thomas_T,dlonie,kuede,mikeL,mogli,soc, ,Launchpad "
+"Contributions:,Aleixo Sánchez,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Margit,Photon,Simon "
+"Janich,Steve M.,Thomas_T,dlonie,kuede,mikeL,mogli,soc, ,Launchpad "
+"Contributions:,Avogadro Team,BBO,Margit,Simon Janich,mucku"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1293,4 +1301,19 @@ msgstr ""
 "devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,michael"
 ".kogan@gmx.net,steve@steve-m.de,,loniedavid@gmail.com,,,soc@krg-"
 "nw.de,,,,,,,armin_mohring@web.de,,michael.kogan@gmx.net,,loniedavid@gmail.com"
-",,,,simon@ochsenreither.de,,,avogadro-devel@lists.sourceforge.net,,,"
+",,,,simon@ochsenreither.de,,,,avogadro-"
+"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,,michae"
+"l.kogan@gmx.net,steve@steve-"
+"m.de,,loniedavid@gmail.com,,,,simon@ochsenreither.de,,,,avogadro-"
+"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,,michae"
+"l.kogan@gmx.net,steve@steve-"
+"m.de,,loniedavid@gmail.com,,,,simon@ochsenreither.de,,,aleixosk@gmail.com,,av"
+"ogadro-"
+"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,,michae"
+"l.kogan@gmx.net,,steve@steve-"
+"m.de,,loniedavid@gmail.com,,,,simon@ochsenreither.de,,,aleixosk@gmail.com,,av"
+"ogadro-"
+"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,,michae"
+"l.kogan@gmx.net,,steve@steve-"
+"m.de,,loniedavid@gmail.com,,,,simon@ochsenreither.de,,,avogadro-"
+"devel@lists.sourceforge.net,,,,"

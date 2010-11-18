@@ -1,13 +1,16 @@
-# Marcus D. Hanwell <mdh55@pitt.edu>, 2008.
-# Marcus D. Hanwell <marcus@cryos.org>, 2009.
+# Basque translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: _avogadro-en_GB\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2010-05-05 19:03+0000\n"
-"Last-Translator: melvinor <Unknown>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-08-06 15:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,13 +19,13 @@ msgstr ""
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "OK"
+msgstr "Onartu"
 
 #: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr "(Git revision: %1)"
+msgstr "(Git berrikusketa: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
@@ -35,13 +38,6 @@ msgid ""
 "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
 "PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версия приложения: %2<br/><br/>Версия библиотеки: "
-"%3<br/><br/> Версия Open Babel: %4<br/><br/> Версия Qt: %5<br/><br/>Более "
-"подробная информация доступна по адресу <a "
-"href=\"http://avogadro.openmolecules.net/\">Домашняя страница "
-"Avogadro</a>.<br/><br/>Программа предоставляется КАК ЕСТЬ БЕЗ КАКОЙ-ЛИБО "
-"ГАРАНТИИ, ВКЛЮЧАЯ ГАРАНТИЮ ДИЗАЙНА, КОММЕРЧЕСКОГО ПРИМЕНЕНИЯ И ПРИГОДНОСТИ "
-"ДЛЯ КОНКРЕТНОГО ПРИМЕНЕНИЯ.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -54,23 +50,23 @@ msgstr "Avogadro"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr "Cut Molecule"
+msgstr "Moztu Molekula"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr "Cut Atoms"
+msgstr "Moztu Atomoak"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr "Paste"
+msgstr "Itsatsi"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr "Clear Molecule"
+msgstr "Garbitu Molekulak"
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr "Clear Atoms"
+msgstr "Garbitu Atomoak"
 
 #. i18n: file: src/projecttreeeditor.ui:179
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -79,47 +75,47 @@ msgstr "Clear Atoms"
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
 msgid "Settings"
-msgstr "Settings"
+msgstr "Ezarpenak"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:744
 msgid "Open File"
-msgstr "Open File"
+msgstr "Ireki fitxategia"
 
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr ""
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr "This system does not support OpenGL."
+msgstr ""
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr "System has OpenGL support."
+msgstr ""
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
 msgid "About to test OpenGL capabilities."
-msgstr "About to test OpenGL capabilities."
+msgstr ""
 
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr "OpenGL capabilities found: "
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr "Double Buffering."
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr "Direct Rendering."
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr "Antialiasing."
+msgstr ""
 
 #: src/main.cpp:254
 #, qt-format
@@ -145,64 +141,57 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
-msgstr "Messages"
+msgstr "Mezuak"
 
 #: src/mainwindow.cpp:374
 msgid "Window"
-msgstr "Window"
+msgstr "Leihoa"
 
 #: src/mainwindow.cpp:377
 msgid "&Minimize"
-msgstr "&Minimise"
+msgstr "&Ikonotu"
 
 #: src/mainwindow.cpp:378
 msgid "Ctrl+M"
-msgstr "Ctrl+M"
+msgstr "Ktrl+M"
 
 #: src/mainwindow.cpp:383
 msgid "&Zoom"
-msgstr "&Zoom"
+msgstr "&Zoom Egin"
 
 #: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
 msgid "Bring All to Front"
-msgstr "Bring All to Front"
+msgstr "Guztia Aurreratu"
 
 #: src/mainwindow.cpp:670
 msgid "&Tool Settings..."
-msgstr "&Tool Settings..."
+msgstr "&Tresnen Ezarpenak..."
 
 #: src/mainwindow.cpp:673
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr "Ctrl+T"
+msgstr "Ktrl+T"
 
 #: src/mainwindow.cpp:678
 msgid "&Display Settings..."
-msgstr "&Display Settings..."
+msgstr "&Erakutsi Ezarpenak..."
 
 #: src/mainwindow.cpp:681
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr "Ktrl+D"
 
 #: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
 msgid "Common molecule formats"
-msgstr "Common molecule formats"
+msgstr "Molekulen formatu arrunta"
 
 #: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
 #: src/mainwindow.cpp:1512
 msgid "All files"
-msgstr "All files"
+msgstr "Artxibo guztiak"
 
 #: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
 msgid "CML"
@@ -210,35 +199,35 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:731
 msgid "Computational Chemistry Output"
-msgstr "Computational Chemistry Output"
+msgstr "Kimika Konputazional Irteera"
 
 #: src/mainwindow.cpp:732
 msgid "Crystallographic Interchange CIF"
-msgstr "Crystallographic Interchange CIF"
+msgstr "Truke Kristalografiko CIF"
 
 #: src/mainwindow.cpp:733
 msgid "GAMESS-US Output"
-msgstr "GAMESS-US Output"
+msgstr "GAMESS-US Irteera"
 
 #: src/mainwindow.cpp:734
 msgid "Gaussian 98/03 Output"
-msgstr "Gaussian 98/03 Output"
+msgstr "Gaussiar 98/03 Irteera"
 
 #: src/mainwindow.cpp:735
 msgid "Gaussian Formatted Checkpoint"
-msgstr "Gaussian Formatted Checkpoint"
+msgstr "Formateatutako Kontrol-Puntu Gaussiarra"
 
 #: src/mainwindow.cpp:736
 msgid "HyperChem"
-msgstr "HyperChem"
+msgstr ""
 
 #: src/mainwindow.cpp:737
 msgid "MDL Mol"
-msgstr "MDL Mol"
+msgstr ""
 
 #: src/mainwindow.cpp:738
 msgid "NWChem Output"
-msgstr "NWChem Output"
+msgstr ""
 
 #: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
 msgid "PDB"
@@ -246,7 +235,7 @@ msgstr "PDB"
 
 #: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
 msgid "Sybyl Mol2"
-msgstr "Sybyl Mol2"
+msgstr ""
 
 #: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
 msgid "XYZ"
@@ -254,113 +243,113 @@ msgstr "XYZ"
 
 #: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "untitled"
+msgstr "Izengabea"
 
 #: src/mainwindow.cpp:831
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr "Loading %1..."
+msgstr "%1 artxiboa kargatzen..."
 
 #: src/mainwindow.cpp:835
 #, qt-format
 msgid "Loading %1..."
-msgstr "Loading %1..."
+msgstr "%1 kargatzen..."
 
 #: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr "Reading molecular file failed, file %1."
+msgstr "Artxibo molekularra irakurtzean huts egin du, artxibo %1."
 
 #: src/mainwindow.cpp:878
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr "Reading multi-molecule file. This may take a while..."
+msgstr "Irakurtzen artxibo molekular anitza. Honek denbora beharko du..."
 
 #: src/mainwindow.cpp:905
 msgid "This file does not contain 3D coordinates."
-msgstr "This file does not contain 3D coordinates."
+msgstr "Artxibo honek ez du 3D koordenatuak."
 
 #: src/mainwindow.cpp:909
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr "Do you want Avogadro to build a rough geometry?"
+msgstr "Gustatuko litzaizuke Avogadro-k geometria latz bat eraikitzea?"
 
 #: src/mainwindow.cpp:927
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"This file does not contain 3D coordinates.\n"
-"You may not be able to edit or view properly."
+"Artxibo honek ez du 3D koordenaturik.\n"
+"Agian ezin izango duzu ongi editatu edo ikusi."
 
 #: src/mainwindow.cpp:979
 msgid "Select Molecule to View"
-msgstr "Select Molecule to View"
+msgstr "Hautatu Molekula Ikusteko"
 
 #: src/mainwindow.cpp:1004
 msgid "Molecule Title"
-msgstr "Molecule Title"
+msgstr "Molekularen Izenburua"
 
 #: src/mainwindow.cpp:1082
 msgid "Atoms: "
-msgstr "Atoms: "
+msgstr "Atomoak: "
 
 #: src/mainwindow.cpp:1083
 msgid " Bonds: "
-msgstr " Bonds: "
+msgstr " Loturak: "
 
 #: src/mainwindow.cpp:1099
 msgid "File Loaded..."
-msgstr "File Loaded..."
+msgstr "Artxiboa Kargatuta..."
 
 #: src/mainwindow.cpp:1112
 msgid "Do you want to save the changes you made in the document?"
-msgstr "Do you want to save the changes you made in the document?"
+msgstr "Nahi duzu artxiboan egin dituzun aldaketak gordetzea?"
 
 #: src/mainwindow.cpp:1121
 msgid "Your changes will be lost if you don't save them."
-msgstr "Your changes will be lost if you don't save them."
+msgstr "Zure aldaketak galdu egingo dira ez badituzu gordetzen."
 
 #: src/mainwindow.cpp:1125
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr "Ctrl+S"
+msgstr "Ktrl+S"
 
 #: src/mainwindow.cpp:1126
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr "Ktrl+D"
 
 #: src/mainwindow.cpp:1128
 msgid "Save..."
-msgstr "Save..."
+msgstr "Gorde..."
 
 #: src/mainwindow.cpp:1128 src/savedialog.cpp:65
 msgid "Save"
-msgstr "Save"
+msgstr "Gorde"
 
 #: src/mainwindow.cpp:1211
 msgid "GAMESS Input"
-msgstr "GAMESS Input"
+msgstr "GAMESS Sarrera"
 
 #: src/mainwindow.cpp:1212
 msgid "Gaussian Cartesian Input"
-msgstr "Gaussian Cartesian Input"
+msgstr "Gaussiar Kartesiar Sarrera"
 
 #: src/mainwindow.cpp:1213
 msgid "Gaussian Z-matrix Input"
-msgstr "Gaussian Z-matrix Input"
+msgstr "Z-Matrize Gaussiar Sarrera"
 
 #: src/mainwindow.cpp:1214
 msgid "MDL SDfile"
-msgstr "MDL SDfile"
+msgstr ""
 
 #: src/mainwindow.cpp:1216
 msgid "NWChem Input"
-msgstr "NWChem Input"
+msgstr ""
 
 #: src/mainwindow.cpp:1221
 msgid "Save Molecule As"
-msgstr "Save Molecule As"
+msgstr "Gorde Molekula Horrela:"
 
 #: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
 msgid "PNG"
@@ -368,7 +357,7 @@ msgstr "PNG"
 
 #: src/mainwindow.cpp:1430
 msgid "Common image formats"
-msgstr "Common image formats"
+msgstr "Irudi formatu ohikoak"
 
 #: src/mainwindow.cpp:1434
 msgid "BMP"
@@ -380,12 +369,12 @@ msgstr "JPEG"
 
 #: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
 msgid "Export Bitmap Graphics"
-msgstr "Export Bitmap Graphics"
+msgstr "Esportatu Bit-mapa Grafikoak (.bmp)"
 
 #: src/mainwindow.cpp:1494
 #, qt-format
 msgid "Cannot save file %1."
-msgstr "Cannot save file %1."
+msgstr "Ezin da %1 artxiboa gorde."
 
 #: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
 msgid "PDF"
@@ -393,7 +382,7 @@ msgstr "PDF"
 
 #: src/mainwindow.cpp:1509
 msgid "Common vector image formats"
-msgstr "Common vector image formats"
+msgstr "Irudi formatu bektore ohikoak"
 
 #: src/mainwindow.cpp:1514
 msgid "SVG"
@@ -406,47 +395,47 @@ msgstr "EPS"
 #: src/mainwindow.cpp:1660
 #, qt-format
 msgid "Untitled %1"
-msgstr "Untitled %1"
+msgstr "Izengabea %1"
 
 #: src/mainwindow.cpp:1765
 msgid "Unable to paste molecule."
-msgstr "Unable to paste molecule."
+msgstr "Ezin da molekula itsatsi."
 
 #: src/mainwindow.cpp:1794
 msgid "Paste failed (format unavailable)."
-msgstr "Paste failed (format unavailable)."
+msgstr "Itsastean huts egin du (formatu lortezina)."
 
 #: src/mainwindow.cpp:2077
 msgid "Copy failed (mdl unavailable)."
-msgstr "Copy failed (mdl unavailable)."
+msgstr "Kopiatzean huts egin du (mdl lortezina)."
 
 #: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
 #: src/mainwindow.cpp:2833
 #, qt-format
 msgid "View %1"
-msgstr "View %1"
+msgstr "Ikuskera %1"
 
 #: src/mainwindow.cpp:2263
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr "View %1"
+msgstr "Ikuskera %1"
 
 #: src/mainwindow.cpp:2272
 msgid "Avogadro: Detached View"
-msgstr "Avogadro: Detached View"
+msgstr "Avogadro: Ikuskera Inpartziala"
 
 #: src/mainwindow.cpp:2438
 msgid "Normal Size"
-msgstr "Normal Size"
+msgstr "Tamaina Normala"
 
 #: src/mainwindow.cpp:2451
 msgid "Full Screen"
-msgstr "Full Screen"
+msgstr "Pantaila Osoa"
 
 #: src/mainwindow.cpp:2549
 msgid "Ctrl+Backspace"
-msgstr "Ctrl+Backspace"
+msgstr "Ctrl+Atzera"
 
 #: src/mainwindow.cpp:2683
 msgctxt "[*] indicates that this is a modified view...."
@@ -461,89 +450,88 @@ msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:3145
 msgid "Add"
-msgstr "Add"
+msgstr "Gehitu"
 
 #: src/mainwindow.cpp:3150
 msgid "Duplicate"
-msgstr "Duplicate"
+msgstr "Bikoiztu"
 
 #: src/mainwindow.cpp:3155
 msgid "Remove"
-msgstr "Remove"
+msgstr "Ezabatu"
 
 #: src/mainwindow.cpp:3183
 msgid "No tools or engines loaded."
-msgstr "No tools or engines loaded."
+msgstr "Ez dago tresna edo motorrik kargatuta."
 
 #: src/mainwindow.cpp:3185
 msgid "No engines loaded."
-msgstr "No engines loaded."
+msgstr "Ez dago motorrik kargatuta."
 
 #: src/mainwindow.cpp:3187
 msgid "No tools loaded."
-msgstr "No tools loaded."
+msgstr "Ez dago tresnarik kargatuta."
 
 #: src/mainwindow.cpp:3188
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
-" It is unlikely this application will function correctly. Please correct "
-"this error."
+" Honek ez dauka ondo funtzionatuko duen itxura. Mesedez, zuzendu akats hau"
 
 #: src/mainwindow.cpp:3232
 msgid "Objects"
-msgstr "Objects"
+msgstr "Objektuak"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 #: src/mainwindow.cpp:3238 :321
 msgid "Colors"
-msgstr "Colours"
+msgstr "Koloreak"
 
 #: src/mainwindow.cpp:3271
 msgid " copy"
-msgstr " copy"
+msgstr " kopiatu"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr "Name: "
+msgstr "Izena: "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr "Identifier: "
+msgstr "Identifikatzailea: "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr "File: "
+msgstr "Artxiboa: "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr "Description:\n"
+msgstr "Deskribapena:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
 #: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr "Molecule"
+msgstr "Molekula"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr "Atoms"
+msgstr "Atomoak"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr "Bonds"
+msgstr "Loturak"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr "Residues"
+msgstr "Hondakinak"
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -551,380 +539,380 @@ msgstr "Residues"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr "bond %1"
+msgstr "%1 lotura"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr "Label"
+msgstr "Marka"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr "User Selections"
+msgstr "Erabiltzailearen Hautapenak"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr "Error"
+msgstr "Akatsa"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr "only labels can have sub items"
+msgstr "bakarrik markak izan dezakete azpi-elementuak"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
 #: src/projecttreemodel.cpp:65 :378
 msgid "Item"
-msgstr "Item"
+msgstr "Elementua"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr "Index"
+msgstr "Indizea"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr "Low"
+msgstr "Baxua"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
 #: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr "Medium"
+msgstr "Ertaina"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "High"
+msgstr "Altua"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr "Undefined"
+msgstr "Zehaztugabe"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
 #: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr "None"
+msgstr "Ezer ez"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr "Some"
+msgstr "Batzuk"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr "Mid"
+msgstr "Ertaina"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr "Lots"
+msgstr "Asko"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr "Undefined"
+msgstr "Zehaztugabe"
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr "Network Update Check Failed"
+msgstr "Internetetik Eguneratzeko Arakaketa Huts Egin Du"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr "Network timeout or other error."
+msgstr "Sarearen denbora agortu da edo beste akats bat omen dago."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr "Updated Version of Avogadro Available"
+msgstr "Avogadro-ren Bertsio Eguneratuagoa Deskarga Daiteke"
 
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
 msgid "Add Display Type"
-msgstr "Add Display Type"
+msgstr "Gehitu Erakusketa Mota"
 
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr "Type:"
+msgstr "Mota:"
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr "Name:"
+msgstr "Izena:"
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr "Description:"
+msgstr "Azalpena:"
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
 msgid "Form"
-msgstr "Form"
+msgstr "Inprimakia"
 
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr "Colour by:"
+msgstr "Kolorea Zehaztu:"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:44
 #. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
-msgstr "Add Selected Primitives"
+msgstr "Gehitu Hautatuta Dauden Primitiboak"
 
 #. i18n: file: src/engineprimitiveswidget.ui:55
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
-msgstr "Remove Selected Primitives"
+msgstr "Ezabatu Hautatuta Dauden Primitiboak"
 
 #. i18n: file: src/engineprimitiveswidget.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr "Add All Primitives"
+msgstr "Gehitu Primitibo Guztiak"
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr "Display Only Selected Primitives"
+msgstr "Bakarrik Erakutsi Hautatu Diren Primitiboak"
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr "Assign to Selection"
+msgstr "Hautatutakoari Egokitu"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr "Import Molecule File"
+msgstr "Inportatu Molekula-Artxiboa"
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Filename:"
-msgstr "Filename:"
+msgstr "Artxibo-Izena:"
 
 #. i18n: file: src/importdialog.ui:34
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
 msgid "Select..."
-msgstr "Select..."
+msgstr "Hautatu..."
 
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr "Format:"
+msgstr "Formatua:"
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr "Automatically detect from extension"
+msgstr "Automatikoki Aurkituta Hedapen Honetatik"
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
-msgstr "Perceive bonding"
+msgstr "Hauteman loturak"
 
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr "Perceive bond orders"
+msgstr "hauteman lotura aginduak"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr "Coordinates are in Ångstroms"
+msgstr "Koordenatuak Ångstrom-etan neurtzen dira"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
 msgid "&Help"
-msgstr "&Help"
+msgstr "&Laguntza"
 
 #. i18n: file: src/mainwindow.ui:46
 #. i18n: ectx: property (title), widget (QMenu, menuFile)
 msgid "&File"
-msgstr "&File"
+msgstr "&Artxiboa"
 
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr "Open &Recent"
+msgstr "Ireki &oraintsukoa"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
 msgid "Export"
-msgstr "Export"
+msgstr "Esportatu"
 
 #. i18n: file: src/mainwindow.ui:62
 #. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
-msgstr "Import"
+msgstr "Inportatu"
 
 #. i18n: file: src/mainwindow.ui:81
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
-msgstr "Se&ttings"
+msgstr "Ez&arpenak"
 
 #. i18n: file: src/mainwindow.ui:85
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr "Toolbars"
+msgstr "Tresna-barrak"
 
 #. i18n: file: src/mainwindow.ui:94
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr "&Build"
+msgstr "&Eraiki"
 
 #. i18n: file: src/mainwindow.ui:99
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
-msgstr "&View"
+msgstr "&Ikusi"
 
 #. i18n: file: src/mainwindow.ui:121
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Edit"
+msgstr "&Editatu"
 
 #. i18n: file: src/mainwindow.ui:134
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
-msgstr "E&xtensions"
+msgstr "H&edapenak"
 
 #. i18n: file: src/mainwindow.ui:139
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
-msgstr "&Select"
+msgstr "&Hautatu"
 
 #. i18n: file: src/mainwindow.ui:156
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr "Main Toolbar"
+msgstr "Tresna-Barra Nagusia"
 
 #. i18n: file: src/mainwindow.ui:193
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
-msgstr "Project Tree"
+msgstr "Proiektuaren Zuhaitza"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
-msgstr "Display Types"
+msgstr "Erakutsi Motak"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
-msgstr "Tools"
+msgstr "Tresnak"
 
 #. i18n: file: src/mainwindow.ui:256
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:268
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
-msgstr "&Open"
+msgstr "&Ireki"
 
 #. i18n: file: src/mainwindow.ui:259
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
-msgstr "Ctrl+O"
+msgstr "Ktrl+O"
 
 #. i18n: file: src/mainwindow.ui:277
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:292
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
-msgstr "&Quit"
+msgstr "&Itxi Programa"
 
 #. i18n: file: src/mainwindow.ui:280
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
-msgstr "Ctrl+Q"
+msgstr "Ktrl+Q"
 
 #. i18n: file: src/mainwindow.ui:297
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr "Recent"
+msgstr "Oraintsukoa"
 
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr "&Clear Recent"
+msgstr "&Garbitu Oraintsukoa"
 
 #. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:323
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
-msgstr "&New"
+msgstr "&Berria"
 
 #. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
-msgstr "Ctrl+N"
+msgstr "Ktrl+N"
 
 #. i18n: file: src/mainwindow.ui:332
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:344
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
-msgstr "&Close"
+msgstr "&Itxi"
 
 #. i18n: file: src/mainwindow.ui:335
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
-msgstr "Ctrl+W"
+msgstr "Ktrl+W"
 
 #. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:365
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr "&Save"
+msgstr "&Gorde"
 
 #. i18n: file: src/mainwindow.ui:356
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
-msgstr "Ctrl+S"
+msgstr "Ktrl+S"
 
 #. i18n: file: src/mainwindow.ui:374
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr "Save &As..."
+msgstr "Gorde &Horrela..."
 
 #. i18n: file: src/mainwindow.ui:377
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
-msgstr "Ctrl+Shift+S"
+msgstr "Ktrl+Shift+S"
 
 #. i18n: file: src/mainwindow.ui:386
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr "Revert To Saved"
+msgstr "Bueltatu Artxibo Gordetara"
 
 #. i18n: file: src/mainwindow.ui:395
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr "&Graphics..."
+msgstr "&Grafikoak..."
 
 #. i18n: file: src/mainwindow.ui:404
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr "&Full Screen Mode"
+msgstr "&Pantaila Osoko Modua"
 
 #. i18n: file: src/mainwindow.ui:407
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -934,268 +922,268 @@ msgstr "Esc"
 #. i18n: file: src/mainwindow.ui:416
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr "Set &Background Color..."
+msgstr "Ezari &Atzeko Planoaren Kolorea..."
 
 #. i18n: file: src/mainwindow.ui:421
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr "&About"
+msgstr "&Honi Buruz"
 
 #. i18n: file: src/mainwindow.ui:433
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
-msgstr "&Undo"
+msgstr "&Desegin"
 
 #. i18n: file: src/mainwindow.ui:436
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
-msgstr "Ctrl+Z"
+msgstr "Ktrl+Z"
 
 #. i18n: file: src/mainwindow.ui:445
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr "&Redo"
+msgstr "&Berregin"
 
 #. i18n: file: src/mainwindow.ui:448
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
-msgstr "Ctrl+Shift+Z"
+msgstr "Ktrl+Shift+Z"
 
 #. i18n: file: src/mainwindow.ui:457
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr "New View"
+msgstr "Ikuspegi Berria"
 
 #. i18n: file: src/mainwindow.ui:469
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
-msgstr "Close View"
+msgstr "Itxi Ikuspegia"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
-msgstr "Centre"
+msgstr "Zentratu"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
-msgstr "&Paste"
+msgstr "&Itsatsi"
 
 #. i18n: file: src/mainwindow.ui:490
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
-msgstr "Ctrl+V"
+msgstr "Ktrl+V"
 
 #. i18n: file: src/mainwindow.ui:499
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
-msgstr "Copy"
+msgstr "&Kopiatu"
 
 #. i18n: file: src/mainwindow.ui:502
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
-msgstr "Ctrl+C"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:511
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
-msgstr "Cut"
+msgstr "Moztu"
 
 #. i18n: file: src/mainwindow.ui:514
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
-msgstr "Ctrl+X"
+msgstr "Ktrl+X"
 
 #. i18n: file: src/mainwindow.ui:523
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
-msgstr "Clear"
+msgstr "Garbitu"
 
 #. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Backspace"
-msgstr "Backspace"
+msgstr "Atzera-Tekla"
 
 #. i18n: file: src/mainwindow.ui:531
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr "Select All"
+msgstr "Hautatu Guztia"
 
 #. i18n: file: src/mainwindow.ui:534
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
-msgstr "Ctrl+A"
+msgstr "Ktrl+A"
 
 #. i18n: file: src/mainwindow.ui:539
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
-msgstr "Select None"
+msgstr "Ez Hautatu Ezer"
 
 #. i18n: file: src/mainwindow.ui:542
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
-msgstr "Ctrl+Shift+A"
+msgstr "Ktrl+Shift+A"
 
 #. i18n: file: src/mainwindow.ui:551
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
-msgstr "Configure Avogadro..."
+msgstr "Avogadro Konfiguratu..."
 
 #. i18n: file: src/mainwindow.ui:562
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr "Tutorials"
+msgstr "Tutorialak"
 
 #. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr "Duplicate View"
+msgstr "Bikoiztu Ikusketa"
 
 #. i18n: file: src/mainwindow.ui:579
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Display Axes"
+msgstr "Erakutsi Ardatzak"
 
 #. i18n: file: src/mainwindow.ui:587
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
-msgstr "Debug Information"
+msgstr "Arazketaren informazioa"
 
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
-msgstr "Avogadro Help"
+msgstr "Avogadroren Laguntza"
 
 #. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
-msgstr "Release Notes"
+msgstr "Bertsioaren Oharrak"
 
 #. i18n: file: src/mainwindow.ui:605
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr "Report a Bug"
+msgstr "Akatsen Berri Eman"
 
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "MEG"
 
 #. i18n: file: src/mainwindow.ui:615
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr "Avogadro Website"
+msgstr "Avogadro-ren Web-orria"
 
 #. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
-msgstr "Plug-in Manager..."
+msgstr "Konektatze Administratzailea..."
 
 #. i18n: file: src/mainwindow.ui:633
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr "Project Tree Editor..."
+msgstr "Proiektuaren Zuhaitza Editatu..."
 
 #. i18n: file: src/mainwindow.ui:642
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
-msgstr "Detach View"
+msgstr "Ikusketa Bananduta"
 
 #. i18n: file: src/mainwindow.ui:651
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
-msgstr "Molecule File..."
+msgstr "Artxibo Molekularra..."
 
 #. i18n: file: src/mainwindow.ui:662
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
-msgstr "Use Quick Render"
+msgstr "Erabili Errenderizazio Azkarra"
 
 #. i18n: file: src/mainwindow.ui:667
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr "&Vector Graphics..."
+msgstr "&Grafiko Bektorialak..."
 
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
-msgstr "Display Unit Cell Axes"
+msgstr "Erakutsi Gelatxo Unitarioen Ardatzak"
 
 #. i18n: file: src/mainwindow.ui:683
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
-msgstr "All Molecules in File..."
+msgstr "Molekula Guztiak Artxiboan..."
 
 #. i18n: file: src/mainwindow.ui:688
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
-msgstr "Reset Display Types"
+msgstr "Berrezarri Erakusketa Moduak"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
-msgstr "Plug-ins"
+msgstr "Pluginak"
 
 #. i18n: file: src/pluginsettings.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
-msgstr "Extensions"
+msgstr "Hedapenak"
 
 #. i18n: file: src/pluginsettings.ui:52
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
-msgstr "Details"
+msgstr "Xehetasunak"
 
 #. i18n: file: src/projecttreeeditor.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr "Tree Items"
+msgstr "Zuhaitz-Elementuak"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #. i18n: file: src/projecttreeeditor.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
-msgstr "Type"
+msgstr "Mota"
 
 #. i18n: file: src/projecttreeeditor.ui:48
 #. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
-msgstr "New Item"
+msgstr "Elementu berria"
 
 #. i18n: file: src/projecttreeeditor.ui:51
 #. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
-msgstr "&New Item"
+msgstr "&Elementu berria"
 
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
-msgstr "New Subitem"
+msgstr "Azpi-Elementu Berria"
 
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr "New &Subitem"
+msgstr "Azpi-&Elementu Berria"
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
-msgstr "Delete Item"
+msgstr "Ezabatu elementua"
 
 #. i18n: file: src/projecttreeeditor.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
-msgstr "&Delete Item"
+msgstr "&Ezabatu elementua"
 
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr "Move Item Left (before Parent Item)"
+msgstr "Mugitu Elementua Ezkerrera (Guraso-Elementua baino lehen)"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
@@ -1205,7 +1193,9 @@ msgstr "L"
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+"Mugitu Elementua Eskuinera (Hurrengo Senide-Elementuaren Lehenengo Azpi-"
+"Elementu bat bezala)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
@@ -1215,7 +1205,7 @@ msgstr "R"
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
-msgstr "Move Item Up"
+msgstr "Mugitu Elementua Gora"
 
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
@@ -1225,7 +1215,7 @@ msgstr "U"
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
-msgstr "Move Item Down"
+msgstr "Mugitu Elementua Behera"
 
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
@@ -1235,60 +1225,43 @@ msgstr "D"
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr "Alias"
+msgstr "Ezizena"
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
 msgid "Settings..."
-msgstr "Settings..."
+msgstr "Ezarpenak..."
 
 #. i18n: file: src/settingsdialog.ui:34
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "General"
-msgstr "General"
+msgstr "Orokorra"
 
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr "Quality:"
+msgstr "Kalitatea:"
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
 #. i18n: file: src/settingsdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
-msgstr "Set the global rendering quality."
+msgstr "Ezarri errenderizazio kalitate orokorra"
 
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
 msgid "Fog:"
-msgstr "Fog:"
+msgstr "Lainoa:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Brian Burns,Gabriel Ruiz,Jen Ockwell,Marcus D. "
-"Hanwell,kuede, ,Launchpad Contributions:,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede,melvinor, ,Launchpad "
-"Contributions:,Avogadro Team,Boyo,Brian Burns,Gabriel Ruiz,Geoff "
-"Hutchison,Jen Ockwell,Ken Sharp,Marcus D. Hanwell,kuede,melvinor, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,Ken Sharp,melvinor"
+",Launchpad Contributions:,Ander González,Xabier Isla Rodriguez, ,Launchpad "
+"Contributions:,Ander González,Xabier Isla Rodriguez"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,bburns@aundae.com,debianmaster@gmail.com,jenfraggleubuntu@googlemail.com,,,"
-",,bburns@aundae.com,debianmaster@gmail.com,,jenfraggleubuntu@googlemail.com,,"
-",,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,bburns@aundae.com,debianmaster@gmail.com,,jenfra"
-"ggleubuntu@googlemail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,,"
+msgstr ",,,,,,,"

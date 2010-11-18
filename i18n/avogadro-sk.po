@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
+"X-Launchpad-Export-Date: 2010-11-18 02:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,7 +25,7 @@ msgstr "OK"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git revízia: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
@@ -41,10 +41,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:854 src/mainwindow.cpp:904
+#: src/mainwindow.cpp:926 src/mainwindow.cpp:1089 src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1265 src/mainwindow.cpp:1493 src/mainwindow.cpp:2690
+#: src/mainwindow.cpp:3191 :69
 msgid "Avogadro"
 msgstr "Avodagro"
 
@@ -73,15 +73,14 @@ msgstr "Vyčisti Atómy"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
 msgid "Settings"
-msgstr ""
+msgstr "Nastavenia"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:739
+#: src/importdialog.cpp:175 src/mainwindow.cpp:744
 msgid "Open File"
 msgstr "Otvor Súbor"
 
-#: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
 msgstr ""
@@ -106,22 +105,19 @@ msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
 msgstr ""
 
-#: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
 msgstr ""
 
-#: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
 msgstr ""
 
-#: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
 msgstr ""
 
-#: src/main.cpp:249
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -129,6 +125,9 @@ msgid ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 msgstr ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:264
 #, qt-format
@@ -163,373 +162,377 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Priblíž"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
 msgid "Bring All to Front"
 msgstr "Pridaj všetko do fronty"
 
 #: src/mainwindow.cpp:670
 msgid "&Tool Settings..."
-msgstr ""
+msgstr "&Nastavenie nástrojov..."
 
 #: src/mainwindow.cpp:673
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:678
 msgid "&Display Settings..."
-msgstr ""
+msgstr "&Nastavenie obrazovky..."
 
 #: src/mainwindow.cpp:681
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
 msgid "Common molecule formats"
 msgstr "Základné molekuly"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:1512
 msgid "All files"
 msgstr "Všetky súbory"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:731
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Výstup výpočtovej chémie"
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:732
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:733
 msgid "GAMESS-US Output"
 msgstr "Výstup GAMESS-US"
 
-#: src/mainwindow.cpp:729
+#: src/mainwindow.cpp:734
 msgid "Gaussian 98/03 Output"
 msgstr "Výstup 98/03 Gaussian"
 
-#: src/mainwindow.cpp:730
+#: src/mainwindow.cpp:735
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Gaussian Bod Formátovania"
 
-#: src/mainwindow.cpp:731
+#: src/mainwindow.cpp:736
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:737
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:733
+#: src/mainwindow.cpp:738
 msgid "NWChem Output"
 msgstr "Výstup NWChem"
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
+#: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "nepomenované"
 
-#: src/mainwindow.cpp:826
+#: src/mainwindow.cpp:831
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr ""
+msgstr "Načítavanie %1..."
 
-#: src/mainwindow.cpp:830
+#: src/mainwindow.cpp:835
 #, qt-format
 msgid "Loading %1..."
 msgstr "Načítavam %1..."
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr ""
+msgstr "Čítanie molekulárneho súboru zlyhalo, súbor %1."
 
-#: src/mainwindow.cpp:873
+#: src/mainwindow.cpp:878
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr ""
+msgstr "Čítanie viac-molekulárneho súboru. Môže to chvíľu trvať ..."
 
-#: src/mainwindow.cpp:900
+#: src/mainwindow.cpp:905
 msgid "This file does not contain 3D coordinates."
-msgstr ""
+msgstr "Súbor neobsahuje 3D súradnice."
 
-#: src/mainwindow.cpp:904
+#: src/mainwindow.cpp:909
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Chceš prostredníctvom Avogadro postaviť hrubú geometriu?"
 
-#: src/mainwindow.cpp:922
+#: src/mainwindow.cpp:927
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
+"Súbor neobsahuje 3D súradnice..\n"
+"Možno nebudete mať možnosť upraviť alebo zobrazenie nebude správne."
 
-#: src/mainwindow.cpp:974
+#: src/mainwindow.cpp:979
 msgid "Select Molecule to View"
-msgstr ""
+msgstr "Zvoľte zobrazenie molekuly"
 
-#: src/mainwindow.cpp:999
+#: src/mainwindow.cpp:1004
 msgid "Molecule Title"
-msgstr ""
+msgstr "Názov molekuly"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1082
 msgid "Atoms: "
 msgstr "Atómy "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1083
 msgid " Bonds: "
 msgstr " Väzby "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1099
 msgid "File Loaded..."
 msgstr "Súbor spustený...."
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1112
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
+msgstr "Prajete si uložiť zmeny vykonané v dokumente?"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1121
 msgid "Your changes will be lost if you don't save them."
-msgstr ""
+msgstr "Vaše zmeny sa stratia ak ich neuložíte"
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1125
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1126
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1128
 msgid "Save..."
-msgstr ""
+msgstr "Uložiť..."
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1128 src/savedialog.cpp:65
 msgid "Save"
-msgstr ""
+msgstr "Uložiť"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1211
 msgid "GAMESS Input"
 msgstr "Vstup GAMESS"
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1212
 msgid "Gaussian Cartesian Input"
 msgstr "Vstup Gaussian Cartesian"
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1213
 msgid "Gaussian Z-matrix Input"
 msgstr "Vstup Gaussian Z-matrix"
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1214
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1216
 msgid "NWChem Input"
 msgstr "Vstup NWChem"
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1221
 msgid "Save Molecule As"
 msgstr "Ulož Molekuly ako"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1430
 msgid "Common image formats"
 msgstr "Bežné formáty obrázkov"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1434
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1436
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
 msgid "Export Bitmap Graphics"
 msgstr "Exportovať Bitmapove Obrázky"
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1494
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Nedá sa uložiť súbor %1."
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1509
 msgid "Common vector image formats"
 msgstr "Bežné vektorové formáty"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1514
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1515
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1660
 #, qt-format
 msgid "Untitled %1"
-msgstr ""
+msgstr "Bez názvu %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1765
 msgid "Unable to paste molecule."
 msgstr "Nemôžem vložiť molekulu."
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1794
 msgid "Paste failed (format unavailable)."
 msgstr "Vloženie zlyhalo (nedostupný formát)"
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2077
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopírovanie zlyhalo (mdl nedostupné)"
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
+#: src/mainwindow.cpp:2833
 #, qt-format
 msgid "View %1"
 msgstr "Zobraziť %1"
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2263
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr ""
+msgstr "Pohľad %1"
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2272
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Odelený pohľad"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2438
 msgid "Normal Size"
 msgstr "Normálna Veľkosť"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2451
 msgid "Full Screen"
 msgstr "Celá Obrazovka"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2549
 msgid "Ctrl+Backspace"
-msgstr ""
-
-#: src/mainwindow.cpp:2677
-msgctxt "[*] indicates that this is a modified view...."
-msgid "[*]Avogadro"
-msgstr ""
+msgstr "Ctrl+Backspace"
 
 #: src/mainwindow.cpp:2683
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr "[*]Avogadro"
+
+#: src/mainwindow.cpp:2689
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3145
 msgid "Add"
 msgstr "Pridať"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3150
 msgid "Duplicate"
 msgstr "Duplikovať"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3155
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3183
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3185
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3187
 msgid "No tools loaded."
-msgstr ""
+msgstr "Žiadne nástroje nie sú spustené"
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3188
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
+" Je pravdepodobné, táto aplikácia nebude fungovať správne. Opravte prosím "
+"túto chybu."
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3232
 msgid "Objects"
-msgstr ""
+msgstr "Objekty"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3238 :321
 msgid "Colors"
-msgstr ""
+msgstr "Farby"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3271
 msgid " copy"
-msgstr ""
+msgstr " kopírovať"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr ""
+msgstr "Názov: "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifikátor: "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr ""
+msgstr "Súbor: "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr ""
+msgstr "Popis:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr ""
+msgstr "Molekula"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr ""
+msgstr "Atómy"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr ""
+msgstr "Zvyšky"
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -540,125 +543,125 @@ msgid "bond %1"
 msgstr ""
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr ""
+msgstr "Štítok"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr ""
+msgstr "Výber používateľa"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr ""
+msgstr "iba štítky môžu mať sub položky"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
 #: src/projecttreemodel.cpp:65 :378
 msgid "Item"
-msgstr ""
+msgstr "Položka"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr ""
+msgstr "Nízké"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
 #: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr ""
+msgstr "Stredné"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr ""
+msgstr "Vysoké"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinované"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
 #: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr ""
+msgstr "Žiadne"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr ""
+msgstr "Čiastočne"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "Stredne"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "Veľa"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinované"
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Kontrola sieťovej aktualizácie zlyhala"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Uplynul časový limit siete alebo iná chyba."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr ""
+msgstr "Je k dispozícii aktualizovaná verzia Avogadro"
 
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
 msgid "Add Display Type"
-msgstr ""
+msgstr "Pridať typ zobrazenia"
 
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr ""
+msgstr "Názov:"
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr ""
+msgstr "Popis:"
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
 msgid "Form"
-msgstr ""
+msgstr "Formulár"
 
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr ""
+msgstr "Farba podľa:"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
@@ -689,32 +692,32 @@ msgstr ""
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr ""
+msgstr "Priradiť k výberu"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Import súboru molekúl"
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Filename:"
-msgstr ""
+msgstr "Názov súboru:"
 
 #. i18n: file: src/importdialog.ui:34
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
 msgid "Select..."
-msgstr ""
+msgstr "Vybrať..."
 
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr ""
+msgstr "Formát:"
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr ""
+msgstr "Automaticky detekovať z rozšírenia"
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
@@ -729,72 +732,72 @@ msgstr ""
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr ""
+msgstr "Súradnice sú v Ångstroms"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
 msgid "&Help"
-msgstr ""
+msgstr "&Pomocník"
 
 #. i18n: file: src/mainwindow.ui:46
 #. i18n: ectx: property (title), widget (QMenu, menuFile)
 msgid "&File"
-msgstr ""
+msgstr "&Súbor"
 
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr ""
+msgstr "Otvoriť &nedávne"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 #. i18n: file: src/mainwindow.ui:62
 #. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #. i18n: file: src/mainwindow.ui:81
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
-msgstr ""
+msgstr "&Nastavenia"
 
 #. i18n: file: src/mainwindow.ui:85
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr ""
+msgstr "Panel s nástrojmi"
 
 #. i18n: file: src/mainwindow.ui:94
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr ""
+msgstr "&Zostaviť"
 
 #. i18n: file: src/mainwindow.ui:99
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
-msgstr ""
+msgstr "&Pohľad"
 
 #. i18n: file: src/mainwindow.ui:121
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr ""
+msgstr "&Upraviť"
 
 #. i18n: file: src/mainwindow.ui:134
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
-msgstr ""
+msgstr "&Rozšírenia"
 
 #. i18n: file: src/mainwindow.ui:139
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
-msgstr ""
+msgstr "&Výber"
 
 #. i18n: file: src/mainwindow.ui:156
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Hlavný panel s nástrojmi"
 
 #. i18n: file: src/mainwindow.ui:193
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
@@ -808,154 +811,154 @@ msgstr ""
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
-msgstr ""
+msgstr "Zobraziť typy"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
-msgstr ""
+msgstr "Nástroje"
 
 #. i18n: file: src/mainwindow.ui:256
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:268
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
-msgstr ""
+msgstr "&Otvoriť"
 
 #. i18n: file: src/mainwindow.ui:259
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #. i18n: file: src/mainwindow.ui:277
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:292
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
-msgstr ""
+msgstr "&Ukončiť"
 
 #. i18n: file: src/mainwindow.ui:280
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
-msgstr ""
+msgstr "Ctrl+Q"
 
 #. i18n: file: src/mainwindow.ui:297
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr ""
+msgstr "Nedávne"
 
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr ""
+msgstr "&Vyčistiť nedávne"
 
 #. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:323
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
-msgstr ""
+msgstr "&Nový"
 
 #. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #. i18n: file: src/mainwindow.ui:332
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:344
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
-msgstr ""
+msgstr "&Zavrieť"
 
 #. i18n: file: src/mainwindow.ui:335
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
-msgstr ""
+msgstr "Ctrl+W"
 
 #. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:365
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr ""
+msgstr "&Uložiť"
 
 #. i18n: file: src/mainwindow.ui:356
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #. i18n: file: src/mainwindow.ui:374
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr ""
+msgstr "Uložiť &ako..."
 
 #. i18n: file: src/mainwindow.ui:377
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
-msgstr ""
+msgstr "Ctrl+Shift+S"
 
 #. i18n: file: src/mainwindow.ui:386
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Vrátiť sa k uloženiu"
 
 #. i18n: file: src/mainwindow.ui:395
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr ""
+msgstr "&Grafický..."
 
 #. i18n: file: src/mainwindow.ui:404
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr ""
+msgstr "&Celoobrazovkový režim"
 
 #. i18n: file: src/mainwindow.ui:407
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr ""
+msgstr "Esc"
 
 #. i18n: file: src/mainwindow.ui:416
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr ""
+msgstr "Nastaviť farbu &pozadia..."
 
 #. i18n: file: src/mainwindow.ui:421
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr ""
+msgstr "&O programe"
 
 #. i18n: file: src/mainwindow.ui:433
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
-msgstr ""
+msgstr "&Vrátiť späť"
 
 #. i18n: file: src/mainwindow.ui:436
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
-msgstr ""
+msgstr "Ctrl+Z"
 
 #. i18n: file: src/mainwindow.ui:445
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr ""
+msgstr "&Opakovať"
 
 #. i18n: file: src/mainwindow.ui:448
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
-msgstr ""
+msgstr "Ctrl+Shift+Z"
 
 #. i18n: file: src/mainwindow.ui:457
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr ""
+msgstr "Nový pohľad"
 
 #. i18n: file: src/mainwindow.ui:469
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
-msgstr ""
+msgstr "Zatvoriť pohľad"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -965,142 +968,142 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
-msgstr ""
+msgstr "&Vložiť"
 
 #. i18n: file: src/mainwindow.ui:490
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #. i18n: file: src/mainwindow.ui:499
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovať"
 
 #. i18n: file: src/mainwindow.ui:502
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #. i18n: file: src/mainwindow.ui:511
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
-msgstr ""
+msgstr "Vystrihnúť"
 
 #. i18n: file: src/mainwindow.ui:514
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
-msgstr ""
+msgstr "Ctrl+X"
 
 #. i18n: file: src/mainwindow.ui:523
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
-msgstr ""
+msgstr "Vyčistiť"
 
 #. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Backspace"
-msgstr ""
+msgstr "Backspace"
 
 #. i18n: file: src/mainwindow.ui:531
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr ""
+msgstr "Vybrať všetko"
 
 #. i18n: file: src/mainwindow.ui:534
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
-msgstr ""
+msgstr "Ctrl+A"
 
 #. i18n: file: src/mainwindow.ui:539
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
-msgstr ""
+msgstr "Nevybrať nič"
 
 #. i18n: file: src/mainwindow.ui:542
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
-msgstr ""
+msgstr "Ctrl+Shift+A"
 
 #. i18n: file: src/mainwindow.ui:551
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
-msgstr ""
+msgstr "Konfigurovať Avogadro..."
 
 #. i18n: file: src/mainwindow.ui:562
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr ""
+msgstr "Návody"
 
 #. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr ""
+msgstr "Zdvojený pohľad"
 
 #. i18n: file: src/mainwindow.ui:579
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr ""
+msgstr "Zobrazenie osí"
 
 #. i18n: file: src/mainwindow.ui:587
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
-msgstr ""
+msgstr "Ladiace informácie"
 
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
-msgstr ""
+msgstr "Pomocník Avogadro"
 
 #. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
-msgstr ""
+msgstr "Poznámky k vydaniu"
 
 #. i18n: file: src/mainwindow.ui:605
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr ""
+msgstr "Ohlásiť chybu"
 
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr ""
+msgstr "Často kladené otázky"
 
 #. i18n: file: src/mainwindow.ui:615
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr ""
+msgstr "Webová stránka Avogadro"
 
 #. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
-msgstr ""
+msgstr "Správca rozšírení"
 
 #. i18n: file: src/mainwindow.ui:633
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr ""
+msgstr "Editor stormu projektu..."
 
 #. i18n: file: src/mainwindow.ui:642
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
-msgstr ""
+msgstr "Odpojený pohľad"
 
 #. i18n: file: src/mainwindow.ui:651
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
-msgstr ""
+msgstr "Súbor molekuly..."
 
 #. i18n: file: src/mainwindow.ui:662
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
-msgstr ""
+msgstr "Použi rýchle vykreslenie"
 
 #. i18n: file: src/mainwindow.ui:667
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Vektorová Grafika..."
 
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1110,118 +1113,120 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:683
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
-msgstr ""
+msgstr "Všetky molekuly v súbore..."
 
 #. i18n: file: src/mainwindow.ui:688
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
-msgstr ""
+msgstr "Restovať zobrazené typy"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
-msgstr ""
+msgstr "Zásuvné moduly"
 
 #. i18n: file: src/pluginsettings.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
-msgstr ""
+msgstr "Rozšírenia"
 
 #. i18n: file: src/pluginsettings.ui:52
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
-msgstr ""
+msgstr "Detaily"
 
 #. i18n: file: src/projecttreeeditor.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr ""
+msgstr "Strom položiek"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #. i18n: file: src/projecttreeeditor.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #. i18n: file: src/projecttreeeditor.ui:48
 #. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
-msgstr ""
+msgstr "Nová položka"
 
 #. i18n: file: src/projecttreeeditor.ui:51
 #. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
-msgstr ""
+msgstr "&Nová položka"
 
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
-msgstr ""
+msgstr "Nová podpoložka"
 
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr ""
+msgstr "Nová &podpoložka"
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
-msgstr ""
+msgstr "Zmazať položku"
 
 #. i18n: file: src/projecttreeeditor.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
-msgstr ""
+msgstr "&Zmazať položku"
 
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr ""
+msgstr "Presunúť položku vľavo (pred zdrojovú položku)"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
 msgstr ""
+"Presunúť položku vpravo (Ako prvá podpoložka je daľšia položka toho istého "
+"rodu)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
-msgstr ""
+msgstr "Posunúť položku hore"
 
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
 msgid "U"
-msgstr ""
+msgstr "U"
 
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
-msgstr ""
+msgstr "Posunúť položku nadol"
 
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr ""
+msgstr "Prezývka"
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
@@ -1233,19 +1238,19 @@ msgstr "Nastavenia..."
 #. i18n: file: src/settingsdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "General"
-msgstr ""
+msgstr "Všeobecné"
 
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr ""
+msgstr "Kvalita:"
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
 #. i18n: file: src/settingsdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
-msgstr ""
+msgstr "Nastaviť celkovú kvalitu vykreslenia."
 
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
@@ -1257,10 +1262,15 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro "
 "Team,milboy, ,Launchpad Contributions:, ,Launchpad Contributions:,Avogadro "
-"Team,milboy"
+"Team,milboy, ,Launchpad Contributions:,Avogadro Team,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,milboy, ,Launchpad Contributions:,Avogadro "
+"Team,milboy, ,Launchpad Contributions:,Avogadro Team,milboy"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,,avogadro-devel@lists.sourceforge.net,,,,,,avogadro-"
-"devel@lists.sourceforge.net,"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,"

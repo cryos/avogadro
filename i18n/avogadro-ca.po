@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
+"X-Launchpad-Export-Date: 2010-11-18 02:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -44,10 +44,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:854 src/mainwindow.cpp:904
+#: src/mainwindow.cpp:926 src/mainwindow.cpp:1089 src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1265 src/mainwindow.cpp:1493 src/mainwindow.cpp:2690
+#: src/mainwindow.cpp:3191 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -76,15 +76,14 @@ msgstr "Esborra els atoms"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Configuració"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:739
+#: src/importdialog.cpp:175 src/mainwindow.cpp:744
 msgid "Open File"
 msgstr "Obre un fitxer"
 
-#: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
 msgstr ""
@@ -109,22 +108,19 @@ msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
 msgstr ""
 
-#: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
 msgstr ""
 
-#: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
 msgstr ""
 
-#: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
 msgstr ""
 
-#: src/main.cpp:249
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -166,7 +162,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
 msgid "Bring All to Front"
 msgstr "Porta-ho tot al davant"
 
@@ -188,293 +184,293 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
 msgid "Common molecule formats"
 msgstr "Formats comuns de molècula"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:1512
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:731
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:732
 msgid "Crystallographic Interchange CIF"
 msgstr "Intercanvi crital·logràfic CIF"
 
-#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:733
 msgid "GAMESS-US Output"
 msgstr "Eixida GAMESS-US"
 
-#: src/mainwindow.cpp:729
+#: src/mainwindow.cpp:734
 msgid "Gaussian 98/03 Output"
 msgstr "Eixida Gaussian 98/03"
 
-#: src/mainwindow.cpp:730
+#: src/mainwindow.cpp:735
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Punt de control amb format gaussià"
 
-#: src/mainwindow.cpp:731
+#: src/mainwindow.cpp:736
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:737
 msgid "MDL Mol"
 msgstr "Mol MDL"
 
-#: src/mainwindow.cpp:733
+#: src/mainwindow.cpp:738
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
+#: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "sense títol"
 
-#: src/mainwindow.cpp:826
+#: src/mainwindow.cpp:831
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Carregant %1..."
 
-#: src/mainwindow.cpp:830
+#: src/mainwindow.cpp:835
 #, qt-format
 msgid "Loading %1..."
 msgstr "S'està carregant %1…"
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr ""
 
-#: src/mainwindow.cpp:873
+#: src/mainwindow.cpp:878
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
-#: src/mainwindow.cpp:900
+#: src/mainwindow.cpp:905
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:904
+#: src/mainwindow.cpp:909
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:922
+#: src/mainwindow.cpp:927
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:974
+#: src/mainwindow.cpp:979
 msgid "Select Molecule to View"
 msgstr "Selecciona Molècula per veure"
 
-#: src/mainwindow.cpp:999
+#: src/mainwindow.cpp:1004
 msgid "Molecule Title"
 msgstr "Títol de la Molècula"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1082
 msgid "Atoms: "
 msgstr "Àtoms: "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1083
 msgid " Bonds: "
 msgstr " Enllaços: "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1099
 msgid "File Loaded..."
 msgstr "S'ha carregat el fitxer…"
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1112
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Vols salvar els canvis que has fet al document?"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1121
 msgid "Your changes will be lost if you don't save them."
 msgstr "Els teus canvis es perdran si no els salves."
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1125
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1126
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1128
 msgid "Save..."
 msgstr "Salva..."
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1128 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Alça"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1211
 msgid "GAMESS Input"
 msgstr "Entrada GAMESS"
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1212
 msgid "Gaussian Cartesian Input"
 msgstr "Entrada cartesiana gaussiana"
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1213
 msgid "Gaussian Z-matrix Input"
 msgstr "Entrada gaussiana matriu Z"
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1214
 msgid "MDL SDfile"
 msgstr "Fitxer MDL SD"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1216
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1221
 msgid "Save Molecule As"
 msgstr "Anomena i alça la molècula"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1430
 msgid "Common image formats"
 msgstr "Formats d'imatge comuns"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1434
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1436
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
 msgid "Export Bitmap Graphics"
 msgstr "Exporta el gràfic de mapa de bits."
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1494
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "No es pot alçar el fitxer %1"
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1509
 msgid "Common vector image formats"
 msgstr "Formats comuns d'imatges vectorials"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1514
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1515
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1660
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sense títol %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1765
 msgid "Unable to paste molecule."
 msgstr "No es pot enganxar la molècula."
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1794
 msgid "Paste failed (format unavailable)."
 msgstr "S'ha produït un error en enganxar (format no disponible)."
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2077
 msgid "Copy failed (mdl unavailable)."
 msgstr "S'ha produït un error en còpiar ( mdl no reconegut)."
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
+#: src/mainwindow.cpp:2833
 #, qt-format
 msgid "View %1"
 msgstr "Visualitza %1"
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2263
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Veure %1"
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2272
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista separada"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2438
 msgid "Normal Size"
 msgstr "Mida normal"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2451
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2549
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2677
+#: src/mainwindow.cpp:2683
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2689
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3145
 msgid "Add"
 msgstr "Afig"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3150
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3155
 msgid "Remove"
 msgstr "Suprimeix"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3183
 msgid "No tools or engines loaded."
 msgstr "No hi ha cap eina o motor carregat."
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3185
 msgid "No engines loaded."
 msgstr "No hi ha cap motor carregat."
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3187
 msgid "No tools loaded."
 msgstr "No hi ha cap eina carregada."
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3188
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -482,17 +478,17 @@ msgstr ""
 " És impossible que esta aplicació funcione de forma correcta. Per favor, "
 "corregiu-ne l'error."
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3232
 msgid "Objects"
 msgstr "Objectes"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3238 :321
 msgid "Colors"
 msgstr "Colors"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3271
 msgid " copy"
 msgstr " còpia"
 
@@ -513,25 +509,25 @@ msgid "Description:\n"
 msgstr "Descripció:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Molècula"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Àtoms"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Enllaços"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Residus"
@@ -545,13 +541,13 @@ msgid "bond %1"
 msgstr "enllaç %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Etiqueta"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Seleccions de l'usuari"
 
@@ -1267,6 +1263,14 @@ msgstr ""
 ",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso "
 "Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
 "Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
+"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
+"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
+"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
+"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team"
 
 msgctxt "EMAIL OF TRANSLATORS"
@@ -1276,4 +1280,11 @@ msgstr ""
 "bre@gmail.com,,,avogadro-"
 "devel@lists.sourceforge.net,,toniher@softcatala.cat,,el.libre@gmail.com,,,ton"
 "iher@softcatala.cat,,el.libre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net"
+"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avog"
+"adro-"
+"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avog"
+"adro-"
+"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avog"
+"adro-"
+"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avog"
+"adro-devel@lists.sourceforge.net"

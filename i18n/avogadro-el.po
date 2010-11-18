@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
+"X-Launchpad-Export-Date: 2010-11-18 02:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -42,10 +42,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:854 src/mainwindow.cpp:904
+#: src/mainwindow.cpp:926 src/mainwindow.cpp:1089 src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1265 src/mainwindow.cpp:1493 src/mainwindow.cpp:2690
+#: src/mainwindow.cpp:3191 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -74,15 +74,14 @@ msgstr "Καθαρισμός ατόμων"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:739
+#: src/importdialog.cpp:175 src/mainwindow.cpp:744
 msgid "Open File"
 msgstr "Άνοιγμα αρχείου"
 
-#: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
 msgstr "Avogadro"
@@ -107,22 +106,19 @@ msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
 msgstr "Βρέθηκαν δυνατότητες OpenGL: "
 
-#: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
 msgstr ""
 
-#: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
 msgstr ""
 
-#: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
 msgstr ""
 
-#: src/main.cpp:249
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -164,7 +160,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Μεγέθυνση"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
 msgid "Bring All to Front"
 msgstr "Μεταφορά Όλων Εμπρός"
 
@@ -186,96 +182,96 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
 msgid "Common molecule formats"
 msgstr "Κοινές μορφές μορίων"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:1512
 msgid "All files"
 msgstr "Όλα τα αρχεία"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:731
 msgid "Computational Chemistry Output"
 msgstr "Αποτελέσματα Υπολογιστικής Χημείας"
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:732
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:733
 msgid "GAMESS-US Output"
 msgstr "Αποτελέσματα GAMESS-US"
 
-#: src/mainwindow.cpp:729
+#: src/mainwindow.cpp:734
 msgid "Gaussian 98/03 Output"
 msgstr "Αποτελέσματα Gaussian  98/03"
 
-#: src/mainwindow.cpp:730
+#: src/mainwindow.cpp:735
 msgid "Gaussian Formatted Checkpoint"
 msgstr ""
 
-#: src/mainwindow.cpp:731
+#: src/mainwindow.cpp:736
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:737
 msgid "MDL Mol"
 msgstr ""
 
-#: src/mainwindow.cpp:733
+#: src/mainwindow.cpp:738
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
+#: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "χωρίς τίτλο"
 
-#: src/mainwindow.cpp:826
+#: src/mainwindow.cpp:831
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Φόρτωση %1"
 
-#: src/mainwindow.cpp:830
+#: src/mainwindow.cpp:835
 #, qt-format
 msgid "Loading %1..."
 msgstr "Φόρτωση %1"
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Η ανάγνωση του αρχείου μορίων απέτυχε, αρχείο %1"
 
-#: src/mainwindow.cpp:873
+#: src/mainwindow.cpp:878
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Ανάγνωση σύνθετου αρχείου.Πιθανόν να διαρκέσει..."
 
-#: src/mainwindow.cpp:900
+#: src/mainwindow.cpp:905
 msgid "This file does not contain 3D coordinates."
 msgstr "Το αρχείο δεν περιέχει συντεταγμένες 3D"
 
-#: src/mainwindow.cpp:904
+#: src/mainwindow.cpp:909
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Θα θέλατε το Avogadro να σχεδιάσει πρόχειρα την γεωμετρία;"
 
-#: src/mainwindow.cpp:922
+#: src/mainwindow.cpp:927
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -283,215 +279,215 @@ msgstr ""
 "Το αρχείο δεν περιέχει 3D συντεταγμένες.\n"
 "Ίσως να μην είναι δυνατή η επεξεργασία ή/και η σωστή απεικόνιση του."
 
-#: src/mainwindow.cpp:974
+#: src/mainwindow.cpp:979
 msgid "Select Molecule to View"
 msgstr "Επιλέξτε Μόριο προς απεικόνιση"
 
-#: src/mainwindow.cpp:999
+#: src/mainwindow.cpp:1004
 msgid "Molecule Title"
 msgstr "Τίτλος μορίου"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1082
 msgid "Atoms: "
 msgstr "Άτομα: "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1083
 msgid " Bonds: "
 msgstr " Δεσμοί: "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1099
 msgid "File Loaded..."
 msgstr "Το αρχείο Φορτώθηκε..."
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1112
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Επιθυμείτε να αποθηκευτούν οι αλλαγές που κάνατε στο αρχείο?"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1121
 msgid "Your changes will be lost if you don't save them."
 msgstr "Οι αλλαγές θα χαθούν οριστικά αν δεν τις αποθηκεύσετε."
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1125
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1126
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1128
 msgid "Save..."
 msgstr "Αποθήκευση..."
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1128 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1211
 msgid "GAMESS Input"
 msgstr "Είσοδος GAMESS"
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1212
 msgid "Gaussian Cartesian Input"
 msgstr "Είσοδος Gaussian Cartesian"
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1213
 msgid "Gaussian Z-matrix Input"
 msgstr "Είσοδος Gaussian Z-matrix"
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1214
 msgid "MDL SDfile"
 msgstr "Αρχείο MDL SD"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1216
 msgid "NWChem Input"
 msgstr "Είσοδος NWChem"
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1221
 msgid "Save Molecule As"
 msgstr "Αποθήκευση μορίου ως"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1430
 msgid "Common image formats"
 msgstr "Κοινοί τύποι εικόνων"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1434
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1436
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
 msgid "Export Bitmap Graphics"
 msgstr "Εξαγωγή Γραφικών Bitmap"
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1494
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1509
 msgid "Common vector image formats"
 msgstr "Κοινοί τύποι διανυσματικών εικόνων"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1514
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1515
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1660
 #, qt-format
 msgid "Untitled %1"
 msgstr "Ανώνυμο %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1765
 msgid "Unable to paste molecule."
 msgstr "Αδύνατη η επικόλληση του μορίου"
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1794
 msgid "Paste failed (format unavailable)."
 msgstr "Απέτυχε η επικόλληση (άγνωστος τύπος αρχείου)"
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2077
 msgid "Copy failed (mdl unavailable)."
 msgstr "Απέτυχε η αντιγραφή (μη διαθέσιμο MDL)."
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
+#: src/mainwindow.cpp:2833
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2263
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2272
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2438
 msgid "Normal Size"
 msgstr "Κανονικό μέγεθος"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2451
 msgid "Full Screen"
 msgstr "Λειτουργία πλήρους οθόνης"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2549
 msgid "Ctrl+Backspace"
 msgstr ""
 
-#: src/mainwindow.cpp:2677
+#: src/mainwindow.cpp:2683
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2689
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3145
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3150
 msgid "Duplicate"
 msgstr "Αντιγραφή"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3155
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3183
 msgid "No tools or engines loaded."
 msgstr "Δεν φορτώθηκε κανένα εργαλείο ή μηχανή."
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3185
 msgid "No engines loaded."
 msgstr "Δεν φορτώθηκε καμία μηχανή"
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3187
 msgid "No tools loaded."
 msgstr "Δεν φορτώθηκε κανένα εργαλείο"
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3188
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Η εφαρμογή μάλλον δε θα λειτουργήσει σωστά.Παρακαλώ διορθώστε το σφάλμα."
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3232
 msgid "Objects"
 msgstr "Αντικείμενα"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3238 :321
 msgid "Colors"
 msgstr "Χρώματα"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3271
 msgid " copy"
 msgstr " αντιγραφή"
 
@@ -512,25 +508,25 @@ msgid "Description:\n"
 msgstr "Περιγραφή:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Μόριο"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Άτομα"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Δεσμοί"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Υπόλοιπα"
@@ -544,13 +540,13 @@ msgid "bond %1"
 msgstr "δεσμός %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Ετικέτα"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Επιλογές Χρήστη"
 
@@ -1260,8 +1256,15 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
 ",Launchpad Contributions:,farkoius,stimpak"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com,,,,"
+msgstr ""
+",,a.brzns@gmail.com,elkosmas@gmail.com,,,a.brzns@gmail.com,elkosmas@gmail.com"
+",,,,a.brzns@gmail.com,elkosmas@gmail.com,,,,a.brzns@gmail.com,elkosmas@gmail."
+"com,,,,a.brzns@gmail.com,elkosmas@gmail.com,,,,,"
