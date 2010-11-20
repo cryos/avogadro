@@ -55,8 +55,6 @@ set(libavogadro_HDRS
   primitive.h
   primitivelist.h
   protein.h
-  qtaimnuclearcriticalpoint.h
-  qtaimbondcriticalpoint.h
   residue.h
   toolgroup.h
   tool.h
@@ -104,8 +102,6 @@ set(libavogadro_SRCS
   primitive.cpp
   primitivelist.cpp
   protein.cpp
-  qtaimnuclearcriticalpoint.cpp
-  qtaimbondcriticalpoint.cpp
   residue.cpp
   sphere_p.cpp
   textrenderer_p.cpp
