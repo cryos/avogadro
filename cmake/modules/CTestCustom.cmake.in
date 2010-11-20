@@ -1,8 +1,15 @@
-set(CTEST_CUSTOM_WARNING_EXCEPTION
+list(APPEND CTEST_CUSTOM_WARNING_EXCEPTION
   ${CTEST_CUSTOM_WARNING_EXCEPTION}
   #  "python" # Our Python bindings are too noisy to be useful right now
   # This one may need more attention - can eigen.cpp be improved?
   "libavogadro/src/python/eigen.cpp" # Lots of compiler warnings
+  "libavogadro/gl2ps/gl2ps.c"
+  "eigen2/Eigen"
   "C4305:" # Truncation from double to float
   "C4291:" # Eigen errors - no matching delete found
 )
+
+list(APPEND CTEST_CUSTOM_COVERAGE_EXCLUDE
+  "*.moc"
+)
+
