@@ -91,10 +91,6 @@ namespace Avogadro {
       NonbondedType,
       /// Text annoations
       TextType,
-      /// QTAIM Nuclear Critical Point
-      QTAIMNuclearCriticalPointType,
-      /// QTAIM Bond Critical Point
-      QTAIMBondCriticalPointType,
       /// End Placeholder
       LastType,
       /// First Placeholder

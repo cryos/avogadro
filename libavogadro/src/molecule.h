@@ -50,8 +50,6 @@ namespace Avogadro {
   class Mesh;
   class Fragment;
   class ZMatrix;
-  class QTAIMNuclearCriticalPoint;
-  class QTAIMBondCriticalPoint;
 
   /**
    * @class Molecule molecule.h <avogadro/molecule.h>
@@ -68,7 +66,6 @@ namespace Avogadro {
   class A_EXPORT Molecule : public Primitive
   {
   Q_OBJECT
-
   public:
     /**
      * Constructor.
@@ -232,7 +229,7 @@ namespace Avogadro {
      * @return The total number of Bond objects in the Mmolecule.
      */
     unsigned int numBonds() const;
-    unsigned int numBondCriticalPoints() const;
+
     /** @} */
 
     /** @name Residue properties
@@ -507,7 +504,7 @@ namespace Avogadro {
     /**
      * Calculate the indices of atoms in groups of atoms of the same element.
      */
-	void calculateGroupIndices() const;
+  void calculateGroupIndices() const;
 
     /**
      * @return The bond between the two supplied atom ids if one exists,
@@ -520,134 +517,6 @@ namespace Avogadro {
      * otherwise 0 is returned.
      */
     Bond* bond(const Atom*, const Atom*);
-
-    /**
-     * Create a new QTAIMNuclearCriticalPoint object and return a pointer to it.
-     * @note Do not delete the object, use removeNuclearCriticalPoint(QTAIMNuclearCriticalPoint*).
-     */
-    QTAIMNuclearCriticalPoint *addNuclearCriticalPoint();
-
-    /**
-     * Create a new QTAIMNuclearCriticalPoint object with the specified id and return a pointer to
-     * it. Used when you need to recreate an QTAIMNuclearCriticalPoint with the same unique id.
-     * @note Do not delete the object, use removeNuclearCriticalPoint(unsigned long id).
-     */
-    QTAIMNuclearCriticalPoint *addNuclearCriticalPoint(unsigned long id);
-
-    /**
-     * Remove the supplied QTAIMNuclearCriticalPoint.
-     */
-    void removeNuclearCriticalPoint(QTAIMNuclearCriticalPoint *nuclearCriticalPoint);
-
-    /**
-     * Delete the QTAIMNuclearCriticalPoint with the unique id specified.
-     */
-    void removeNuclearCriticalPoint(unsigned long id);
-
-    /**
-     * @return The QTAIMNuclearCriticalPoint at the supplied index.
-     */
-    QTAIMNuclearCriticalPoint * nuclearCriticalPoint(int index) const;
-
-    /**
-     * @return The QTAIMNuclearCriticalPoint at the supplied unqique id.
-     */
-    QTAIMNuclearCriticalPoint *nuclearCriticalPointById(unsigned long id) const;
-
-    /**
-     * @return QList of all QTAIMNuclearCriticalPoint objects in the Molecule.
-     */
-    QList<QTAIMNuclearCriticalPoint *> nuclearCriticalPoints() const;
-
-    /**
-     * @return The total number of QTAIMNuclearCriticalPoint objects in the molecule.
-     */
-    unsigned int numNuclearCriticalPoints() const;
-
-    /**
-     * Set the QTAIMNuclearCriticalPoint position.
-     * @param id Unique id of the QTAIMNuclearCriticalPoint to set the position for.
-     * @param vec Position vector to set the QTAIMNuclearCriticalPoint to.
-     */
-    void setNuclearCriticalPointPos(unsigned long id, const Eigen::Vector3d *vec);
-
-    /**
-     * Set the QTAIMNuclearCriticalPoint position.
-     * @param id Unique id of the QTAIMNuclearCriticalPoint to set the position for.
-     * @param vec Position vector to set the QTAIMNuclearCriticalPoint to.
-     */
-    void setNuclearCriticalPointPos(unsigned long id, const Eigen::Vector3d &vec);
-
-    /**
-     * Set the QTAIMBondCriticalPoint position.
-     * @param id Unique id of the QTAIMBondCriticalPoint to set the position for.
-     * @param vec Position vector to set the QTAIMBondCriticalPoint to.
-     */
-    void setBondCriticalPointPos(unsigned long id, const Eigen::Vector3d &vec);
-
-    /**
-     * Get the position vector of the supplied QTAIMNuclearCriticalPoint.
-     * @param id Unique id of the QTAIMNuclearCriticalPoint.
-     * @return Position vector of the QTAIMNuclearCriticalPoint.
-     */
-    const Eigen::Vector3d * nuclearCriticalPointPos(unsigned long id) const;
-
-    /**
-     * Get the position vector of the supplied QTAIMBondCriticalPoint.
-     * @param id Unique id of the QTAIMBondCriticalPoint.
-     * @return Position vector of the QTAIMBondCriticalPoint.
-     */
-    const Eigen::Vector3d * bondCriticalPointPos(unsigned long id) const;
-
-    /**
-     * Create a new QTAIMBondCriticalPoint object and return a pointer to it.
-     * @note Do not delete the object, use removeBondCriticalPoint(QTAIMBondCriticalPoint*).
-     */
-    QTAIMBondCriticalPoint *addBondCriticalPoint();
-
-    /**
-     * Create a new QTAIMBondCriticalPoint object with the specified id and return a pointer to
-     * it. Used when you need to recreate a QTAIMBondCriticalPoint with the same unique id.
-     * @note Do not delete the object, use removeBondCriticalPoint(unsigned long id).
-     */
-    QTAIMBondCriticalPoint *addBondCriticalPoint(unsigned long id);
-
-    /**
-     * Remove the supplied QTAIMBondCriticalPoint.
-     */
-    void removeBondCriticalPoint(QTAIMBondCriticalPoint *bondCriticalPoint);
-
-    /**
-     * Remove the QTAIMBondCriticalPoint with the unique id specified.
-     */
-    void removeBondCriticalPoint(unsigned long id);
-
-    /**
-     * @return The QTAIMBondCriticalPoint at the supplied index.
-     */
-    QTAIMBondCriticalPoint * bondCriticalPoint(int index) const;
-
-    /**
-     * @return The QTAIMBondCriticalPoint at the supplied unique id.
-     */
-    QTAIMBondCriticalPoint *bondCriticalPointById(unsigned long id) const;
-
-    /**
-     * @return QList of all QTAIMBondCriticalPoint objects in the Molecule.
-     */
-    QList<QTAIMBondCriticalPoint *> bondCriticalPoints() const;
-
-    /**
-     * @return The bcp between the two supplied ncp ids if one exists,
-     * otherwise 0 is returned.
-     */
-    QTAIMBondCriticalPoint* bondCriticalPoint(unsigned long id1, unsigned long id2);
-
-    /**
-     * @return The bcp between the two supplied ncp pointers if one exists,
-     * otherwise 0 is returned.
-     */
-    QTAIMBondCriticalPoint* bondCriticalPoint(const QTAIMNuclearCriticalPoint*, const QTAIMNuclearCriticalPoint* );
 
     /**
      * Get the current conformer size to accommodate all atoms. Since atom
@@ -892,17 +761,9 @@ namespace Avogadro {
     MoleculePrivate * const d_ptr;
     QString m_fileName;
     std::vector<Eigen::Vector3d> *m_atomPos; // Atom position vector
-    std::vector<Eigen::Vector3d> *m_nuclearCriticalPointPos; // Nuclear Critical Point position vector
-    std::vector<Eigen::Vector3d> *m_bondCriticalPointPos; // Nuclear Critical Point position vector
     /** Vector containing pointers to various conformers. **/
     std::vector< std::vector<Eigen::Vector3d>* > m_atomConformers;
     mutable unsigned int m_currentConformer;
-
-    // TODO ECB Figure out what these conformers are.
-    std::vector< std::vector<Eigen::Vector3d>* > m_nuclearCriticalPointConformers;
-    mutable unsigned int m_currentNuclearCriticalPointConformer;
-    std::vector< std::vector<Eigen::Vector3d>* > m_bondCriticalPointConformers;
-    mutable unsigned int m_currentBondCriticalPointConformer;
 
     mutable bool m_estimatedDipoleMoment;
     mutable Eigen::Vector3d *m_dipoleMoment;
@@ -914,11 +775,6 @@ namespace Avogadro {
     std::vector<Bond *>   m_bonds;
     QList<Atom *>         m_atomList;
     QList<Bond *>         m_bondList;
-
-    std::vector<QTAIMNuclearCriticalPoint *>   m_nuclearCriticalPoints;
-    std::vector<QTAIMBondCriticalPoint *>   m_bondCriticalPoints;
-    QList<QTAIMNuclearCriticalPoint *>  m_nuclearCriticalPointList;
-    QList<QTAIMBondCriticalPoint *>     m_bondCriticalPointList;
 
     QReadWriteLock *m_lock;
 
@@ -963,22 +819,6 @@ namespace Avogadro {
      * @sa bondRemoved
      */
     void updateBond();
-
-    /**
-     * Slot that handles when an atom has been updated.
-     * @sa nuclearCriticalPointAdded
-     * @sa nuclearUpdated
-     * @sa nuclearRemoved
-     */
-    void updateNuclearCriticalPoint();
-
-    /**
-     * Slot that handles when a bond has been updated.
-     * @sa bondCriticalPointAdded
-     * @sa bondCriticalPointUpdated
-     * @sa bondCriticalPointRemoved
-     */
-    void updateBondCriticalPoint();
 
   Q_SIGNALS:
     /**
@@ -1041,44 +881,6 @@ namespace Avogadro {
      * @param Bond pointer to the Bond that was removed.
      */
     void bondRemoved(Bond *bond);
-
-    /**
-     * Emitted when an QTAIMNuclearCriticalPoint is added.
-     * @param QTAIMNuclearCriticalPoint pointer to the QTAIMNuclearCriticalPoint that was added.
-     */
-    void nuclearCriticalPointAdded(QTAIMNuclearCriticalPoint *nuclearCriticalPoint);
-
-    /**
-     * Emitted when an QTAIMNuclearCriticalPoint is updated.
-     * @param QTAIMNuclearCriticalPoint pointer to the QTAIMNuclearCriticalPoint that was updated.
-     */
-    void nuclearCriticalPointUpdated(QTAIMNuclearCriticalPoint *nuclearCriticalPoint);
-
-    /**
-     * Emitted when an QTAIMNuclearCriticalPoint is removed.
-     * @param QTAIMNuclearCriticalPoint pointer to the QTAIMNuclearCriticalPoint that was removed.
-     */
-    void nuclearCriticalPointRemoved(QTAIMNuclearCriticalPoint *nuclearCriticalPoint);
-
-    /**
-     * Emitted when a QTAIMBondCriticalPoint is added.
-     * @param QTAIMBondCriticalPoint pointer to the QTAIMBondCriticalPoint that was added.
-     */
-    void bondCriticalPointAdded(QTAIMBondCriticalPoint *bondCriticalPoint);
-
-    /**
-     * Emitted when a QTAIMBondCriticalPoint is updated.
-     * @param QTAIMBondCriticalPoint pointer to the QTAIMBondCriticalPoint that was updated.
-     */
-    void bondCriticalPointUpdated(QTAIMBondCriticalPoint *bondCriticalPoint);
-
-    /**
-     * Emitted when a QTAIMBondCriticalPoint is removed.
-     * @param QTAIMBondCriticalPoint pointer to the QTAIMBondCriticalPoint that was removed.
-     */
-
-    void bondCriticalPointRemoved(QTAIMBondCriticalPoint *bondCriticalPoint);
-
   };
 
   inline Atom * Molecule::atom(int index) const
@@ -1120,55 +922,6 @@ namespace Avogadro {
     else
       return 0;
   }
-
-  inline QTAIMNuclearCriticalPoint * Molecule::nuclearCriticalPoint(int index) const
-  {
-    if (index >= 0 && index < m_nuclearCriticalPointList.size())
-      return m_nuclearCriticalPointList[index];
-    else
-      return 0;
-  }
-
-  inline QTAIMNuclearCriticalPoint * Molecule::nuclearCriticalPointById(unsigned long id) const
-  {
-    if(id < m_nuclearCriticalPoints.size())
-      return m_nuclearCriticalPoints[id];
-    else
-      return 0;
-  }
-
-  inline const Eigen::Vector3d * Molecule::nuclearCriticalPointPos(unsigned long id) const
-  {
-    if (id < m_nuclearCriticalPointPos->size())
-      return &(*m_nuclearCriticalPointPos)[id];
-    else
-      return 0;
-  }
-
-  inline QTAIMBondCriticalPoint * Molecule::bondCriticalPoint(int index) const
-  {
-    if (index >= 0 && index < m_bondCriticalPointList.size())
-      return m_bondCriticalPointList[index];
-    else
-      return 0;
-  }
-
-  inline QTAIMBondCriticalPoint * Molecule::bondCriticalPointById(unsigned long id) const
-  {
-    if(id < m_bondCriticalPoints.size())
-      return m_bondCriticalPoints[id];
-    else
-      return 0;
-  }
-
-  inline const Eigen::Vector3d * Molecule::bondCriticalPointPos(unsigned long id) const
-  {
-    if (id < m_bondCriticalPointPos->size())
-      return &(*m_bondCriticalPointPos)[id];
-    else
-      return 0;
-  }
-
 
 } // End namespace Avogadro
 

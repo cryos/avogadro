@@ -578,15 +578,16 @@ namespace Avogadro {
                       + "/../../../../lib", settings);
     }
 #endif
-
-    // Load the plugins
-    foreach (const QString& path, d->searchDirs) {
-      qDebug() << "Loading plugins:" << path;
-      loadPluginDir(path + "/colors", settings);
-      loadPluginDir(path + "/engines", settings);
-      loadPluginDir(path + "/extensions", settings);
-      loadPluginDir(path + "/tools", settings);
-      loadPluginDir(path + "/contrib", settings);
+    else {
+      // Load the plugins
+      foreach (const QString& path, d->searchDirs) {
+        qDebug() << "Loading plugins:" << path;
+        loadPluginDir(path + "/colors", settings);
+        loadPluginDir(path + "/engines", settings);
+        loadPluginDir(path + "/extensions", settings);
+        loadPluginDir(path + "/tools", settings);
+        loadPluginDir(path + "/contrib", settings);
+      }
     }
 
 #ifdef ENABLE_PYTHON
@@ -766,14 +767,10 @@ namespace Avogadro {
                                            QSettings &settings)
   {
     QDir dir(directory);
-#ifdef Q_WS_X11
-    QStringList dirFilters;
-    dirFilters << "*.so";
-    dir.setNameFilters(dirFilters);
-    dir.setFilter(QDir::Files | QDir::Readable);
-#endif
-    qDebug() << "Searching for plugins in" << directory;
+    qDebug() << "Searching for plugins in" << dir.canonicalPath();
     foreach (const QString& fileName, dir.entryList(QDir::Files)) {
+      if(!QLibrary::isLibrary(fileName))
+        continue;
 #ifdef Q_WS_X11
       if ((fileName.indexOf("libavogadro.so") != -1)
         || (fileName.indexOf("Avogadro.so") != -1)

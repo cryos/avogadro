@@ -29,9 +29,6 @@
 #include <avogadro/bond.h>
 #include <avogadro/painter.h>
 
-#include <avogadro/qtaimnuclearcriticalpoint.h>
-#include <avogadro/qtaimbondcriticalpoint.h>
-
 #include <QAction>
 
 #include <QString>
@@ -47,6 +44,7 @@
 #include "qtaimwavefunction.h"
 #include "qtaimwavefunctionevaluator.h"
 #include "qtaimcriticalpointlocator.h"
+#include "qtaimcubature.h"
 
 #include <QTime>
 
@@ -58,7 +56,8 @@ namespace Avogadro
 
   enum QTAIMExtensionIndex {
     FirstAction = 0,
-    SecondAction
+    SecondAction,
+    ThirdAction
   };
 
   QTAIMExtension::QTAIMExtension( QObject *parent ) : Extension( parent )
@@ -71,10 +70,15 @@ namespace Avogadro
 
     // create an action for our second action
     action = new QAction( this );
-    action->setText( tr("Atomic Charge" ));
+    action->setText( tr("Molecular Graph with Lone Pairs" ));
     m_actions.append( action );
     action->setData( SecondAction );
 
+    // create an action for our third action
+    action = new QAction( this );
+    action->setText( tr("Atomic Charge" ));
+    m_actions.append( action );
+    action->setData( ThirdAction );
   }
 
   QTAIMExtension::~QTAIMExtension()
@@ -97,6 +101,9 @@ namespace Avogadro
     case SecondAction:
       return tr("E&xtensions") + '>' + tr("QTAIM");
       break;
+    case ThirdAction:
+      return tr("E&xtensions") + '>' + tr("QTAIM");
+      break;
     }
     return "";
   }
@@ -114,15 +121,30 @@ namespace Avogadro
   QUndoCommand* QTAIMExtension::performAction(QAction *action, GLWidget *widget)
   {
 
+    bool wavefunctionAlreadyLoaded;
+
+    if( m_molecule->property("QTAIMComment").isValid() )
+    {
+      wavefunctionAlreadyLoaded=true;
+    }
+    else
+    {
+      wavefunctionAlreadyLoaded=false;
+    }
+
     int i = action->data().toInt();
 
     QTime timer;
     timer.start();
 
-    switch ( i ) {
-    case FirstAction: // Molecular Graph
+    QString fileName;
+    if( wavefunctionAlreadyLoaded )
     {
-      QString fileName = QFileDialog::getOpenFileName(
+      // do nothing
+    }
+    else
+    {
+       fileName = QFileDialog::getOpenFileName(
           new QWidget,
           tr("Open WFN File"),
           QDir::homePath(),
@@ -133,151 +155,608 @@ namespace Avogadro
         qDebug() << "No such file.";
         return 0;
       }
+    }
 
-      // Instantiate a Wavefunction
+    // Instantiate a Wavefunction
+    bool success;
+    QTAIMWavefunction wfn;
+    if( wavefunctionAlreadyLoaded )
+    {
+      success=wfn.initializeWithMoleculeProperties(m_molecule);
+    }
+    else
+    {
+      success=wfn.initializeWithWFNFile(fileName);
+    }
 
-      QTAIMWavefunction wfn;
-      bool success=wfn.initializeWithWFNFile(fileName);
-
-      if(!success)
+    if(!success)
+    {
+      if( wavefunctionAlreadyLoaded )
+      {
+        qDebug() << "Error initializing wavefunction.";
+      }
+      else
       {
         qDebug() << "Error reading WFN file.";
+      }
         return 0;
-      }
+    }
 
-      m_molecule->clear();
+    m_molecule->clear();
 
-      // Instantiate an Evaluator
-      QTAIMWavefunctionEvaluator eval(wfn);
+    // Instantiate an Evaluator
+    QTAIMWavefunctionEvaluator eval(wfn);
 
-      // Instantiate a Critical Point Locator
-      QTAIMCriticalPointLocator cpl(wfn);
-
-      // Locate the Nuclear Critical Points
-      cpl.locateNuclearCriticalPoints();
-
-      // QLists of results
-      QList<qint64>    nucChargeList=wfn.nuclearChargesList();
-      QList<QVector3D> ncpList=cpl.nuclearCriticalPoints();
-
-      const qreal convertBohrToAngstroem=0.529177249;
-
-      // Nuclear Critical Points
-      for( qint64 ncp=0 ; ncp < ncpList.length() ; ++ncp )
+    switch ( i ) {
+    case FirstAction: // Molecular Graph
       {
-        QVector3D thisNuclearCriticalPoint=ncpList.at(ncp);
+        // Instantiate a Critical Point Locator
+        QTAIMCriticalPointLocator cpl(wfn);
 
-        qreal x=thisNuclearCriticalPoint.x() * convertBohrToAngstroem;
-        qreal y=thisNuclearCriticalPoint.y() * convertBohrToAngstroem;
-        qreal z=thisNuclearCriticalPoint.z() * convertBohrToAngstroem;
+        // Locate the Nuclear Critical Points
+        cpl.locateNuclearCriticalPoints();
 
-        int Z=(int) wfn.nuclearCharge(ncp);
+        // QLists of results
+        QList<qint64>    nucChargeList=wfn.nuclearChargesList();
+        QList<QVector3D> ncpList=cpl.nuclearCriticalPoints();
 
-        QTAIMNuclearCriticalPoint *ncp=m_molecule->addNuclearCriticalPoint();
-        ncp->setPos( Eigen::Vector3d(x,y,z) );
-        ncp->setAtomicNumber(Z);
-      }
+        QVariantList xNCPsVariantList;
+        QVariantList yNCPsVariantList;
+        QVariantList zNCPsVariantList;
+        QVariantList nuclearChargesVariantList;
 
-      // Nuclei stored as Atoms
-      for( qint64 n=0 ; n < wfn.numberOfNuclei() ; ++n )
-      {
-        qreal x=wfn.xNuclearCoordinate(n) * convertBohrToAngstroem;
-        qreal y=wfn.yNuclearCoordinate(n) * convertBohrToAngstroem;
-        qreal z=wfn.zNuclearCoordinate(n) * convertBohrToAngstroem;
+        const qreal convertBohrToAngstrom=0.529177249;
 
-        int Z=(int) wfn.nuclearCharge(n);
-
-        Atom *atom=m_molecule->addAtom();
-        atom->setPos( Eigen::Vector3d(x,y,z) );
-        atom->setAtomicNumber(Z);
-      }
-
-      m_molecule->update();
-
-      // Locate the Bond Critical Points and Trace Bond Paths
-      cpl.locateBondCriticalPoints();
-
-      QList<QVector3D> bcpList=cpl.bondCriticalPoints();
-
-      QList<QList<QVector3D> > bondPathList=cpl.bondPaths();
-      QList<QPair<qint64,qint64> > bondedAtomsList=cpl.bondedAtoms();
-
-      QList<qreal> laplacianAtBondCriticalPoints=cpl.laplacianAtBondCriticalPoints();
-      QList<qreal> ellipticityAtBondCriticalPoints=cpl.ellipticityAtBondCriticalPoints();
-
-      QList<Atom *> currentAtoms=m_molecule->atoms();
-      QList<QTAIMNuclearCriticalPoint *> currentNuclearCriticalPoints=m_molecule->nuclearCriticalPoints();
-
-      // Connectivity stored as Bonds
-
-      for( qint64 atom0=0 ; atom0 < currentAtoms.length() - 1 ; ++atom0 )
-      {
-        for( qint64 atom1=atom0+1 ; atom1 < currentAtoms.length() ; ++atom1 )
+        // Nuclear Critical Points
+        for( qint64 n=0 ; n < ncpList.length() ; ++n )
         {
-          bool areBonded=false;
-          bool isAromatic=false;
-          qint64 order=1;
+          QVector3D thisNuclearCriticalPoint=ncpList.at(n);
 
-          for( qint64 bondPair=0 ; bondPair < bondedAtomsList.length() ; ++bondPair )
+          qreal x=thisNuclearCriticalPoint.x() * convertBohrToAngstrom;
+          qreal y=thisNuclearCriticalPoint.y() * convertBohrToAngstrom;
+          qreal z=thisNuclearCriticalPoint.z() * convertBohrToAngstrom;
+
+          xNCPsVariantList.append( x );
+          yNCPsVariantList.append( y );
+          zNCPsVariantList.append( z );
+          nuclearChargesVariantList.append( wfn.nuclearCharge(n) );
+
+        }
+
+        m_molecule->setProperty("QTAIMXNuclearCriticalPoints",xNCPsVariantList);
+        m_molecule->setProperty("QTAIMYNuclearCriticalPoints",yNCPsVariantList);
+        m_molecule->setProperty("QTAIMZNuclearCriticalPoints",zNCPsVariantList);
+        m_molecule->setProperty("QTAIMNuclearCharges",nuclearChargesVariantList);
+
+        // Nuclei stored as Atoms
+        for( qint64 n=0 ; n < wfn.numberOfNuclei() ; ++n )
+        {
+          qreal x=wfn.xNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal y=wfn.yNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal z=wfn.zNuclearCoordinate(n) * convertBohrToAngstrom;
+
+          int Z=(int) wfn.nuclearCharge(n);
+
+          Atom *atom=m_molecule->addAtom();
+          atom->setPos( Eigen::Vector3d(x,y,z) );
+          atom->setAtomicNumber(Z);
+        }
+
+        m_molecule->update();
+
+        // Locate the Bond Critical Points and Trace Bond Paths
+        cpl.locateBondCriticalPoints();
+
+        // BCP and Bond Path Results
+        QList<QVector3D> bcpList=cpl.bondCriticalPoints();
+        QList<QList<QVector3D> > bondPathList=cpl.bondPaths();
+        QList<QPair<qint64,qint64> > bondedAtomsList=cpl.bondedAtoms();
+        QList<qreal> laplacianAtBondCriticalPoints=cpl.laplacianAtBondCriticalPoints();
+        QList<qreal> ellipticityAtBondCriticalPoints=cpl.ellipticityAtBondCriticalPoints();
+
+        QVariantList xBCPsVariantList;
+        QVariantList yBCPsVariantList;
+        QVariantList zBCPsVariantList;
+        QVariantList firstNCPIndexVariantList;
+        QVariantList secondNCPIndexVariantList;
+        QVariantList laplacianAtBondCriticalPointsVariantList;
+        QVariantList ellipticityAtBondCriticalPointsVariantList;
+
+        QVariantList bondPathSegmentStartIndexVariantList;
+        QVariantList bondPathSegmentEndIndexVariantList;
+        QVariantList xBondPathsVariantList;
+        QVariantList yBondPathsVariantList;
+        QVariantList zBondPathsVariantList;
+
+        QList<Atom *> currentAtoms=m_molecule->atoms();
+
+        // Connectivity stored as Bonds
+
+        qint64 bpCtr=0;
+
+        for( qint64 atom0=0 ; atom0 < currentAtoms.length() - 1 ; ++atom0 )
+        {
+          for( qint64 atom1=atom0+1 ; atom1 < currentAtoms.length() ; ++atom1 )
           {
-            if( atom0 == bondedAtomsList.at(bondPair).first && atom1 == bondedAtomsList.at(bondPair).second  )
+
+            bool areBonded=false;
+
+            for( qint64 bondPair=0 ; bondPair < bondedAtomsList.length() ; ++bondPair )
             {
-              areBonded=true;
-
-              if( areBonded )
+              if( atom0 == bondedAtomsList.at(bondPair).first && atom1 == bondedAtomsList.at(bondPair).second  )
               {
+                areBonded=true;
 
-                if( (wfn.nuclearCharge(atom0) == 1 || wfn.nuclearCharge(atom1) == 1) &&
-                    laplacianAtBondCriticalPoints.at(bondPair) > 0.0
-                    )
+                if( areBonded )
                 {
-                  // do not draw Bond because it looks like hydrogen bond
+
+                  if( (wfn.nuclearCharge(atom0) == 1 || wfn.nuclearCharge(atom1) == 1) &&
+                      laplacianAtBondCriticalPoints.at(bondPair) > 0.0
+                      )
+                  {
+                    // do not draw Bond because it looks like hydrogen bond
+                  }
+                  else
+                  {
+                    Bond *bond=m_molecule->addBond();
+                    bond->setBegin( currentAtoms.at(atom0) );
+                    bond->setEnd( currentAtoms.at(atom1) );
+                    //            bond->setAromaticity(isAromatic);
+                    //            bond->setOrder( (int) order);
+                  }
+
+                  qreal x=bcpList.at(bondPair).x() * convertBohrToAngstrom;
+                  qreal y=bcpList.at(bondPair).y() * convertBohrToAngstrom;
+                  qreal z=bcpList.at(bondPair).z() * convertBohrToAngstrom;
+
+                  xBCPsVariantList.append( x );
+                  yBCPsVariantList.append( y );
+                  zBCPsVariantList.append( z );
+
+                  firstNCPIndexVariantList.append( atom0 );
+                  secondNCPIndexVariantList.append( atom1 );
+
+                  laplacianAtBondCriticalPointsVariantList.append( laplacianAtBondCriticalPoints.at(bondPair) );
+                  ellipticityAtBondCriticalPointsVariantList.append( ellipticityAtBondCriticalPoints.at(bondPair) );
+
+                  bondPathSegmentStartIndexVariantList.append( bpCtr );
+                  for( qint64 i=0; i < bondPathList.at(bondPair).length() ; ++i )
+                  {
+                    qreal x=bondPathList.at(bondPair).at(i).x() * convertBohrToAngstrom;
+                    qreal y=bondPathList.at(bondPair).at(i).y() * convertBohrToAngstrom;
+                    qreal z=bondPathList.at(bondPair).at(i).z() * convertBohrToAngstrom;
+
+                    xBondPathsVariantList.append( x );
+                    yBondPathsVariantList.append( y );
+                    zBondPathsVariantList.append( z );
+
+                    bpCtr++;
+                  }
+                  bondPathSegmentEndIndexVariantList.append( bpCtr );
                 }
-                else
-                {
-                  Bond *bond=m_molecule->addBond();
-                  bond->setBegin( currentAtoms.at(atom0) );
-                  bond->setEnd( currentAtoms.at(atom1) );
-                  //            bond->setAromaticity(isAromatic);
-                  //            bond->setOrder( (int) order);
-                }
-
-                QTAIMBondCriticalPoint *bcp=m_molecule->addBondCriticalPoint();
-                bcp->setBegin( currentNuclearCriticalPoints.at(atom0) );
-                bcp->setEnd( currentNuclearCriticalPoints.at(atom1) );
-
-                qreal x=bcpList.at(bondPair).x() * convertBohrToAngstroem;
-                qreal y=bcpList.at(bondPair).y() * convertBohrToAngstroem;
-                qreal z=bcpList.at(bondPair).z() * convertBohrToAngstroem;
-
-                bcp->setPos( Eigen::Vector3d(x,y,z)  );
-
-                QList<Eigen::Vector3d> bondPath;
-                for( qint64 i=0; i < bondPathList.at(bondPair).length() ; ++i )
-                {
-                  qreal x=bondPathList.at(bondPair).at(i).x() * convertBohrToAngstroem;
-                  qreal y=bondPathList.at(bondPair).at(i).y() * convertBohrToAngstroem;
-                  qreal z=bondPathList.at(bondPair).at(i).z() * convertBohrToAngstroem;
-
-                  bondPath.append( Eigen::Vector3d(x,y,z) );
-                }
-                bcp->setBondPath(bondPath);
-                bcp->setLaplacian( laplacianAtBondCriticalPoints.at(bondPair) );
-                bcp->setEllipticity( ellipticityAtBondCriticalPoints.at(bondPair) );
 
               }
+            } // bond pairs
+          } // atom1
+        } // atom 0
 
-            }
-          } // bond pairs
-        } // atom1
-      } // atom 0
+        m_molecule->setProperty("QTAIMXBondCriticalPoints",xBCPsVariantList);
+        m_molecule->setProperty("QTAIMYBondCriticalPoints",yBCPsVariantList);
+        m_molecule->setProperty("QTAIMZBondCriticalPoints",zBCPsVariantList);
+        m_molecule->setProperty("QTAIMFirstNCPIndexVariantList",firstNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMSecondNCPIndexVariantList",secondNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMLaplacianAtBondCriticalPoints",laplacianAtBondCriticalPointsVariantList);
+        m_molecule->setProperty("QTAIMEllipticityAtBondCriticalPoints",ellipticityAtBondCriticalPointsVariantList);
 
-      m_molecule->update();
+        m_molecule->setProperty("QTAIMBondPathSegmentStartIndex",bondPathSegmentStartIndexVariantList);
+        m_molecule->setProperty("QTAIMBondPathSegmentEndIndex",bondPathSegmentEndIndexVariantList);
+        m_molecule->setProperty("QTAIMXBondPaths",xBondPathsVariantList);
+        m_molecule->setProperty("QTAIMYBondPaths",yBondPathsVariantList);
+        m_molecule->setProperty("QTAIMZBondPaths",zBondPathsVariantList);
+
+        m_molecule->update();
       }
       break;
-      case SecondAction:
-      // perform second action
-      qDebug() << "Not Implemented: Come back tomorrow.";
+    case SecondAction: // Molecular Graph with Lone Pairs
+      {
+        // Instantiate a Critical Point Locator
+        QTAIMCriticalPointLocator cpl(wfn);
+
+        // Locate the Nuclear Critical Points
+        cpl.locateNuclearCriticalPoints();
+
+        // QLists of results
+        QList<qint64>    nucChargeList=wfn.nuclearChargesList();
+        QList<QVector3D> ncpList=cpl.nuclearCriticalPoints();
+
+        QVariantList xNCPsVariantList;
+        QVariantList yNCPsVariantList;
+        QVariantList zNCPsVariantList;
+        QVariantList nuclearChargesVariantList;
+
+        const qreal convertBohrToAngstrom=0.529177249;
+
+        // Nuclear Critical Points
+        for( qint64 n=0 ; n < ncpList.length() ; ++n )
+        {
+          QVector3D thisNuclearCriticalPoint=ncpList.at(n);
+
+          qreal x=thisNuclearCriticalPoint.x() * convertBohrToAngstrom;
+          qreal y=thisNuclearCriticalPoint.y() * convertBohrToAngstrom;
+          qreal z=thisNuclearCriticalPoint.z() * convertBohrToAngstrom;
+
+          xNCPsVariantList.append( x );
+          yNCPsVariantList.append( y );
+          zNCPsVariantList.append( z );
+          nuclearChargesVariantList.append( wfn.nuclearCharge(n) );
+
+        }
+
+        m_molecule->setProperty("QTAIMXNuclearCriticalPoints",xNCPsVariantList);
+        m_molecule->setProperty("QTAIMYNuclearCriticalPoints",yNCPsVariantList);
+        m_molecule->setProperty("QTAIMZNuclearCriticalPoints",zNCPsVariantList);
+        m_molecule->setProperty("QTAIMNuclearCharges",nuclearChargesVariantList);
+
+        // Nuclei stored as Atoms
+        for( qint64 n=0 ; n < wfn.numberOfNuclei() ; ++n )
+        {
+          qreal x=wfn.xNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal y=wfn.yNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal z=wfn.zNuclearCoordinate(n) * convertBohrToAngstrom;
+
+          int Z=(int) wfn.nuclearCharge(n);
+
+          Atom *atom=m_molecule->addAtom();
+          atom->setPos( Eigen::Vector3d(x,y,z) );
+          atom->setAtomicNumber(Z);
+        }
+
+        m_molecule->update();
+
+        // Locate the Bond Critical Points and Trace Bond Paths
+        cpl.locateBondCriticalPoints();
+
+        // BCP and Bond Path Results
+        QList<QVector3D> bcpList=cpl.bondCriticalPoints();
+        QList<QList<QVector3D> > bondPathList=cpl.bondPaths();
+        QList<QPair<qint64,qint64> > bondedAtomsList=cpl.bondedAtoms();
+        QList<qreal> laplacianAtBondCriticalPoints=cpl.laplacianAtBondCriticalPoints();
+        QList<qreal> ellipticityAtBondCriticalPoints=cpl.ellipticityAtBondCriticalPoints();
+
+        QVariantList xBCPsVariantList;
+        QVariantList yBCPsVariantList;
+        QVariantList zBCPsVariantList;
+        QVariantList firstNCPIndexVariantList;
+        QVariantList secondNCPIndexVariantList;
+        QVariantList laplacianAtBondCriticalPointsVariantList;
+        QVariantList ellipticityAtBondCriticalPointsVariantList;
+
+        QVariantList bondPathSegmentStartIndexVariantList;
+        QVariantList bondPathSegmentEndIndexVariantList;
+        QVariantList xBondPathsVariantList;
+        QVariantList yBondPathsVariantList;
+        QVariantList zBondPathsVariantList;
+
+        QList<Atom *> currentAtoms=m_molecule->atoms();
+
+        // Connectivity stored as Bonds
+
+        qint64 bpCtr=0;
+
+        for( qint64 atom0=0 ; atom0 < currentAtoms.length() - 1 ; ++atom0 )
+        {
+          for( qint64 atom1=atom0+1 ; atom1 < currentAtoms.length() ; ++atom1 )
+          {
+
+            bool areBonded=false;
+
+            for( qint64 bondPair=0 ; bondPair < bondedAtomsList.length() ; ++bondPair )
+            {
+              if( atom0 == bondedAtomsList.at(bondPair).first && atom1 == bondedAtomsList.at(bondPair).second  )
+              {
+                areBonded=true;
+
+                if( areBonded )
+                {
+
+                  if( (wfn.nuclearCharge(atom0) == 1 || wfn.nuclearCharge(atom1) == 1) &&
+                      laplacianAtBondCriticalPoints.at(bondPair) > 0.0
+                      )
+                  {
+                    // do not draw Bond because it looks like hydrogen bond
+                  }
+                  else
+                  {
+                    Bond *bond=m_molecule->addBond();
+                    bond->setBegin( currentAtoms.at(atom0) );
+                    bond->setEnd( currentAtoms.at(atom1) );
+                    //            bond->setAromaticity(isAromatic);
+                    //            bond->setOrder( (int) order);
+                  }
+
+                  qreal x=bcpList.at(bondPair).x() * convertBohrToAngstrom;
+                  qreal y=bcpList.at(bondPair).y() * convertBohrToAngstrom;
+                  qreal z=bcpList.at(bondPair).z() * convertBohrToAngstrom;
+
+                  xBCPsVariantList.append( x );
+                  yBCPsVariantList.append( y );
+                  zBCPsVariantList.append( z );
+
+                  firstNCPIndexVariantList.append( atom0 );
+                  secondNCPIndexVariantList.append( atom1 );
+
+                  laplacianAtBondCriticalPointsVariantList.append( laplacianAtBondCriticalPoints.at(bondPair) );
+                  ellipticityAtBondCriticalPointsVariantList.append( ellipticityAtBondCriticalPoints.at(bondPair) );
+
+                  bondPathSegmentStartIndexVariantList.append( bpCtr );
+                  for( qint64 i=0; i < bondPathList.at(bondPair).length() ; ++i )
+                  {
+                    qreal x=bondPathList.at(bondPair).at(i).x() * convertBohrToAngstrom;
+                    qreal y=bondPathList.at(bondPair).at(i).y() * convertBohrToAngstrom;
+                    qreal z=bondPathList.at(bondPair).at(i).z() * convertBohrToAngstrom;
+
+                    xBondPathsVariantList.append( x );
+                    yBondPathsVariantList.append( y );
+                    zBondPathsVariantList.append( z );
+
+                    bpCtr++;
+                  }
+                  bondPathSegmentEndIndexVariantList.append( bpCtr );
+                }
+
+              }
+            } // bond pairs
+          } // atom1
+        } // atom 0
+
+        m_molecule->setProperty("QTAIMXBondCriticalPoints",xBCPsVariantList);
+        m_molecule->setProperty("QTAIMYBondCriticalPoints",yBCPsVariantList);
+        m_molecule->setProperty("QTAIMZBondCriticalPoints",zBCPsVariantList);
+        m_molecule->setProperty("QTAIMFirstNCPIndexVariantList",firstNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMSecondNCPIndexVariantList",secondNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMLaplacianAtBondCriticalPoints",laplacianAtBondCriticalPointsVariantList);
+        m_molecule->setProperty("QTAIMEllipticityAtBondCriticalPoints",ellipticityAtBondCriticalPointsVariantList);
+
+        m_molecule->setProperty("QTAIMBondPathSegmentStartIndex",bondPathSegmentStartIndexVariantList);
+        m_molecule->setProperty("QTAIMBondPathSegmentEndIndex",bondPathSegmentEndIndexVariantList);
+        m_molecule->setProperty("QTAIMXBondPaths",xBondPathsVariantList);
+        m_molecule->setProperty("QTAIMYBondPaths",yBondPathsVariantList);
+        m_molecule->setProperty("QTAIMZBondPaths",zBondPathsVariantList);
+
+        m_molecule->update();
+
+        // Locate Electron Density Sources / Lone Pairs
+
+        cpl.locateElectronDensitySources();
+        QList<QVector3D> electronDensitySourcesList=cpl.electronDensitySources();
+
+        QVariantList xElectronDensitySourcesVariantList;
+        QVariantList yElectronDensitySourcesVariantList;
+        QVariantList zElectronDensitySourcesVariantList;
+
+        for( qint64 n=0 ; n < electronDensitySourcesList.length() ; ++n )
+        {
+          QVector3D thisCriticalPoint=electronDensitySourcesList.at(n);
+
+          qreal x=thisCriticalPoint.x() * convertBohrToAngstrom;
+          qreal y=thisCriticalPoint.y() * convertBohrToAngstrom;
+          qreal z=thisCriticalPoint.z() * convertBohrToAngstrom;
+
+          xElectronDensitySourcesVariantList.append( x );
+          yElectronDensitySourcesVariantList.append( y );
+          zElectronDensitySourcesVariantList.append( z );
+
+        }
+
+        m_molecule->setProperty("QTAIMXElectronDensitySources",xElectronDensitySourcesVariantList);
+        m_molecule->setProperty("QTAIMYElectronDensitySources",yElectronDensitySourcesVariantList);
+        m_molecule->setProperty("QTAIMZElectronDensitySources",zElectronDensitySourcesVariantList);
+
+        m_molecule->update();
+
+      }
+      break;
+    case ThirdAction:
+      // perform third action
+      {
+        // Instantiate a Critical Point Locator
+        QTAIMCriticalPointLocator cpl(wfn);
+
+        // Locate the Nuclear Critical Points
+        cpl.locateNuclearCriticalPoints();
+
+        // QLists of results
+        QList<qint64>    nucChargeList=wfn.nuclearChargesList();
+        QList<QVector3D> ncpList=cpl.nuclearCriticalPoints();
+
+        QVariantList xNCPsVariantList;
+        QVariantList yNCPsVariantList;
+        QVariantList zNCPsVariantList;
+        QVariantList nuclearChargesVariantList;
+
+        const qreal convertBohrToAngstrom=0.529177249;
+
+        // Nuclear Critical Points
+        for( qint64 n=0 ; n < ncpList.length() ; ++n )
+        {
+          QVector3D thisNuclearCriticalPoint=ncpList.at(n);
+
+          qreal x=thisNuclearCriticalPoint.x() * convertBohrToAngstrom;
+          qreal y=thisNuclearCriticalPoint.y() * convertBohrToAngstrom;
+          qreal z=thisNuclearCriticalPoint.z() * convertBohrToAngstrom;
+
+          xNCPsVariantList.append( x );
+          yNCPsVariantList.append( y );
+          zNCPsVariantList.append( z );
+          nuclearChargesVariantList.append( wfn.nuclearCharge(n) );
+
+        }
+
+        m_molecule->setProperty("QTAIMXNuclearCriticalPoints",xNCPsVariantList);
+        m_molecule->setProperty("QTAIMYNuclearCriticalPoints",yNCPsVariantList);
+        m_molecule->setProperty("QTAIMZNuclearCriticalPoints",zNCPsVariantList);
+        m_molecule->setProperty("QTAIMNuclearCharges",nuclearChargesVariantList);
+
+        // Nuclei stored as Atoms
+        for( qint64 n=0 ; n < wfn.numberOfNuclei() ; ++n )
+        {
+          qreal x=wfn.xNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal y=wfn.yNuclearCoordinate(n) * convertBohrToAngstrom;
+          qreal z=wfn.zNuclearCoordinate(n) * convertBohrToAngstrom;
+
+          int Z=(int) wfn.nuclearCharge(n);
+
+          Atom *atom=m_molecule->addAtom();
+          atom->setPos( Eigen::Vector3d(x,y,z) );
+          atom->setAtomicNumber(Z);
+        }
+
+        m_molecule->update();
+
+        // Locate the Bond Critical Points and Trace Bond Paths
+        cpl.locateBondCriticalPoints();
+
+        // BCP and Bond Path Results
+        QList<QVector3D> bcpList=cpl.bondCriticalPoints();
+        QList<QList<QVector3D> > bondPathList=cpl.bondPaths();
+        QList<QPair<qint64,qint64> > bondedAtomsList=cpl.bondedAtoms();
+        QList<qreal> laplacianAtBondCriticalPoints=cpl.laplacianAtBondCriticalPoints();
+        QList<qreal> ellipticityAtBondCriticalPoints=cpl.ellipticityAtBondCriticalPoints();
+
+        QVariantList xBCPsVariantList;
+        QVariantList yBCPsVariantList;
+        QVariantList zBCPsVariantList;
+        QVariantList firstNCPIndexVariantList;
+        QVariantList secondNCPIndexVariantList;
+        QVariantList laplacianAtBondCriticalPointsVariantList;
+        QVariantList ellipticityAtBondCriticalPointsVariantList;
+
+        QVariantList bondPathSegmentStartIndexVariantList;
+        QVariantList bondPathSegmentEndIndexVariantList;
+        QVariantList xBondPathsVariantList;
+        QVariantList yBondPathsVariantList;
+        QVariantList zBondPathsVariantList;
+
+        QList<Atom *> currentAtoms=m_molecule->atoms();
+
+        // Connectivity stored as Bonds
+
+        qint64 bpCtr=0;
+
+        for( qint64 atom0=0 ; atom0 < currentAtoms.length() - 1 ; ++atom0 )
+        {
+          for( qint64 atom1=atom0+1 ; atom1 < currentAtoms.length() ; ++atom1 )
+          {
+
+            bool areBonded=false;
+
+            for( qint64 bondPair=0 ; bondPair < bondedAtomsList.length() ; ++bondPair )
+            {
+              if( atom0 == bondedAtomsList.at(bondPair).first && atom1 == bondedAtomsList.at(bondPair).second  )
+              {
+                areBonded=true;
+
+                if( areBonded )
+                {
+
+                  if( (wfn.nuclearCharge(atom0) == 1 || wfn.nuclearCharge(atom1) == 1) &&
+                      laplacianAtBondCriticalPoints.at(bondPair) > 0.0
+                      )
+                  {
+                    // do not draw Bond because it looks like hydrogen bond
+                  }
+                  else
+                  {
+                    Bond *bond=m_molecule->addBond();
+                    bond->setBegin( currentAtoms.at(atom0) );
+                    bond->setEnd( currentAtoms.at(atom1) );
+                    //            bond->setAromaticity(isAromatic);
+                    //            bond->setOrder( (int) order);
+                  }
+
+                  qreal x=bcpList.at(bondPair).x() * convertBohrToAngstrom;
+                  qreal y=bcpList.at(bondPair).y() * convertBohrToAngstrom;
+                  qreal z=bcpList.at(bondPair).z() * convertBohrToAngstrom;
+
+                  xBCPsVariantList.append( x );
+                  yBCPsVariantList.append( y );
+                  zBCPsVariantList.append( z );
+
+                  firstNCPIndexVariantList.append( atom0 );
+                  secondNCPIndexVariantList.append( atom1 );
+
+                  laplacianAtBondCriticalPointsVariantList.append( laplacianAtBondCriticalPoints.at(bondPair) );
+                  ellipticityAtBondCriticalPointsVariantList.append( ellipticityAtBondCriticalPoints.at(bondPair) );
+
+                  bondPathSegmentStartIndexVariantList.append( bpCtr );
+                  for( qint64 i=0; i < bondPathList.at(bondPair).length() ; ++i )
+                  {
+                    qreal x=bondPathList.at(bondPair).at(i).x() * convertBohrToAngstrom;
+                    qreal y=bondPathList.at(bondPair).at(i).y() * convertBohrToAngstrom;
+                    qreal z=bondPathList.at(bondPair).at(i).z() * convertBohrToAngstrom;
+
+                    xBondPathsVariantList.append( x );
+                    yBondPathsVariantList.append( y );
+                    zBondPathsVariantList.append( z );
+
+                    bpCtr++;
+                  }
+                  bondPathSegmentEndIndexVariantList.append( bpCtr );
+                }
+
+              }
+            } // bond pairs
+          } // atom1
+        } // atom 0
+
+        m_molecule->setProperty("QTAIMXBondCriticalPoints",xBCPsVariantList);
+        m_molecule->setProperty("QTAIMYBondCriticalPoints",yBCPsVariantList);
+        m_molecule->setProperty("QTAIMZBondCriticalPoints",zBCPsVariantList);
+        m_molecule->setProperty("QTAIMFirstNCPIndexVariantList",firstNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMSecondNCPIndexVariantList",secondNCPIndexVariantList);
+        m_molecule->setProperty("QTAIMLaplacianAtBondCriticalPoints",laplacianAtBondCriticalPointsVariantList);
+        m_molecule->setProperty("QTAIMEllipticityAtBondCriticalPoints",ellipticityAtBondCriticalPointsVariantList);
+
+        m_molecule->setProperty("QTAIMBondPathSegmentStartIndex",bondPathSegmentStartIndexVariantList);
+        m_molecule->setProperty("QTAIMBondPathSegmentEndIndex",bondPathSegmentEndIndexVariantList);
+        m_molecule->setProperty("QTAIMXBondPaths",xBondPathsVariantList);
+        m_molecule->setProperty("QTAIMYBondPaths",yBondPathsVariantList);
+        m_molecule->setProperty("QTAIMZBondPaths",zBondPathsVariantList);
+
+        m_molecule->update();
+
+        // Electron Density
+        qint64 mode=0;
+
+        // All Atomic Basins
+        QList<qint64> basins;
+        for( qint64 i=0 ; i < wfn.numberOfNuclei() ; ++i )
+        {
+          basins.append(i);
+        }
+
+        QTAIMCubature cub(wfn);
+
+        //        QTime time;
+        //        time.start();
+        QList<QPair<qreal,qreal> > results=cub.integrate(mode,basins);
+        //        qDebug() << "Time Elapsed:" << time.elapsed();
+
+        for(qint64 i=0 ; i < results.length() ; ++i)
+        {
+          qDebug() << "basin" << i << results.at(i).first << results.at(i).second;
+        }
+
+        // TODO: Set the properties of the atoms.
+        // I don't know why this bombs.
+        for(qint64 i=0 ; m_molecule->atoms().length(); ++i)
+        {
+//          Atom *atom=m_molecule->atoms().at(i);
+//          const qreal charge=results.at(i).first;
+//          atom->setPartialCharge( charge  );
+        }
+
+      }
       break;
     }
 

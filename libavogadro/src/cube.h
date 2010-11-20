@@ -35,6 +35,17 @@ class QReadWriteLock;
 
 namespace Avogadro {
 
+  /**
+   * @class Cube cube.h <avogadro/cube.h>
+   * @brief Data type holding regularly spaced data in a cube.
+   * @author Marcus D. Hanwell
+   *
+   * The Cube class is a Primitive subclass that provides storage for scalar
+   * values on a regularly spaced grid in three dimensions. This is typically
+   * used for things such as molecular orbital values, which can be rendered
+   * using other techniques.
+   */
+
   class Molecule;
 
   class CubePrivate;

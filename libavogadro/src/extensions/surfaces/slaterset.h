@@ -142,6 +142,23 @@ namespace Avogadro
 
     QFutureWatcher<void> & watcher() { return m_watcher; }
 
+    /**
+     * Basis Set Type.
+     * Returns "Slater" for SlaterSet
+     */
+    QString basisSetType() const { return QString("STO"); };
+    void expandIntoPrimitives() const { qDebug() << "Not Implemented for STO." ; return; };
+    QList<qreal> X0List() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qreal> Y0List() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qreal> Z0List() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qint64> xamomList() const { qDebug() << "Not Implemented for STO." ; QList<qint64> value; return value; };
+    QList<qint64> yamomList() const { qDebug() << "Not Implemented for STO." ; QList<qint64> value; return value; };
+    QList<qint64> zamomList() const { qDebug() << "Not Implemented for STO." ; QList<qint64> value; return value; };
+    QList<qreal> alphaList() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qreal> orbeList() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qreal> occnoList() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+    QList<qreal> coefList() const { qDebug() << "Not Implemented for STO." ; QList<qreal> value; return value; };
+
   private Q_SLOTS:
     /**
      * Slot to set the cube data once Qt Concurrent is done
