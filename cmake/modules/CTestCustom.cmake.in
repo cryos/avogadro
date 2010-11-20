@@ -10,6 +10,7 @@ list(APPEND CTEST_CUSTOM_WARNING_EXCEPTION
 )
 
 list(APPEND CTEST_CUSTOM_COVERAGE_EXCLUDE
-  "*.moc"
+  ".moc"
+  "ui_*.h"
 )
 
