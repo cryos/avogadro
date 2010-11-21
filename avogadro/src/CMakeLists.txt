@@ -21,7 +21,6 @@ include_directories(
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
-  "${libavogadro_SOURCE_DIR}/gl2ps"
 )
 
 if(GLEW_FOUND)

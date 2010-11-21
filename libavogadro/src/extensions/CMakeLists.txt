@@ -4,7 +4,9 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/extensions)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR}
+  "${CMAKE_CURRENT_SOURCE_DIR}/gl2ps"
+)
 
 set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL extensions)
@@ -118,6 +120,10 @@ avogadro_plugin_nogl(supercellextension
 # Network fetch
 avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
 target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
+
+# GL2PS
+avogadro_plugin(gl2psextension 
+  "gl2psextension.cpp;gl2ps/gl2ps.c")
 
 add_subdirectory(spectra)
 add_subdirectory(surfaces)

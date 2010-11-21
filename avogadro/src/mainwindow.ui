@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>19</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -55,7 +55,6 @@
       <string>Export</string>
      </property>
      <addaction name="actionExportGraphics"/>
-     <addaction name="actionExportGL2PS"/>
     </widget>
     <widget class="QMenu" name="menuImport">
      <property name="title">
