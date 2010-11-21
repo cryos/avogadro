@@ -229,6 +229,11 @@ namespace Avogadro {
 
       m_molecule->setOBMol(&mol);
       qDebug() << "Spacegroups done...";
+
+      // Need a fresh pointer to the new unit cell - setOBMol is invalidating
+      // the old one. This should be cleaned up to use a more permanent data
+      // structure.
+      uc = m_molecule->OBUnitCell();
       uc->SetSpaceGroup(1);
     }
 
