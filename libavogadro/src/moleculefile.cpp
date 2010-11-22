@@ -176,7 +176,8 @@ namespace Avogadro {
     return obmol;
   }
 
-  bool MoleculeFile::replaceMolecule(unsigned int i, Molecule *molecule, QString fileName)
+  bool MoleculeFile::replaceMolecule(unsigned int i, Molecule *molecule,
+                                     QString)
   {
     if (!d->ready) 
       return false;

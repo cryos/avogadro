@@ -795,7 +795,7 @@ void Molecule::removeAtom(Atom *atom)
 
     for (unsigned int i = 0; i < numAtoms(); ++i) {
       bool match = false;
-      for (unsigned int j=0; j<group_number.size(); j++) {
+      for (int j=0; j < group_number.size(); ++j) {
           if ((atom(i)->atomicNumber()) == group_ele.at(j)) {
             group_number[j] += 1;
             atomGroupNumber[i] = group_number[j];
@@ -811,9 +811,11 @@ void Molecule::removeAtom(Atom *atom)
 
     for (unsigned int i = 0; i < numAtoms(); ++i) {
       bool match = false;
-      for (unsigned int j=0; j<group_number.size(); j++) {
-        if ((atom(i)->atomicNumber()) == group_ele.at(j) && (group_number.at(j) == 1))
+      for (int j=0; j<group_number.size(); ++j) {
+        if ((atom(i)->atomicNumber()) == group_ele.at(j) &&
+            (group_number.at(j) == 1)) {
           match = true;
+        }
       }
       if (match) {
         atom(i)->setGroupIndex(0);
@@ -1048,7 +1050,7 @@ void Molecule::removeAtom(Atom *atom)
     Q_D(const Molecule);
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
-    else if (index < d->energies.size())
+    else if (index < static_cast<int>(d->energies.size()))
       return d->energies[index];
     else
       return 0.0;
@@ -1066,7 +1068,7 @@ void Molecule::removeAtom(Atom *atom)
   void Molecule::setEnergy(int index, double energy)
   {
     Q_D(const Molecule);
-    if (index > numConformers() - 1 || index < 0)
+    if (index > static_cast<int>(numConformers() - 1) || index < 0)
       return;
     while (d->energies.size() != numConformers())
       d->energies.push_back(0.0);
@@ -1332,7 +1334,7 @@ void Molecule::removeAtom(Atom *atom)
 
     // Copy conformers, if present
     if (obmol->NumConformers() > 1) {
-      for (unsigned int i = 0; i < obmol->NumConformers(); ++i) {
+      for (int i = 0; i < obmol->NumConformers(); ++i) {
         obmol->SetConformer(i);
         // copy the coordinates
         double *coordPtr = obmol->GetCoordinates();
