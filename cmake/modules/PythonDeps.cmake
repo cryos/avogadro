@@ -4,7 +4,7 @@
 
 if(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # In cache already
-  set(ALL_PYTHON_FOUND TRUE CACHE BOOL "True if all Python dependencies satisfied.")
+  set(ALL_PYTHON_FOUND TRUE)
 
 else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
 
@@ -20,7 +20,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   else (Boost_PYTHON_FOUND)
     message(STATUS "Boost Python NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the libboost-python-dev package.")
-    set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
+    set(ALL_PYTHON_FOUND FALSE)
     return()
   endif (Boost_PYTHON_FOUND)
 
@@ -30,7 +30,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   if (NOT PYTHONLIBS_FOUND)
     message(STATUS "Python libraries NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the python-dev package. Correct?????")
-    set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
+    set(ALL_PYTHON_FOUND FALSE)
     return()
   endif (NOT PYTHONLIBS_FOUND)
 
@@ -40,7 +40,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   if (NOT PYTHONINTERP_FOUND)
     message(STATUS "Python interpreter NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the python package.")
-    set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
+    set(ALL_PYTHON_FOUND FALSE)
     return()
   endif (NOT PYTHONINTERP_FOUND)
 
@@ -50,7 +50,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   if (NOT NUMPY_FOUND)
     message(STATUS "Numpy NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the python-numpy package.")
-    set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
+    set(ALL_PYTHON_FOUND FALSE)
     return()
   endif (NOT NUMPY_FOUND)
 
@@ -67,7 +67,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   else (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
     message(STATUS "sip.h header NOT found - Python support disabled")
   #  message(STATUS "debian/ubuntu: install the python-sip4-dev package.")
-    set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
+    set(ALL_PYTHON_FOUND FALSE)
     return()
   endif (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
 
@@ -78,8 +78,6 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # #endif
   add_definitions( -DENABLE_PYTHON )
   # to be used in subdir CMakeLists.txt files
-  set(ALL_PYTHON_FOUND TRUE CACHE BOOL "True if all Python dependencies satisfied.")
+  set(ALL_PYTHON_FOUND TRUE)
 
 endif(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
-
-mark_as_advanced(ALL_PYTHON_FOUND)
