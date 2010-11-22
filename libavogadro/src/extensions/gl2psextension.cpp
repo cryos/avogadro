@@ -22,9 +22,6 @@
 
 #include "gl2psextension.h"
 
-// Include the GL2PS header
-#include "gl2ps.h"
-
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 
@@ -33,6 +30,9 @@
 
 #include <QtGui/QAction>
 #include <QtGui/QFileDialog>
+
+// Include the GL2PS header
+#include "gl2ps.h"
 
 namespace Avogadro {
 
