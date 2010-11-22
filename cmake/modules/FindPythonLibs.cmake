@@ -20,14 +20,14 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the License for more information.
 #=============================================================================
-# (To distributed this file outside of CMake, substitute the full
+# (To distribute this file outside of CMake, substitute the full
 #  License text for the above reference.)
 
 INCLUDE(CMakeFindFrameworks)
 # Search for the python framework on Apple.
 CMAKE_FIND_FRAMEWORKS(Python)
 
-FOREACH(_CURRENT_VERSION 2.6 2.5 2.4 2.3 2.2 2.1 2.0 1.6 1.5)
+FOREACH(_CURRENT_VERSION 2.7 2.6 2.5 2.4 2.3 2.2 2.1 2.0 1.6 1.5)
   STRING(REPLACE "." "" _CURRENT_VERSION_NO_DOTS ${_CURRENT_VERSION})
   IF(WIN32)
     FIND_LIBRARY(PYTHON_DEBUG_LIBRARY
@@ -105,11 +105,9 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(PythonLibs DEFAULT_MSG PYTHON_LIBRARIES PYTHON
 # PYTHON_ADD_MODULE(<name> src1 src2 ... srcN) is used to build modules for python.
 # PYTHON_WRITE_MODULES_HEADER(<filename>) writes a header file you can include 
 # in your sources to initialize the static python modules
-
-GET_PROPERTY(_TARGET_SUPPORTS_SHARED_LIBS
-  GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS)
-
 FUNCTION(PYTHON_ADD_MODULE _NAME )
+  GET_PROPERTY(_TARGET_SUPPORTS_SHARED_LIBS
+    GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS)
   OPTION(PYTHON_ENABLE_MODULE_${_NAME} "Add module ${_NAME}" TRUE)
   OPTION(PYTHON_MODULE_${_NAME}_BUILD_SHARED
     "Add module ${_NAME} shared" ${_TARGET_SUPPORTS_SHARED_LIBS})
@@ -129,6 +127,13 @@ FUNCTION(PYTHON_ADD_MODULE _NAME )
     SET_PROPERTY(GLOBAL  APPEND  PROPERTY  PY_MODULES_LIST ${_NAME})
     ADD_LIBRARY(${_NAME} ${PY_MODULE_TYPE} ${ARGN})
 #    TARGET_LINK_LIBRARIES(${_NAME} ${PYTHON_LIBRARIES})
+
+    IF(PYTHON_MODULE_${_NAME}_BUILD_SHARED)
+      SET_TARGET_PROPERTIES(${_NAME} PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}")
+      IF(WIN32 AND NOT CYGWIN)
+        SET_TARGET_PROPERTIES(${_NAME} PROPERTIES SUFFIX ".pyd")
+      ENDIF(WIN32 AND NOT CYGWIN)
+    ENDIF(PYTHON_MODULE_${_NAME}_BUILD_SHARED)
 
   ENDIF(PYTHON_ENABLE_MODULE_${_NAME})
 ENDFUNCTION(PYTHON_ADD_MODULE)
