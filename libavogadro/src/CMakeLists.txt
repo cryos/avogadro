@@ -121,7 +121,6 @@ set(AVO_LINK_LIBRARIES
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
-  link_directories(${GLEW_LIBRARY_DIR})
   list(APPEND AVO_LINK_LIBRARIES ${GLEW_LIBRARY})
 endif()
 
