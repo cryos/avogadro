@@ -161,9 +161,17 @@ namespace Avogadro {
      *
      * You can set AVOGADRO_PLUGINS to designate a path at runtime to search.
      *
-     * @param dir Path of directory to search for plugins instead of the default paths
+     * @param dir Path of directory to search for plugins instead of the default
+     * paths
      */
     void loadFactories(const QString& dir = "");
+
+    /**
+     * Load plugins with file names listed in @a plugins from directory @a dir
+     * and enable/disable them using @a settings
+     */
+    static void loadPluginList(const QDir &dir, const QStringList &plugins,
+                               QSettings &settings);
 
     /**
      * Get all the PluginFactory obacjects for a given type.
@@ -269,7 +277,8 @@ namespace Avogadro {
      * valid.
      */
     static void loadPluginDir(const QString &directory, QSettings &settings);
-    static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings);
+    static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo,
+                            QSettings &settings);
     static QList<QString> scripts(const QString &type);
 
   };

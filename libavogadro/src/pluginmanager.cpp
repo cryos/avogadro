@@ -290,11 +290,10 @@ namespace Avogadro {
       return d->extensions;
 
     foreach(PluginFactory *factory, factories(Plugin::ExtensionType)) {
-      Extension *extension = static_cast<Extension *>(factory->createInstance(parent));
+      Extension *extension =
+          static_cast<Extension *>(factory->createInstance(parent));
       d->extensions.append(extension);
     }
-
-    //    qSort(d->extensions.begin(), d->extensions.end(), extensionGreaterThan);
 
     d->extensionsLoaded = true;
 
@@ -639,18 +638,22 @@ namespace Avogadro {
   {
     settings.beginGroup(QString::number(factory->type()));
 
-    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
+    QVector< QList<PluginFactory *> > &ef =
+        PluginManagerPrivate::m_enabledFactories();
+    QVector< QList<PluginFactory *> > &df =
+        PluginManagerPrivate::m_disabledFactories();
 
     // create the PluginItem
     PluginItem *item = new PluginItem(factory->name(), factory->identifier(),
                                       factory->description(),
-        factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
+                                      factory->type(), fileInfo.fileName(),
+                                      fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
     if(settings.value(factory->identifier(), true).toBool()) {
       ef[factory->type()].append(factory);
       item->setEnabled(true);
-    } else {
+    }
+    else {
       df[factory->type()].append(factory);
       item->setEnabled(false);
     }
@@ -768,7 +771,13 @@ namespace Avogadro {
   {
     QDir dir(directory);
     qDebug() << "Searching for plugins in" << dir.canonicalPath();
-    foreach (const QString& fileName, dir.entryList(QDir::Files)) {
+    loadPluginList(dir, dir.entryList(QDir::Files), settings);
+  }
+
+  void PluginManager::loadPluginList(const QDir &dir,
+                                const QStringList &plugins, QSettings &settings)
+  {
+    foreach (const QString& fileName, plugins) {
       if(!QLibrary::isLibrary(fileName))
         continue;
 #ifdef Q_WS_X11
