@@ -290,11 +290,10 @@ namespace Avogadro {
       return d->extensions;
 
     foreach(PluginFactory *factory, factories(Plugin::ExtensionType)) {
-      Extension *extension = static_cast<Extension *>(factory->createInstance(parent));
+      Extension *extension =
+          static_cast<Extension *>(factory->createInstance(parent));
       d->extensions.append(extension);
     }
-
-    //    qSort(d->extensions.begin(), d->extensions.end(), extensionGreaterThan);
 
     d->extensionsLoaded = true;
 
@@ -638,18 +637,22 @@ namespace Avogadro {
   {
     settings.beginGroup(QString::number(factory->type()));
 
-    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-    QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
+    QVector< QList<PluginFactory *> > &ef =
+        PluginManagerPrivate::m_enabledFactories();
+    QVector< QList<PluginFactory *> > &df =
+        PluginManagerPrivate::m_disabledFactories();
 
     // create the PluginItem
     PluginItem *item = new PluginItem(factory->name(), factory->identifier(),
                                       factory->description(),
-        factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
+                                      factory->type(), fileInfo.fileName(),
+                                      fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
     if(settings.value(factory->identifier(), true).toBool()) {
       ef[factory->type()].append(factory);
       item->setEnabled(true);
-    } else {
+    }
+    else {
       df[factory->type()].append(factory);
       item->setEnabled(false);
     }
