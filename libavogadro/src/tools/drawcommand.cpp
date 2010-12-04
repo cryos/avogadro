@@ -353,7 +353,6 @@ namespace Avogadro {
         if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
           d->postCommand->redo();
       }
-      d->atom->update();
       d->atom = 0;
 #ifdef DEBUG_COMMANDS
       qDebug() << "AddAtomDrawCommand::redo(id = " << d->id << ")";
@@ -384,7 +383,7 @@ namespace Avogadro {
     qDebug() << "AddAtomDrawCommand::redo(id = " << d->id << ")";
 #endif
 
-    atom->update();
+    d->molecule->update();
   }
 
   /////////////////////////////////////////////////////////////////////////////
@@ -674,6 +673,7 @@ namespace Avogadro {
       }
 
       d->bond = 0;
+      d->molecule->update();
       return;
     }
 
@@ -700,14 +700,17 @@ namespace Avogadro {
     Atom *endAtom = d->molecule->atomById(d->endAtomId);
     Q_CHECK_PTR( endAtom );
 
-    if (!beginAtom || !endAtom)
+    if (!beginAtom || !endAtom) {
+      d->molecule->update();
       return;
+    }
 
     Bond *bond;
     if (d->id != FALSE_ID) {
       bond = d->molecule->addBond(d->id);
       Q_CHECK_PTR( bond );
-    } else {
+    }
+    else {
       bond = d->molecule->addBond();
       Q_CHECK_PTR( bond );
       d->id = bond->id();
