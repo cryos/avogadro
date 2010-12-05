@@ -78,25 +78,25 @@ namespace Avogadro {
        */
       void readSettings(QSettings &settings);
 
-	private:
+    private:
+      AxesSettingsWidget* m_settingsWidget;
       int m_axesType;
-	  Eigen::Vector3d m_origin;
-	  Eigen::Vector3d m_axis1;
-	  Eigen::Vector3d m_axis2;
-	  Eigen::Vector3d m_axis3;
-	  bool m_preserveNorms;
-	  AxesSettingsWidget* m_settingsWidget;
+      bool m_preserveNorms;
+      Eigen::Vector3d m_origin;
+      Eigen::Vector3d m_axis1;
+      Eigen::Vector3d m_axis2;
+      Eigen::Vector3d m_axis3;
 
-	private Q_SLOTS:
-	  void setAxesType(int value);
-	  void settingsWidgetDestroyed();
-	  void updateAxes(double = 0.0);  
-	  void updateVectors();
-	  void updateOrigin(double = 0.0);
-	  void updateValues1(double = 0.0);
-	  void updateValues2(double = 0.0);
-	  void updateValues3(double = 0.0);
-	  void preserveNormsChanged(int value);
+    private Q_SLOTS:
+      void setAxesType(int value);
+      void settingsWidgetDestroyed();
+      void updateAxes(double = 0.0);
+      void updateVectors();
+      void updateOrigin(double = 0.0);
+      void updateValues1(double = 0.0);
+      void updateValues2(double = 0.0);
+      void updateValues3(double = 0.0);
+      void preserveNormsChanged(int value);
   };
   
   class AxesSettingsWidget : public QWidget, public Ui::AxesSettingsWidget
