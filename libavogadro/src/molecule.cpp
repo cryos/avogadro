@@ -1558,8 +1558,6 @@ void Molecule::removeAtom(Atom *atom)
       m_atomPos->clear();
       m_atomPos->resize(other.m_atomPos->size());
     }
-    else
-      qDebug() << "Other atom has a position list of size zero!";
 
     m_bonds.resize(other.m_bonds.size(), 0);
 
