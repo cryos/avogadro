@@ -2,7 +2,7 @@
   OrbitalExtension - Extension for visualizing molecular orbitals
 
   Copyright (C) 2010 David C. Lonie
-  Copyright (C) 2009 Marcus D. Hanwell
+  Copyright (C) 2009-2011 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -27,15 +27,12 @@
 
 #include "orbitalwidget.h"
 
-#include "basisset.h"
-#include "gaussianset.h"
-#include "slaterset.h"
-#include "gamessukout.h"
-#include "gaussianfchk.h"
-#include "molpro.h"
-#include "mopacaux.h"
-#include "molden.h"
-#include "gamessus.h"
+#include <openqube/basissetloader.h>
+#include <openqube/basisset.h>
+#include <openqube/gaussianset.h>
+#include <openqube/gamessukout.h>
+#include <openqube/gamessus.h>
+#include <openqube/cube.h>
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -49,6 +46,11 @@
 #include <QFileInfo>
 #include <QMessageBox>
 
+using OpenQube::BasisSet;
+using OpenQube::GaussianSet;
+using OpenQube::GamessukOut;
+using OpenQube::GAMESSUSOutput;
+
 namespace Avogadro
 {
 
@@ -60,7 +62,8 @@ namespace Avogadro
     m_currentRunningCalculation(-1),
     m_meshGen(0),
     m_basis(0),
-    m_molecule(0)
+    m_molecule(0),
+    m_qube(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Molecular Orbitals..."));
@@ -172,6 +175,8 @@ namespace Avogadro
 
     precalculateOrbitals();
 
+    // FIXME: Add this feature back in, refactor ideally.
+#if 0
     // Load Properties for QTAIM calculation
     if(m_basis)
     {
@@ -353,6 +358,7 @@ namespace Avogadro
       }
 
     }
+#endif
 
 
   }
@@ -468,7 +474,15 @@ namespace Avogadro
     info->cube = cube;
     cube->setLimits(m_molecule, info->resolution, 2.5);
 
-    m_basis->calculateCubeMO(cube, info->orbital);
+    if (m_qube) {
+      delete m_qube;
+      m_qube = 0;
+    }
+
+    m_qube = new OpenQube::Cube;
+    m_qube->setLimits(cube->min(), cube->max(), cube->dimensions());
+
+    m_basis->calculateCubeMO(m_qube, info->orbital);
     connect(&m_basis->watcher(), SIGNAL(finished()),
             this, SLOT(calculateCubeDone()));
 
@@ -491,6 +505,13 @@ namespace Avogadro
 
     disconnect(&m_basis->watcher(), 0,
                this, 0);
+
+    // Convert the cube data
+    if (m_qube) {
+      info->cube->setData(*m_qube->data());
+      delete m_qube;
+      m_qube = 0;
+    }
 
     calculatePosMesh();
   }
@@ -745,7 +766,6 @@ namespace Avogadro
     QVariant fileFormat = m_molecule->property("File Format");
     if (fileFormat.isValid()) {
       QString format = fileFormat.toString();
-
       if (format == QLatin1String("gamout")) {
         qDebug() << " deduced from format ";
         if (m_basis) {
@@ -754,7 +774,6 @@ namespace Avogadro
         }
         GaussianSet *gaussian = new GaussianSet;
         GAMESSUSOutput gamout(m_molecule->fileName(), gaussian);
-
         m_basis = gaussian;
         return true;
       }
@@ -766,105 +785,31 @@ namespace Avogadro
         }
         GaussianSet *gaussian = new GaussianSet;
         GamessukOut gukout(m_molecule->fileName(), gaussian);
-
         m_basis = gaussian;
         return true;
       }
     }
 
-
     // Everything looks good, a new basis set needs to be loaded
     // Check for files in this directory -- first the file itself
     // and then any other similar file
-
-    QFileInfo parentInfo(m_molecule->fileName());
-    // Look for files with the same basename, but different extensions
-    QDir parentDir = parentInfo.dir();
-    QStringList nameFilters;
-    nameFilters << parentInfo.baseName() + ".*";
-
-    QStringList matchingFiles = parentDir.entryList(nameFilters,
-                                                    QDir::Readable | QDir::Files);
-    matchingFiles.prepend(parentInfo.fileName());
-
-    // TODO: Add a warning dialog to make sure that opening up a new file is OK
-    // (i.e., that we found the right checkpoint file)
-    foreach(const QString &fileName, matchingFiles) {
-      QString fullFileName = parentInfo.path() + '/' + fileName;
-      QFileInfo info(fullFileName);
-      QString completeSuffix = info.completeSuffix();
-
-      if (completeSuffix.contains("gukout", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        GaussianSet *gaussian = new GaussianSet;
-        GamessukOut gukout(fullFileName, gaussian);
-        m_basis = gaussian;
+    if (m_basis) {
+      delete m_basis;
+      m_basis = 0;
+    }
+    // Set up the MOs along with the electron density maps
+    QString basisFileName =
+        OpenQube::BasisSetLoader::MatchBasisSet(m_molecule->fileName());
+    if (basisFileName.isEmpty())
+    {
+      qDebug() << "No matching basis set file found: " <<  m_molecule->fileName();
+      return false;
+    }
+    else
+    {
+      m_basis = OpenQube::BasisSetLoader::LoadBasisSet(basisFileName);
+      if (m_basis)
         return true;
-      }
-      else if (completeSuffix.contains("fchk", Qt::CaseInsensitive)
-          || completeSuffix.contains("fch", Qt::CaseInsensitive)
-          || completeSuffix.contains("fck", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        GaussianSet *gaussian = new GaussianSet;
-        GaussianFchk fchk(fullFileName, gaussian);
-
-        m_basis = gaussian;
-        return true;
-      }
-      else if (completeSuffix.contains("aux", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        SlaterSet *slater = new SlaterSet;
-        MopacAux aux(fullFileName, slater);
-
-        m_basis = slater;
-        return true;
-      }
-      else if (completeSuffix.contains("mpo", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        GaussianSet *gaussian = new GaussianSet;
-        Molpro mpo(fullFileName, gaussian);
-
-        m_basis = gaussian;
-        return true;
-      }
-      else if (completeSuffix.contains("molden", Qt::CaseInsensitive)
-          || completeSuffix.contains("mold", Qt::CaseInsensitive)
-          || completeSuffix.contains("molf", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        GaussianSet *gaussian = new GaussianSet;
-        MoldenFile fchk(fullFileName, gaussian);
-
-        m_basis = gaussian;
-        return true;
-      }
-
-      else if (completeSuffix.contains("gamout", Qt::CaseInsensitive)) {
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
-        }
-        GaussianSet *gaussian = new GaussianSet;
-        GAMESSUSOutput gamout(fullFileName, gaussian);
-
-        m_basis = gaussian;
-        return true;
-      }
-
     }
 
     return false;

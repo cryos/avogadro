@@ -36,11 +36,15 @@
 
 class QProgressDialog;
 
+namespace OpenQube
+{
+  class BasisSet;
+  class Cube;
+}
+
 namespace Avogadro
 {
-
   class Cube;
-  class BasisSet;
   class Mesh;
   class MeshGenerator;
   class VdWSurface;
@@ -170,9 +174,10 @@ namespace Avogadro
     QList<calcInfo> m_queue;
     int m_currentRunningCalculation;
     MeshGenerator *m_meshGen;
-    BasisSet *m_basis;
+    OpenQube::BasisSet *m_basis;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
+    OpenQube::Cube *m_qube;
     QTime m_time;
   };
 
