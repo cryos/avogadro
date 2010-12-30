@@ -1426,6 +1426,7 @@ void Molecule::removeAtom(Atom *atom)
     m_invalidPartialCharges = false;
 
     blockSignals(false);
+    emit update();
     return true;
   }
 
