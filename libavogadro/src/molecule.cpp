@@ -793,7 +793,9 @@ void Molecule::removeAtom(Atom *atom)
     QVector<unsigned int> atomGroupNumber;
     atomGroupNumber.resize(numAtoms());
 
-    for (unsigned int i = 0; i < numAtoms(); ++i) {
+    for (unsigned int i = 0;
+         i < numAtoms() && i < atomGroupNumber.size();
+         ++i) {
       bool match = false;
       for (int j=0; j < group_number.size(); ++j) {
           if ((atom(i)->atomicNumber()) == group_ele.at(j)) {
@@ -809,7 +811,9 @@ void Molecule::removeAtom(Atom *atom)
       }
     }
 
-    for (unsigned int i = 0; i < numAtoms(); ++i) {
+    for (unsigned int i = 0;
+         i < numAtoms() && i < atomGroupNumber.size();
+         ++i) {
       bool match = false;
       for (int j=0; j<group_number.size(); ++j) {
         if ((atom(i)->atomicNumber()) == group_ele.at(j) &&
