@@ -312,5 +312,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "cube.moc"

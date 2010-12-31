@@ -116,6 +116,4 @@ namespace Avogadro {
     Q_UNUSED(settings);
   }
 
-} // end namespace Avogadro
-
-#include "tool.moc"
+} // end namespace

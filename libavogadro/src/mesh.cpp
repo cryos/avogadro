@@ -230,6 +230,4 @@ namespace Avogadro {
     return m_lock;
   }
 
-} // End namespace Avogadro
-
-#include "mesh.moc"
+} // End namespace

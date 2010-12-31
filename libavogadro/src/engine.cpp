@@ -373,5 +373,3 @@ namespace Avogadro {
       return m_molecule->bonds();
   }
 }
-
-#include "engine.moc"

@@ -164,5 +164,3 @@ namespace Avogadro {
     glColor4fv(m_channels);
   }
 }
-
-#include "color.moc"

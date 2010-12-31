@@ -637,7 +637,4 @@ namespace Avogadro {
     return moleculeFile;
   }
 
-} // end namespace Avogadro
-
-#include "moleculefile.moc"
-
+} // end namespace

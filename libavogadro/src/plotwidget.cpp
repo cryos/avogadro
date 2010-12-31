@@ -27,7 +27,6 @@
  **********************************************************************/
 
 #include "plotwidget.h"
-#include "plotwidget.moc"
 
 #include <math.h>
 #include <QDebug>

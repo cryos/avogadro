@@ -211,6 +211,4 @@ namespace Avogadro {
     QGraphicsScene::mouseReleaseEvent(event);
   }
 
-} // End namespace Avogadro
-
-#include "periodictablescene_p.moc"
+} // End namespace
