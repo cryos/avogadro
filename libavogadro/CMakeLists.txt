@@ -16,9 +16,16 @@ endif()
 # in order to maintain compatibility.
 function(avogadro_plugin_nogl plugin_name src_list)
   # Assume all MOC stuff is in the headers, replace .cpp and use qt4_wrap_cpp
-  # We should probably scan the header to verify the Q_OBJECT macro is used
+  # Scan the header to verify the Q_OBJECT macro is used
   string(REPLACE ".cpp" ".h" hdr_list "${src_list}")
-  qt4_wrap_cpp(moc_files ${hdr_list})
+  set(moc_list "")
+  foreach(file ${hdr_list})
+    file(STRINGS "${file}" fileQObject REGEX "Q_OBJECT")
+    if(fileQObject)
+      list(APPEND moc_list "${file}")
+    endif()
+  endforeach()
+  qt4_wrap_cpp(moc_files ${moc_list})
   # Now sort out the ui and qrc files, process them as appropriate
   set(ui_plugin_files)
   set(qrc_plugin_files)
