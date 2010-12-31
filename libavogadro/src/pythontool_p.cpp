@@ -344,5 +344,3 @@ namespace Avogadro {
   }
 
 }
-
-#include "pythontool_p.moc"

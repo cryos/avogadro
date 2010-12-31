@@ -360,5 +360,3 @@ namespace Avogadro
   }
 
 }
-
-#include "pythonextension_p.moc"

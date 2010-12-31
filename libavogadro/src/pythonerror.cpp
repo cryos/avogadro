@@ -111,5 +111,3 @@ namespace Avogadro
   }
 
 } // namespace
-
-#include "pythonerror.moc"

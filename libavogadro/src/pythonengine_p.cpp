@@ -289,5 +289,3 @@ namespace Avogadro {
 
 
 }
-
-#include "pythonengine_p.moc"
