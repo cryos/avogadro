@@ -148,7 +148,4 @@ namespace Avogadro {
     m_atomId.clear();
   }
 
-} // End namespace Avogadro
-
- #include "residue.moc"
-
+} // End namespace

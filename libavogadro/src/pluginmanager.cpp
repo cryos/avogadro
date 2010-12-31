@@ -807,5 +807,3 @@ namespace Avogadro {
   }
 
 }
-
-#include "pluginmanager.moc"

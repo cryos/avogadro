@@ -81,6 +81,4 @@ namespace Avogadro {
     return m_bonds;
   }
 
-} // End namespace Avogadro
-
-#include "fragment.moc"
+} // End namespace

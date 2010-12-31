@@ -2221,5 +2221,3 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
 #endif
   }
 }
-
-#include "glwidget.moc"

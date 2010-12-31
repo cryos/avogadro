@@ -56,5 +56,3 @@ namespace Avogadro {
       return 0;
   }
 }
-
-#include "dockextension.moc"

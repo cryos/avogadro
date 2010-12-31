@@ -382,5 +382,3 @@ using Eigen::Vector3d;
    }
 
  } // End namespace Avogadro
-
-#include "atom.moc"

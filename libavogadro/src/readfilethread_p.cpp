@@ -198,5 +198,3 @@ void ReadFileThread::run()
 }
 
 }
-
-#include "readfilethread_p.moc"

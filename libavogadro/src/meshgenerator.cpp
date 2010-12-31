@@ -652,6 +652,4 @@ namespace Avogadro {
     {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
   };
 
-} // End namespace Avogadro
-
-#include "meshgenerator.moc"
+} // End namespace

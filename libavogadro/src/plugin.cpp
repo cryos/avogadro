@@ -64,6 +64,4 @@ namespace Avogadro {
     // needs to be implemented by the plugin
   }
 
-} // end namespace Avogadro
-
-#include "plugin.moc"
+} // end namespace

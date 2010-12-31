@@ -205,6 +205,4 @@ namespace Avogadro {
     }
   }
 
-} // end namespace Avogadro
-
-#include "toolgroup.moc"
+} // end namespace

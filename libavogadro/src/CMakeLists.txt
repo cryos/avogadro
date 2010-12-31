@@ -111,8 +111,39 @@ set(libavogadro_SRCS
   zmatrix.cpp
 )
 
-# Also add in the qtiocompressor class
-#set(libavogadrocore_SRCS ${libavogadrocore_SRCS} ../qtiocompressor/qtiocompressor.cpp)
+set(libavogadro_MOC_HDRS
+  animation.h
+  atom.h
+  bond.h
+  color.h
+  colors/elementcolor.h
+  colorbutton.h
+  cube.h
+  dockextension.h
+  elementdetail_p.h
+  elementtranslator.h
+  engine.h
+  engines/bsdyengine.h
+  extension.h
+  fragment.h
+  glwidget.h
+  mesh.h
+  meshgenerator.h
+  molecule.h
+  moleculefile.h
+  periodictablescene_p.h
+  periodictableview.h
+  plotwidget.h
+  plugin.h
+  pluginmanager.h
+  primitive.h
+  protein.h
+  readfilethread_p.h
+  residue.h
+  tool.h
+  toolgroup.h
+  zmatrix.h
+)
 
 set(AVO_LINK_LIBRARIES
   ${OPENBABEL2_LIBRARIES}
@@ -161,6 +192,11 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythoninterpreter.h
     pythonscript.h
     pythonerror.h)
+  list(APPEND libavogadro_MOC_HDRS
+    pythonengine_p.h
+    pythonerror.h
+    pythonextension_p.h
+    pythontool_p.h)
   list(APPEND libavogadro_SRCS
     pythoninterpreter.cpp
     pythonscript.cpp
@@ -170,7 +206,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythonextension_p.cpp)
 endif()
 
-qt4_automoc(${libavogadro_SRCS})
+qt4_wrap_cpp(libavogadro_MOC ${libavogadro_MOC_HDRS})
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
@@ -188,6 +224,7 @@ endforeach()
 
 add_library(avogadro SHARED
   ${libavogadro_SRCS}
+  ${libavogadro_MOC}
   ${libavogadro_QM}
   ${pythontool_RC_SRCS})
 set_target_properties(avogadro PROPERTIES

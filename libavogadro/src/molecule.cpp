@@ -1698,6 +1698,4 @@ void Molecule::removeAtom(Atom *atom)
     d->invalidGeomInfo = false;
   }
 
-} // End namespace Avogadro
-
-#include "molecule.moc"
+} // End namespace

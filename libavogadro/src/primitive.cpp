@@ -77,5 +77,3 @@ namespace Avogadro {
   }
 
 }
-
-#include "primitive.moc"

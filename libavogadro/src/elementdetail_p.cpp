@@ -130,6 +130,4 @@ namespace Avogadro{
     emit update();
   }
 
-} // End namespace Avogadro
-
-#include "elementdetail_p.moc"
+} // End namespace
