@@ -101,6 +101,7 @@ set(libavogadro_SRCS
   primitive.cpp
   primitivelist.cpp
   protein.cpp
+  readfilethread_p.cpp
   residue.cpp
   sphere_p.cpp
   textrenderer_p.cpp

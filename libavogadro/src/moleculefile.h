@@ -1,7 +1,7 @@
 /**********************************************************************
   MoleculeFile - Class representing molecule file.
 
-  Copyright (C) 2009 Marcus Hanwell, Tim Vandermeersch
+  Copyright (C) 2009 Marcus D. Hanwell, Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
