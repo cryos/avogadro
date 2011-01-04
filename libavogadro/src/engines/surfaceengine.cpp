@@ -56,6 +56,9 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
     m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_colored(false)
   {
+    // default is red for negative, blue for positive
+    m_negColor.setFromRgba(1.0, 0.0, 0.0, m_alpha);
+    m_posColor.setFromRgba(0.0, 0.0, 1.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -470,15 +473,15 @@ namespace Avogadro {
     Engine::readSettings(settings);
     m_alpha = settings.value("alpha", 0.5).toDouble();
     // Default: Positive = blue
-    m_posColor.setFromRgba( settings.value("posColor/r", 0.0).toDouble(),
-                            settings.value("posColor/g", 0.0).toDouble(),
-                            settings.value("posColor/b", 1.0).toDouble(),
-                            m_alpha );
+    m_posColor.setFromRgba(settings.value("posColor/r", 0.0).toDouble(),
+                           settings.value("posColor/g", 0.0).toDouble(),
+                           settings.value("posColor/b", 1.0).toDouble(),
+                           m_alpha);
     // Default: Negative = red
-    m_negColor.setFromRgba( settings.value("negColor/r", 1.0).toDouble(),
-                            settings.value("negColor/g", 0.0).toDouble(),
-                            settings.value("negColor/b", 0.0).toDouble(),
-                            m_alpha );
+    m_negColor.setFromRgba(settings.value("negColor/r", 1.0).toDouble(),
+                           settings.value("negColor/g", 0.0).toDouble(),
+                           settings.value("negColor/b", 0.0).toDouble(),
+                           m_alpha);
     m_renderMode = settings.value("renderMode", 0).toInt();
     m_colored = settings.value("colorMode", false).toBool();
     m_drawBox = settings.value("drawBox", false).toBool();
