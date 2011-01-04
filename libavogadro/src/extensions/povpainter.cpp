@@ -80,13 +80,14 @@ namespace Avogadro
 
   void POVPainter::setColor (const Color *color)
   {
-    d->color.setFromRgba(color->red(), color->green(), color->blue(), color->alpha());
+    d->color.setFromRgba(color->red(), color->green(), color->blue(),
+                         color->alpha());
   }
 
   void POVPainter::setColor (const QColor *color)
   {
     d->color.setFromRgba(color->redF(), color->greenF(), color->blueF(),
-                     color->alphaF());
+                         color->alphaF());
   }
 
   void POVPainter::setColor (float red, float green, float blue, float alpha)
@@ -115,8 +116,8 @@ namespace Avogadro
       << ", " << d->color.blue() << "," << 1.0 - d->color.alpha() << "> }\n}\n";
   }
 
-  void POVPainter::drawCylinder (const Vector3d &end1, const Vector3d &end2,
-                      double radius)
+  void POVPainter::drawCylinder(const Vector3d &end1, const Vector3d &end2,
+                                double radius)
   {
     // Write out a POVRay cylinder for rendering
     *(d->output) << "cylinder {\n"
@@ -126,12 +127,11 @@ namespace Avogadro
       << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }\n}\n";
   }
 
-  void POVPainter::drawMultiCylinder (const Vector3d &end1, const Vector3d &end2,
-                           double radius, int order, double)
+  void POVPainter::drawMultiCylinder(const Vector3d &end1, const Vector3d &end2,
+                                     double radius, int order, double)
   {
     // Just render single bonds with the standard drawCylinder function
-    if (order == 1)
-    {
+    if (order == 1) {
       drawCylinder(end1, end2, radius);
       return;
     }
@@ -152,14 +152,14 @@ namespace Avogadro
     Vector3d ortho2 = axisNormalized.cross(ortho1);
     // Use an angle offset of zero for double bonds, 90 for triple and 22.5 for higher order
     double angleOffset = 0.0;
-    if( order >= 3 )
-    {
-      if( order == 3 ) angleOffset = 90.0;
-      else angleOffset = 22.5;
+    if(order >= 3) {
+      if(order == 3)
+        angleOffset = 90.0;
+      else
+        angleOffset = 22.5;
     }
     // Actually draw the cylinders
-    for( int i = 0; i < order; i++)
-    {
+    for( int i = 0; i < order; ++i) {
       double alpha = angleOffset / 180.0 * M_PI + 2.0 * M_PI * i / order;
       Vector3d displacement = cos(alpha) * ortho1 + sin(alpha) * ortho2;
       Vector3d displacedEnd1 = end1 + displacement;
@@ -178,24 +178,28 @@ namespace Avogadro
     }
   }
 
-  void POVPainter::drawShadedSector(const Eigen::Vector3d &, const Eigen::Vector3d &,
-                        const Eigen::Vector3d &, double, bool)
+  void POVPainter::drawShadedSector(const Eigen::Vector3d &,
+                                    const Eigen::Vector3d &,
+                                    const Eigen::Vector3d &, double, bool)
   {
   }
 
-  void POVPainter::drawArc(const Eigen::Vector3d &, const Eigen::Vector3d &, const Eigen::Vector3d &,
-               double, double, bool)
+  void POVPainter::drawArc(const Eigen::Vector3d &, const Eigen::Vector3d &,
+                           const Eigen::Vector3d &, double, double, bool)
   {
   }
 
-  void POVPainter::drawShadedQuadrilateral(const Eigen::Vector3d &, const Eigen::Vector3d &,
-                               const Eigen::Vector3d &, const Eigen::Vector3d &)
+  void POVPainter::drawShadedQuadrilateral(const Eigen::Vector3d &,
+                                           const Eigen::Vector3d &,
+                                           const Eigen::Vector3d &,
+                                           const Eigen::Vector3d &)
   {
   }
 
-  void POVPainter::drawQuadrilateral(const Eigen::Vector3d &, const Eigen::Vector3d &,
-                         const Eigen::Vector3d &, const Eigen::Vector3d &,
-                         double)
+  void POVPainter::drawQuadrilateral(const Eigen::Vector3d &,
+                                     const Eigen::Vector3d &,
+                                     const Eigen::Vector3d &,
+                                     const Eigen::Vector3d &, double)
   {
   }
 
@@ -217,9 +221,8 @@ namespace Avogadro
     std::vector<Eigen::Vector3f> n = mesh.normals();
 
     // If there are no triangles then don't bother doing anything
-    if (t.size() == 0) {
+    if (t.size() == 0)
       return;
-    }
 
     QString vertsStr, ivertsStr, normsStr, inormsStr;
     QTextStream verts(&vertsStr);
@@ -285,9 +288,8 @@ namespace Avogadro
     std::vector<Color3f> c = mesh.colors();
 
     // If there are no triangles then don't bother doing anything
-    if (v.size() == 0 || v.size() != c.size()) {
+    if (v.size() == 0 || v.size() != c.size())
       return;
-    }
 
     QString vertsStr, ivertsStr, normsStr, texturesStr;
     QTextStream verts(&vertsStr);
@@ -318,12 +320,10 @@ namespace Avogadro
     for (unsigned int i = 0; i < v.size(); i += 3) {
       iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
       iverts << "," << i << "," << i+1 << "," << i+2;
-      if (i != v.size()-3) {
+      if (i != v.size()-3)
         iverts << ", ";
-      }
-      if (i != 0 && ((i+1)/3)%3 == 0) {
+      if (i != 0 && ((i+1)/3)%3 == 0)
         iverts << '\n';
-      }
     }
     // Now to close off all the arrays
     verts << "\n}";
@@ -349,7 +349,7 @@ namespace Avogadro
     return 0;
   }
 
-  int POVPainter::drawText(const Vector3d &center, const QString &str)
+  int POVPainter::drawText(const Vector3d &, const QString &)
   {
 
        /*qDebug() << "text {\n"
@@ -364,7 +364,7 @@ namespace Avogadro
     return 0;
   }
 
-  int POVPainter::drawText(const Vector3d &center, const QString &str, const QFont &font)
+  int POVPainter::drawText(const Vector3d &, const QString &, const QFont &)
   {
     return 0;
   }
@@ -395,7 +395,8 @@ namespace Avogadro
     d->output = 0;
   }
 
-  POVPainterDevice::POVPainterDevice(const QString& filename, double aspectRatio,
+  POVPainterDevice::POVPainterDevice(const QString& filename,
+                                     double aspectRatio,
                                      const GLWidget* glwidget)
   {
     m_painter = 0;
@@ -446,10 +447,14 @@ namespace Avogadro
       huge = 10;
     }
 
-    Vector3d light0pos = huge * ( m_glwidget->camera()->modelview().linear().adjoint()
-                                  * Vector3d(LIGHT0_POSITION[0], LIGHT0_POSITION[1], LIGHT0_POSITION[2]) );
-    Vector3d light1pos = huge * ( m_glwidget->camera()->modelview().linear().adjoint()
-                                  * Vector3d(LIGHT1_POSITION[0], LIGHT1_POSITION[1], LIGHT1_POSITION[2]) );
+    Vector3d light0pos = huge * (m_glwidget->camera()->modelview().linear().adjoint()
+                                 * Vector3d(LIGHT0_POSITION[0],
+                                            LIGHT0_POSITION[1],
+                                            LIGHT0_POSITION[2]));
+    Vector3d light1pos = huge * (m_glwidget->camera()->modelview().linear().adjoint()
+                                 * Vector3d(LIGHT1_POSITION[0],
+                                            LIGHT1_POSITION[1],
+                                            LIGHT1_POSITION[2]));
 
     // Output the POV-Ray initialisation code
     *(m_output) << "global_settings {\n"
@@ -523,6 +528,4 @@ namespace Avogadro
     }
   }
 
-
 } // End namespace Avogadro
-
