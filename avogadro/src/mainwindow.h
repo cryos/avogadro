@@ -40,6 +40,10 @@ class QUndoCommand;
 class QStackedLayout;
 class QStandardItem;
 
+#ifdef QTTESTING
+class pqTestUtility;
+#endif
+
 namespace OpenBabel{
   class OBFormat;
   class OBMol;
@@ -196,10 +200,21 @@ namespace Avogadro {
        */
       void windowClosed();
 
+#ifdef QTTESTING
+    protected Q_SLOTS:
+      void record();
+      void play();
+      void popup();
+#endif
+
     private:
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
       static const int m_configFileVersion;
+
+#ifdef QTTESTING
+      pqTestUtility *TestUtility;
+#endif
 
 #ifdef ENABLE_UPDATE_CHECKER
       UpdateCheck *m_updateCheck;
