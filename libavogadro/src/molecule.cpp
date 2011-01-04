@@ -181,7 +181,6 @@ namespace Avogadro{
     // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
     emit atomAdded(atom);
-    calculateGroupIndices();
     return atom;
   }
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
@@ -214,7 +213,6 @@ void Molecule::removeAtom(Atom *atom)
 
       disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
       emit atomRemoved(atom);
-      calculateGroupIndices();
     }
   }
 
@@ -1692,8 +1690,6 @@ void Molecule::removeAtom(Atom *atom)
           d->farthestAtom = atom;
         }
       }
-
-      calculateGroupIndices();
     }
     d->invalidGeomInfo = false;
   }
