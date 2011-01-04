@@ -47,36 +47,21 @@
 using namespace std;
 using namespace Eigen;
 
-
 namespace Avogadro {
 
-/*class DummyAtom : public Atom
-{
-    public:
-    DummyAtom() {
-        setIndex(0);
-        setGroupIndex(1);
-	    setAtomicNumber(12);
-	    setPartialCharge(0.1);
-	    setFormalCharge(0);
-        setResidue(1);
-    }
-};
-
-DummyAtom *dummyAtom;
-Bond *dummyBond;*/
-
-  LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent) {
-        setupUi(this);
-	    }
+  LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent)
+  {
+    setupUi(this);
+  }
   
 
  
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
                     m_atomType(3), m_bondType(0), m_textRendering(0),
+                    m_lengthPrecision(3),
                     m_atomColor(255,255,255), m_bondColor(255,255,255),
-					m_settingsWidget(0), m_lengthPrecision(3),
-                    m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
+                    m_displacement(0,0,0),  m_bondDisplacement(0,0,0),
+                    m_settingsWidget(0)
   {
   }
 
@@ -155,10 +140,11 @@ Bond *dummyBond;*/
         gi = a->groupIndex();
         if (gi != 0) {
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
-        } else {
+        }
+        else {
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
         }
-		break;
+        break;
       case 4: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
@@ -187,9 +173,8 @@ Bond *dummyBond;*/
         int customIndex = m_atomType - 7 - 1;
         QList<QByteArray> propertyNames = a->dynamicPropertyNames();
         // If this is a strange offset, use the element symbol
-        if ( customIndex < 0 || customIndex >= propertyNames.size()) {
+        if ( customIndex < 0 || customIndex >= propertyNames.size())
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-        }
         else
           str = a->property(propertyNames[customIndex].data()).toString();
      }
@@ -239,7 +224,7 @@ Bond *dummyBond;*/
     renderRadius += 0.05;
 
     // Calculate the
-    Vector3d pos ( (v1 + v2 + d*(renderRadiusA1-renderRadiusA2)) / 2.0 );
+    Vector3d pos((v1 + v2 + d*(renderRadiusA1-renderRadiusA2)) / 2.0);
 
     double zDistance = pd->camera()->distance(pos);
 
@@ -262,13 +247,6 @@ Bond *dummyBond;*/
   void LabelEngine::setAtomType(int value)
   {
     m_atomType = value;
-    //QBrush brush(qRgb(0, 128, 0));
-    //QPainter p(m_settingsWidget->atomLabel);
-    //p.fillRect(m_settingsWidget->atomLabel->frameRect(), brush);
-    //dummyAtom = new DummyAtom;
-    //m_settingsWidget->atomLabel->setText(createAtomLabel(dummyAtom));
-    //delete dummyAtom;
-   //p.end();
     emit changed();
   }
 
@@ -280,7 +258,8 @@ Bond *dummyBond;*/
     if (value == 0) {
       m_settingsWidget->atomFont->setEnabled(false);
       m_settingsWidget->bondFont->setEnabled(false);
-    } else {
+    }
+    else {
       m_settingsWidget->atomFont->setEnabled(true);
       m_settingsWidget->bondFont->setEnabled(true);
     }
@@ -296,78 +275,76 @@ Bond *dummyBond;*/
       m_settingsWidget->lengthPrecision->setEnabled(true);
     else
       m_settingsWidget->lengthPrecision->setEnabled(false);
-    //this->atomLabelColor->
-    //dummyBond = new Bond;
-    //m_settingsWidget->bondLabel->setText(createBondLabel(0));
-    //delete dummyBond;
     emit changed();
   }
 
   void LabelEngine::setLengthPrecision(int value)
   {
     m_lengthPrecision = value;
-    if (!m_settingsWidget)
-      return;
-    emit changed();
+    if (m_settingsWidget)
+      emit changed();
   }
   
   void LabelEngine::updateDisplacement(double)
   {
-      m_displacement = Vector3d(m_settingsWidget->xDisplSpinBox->value(),
-                                m_settingsWidget->yDisplSpinBox->value(),
-                                m_settingsWidget->zDisplSpinBox->value());
-      emit changed();
+    m_displacement = Vector3d(m_settingsWidget->xDisplSpinBox->value(),
+                              m_settingsWidget->yDisplSpinBox->value(),
+                              m_settingsWidget->zDisplSpinBox->value());
+    emit changed();
   }
 
   void LabelEngine::updateBondDisplacement(double)
   {
-      m_bondDisplacement = Vector3d(m_settingsWidget->xBondDisplSpinBox->value(),
-                                m_settingsWidget->yBondDisplSpinBox->value(),
-                                m_settingsWidget->zBondDisplSpinBox->value());
-      emit changed();
+    m_bondDisplacement = Vector3d(m_settingsWidget->xBondDisplSpinBox->value(),
+                                  m_settingsWidget->yBondDisplSpinBox->value(),
+                                  m_settingsWidget->zBondDisplSpinBox->value());
+    emit changed();
   }
   
   QWidget *LabelEngine::settingsWidget()
   {
-    if(!m_settingsWidget)
-      {
-        m_settingsWidget = new LabelSettingsWidget();
-        m_settingsWidget->atomType->setCurrentIndex(m_atomType);
-        m_settingsWidget->bondType->setCurrentIndex(m_bondType);
-        setAtomType(m_atomType);
-        setBondType(m_bondType);
-        //m_settingsWidget->atomFont->setCurrentFont(m_atomFont);
-        //m_settingsWidget->bondFont->setCurrentFont(m_bondFont);
-        m_settingsWidget->atomColor->setColor(m_atomColor);
-        m_settingsWidget->atomColor->setDialogTitle(tr("Select Atom Labels Color"));
-        m_settingsWidget->bondColor->setColor(m_bondColor);
-        m_settingsWidget->bondColor->setDialogTitle(tr("Select Bond Labels Color"));
+    if(!m_settingsWidget) {
+      m_settingsWidget = new LabelSettingsWidget();
+      m_settingsWidget->atomType->setCurrentIndex(m_atomType);
+      m_settingsWidget->bondType->setCurrentIndex(m_bondType);
+      setAtomType(m_atomType);
+      setBondType(m_bondType);
+      m_settingsWidget->atomColor->setColor(m_atomColor);
+      m_settingsWidget->atomColor->setDialogTitle(tr("Select Atom Labels Color"));
+      m_settingsWidget->bondColor->setColor(m_bondColor);
+      m_settingsWidget->bondColor->setDialogTitle(tr("Select Bond Labels Color"));
         
-        connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
-        connect(m_settingsWidget->textRendering, SIGNAL(activated(int)), this, SLOT(setTextRendering(int)));
-        //connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
-        connect(m_settingsWidget->atomColor, SIGNAL(colorChanged(QColor)), this, SLOT(setAtomColor(QColor)));
-        connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
-        connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
-        connect(m_settingsWidget->lengthPrecision, SIGNAL(valueChanged(int)), this, SLOT(setLengthPrecision(int)));
-        //connect(m_settingsWidget->bondColor, SIGNAL(clicked()), this, SLOT(setBondColor()));
-        connect(m_settingsWidget->bondColor, SIGNAL(colorChanged(QColor)), this, SLOT(setBondColor(QColor)));
-        connect(m_settingsWidget->bondFont, SIGNAL(clicked()), this, SLOT(setBondFont()));
-        //connect(m_settingsWidget->bondFont, SIGNAL(currentFontChanged(QFont)), this, SLOT(setBondFont(QFont)));
-        connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-        connect(m_settingsWidget->xDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->atomType, SIGNAL(activated(int)),
+              this, SLOT(setAtomType(int)));
+      connect(m_settingsWidget->textRendering, SIGNAL(activated(int)),
+              this, SLOT(setTextRendering(int)));
+      connect(m_settingsWidget->atomColor, SIGNAL(colorChanged(QColor)),
+              this, SLOT(setAtomColor(QColor)));
+      connect(m_settingsWidget->atomFont, SIGNAL(clicked()),
+              this, SLOT(setAtomFont()));
+      connect(m_settingsWidget->bondType, SIGNAL(activated(int)),
+              this, SLOT(setBondType(int)));
+      connect(m_settingsWidget->lengthPrecision, SIGNAL(valueChanged(int)),
+              this, SLOT(setLengthPrecision(int)));
+      connect(m_settingsWidget->bondColor, SIGNAL(colorChanged(QColor)),
+              this, SLOT(setBondColor(QColor)));
+      connect(m_settingsWidget->bondFont, SIGNAL(clicked()),
+              this, SLOT(setBondFont()));
+      connect(m_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->xDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
-        connect(m_settingsWidget->yDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->yDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
-        connect(m_settingsWidget->zDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->zDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
-        connect(m_settingsWidget->xBondDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->xBondDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateBondDisplacement(double)));
-        connect(m_settingsWidget->yBondDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->yBondDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateBondDisplacement(double)));
-        connect(m_settingsWidget->zBondDisplSpinBox, SIGNAL(valueChanged(double)),
+      connect(m_settingsWidget->zBondDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateBondDisplacement(double)));
-      }
+    }
     return m_settingsWidget;
   }
 

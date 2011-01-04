@@ -61,12 +61,14 @@ namespace Avogadro {
     readSettings();
   }
 
-  DOSSpectra::~DOSSpectra() {
+  DOSSpectra::~DOSSpectra()
+  {
     writeSettings();
     // TODO: Anything to delete?
   }
 
-  void DOSSpectra::writeSettings() {
+  void DOSSpectra::writeSettings()
+  {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     settings.setValue("spectra/DOS/zeroFermi", ui.cb_fermi->isChecked());
     settings.setValue("spectra/DOS/showIntegrated", ui.cb_toggleIntegrated->isChecked());
@@ -78,7 +80,8 @@ namespace Avogadro {
     
   }
 
-  void DOSSpectra::readSettings() {
+  void DOSSpectra::readSettings()
+  {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     ui.cb_fermi->setChecked(settings.value("spectra/DOS/zeroFermi", true).toBool());
     ui.cb_toggleIntegrated->setChecked(settings.value("spectra/DOS/showIntegrated", true).toBool());
@@ -88,7 +91,8 @@ namespace Avogadro {
     ui.spin_valence->setValue(settings.value("spectra/DOS/valence", 1).toInt());
   }
 
-  bool DOSSpectra::checkForData(Molecule * mol) {
+  bool DOSSpectra::checkForData(Molecule * mol)
+  {
     OpenBabel::OBMol obmol = mol->OBMol();
     //OpenBabel::OBDOSData *dos = static_cast<OpenBabel::OBDOSData*>(obmol.GetData(OpenBabel::OBGenericDataType::DOSData));
     OpenBabel::OBDOSData *dos = static_cast<OpenBabel::OBDOSData*>(obmol.GetData("DOSData"));
@@ -129,7 +133,8 @@ namespace Avogadro {
     return true;
   }
 
-  void DOSSpectra::setupPlot(PlotWidget * plot) {
+  void DOSSpectra::setupPlot(PlotWidget * plot)
+  {
     plot->scaleLimits();
     switch (ui.combo_energy->currentIndex()) {
     case ENERGY_EV:
@@ -153,13 +158,14 @@ namespace Avogadro {
 
  // QWidget * DOSSpectra::getTabWidget() {return m_tab_widget;}
 
-  void DOSSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
+  void DOSSpectra::getCalculatedPlotObject(PlotObject *plotObject)
+  {
     plotObject->clearPoints();
 
     int energy_index = ui.combo_energy->currentIndex();
     int density_index = ui.combo_density->currentIndex();
     bool use_fermi = ui.cb_fermi->isChecked();
-    double density, energy;
+    double density(0.0), energy(0.0);
 
     // Update GUI if needed
     double valence = 1;
@@ -197,12 +203,13 @@ namespace Avogadro {
     m_yList_imp = new QList<double> (yList);
   }*/
 
-  void DOSSpectra::getImportedPlotObject(PlotObject *plotObject) {
+  void DOSSpectra::getImportedPlotObject(PlotObject *plotObject)
+  {
     plotObject->clearPoints();
     int energy_index = ui.combo_energy->currentIndex();
     int density_index = ui.combo_density->currentIndex();
     bool use_fermi = ui.cb_fermi->isChecked();
-    double density, energy;
+    double density(0.0), energy(0.0);
 
     // Scale to density max if requested
     double scale = 0; // leave at 0 if no scaling is to be done
@@ -251,11 +258,13 @@ namespace Avogadro {
     }
   }
 
-  QString DOSSpectra::getTSV() {
+  QString DOSSpectra::getTSV()
+  {
     return SpectraType::getTSV("Energy(eV)", "Density(e/UC)");
   }
 
-  void DOSSpectra::toggleIntegratedDOS(bool b) {
+  void DOSSpectra::toggleIntegratedDOS(bool b)
+  {
     if (!b) {
       m_dialog->getUi()->cb_import->setChecked(false);
       return;

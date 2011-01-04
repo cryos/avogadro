@@ -43,9 +43,9 @@ using namespace std;
 
 namespace Avogadro {
 
-  VibrationWidget::VibrationWidget( QWidget *parent, Qt::WindowFlags f ) : 
-    QWidget( parent, f ), m_filter(0), m_currentRow(0), m_widget(0),
-    m_molecule(0), m_vibrations(0), m_indexMap(0)
+  VibrationWidget::VibrationWidget(QWidget *parent, Qt::WindowFlags f)
+    : QWidget(parent, f), m_widget(0), m_molecule(0), m_vibrations(0),
+      m_indexMap(0), m_currentRow(0), m_filter(0)
   {    
     ui.setupUi(this);
 
@@ -123,7 +123,8 @@ namespace Avogadro {
         ui.vibrationTable->setColumnCount(2);
         if(parentWidget())
           parentWidget()->setMinimumWidth(274);
-      } else {
+      }
+      else {
         //resize(310, height());
         ui.vibrationTable->setColumnCount(3);
         ui.vibrationTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Activity"));
@@ -154,7 +155,8 @@ namespace Avogadro {
     int tmp_int;
     for (uint i = 0; i < frequencies.size(); i++) {
       for (uint j = i; j < frequencies.size(); j++) {
-        if (i == j) continue; // Save a bit of time...
+        if (i == j)
+          continue; // Save a bit of time...
         if (frequencies.at(j) < frequencies.at(i)) {
           tmp = frequencies.at(j);
           frequencies.at(j) = frequencies.at(i);
@@ -210,11 +212,10 @@ namespace Avogadro {
   void VibrationWidget::changeFilter(QString str)
   {      
     m_filter = str.toDouble();
-    for (int i=0; i<m_frequencies.size(); i++) {
-      if (i<m_intensities.size()) {
-        if (m_intensities.at(i) > m_filter) {
-          ui.vibrationTable->showRow(i);          
-      }
+    for (size_t i = 0; i < m_frequencies.size(); ++i) {
+      if (i < m_intensities.size()) {
+        if (m_intensities.at(i) > m_filter)
+          ui.vibrationTable->showRow(i);
         else
           ui.vibrationTable->hideRow(i);
       }
@@ -223,22 +224,24 @@ namespace Avogadro {
 
   void VibrationWidget::currentCellChanged(int row, int, int, int)
   {
-    if (row != -1 && !ui.animationButton->isEnabled()) {
+    if (row != -1 && !ui.animationButton->isEnabled())
       ui.animationButton->setEnabled(true);
-    }
     m_currentRow = row;
-    if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));
+    if (row == -1)
+      emit selectedMode(row);
+    else
+      emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationWidget::cellClicked(int row, int)
   {
-    if (row != -1 && !ui.animationButton->isEnabled()) {
+    if (row != -1 && !ui.animationButton->isEnabled())
       ui.animationButton->setEnabled(true);
-    }
     m_currentRow = row;
-    if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));
+    if (row == -1)
+      emit selectedMode(row);
+    else
+      emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationWidget::reject()

@@ -51,7 +51,7 @@ namespace Avogadro {
   AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
   m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0),
-  m_settingsWidget(0), m_lastEnergy(0.0), m_thread(0)
+  m_settingsWidget(0), m_thread(0), m_lastEnergy(0.0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
@@ -64,8 +64,7 @@ namespace Avogadro {
           "Left Mouse: Click and drag atoms to move them"));
     m_forceField = OBForceField::FindForceField( "UFF" );
     // Check that the force field exists and was initialised OK
-    if (!m_forceField)
-    {
+    if (!m_forceField) {
       // We can't do anything is the force field cannot be found - OB issue
       emit setupFailed();
       return;
@@ -97,7 +96,8 @@ namespace Avogadro {
     return 10;
   }
 
-  void AutoOptTool::translate(GLWidget *widget, const Eigen::Vector3d &what, const QPoint &from, const QPoint &to) const
+  void AutoOptTool::translate(GLWidget *widget, const Eigen::Vector3d &what,
+                              const QPoint &from, const QPoint &to) const
   {
     // Translate the selected atoms in the x and y sense of the view
     Vector3d fromPos = widget->camera()->unProject(from, what);
@@ -125,7 +125,8 @@ namespace Avogadro {
     }
   }
 
-  QUndoCommand* AutoOptTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
+  QUndoCommand* AutoOptTool::mousePressEvent(GLWidget *widget,
+                                             QMouseEvent *event)
   {
     m_glwidget = widget;
     m_lastDraggingPosition = event->pos();
@@ -139,21 +140,25 @@ namespace Avogadro {
          & Qt::ShiftModifier));
     // Hold down the Command key (ControlModifier in Qt notation) for right button
     m_rightButtonPressed = ((event->buttons() & Qt::RightButton) ||
-        (event->buttons() & Qt::LeftButton && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)));
+        (event->buttons() & Qt::LeftButton &&
+         (event->modifiers() == Qt::ControlModifier ||
+          event->modifiers() == Qt::MetaModifier)));
 
     m_clickedAtom = widget->computeClickedAtom(event->pos());
     if(m_clickedAtom != 0 && m_leftButtonPressed && m_running)
     {
       event->accept();
-      if (m_forceField->GetConstraints().IsIgnored(m_clickedAtom->index()+1) && !m_ignoredMovable->isChecked() )
+      if (m_forceField->GetConstraints().IsIgnored(m_clickedAtom->index()+1) &&
+          !m_ignoredMovable->isChecked()) {
         m_clickedAtom = 0;
-      else if (m_forceField->GetConstraints().IsFixed(m_clickedAtom->index()+1) && !m_fixedMovable->isChecked() )
+      }
+      else if (m_forceField->GetConstraints().IsFixed(m_clickedAtom->index()+1) &&
+               !m_fixedMovable->isChecked()) {
         m_clickedAtom = 0;
+      }
 
       if (m_clickedAtom)
-      {
         m_forceField->SetFixAtom(m_clickedAtom->index()+1);
-      }
     }
 
     widget->update();
@@ -175,12 +180,12 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AutoOptTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
+  QUndoCommand* AutoOptTool::mouseMoveEvent(GLWidget *widget,
+                                            QMouseEvent *event)
   {
     m_glwidget = widget;
-    if(!widget->molecule()) {
+    if(!widget->molecule())
       return 0;
-    }
 
     // Get the currently selected atoms from the view
     PrimitiveList currentSelection = widget->selectedPrimitives();
@@ -189,15 +194,14 @@ namespace Avogadro {
 
     // Manipulation can be performed in two ways - centred on an individual atom
 
-    if (m_clickedAtom && m_running)
-    {
-      if (m_leftButtonPressed)
-      {
+    if (m_clickedAtom && m_running) {
+      if (m_leftButtonPressed) {
         event->accept();
         // translate the molecule following mouse movement
         Vector3d begin = widget->camera()->project(*m_clickedAtom->pos());
         QPoint point = QPoint(begin.x(), begin.y());
-        translate(widget, *m_clickedAtom->pos(), point/*m_lastDraggingPosition*/, event->pos());
+        translate(widget, *m_clickedAtom->pos(),
+                  point/*m_lastDraggingPosition*/, event->pos());
       }
     }
 
@@ -219,8 +223,10 @@ namespace Avogadro {
     glColor3f(1.0,1.0,1.0);
     if (m_running) {
       if (m_setupFailed) {
-        widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
-      } else {
+        widget->painter()->drawText(labelPos,
+                                    tr("AutoOpt: Could not setup force field...."));
+      }
+      else {
         double energy = m_forceField->Energy(false);
         if (m_forceField->GetUnit().find("kcal") != string::npos)
           energy *= KCAL_TO_KJ;
@@ -237,21 +243,21 @@ namespace Avogadro {
 
     m_glwidget = widget;
     if(m_leftButtonPressed) {
-      if(m_running && m_clickedAtom)
-      {
+      if(m_running && m_clickedAtom) {
         // Don't highlight the atom on right mouse unless there is a selection
         double renderRadius = widget->radius(m_clickedAtom);
         renderRadius += 0.10;
-        glEnable( GL_BLEND );
+        glEnable(GL_BLEND);
         widget->painter()->setColor(1.0, 0.3, 0.3, 0.7);
         widget->painter()->drawSphere(m_clickedAtom->pos(), renderRadius);
-        glDisable( GL_BLEND );
+        glDisable(GL_BLEND);
       }
     }
     return true;
   }
 
-  QWidget* AutoOptTool::settingsWidget() {
+  QWidget* AutoOptTool::settingsWidget()
+  {
     if(!m_settingsWidget) {
       m_settingsWidget = new QWidget;
 
@@ -292,8 +298,10 @@ namespace Avogadro {
 
       m_buttonStartStop = new QPushButton(tr("Start"), m_settingsWidget);
 
-      m_fixedMovable = new QCheckBox(tr("Fixed atoms are movable"), m_settingsWidget);
-      m_ignoredMovable = new QCheckBox(tr("Ignored atoms are movable"), m_settingsWidget);
+      m_fixedMovable = new QCheckBox(tr("Fixed atoms are movable"),
+                                     m_settingsWidget);
+      m_ignoredMovable = new QCheckBox(tr("Ignored atoms are movable"),
+                                       m_settingsWidget);
 
       QVBoxLayout* layout = new QVBoxLayout();
       layout->addLayout(grid); // force field, steps and labels
@@ -307,11 +315,10 @@ namespace Avogadro {
       m_settingsWidget->setLayout(layout);
 
       // Connect the start/stop button
-      connect(m_buttonStartStop, SIGNAL(clicked()),
-          this, SLOT(toggle()));
+      connect(m_buttonStartStop, SIGNAL(clicked()), this, SLOT(toggle()));
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
-          this, SLOT(settingsWidgetDestroyed()));
+              this, SLOT(settingsWidgetDestroyed()));
 
       // Check the force field is there, if not disable the start button
       if (!m_forceField)
@@ -329,11 +336,10 @@ namespace Avogadro {
   void AutoOptTool::toggle()
   {
     // Toggle the timer on and off
-    if (m_running) {
+    if (m_running)
       disable();
-    } else {
+    else
       enable();
-    }
   }
 
   void AutoOptTool::enable()
@@ -342,8 +348,7 @@ namespace Avogadro {
     if (!m_forceField)
       return;
 
-    if(!m_running)
-    {
+    if(!m_running) {
       connect(m_glwidget->molecule(), SIGNAL(destroyed()), this, SLOT(abort()));
       m_thread->setup(m_glwidget->molecule(), m_forceField,
                       m_comboAlgorithm->currentIndex(),
@@ -354,13 +359,9 @@ namespace Avogadro {
       QUndoStack *stack = m_glwidget->undoStack();
       AutoOptCommand *cmd = new AutoOptCommand(m_glwidget->molecule(),this,0);
       if(stack && cmd)
-      {
         stack->push(cmd);
-      }
       else
-      {
         delete cmd;
-      }
     }
   }
 
@@ -373,10 +374,8 @@ namespace Avogadro {
 
   void AutoOptTool::disable()
   {
-    if(m_running)
-    {
-      if(m_timerId)
-      {
+    if(m_running) {
+      if(m_timerId) {
         killTimer(m_timerId);
         m_timerId = 0;
       }
@@ -402,11 +401,11 @@ namespace Avogadro {
     else
       m_block = true;
 
-    m_forceField = OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
+    m_forceField =
+        OBForceField::FindForceField(m_forceFieldList[m_comboFF->currentIndex()]);
 
     // Check that we can find our force field - if not return
-    if (!m_forceField)
-    {
+    if (!m_forceField) {
       emit setupFailed();
       return;
     }
@@ -419,8 +418,7 @@ namespace Avogadro {
   
   void AutoOptTool::finished(bool calculated)
   {
-    if (m_running && calculated)
-    {
+    if (m_running && calculated) {
       QList<Atom*> atoms = m_glwidget->molecule()->atoms();
 
       OBMol mol = m_glwidget->molecule()->OBMol();
@@ -445,11 +443,11 @@ namespace Avogadro {
         coordPtr += 3;
       }
 
-      if(m_clickedAtom && m_leftButtonPressed)
-      {
+      if(m_clickedAtom && m_leftButtonPressed) {
         Vector3d begin = m_glwidget->camera()->project(*m_clickedAtom->pos());
         QPoint point = QPoint(begin.x(), begin.y());
-        translate(m_glwidget, *m_clickedAtom->pos(), point, m_lastDraggingPosition);
+        translate(m_glwidget, *m_clickedAtom->pos(), point,
+                  m_lastDraggingPosition);
       }
     }
 
@@ -461,9 +459,7 @@ namespace Avogadro {
   void AutoOptTool::setupDone()
   {
     if(!m_timerId)
-    {
       m_timerId = startTimer(50);
-    }
   }
 
   void AutoOptTool::setupFailed()
@@ -482,10 +478,10 @@ namespace Avogadro {
     m_velocities = false;
   }
 
-  void AutoOptThread::setup(Molecule *molecule, OpenBabel::OBForceField* forceField,
-        int algorithm, int steps)
+  void AutoOptThread::setup(Molecule *molecule,
+                            OpenBabel::OBForceField* forceField,
+                            int algorithm, int steps)
   {
-    //cout << "start AutoOptThread::setup()" << endl;
     m_mutex.lock();
     m_molecule = molecule;
     m_forceField = forceField;
@@ -495,7 +491,6 @@ namespace Avogadro {
     m_velocities = false;
     m_mutex.unlock();
     emit setupDone();
-    //cout << "stop AutoOptThread::setup()" << endl;
   }
 
 
@@ -510,53 +505,52 @@ namespace Avogadro {
     if (!m_forceField)
       return;
 
-     m_mutex.lock();
+    m_mutex.lock();
 
-     m_forceField->SetLogFile(NULL);
-     m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
+    m_forceField->SetLogFile(NULL);
+    m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
-     OBMol mol = m_molecule->OBMol();
+    OBMol mol = m_molecule->OBMol();
 
-     // Ignore all atoms with atomic # less than 1
-     foreach(const Atom *atom, m_molecule->atoms())
-       {
-         if (atom->atomicNumber() < 1)
-           m_forceField->GetConstraints().AddIgnore(atom->index() + 1);
-       }
+    // Ignore all atoms with atomic # less than 1
+    foreach(const Atom *atom, m_molecule->atoms()) {
+      if (atom->atomicNumber() < 1)
+        m_forceField->GetConstraints().AddIgnore(atom->index() + 1);
+    }
 
-     if ( !m_forceField->Setup( mol ) ) {
-       m_stop = true;
-       emit setupFailed();
-       emit finished(false);
-       m_mutex.unlock();
-       return;
-     } else {
-       emit setupSucces();
-     }
+    if (!m_forceField->Setup(mol)) {
+      m_stop = true;
+      emit setupFailed();
+      emit finished(false);
+      m_mutex.unlock();
+      return;
+    }
+    else
+      emit setupSucces();
 
-     m_forceField->SetConformers( mol );
+    m_forceField->SetConformers(mol);
 
-     switch(m_algorithm) {
-       case 0:
-         m_forceField->SteepestDescent(m_steps);
-         break;
-       case 1:
-         m_forceField->ConjugateGradients(m_steps);
-         break;
-       case 2:
-         m_forceField->MolecularDynamicsTakeNSteps(m_steps, 300, 0.001);
-         break;
-       case 3:
-         m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
-         break;
-       case 4:
-         m_forceField->MolecularDynamicsTakeNSteps(m_steps, 900, 0.001);
-         break;
-     }
+    switch(m_algorithm) {
+      case 0:
+        m_forceField->SteepestDescent(m_steps);
+        break;
+      case 1:
+        m_forceField->ConjugateGradients(m_steps);
+        break;
+      case 2:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 300, 0.001);
+        break;
+      case 3:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 600, 0.001);
+        break;
+      case 4:
+        m_forceField->MolecularDynamicsTakeNSteps(m_steps, 900, 0.001);
+        break;
+    }
 
-     m_mutex.unlock();
+    m_mutex.unlock();
 
-     emit finished(m_stop ? false : true);
+    emit finished(m_stop ? false : true);
   }
 
   void AutoOptThread::stop()
@@ -565,7 +559,8 @@ namespace Avogadro {
   }
 
   AutoOptCommand::AutoOptCommand(Molecule *molecule, AutoOptTool *tool,
-      QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
+                                 QUndoCommand *parent)
+    : QUndoCommand(parent), m_molecule(0)
   {
     // Store the original molecule before any modifications are made
     setText(QObject::tr("AutoOpt Molecule"));
@@ -582,9 +577,7 @@ namespace Avogadro {
   void AutoOptCommand::undo()
   {
     if(m_tool)
-    {
       m_tool->disable();
-    }
     *m_molecule = m_moleculeCopy;
   }
 
@@ -612,7 +605,7 @@ namespace Avogadro {
   void AutoOptTool::readSettings(QSettings &settings)
   {
     Tool::readSettings(settings);
-    if(m_comboFF) {
+    if (m_comboFF) {
       int currentFF = settings.value("forceField", -1).toInt();
       if (currentFF == -1) {
         // haven't set a default
@@ -623,17 +616,17 @@ namespace Avogadro {
       }
       m_comboFF->setCurrentIndex(currentFF);
     }
-    if(m_comboAlgorithm) {
+    if (m_comboAlgorithm)
       m_comboAlgorithm->setCurrentIndex(settings.value("algorithm", 0).toInt());
-    }
-    if(m_stepsSpinBox) {
+    if (m_stepsSpinBox)
       m_stepsSpinBox->setValue(settings.value("steps", 4).toInt());
-    }
-    if(m_fixedMovable) {
-      m_fixedMovable->setCheckState((Qt::CheckState)settings.value("fixedMovable", 2).toInt());
+    if (m_fixedMovable) {
+      m_fixedMovable->setCheckState(
+            static_cast<Qt::CheckState>(settings.value("fixedMovable", 2).toInt()));
     }
     if(m_ignoredMovable) {
-      m_ignoredMovable->setCheckState((Qt::CheckState)settings.value("ignoredMovable", 2).toInt());
+      m_ignoredMovable->setCheckState(
+            static_cast<Qt::CheckState>(settings.value("ignoredMovable", 2).toInt()));
     }
   }
 

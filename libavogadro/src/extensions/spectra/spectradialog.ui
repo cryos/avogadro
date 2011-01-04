@@ -742,7 +742,6 @@ Scroll wheel: Zoom to cursor</string>
  </customwidgets>
  <tabstops>
   <tabstop>combo_spectra</tabstop>
-  <tabstop>push_customize</tabstop>
   <tabstop>list_schemes</tabstop>
   <tabstop>push_newScheme</tabstop>
   <tabstop>push_removeScheme</tabstop>

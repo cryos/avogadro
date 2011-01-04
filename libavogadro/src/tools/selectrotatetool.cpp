@@ -87,9 +87,9 @@ namespace Avogadro {
 
   SelectRotateTool::~SelectRotateTool()
   {
-    if(m_settingsWidget) {
+    if(m_settingsWidget)
       m_settingsWidget->deleteLater();
-    }
+
     m_atomMenu->deleteLater();
     m_bondMenu->deleteLater();
   }
@@ -139,13 +139,11 @@ namespace Avogadro {
     widget->setCursor(Qt::ArrowCursor);
 
     Molecule *molecule = widget->molecule();
-    if(!molecule) {
+    if(!molecule)
       return 0;
-    }
 
-    if(!m_hits.size()) {
+    if(!m_hits.size())
       m_selectionBox = false;
-    }
 
     QList<Primitive *> hitList;
     if (m_leftButtonPressed && !m_movedSinceButtonPressed && m_hits.size()) {
@@ -201,7 +199,8 @@ namespace Avogadro {
                   widget->setSelected(neighborList, select);
                 }
               } // end for(residues)
-            } else if (hit->type() == Primitive::BondType) {
+            }
+            else if (hit->type() == Primitive::BondType) {
               Bond *bond = static_cast<Bond *>(hit);
               // If the bond is unselected, select the whole residue
               bool select = !widget->isSelected(bond);
@@ -213,11 +212,9 @@ namespace Avogadro {
                 QList<unsigned long> bonds = residue->bonds();
                 if (bonds.contains(bond->id())) {
                   QList<Primitive *> neighborList;
-
                   // add the atoms
                   foreach (unsigned long id, residue->atoms())
                     neighborList.append(molecule->atomById(id));
-
                   // add the bonds
                   foreach (unsigned long id, bonds)
                     neighborList.append(molecule->bondById(id));
@@ -255,7 +252,8 @@ namespace Avogadro {
               } while ((iter++).next()); // this returns false when we've gone looped through the fragment
 
               widget->setSelected(neighborList, select);
-            } else if (hit->type() == Primitive::BondType) {
+            }
+            else if (hit->type() == Primitive::BondType) {
               Bond *bond = static_cast<Bond *>(hit);
               // if this atom is unselected, select the whole fragment
               bool select = !widget->isSelected(bond);
@@ -273,10 +271,8 @@ namespace Avogadro {
 
                 // we want to find all bonds on this site
                 // (obviously all bonds will be in this fragment)
-
                 FOR_BONDS_OF_ATOM(b, *iter)
                   neighborList.append(molecule->bond(b->GetIdx()));
-
               } while ((iter++).next()); // this returns false when we've gone looped through the fragment
 
               widget->setSelected(neighborList, select);
@@ -300,7 +296,8 @@ namespace Avogadro {
           break;
       }
 
-    } else if(m_leftButtonPressed && m_movedSinceButtonPressed && !m_hits.size()) {
+    }
+    else if(m_leftButtonPressed && m_movedSinceButtonPressed && !m_hits.size()) {
       // Selection box picking - need to figure out which atoms were in the box
       int sx = qMin(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
       int ex = qMax(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
@@ -314,22 +311,18 @@ namespace Avogadro {
       // (ex, ey) = Bottom right most position.
       QList<GLHit> hits = widget->hits(sx, sy, w, h);
       // Iterate over the hits
-      foreach(const GLHit& hit, hits)
-      {
+      foreach(const GLHit& hit, hits) {
         if(hit.type() == Primitive::AtomType) // Atom selection
         {
           Atom *atom = molecule->atom(hit.name());
           if(!hitList.contains(atom))
-          {
             hitList.append(atom);
-          }
         }
         if(hit.type() == Primitive::BondType) // Bond selection
         {
           Bond *bond = molecule->bond(hit.name());
-          if(!hitList.contains(bond)) {
+          if(!hitList.contains(bond))
             hitList.append(bond);
-          }
         }
       }
       // If the modifier key is not pressed clear the previous selection
@@ -337,7 +330,8 @@ namespace Avogadro {
         widget->clearSelected();
       // Set the selection
       widget->setSelected(hitList, true);
-    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
+    }
+    else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
       if (m_hits.size() == 1 && m_hits.at(0).type() == Primitive::BondType) {
         // Bond selection
         Bond *bond = molecule->bond(m_hits.at(0).name());
@@ -347,7 +341,8 @@ namespace Avogadro {
         m_currentPrimitive = bond;
         m_bondMenu->exec(event->globalPos());
         widget->clearSelected();
-      } else if (m_hits.size()) {
+      }
+      else if (m_hits.size()) {
         foreach(const GLHit& hit, m_hits) {
           if(hit.type() == Primitive::AtomType) {// Atom selection
             Atom *atom = molecule->atom(hit.name());
@@ -359,7 +354,8 @@ namespace Avogadro {
             break;
           }
         }
-      } else {
+      }
+      else {
         widget->clearSelected();
       }
       event->accept();
@@ -411,8 +407,10 @@ namespace Avogadro {
     GLdouble startPos[3];
     GLdouble endPos[3];
 
-    gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview, projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
-    gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview, projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
+    gluUnProject(float(sx), viewport[3] - float(sy), 0.1, modelview,
+                 projection, viewport, &startPos[0], &startPos[1], &startPos[2]);
+    gluUnProject(float(ex), viewport[3] - float(ey), 0.1, modelview,
+                 projection, viewport, &endPos[0], &endPos[1], &endPos[2]);
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
@@ -457,7 +455,8 @@ namespace Avogadro {
     setSelectionMode(index + 1);
   }
 
-  QWidget *SelectRotateTool::settingsWidget() {
+  QWidget *SelectRotateTool::settingsWidget()
+  {
     if(!m_settingsWidget) {
       m_settingsWidget = new QWidget;
 
@@ -480,56 +479,57 @@ namespace Avogadro {
       m_settingsWidget->setLayout(m_layout);
 
       connect(m_comboSelectionMode, SIGNAL(currentIndexChanged(int)),
-          this, SLOT(selectionModeChanged(int)));
+              this, SLOT(selectionModeChanged(int)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
-          this, SLOT(settingsWidgetDestroyed()));
+              this, SLOT(settingsWidgetDestroyed()));
     }
 
     return m_settingsWidget;
   }
 
-  void SelectRotateTool::settingsWidgetDestroyed() {
+  void SelectRotateTool::settingsWidgetDestroyed()
+  {
     m_settingsWidget = 0;
   }
 
   bool SelectRotateTool::paint(GLWidget *)
   {
-    if(m_selectionBox)
-    {
+    if(m_selectionBox) {
       selectionBox(m_initialDraggingPosition.x(), m_initialDraggingPosition.y(),
-          m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
+                   m_lastDraggingPosition.x(), m_lastDraggingPosition.y());
     }
-
     return true;
   }
 
   void SelectRotateTool::changeAtomColor()
   {
-     QColor color;
-     QColor oldColor;
-     if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;
-       oldColor.setNamedColor(a->customColorName());
-       if(!oldColor.isValid()) {
-         Color *map = GLWidget::current()->colorMap(); // fall back to global color map
-         map->setFromPrimitive(a);
-         oldColor.setRgb(map->color().rgb());
-       }
-       color = QColorDialog::getColor(oldColor, 0, tr("Change color of the atom"));
-       if (color.isValid() && color != oldColor)
-         a->setCustomColorName(color.name());
-     }
+    QColor color;
+    QColor oldColor;
+    if(m_currentPrimitive->type() == Primitive::AtomType) {
+      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      if (!a)
+        return;
+      oldColor.setNamedColor(a->customColorName());
+      if(!oldColor.isValid()) {
+        Color *map = GLWidget::current()->colorMap(); // fall back to global color map
+        map->setFromPrimitive(a);
+        oldColor.setRgb(map->color().rgb());
+      }
+      color = QColorDialog::getColor(oldColor, 0, tr("Change color of the atom"));
+      if (color.isValid() && color != oldColor)
+        a->setCustomColorName(color.name());
+    }
   }
 
   void SelectRotateTool::resetAtomColor()
   {
-     if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;
-       a->setCustomColorName("");
-     }
+    if(m_currentPrimitive->type() == Primitive::AtomType) {
+      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      if (!a)
+        return;
+      a->setCustomColorName("");
+    }
   }
 
   void SelectRotateTool::changeAtomLabel()
@@ -538,14 +538,17 @@ namespace Avogadro {
      QString label;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;     
+       if (!a)
+         return;
        label = QInputDialog::getText(0, tr("Change label of the atom"),
          tr("New Label:"), QLineEdit::Normal,a->customLabel(), &ok);
        if (ok && !label.isEmpty())
          a->setCustomLabel(label);
-     } else if(m_currentPrimitive->type() == Primitive::BondType) {
+     }
+     else if(m_currentPrimitive->type() == Primitive::BondType) {
        Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
-       if(!b) return;
+       if(!b)
+         return;
        label = QInputDialog::getText(0, tr("Change label of the bond"),
          tr("New Label:"), QLineEdit::Normal,b->customLabel(), &ok);
        if (ok && !label.isEmpty())
@@ -557,11 +560,14 @@ namespace Avogadro {
   {
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;
+       if (!a)
+         return;
        a->setCustomLabel("");
-     } else if(m_currentPrimitive->type() == Primitive::BondType) {
+     }
+     else if(m_currentPrimitive->type() == Primitive::BondType) {
        Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
-       if(!b) return;
+       if(!b)
+         return;
        b->setCustomLabel("");
      }
   }
@@ -570,10 +576,11 @@ namespace Avogadro {
   {
      bool ok;
      QString radius_str;
-     double radius, oldRadius;
+     double radius;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;
+       if (!a)
+         return;
        radius_str = QInputDialog::getText(0, tr("Change radius of the atom"),
          tr("New Radius, %1:", "in Angstrom").arg("(\xC5)"),
          QLineEdit::Normal,QString::number(a->customRadius()), &ok);
@@ -587,11 +594,12 @@ namespace Avogadro {
 
   void SelectRotateTool::resetAtomRadius()
   {
-     if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;
-       a->setCustomRadius(0);
-     }
+    if(m_currentPrimitive->type() == Primitive::AtomType) {
+      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      if (!a)
+        return;
+      a->setCustomRadius(0);
+    }
   }
 
 }

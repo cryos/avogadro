@@ -39,8 +39,6 @@ namespace Avogadro {
 
   ConformerSearchDialog::ConformerSearchDialog( QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f )
   {
-    //  qDebug() << "ConformerSearchDialog::ConformerSearchDialog()" << endl;
-
     ui.setupUi(this);
 
     connect(ui.systematicRadio, SIGNAL( toggled(bool) ), this, SLOT( systematicToggled(bool) ));
@@ -87,7 +85,7 @@ namespace Avogadro {
       OpenBabel::OBRotorKeys rotorKeys;
       OpenBabel::OBRotorIterator ri;
       OpenBabel::OBRotor *rotor = rl.BeginRotor(ri);
-      for (int i = 1; i < rl.Size() + 1; ++i, rotor = rl.NextRotor(ri)) // foreach rotor
+      for (size_t i = 1; i < rl.Size() + 1; ++i, rotor = rl.NextRotor(ri)) // foreach rotor
         rotorKeys.AddRotor(rotor->GetResolution().size());
     
       ui.numSpin->setEnabled(false);
