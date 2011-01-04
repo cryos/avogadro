@@ -54,7 +54,6 @@ namespace Avogadro {
       //! Deconstructor
       ~LabelEngine() {}
 
-
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
@@ -71,8 +70,8 @@ namespace Avogadro {
 
       bool hasSettings() { return true; }
 
-	  QString createAtomLabel(const Atom *a);
-	  QString createBondLabel(const Bond *b);
+      QString createAtomLabel(const Atom *a);
+      QString createBondLabel(const Bond *b);
 
       /**
        * Write the engine settings so that they can be saved between sessions.
@@ -84,18 +83,17 @@ namespace Avogadro {
        */
       void readSettings(QSettings &settings);
 
-
     private:
       int m_atomType;  // Atom label type
       int m_bondType;  // Bond label type
       int m_textRendering;
       int m_lengthPrecision;
-	  QFont m_atomFont;
-	  QFont m_bondFont;
-	  QColor m_atomColor;
-	  QColor m_bondColor;
-	  Eigen::Vector3d m_displacement;
-	  Eigen::Vector3d m_bondDisplacement;
+      QFont m_atomFont;
+      QFont m_bondFont;
+      QColor m_atomColor;
+      QColor m_bondColor;
+      Eigen::Vector3d m_displacement;
+      Eigen::Vector3d m_bondDisplacement;
       LabelSettingsWidget* m_settingsWidget;
 
     private Q_SLOTS:
@@ -103,14 +101,13 @@ namespace Avogadro {
       void setTextRendering(int value);
       void setBondType(int value);
       void setLengthPrecision(int value);
-	  void setAtomColor(QColor);
-	  void setBondColor(QColor);
-	  void setAtomFont();
-	  void setBondFont();
-	  void updateDisplacement(double = 0.0);
-	  void updateBondDisplacement(double = 0.0);
+      void setAtomColor(QColor);
+      void setBondColor(QColor);
+      void setAtomFont();
+      void setBondFont();
+      void updateDisplacement(double = 0.0);
+      void updateBondDisplacement(double = 0.0);
       void settingsWidgetDestroyed();
-
   };
 
   class LabelSettingsWidget : public QWidget, public Ui::LabelSettingsWidget
