@@ -789,12 +789,12 @@ void Molecule::removeAtom(Atom *atom)
     }
 #endif*/
     QVector<unsigned int> group_number;   // numbers of atoms in each group
-    QVector<unsigned int> group_ele;    // elements of each group
+    QVector<int> group_ele;    // elements of each group
     QVector<unsigned int> atomGroupNumber;
     atomGroupNumber.resize(numAtoms());
 
     for (unsigned int i = 0;
-         i < numAtoms() && i < atomGroupNumber.size();
+         i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
          ++i) {
       bool match = false;
       for (int j=0; j < group_number.size(); ++j) {
@@ -812,7 +812,7 @@ void Molecule::removeAtom(Atom *atom)
     }
 
     for (unsigned int i = 0;
-         i < numAtoms() && i < atomGroupNumber.size();
+         i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
          ++i) {
       bool match = false;
       for (int j=0; j<group_number.size(); ++j) {
