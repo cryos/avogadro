@@ -69,8 +69,8 @@ namespace Avogadro {
                                                             m_animation(0),
                                                             m_scale(1.0),
                                                             m_framesPerStep(8),
-                                                            m_displayVectors(true),
                                                             m_normalize(true),
+                                                            m_displayVectors(true),
                                                             m_animationSpeed(false),
                                                             m_animating(false),
                                                             m_paused(false),
@@ -192,14 +192,16 @@ namespace Avogadro {
     if (m_vibrations == NULL)
       return; // e.g., when destroying the molecule;
 
-    if (m_vibrations->GetLx().size() != 0 && mode < m_vibrations->GetLx().size()) {
-
+    if (m_vibrations->GetLx().size() != 0 &&
+        mode < static_cast<int>(m_vibrations->GetLx().size())) {
       m_mode = mode;
       updateForcesAndFrames();
-
-    } else {
-      if (m_widget)
-        QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("No vibrational displacements exist."));
+    }
+    else {
+      if (m_widget) {
+        QMessageBox::warning(m_widget, tr("Vibrational Analysis"),
+                             tr("No vibrational displacements exist."));
+      }
     }
   }
 
@@ -278,7 +280,7 @@ namespace Avogadro {
     if (m_animationSpeed) {
       // vibrations per femtosecond
       // wavenumber * 3.0e10 cm/s * 1e-15 s/fs = 3e-5 fs-1
-      if (m_mode < m_vibrations->GetFrequencies().size()) {
+      if (m_mode < static_cast<int>(m_vibrations->GetFrequencies().size())) {
         double vibPerFs = m_vibrations->GetFrequencies()[m_mode] * 3.0e-5;
         // 10fs = 4000 cm-1 gets 1 second apparent vibration
         // fs-1 above * 10fs / 1 s => per second * frames = fps
@@ -346,7 +348,8 @@ namespace Avogadro {
       if (m_widget->quickRender() && (q > 0))
         m_widget->setQuality(q-1);
       m_animation->start();
-    } else {
+    }
+    else {
       m_animation->stop();
       if (m_widget->quickRender())
         m_widget->setQuality(settings.value("quality", 2).toInt());
@@ -410,4 +413,3 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(vibrationextension, Avogadro::VibrationExtensionFactory)
-
