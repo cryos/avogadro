@@ -574,6 +574,8 @@ protected:
     m_updateCheck = UpdateCheck::getInstance(this);
 #endif
 
+    m_ignoreConfig = false;
+
 #ifdef QTTESTING
     QAction *actionRecord = new QAction(this);
     actionRecord->setText(tr("Record Test..."));
@@ -1624,6 +1626,11 @@ protected:
 
     QApplication::restoreOverrideCursor();
     return false;
+  }
+
+  void MainWindow::setIgnoreConfig(bool noConfig)
+  {
+    m_ignoreConfig = noConfig;
   }
 
   void MainWindow::undoStackClean( bool clean )
@@ -2992,6 +2999,9 @@ protected:
     if (settings.value("ConfigVersion", 0) != m_configFileVersion) {
       settings.clear();
     }
+
+    if (m_ignoreConfig)
+      settings.clear();
 
     // Only remember a window if it is the first one - others will be offset
     if (getMainWindowCount() == 1) {

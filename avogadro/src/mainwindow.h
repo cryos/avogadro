@@ -91,6 +91,16 @@ namespace Avogadro {
       bool saveFile(const QString &fileName,
             OpenBabel::OBFormat *format = NULL);
 
+      /**
+       * @param noConfig Ignore any configuration options on open.
+       */
+      void setIgnoreConfig(bool noConfig);
+
+      /**
+       * @return true if the config file will be ignored, false otherwise.
+       */
+      bool ignoreConfig() const;
+
     protected:
       void closeEvent(QCloseEvent *event);
       bool event(QEvent *event);
@@ -211,6 +221,8 @@ namespace Avogadro {
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
       static const int m_configFileVersion;
+
+      bool m_ignoreConfig;
 
 #ifdef QTTESTING
       pqTestUtility *TestUtility;

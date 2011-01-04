@@ -228,17 +228,23 @@ int main(int argc, char *argv[])
   if (defFormat.sampleBuffers())
     std::cout << "\t" << "Antialiasing." << std::endl;
 
-  // Now load any files supplied on the command-line or via launching a file
+  // Now load any files supplied on the command-line or via launching a file.
+  // Additionally, process and remove any command line arguments.
   MainWindow *window = new MainWindow();
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();
     for (++i; i != arguments.constEnd(); ++i) {
-      window->openFile(*i);
-      // this costs us a few more function calls
-      // but makes our loading look nicer
-      window->show();
-      app.processEvents();
+      if (i->startsWith("--erase-config")) {
+        window->setIgnoreConfig(true);
+      }
+      else {
+        window->openFile(*i);
+        // this costs us a few more function calls
+        // but makes our loading look nicer
+        window->show();
+        app.processEvents();
+      }
     }
   }
   window->show();
