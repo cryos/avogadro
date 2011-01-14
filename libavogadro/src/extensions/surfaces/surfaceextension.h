@@ -1,7 +1,7 @@
 /**********************************************************************
   SurfaceExtension - Extension for generating cubes and meshes
 
-  Copyright (C) 2009 Marcus D. Hanwell
+  Copyright (C) 2009-2011 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -34,11 +34,15 @@
 
 class QProgressDialog;
 
+namespace OpenQube
+{
+  class BasisSet;
+  class Cube;
+}
+
 namespace Avogadro
 {
   class Cube;
-  class GaussianSet;
-  class SlaterSet;
   class Mesh;
   class MeshGenerator;
   class VdWSurface;
@@ -70,8 +74,7 @@ namespace Avogadro
     SurfaceDialog *m_surfaceDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
-    GaussianSet *m_gaussian;
-    SlaterSet *m_slater;
+    OpenQube::BasisSet *m_basis;   // The basis set
     QString m_loadedFileName;
     QProgressDialog *m_progress;
 
@@ -82,6 +85,7 @@ namespace Avogadro
     VdWSurface *m_VdWsurface;
 
     Cube *m_cube;
+    OpenQube::Cube *m_qube;
     Cube *m_cubeColor;
 
     //! Load the appropriate basis set (if possible)
@@ -93,28 +97,29 @@ namespace Avogadro
 
     //! Convenience function - creates a new cube with the correct dimensions.
     Cube * newCube();
+    OpenQube::Cube * newQube();
 
     //! Calculate the VdW cube
     void calculateVdW(Cube *cube);
 
     //! Calculate an MO cube
-    void calculateMo(Cube *cube, int mo);
+    void calculateMo(OpenQube::Cube *cube, int mo);
 
     //! Calculate electron density cube
-    void calculateElectronDensity(Cube *cube);
+    void calculateElectronDensity(OpenQube::Cube *cube);
 
     //! Calculate a mesh isosurface for the given cube
     void calculateMesh(Cube *cube, double isoValue);
 
     /**
-     * Figure out which kind of calculation is required.
+     * Figure out which kind of calculation is required. The relevant m_qube
+     * or m_cube will be set to the cube being calculated.
      * @param type the type of cube to be calculated.
      * @param mo the MO number, default of -1 is invalid/ignored.
      * @param calculateCube true if the cube needs to be calculated.
-     * @return the relevant Cube as requested in the form.
      */
-    Cube * startCubeCalculation(Cube::Type type, int mo,
-                                bool &calculateCube);
+    void startCubeCalculation(Cube::Type type, int mo,
+                              bool &calculateCube);
 
   private slots:
     /**
