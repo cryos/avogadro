@@ -1,21 +1,29 @@
-.Dd March 15, 2010
+.Dd January 11, 2011
 .Os "Avogadro" 1.1
+.Dt avogadro 1 URM
 .Sh NAME
 .Nm avogadro
 .Nd "Advanced molecular editor"
 .Sh SYNOPSIS
 .Nm
-.Ar filename
+.Op Fl Fl erase-config
+.Ar file1
+.Op file2 ...
 .Sh DESCRIPTION
 Avogadro is an advanced molecular editor designed for cross-platform use 
 in computational chemistry, molecular modeling, bioinformatics, materials 
 science, and related areas. It offers flexible rendering and a powerful 
 plugin architecture.
+.Sh OPTIONS
+.Bl -tag -width flag
+.It Fl Fl erase-config
+Overwrite settings with default values for the current user
+.El
 .Sh EXAMPLES
 .Bl -tag -width flag
-.It Nm Ar filename
+.It Nm Ar file1 file2
+Open chemical files \fIfile1\fR and \fIfile2\fR
 .El
-Open chemical file filename
 .Sh SEE ALSO
 .Xr avopkg 1 .
 .br
@@ -31,3 +39,4 @@ Avogadro is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
+
