@@ -29,6 +29,14 @@ endif()
 
 include(${QT_USE_FILE})
 
+option(QtTesting "Enable Qt Testing framework?" OFF)
+if(QtTesting)
+  find_package(QtTesting REQUIRED)
+  include_directories(${QtTesting_INCLUDE_DIRS})
+  link_directories(${QtTesting_LIBRARY_DIR})
+  add_definitions(-DQTTESTING)
+endif()
+
 FILE(GLOB avogadro_SRCS "*.cpp")
 
 # Should we build the update checking code? Currently causes segfaults with Qt
@@ -96,6 +104,9 @@ target_link_libraries(avogadro-app
   ${QT_LIBRARIES}
   ${OPENBABEL2_LIBRARIES}
   avogadro)
+if(QtTesting)
+  target_link_libraries(avogadro-app QtTesting)
+endif()
 if(Q_WS_X11)
   target_link_libraries(avogadro-app ${X11_X11_LIB})
 endif()
