@@ -38,32 +38,40 @@
 
 using Eigen::Vector3d;
 
- namespace Avogadro {
+namespace Avogadro {
 
-   class AtomPrivate {
-   public:
-     AtomPrivate(): assignedFormalCharge(false) {}
-     bool assignedFormalCharge;
-   };
+  class AtomPrivate {
+  public:
+    AtomPrivate(): assignedFormalCharge(false), groupIndex(0), residue(FALSE_ID),
+      partialCharge(0.0), formalCharge(0), forceVector(0.0, 0.0, 0.0),
+      customRadius(0.0)
+    {}
 
-   Atom::Atom(QObject *parent) : Primitive(AtomType, parent),
-                                 d_ptr(new AtomPrivate),
-                                 m_atomicNumber(0),
-                                 m_residue(FALSE_ID), m_partialCharge(0.0),
-                                 m_formalCharge(0),
-                                 m_forceVector(0.0, 0.0, 0.0),
-                                 m_customLabel(""), m_customColorName(""),
-                                 m_customRadius(0)
-   {
-     if (!parent) {
-       qDebug() << "I am an orphaned atom! I feel so invalid...";
-     }
-     m_molecule = static_cast<Molecule*>(parent);
-   }
+    bool assignedFormalCharge;
+    unsigned int groupIndex;
+    unsigned long residue;
+    mutable double partialCharge;
+    int formalCharge;
+    Eigen::Vector3d forceVector;
+    QString customLabel;
+    QString customColorName;
+    double customRadius;
+  };
 
-   Atom::~Atom()
-   {
-   }
+  Atom::Atom(QObject *parent) : Primitive(AtomType, parent),
+                                d_ptr(new AtomPrivate),
+                                m_atomicNumber(0)
+  {
+    if (!parent) {
+      qDebug() << "I am an orphaned atom! I feel so invalid...";
+    }
+    m_molecule = static_cast<Molecule*>(parent);
+  }
+
+  Atom::~Atom()
+  {
+    delete d_ptr;
+  }
 
    const Eigen::Vector3d * Atom::pos() const
    {
@@ -132,25 +140,32 @@ using Eigen::Vector3d;
    double Atom::partialCharge() const
    {
      if (m_molecule && m_atomicNumber) {
+       Q_D(const Atom);
        m_molecule->calculatePartialCharges();
-       return m_partialCharge;
+       return d->partialCharge;
      }
      else
        return 0.0;
+   }
+
+   void Atom::setPartialCharge(double charge) const
+   {
+     Q_D(const Atom);
+     d->partialCharge = charge;
    }
 
    void Atom::setFormalCharge(int charge)
    {
      Q_D(Atom);
      d->assignedFormalCharge = true;
-     m_formalCharge = charge;
+     d->formalCharge = charge;
    }
 
    int Atom::formalCharge() const
    {
      Q_D(const Atom);
      if (d->assignedFormalCharge)
-       return m_formalCharge;
+       return d->formalCharge;
 
      // gotta guess it from bonding
      int valenceE = 0;
@@ -221,61 +236,121 @@ using Eigen::Vector3d;
 
    void Atom::setResidue(unsigned long id)
    {
-     m_residue = id;
+     Q_D(Atom);
+     d->residue = id;
    }
 
    void Atom::setResidue(const Residue *residue)
    {
-     m_residue = residue->id();
+     Q_D(Atom);
+     d->residue = residue->id();
+   }
+
+   unsigned int Atom::groupIndex() const
+   {
+     Q_D(const Atom);
+     return d->groupIndex;
    }
 
    void Atom::setGroupIndex(unsigned int index)
    {
-	 m_groupIndex = index;
+     Q_D(Atom);
+     d->groupIndex = index;
+   }
+
+   void Atom::setForceVector(const Eigen::Vector3d &force)
+   {
+     Q_D(Atom);
+     d->forceVector = force;
+   }
+
+   void Atom::setCustomLabel(const QString &label)
+   {
+     Q_D(Atom);
+     d->customLabel = label;
+   }
+
+   void Atom::setCustomColorName(const QString &name)
+   {
+     Q_D(Atom);
+     d->customColorName = name;
+   }
+
+   void Atom::setCustomRadius(const double radius)
+   {
+     Q_D(Atom);
+     d->customRadius = radius;
+   }
+
+   QString Atom::customLabel() const
+   {
+     Q_D(const Atom);
+     return d->customLabel;
+   }
+
+   QString Atom::customColorName() const
+   {
+     Q_D(const Atom);
+     return d->customColorName;
+   }
+
+   double Atom::customRadius() const
+   {
+     Q_D(const Atom);
+     return d->customRadius;
+   }
+
+   const Eigen::Vector3d Atom::forceVector() const
+   {
+     Q_D(const Atom);
+     return d->forceVector;
    }
 
    unsigned long Atom::residueId() const
    {
-     return m_residue;
+     Q_D(const Atom);
+     return d->residue;
    }
 
    Residue * Atom::residue() const
    {
-     return m_molecule->residueById(m_residue);
+     Q_D(const Atom);
+     return m_molecule->residueById(d->residue);
    }
 
    OpenBabel::OBAtom Atom::OBAtom()
    {
+     Q_D(Atom);
      // Need to copy all relevant data over to the OBAtom
      OpenBabel::OBAtom obatom;     
      OpenBabel::OBPairData *obproperty;     
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
-     obatom.SetPartialCharge(m_partialCharge);
-     obatom.SetFormalCharge(m_formalCharge);
+     obatom.SetPartialCharge(d->partialCharge);
+     obatom.SetFormalCharge(d->formalCharge);
 
      // Save custom label
-     if (!m_customLabel.isEmpty()) {
+     if (!d->customLabel.isEmpty()) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute("label");
-       obproperty->SetValue(m_customLabel.toAscii().data());
+       obproperty->SetValue(d->customLabel.toAscii().data());
        obatom.SetData(obproperty);
      }
 
      // Save custom color
-     if(!m_customColorName.isEmpty()) {
+     if(!d->customColorName.isEmpty()) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute("color");
-       obproperty->SetValue(m_customColorName.toAscii().data());
+       obproperty->SetValue(d->customColorName.toAscii().data());
        obatom.SetData(obproperty);
      }
 
      // Save custom radius
-     if (m_customRadius) {
+     if (d->customRadius) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute("radius");
-       obproperty->SetValue(QString::number(m_customRadius).toAscii().data());
+       obproperty->SetValue(QString::number(d->customRadius).toAscii().data());
        obatom.SetData(obproperty);
      }
             
@@ -329,16 +404,17 @@ using Eigen::Vector3d;
 
    bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
    {
+     Q_D(Atom);
      // Copy all needed OBAtom data to our atom
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
-     m_partialCharge = obatom->GetPartialCharge();
+     d->partialCharge = obatom->GetPartialCharge();
 
      // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
      // m_customLabel = obatom->GetCustomLabel();
      // #endif
      if (obatom->GetFormalCharge() != 0)
-       m_formalCharge = obatom->GetFormalCharge();
+       d->formalCharge = obatom->GetFormalCharge();
 
      // And add any generic data as QObject properties
      std::vector<OpenBabel::OBGenericData*> data;
@@ -349,15 +425,15 @@ using Eigen::Vector3d;
      for (j = data.begin(); j != data.end(); ++j) {
        property = static_cast<OpenBabel::OBPairData *>(*j);
        if (property->GetAttribute() == "label") {
-         m_customLabel = property->GetValue().c_str();
+         d->customLabel = property->GetValue().c_str();
          continue;
        }
        if (property->GetAttribute() == "color") {
-         m_customColorName = property->GetValue().c_str();
+         d->customColorName = property->GetValue().c_str();
          continue;
        }
        if (property->GetAttribute() == "radius") {
-         m_customRadius = QString(property->GetValue().c_str()).toDouble();
+         d->customRadius = QString(property->GetValue().c_str()).toDouble();
          continue;
        }
        setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
@@ -368,16 +444,17 @@ using Eigen::Vector3d;
 
    Atom& Atom::operator=(const Atom& other)
    {
+     Q_D(Atom);
      // Virtually everything here is invariant apart from the index and possibly id
      if (other.pos())
        m_molecule->setAtomPos(m_id, *other.pos());
      else
        qDebug() << "Atom position returned null.";
      m_atomicNumber = other.m_atomicNumber;
-     m_formalCharge = other.m_formalCharge;
-     m_customLabel = other.m_customLabel;
-     m_customColorName = other.m_customColorName;
-     m_customRadius = other.m_customRadius;
+     d->formalCharge = other.formalCharge();
+     d->customLabel = other.customLabel();
+     d->customColorName = other.customColorName();
+     d->customRadius = other.customRadius();
      return *this;
    }
 
