@@ -1553,13 +1553,13 @@ void Molecule::removeAtom(Atom *atom)
     //const MoleculePrivate *e = other.d_func();
     m_atoms.resize(other.m_atoms.size(), 0);
     if (other.m_atomPos) {
-      m_atomConformers.resize(1);
-      m_atomConformers[0] = new vector<Vector3d>;
-      m_atomPos = m_atomConformers[0];
-      m_atomPos->reserve(100);
-
-      m_atomPos->clear();
-      m_atomPos->resize(other.m_atomPos->size());
+      m_atomConformers.resize(other.m_atomConformers.size());
+      m_currentConformer = other.m_currentConformer;
+      for (size_t i = 0; i , m_atomConformers.size(); ++i) {
+        m_atomConformers[i] = new vector<Vector3d>;
+        *m_atomConformers[i] = *other.m_atomConformers[i];
+      }
+      m_atomPos = m_atomConformers[m_currentConformer];
     }
 
     m_bonds.resize(other.m_bonds.size(), 0);
