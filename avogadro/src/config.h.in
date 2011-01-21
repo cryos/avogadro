@@ -31,6 +31,8 @@
 
 #define INSTALL_LIBDIR "lib@LIB_SUFFIX@"
 
+#define INSTALL_PLUGIN_DIR "avogadro@Plugin_Version@"
+
 #define SCM_REVISION "@SCM_REVISION@"
 
 #define VERSION "@Avogadro_VERSION_FULL@"
