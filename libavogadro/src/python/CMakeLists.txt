@@ -24,8 +24,8 @@ else()
 endif()
 
 # Let's try to use this instead:
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
-    "from sys import stdout; from distutils import sysconfig; stdout.write(sysconfig.get_python_lib())"
+EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c
+    "from sys import stdout; from distutils import sysconfig; stdout.write(sysconfig.get_python_lib(1))"
     OUTPUT_VARIABLE PYTHON_LIB_PATH)
 
 message(STATUS "Python site-packages directory: ${PYTHON_LIB_PATH}")
