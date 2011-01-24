@@ -39,11 +39,11 @@ gerrit_user() {
   echo -e "\nConfiguring 'gerrit' remote with user '$gu'..."
   if git config remote.gerrit.url >/dev/null; then
     # Correct the remote url
-    git remote set-url gerrit ssh://$gu@review.avogadro.openmolecules.net:29418/avogadro || \
+    git remote set-url gerrit ssh://$gu@review.source.kitware.com/avogadro || \
       die "Could not set gerrit remote."
   else
     # Add a new one
-    git remote add gerrit ssh://$gu@review.avogadro.openmolecules.net:29418/avogadro || \
+    git remote add gerrit ssh://$gu@review.source.kitware.com/avogadro || \
       die "Could not add gerrit remote."
   fi
   cat << EOF
@@ -63,13 +63,13 @@ do
   echo
   git config remote.gerrit.url
   echo
-  read -ep "Is the username correct? [Y/n]: " correct
+  read -ep "Is the username and URL correct? [Y/n]: " correct
   if [ "$correct" == "n" ] || [ "$correct" == "N" ]; then
     gerrit_user
   else
     echo "If you have not done so, you should fetch the gerrit hook."
     echo
-    echo "scp -p -P 29418 [your_username]@review.avogadro.openmolecules.net:hooks/commit-msg .git/hooks/"
+    echo "scp -p [your_username]@review.source.kitware.com:hooks/commit-msg .git/hooks/"
     echo
     break
   fi
