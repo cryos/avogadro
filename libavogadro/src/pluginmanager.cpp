@@ -51,6 +51,39 @@
 #include <QProcess>
 #include <QFileInfo>
 
+static void initializeSearchDirs(QStringList &searchDirs)
+{
+  qDebug() << "PluginManager::setPluginPath() was not called from application"
+              " - using default plugin path";
+  // Environment variable overrides default paths
+  foreach (const QString &variable, QProcess::systemEnvironment()) {
+    if(variable.startsWith("AVOGADRO_PLUGINS=")) {
+      QString path(variable);
+      path.remove(QRegExp("^AVOGADRO_PLUGINS="));
+      searchDirs << path.split(':');
+    }
+  }
+  // If no environment variables are set then find the plugins
+  if (searchDirs.isEmpty()) {
+    // Make it relative
+    searchDirs << QCoreApplication::applicationDirPath()
+                     + "/../" + QString(INSTALL_LIB_DIR)
+                     + "/" + QString(INSTALL_PLUGIN_DIR);
+  }
+
+  // Now to search for the plugins in home directories
+#if defined(Q_WS_X11)
+  searchDirs << QDir::homePath() + "/."
+                   + QString(INSTALL_PLUGIN_DIR) + "/plugins";
+#elif defined(Q_WS_MAC)
+  searchDirs << QDir::homePath() + "/Library/Application Support/"
+                   + QString(INSTALL_PLUGIN_DIR) + "/Plugins";
+#elif defined(WIN32)
+  const QString appdata = qgetenv("APPDATA");
+  searchDirs << appdata + "/" + QString(INSTALL_PLUGIN_DIR);
+#endif
+}
+
 namespace Avogadro {
 
   class PluginItemPrivate
@@ -235,35 +268,6 @@ namespace Avogadro {
   PluginManager::PluginManager(QObject *parent) : QObject(parent),
                                                   d(new PluginManagerPrivate)
   {
-    // This is where we compile a list of directories that will be searched
-    // for plugins. This is quite dependent up on operating system
-
-    // Environment variables can override default paths
-    foreach (const QString &variable, QProcess::systemEnvironment()) {
-      QStringList split1 = variable.split('=');
-      if (split1[0] == "AVOGADRO_PLUGINS")
-        foreach (const QString &path, split1[1].split(':'))
-          d->searchDirs << path;
-    }
-    // If no environment variables are set then find the plugins
-    if (!d->searchDirs.size()) {
-      // Make it relative
-      d->searchDirs << QCoreApplication::applicationDirPath()
-                     + "/../" + QString(INSTALL_LIB_DIR)
-                     + "/" + QString(INSTALL_PLUGIN_DIR);
-    }
-
-    // Now to search for the plugins in home directories
-#if defined(Q_WS_X11)
-    d->searchDirs << QDir::homePath() + "/."
-                   + QString(INSTALL_PLUGIN_DIR) + "/plugins";
-#elif defined(Q_WS_MAC)
-    d->searchDirs << QDir::homePath() + "/Library/Application Support/"
-                   + QString(INSTALL_PLUGIN_DIR) + "/Plugins";
-#elif defined(WIN32)
-    const QString appdata = qgetenv("APPDATA");
-    d->searchDirs << appdata + "/" + QString(INSTALL_PLUGIN_DIR);
-#endif
   }
 
   PluginManager::~PluginManager()
@@ -281,6 +285,31 @@ namespace Avogadro {
       obj = new PluginManager();
 
     return obj;
+  }
+
+  void PluginManager::setPluginPath(const QString &path)
+  {
+    d->searchDirs = path.split(':');
+  }
+
+  void PluginManager::setPluginPath(const QStringList &path)
+  {
+    d->searchDirs = path;
+  }
+
+  void PluginManager::addToPluginPath(const QString &path)
+  {
+    d->searchDirs << path.split(':');
+  }
+
+  void PluginManager::addToPluginPath(const QStringList &path)
+  {
+    d->searchDirs << path;
+  }
+
+  QStringList & PluginManager::pluginPath() const
+  {
+    return d->searchDirs;
   }
 
   QList<Extension *> PluginManager::extensions(QObject *parent)
@@ -559,34 +588,20 @@ namespace Avogadro {
     QSettings settings;
     settings.beginGroup("Plugins");
 
-#ifndef Q_WS_MAC
-    QFileInfo info(QCoreApplication::applicationDirPath()
-                   + "/../CMakeCache.txt");
-    if (info.exists()) {// In a build directory
-      qDebug() << "In a build directory - loading alternative...";
-      loadPluginDir(QCoreApplication::applicationDirPath() + "/../lib",
-                    settings);
-    }
-#else
-    // If we are in a Mac build dir things are a little different - if the
-    // expected relative path does not exist try the build dir path
-    QFileInfo info(QCoreApplication::applicationDirPath()
-                   + "/../../../../CMakeCache.txt");
-    if (info.exists()) {// In a build directory
-        loadPluginDir(QCoreApplication::applicationDirPath()
-                      + "/../../../../lib", settings);
-    }
-#endif
-    else {
-      // Load the plugins
-      foreach (const QString& path, d->searchDirs) {
-        qDebug() << "Loading plugins:" << path;
-        loadPluginDir(path + "/colors", settings);
-        loadPluginDir(path + "/engines", settings);
-        loadPluginDir(path + "/extensions", settings);
-        loadPluginDir(path + "/tools", settings);
-        loadPluginDir(path + "/contrib", settings);
-      }
+    // Initialize search path if it was not done by client application
+    /// @todo To be removed in libavogadro 2
+    if(d->searchDirs.empty())
+      initializeSearchDirs(d->searchDirs);
+
+    // Load the plugins
+    foreach (const QString& path, d->searchDirs) {
+      qDebug() << "Loading plugins:" << path;
+      loadPluginDir(path, settings);
+      loadPluginDir(path + "/colors", settings);
+      loadPluginDir(path + "/engines", settings);
+      loadPluginDir(path + "/extensions", settings);
+      loadPluginDir(path + "/tools", settings);
+      loadPluginDir(path + "/contrib", settings);
     }
 
 #ifdef ENABLE_PYTHON
@@ -769,9 +784,11 @@ namespace Avogadro {
   inline void PluginManager::loadPluginDir(const QString &directory,
                                            QSettings &settings)
   {
-    QDir dir(directory);
-    qDebug() << "Searching for plugins in" << dir.canonicalPath();
-    loadPluginList(dir, dir.entryList(QDir::Files), settings);
+    const QDir dir(directory);
+    if(dir.exists()) {
+      qDebug() << "Searching for plugins in" << dir.canonicalPath();
+      loadPluginList(dir, dir.entryList(QDir::Files), settings);
+    }
   }
 
   void PluginManager::loadPluginList(const QDir &dir,
