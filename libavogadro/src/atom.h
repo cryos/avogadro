@@ -92,12 +92,10 @@ namespace Avogadro {
 
     /**
      * Set the partial charge of the atom.
-     * @note This is not calculated by the atom, instead call Molecule::calculatePartialCharges()
+     * @note This is not calculated by the atom, instead call
+     * Molecule::calculatePartialCharges()
      */
-    void setPartialCharge(double charge) const
-    {
-      m_partialCharge = charge;
-    }
+    void setPartialCharge(double charge) const;
 
     /**
      * Set the formal charge of the atom.
@@ -107,29 +105,28 @@ namespace Avogadro {
     /**
      * Set the number of the atom in group of atoms of the same element.
      */
-    void setGroupIndex(unsigned int m_index);
+    void setGroupIndex(unsigned int index);
 
     /**
      * Set the force vector on the atom (e.g., used to display vibrations)
      */
-    void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
+    void setForceVector(const Eigen::Vector3d &force);
 
     /**
      * Set the custom label for the atom
      */
-    void setCustomLabel(const QString &label) {  m_customLabel = label; }
+    void setCustomLabel(const QString &label);
 
     /**
      * Set the custom color for the atom using color name
      */
-    void setCustomColorName(const QString &name) { m_customColorName = name; }
+    void setCustomColorName(const QString &name);
 
     /**
      * Set the custom radius for the atom
      */
-    void setCustomRadius(const double radius) { m_customRadius = radius; }
+    void setCustomRadius(const double radius);
     /** @} */
-
 
     /** @name Get atomic information
      * These functions are used to get atomic information.
@@ -172,7 +169,7 @@ namespace Avogadro {
     /**
      * The index of the atom in group of atoms of the same element in Molecule
      */
-    unsigned int groupIndex() const { return m_groupIndex; }
+    unsigned int groupIndex() const;
     
     /**
      * @return True if the atom is a hydrogen.
@@ -189,16 +186,16 @@ namespace Avogadro {
      */
     int formalCharge() const;
 
-    QString customLabel() const { return m_customLabel; }
+    QString customLabel() const;
 
-    QString customColorName() const {return m_customColorName; }
+    QString customColorName() const;
 
-    double customRadius() const { return m_customRadius; }
+    double customRadius() const;
 
     /**
      * @return The force vector on this atom (if any)
      */
-    const Eigen::Vector3d forceVector() const { return m_forceVector; }
+    const Eigen::Vector3d forceVector() const;
 
     /**
      * @return The Id of the Residue that the Atom is a part of.
@@ -274,15 +271,8 @@ namespace Avogadro {
     AtomPrivate * const d_ptr;
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
     int m_atomicNumber;
-    unsigned int m_groupIndex;
-    unsigned long m_residue;
     QList<unsigned long> m_bonds;
-    mutable double m_partialCharge;
-    int m_formalCharge;
-    Eigen::Vector3d m_forceVector;
-    QString m_customLabel;
-    QString m_customColorName;
-    double m_customRadius;
+
     Q_DECLARE_PRIVATE(Atom)
   };
 
