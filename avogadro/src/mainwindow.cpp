@@ -91,6 +91,7 @@
 #include <QHBoxLayout>
 #include <QMessageBox>
 #include <QPluginLoader>
+#include <QProcess>
 #include <QPushButton>
 #include <QSettings>
 #include <QStandardItem>
@@ -590,6 +591,10 @@ protected:
     this->TestUtility->addEventObserver("xml", new XMLEventObserver(this));
     this->TestUtility->addEventSource("xml", new XMLEventSource(this));
 #endif
+
+    static const QStringList searchDirs = pluginSearchDirs();
+    PluginManager::instance()->setPluginPath(searchDirs);
+    d->pluginManager.setPluginPath(searchDirs);
   }
 
 #ifdef QTTESTING
@@ -3530,6 +3535,63 @@ protected:
   void MainWindow::toggleEngineSettingsDock()
   {
     ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+  }
+
+  const QStringList MainWindow::pluginSearchDirs()
+  {
+    // This is where we compile a list of directories that will be searched
+    // for plugins. This is quite dependent up on operating system
+
+    // Environment variables can override default paths
+    foreach (const QString &variable, QProcess::systemEnvironment()) {
+      if(variable.startsWith("AVOGADRO_PLUGINS=")) {
+        QString path(variable);
+        path.remove(QRegExp("^AVOGADRO_PLUGINS="));
+        const QStringList searchDirs = path.split(':');
+        if(!searchDirs.isEmpty())
+          return searchDirs;
+      }
+    }
+
+    // Check if we are running in a build directory
+  #ifndef Q_WS_MAC
+    if (QFile::exists(QCoreApplication::applicationDirPath()
+                      + "/../CMakeCache.txt")) {
+      qDebug() << "In a build directory - loading alternative...";
+      return QStringList(QCoreApplication::applicationDirPath() + "/../lib");
+    }
+  #else
+    // If we are in a Mac build dir things are a little different - if the
+    // expected relative path does not exist try the build dir path
+    if (QFile::exists(QCoreApplication::applicationDirPath()
+                      + "/../../../../CMakeCache.txt")) {
+      return QStringList(QCoreApplication::applicationDirPath()
+                         + "/../../../../lib");
+    }
+  #endif
+    else {
+      QStringList searchDirs;
+      // If no environment variables are set then find the plugins
+      if (!searchDirs.size()) {
+        // Make it relative
+        searchDirs << QCoreApplication::applicationDirPath()
+                       + "/../" + QString(INSTALL_LIBDIR)
+                       + "/" + QString(INSTALL_PLUGIN_DIR);
+      }
+
+      // Now search for the plugins in home directories
+  #if defined(Q_WS_X11)
+      searchDirs << QDir::homePath() + "/."
+                     + QString(INSTALL_PLUGIN_DIR) + "/plugins";
+  #elif defined(Q_WS_MAC)
+      searchDirs << QDir::homePath() + "/Library/Application Support/"
+                     + QString(INSTALL_PLUGIN_DIR) + "/Plugins";
+  #elif defined(WIN32)
+      const QString appdata = qgetenv("APPDATA");
+      searchDirs << appdata + "/" + QString(INSTALL_PLUGIN_DIR);
+  #endif
+      return searchDirs;
+    }
   }
 
 } // end namespace Avogadro

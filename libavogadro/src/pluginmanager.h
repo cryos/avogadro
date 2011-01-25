@@ -152,7 +152,35 @@ namespace Avogadro {
     static PluginManager* instance();
 
     /**
-     * Find all plugins by looking through the search paths:
+     * Set the search path for plugins as list of directories
+     */
+    void setPluginPath(const QStringList& path);
+
+    /**
+     * @overload
+     * Set the search path for plugins (colon-separated list of directories)
+     */
+    void setPluginPath(const QString& path);
+
+    /**
+     * Add list of directories to the search path
+     */
+    void addToPluginPath(const QStringList& path);
+
+    /**
+     * @overload
+     * Add colon-separated list of directories to the search path
+     */
+    void addToPluginPath(const QString& path);
+
+    /**
+     * Get the search path for plugins
+     */
+    QStringList pluginPath() const;
+
+    /**
+     * Find all plugins by looking through the plugin search path. If it was not set,
+     * the next directories are used
      *    <bin_location>/../<lib_dir>/avogadro/engines
      *    <bin_location>/../<lib_dir>/avogadro/tools
      *    <bin_location>/../<lib_dir>/avogadro/extensions
@@ -161,8 +189,8 @@ namespace Avogadro {
      *
      * You can set AVOGADRO_PLUGINS to designate a path at runtime to search.
      *
-     * @param dir Path of directory to search for plugins instead of the default
-     * paths
+     * @param dir Path of directory to search for plugins instead of the default paths
+     * @sa setPluginPath, pluginPath
      */
     void loadFactories(const QString& dir = "");
 
@@ -280,7 +308,7 @@ namespace Avogadro {
     static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo,
                             QSettings &settings);
     static QList<QString> scripts(const QString &type);
-
+    static void initializeSearchDirs(QStringList &searchDirs);
   };
 
 }
