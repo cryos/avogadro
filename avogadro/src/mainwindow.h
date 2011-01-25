@@ -288,6 +288,9 @@ namespace Avogadro {
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
+
+      static QStringList pluginSearchDirs();
+
     private Q_SLOTS:
 
       void firstMolReady();
