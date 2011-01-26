@@ -36,6 +36,9 @@
 #include <QtGui/QDialog>
 #include <QtGui/QScrollBar>
 #include <QtGui/QVBoxLayout>
+#include <QtGui/QKeyEvent>
+#include <QtGui/QApplication>
+#include <QtGui/QClipboard>
 
 #include <QtCore/QDebug>
 
@@ -211,9 +214,11 @@ namespace Avogadro
     view->setMolecule( m_molecule );
     view->setWidget( widget );
     view->setModel( proxyModel );
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     view->resizeColumnsToContents();
+    view->setEditTriggers(QTableView::DoubleClicked);
     layout->addWidget(view);
+
     dialog->setWindowTitle(view->windowTitle());
     QSize dialogSize = dialog->size();
     double width = view->horizontalHeader()->length()+view->verticalHeader()->width()+5;
@@ -271,6 +276,10 @@ namespace Avogadro
 
     // Don't allow selecting everything
     setCornerButtonEnabled(false);
+    
+    // Can select more than one item
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
+
     // Alternating row colors
     setAlternatingRowColors(true);
     // Allow sorting the table
@@ -280,41 +289,46 @@ namespace Avogadro
 
   void PropertiesView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
   {
+
+    /*
+     * Loop through all the selected indexes adding the selected primites to the matchedPrimitives list
+     * If there are multiple conformers selected, we chose the lowest numbered one and then apply the
+     * selection of the primitives.
+     */
+
+    // jmht - this seems somewhat convoluted - am I doing this right?
+    PropertiesModel * my_model =  static_cast<PropertiesModel *>(static_cast<QSortFilterProxyModel*>(model())->sourceModel());
+
     QList<Primitive *> matchedPrimitives;
     bool ok = false;
 
+    // If there are multiple conformers we pick the lowest numbered one
+    unsigned int conformer=m_molecule->numConformers();
+    
+    // Get a list of all selected primitives
     foreach (const QModelIndex &index, selected.indexes()) {
       if (!index.isValid())
         return;
       int rowNum = model()->headerData(index.row(), Qt::Vertical).toString().split(" ").last().toLong(&ok) - 1;
       if (!ok)
         return;
+
+      // pick lowest conformer
+      conformer = min( conformer, my_model->conformerFromIndex( index ) );
       
       if (m_type == AtomType /*|| m_type == CartesianType*/) {
         if ((unsigned int) index.row() >= m_molecule->numAtoms())
           return;
-
         matchedPrimitives.append( m_molecule->atom(rowNum) );
-        m_widget->clearSelected();
-        m_widget->setSelected(matchedPrimitives, true);
-        m_widget->update();
+
       } else if (m_type == BondType) {
         if((unsigned int) index.row() >= m_molecule->numBonds())
           return;
-
         matchedPrimitives.append( m_molecule->bond(rowNum) );
-        m_widget->clearSelected();
-        m_widget->setSelected(matchedPrimitives, true);
-        m_widget->update();
+
       } else if (m_type == AngleType && model() != 0) {
-        OBMol *mol = new OBMol(m_molecule->OBMol());
-        mol->FindAngles();
-        OBAngleData *ad = static_cast<OBAngleData *>(mol->GetData(AngleData));
-        if (!ad)
-          return;
-        vector<vector<unsigned int> > angles;
-        ad->FillAngleArray(angles);
-        delete mol;
+
+        vector<vector<unsigned int> > angles = my_model->conformerAngles( m_molecule->currentConformer() );
 
         Atom *startAtom = m_molecule->atom((angles[rowNum][1]));
         Atom *vertex = m_molecule->atom((angles[rowNum][0]));
@@ -328,18 +342,9 @@ namespace Avogadro
         matchedPrimitives.append( bond1 );
         matchedPrimitives.append( bond2 );
 
-        m_widget->clearSelected();
-        m_widget->setSelected(matchedPrimitives, true);
-        m_widget->update();
       } else if (m_type == TorsionType && model() != 0) {
-        OBMol *mol = new OBMol(m_molecule->OBMol());
-        mol->FindTorsions();
-        OBTorsionData *td = static_cast<OBTorsionData *>(mol->GetData(TorsionData));
-        if (!td)
-          return;
-        vector<vector<unsigned int> > torsions;
-        td->FillTorsionArray(torsions);
-        delete mol;
+
+        vector<vector<unsigned int> > torsions = my_model->conformerTorsions( m_molecule->currentConformer() );
 
         Atom *a = m_molecule->atom( torsions[rowNum][0] );
         Atom *b = m_molecule->atom( torsions[rowNum][1] );
@@ -356,21 +361,66 @@ namespace Avogadro
         matchedPrimitives.append(bond1);
         matchedPrimitives.append(bond2);
         matchedPrimitives.append(bond3);
-
-        m_widget->clearSelected();
-        m_widget->setSelected(matchedPrimitives, true);
-        m_widget->update();
-      } else if (m_type == ConformerType) {
-        if (index.row() >= static_cast<int>(m_molecule->numConformers()))
-          return;
-
-        m_molecule->setConformer(rowNum);
-        m_molecule->update();
-        return;
+	
       }
+      // We can skip this for conformers
     }
+  
+    // Pick the lowest conformer
+    m_molecule->setConformer(conformer);
+    m_molecule->update();
+
+    m_widget->clearSelected();
+    m_widget->setSelected(matchedPrimitives, true);
+    m_widget->update();
+    
   }
 
+  void PropertiesView::keyPressEvent(QKeyEvent *event)
+  {
+    // Trap copy as we implement our own copy - the default
+    // is only to select the last element
+    // No idea why this doesn't work on the Mac...
+    if ( event->matches(QKeySequence::Copy) )
+      {
+	copyToClipboard();
+	event->accept();
+      }
+    else
+      QTableView::keyPressEvent(event);
+
+  }
+
+  void PropertiesView::copyToClipboard()
+  {
+    QModelIndexList indexes = selectedIndexes();
+
+    // Need to sort by rows
+    qSort(indexes);
+    
+    // Put first value in the string
+    QModelIndex previous = indexes.takeFirst();
+    QVariant data = model()->data(previous);
+    QString selectedText;
+    selectedText.append( data.toString() );
+
+    // Now loop over the rest
+    foreach ( const QModelIndex& index, indexes )
+      {
+	if ( index.row() != previous.row() )
+	  selectedText.append('\n');
+	else
+	  selectedText.append(','); // separate data values by comma
+
+	data = model()->data(index);
+	selectedText.append( data.toString() );
+	previous=index;
+      }
+    
+   QApplication:: clipboard()->setText( selectedText ) ;
+  }
+
+  
   void PropertiesView::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
