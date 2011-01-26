@@ -89,6 +89,10 @@ namespace Avogadro {
        void setWidget (GLWidget *widget);
        void hideEvent(QHideEvent *event);
 
+     protected:
+       void copyToClipboard();
+       void keyPressEvent(QKeyEvent *event);
+
      private:
        int m_type;
        Molecule *m_molecule;
