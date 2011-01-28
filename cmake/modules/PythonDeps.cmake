@@ -6,23 +6,23 @@ if(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # In cache already
   set(ALL_PYTHON_FOUND TRUE)
 
-else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
-
+else()
   message(STATUS "Searching for python dependencies...")
 
   # Boost Python
   message(STATUS "[1/5] Boost Python")
   # CMake's new FindBoost has an option to look for additional versions
-  set(Boost_ADDITIONAL_VERSIONS "1.45" "1.44" "1.43" "1.42" "1.41" "1.40" "1.40.0" "1.39" "1.39.0" "1.38" "1.38.0" "1.37" "1.37.0")
+  set(Boost_ADDITIONAL_VERSIONS "1.45" "1.44" "1.43" "1.42" "1.41" "1.40"
+    "1.40.0" "1.39" "1.39.0" "1.38" "1.38.0" "1.37" "1.37.0")
   find_package(Boost COMPONENTS python)
   if (Boost_PYTHON_FOUND)
     message(STATUS "Boost Python found...")
-  else (Boost_PYTHON_FOUND)
+  else()
     message(STATUS "Boost Python NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the libboost-python-dev package.")
     set(ALL_PYTHON_FOUND FALSE)
     return()
-  endif (Boost_PYTHON_FOUND)
+  endif()
 
   # Python Libraries
   message(STATUS "[2/5] Python Libraries")
@@ -32,7 +32,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   #  message(STATUS "debian/ubuntu: install the python-dev package. Correct?????")
     set(ALL_PYTHON_FOUND FALSE)
     return()
-  endif (NOT PYTHONLIBS_FOUND)
+  endif()
 
   # Python Interpreter
   message(STATUS "[3/5] Python Interpreter")
@@ -42,7 +42,7 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   #  message(STATUS "debian/ubuntu: install the python package.")
     set(ALL_PYTHON_FOUND FALSE)
     return()
-  endif (NOT PYTHONINTERP_FOUND)
+  endif()
 
   # Numpy
   message(STATUS "[4/5] Numpy Module")
@@ -52,24 +52,18 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   #  message(STATUS "debian/ubuntu: install the python-numpy package.")
     set(ALL_PYTHON_FOUND FALSE)
     return()
-  endif (NOT NUMPY_FOUND)
+  endif()
 
   # SIP
   message(STATUS "[5/5] SIP Module")
   if (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
     message(STATUS "Found sip.h header...")
-    find_file(SIP_EXECUTABLE sip)
-    execute_process(COMMAND "${SIP_EXECUTABLE}" -V OUTPUT_VARIABLE SIP_VERSION)
-    if ("${SIP_VERSION}" VERSION_GREATER "4.8")
-      message(STATUS "using sip version 4.8 or above...")
-      add_definitions( -DSIP_4_8 )
-    endif ("${SIP_VERSION}" VERSION_GREATER "4.8")
-  else (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
+  else ()
     message(STATUS "sip.h header NOT found - Python support disabled")
   #  message(STATUS "debian/ubuntu: install the python-sip4-dev package.")
     set(ALL_PYTHON_FOUND FALSE)
     return()
-  endif (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
+  endif()
 
   # Everything was found, define ENABLE_PYTHON. This can be used in code:
   #
@@ -80,4 +74,4 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # to be used in subdir CMakeLists.txt files
   set(ALL_PYTHON_FOUND TRUE)
 
-endif(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
+endif()
