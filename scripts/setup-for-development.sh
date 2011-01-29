@@ -62,6 +62,7 @@ do
   echo "The configured Gerrit remote URL is:"
   echo
   git config remote.gerrit.url
+  gu=`git config remote.gerrit.url | sed -e 's/^ssh:\/\///' | sed -e 's/@review.source.kitware.com\/avogadro//'`
   echo
   read -ep "Is the username and URL correct? [Y/n]: " correct
   if [ "$correct" == "n" ] || [ "$correct" == "N" ]; then
@@ -69,7 +70,7 @@ do
   else
     echo "If you have not done so, you should fetch the gerrit hook."
     echo
-    echo "scp -p [your_username]@review.source.kitware.com:hooks/commit-msg .git/hooks/"
+    echo "scp -p $gu@review.source.kitware.com:hooks/commit-msg .git/hooks/"
     echo
     break
   fi
