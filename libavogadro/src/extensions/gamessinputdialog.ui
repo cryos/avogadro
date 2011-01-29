@@ -660,6 +660,11 @@
                </item>
                <item>
                 <property name="text">
+                 <string>Binning/Curtiss DZ</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
                  <string>Triple Zeta Valence</string>
                 </property>
                </item>
