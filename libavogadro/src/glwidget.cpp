@@ -42,20 +42,17 @@
   #include "pythonextension_p.h"
 #endif
 
-#include <avogadro/painterdevice.h>
-#include <avogadro/tool.h>
-#include <avogadro/toolgroup.h>
-#include <avogadro/extension.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
-#include <avogadro/residue.h>
-#include <avogadro/molecule.h>
 #include <avogadro/color.h>
-
-// Include static engine headers
-#include "engines/bsdyengine.h"
-
-#include "pluginmanager.h"
+#include <avogadro/engine.h>
+#include <avogadro/extension.h>
+#include <avogadro/molecule.h>
+#include <avogadro/painterdevice.h>
+#include <avogadro/pluginmanager.h>
+#include <avogadro/residue.h>
+#include <avogadro/tool.h>
+#include <avogadro/toolgroup.h>
 
 #include <QDebug>
 #include <QUndoStack>

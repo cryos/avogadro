@@ -179,6 +179,11 @@ namespace Avogadro {
     QStringList pluginPath() const;
 
     /**
+     * Load statically linked plugins
+     */
+    void loadStaticFactories();
+
+    /**
      * Find all plugins by looking through the plugin search path. If it was
      * not set, the next directories are used
      *    <bin_location>/../<lib_dir>/avogadro/engines

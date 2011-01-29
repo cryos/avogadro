@@ -15,6 +15,9 @@ set(PLUGIN_LABEL engines)
 set(PLUGIN_TARGET engines)
 add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
 
+# balls and sticks
+avogadro_static_plugin(bsdyengine bsdyengine.cpp bsdysettingswidget.ui)
+
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
 
