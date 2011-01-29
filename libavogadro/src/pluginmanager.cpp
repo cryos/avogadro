@@ -38,10 +38,7 @@
 #include <avogadro/extension.h>
 #include <avogadro/color.h>
 
-// Include static headers
-#include "engines/bsdyengine.h"
-#include "colors/elementcolor.h"
-
+#include <QCoreApplication>
 #include <QSettings>
 #include <QDir>
 #include <QList>
@@ -50,6 +47,10 @@
 #include <QDebug>
 #include <QProcess>
 #include <QFileInfo>
+
+// Instantiate static plugins
+Q_IMPORT_PLUGIN(bsdyengine)
+Q_IMPORT_PLUGIN(elementcolor)
 
 namespace Avogadro {
 
@@ -525,6 +526,20 @@ namespace Avogadro {
     return factories;
   }
 
+  void PluginManager::loadStaticFactories()
+  {
+    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
+    // Static factories are enabled by default
+    qDebug() << QString("Loading static plugins (%1)").arg(QPluginLoader::staticInstances().size());
+    foreach(QObject *instance, QPluginLoader::staticInstances()) {
+      PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
+      if (factory)
+        ef[factory->type()].append(factory);
+      else
+        qDebug() << "Failed to load static plugin";
+    }
+  }
+
   void PluginManager::loadFactories(const QString& dir)
   {
     if (PluginManagerPrivate::factoriesLoaded)
@@ -537,20 +552,8 @@ namespace Avogadro {
       settings.endGroup(); // ExtraPlugins
     }
 
-    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
-
     // Load the static plugins first
-    PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
-    if (bsFactory)
-      ef[bsFactory->type()].append(bsFactory);
-    else
-      qDebug() << "Instantiation of the static ball and sticks plugin failed.";
-
-    PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
-    if (elementFactory)
-      ef[elementFactory->type()].append(elementFactory);
-    else
-      qDebug() << "Instantiation of the static element color plugin failed.";
+    loadStaticFactories();
 
     QSettings settings;
     settings.beginGroup("Plugins");

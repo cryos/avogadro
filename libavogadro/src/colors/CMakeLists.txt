@@ -14,7 +14,7 @@ set(PLUGIN_TARGET colors)
 add_custom_target(colors COMMENT "Meta target to build all Avogadro colors.")
 
 ### elementcolor
-# This is built statically by the main libavogadro -- we do not build it again
+avogadro_static_plugin(elementcolor elementcolor.cpp)
 
 ### residuecolor
 avogadro_plugin(residuecolor residuecolor.cpp residuecolorsettings.ui)

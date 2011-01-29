@@ -116,14 +116,12 @@ set(libavogadro_MOC_HDRS
   atom.h
   bond.h
   color.h
-  colors/elementcolor.h
   colorbutton.h
   cube.h
   dockextension.h
   elementdetail_p.h
   elementtranslator.h
   engine.h
-  engines/bsdyengine.h
   extension.h
   fragment.h
   glwidget.h
@@ -174,11 +172,7 @@ endif()
 
 # Statically link the core engines and tools so that users have a working
 # system even if no plugins can be found.
-set(bsdyengine_SRCS engines/bsdyengine.cpp)
-qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
-list(APPEND libavogadro_SRCS ${bsdyengine_SRCS} ${bsdyengine_UIS})
-set(elementcolor_SRCS colors/elementcolor.cpp)
-list(APPEND libavogadro_SRCS ${elementcolor_SRCS})
+list(APPEND AVO_LINK_LIBRARIES bsdyengine elementcolor)
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
