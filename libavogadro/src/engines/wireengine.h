@@ -60,7 +60,11 @@ namespace Avogadro {
       //! Render a Bond.
       bool renderOpaque(PainterDevice *pd, const Bond *b);
 
+      //! Override of render opaque for the engine.
       bool renderOpaque(PainterDevice *pd);
+
+      //! Override of render pick - help the picking.
+      bool renderPick(PainterDevice *pd);
       //@}
 
       //! Configuration options

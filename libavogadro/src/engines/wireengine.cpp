@@ -74,6 +74,31 @@ namespace Avogadro {
       renderOpaque(pd, b);
 
     glEnable(GL_LIGHTING);
+    return true;
+  }
+
+  bool WireEngine::renderPick(PainterDevice *pd)
+  {
+    // We need the 3D to pop the atoms out from the bonds, so this is perhaps
+    // the simplest way to have picking for both atoms and bonds in wireframe.
+    // The numbers are quite arbitrary right now - seem to feel about right
+    // for small molecules.
+    foreach(Bond *b, bonds()) {
+      pd->painter()->setName(b);
+      pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), 0.04);
+    }
+
+    // Render the atoms
+    foreach(Atom *a, atoms())  {
+      pd->painter()->setName(a);
+      // add a slight "slop" factor to make it easier to pick
+      // (e.g., during drawing)
+      // heavy atoms get a bit more, hydrogens get a bit less
+      if (a->isHydrogen())
+        pd->painter()->drawSphere(a->pos(), 0.05);
+      else
+        pd->painter()->drawSphere(a->pos(), 0.15);
+    }
 
     return true;
   }
@@ -86,13 +111,12 @@ namespace Avogadro {
     // perform a rough form of frustum culling
     Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
     double dot = transformedPos.z() / transformedPos.norm();
-    if(dot > -0.8) return true;
+    if(dot > -0.8)
+      return true;
 
     Color *map = colorMap(); // possible custom color map
-    if (!map) map = pd->colorMap(); // fall back to global color map
-
-    glPushName(Primitive::AtomType);
-    glPushName(a->index());
+    if (!map)
+      map = pd->colorMap(); // fall back to global color map
 
     // Compute a rough "dynamic" size for the atom dots
     // We could probably have a better gradient here, but it looks decent
@@ -124,9 +148,6 @@ namespace Avogadro {
     glVertex3d(v.x(), v.y(), v.z());
     glEnd();
 
-    glPopName(); // atom index
-    glPopName(); // Primitive::AtomType
-
     return true;
   }
 
@@ -142,12 +163,14 @@ namespace Avogadro {
     const Camera *camera = pd->camera();
 
     Color *map = colorMap(); // possible custom color map
-    if (!map) map = pd->colorMap(); // fall back to global color map
+    if (!map)
+      map = pd->colorMap(); // fall back to global color map
 
     // perform a rough form of frustum culling
     Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
     double dot = transformedEnd1.z() / transformedEnd1.norm();
-    if(dot > -0.8) return true; // i.e., don't bother rendering
+    if(dot > -0.8)
+      return true; // i.e., don't bother rendering
 
     const Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
     const Vector3d & v2 = *atom2->pos();
@@ -193,13 +216,17 @@ namespace Avogadro {
       return true;
     }
     // otherwise, we draw a line to the "transition point", change color, etc.
-    if (order != 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
-    else pd->painter()->drawLine(v1, v3, width);
+    if (order != 1)
+      pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
+    else
+      pd->painter()->drawLine(v1, v3, width);
 
     map->setFromPrimitive(atom2);
     pd->painter()->setColor(map);
-    if (order != 1) pd->painter()->drawMultiLine(v3, v2, width, order, stipple);
-    else pd->painter()->drawLine(v3, v2, width);
+    if (order != 1)
+      pd->painter()->drawMultiLine(v3, v2, width, order, stipple);
+    else
+      pd->painter()->drawLine(v3, v2, width);
 
     return true;
   }
