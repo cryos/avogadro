@@ -68,11 +68,21 @@ namespace Avogadro {
   bool Cube::setLimits(const Vector3d &min, const Vector3d &max,
                        double spacing)
   {
-    Vector3i points;
+    m_min = min;
     Vector3d delta = max - min;
     delta = delta / spacing;
-    points = Vector3i(delta.x(), delta.y(), delta.z());
-    return setLimits(min, max, points);
+
+    m_spacing = Vector3d(spacing, spacing, spacing);
+    m_points = Vector3i(ceil(delta.x()) + 1, ceil(delta.y()) + 1,
+                        ceil(delta.z()) + 1);
+    m_data.resize(m_points.x() * m_points.y() * m_points.z());
+
+    // Calculate the correct max for the spacing and number of points
+    m_max = Vector3d(min.x() + m_spacing.x() * (m_points.x()-1),
+                     min.y() + m_spacing.y() * (m_points.y()-1),
+                     min.z() + m_spacing.z() * (m_points.z()-1));
+
+    return true;
   }
 
   bool Cube::setLimits(const Vector3d &min, const Vector3i &dim,
@@ -109,9 +119,9 @@ namespace Avogadro {
         else if (atom->pos()->z() > max.z())
           max(2) = atom->pos()->z();
       }
-    } else {
-      min = max = Eigen::Vector3d::Zero();
     }
+    else
+      min = max = Eigen::Vector3d::Zero();
 
     // Now to take care of the padding term
     min += Vector3d(-padding, -padding, -padding);
