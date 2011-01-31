@@ -140,7 +140,7 @@ struct QClass_converters
   {
     static PyObject* convert(const T& object)
     {
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
       const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
 #else
       sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
@@ -148,7 +148,7 @@ struct QClass_converters
       if (!type)
         return incref(Py_None);
       
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
       PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
 #else
       PyObject *sip_obj = sip_API->api_convert_from_instance((void*)(&object), type, 0);
@@ -164,7 +164,7 @@ struct QClass_converters
       if (!object)
         return incref(Py_None);
  
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
       const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
 #else     
       sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
@@ -172,7 +172,7 @@ struct QClass_converters
       if (!type)
         return incref(Py_None);
       
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
       PyObject *sip_obj = sip_API->api_convert_from_type(object, type, 0);
 #else
       PyObject *sip_obj = sip_API->api_convert_from_instance(object, type, 0);
@@ -192,7 +192,7 @@ struct QClass_converters
 
   static void* QClass_from_PyQt(PyObject *obj_ptr)
   {
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
     if (!PyObject_TypeCheck(obj_ptr, sip_API->api_wrapper_type)) {
 #else
     if (!sip_API->api_wrapper_check(obj_ptr)) {
@@ -202,16 +202,16 @@ struct QClass_converters
     }
     
     // transfer ownership from python to C++
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
     sip_API->api_transfer_to(obj_ptr, 0);
 #else
     sip_API->api_transfer(obj_ptr, 1);
 #endif
 
     // reinterpret to sipWrapper
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR == 8
+#if SIP_API_MAJOR_NR == 8
     sipSimpleWrapper *wrapper = reinterpret_cast<sipSimpleWrapper*>(obj_ptr);
-# if defined(SIP_API_MINOR_NR) && SIP_API_MINOR_NR >= 1
+# if SIP_API_MINOR_NR >= 1
     return sip_API->api_get_address(wrapper);
 # else
     return wrapper->data;
@@ -245,7 +245,7 @@ struct QList_QAction_to_python_list_PyQt
 
   static PyObject* convert(const QList<QAction*> &qList)
   {
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
     const sipTypeDef *type = sip_API->api_find_type("QAction");
 #else
     sipWrapperType *type = sip_API->api_find_class("QAction");
@@ -256,7 +256,7 @@ struct QList_QAction_to_python_list_PyQt
     boost::python::list pyList;
 
     foreach (QAction *action, qList) {
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
       PyObject *sip_obj = sip_API->api_convert_from_type(action, type, 0);
 #else
       PyObject *sip_obj = sip_API->api_convert_from_instance(action, type, 0);
@@ -384,7 +384,7 @@ PyObject* toPyQt(T *obj)
     return incref(Py_None);
   }
       
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
   const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
 #else
   sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
@@ -394,7 +394,7 @@ PyObject* toPyQt(T *obj)
     return incref(Py_None);
   }
       
-#if defined(SIP_API_MAJOR_NR) && SIP_API_MAJOR_NR >=8
+#if SIP_API_MAJOR_NR >=4
   PyObject *sip_obj = sip_API->api_convert_from_type(obj, type, 0);
 #else
   PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
@@ -452,4 +452,3 @@ void export_sip()
   to_python_converter<QList<QAction*>, QList_QAction_to_python_list_PyQt>();
   QList_QAction_from_python_list_PyQt();
 }
-
