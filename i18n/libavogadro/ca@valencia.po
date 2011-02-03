@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-12-02 17:44+0000\n"
+"PO-Revision-Date: 2010-12-19 17:50+0000\n"
 "Last-Translator: carles ferrando <Unknown>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,7 @@ msgstr "Crom"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr "Manganès"
+msgstr "Manganés"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
@@ -764,7 +764,7 @@ msgstr "Fitxers  DL-POLY HISTORY"
 
 #: src/extensions/animationdialog.cpp:73
 msgid "Open Trajectory File"
-msgstr "Obre fitxer de trajectòria"
+msgstr "Obri fitxer de trajectòria"
 
 #: src/extensions/animationdialog.cpp:83
 #, qt-format
@@ -773,7 +773,7 @@ msgstr "%1/%2"
 
 #: src/extensions/animationdialog.cpp:104
 msgid "Save Video File"
-msgstr "Desa el fitxer de vídeo"
+msgstr "Alça el fitxer de vídeo"
 
 #: src/extensions/animationdialog.cpp:106
 msgid "video files (*.avi)"
@@ -812,7 +812,7 @@ msgstr "Avogadro"
 
 #: src/extensions/animationdialog.cpp:112
 msgid "Adding .avi extension"
-msgstr "Afegeix l'extensió .avi"
+msgstr "Afig l'extensió .avi"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
@@ -851,7 +851,7 @@ msgstr "Cal especificar un nom .avi vàlid"
 
 #: src/extensions/animationextension.cpp:190
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr "El giny GL no s'ha inicialitzat de forma correcta per a desar el vídeo"
+msgstr "El giny GL no s'ha inicialitzat de forma correcta per a alçar el vídeo"
 
 #: src/extensions/animationextension.cpp:201
 msgid "Invalid video filename.  Must include full directory path"
@@ -996,7 +996,7 @@ msgstr "Importa"
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
-msgstr "Obre un format de fitxer químic"
+msgstr "Obri un format de fitxer químic"
 
 #: src/extensions/fileimportextension.cpp:200
 msgid "Chemical files (*.xyz)"
@@ -1004,7 +1004,7 @@ msgstr "Fitxers químics (*.xyz)"
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr "Obre un fitxer de paràmetres"
+msgstr "Obri un fitxer de paràmetres"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
@@ -1061,8 +1061,7 @@ msgstr "&Mecànica molecular"
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr ""
-"No es pot establir el camp de forces per aquesta molècula. Canviant a UFF"
+msgstr "No es pot establir el camp de forces per esta molècula. Canviant a UFF"
 
 #: src/extensions/forcefieldextension.cpp:200
 #, qt-format
@@ -1162,11 +1161,11 @@ msgstr "Transforma hidrògens en grups metil"
 #: src/extensions/hydrogensextension.cpp:44
 #: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
-msgstr "Afegeix hidrògens"
+msgstr "Afig hidrògens"
 
 #: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
-msgstr "Afegeix hidrògens per al pH..."
+msgstr "Afig hidrògens per al pH..."
 
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
@@ -1176,7 +1175,7 @@ msgstr "Suprimeix hidrògens"
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
-msgstr "Afegeix hidrògens per al pH"
+msgstr "Afig hidrògens per al pH"
 
 #: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
@@ -1188,7 +1187,7 @@ msgstr "Hidrògens"
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
-msgstr "Afegeix o suprimeix hidrògens"
+msgstr "Afig o suprimeix hidrògens"
 
 #: src/extensions/insertfragmentdialog.cpp:152
 #: src/extensions/quantuminput/inputfileextension.cpp:169
@@ -1198,7 +1197,7 @@ msgstr "No és pot llegir el fitxer %1"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
-msgstr "Obre un directori"
+msgstr "Obri un directori"
 
 #: src/extensions/insertfragmentextension.cpp:54
 msgid "Fragment..."
@@ -1322,7 +1321,7 @@ msgstr "Importa per nom químic"
 
 #: src/extensions/networkfetchextension.cpp:64
 msgid "Fetch from URL..."
-msgstr "Importa des de URL..."
+msgstr "Importa des d'URL..."
 
 #: src/extensions/networkfetchextension.cpp:99
 msgid "PDB Entry"
@@ -1368,7 +1367,7 @@ msgstr "Posa els fitxers molecular sobre la xarxa."
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
-msgstr "Desa la imatge de POV-Ray generada"
+msgstr "Alça la imatge de POV-Ray generada"
 
 #: src/extensions/povraydialog.cpp:152
 msgid "Image files (*.png *.pbm)"
@@ -1397,7 +1396,7 @@ msgid ""
 "you want?"
 msgstr ""
 "No heu demanat cap generació POV-Ray i no podeu utilitzar cap fitxer POV-"
-"Ray.  Així no podreu desar cap resultat. Esteu segur que això és el que "
+"Ray.  Així no podreu alçar cap resultat. Esteu segur que això és el que "
 "voleu ?"
 
 #: src/extensions/povrayextension.cpp:159
@@ -1412,7 +1411,7 @@ msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr ""
 "No es pot escriure al fitxer %1. Esteu segurs de tindre permís d'escriptura "
-"en aquest lloc?"
+"en este lloc?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
@@ -1434,7 +1433,7 @@ msgstr "POV-Ray"
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
 msgstr ""
-"Crea fitxers POV-Ray i representa'ls utilitzant el programa d'ordres POV-Ray."
+"Crea fitxers POV-Ray i representa'ls utilitzant el programa d'ordes POV-Ray."
 
 #: src/extensions/propextension.cpp:69
 msgid "Atom Properties..."
@@ -1559,7 +1558,7 @@ msgstr "Àtom final"
 
 #: src/extensions/propmodel.cpp:460
 msgid "Bond Order"
-msgstr "Ordre de l'enllaç"
+msgstr "Orde de l'enllaç"
 
 #: src/extensions/propmodel.cpp:462
 msgid "Rotatable"
@@ -1645,7 +1644,7 @@ msgstr "Carrega atòmica"
 
 #: src/extensions/qtaim/qtaimextension.cpp:149
 msgid "Open WFN File"
-msgstr "Obre el fitxer WFN"
+msgstr "Obri el fitxer WFN"
 
 #: src/extensions/qtaim/qtaimextension.cpp:151
 msgid "WFN files (*.wfn);;All files (*.*)"
@@ -1869,7 +1868,7 @@ msgstr ""
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
 msgid "Save Input Deck"
-msgstr "Desa entrada"
+msgstr "Alça entrada"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1884,7 +1883,7 @@ msgstr "Execució Gaussiana"
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
 msgstr ""
-"La Gaussiana s'està executant. Espereu fins que els càlculs previs hagin "
+"La Gaussiana s'està executant. Espereu fins que els càlculs previs hagen "
 "finalitzat."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:299
@@ -1993,7 +1992,7 @@ msgstr "Executant MOPAC"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:181
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr "MOPAC està executant-se. Espereu fins que els càlculs hagin acabat."
+msgstr "MOPAC està executant-se. Espereu fins que els càlculs hagen acabat."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:191
 msgid "MOPAC Not Installed."
@@ -2078,7 +2077,7 @@ msgstr "Selecciona solvent"
 
 #: src/extensions/selectextension.cpp:99
 msgid "Add Named Selection..."
-msgstr "Afegeix una selecció per nom..."
+msgstr "Afig una selecció per nom..."
 
 #: src/extensions/selectextension.cpp:115
 msgid "&Select"
@@ -2108,7 +2107,7 @@ msgstr "Ni hi ha cap selecció actual."
 
 #: src/extensions/selectextension.cpp:283
 msgid "Add Named Selection"
-msgstr "Afegeix una selecció per nom"
+msgstr "Afig una selecció per nom"
 
 #: src/extensions/selectextension.cpp:283
 msgid "name"
@@ -2120,7 +2119,7 @@ msgstr "El nom no pot estar buit."
 
 #: src/extensions/selectextension.cpp:295
 msgid "There is already a selection with this name."
-msgstr "Ja hi ha una selecció amb aquest nom."
+msgstr "Ja hi ha una selecció amb este nom."
 
 #: src/extensions/selectextension.h:41
 msgid "Selections"
@@ -2136,7 +2135,7 @@ msgstr "GLSL Shaders..."
 
 #: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
-msgstr "Obre un fitxer font de vertex shader"
+msgstr "Obri un fitxer font de vertex shader"
 
 #: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
@@ -2144,7 +2143,7 @@ msgstr "Fitxers de vertex shader (*.vert)"
 
 #: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
-msgstr "Obre un fitxer font de fragment shader"
+msgstr "Obri un fitxer font de fragment shader"
 
 #: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
@@ -2152,7 +2151,7 @@ msgstr "Fitxers de fragment shader (*.frag)"
 
 #: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
-msgstr "Obre un fitxer de paràmetres shader"
+msgstr "Obri un fitxer de paràmetres shader"
 
 #: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
@@ -2211,7 +2210,7 @@ msgid ""
 "visualization."
 msgstr ""
 "La dada de vibració per la molècula que heu carregat no conté cap "
-"intensitat. Les intensitats s'han establert a un valor arbitrari per la seva "
+"intensitat. Les intensitats s'han establit a un valor arbitrari per la seua "
 "visualització."
 
 #: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:141
@@ -2471,7 +2470,7 @@ msgstr "Pixmap X11"
 
 #: src/extensions/spectra/spectradialog.cpp:929
 msgid "Save Spectra Image"
-msgstr "Desa la imatge de l'espectre"
+msgstr "Alça la imatge de l'espectre"
 
 #: src/extensions/spectra/spectradialog.cpp:947
 msgid "Invalid Filename"
@@ -2546,7 +2545,7 @@ msgstr "Mostra els modes vibracionals per als càlculs químics quàntics"
 #: src/extensions/spectra/vibrationwidget.cpp:147
 #, qt-format
 msgid "Sorting %1 vibrations by frequency..."
-msgstr "Sortida %1 vibracions per freqüència..."
+msgstr "Eixida %1 vibracions per freqüència..."
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
@@ -2585,8 +2584,7 @@ msgid ""
 "This document is currently an isolated molecule. You need to create a unit "
 "cell."
 msgstr ""
-"Aquest document és d'una molècula aïllada. Necessiteu crear una cel·la "
-"unitat."
+"Este document és d'una molècula aïllada. Necessiteu crear una cel·la unitat."
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
@@ -2717,11 +2715,11 @@ msgstr "Calcula orbitals moleculars i altres superfícies"
 
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
-msgstr "El estri GL no està correctament inicialitzat per enregistrar un vídeo"
+msgstr "L'estri GL no està correctament inicialitzat per enregistrar un vídeo"
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
-msgstr "El estri GL no té cap molècula"
+msgstr "L'estri GL no té cap molècula"
 
 #: src/extensions/trajvideomaker.cpp:62
 msgid "Building video "
@@ -2733,7 +2731,7 @@ msgstr "No funciona povray."
 
 #: src/extensions/trajvideomaker.cpp:112
 msgid "Video file not written."
-msgstr "Fitxer de vídeo sense desar."
+msgstr "Fitxer de vídeo sense alçar."
 
 #: src/extensions/trajvideomaker.cpp:152
 msgid "Could not run mencoder."
@@ -2756,7 +2754,7 @@ msgid ""
 msgstr ""
 "L'actual escena d'Avogadro té %1x%2 pixels d'ample i tanmateix té relació "
 "d'aspecte %3.\n"
-"Podeu utilitzar aquest valor, per exemple per utilitzar POV-Ray per produir "
+"Podeu utilitzar este valor, per exemple per utilitzar POV-Ray per produir "
 "una imatge de %4x1000 pixels , o podeu entrar un altre valor positiu, \n"
 "per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada de "
 "d'aproximadament 1000x1000 pixels."
@@ -2781,7 +2779,7 @@ msgstr "Selecciona el color de la cel·la unitat"
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
-msgstr "Aquesta cel·la unitat no té associat cap grup espacial."
+msgstr "Esta cel·la unitat no té associat cap grup espacial."
 
 #: src/extensions/unitcellextension.h:36
 msgid "Unit Cell"
@@ -2944,18 +2942,18 @@ msgstr "El fitxer %1 no és pot obrir per escriure-hi."
 #: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
-"El desat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
+"L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
 "original."
 
 #: src/moleculefile.cpp:490
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
-"El desat del fitxer molecular ha fallat - no és pot reanomenar el fitxer nou."
+"L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer nou."
 
 #: src/moleculefile.cpp:499
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
-"El desat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
+"L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
 "antic."
 
 #: src/moleculefile.cpp:508
@@ -3418,7 +3416,7 @@ msgstr "Configuració de mesuraments"
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
 #: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3648
 msgid "Add Atom"
-msgstr "Afegeix un àtom"
+msgstr "Afig un àtom"
 
 #: src/tools/drawcommand.cpp:414
 msgid "Delete Atom"
@@ -3426,7 +3424,7 @@ msgstr "Suprimeix l'àtom"
 
 #: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
-msgstr "Afegeix un enllaç"
+msgstr "Afig un enllaç"
 
 #: src/tools/drawcommand.cpp:767
 msgid "Delete Bond"
@@ -3477,7 +3475,7 @@ msgstr "Altre..."
 
 #: src/tools/drawtool.cpp:815
 msgid "Bond Order:"
-msgstr "Ordre d'enllaç:"
+msgstr "Orde d'enllaç:"
 
 #: src/tools/drawtool.cpp:820
 msgid "Single"
@@ -4149,7 +4147,7 @@ msgstr "Nombre d'enllaç"
 #. i18n: file: src/engines/labelsettingswidget.ui:583
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond order"
-msgstr "Ordre d'enllaç"
+msgstr "Orde d'enllaç"
 
 #. i18n: file: src/engines/qtaimsettingswidget.ui:19
 #. i18n: ectx: property (text), widget (QLabel, atomRadiusLabel)
@@ -4296,7 +4294,7 @@ msgstr "fps"
 #. i18n: file: src/extensions/animationdialog.ui:225
 #. i18n: ectx: property (text), widget (QPushButton, saveVideoButton)
 msgid "Save as .avi..."
-msgstr "Anomena i desa com a .avi…"
+msgstr "Anomena i alça com a .avi…"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
@@ -4419,7 +4417,7 @@ msgstr ""
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Enganxa o edita les "
-"coordinades atòmiques aquí. Podeu enganxar quasi qualsevol fragment de text "
+"coordinades atòmiques ací. Podeu enganxar quasi qualsevol fragment de text "
 "contenint coordinades.</p></body></html>"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
@@ -4435,7 +4433,7 @@ msgstr "ordenat per  "
 #. i18n: file: src/extensions/conformersearchdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConformerSearchDialog)
 msgid "Conformer Search"
-msgstr "Cerca de esteroisòmers"
+msgstr "Cerca d'esteroisòmers"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:19
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -4452,12 +4450,12 @@ msgstr "Nombre d'àtoms:"
 #. i18n: file: src/extensions/conformersearchdialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, bondsLabel)
 msgid "Number of rotatable bonds:"
-msgstr "Nombre de enllaços angulars:"
+msgstr "Nombre d'enllaços angulars:"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Number of conformers"
-msgstr "Nombre de esteoisòmers"
+msgstr "Nombre d'esteoisòmers"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:60
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -4489,7 +4487,7 @@ msgstr "Restriccions"
 #. i18n: file: src/extensions/constraintsdialog.ui:26
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Add Constraints"
-msgstr "Afegeix restriccions"
+msgstr "Afig restriccions"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
@@ -4544,7 +4542,7 @@ msgstr "Afegix"
 #. i18n: file: src/extensions/constraintsdialog.ui:143
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsSave)
 msgid "Save"
-msgstr "Desa"
+msgstr "Alça"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:153
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsLoad)
@@ -5120,12 +5118,12 @@ msgstr "Transparència alfa"
 #. i18n: file: src/extensions/povraydialog.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Command:"
-msgstr "Ordre:"
+msgstr "Orde:"
 
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Representa la molècula directament utilitzant la ordre POV-Ray"
+msgstr "Representa la molècula directament utilitzant la orde POV-Ray"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
@@ -5136,7 +5134,7 @@ msgstr "Representa utilitzant POV-Ray"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, keepSource)
 msgid "Keep the POV-Ray source after rendering has completed"
 msgstr ""
-"Conserva el codi font de POV-Ray després que la representació s'hagi "
+"Conserva el codi font de POV-Ray després que la representació s'haja "
 "completat"
 
 #. i18n: file: src/extensions/povraydialog.ui:199
@@ -5186,7 +5184,7 @@ msgid ""
 "Adds what you type in the title line of the input file for your own\n"
 "informative purposes."
 msgstr ""
-"Afegeix el que teclegis a la línia de títol del fitxer d'entrada \n"
+"Afig el que teclegis a la línia de títol del fitxer d'entrada \n"
 "per a propòsits informatius"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
@@ -5662,7 +5660,7 @@ msgid ""
 "correctly. The number of nodes are set by using the \"-N #\" option when "
 "executing the \"dalton\" script."
 msgstr ""
-"Executa en paral·lel sempre que sigui possible. Això sols és possible per \n"
+"Executa en paral·lel sempre que siga possible. Això sols és possible per \n"
 "funcions SCF i càlculs DFT. Dalton sols suporta MPI a la versió actual i "
 "cal\n"
 "compilar-lo i instal·lar-lo de forma correcta. El nombre de nodes estan "
@@ -6529,7 +6527,7 @@ msgstr "# Funcions de polarització D del àtoms pesants :"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:482
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Read"
-msgstr "Llegeix"
+msgstr "Llig"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:487
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
@@ -6853,7 +6851,7 @@ msgstr "CI Singles"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1126
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Full Second Order CI"
-msgstr "Cl ple de segon ordre"
+msgstr "Cl ple de segon orde"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1131
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
@@ -6953,7 +6951,7 @@ msgstr "Bohr"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1417
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Order of Principal Axis:"
-msgstr "Ordre dels eixos principals:"
+msgstr "Orde dels eixos principals:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1424
 #. i18n: ectx: property (text), widget (QLabel, label_11)
@@ -7220,7 +7218,7 @@ msgstr "MO llegit ($VEC)"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2037
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "MO Saved (DICTNRY)"
-msgstr "MO desat (DICTNRY)"
+msgstr "MO alçat (DICTNRY)"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2042
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
@@ -7814,7 +7812,7 @@ msgstr "LANL2DZ"
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:334
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Output:"
-msgstr "Sortida:"
+msgstr "Eixida:"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:350
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
@@ -8154,7 +8152,7 @@ msgstr "px"
 #. i18n: file: src/extensions/spectra/spectradialog.ui:595
 #. i18n: ectx: property (text), widget (QPushButton, push_imageSave)
 msgid "&Save Image..."
-msgstr "De&sa Imatge..."
+msgstr "Al&ça Imatge..."
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:628
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_imageFontAdjust)
@@ -8721,48 +8719,15 @@ msgstr "Esborra Àtoms"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
-"Launchpad Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro "
-"Team,Geoff Hutchison,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,el_libre - http://www.catmidia."
-"cat  XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,"
-"David Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
-"Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
-"Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
-"Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
-"Planella,Geoff Hutchison,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+" ,Launchpad Contributions:,carles ferrando,el_libre - http://www.catmidia."
+"cat  XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
-"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
-"devel@lists.sourceforge.net,,el.libre@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,"
-"el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,david."
-"planella@ubuntu.com,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge."
-"net,david.planella@ubuntu.com,,el.libre@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,david.planella@ubuntu.com,,el.libre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net,david.planella@ubuntu.com,,,el.libre@gmail.com"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesi"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ununbi"
-
-#~ msgid "Surface"
-#~ msgstr "Superfície"
+msgstr ",,,el.libre@gmail.com"
 
 #~ msgid "Open trajectory file"
-#~ msgstr "Obre un fitxer de trajectòria"
+#~ msgstr "Obri un fitxer de trajectòria"
 
 #~ msgid "Trajectory files (*.xtc *.xyz)"
 #~ msgstr "Fitxers de trajectòria (*.xtc *.xyz)"
@@ -8770,26 +8735,32 @@ msgstr ""
 #~ msgid "could not set format to XYZ"
 #~ msgstr "no es pot posar en format XYZ"
 
+#~ msgid "Caesium"
+#~ msgstr "Cesi"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbi"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "representa l'estructura de la proteïna secundaria"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "representa orbitals moleculars"
+
+#~ msgid "Surface"
+#~ msgstr "Superfície"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "representa superfícies moleculars computades"
+
 #~ msgid "Animate trajectories, reactions, and vibratins."
 #~ msgstr "Anima trajectòries, reaccions, i vibracions."
-
-#~ msgid "Optimize Geometry"
-#~ msgstr "Optimitza la geometria"
-
-#~ msgid "Cannot set up the force field for this molecule."
-#~ msgstr "No es pot inicialitzar el camp de forces per esta molècula."
-
-#~ msgid "Energy = %1 %2"
-#~ msgstr "Energia = %1 %2"
 
 #~ msgid "EFP Selection..."
 #~ msgstr "Selecció EFP ..."
 
 #~ msgid "QM Selection..."
 #~ msgstr "Selecció QM..."
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Exporta entrada"
 
 #~ msgid "GAMESS Input Deck (*.inp)"
 #~ msgstr "Entrada GAMESS (*.inp)"
@@ -8882,17 +8853,11 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Crea interpolació linial per les animacions"
 
-#~ msgid "Save MOPAC Input Deck"
-#~ msgstr "Alça l'entrada MOPAC"
-
 #~ msgid "MOPAC Input Deck (*.mop)"
 #~ msgstr "Entrada MOPAC ( *.mop)"
 
 #~ msgid "ESP"
 #~ msgstr "ESP"
-
-#~ msgid "MO "
-#~ msgstr "MO "
 
 #~ msgid "VdW Cube"
 #~ msgstr "Cub VdW"
@@ -8922,9 +8887,6 @@ msgstr ""
 #~ msgid "Torsion %1"
 #~ msgstr "Torsió %1"
 
-#~ msgid "Save QChem Input Deck"
-#~ msgstr "Alça l'entrada Qchem"
-
 #~ msgid "QChem Input Deck (*.qcin)"
 #~ msgstr "Entrada QChem (*qcin)"
 
@@ -8951,9 +8913,6 @@ msgstr ""
 
 #~ msgid "Atoms"
 #~ msgstr "Àtoms"
-
-#~ msgid "Bonds"
-#~ msgstr "Enllaços"
 
 #~ msgid "Residues"
 #~ msgstr "Residus"
@@ -8988,28 +8947,8 @@ msgstr ""
 #~ msgid "Click to insert the fragment at that position."
 #~ msgstr "Feu clic per a inserir el fragment en eixa posició."
 
-#~ msgid ""
-#~ "Selection Tool (F11)\n"
-#~ "Click to pick individual atoms, residues, or fragments\n"
-#~ "Drag to select a range of atoms\n"
-#~ "Use Ctrl to toggle the selection and shift to add to the selection"
-#~ msgstr ""
-#~ "Eina selecció (F11)\n"
-#~ "Cliqueu per a escollir àtoms individuals, residus, o fragments\n"
-#~ "Arrossegueu per a seleccionar un rang d'àtoms\n"
-#~ "Utilitzeu Ctrl per a mantindre la selecció i Maj per a afegir la selecció."
-
-#~ msgid "Custom Value"
-#~ msgstr "Valor personalitzat"
-
-#~ msgid "Atom Labels:"
-#~ msgstr "Etiquetes d'àtoms:"
-
 #~ msgid "Custom Data"
 #~ msgstr "Dades del client"
-
-#~ msgid "Bond Labels:"
-#~ msgstr "Etiquetes d'enllaç:"
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Potencial electrostàtic (ESP)"
@@ -9197,14 +9136,8 @@ msgstr ""
 #~ ">Aquest programa és subministra sense CAP GARANTIA de CAP MENA, INCLOENT-"
 #~ "HI LA GARANTIA DE DISSENY, VENDA o APTITUD PER QUALSEVOL COSA.<br/>"
 
-#~ msgid "Cut Molecule"
-#~ msgstr "Retalla la molècula"
-
 #~ msgid "Cut Atoms"
 #~ msgstr "Retalla els àtoms"
-
-#~ msgid "Paste"
-#~ msgstr "Enganxa"
 
 #~ msgid "Clear Molecule"
 #~ msgstr "Esborra la molècula"
@@ -9259,9 +9192,6 @@ msgstr ""
 
 #~ msgid "MDL Mol"
 #~ msgstr "Mol MDL"
-
-#~ msgid "PDB"
-#~ msgstr "PDB"
 
 #~ msgid "Sybyl Mol2"
 #~ msgstr "Sybyl Mol2"
@@ -9335,9 +9265,6 @@ msgstr ""
 
 #~ msgid "Save succeeded."
 #~ msgstr "S'ha alçat amb èxit."
-
-#~ msgid "Saving molecular file failed."
-#~ msgstr "S'ha produït un error en alçar el fitxer molecular."
 
 #~ msgid "PNG"
 #~ msgstr "PNG"
@@ -9425,9 +9352,6 @@ msgstr ""
 #~ msgid "Name: "
 #~ msgstr "Nom: "
 
-#~ msgid "File: "
-#~ msgstr "Fitxer: "
-
 #~ msgid "Description:\n"
 #~ msgstr "Descripció:\n"
 
@@ -9442,9 +9366,6 @@ msgstr ""
 
 #~ msgid "bond %1"
 #~ msgstr "enllaç %1"
-
-#~ msgid "User Selections"
-#~ msgstr "Seleccions de l'usuari"
 
 #~ msgid "only labels can have sub items"
 #~ msgstr "només les etiquetes poden tindre subelements"
@@ -9503,9 +9424,6 @@ msgstr ""
 #~ msgid "Name:"
 #~ msgstr "Nom:"
 
-#~ msgid "Description:"
-#~ msgstr "Descripció:"
-
 #~ msgid "Color by:"
 #~ msgstr "Color de:"
 
@@ -9560,9 +9478,6 @@ msgstr ""
 #~ msgid "&Open"
 #~ msgstr "&Obre"
 
-#~ msgid "Ctrl+O"
-#~ msgstr "Ctrl+O"
-
 #~ msgid "&Quit"
 #~ msgstr "&Ix"
 
@@ -9596,17 +9511,11 @@ msgstr ""
 #~ msgid "Ctrl+Shift+S"
 #~ msgstr "Ctrl+Shift+S"
 
-#~ msgid "Revert To Saved"
-#~ msgstr "Desfes l'alçat"
-
 #~ msgid "&Graphics..."
 #~ msgstr "&Gràfics..."
 
 #~ msgid "&Full Screen Mode"
 #~ msgstr "&Mode pantalla completa"
-
-#~ msgid "Set &Background Color..."
-#~ msgstr "Estableix color de &fons..."
 
 #~ msgid "&About"
 #~ msgstr "&Quant a"
@@ -9638,9 +9547,6 @@ msgstr ""
 #~ msgid "Ctrl+V"
 #~ msgstr "Ctrl+V"
 
-#~ msgid "Copy"
-#~ msgstr "Copia"
-
 #~ msgid "Ctrl+C"
 #~ msgstr "Ctrl+C"
 
@@ -9649,9 +9555,6 @@ msgstr ""
 
 #~ msgid "Ctrl+X"
 #~ msgstr "Ctrl+X"
-
-#~ msgid "Clear"
-#~ msgstr "Esborra"
 
 #~ msgid "Select All"
 #~ msgstr "Selecciona-ho tot"
@@ -9673,9 +9576,6 @@ msgstr ""
 
 #~ msgid "Duplicate View"
 #~ msgstr "Duplica la visualització"
-
-#~ msgid "Display Axes"
-#~ msgstr "Mostra els eixos"
 
 #~ msgid "Avogadro Help"
 #~ msgstr "Ajuda de l'Avogrado"
@@ -9706,9 +9606,6 @@ msgstr ""
 
 #~ msgid "Use Quick Render"
 #~ msgstr "Utilitza el generador fàcil"
-
-#~ msgid "Display Unit Cell Axes"
-#~ msgstr "Mostra eixos de cel·les unitat"
 
 #~ msgid "Plugins"
 #~ msgstr "Connectors"
@@ -9750,9 +9647,6 @@ msgstr ""
 #~ msgid "Move Item Up"
 #~ msgstr "Puja l'element"
 
-#~ msgid "U"
-#~ msgstr "U"
-
 #~ msgid "Move Item Down"
 #~ msgstr "Baixa l'element"
 
@@ -9761,9 +9655,6 @@ msgstr ""
 
 #~ msgid "General"
 #~ msgstr "General"
-
-#~ msgid "Quality:"
-#~ msgstr "Qualitat:"
 
 #~ msgid "Set the global rendering quality."
 #~ msgstr "Configura la qualitat global de generació"
@@ -9805,50 +9696,17 @@ msgstr ""
 #~ msgid "Smooth Transitions"
 #~ msgstr "Transicions suaus"
 
-#~ msgid "MOLPRO Input..."
-#~ msgstr "Introducció MOLPRO..."
-
-#~ msgid "&NWChem Input..."
-#~ msgstr "&Introducció NWChem..."
-
 #~ msgid "Cartesian Properties"
 #~ msgstr "Propietats cartesianes"
-
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Symbol & Atom Number"
-#~ msgstr "Símbol & Nombre de l'Àtom"
 
 #~ msgid "&Scale:"
 #~ msgstr "E&scale:"
 
-#~ msgid "Intensity (km/mol)"
-#~ msgstr "Intensitat (km/mol)"
-
-#~ msgid "tab_IR"
-#~ msgstr "tab_IR"
-
 #~ msgid "Sc&ale:"
 #~ msgstr "Esc&ala:"
-
-#~ msgid "Frequency (cm⁻¹)"
-#~ msgstr "Freqüència (cm⁻¹)"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"
 
 #~ msgid "E&xport..."
 #~ msgstr "E&xporta..."
-
-#~ msgid "In Display Type:"
-#~ msgstr "En tipus de mostra:"
-
-#~ msgid "Renders protein secundary structure"
-#~ msgstr "representa l'estructura de la proteïna secundaria"
-
-#~ msgid "Renders molecular orbitals"
-#~ msgstr "representa orbitals moleculars"
-
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "representa superfícies moleculars computades"
