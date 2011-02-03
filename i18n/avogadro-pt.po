@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-18 02:08+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-03 15:23+0000\n"
+"X-Generator: Launchpad (build 12309)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -47,10 +47,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:854 src/mainwindow.cpp:904
-#: src/mainwindow.cpp:926 src/mainwindow.cpp:1089 src/mainwindow.cpp:1111
-#: src/mainwindow.cpp:1265 src/mainwindow.cpp:1493 src/mainwindow.cpp:2690
-#: src/mainwindow.cpp:3191 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:916 src/mainwindow.cpp:966
+#: src/mainwindow.cpp:988 src/mainwindow.cpp:1159 src/mainwindow.cpp:1181
+#: src/mainwindow.cpp:1335 src/mainwindow.cpp:1563 src/mainwindow.cpp:2838
+#: src/mainwindow.cpp:3339 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -79,11 +79,11 @@ msgstr "Limpar Átomos"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3209 src/mainwindow.cpp:3226 :381 rc.cpp:393
+#: src/mainwindow.cpp:3357 src/mainwindow.cpp:3374 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Preferências"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:744
+#: src/importdialog.cpp:175 src/mainwindow.cpp:806
 msgid "Open File"
 msgstr "Abrir Ficheiro"
 
@@ -159,134 +159,134 @@ msgstr ""
 msgid "Messages"
 msgstr "Mensagens"
 
-#: src/mainwindow.cpp:374
+#: src/mainwindow.cpp:436
 msgid "Window"
 msgstr "Janela"
 
-#: src/mainwindow.cpp:377
+#: src/mainwindow.cpp:439
 msgid "&Minimize"
 msgstr "&Minimizar"
 
-#: src/mainwindow.cpp:378
+#: src/mainwindow.cpp:440
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: src/mainwindow.cpp:383
+#: src/mainwindow.cpp:445
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1628
+#: src/mainwindow.cpp:452 src/mainwindow.cpp:1701
 msgid "Bring All to Front"
 msgstr "Trazer todos para a frente"
 
-#: src/mainwindow.cpp:670
+#: src/mainwindow.cpp:732
 msgid "&Tool Settings..."
 msgstr "&Definições da Ferramenta"
 
-#: src/mainwindow.cpp:673
+#: src/mainwindow.cpp:735
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:678
+#: src/mainwindow.cpp:740
 msgid "&Display Settings..."
 msgstr "Definições do Ecrã"
 
-#: src/mainwindow.cpp:681
+#: src/mainwindow.cpp:743
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:786 src/mainwindow.cpp:1274
 msgid "Common molecule formats"
 msgstr "Formatos comuns de moléculas"
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1201 src/mainwindow.cpp:1433
-#: src/mainwindow.cpp:1512
+#: src/mainwindow.cpp:791 src/mainwindow.cpp:1271 src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1584
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1198 src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:792 src/mainwindow.cpp:1268 src/mainwindow.cpp:1280
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:731
+#: src/mainwindow.cpp:793
 msgid "Computational Chemistry Output"
 msgstr "Output de Química Computacional"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:794
 msgid "Crystallographic Interchange CIF"
 msgstr "CIF de Intercâmbio Cristalográfico"
 
-#: src/mainwindow.cpp:733
+#: src/mainwindow.cpp:795
 msgid "GAMESS-US Output"
 msgstr "Output de GAMESS-US"
 
-#: src/mainwindow.cpp:734
+#: src/mainwindow.cpp:796
 msgid "Gaussian 98/03 Output"
 msgstr "Output do Gaussian 98/03"
 
-#: src/mainwindow.cpp:735
+#: src/mainwindow.cpp:797
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Checkpoint Formatado do Gaussian"
 
-#: src/mainwindow.cpp:736
+#: src/mainwindow.cpp:798
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:737
+#: src/mainwindow.cpp:799
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:738
+#: src/mainwindow.cpp:800
 msgid "NWChem Output"
 msgstr "Output do NWChem"
 
-#: src/mainwindow.cpp:739 src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:801 src/mainwindow.cpp:1285
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:740 src/mainwindow.cpp:1217
+#: src/mainwindow.cpp:802 src/mainwindow.cpp:1287
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:741 src/mainwindow.cpp:1218
+#: src/mainwindow.cpp:803 src/mainwindow.cpp:1288
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:810 src/mainwindow.cpp:815 src/savedialog.cpp:83
+#: src/mainwindow.cpp:872 src/mainwindow.cpp:877 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "sem título"
 
-#: src/mainwindow.cpp:831
+#: src/mainwindow.cpp:893
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Carregando %1..."
 
-#: src/mainwindow.cpp:835
+#: src/mainwindow.cpp:897
 #, qt-format
 msgid "Loading %1..."
 msgstr "Carregando %1..."
 
-#: src/mainwindow.cpp:855 src/mainwindow.cpp:1090
+#: src/mainwindow.cpp:917 src/mainwindow.cpp:1160
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Leitura do ficheiro da molécula falhou, ficheiro %1."
 
-#: src/mainwindow.cpp:878
+#: src/mainwindow.cpp:940
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "A ler ficheiro multi-molécula. Pode demorar algum tempo..."
 
-#: src/mainwindow.cpp:905
+#: src/mainwindow.cpp:967
 msgid "This file does not contain 3D coordinates."
 msgstr "Este ficheiro não contém coordenadas 3D."
 
-#: src/mainwindow.cpp:909
+#: src/mainwindow.cpp:971
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Pretende que o Avogadro construa uma geometria aproximada?"
 
-#: src/mainwindow.cpp:927
+#: src/mainwindow.cpp:989
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -294,198 +294,198 @@ msgstr ""
 "Este ficheiro não contém coordenadas 3D.\n"
 "Pode não conseguir editá-lo ou visualizá-lo apropriadamente."
 
-#: src/mainwindow.cpp:979
+#: src/mainwindow.cpp:1043
 msgid "Select Molecule to View"
 msgstr "Seleccione a Molécula a Visualizar"
 
-#: src/mainwindow.cpp:1004
+#: src/mainwindow.cpp:1068
 msgid "Molecule Title"
 msgstr "Título da Molécula"
 
-#: src/mainwindow.cpp:1082
+#: src/mainwindow.cpp:1152
 msgid "Atoms: "
 msgstr "Átomos: "
 
-#: src/mainwindow.cpp:1083
+#: src/mainwindow.cpp:1153
 msgid " Bonds: "
 msgstr " Ligações: "
 
-#: src/mainwindow.cpp:1099
+#: src/mainwindow.cpp:1169
 msgid "File Loaded..."
 msgstr "Ficheiro Carregado..."
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1182
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Pretende gravar as alterações feitas no documento?"
 
-#: src/mainwindow.cpp:1121
+#: src/mainwindow.cpp:1191
 msgid "Your changes will be lost if you don't save them."
 msgstr "As suas alterações serão perdidas se não as gravar."
 
-#: src/mainwindow.cpp:1125
+#: src/mainwindow.cpp:1195
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1126
+#: src/mainwindow.cpp:1196
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1128
+#: src/mainwindow.cpp:1198
 msgid "Save..."
 msgstr "Guardar..."
 
-#: src/mainwindow.cpp:1128 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1198 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Guardar"
 
-#: src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:1281
 msgid "GAMESS Input"
 msgstr "Input do GAMESS"
 
-#: src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:1282
 msgid "Gaussian Cartesian Input"
 msgstr "Input do Gaussian em Coordenadas Cartesianas"
 
-#: src/mainwindow.cpp:1213
+#: src/mainwindow.cpp:1283
 msgid "Gaussian Z-matrix Input"
 msgstr "Input do Gaussian em Matriz-Z"
 
-#: src/mainwindow.cpp:1214
+#: src/mainwindow.cpp:1284
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1216
+#: src/mainwindow.cpp:1286
 msgid "NWChem Input"
 msgstr "Input do NWChem"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1291
 msgid "Save Molecule As"
 msgstr "Guardar Molécula Como"
 
-#: src/mainwindow.cpp:1423 src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1493 src/mainwindow.cpp:1505
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1500
 msgid "Common image formats"
 msgstr "Formatos de imagem comuns"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1504
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1506
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1442 src/mainwindow.cpp:1521
+#: src/mainwindow.cpp:1512 src/mainwindow.cpp:1593
 msgid "Export Bitmap Graphics"
 msgstr "Exportar Gráficos Bitmap"
 
-#: src/mainwindow.cpp:1494
+#: src/mainwindow.cpp:1564
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Não foi possível salvar o arquivo %1."
 
-#: src/mainwindow.cpp:1502 src/mainwindow.cpp:1513
+#: src/mainwindow.cpp:1574 src/mainwindow.cpp:1585
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1581
 msgid "Common vector image formats"
 msgstr "Formatos de imagem vectorial comuns"
 
-#: src/mainwindow.cpp:1514
+#: src/mainwindow.cpp:1586
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1587
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1660
+#: src/mainwindow.cpp:1733
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sem título %1"
 
-#: src/mainwindow.cpp:1765
+#: src/mainwindow.cpp:1838
 msgid "Unable to paste molecule."
 msgstr "Não foi possível colar a molécula."
 
-#: src/mainwindow.cpp:1794
+#: src/mainwindow.cpp:1867
 msgid "Paste failed (format unavailable)."
 msgstr "Colar falhou (formato indisponível)."
 
-#: src/mainwindow.cpp:2077
+#: src/mainwindow.cpp:2150
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copiar falhou (mdl indisponível)."
 
-#: src/mainwindow.cpp:2203 src/mainwindow.cpp:2236 src/mainwindow.cpp:2303
-#: src/mainwindow.cpp:2833
+#: src/mainwindow.cpp:2276 src/mainwindow.cpp:2309 src/mainwindow.cpp:2376
+#: src/mainwindow.cpp:2981
 #, qt-format
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:2263
+#: src/mainwindow.cpp:2336
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Visualizar %1"
 
-#: src/mainwindow.cpp:2272
+#: src/mainwindow.cpp:2345
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista Separada"
 
-#: src/mainwindow.cpp:2438
+#: src/mainwindow.cpp:2576
 msgid "Normal Size"
 msgstr "Tamanho Normal"
 
-#: src/mainwindow.cpp:2451
+#: src/mainwindow.cpp:2593
 msgid "Full Screen"
 msgstr "Ecrã Completo"
 
-#: src/mainwindow.cpp:2549
+#: src/mainwindow.cpp:2695
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2831
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2689
+#: src/mainwindow.cpp:2837
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3145
+#: src/mainwindow.cpp:3293
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/mainwindow.cpp:3150
+#: src/mainwindow.cpp:3298
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:3155
+#: src/mainwindow.cpp:3303
 msgid "Remove"
 msgstr "Remover"
 
-#: src/mainwindow.cpp:3183
+#: src/mainwindow.cpp:3331
 msgid "No tools or engines loaded."
 msgstr "Nenhuma ferramenta ou motor carregado."
 
-#: src/mainwindow.cpp:3185
+#: src/mainwindow.cpp:3333
 msgid "No engines loaded."
 msgstr "Nenhum motor carregado."
 
-#: src/mainwindow.cpp:3187
+#: src/mainwindow.cpp:3335
 msgid "No tools loaded."
 msgstr "Nenhuma ferramenta carregada."
 
-#: src/mainwindow.cpp:3188
+#: src/mainwindow.cpp:3336
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -493,17 +493,17 @@ msgstr ""
 " É improvável que a aplicação funcione correctamente. Por favor, corrija "
 "este erro."
 
-#: src/mainwindow.cpp:3232
+#: src/mainwindow.cpp:3380
 msgid "Objects"
 msgstr "Objetos"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3238 :321
+#: src/mainwindow.cpp:3386 :321
 msgid "Colors"
 msgstr "Cores"
 
-#: src/mainwindow.cpp:3271
+#: src/mainwindow.cpp:3419
 msgid " copy"
 msgstr " copiar"
 
@@ -792,223 +792,223 @@ msgstr "&Construir"
 msgid "&View"
 msgstr "&Ver"
 
-#. i18n: file: src/mainwindow.ui:121
+#. i18n: file: src/mainwindow.ui:122
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
 msgstr "&Editar"
 
-#. i18n: file: src/mainwindow.ui:134
+#. i18n: file: src/mainwindow.ui:135
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
 msgstr "E&xtensões"
 
-#. i18n: file: src/mainwindow.ui:139
+#. i18n: file: src/mainwindow.ui:140
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
 msgstr "&Seleccionar"
 
-#. i18n: file: src/mainwindow.ui:156
+#. i18n: file: src/mainwindow.ui:157
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
 msgstr "Barra de Ferramentas Principal"
 
-#. i18n: file: src/mainwindow.ui:193
+#. i18n: file: src/mainwindow.ui:194
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
 msgstr "Árvore de Projecto"
 
-#. i18n: file: src/mainwindow.ui:226
+#. i18n: file: src/mainwindow.ui:227
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "Tipos de Visualização"
 
-#. i18n: file: src/mainwindow.ui:235
+#. i18n: file: src/mainwindow.ui:236
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "Ferramentas"
 
-#. i18n: file: src/mainwindow.ui:256
+#. i18n: file: src/mainwindow.ui:253
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:268
+#. i18n: file: src/mainwindow.ui:261
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
 msgstr "&Abrir"
 
-#. i18n: file: src/mainwindow.ui:259
+#. i18n: file: src/mainwindow.ui:256
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#. i18n: file: src/mainwindow.ui:277
+#. i18n: file: src/mainwindow.ui:266
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:292
+#. i18n: file: src/mainwindow.ui:277
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
 msgstr "&Sair"
 
-#. i18n: file: src/mainwindow.ui:280
+#. i18n: file: src/mainwindow.ui:269
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#. i18n: file: src/mainwindow.ui:297
+#. i18n: file: src/mainwindow.ui:282
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
 msgstr "Recente"
 
-#. i18n: file: src/mainwindow.ui:302
+#. i18n: file: src/mainwindow.ui:287
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
 msgstr "&Limpar Recentes"
 
-#. i18n: file: src/mainwindow.ui:311
+#. i18n: file: src/mainwindow.ui:292
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:323
+#. i18n: file: src/mainwindow.ui:300
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
 msgstr "&Novo"
 
-#. i18n: file: src/mainwindow.ui:314
+#. i18n: file: src/mainwindow.ui:295
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#. i18n: file: src/mainwindow.ui:332
+#. i18n: file: src/mainwindow.ui:305
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:344
+#. i18n: file: src/mainwindow.ui:313
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
 msgstr "&Fechar"
 
-#. i18n: file: src/mainwindow.ui:335
+#. i18n: file: src/mainwindow.ui:308
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#. i18n: file: src/mainwindow.ui:353
+#. i18n: file: src/mainwindow.ui:318
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:365
+#. i18n: file: src/mainwindow.ui:326
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
 msgstr "&Guardar"
 
-#. i18n: file: src/mainwindow.ui:356
+#. i18n: file: src/mainwindow.ui:321
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#. i18n: file: src/mainwindow.ui:374
+#. i18n: file: src/mainwindow.ui:331
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
 msgstr "Gravar &Como"
 
-#. i18n: file: src/mainwindow.ui:377
+#. i18n: file: src/mainwindow.ui:334
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#. i18n: file: src/mainwindow.ui:386
+#. i18n: file: src/mainwindow.ui:339
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
 msgstr "Voltar ao Guardado"
 
-#. i18n: file: src/mainwindow.ui:395
+#. i18n: file: src/mainwindow.ui:344
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
 msgstr "&Imagens..."
 
-#. i18n: file: src/mainwindow.ui:404
+#. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
 msgstr "&Modo de Ecrã Completo"
 
-#. i18n: file: src/mainwindow.ui:407
+#. i18n: file: src/mainwindow.ui:356
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
 msgstr "Esc"
 
-#. i18n: file: src/mainwindow.ui:416
+#. i18n: file: src/mainwindow.ui:365
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
 msgstr "Mudar a Cor de &Fundo..."
 
-#. i18n: file: src/mainwindow.ui:421
+#. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
 msgstr "&Sobre"
 
-#. i18n: file: src/mainwindow.ui:433
+#. i18n: file: src/mainwindow.ui:382
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
 msgstr "&Anular"
 
-#. i18n: file: src/mainwindow.ui:436
+#. i18n: file: src/mainwindow.ui:385
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#. i18n: file: src/mainwindow.ui:445
+#. i18n: file: src/mainwindow.ui:394
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
 msgstr "&Refazer"
 
-#. i18n: file: src/mainwindow.ui:448
+#. i18n: file: src/mainwindow.ui:397
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#. i18n: file: src/mainwindow.ui:457
+#. i18n: file: src/mainwindow.ui:406
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
 msgstr "Nova Janela"
 
-#. i18n: file: src/mainwindow.ui:469
+#. i18n: file: src/mainwindow.ui:418
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
 msgstr "Fechar Janela"
 
-#. i18n: file: src/mainwindow.ui:478
+#. i18n: file: src/mainwindow.ui:427
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
 msgstr "Centrar"
 
-#. i18n: file: src/mainwindow.ui:487
+#. i18n: file: src/mainwindow.ui:441
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
 msgstr "&Colar"
 
-#. i18n: file: src/mainwindow.ui:490
+#. i18n: file: src/mainwindow.ui:444
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#. i18n: file: src/mainwindow.ui:499
+#. i18n: file: src/mainwindow.ui:449
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
 msgstr "Copiar"
 
-#. i18n: file: src/mainwindow.ui:502
+#. i18n: file: src/mainwindow.ui:452
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#. i18n: file: src/mainwindow.ui:511
+#. i18n: file: src/mainwindow.ui:457
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
 msgstr "Cortar"
 
-#. i18n: file: src/mainwindow.ui:514
+#. i18n: file: src/mainwindow.ui:460
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#. i18n: file: src/mainwindow.ui:523
+#. i18n: file: src/mainwindow.ui:465
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
 msgstr "Limpar"
@@ -1018,117 +1018,117 @@ msgstr "Limpar"
 msgid "Backspace"
 msgstr "Backspace"
 
-#. i18n: file: src/mainwindow.ui:531
+#. i18n: file: src/mainwindow.ui:470
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
 msgstr "Seleccionar Tudo"
 
-#. i18n: file: src/mainwindow.ui:534
+#. i18n: file: src/mainwindow.ui:473
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#. i18n: file: src/mainwindow.ui:539
+#. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
 msgstr "Não Seleccionar Nada"
 
-#. i18n: file: src/mainwindow.ui:542
+#. i18n: file: src/mainwindow.ui:481
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#. i18n: file: src/mainwindow.ui:551
+#. i18n: file: src/mainwindow.ui:490
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
 msgstr "Configurar o Avogadro..."
 
-#. i18n: file: src/mainwindow.ui:562
+#. i18n: file: src/mainwindow.ui:501
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
 msgstr "Tutoriais"
 
-#. i18n: file: src/mainwindow.ui:571
+#. i18n: file: src/mainwindow.ui:510
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
 msgstr "Duplicar Janela"
 
-#. i18n: file: src/mainwindow.ui:579
+#. i18n: file: src/mainwindow.ui:518
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
 msgstr "Mostrar os Eixos"
 
-#. i18n: file: src/mainwindow.ui:587
+#. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
 msgstr "Informação de Debug"
 
-#. i18n: file: src/mainwindow.ui:595
+#. i18n: file: src/mainwindow.ui:534
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
 msgstr "Ajuda do Avogadro"
 
-#. i18n: file: src/mainwindow.ui:600
+#. i18n: file: src/mainwindow.ui:539
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
 msgstr "Notas de Lançamento"
 
-#. i18n: file: src/mainwindow.ui:605
+#. i18n: file: src/mainwindow.ui:544
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
 msgstr "Reportar Bug"
 
-#. i18n: file: src/mainwindow.ui:610
+#. i18n: file: src/mainwindow.ui:549
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
 msgstr "FAQ"
 
-#. i18n: file: src/mainwindow.ui:615
+#. i18n: file: src/mainwindow.ui:554
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
 msgstr "Site do Avogadro"
 
-#. i18n: file: src/mainwindow.ui:624
+#. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
 msgstr "Gestor de Plugins..."
 
-#. i18n: file: src/mainwindow.ui:633
+#. i18n: file: src/mainwindow.ui:572
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
 msgstr "Editor da Árvore de Projecto..."
 
-#. i18n: file: src/mainwindow.ui:642
+#. i18n: file: src/mainwindow.ui:581
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
 msgstr "Separar Janela"
 
-#. i18n: file: src/mainwindow.ui:651
+#. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
 msgstr "Ficheiro da Molécula..."
 
-#. i18n: file: src/mainwindow.ui:662
+#. i18n: file: src/mainwindow.ui:597
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
 msgstr "Utilizar Renderização Rápida"
 
-#. i18n: file: src/mainwindow.ui:667
+#. i18n: file: src/mainwindow.ui:602
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
 msgstr "&Imagem Vectorial..."
 
-#. i18n: file: src/mainwindow.ui:675
+#. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
 msgstr "Mostrar Eixos da Célula Unitária"
 
-#. i18n: file: src/mainwindow.ui:683
+#. i18n: file: src/mainwindow.ui:618
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
 msgstr "Todas as Moléculas no Ficheiro..."
 
-#. i18n: file: src/mainwindow.ui:688
+#. i18n: file: src/mainwindow.ui:623
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
 msgstr "Repor Tipo de Visualização"
@@ -1279,8 +1279,10 @@ msgstr ""
 "Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
 "Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad Contributions:,Avogadro "
-"Team,Frederico Tavares,Sérgio Marques"
+"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
+"Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
+"Contributions:,Avogadro Team,Frederico Tavares,Sérgio Marques"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1288,5 +1290,1032 @@ msgstr ""
 ",,,,ivofernandes12@gmail.com,,,,,,,avogadro-"
 "devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,avogadro-"
 "devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
 "devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,avogadro-"
 "devel@lists.sourceforge.net,,"
+
+#, qt-format
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da Biblioteca: "
+#~ "%3<br/><br/>Para mais informações consulte a <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Página do "
+#~ "Avogadro</a>.<br/><br/>O programa é disponibilizado COMO ESTÁ com NENHUMA "
+#~ "GARANTIA DE QUALQUER TIPO, INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO E "
+#~ "APLICAÇÃO A UM PROPÓSITO PARTICULAR.<br/>"
+
+#~ msgctxt "System has OpenGL support."
+#~ msgid "main.cpp"
+#~ msgstr "O sistema suporta OpenGL."
+
+#~ msgctxt "This system does not support OpenGL."
+#~ msgid "main.cpp"
+#~ msgstr "O sistema não suporta OpenGL."
+
+#~ msgid "ubuntu-doc@lists.ubuntu.com (Ubuntu Documentation Project)"
+#~ msgstr "ubuntu-doc@lists.ubuntu.com (Projecto de Documentação Ubuntu)"
+
+#~ msgid "Adding, Removing and Updating Applications"
+#~ msgstr "Adicionar, Remover e Actualizar Aplicações"
+
+#~ msgid "2008-02-16"
+#~ msgstr "16-02-2008"
+
+#~ msgid ""
+#~ "Instructions on how to install and uninstall software, including information "
+#~ "on package management."
+#~ msgstr ""
+#~ "Instruções sobre como instalar e desinstalar aplicações, incluindo "
+#~ "informação sobre a gestão de pacotes."
+
+#~ msgid "Credits and License"
+#~ msgstr "Créditos e Licença"
+
+#~ msgid ""
+#~ "This document is maintained by the Ubuntu documentation team "
+#~ "(https://wiki.ubuntu.com/DocumentationTeam). For a list of contributors, see "
+#~ "the <ulink url=\"../../libs/C/contributors.xml\">contributors page</ulink>"
+#~ msgstr ""
+#~ "Esta documentação é mantida pela equipa de documentação do Ubuntu "
+#~ "(https://wiki.ubuntu.com/DocumentationTeam). Para a lista de contribuidores, "
+#~ "consulte a <ulink url=\"../../libs/C/contributors.xml\">página de "
+#~ "contribuidores</ulink>"
+
+#~ msgid ""
+#~ "This document is made available under the Creative Commons ShareAlike 2.5 "
+#~ "License (CC-BY-SA)."
+#~ msgstr ""
+#~ "Este documento está disponível segundo a licença Creative Commons ShareAlike "
+#~ "2.5 License (CC-BY-SA)."
+
+#~ msgid ""
+#~ "You are free to modify, extend, and improve the Ubuntu documentation source "
+#~ "code under the terms of this license. All derivative works must be released "
+#~ "under this license."
+#~ msgstr ""
+#~ "É livre para modificar, alargar e melhorar o código-fonte da documentação do "
+#~ "Ubuntu sobre os termos desta licença. Todos os trabalhos derivados devem ser "
+#~ "disponibilizados sobre esta licença."
+
+#~ msgid ""
+#~ "This documentation is distributed in the hope that it will be useful, but "
+#~ "WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY "
+#~ "or FITNESS FOR A PARTICULAR PURPOSE AS DESCRIBED IN THE DISCLAIMER."
+#~ msgstr ""
+#~ "Esta documentação é distribuída na esperança de que seja útil, mas SEM "
+#~ "NENHUMA GARANTIA; nem mesmo a garantia implícita de MERCANTIBILIDADE ou "
+#~ "ADAPTAÇÃO A UM PROPÓSITO ESPECÍFICO COMO DESCRITO NAS DISPOSIÇÕES LEGAIS."
+
+#~ msgid ""
+#~ "A copy of the license is available here: <ulink url=\"/usr/share/ubuntu-"
+#~ "docs/libs/C/ccbysa.xml\">Creative Commons ShareAlike License</ulink>."
+#~ msgstr ""
+#~ "Uma cópia da licença está disponível aqui: <ulink url=\"/usr/share/ubuntu-"
+#~ "docs/libs/C/ccbysa.xml\">Creative Commons ShareAlike License</ulink>."
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Ubuntu Documentation Project"
+#~ msgstr "Projecto de Documentação do Ubuntu"
+
+#~ msgid "Canonical Ltd. and members of the <placeholder-1/>"
+#~ msgstr "Canonical Lda. e os membros da <placeholder-1/>"
+
+#~ msgid "The Ubuntu Documentation Project"
+#~ msgstr "Projecto de Documentação Ubuntu"
+
+#~ msgid ""
+#~ "This section discusses how applications are installed, removed and kept up-"
+#~ "to-date. Also covered are how packages are stored by Ubuntu and made "
+#~ "available for download."
+#~ msgstr ""
+#~ "Esta secção discute como as aplicações são instaladas, removidas em mantidas "
+#~ "em dia. Também fala como os pacotes são armazenados pelo Ubuntu e tornados "
+#~ "disponíveis para download."
+
+#~ msgid "How is software installation on Ubuntu different from on Windows?"
+#~ msgstr ""
+#~ "Quão diferente é a instalação de software do Ubuntu em relação ao Windows?"
+
+#~ msgid ""
+#~ "Ubuntu handles software installation in a very different way to Windows."
+#~ msgstr ""
+#~ "O Ubuntu trata da instalação de software de uma maneira diferente da do "
+#~ "Windows."
+
+#~ msgid ""
+#~ "If you want to install an application on Windows, you must normally buy a CD "
+#~ "containing the software, or download an installer package from the Internet. "
+#~ "You then run the installer program, which guides you through the "
+#~ "installation process."
+#~ msgstr ""
+#~ "Se você quer instalar uma aplicação no Windows, você normalmente compra um "
+#~ "CD que contém o software, ou faz o download de um pacote de instalação da "
+#~ "Internet. Depois você corre o programa de instalação, que o guia através do "
+#~ "processo de instalação."
+
+#~ msgid ""
+#~ "On Ubuntu, you simply open a <emphasis>package manager</emphasis>, search "
+#~ "for the application that you want and click a button to install it. Removing "
+#~ "an application is just as simple."
+#~ msgstr ""
+#~ "No Ubuntu, simplesmente abre um <emphasis>gestor de pacotes</emphasis>, "
+#~ "procura pela aplicação que quer e clica num botão para a instalar. Remover "
+#~ "uma aplicação é tão simples como o anterior."
+
+#~ msgid ""
+#~ "The package manager downloads applications from a <emphasis>software "
+#~ "repository</emphasis>, which is a location on the Internet which stores a "
+#~ "collection of applications. These applications come bundled in "
+#~ "<emphasis>packages</emphasis>, which contain all of the information needed "
+#~ "for installation. You can download packages yourself, using your web "
+#~ "browser, if you like, but it is generally much more convenient to let the "
+#~ "package manager handle this for you."
+#~ msgstr ""
+#~ "O gestor de pacotes faz o download de aplicações de um <emphasis>repositório "
+#~ "de software</emphasis>, que é uma localização na Internet que contém uma "
+#~ "colecção de aplicações. Estas aplicações vem em<emphasis>pacotes</emphasis>, "
+#~ "que contém toda a informação necessária para a instalação. Você pode fazer o "
+#~ "download dos pacotes, usando o browser web se quiser, mas é muito mais "
+#~ "conveniente deixar o gestor de pacotes fazer isso por si."
+
+#~ msgid ""
+#~ "Some packages depend on other packages being installed in order to work. For "
+#~ "example, a word processing package may require a printing package to be "
+#~ "installed. The package manager automatically installs these "
+#~ "<emphasis>dependencies</emphasis> for you."
+#~ msgstr ""
+#~ "Alguns pacotes dependem de outros pacotes instalados de maneira a funcionar. "
+#~ "Por exemplo, um pacote de processamento de texto pode precisar que um pacote "
+#~ "de impressão esteja instalado. O gestor de pacotes instala automaticamente "
+#~ "estas <emphasis>dependências</emphasis> por si."
+
+#~ msgid ""
+#~ "By default, only applications from the official Ubuntu software repositories "
+#~ "are available in your package manager. If you cannot find the application "
+#~ "that you want in the default repositories, you can add other (<quote>third-"
+#~ "party</quote>) repositories and install it from there."
+#~ msgstr ""
+#~ "Por predefinição, apenas aplicações do repositório de software oficial do "
+#~ "Ubuntu estão disponíveis no seu gestor de pacotes. Se não conseguir "
+#~ "encontrar a aplicação que quer nos repositórios predefinidos, você pode "
+#~ "adicionar outro(s) repositórios (<quote>de terceiros</quote>) e instalá-los "
+#~ "a partir daí."
+
+#~ msgid "Installing an application"
+#~ msgstr "Instalar uma aplicação"
+
+#~ msgid ""
+#~ "Click <menuchoice><guimenu>Applications</guimenu><guimenuitem>Ubuntu "
+#~ "Software Center</guimenuitem></menuchoice>."
+#~ msgstr ""
+#~ "Clique <menuchoice><guimenu>Aplicações</guimenu><guimenuitem>Centro de "
+#~ "Software Ubuntu</guimenuitem></menuchoice>."
+
+#~ msgid ""
+#~ "If you choose to install the application, you will be asked to enter your "
+#~ "password. You can continue to browse other applications while the "
+#~ "installation is in progress."
+#~ msgstr ""
+#~ "Se escolher instalar a aplicação, ser-lhe-á perguntada a sua palavra-passe. "
+#~ "Você pode continuar a navegar outras aplicações enquanto a instalação ocorre."
+
+#~ msgid ""
+#~ "Once installation has finished, your new applications should be available "
+#~ "from the Applications menu."
+#~ msgstr ""
+#~ "Assim que a instalação terminar, as suas novas aplicações deverão estar "
+#~ "disponiveis no menu de Aplicações."
+
+#~ msgid ""
+#~ "For more information about using the <application>Ubuntu Software "
+#~ "Center</application>, consult the <ulink type=\"help\" url=\"ghelp:software-"
+#~ "center\">Ubuntu Software Center Manual</ulink>."
+#~ msgstr ""
+#~ "Para mais informações sobre como utilizar o <application>Centro de Software "
+#~ "Ubuntu</application>, consulte o <ulink type=\"help\" url=\"ghelp:software-"
+#~ "center\">Manual do Centro de Software Ubuntu</ulink>."
+
+#~ msgid "Other methods of installing applications"
+#~ msgstr "Outros métodos para instalar aplicações"
+
+#~ msgid "Using Synaptic Package Manager"
+#~ msgstr "Usar o gestor de Pacotes Synaptic"
+
+#~ msgid ""
+#~ "Synaptic can be used to manage advanced software packages (such as server "
+#~ "applications) which Software Center does not manage."
+#~ msgstr ""
+#~ "Synaptic pode ser usado para gerir pacotes de software avançado (tais como "
+#~ "aplicações de servidores) que o Centro de Software não gere."
+
+#~ msgid ""
+#~ "Click "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Synaptic Package Manager</guimenuitem></menuchoice>. Enter "
+#~ "your password if prompted."
+#~ msgstr ""
+#~ "Clique em "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Gestor de Pacotes Synaptic</guimenuitem></menuchoice>. "
+#~ "Introduza a sua palavra-passe caso seja solicitado."
+
+#~ msgid ""
+#~ "Click <guibutton>Search</guibutton> to search for an application, or click "
+#~ "<guibutton>Sections</guibutton> and look through the categories to find one."
+#~ msgstr ""
+#~ "Clique em <guibutton>Procurar</guibutton> para procurar uma aplicação, ou "
+#~ "clique em <guibutton>Secções</guibutton> e veja as categorias para encontrar "
+#~ "uma."
+
+#~ msgid ""
+#~ "Right-click the application that you want to install and select "
+#~ "<guilabel>Mark for Installation</guilabel>."
+#~ msgstr ""
+#~ "Clique do lado direito na aplicação que quer instalar e seleccione "
+#~ "<guilabel>Marcar para instalação</guilabel>."
+
+#~ msgid ""
+#~ "If you are asked if you would like to mark additional changes, click "
+#~ "<guibutton>Mark</guibutton>."
+#~ msgstr ""
+#~ "Se for questionado para marcar alterações adicionais, clique "
+#~ "<guibutton>Marcar</guibutton>."
+
+#~ msgid "Select any other applications that you would like to install."
+#~ msgstr "Escolha quaisquer outras aplicações que queira instalar."
+
+#~ msgid ""
+#~ "Click <guibutton>Apply</guibutton>, and then click "
+#~ "<guibutton>Apply</guibutton> in the window that appears. The applications "
+#~ "that you chose will be downloaded and installed."
+#~ msgstr ""
+#~ "Clique <guibutton>Aplicar</guibutton>, e depois clique "
+#~ "<guibutton>Aplicar</guibutton> na janela que surgir. A aplicação que "
+#~ "escolheu será descarregada e instalada."
+
+#~ msgid "Downloading and installing a .deb package"
+#~ msgstr "A descarregar e instalar um pacote .deb"
+
+#~ msgid ""
+#~ "You can download and install applications from websites. These applications "
+#~ "are contained in Debian (.deb) packages. To install a Debian package:"
+#~ msgstr ""
+#~ "Pode descarregar e instalar aplicações de websites. Estas aplicações são "
+#~ "guardadas em pacotes Debian (.deb). Para instalar um pacote Debian:"
+
+#~ msgid "Download the package from a website."
+#~ msgstr "Descarregue o pacote de um website."
+
+#~ msgid "Double-click the package. It will be opened in the Package Installer."
+#~ msgstr "Clique duas vezes no pacote. Será aberto no Instalador de Pacotes."
+
+#~ msgid "Click <guibutton>Install</guibutton> to install the package."
+#~ msgstr "Clique <guibutton>Instalar</guibutton> para instalar o pacote."
+
+#~ msgid ""
+#~ "Installing single packages in this way is not recommended, for the following "
+#~ "reasons:"
+#~ msgstr ""
+#~ "Instalar pacotes únicos desta forma não é recomendado, pelas seguintes "
+#~ "razões:"
+
+#~ msgid ""
+#~ "The packages have not been checked for security by Ubuntu members, and could "
+#~ "contain software which harms your computer. You should only download single "
+#~ "packages from websites that you trust."
+#~ msgstr ""
+#~ "Os pacotes não foram verificados pelos membros da equipa de segurança do "
+#~ "Ubuntu, e podem conter software malicioso. Deve apenas descarregar pacotes "
+#~ "de sítios em que confie."
+
+#~ msgid ""
+#~ "The package may require some extra software to run, which cannot be "
+#~ "installed automatically. You will have to find and install this software "
+#~ "yourself."
+#~ msgstr ""
+#~ "Este pacote pode requerer algum software extra para correr, que não pode ser "
+#~ "instalado automaticamente. Terá que encontrar e instalar este software você "
+#~ "mesmo."
+
+#~ msgid "Clicking a link on a web page"
+#~ msgstr "Clicando numa ligação numa página da Web."
+
+#~ msgid ""
+#~ "Some web pages have links which install applications when you click them. "
+#~ "These are known as <quote>apt:</quote> links. After clicking the link, you "
+#~ "will be asked if you would like to install additional software. Click "
+#~ "<guibutton>Install</guibutton> to start the installation process."
+#~ msgstr ""
+#~ "Algumas páginas da Internet contêm ligações que instalam aplicações quando "
+#~ "são clicados. Estas são conhecidos como ligações <quote>apt:</quote>. Depois "
+#~ "de clicar na ligação, será questionado se gostaria de instalar software "
+#~ "adicional. Clique <guibutton>Instalar</guibutton> para começar o processo de "
+#~ "instalação."
+
+#~ msgid ""
+#~ "The application can only be downloaded and installed if it is available in a "
+#~ "software repository which is currently enabled on your computer. This means "
+#~ "that websites cannot trick you into installing software which is potentially "
+#~ "harmful to your computer."
+#~ msgstr ""
+#~ "Esta aplicação só pode ser descarregada e instalada se estiver disponível "
+#~ "num repositório de software que esteja activado no seu computador. Isto "
+#~ "significa que os websites não poderão enganá-lo de forma a instalar software "
+#~ "que seja potencialmente nocivo para o seu computador."
+
+#~ msgid "Removing an application"
+#~ msgstr "A desinstalar uma aplicação"
+
+#~ msgid ""
+#~ "In the <emphasis>Installed Software</emphasis> section, find the application "
+#~ "that you want to remove by finding it in the list or by searching for it."
+#~ msgstr ""
+#~ "Na secção <emphasis>Software Instalado</emphasis>, descubra a aplicação que "
+#~ "pretende remover encontrando-a na lista ou procurando por ela."
+
+#~ msgid ""
+#~ "Select the application that you want to remove and click the arrow button to "
+#~ "proceed."
+#~ msgstr ""
+#~ "Seleccione a aplicação que deseja remover e clique no botão-seta para "
+#~ "continuar."
+
+#~ msgid ""
+#~ "Some applications depend on others being installed in order to work "
+#~ "properly. If you try to remove an application which is required by another "
+#~ "application, both of those applications will be removed. You will be asked "
+#~ "to confirm that this is what you want to happen before the applications are "
+#~ "removed."
+#~ msgstr ""
+#~ "Algumas aplicações dependem de outras para serem instaladas correctamente. "
+#~ "Se tentar desinstalar uma aplicação que seja requerida por outra aplicação, "
+#~ "ambas as aplicações serão desinstaladas. Você será pedido para confirmar que "
+#~ "isto é o que quer que aconteça antes das aplicações serem desinstaladas."
+
+#~ msgid "Adding a software repository"
+#~ msgstr "A adicionar um repositório de software"
+
+#~ msgid ""
+#~ "Software is available from third-party sources, as well as from the default "
+#~ "Ubuntu software repositories. If you want to install software from a third-"
+#~ "party software repository, you must add it to the package manager's list of "
+#~ "available repositories."
+#~ msgstr ""
+#~ "O Software é disponibilizado por outras fontes, bem como pelos repositórios "
+#~ "de software Ubuntu padrão. Se pretende instalar software de um repositório "
+#~ "de terceiros, deve adicionar esse repositório à lista de repositórios "
+#~ "disponíveis do Gestor de Pacotes."
+
+#~ msgid ""
+#~ "Only add software repositories from sources that you trust. Third-party "
+#~ "software repositories are not checked for security by Ubuntu members, and "
+#~ "may contain software which is harmful to your computer."
+#~ msgstr ""
+#~ "Apenas adicione repositórios de software de fontes em que você confia. "
+#~ "Repositórios de software de terceiros não são verificados quanto à sua "
+#~ "segurança por membros do Ubuntu, e podem conter software que é nocivo para o "
+#~ "seu computador."
+
+#~ msgid ""
+#~ "Open "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Software Sources</guimenuitem></menuchoice> and select "
+#~ "<guilabel>Other Software</guilabel>."
+#~ msgstr ""
+#~ "Abra "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Fontes de Aplicações</guimenuitem></menuchoice> e escolha "
+#~ "<guilabel>Outro Software</guilabel>."
+
+#~ msgid "Click <guibutton>Add</guibutton> to add a new repository."
+#~ msgstr ""
+#~ "Pressione <guibutton>Adicionar</guibutton> para adicionar um repositório "
+#~ "novo."
+
+#~ msgid ""
+#~ "Enter the APT line for the extra repository. This should be available from "
+#~ "the website of the repository, and should look similar to the following:"
+#~ msgstr ""
+#~ "Insira a linha APT para o repositório adicional. Este deverá estar "
+#~ "disponível no website do repositório, e deverá ser semelhante a:"
+
+#~ msgid "deb http://archive.ubuntu.com/ubuntu/ karmic main"
+#~ msgstr "deb http://archive.ubuntu.com/ubuntu/ karmic main"
+
+#~ msgid ""
+#~ "Click <guibutton>Add Source</guibutton> and then click "
+#~ "<guibutton>Close</guibutton> to save your changes."
+#~ msgstr ""
+#~ "Clique <guibutton>Adicionar Fonte</guibutton> e depois clique "
+#~ "<guibutton>Fechar</guibutton> para guardar as suas alterações."
+
+#~ msgid ""
+#~ "You will be notified that the information about available software is out-of-"
+#~ "date. Click <guibutton>Reload</guibutton>."
+#~ msgstr ""
+#~ "Será notificado que a informação sobre a disponibilidade de software está "
+#~ "desactualizada. Clique <guibutton>Recarregar</guibutton>."
+
+#~ msgid ""
+#~ "Packages from the new repository should now be available in your package "
+#~ "manager."
+#~ msgstr ""
+#~ "Os pacotes do novo repositório devem estar agora disponiveis no seu gestor "
+#~ "de pacotes."
+
+#~ msgid ""
+#~ "As a security measure, most software repositories use a GPG key to digitally "
+#~ "sign the files they provide. This makes it easy to check that the files have "
+#~ "not been tampered with since their creation. In order for your package "
+#~ "manager to be able to check this, you need the public key that corresponds "
+#~ "to the signatures. The key should be available for download on the "
+#~ "repository's website."
+#~ msgstr ""
+#~ "Como medida de segurança, a maior parte dos repositórios de software "
+#~ "utilizam uma chave GPG para assinatura digital nos ficheiros fornecidos. "
+#~ "Isto facilita a verificação de não alteração dos ficheiros desde que foram "
+#~ "criados. Para que o Gestor de Pacotes possa realizar essa verificação, "
+#~ "precisa da chave pública que corresponde à assinatura. Esta chave deverá "
+#~ "estar disponível para ser descarregada no sítio do repositório."
+
+#~ msgid ""
+#~ "Download the GPG key. Then, click "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Software Sources</guimenuitem></menuchoice>, select the "
+#~ "<guilabel>Authentication</guilabel> tab, click <guibutton>Import Key "
+#~ "File</guibutton> and select the GPG key to be imported."
+#~ msgstr ""
+#~ "Descarregue a chave GPG. Depois, carregue em "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Repositórios de Software</guimenuitem></menuchoice>, escolha o "
+#~ "separador <guilabel>Autenticação</guilabel> , carregue em "
+#~ "<guibutton>Importar ficheiro com Chave</guibutton> e seleccione a chave GPG "
+#~ "a ser importada."
+
+#~ msgid ""
+#~ "You can also add the GPG key using the terminal by entering the following "
+#~ "command:"
+#~ msgstr ""
+#~ "Podem também adicionar a chave GPG usando a consola para introduzir o "
+#~ "seguinte comando:"
+
+#~ msgid ""
+#~ "sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com key-fingerprint"
+#~ msgstr ""
+#~ "sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com key-fingerprint"
+
+#~ msgid "Adding a Personal Package Archive (PPA)"
+#~ msgstr "A adicionar um Arquivo de Pacote Pessoal (PPA)"
+
+#~ msgid ""
+#~ "<ulink url=\"https://launchpad.net/\">Launchpad</ulink> provides all users "
+#~ "with their own Personal Package Archive (PPA) that can be used to build and "
+#~ "store Ubuntu packages. In the same way that you can add a normal software "
+#~ "repository, you can also add a PPA to the package manager's list of "
+#~ "available repositories. PPAs work like normal Ubuntu archives. You can "
+#~ "install software in the usual way -- for example, through apt-get or "
+#~ "synaptic -- and whenever there's an update Ubuntu will prompt you to install "
+#~ "it."
+#~ msgstr ""
+#~ "O <ulink url=\"https://launchpad.net/\">Launchpad</ulink> fornece a todos os "
+#~ "utilizadores um Arquivo de Pacote Pessoal (PPA) que pode ser usado para "
+#~ "criar e armazenar pacotes Ubuntu. Da mesma maneira que pode se adicionar um "
+#~ "repositório de software normal, você também pode adicionar um PPA à lista do "
+#~ "gestor de pacotes de repositórios disponíveis. Os PPAs funcionam tal como "
+#~ "arquivos Ubuntu normais. Você pode instalar software da maneira usual - por "
+#~ "exemplo, através de apt-get ou do synaptic -- e sempre que haja uma "
+#~ "actualização, o Ubuntu vai perguntar-lhe se a quer instalar."
+
+#~ msgid ""
+#~ "You download and install PPA packages at your own risk. Ubuntu, Launchpad "
+#~ "and Canonical do not endorse these packages. You must be certain that you "
+#~ "trust the PPA owner before you install their software."
+#~ msgstr ""
+#~ "Pode transferir e instalar pacotes PPA a seu próprio risco. O Ubuntu, "
+#~ "Launchpad e a Canonical não sancionam estes pacotes. Você deve estar seguro "
+#~ "acerca do proprietário do PPA antes o seu software."
+
+#~ msgid ""
+#~ "You should begin by familiarizing yourself with <xref linkend=\"adding-"
+#~ "repos\"/> before beginning."
+#~ msgstr ""
+#~ "Você pode começar por familiarizar-se com <xref linkend=\"adding-repos\"/> "
+#~ "antes de começar."
+
+#~ msgid ""
+#~ "The APT line for the PPA can be found on the PPA overview page on Launchpad, "
+#~ "and should look similar to the following:"
+#~ msgstr ""
+#~ "A linha APT para o PPA encontra-se na página de resumo do PPA no Launchpad, "
+#~ "e deve assemelhar-se ao seguinte:"
+
+#~ msgid ""
+#~ "deb http://ppa.launchpad.net/<emphasis>user</emphasis>/ppa/<emphasis>ppa-"
+#~ "name</emphasis> karmic main"
+#~ msgstr ""
+#~ "deb http://ppa.launchpad.net/<emphasis>user</emphasis>/ppa/<emphasis>ppa-"
+#~ "name</emphasis> karmic main"
+
+#~ msgid ""
+#~ "As a security measure, all PPAs use a unique GPG key to digitally sign the "
+#~ "packages that they provide. This makes it easy to check that the packages "
+#~ "have not been tampered with since Launchpad built them and to be sure that "
+#~ "you are downloading from the PPA that you want. In order for your package "
+#~ "manager to be able to check this, you need the public key that corresponds "
+#~ "to the signatures. The key should be available for download on the PPA "
+#~ "overview page on Launchpad. Until you add the PPA's key to your system, you "
+#~ "will see warnings that you are downloading from an untrusted source."
+#~ msgstr ""
+#~ "Como medida de segurança, todos os PPAs utilizam uma chave GPG única para "
+#~ "assinar digitalmente os pacotes que fornecem. Isto torna fácil verificar se "
+#~ "os pacotes foram alterados desde que o Launchpad os construiu, e para se "
+#~ "assegurar de que está a transferir do PPA que deseja. Para que o gestor de "
+#~ "pacotes possa verificar isto, você precisa da chave pública que corresponde "
+#~ "às assinaturas. A chave deve estar disponível para transferir da página "
+#~ "geral do PPA no Launchpad. Até que possa adicionar a chave do PPA ao seu "
+#~ "sistema, você deverá ver avisos de que está a transferir de uma fonte não "
+#~ "confiável."
+
+#~ msgid ""
+#~ "The key used to sign a PPA is listed on the PPA overview page. Instructions "
+#~ "on how to add the key can be found in <xref linkend=\"adding-repos\"/>."
+#~ msgstr ""
+#~ "A chave usada para assinar um PPA está listada na página de resumo do PPA. "
+#~ "Instruções sobre como adicionar a chave encontram-se em <xref "
+#~ "linkend=\"adding-repos\"/>."
+
+#~ msgid ""
+#~ "Additional information about adding a PPA repository can be found on <ulink "
+#~ "url=\"https://help.launchpad.net/Packaging/PPA\">Launchpad</ulink>."
+#~ msgstr ""
+#~ "Mais informações sobre como adicionar um repositório PPA podem ser "
+#~ "consultadas em <ulink "
+#~ "url=\"https://help.launchpad.net/Packaging/PPA\">Launchpad</ulink>."
+
+#~ msgid "Installing software packages without an Internet connection"
+#~ msgstr "A instalar pacotes de software sem uma ligação à Internet"
+
+#~ msgid ""
+#~ "If you are not connected to the Internet, you can use a CD containing "
+#~ "package files to install applications on your computer. The Ubuntu "
+#~ "installation CD can be used for this purpose, and other CDs with different "
+#~ "packages are available as well. Additionally, the program "
+#~ "<application>APTonCD</application> can automatically backup installed "
+#~ "packages on your system, and create CDs with the contents of various "
+#~ "repositories on them."
+#~ msgstr ""
+#~ "Se não tem ligação à Internet, pode usar um CD contendo pacotes de ficheiros "
+#~ "para instalar aplicações no seu computador. O CD de instalação do Ubuntu "
+#~ "pode ser usado para este efeito, e outros CD's com outros pacotes também "
+#~ "estão disponíveis. Para além disso, o programa "
+#~ "<application>APTonCD</application> pode fazer uma cópia de segurança "
+#~ "automática dos pacotes instalados no seu computador, e criar CD's com os "
+#~ "conteúdos dos respectivos repositórios."
+
+#~ msgid "Installing packages using the Ubuntu installation CD"
+#~ msgstr "A instalar pacotes utilizando o CD de instalação do Ubuntu"
+
+#~ msgid ""
+#~ "Some packages from the <emphasis>main</emphasis> and "
+#~ "<emphasis>restricted</emphasis> Ubuntu package repositories can be installed "
+#~ "from the Ubuntu installation CD. Simply insert your Ubuntu installation CD "
+#~ "and open "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Synaptic Package Manager</guimenuitem></menuchoice>. To list "
+#~ "only packages on the Ubuntu installation CD, click on the "
+#~ "<guibutton>Origin</guibutton> button in the lower left corner of the "
+#~ "Synaptic window. The packages should be listed under the <guimenuitem>Ubuntu "
+#~ "9.10_Karmic_Koala</guimenuitem> section."
+#~ msgstr ""
+#~ "Alguns pacotes dos repositórios de pacotes Ubuntu <emphasis>main</emphasis> "
+#~ "e <emphasis>restricted</emphasis> podem ser instalados a partir do CD de "
+#~ "instalação do Ubuntu. Insira apenas o seu CD de instalação do Ubuntu e abra "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Gestor de Pacotes Synaptic</guimenuitem></menuchoice>. Para "
+#~ "listar apenas pacotes no CD de instalação do Ubuntu, clique no botão "
+#~ "<guibutton>Origem</guibutton> no canto inferior esquerdo da janela Synaptic. "
+#~ "Os pacotes deverão estar listados a secção <guimenuitem>Ubuntu "
+#~ "9.10_Karmic_Koala</guimenuitem>."
+
+#~ msgid ""
+#~ "If the packages are not listed, it may be because the CD is not listed as a "
+#~ "package repository (the CD should be listed as a repository by default). To "
+#~ "add the CD as a package repository, follow the instructions in <xref "
+#~ "linkend=\"repository-cds\"/>, below."
+#~ msgstr ""
+#~ "Se os pacotes não estão listados, pode ser porque o CD não está listado como "
+#~ "um repositório de pacotes (o CD deve estar listado como repositório por "
+#~ "omissão). Para adicionar o CD como um repositório de pacotes, siga as "
+#~ "instruções em <xref linkend=\"repository-cds\"/>, abaixo."
+
+#~ msgid "Enabling other CDs that can be used to install packages"
+#~ msgstr "Permitir que outros CDs possam ser usados para instalar pacotes"
+
+#~ msgid ""
+#~ "To enable Synaptic and other package managers to install software from CDs "
+#~ "which contain packages:"
+#~ msgstr ""
+#~ "Para activar o Synaptic e outros gestores de pacotes para instalar software "
+#~ "de CDs que contenham pacotes:"
+
+#~ msgid ""
+#~ "Click "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Software Sources</guimenuitem></menuchoice>."
+#~ msgstr ""
+#~ "Carregue em "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Repositórios de Software</guimenuitem></menuchoice>."
+
+#~ msgid ""
+#~ "Select <guilabel>Other Software</guilabel> and click on the <guibutton>Add "
+#~ "CD-ROM</guibutton> button."
+#~ msgstr ""
+#~ "Seleccione <guilabel>Outro Software</guilabel> e clique no botão "
+#~ "<guibutton>Adicionar CD-ROM</guibutton>."
+
+#~ msgid "Insert the CD."
+#~ msgstr "Insira o CD."
+
+#~ msgid ""
+#~ "The packages should then be listed. To have Synaptic only list packages from "
+#~ "the CD, click the <guibutton>Origin</guibutton> button on the lower left "
+#~ "corner of the Synaptic window and then find the name of the CD in the list "
+#~ "in the upper left corner the window."
+#~ msgstr ""
+#~ "Os pacotes deverão então estar listados. Para ter o Synaptic a listar apenas "
+#~ "os pacotes do CD, clique no botão <guibutton>Origem</guibutton>, no canto "
+#~ "inferior esquerdo da janela do Synaptic, e depois procure o nome do CD na "
+#~ "lista, no canto superior esquerdo da janela."
+
+#~ msgid "Using APTonCD to install packages"
+#~ msgstr "Usando APTonCD para instalar pacotes"
+
+#~ msgid ""
+#~ "<application>APTonCD</application> can be used to create a CD that contains "
+#~ "all the packages you have on your system, or it can create CDs with packages "
+#~ "or entire repositories of your choice. In a package manager such as "
+#~ "<application>Synaptic</application>, find the <emphasis>aptoncd</emphasis> "
+#~ "package and install it."
+#~ msgstr ""
+#~ "O <application>APTonCD</application> pode ser usado para criar um CD que "
+#~ "contenha todos os pacotes que tenha instalado no seu sistema ou pode criar "
+#~ "CDs com pacotes ou repositórios inteiros da sua escolha. Num gestor de "
+#~ "pacotes como o <application>Synaptic</application>, encontre o pacote "
+#~ "<emphasis>aptoncd</emphasis> e instale-o."
+
+#~ msgid ""
+#~ "Further documentation on APTonCD can be found on its website, <ulink "
+#~ "url=\"http://aptoncd.sourceforge.net\"> aptoncd.sourceforge.net</ulink>"
+#~ msgstr ""
+#~ "Mais documentação sobre o APTonCD podem ser encontradas no website, <ulink "
+#~ "url=\"http://aptoncd.sourceforge.net\"> aptoncd.sourceforge.net</ ulink>"
+
+#~ msgid "What is restricted and non-free software?"
+#~ msgstr "O que é software restrito e software não-livre ?"
+
+#~ msgid ""
+#~ "Most of the software available for Ubuntu is free, open-source software. "
+#~ "This software is free for anyone to install and use, and people can modify "
+#~ "the software and redistribute it if they like. Ubuntu is built from this "
+#~ "type of software."
+#~ msgstr ""
+#~ "A maioria das aplicações disponíveis para Ubuntu é software livre com código "
+#~ "fonte aberto. Este software pode ser livremente instalado e utilizado por "
+#~ "qualquer pessoa, todos podem modificá-lo e redistribuí-lo se assim o "
+#~ "desejarem. O Ubuntu é construído a partir de software deste tipo."
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Non-free software</emphasis> is software which is "
+#~ "not freely redistributable or modifiable. This makes it difficult for the "
+#~ "Ubuntu developers to improve the software and correct problems, so it is "
+#~ "normally recommended that you use <ulink "
+#~ "url=\"http://www.ubuntu.com/ubuntu/philosophy\"> free software</ulink> "
+#~ "instead."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\">Software não-livre</emphasis> é software que não "
+#~ "pode ser livremente redistribuído ou modificado. Estas restrições fazem com "
+#~ "que seja mais difícil para as pessoas que desenvolvem o Ubuntu conseguir "
+#~ "melhorar as aplicações e corrigir problemas, daí que seja normalmente "
+#~ "recomendado que utilize <ulink "
+#~ "url=\"http://www.ubuntu.com/ubuntu/philosophy\">software livre</ulink>  como "
+#~ "alternativa."
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Restricted software</emphasis> is software which "
+#~ "has restrictions on its use, preventing it from being classed as free "
+#~ "software. Non-free software is a type of restricted software, where the "
+#~ "restrictions are due to the software having a non-free license. Other "
+#~ "reasons for software being classed as restricted include legal issues (use "
+#~ "of some types of software is illegal in some countries) and patent issues "
+#~ "(some software requires a patent license to be used legally)."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\">Software restrito</emphasis> é software que impõe "
+#~ "restrições ao seu uso, impedindo que seja classificado como software livre. "
+#~ "O software não-livre é um tipo de software restrito onde as restrições "
+#~ "derivam do facto de possuir uma licença não-livre. Existem outras razões que "
+#~ "podem levar um software a ser classificado como não-livre, como questões "
+#~ "legais (a utilização de certos tipos de software é considerada ilegal em "
+#~ "alguns países) e de patentes (algumas aplicações requerem o licenciamento de "
+#~ "patente para poderem ser utilizadas legalmente)."
+
+#~ msgid ""
+#~ "In some cases, restricted software is the only option. Such cases include "
+#~ "software for the playback of certain audio and video formats, some fonts and "
+#~ "<ulink type=\"help\" url=\"ghelp:hardware#jockey\">drivers for some graphics "
+#~ "cards</ulink>."
+#~ msgstr ""
+#~ "Em alguns casos, software restrito é a única opção. Estes casos incluem "
+#~ "software que lê certos formatos de áudio e vídeo, alguns tipos de letra e "
+#~ "<ulink type=\"help\" url=\"ghelp:hardware#jockey\">controladores para "
+#~ "algumas placas gráficas</ulink>."
+
+#~ msgid ""
+#~ "You should be warned by the package manager when you try to install "
+#~ "restricted software. If the restricted software cannot be used legally in "
+#~ "your country then there is little you can do; you should not install the "
+#~ "software. If the software is restricted simply because it is non-free, you "
+#~ "may choose to use it (for example, in the case of graphics card drivers). Be "
+#~ "aware that most restricted software is not supported in Ubuntu, and problems "
+#~ "with such software often cannot be corrected by Ubuntu developers."
+#~ msgstr ""
+#~ "Você deve ser alertado pelo gestor de pacotes quando tentar instalar "
+#~ "software restrito. Se o software restrito não poder ser utilizado legalmente "
+#~ "no seu país então pouco pode fazer; não deve instalar o software. Se o "
+#~ "software é restrito simplesmente pelo facto de não ser livre, pode optar por "
+#~ "utilizá-lo (por exemplo, no caso dos controladores da placa gráfica). Esteja "
+#~ "ciente de que a maioria do software restrito não é suportado noUbuntu, e "
+#~ "problemas com esse software muitas vezes não podem ser corrigidos por "
+#~ "programadores do Ubuntu."
+
+#~ msgid ""
+#~ "Sometimes it is difficult to determine why a particular software package is "
+#~ "restricted. If this is the case, seek advice on the <ulink "
+#~ "url=\"http://ubuntuforums.org/\">Ubuntu Forums</ulink>. If you are still "
+#~ "unable to determine why a package is restricted, err on the side of caution "
+#~ "and do not install it; it may be illegal to use it in your country."
+#~ msgstr ""
+#~ "Às vezes é difícil de determinar porque é que um determinado software é "
+#~ "restrito. Se este for o caso, procure aconselhamento nos <ulink "
+#~ "url=\"http://ubuntuforums.org/\">Forums Ubuntu</ ulink>. Se ainda não "
+#~ "conseguiu determinar o motivo pelo qual um pacote é restrito, jogue pelo "
+#~ "seguro e não o instale; pode ser ilegal utilizá-lo no seu país."
+
+#~ msgid "Overview of the default Ubuntu software repositories"
+#~ msgstr "Visão geral dos repositórios padrão de software Ubuntu"
+
+#~ msgid ""
+#~ "When you install software on Ubuntu, the package manager automatically "
+#~ "downloads the required software packages from a <emphasis>software "
+#~ "repository</emphasis>, a location on the Internet which stores collections "
+#~ "of packages ready to be downloaded."
+#~ msgstr ""
+#~ "Quando instala aplicações no Ubuntu, o gestor de pacotes descarrega "
+#~ "automaticamente os pacotes necessários de um <emphasis>repositório de "
+#~ "aplicações</emphasis>, um espaço na Internet que armazena conjuntos pacotes "
+#~ "prontos a ser descarregados."
+
+#~ msgid ""
+#~ "There are thousands of programs available to install on Ubuntu. These "
+#~ "programs are stored in software repositories and are made freely available "
+#~ "for all Ubuntu users. This makes it very easy to install new programs, and "
+#~ "it is also very secure because each program you install is built specially "
+#~ "for Ubuntu and checked before it is allowed into the repositories."
+#~ msgstr ""
+#~ "Existem milhares de programas disponíveis para instalar no Ubuntu. Estes "
+#~ "programas estão armazenados em repositórios de aplicações e são livremente "
+#~ "disponibilizados a todos os utilizadores do Ubuntu. Consequentemente, é "
+#~ "extremamente fácil instalar novos programas, para além de extremamente "
+#~ "seguro, dado que cada programa que instala foi construído especialmente a "
+#~ "pensar no Ubuntu e verificado antes de ser disponibilizado através dos "
+#~ "repositórios."
+
+#~ msgid "Software repositories"
+#~ msgstr "Repositórios de Software"
+
+#~ msgid ""
+#~ "To organize the software, Ubuntu repositories are categorized into four "
+#~ "groups: <emphasis>Main</emphasis>, <emphasis>Restricted</emphasis>, "
+#~ "<emphasis>Universe</emphasis>, and <emphasis>Multiverse</emphasis>. The "
+#~ "rationale used to determine which software goes into which category is based "
+#~ "on the level of support that software development teams provide for a "
+#~ "program and the level of compliance the program has to the <ulink "
+#~ "url=\"http://www.ubuntu.com/ubuntu/philosophy\">Free Software "
+#~ "Philosophy</ulink>."
+#~ msgstr ""
+#~ "Para organizar o software, os repositórios do Ubuntu estão divididos em "
+#~ "quatro grupos: <emphasis>Principal (Main) </emphasis>, "
+#~ "<emphasis>Proprietário (Restricted)</emphasis>, <emphasis>Comunidade "
+#~ "(Universe)</emphasis>, e <emphasis>Software restrito "
+#~ "(Multiverse)</emphasis>. O fundamento para decidir em que repositório será "
+#~ "colocado um determinado software baseia-se no nível de suporte que as "
+#~ "equipas de desenvolvimento prestam e no nível de cumprimento da <ulink "
+#~ "url=\"http://www.ubuntu.com/ubuntu/philosophy\">Filosofia de Software "
+#~ "Livre</ulink> que tal software demonstra."
+
+#~ msgid ""
+#~ "The standard Ubuntu Install CD contains some software from the "
+#~ "<emphasis>Main</emphasis> and <emphasis>Restricted</emphasis> categories."
+#~ msgstr ""
+#~ "O CD de Instalação-base do Ubuntu contém algum software das categorias "
+#~ "<emphasis>Main</emphasis> e <emphasis>Restricted</emphasis>."
+
+#~ msgid ""
+#~ "If your system is connected to the Internet, many more software programs are "
+#~ "made available for installation. For example, the <quote>Universe</quote> "
+#~ "and <quote>Multiverse</quote> repositories are only available over the "
+#~ "Internet."
+#~ msgstr ""
+#~ "Se o seu sistema está ligado à Internet, muito mais programas estão "
+#~ "disponíveis para instalação. Por exemplo, os repositórios "
+#~ "<quote>Universo</quote> and <quote>Multiverso</quote> estão disponíveis "
+#~ "apenas na Internet."
+
+#~ msgid ""
+#~ "The <emphasis>Multiverse</emphasis> repository contains software which has "
+#~ "been classified as <emphasis>non-free</emphasis>. This software may not be "
+#~ "permitted in some jurisdictions. When installing each package from this "
+#~ "repository, you should verify that the laws of your country permit you to "
+#~ "use it. Also, this software may not include security updates."
+#~ msgstr ""
+#~ "O repositório <emphasis>Multiverse</emphasis> contém aplicações "
+#~ "classificadas como <emphasis>não-livres</emphasis>. Estas aplicações podem "
+#~ "não ser permitidas por algumas jurisdições. Quando instala pacotes deste "
+#~ "repositório, deve verificar se as leis do seu país os permitem utilizar. "
+#~ "Adicionalmente, deve ter em conta que estas aplicações podem não ter "
+#~ "actualizações de segurança."
+
+#~ msgid "Update repositories"
+#~ msgstr "Actualizar os repositórios"
+
+#~ msgid ""
+#~ "The Update Manager automatically finds software updates for your computer "
+#~ "when they are available. It regularly gathers information on potential "
+#~ "updates from a number of online update sources."
+#~ msgstr ""
+#~ "O Gestor de actualizações encontra automaticamente actualizações de software "
+#~ "para o seu computador quando estas estiverem disponíveis. Reúne regularmente "
+#~ "informação sobre potenciais actualizações de uma serie de fontes de "
+#~ "actualizações online."
+
+#~ msgid ""
+#~ "If you click "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Software Sources</guimenuitem></menuchoice> and select the "
+#~ "<guilabel>Updates</guilabel> tab, you will notice that four update sources "
+#~ "are available. An explanation for each of these is provided below:"
+#~ msgstr ""
+#~ "Se clicar em "
+#~ "<menuchoice><guimenu>Sistema</guimenu><guimenuitem>Administração</guimenuitem"
+#~ "><guimenuitem>Fontes de Software</guimenuitem></menuchoice> e selecionar o "
+#~ "separador <guilabel>Actualizações</guilabel>, notará que quatro novas fontes "
+#~ "de actualização estão disponíveis. Uma explicação de cada uma destas é dada "
+#~ "abaixo:"
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Important security updates:</emphasis> Updates "
+#~ "which fix critical security flaws are made available through this source. It "
+#~ "is recommended that all users leave this source enabled (it should be "
+#~ "enabled by default)."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\">Actualizações de segurança importantes:</emphasis> "
+#~ "Actualizações que corrigem falhas de segurança críticas são disponibilizadas "
+#~ "através desta fonte. Recomenda-se que todos os utilizadores deixem esta "
+#~ "fonte activada (deve estar ativada por omissão)."
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Recommended updates:</emphasis> Updates which fix "
+#~ "serious software problems (which are not security flaws) are made available "
+#~ "through this source. Most users will want to leave this source enabled as "
+#~ "common and annoying problems are often fixed with these updates."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\"> Actualizações recomendadas: </ emphasis> "
+#~ "Actualizações que corrigem problemas graves software (que não são problemas "
+#~ "de segurança) são disponibilizadas através desta fonte. A maioria dos "
+#~ "utilizadores vai querer deixar essa fonte activada pois problemas comuns e "
+#~ "desagradáveis são muitas vezes resolvidos com essas actualizações."
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Pre-released updates:</emphasis> Updates which are "
+#~ "currently being tested before being released to everyone are provided "
+#~ "through this update source. If you would like to help test new updates (and "
+#~ "get fixes for problems more quickly), enable this source. Be aware that "
+#~ "these updates may not yet be well tested; it is not recommended that you "
+#~ "enable this source unless you are prepared to experience occasional problems."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\">Actualizações pré-lançadas:</emphasis> "
+#~ "Actualizações que estão a ser testadas antes de serem lançadas para todos "
+#~ "são proporcionadas através desta fonte de actualizações. Se desejar ajudar a "
+#~ "testar novas actualizações (e conseguir soluções para problemas mais "
+#~ "rapidamente), active esta fonte. Tenha em consciência que estas "
+#~ "actualizações podem não estar ainda bem testadas; não é recomendado que "
+#~ "active esta fonte a não ser que esteja preparado para lidar com problemas "
+#~ "ocasionais."
+
+#~ msgid ""
+#~ "<emphasis role=\"strong\">Unsupported updates:</emphasis> When new versions "
+#~ "of popular software are released they are sometimes <quote>back-"
+#~ "ported</quote> to an older version of Ubuntu so that users can benefit from "
+#~ "new features and fixes for problems. These backports are unsupported, may "
+#~ "cause problems when installed and should only be used by people who are in "
+#~ "desperate need of a new version of a software package which they know has "
+#~ "been backported."
+#~ msgstr ""
+#~ "<emphasis role=\"strong\"> Actualizações não suportadas: </ emphasis> Quando "
+#~ "novas versões de software popular são lançadas são por vezes <quote> back-"
+#~ "ported </ quote> para uma versão mais antiga do Ubuntu para que os "
+#~ "utilizadores possam beneficiar de novas funcionalidades e correcções para os "
+#~ "problemas. Estes backports não são suportados, podem causar problemas quando "
+#~ "instalados e só devem ser utilizados por pessoas que necessitam "
+#~ "desesperadamente de uma nova versão de um pacote de software que eles sabem "
+#~ "que foram backported."
+
+#~ msgid ""
+#~ "In some cases, restricted software is the only option. Such cases include "
+#~ "software for the playback of certain audio and video formats, some fonts and "
+#~ "<ulink type=\"help\" url=\"ghelp:hardware#restricted-manager\">drivers for "
+#~ "some graphics cards</ulink>."
+#~ msgstr ""
+#~ "Em alguns casos, o software restrito é a única opção. Incluem-se nesses "
+#~ "casos aplicações para reprodução de certos formatos áudio e vídeo, alguns "
+#~ "tipos de fontes e <ulink type=\"help\" url=\"ghelp:hardware#restricted-"
+#~ "manager\">controladores para algumas placas gráficas</ulink>."
+
+#~ msgid "deb http://ftp.debian.org etch main"
+#~ msgstr "deb http://ftp.debian.org etch main"
+
+#~ msgid ""
+#~ "Some packages from the <emphasis>main</emphasis> and "
+#~ "<emphasis>restricted</emphasis> Ubuntu package repositories can be installed "
+#~ "from the Ubuntu installation CD. Simply insert your Ubuntu installation CD "
+#~ "and open "
+#~ "<menuchoice><guimenu>System</guimenu><guimenuitem>Administration</guimenuitem"
+#~ "><guimenuitem>Synaptic Package Manager</guimenuitem></menuchoice>. To list "
+#~ "only packages on the Ubuntu installation CD, click on the "
+#~ "<guibutton>Origin</guibutton> button in the lower left corner of the "
+#~ "Synaptic window. The packages should be listed under the <guimenuitem>Ubuntu "
+#~ "9.04_Jaunty_Jackalope</guimenuitem> section."
+#~ msgstr ""
+#~ "Alguns pacotes do repositório <emphasis>principal</ emphasis> e do "
+#~ "repositório <emphasis>restrito</ emphasis> do Ubuntu podem ser instalados a "
+#~ "partir do CD de instalação do Ubuntu. Basta inserir o seu CD de instalação "
+#~ "do Ubuntu e abrir <menuchoice><guimenu>Sistema</ guimenu> "
+#~ "<guimenuitem>Administração</ guimenuitem><guimenuitem>Gestor de Pacotes "
+#~ "Synaptic</ guimenuitem></ menuchoice>. Para listar apenas os pacotes do CD "
+#~ "de instalação do Ubuntu, clique no botão<guibutton>Origem</ guibutton> que "
+#~ "está no canto inferior esquerdo da janela do Synaptic. Os pacotes devem "
+#~ "estar listados sob a secção <guimenuitem>Ubuntu 9.04_Jaunty_Jackalope</ "
+#~ "guimenuitem> ."
+
+#~ msgid ""
+#~ "Click "
+#~ "<menuchoice><guimenu>Applications</guimenu><guimenuitem>Add/Remove...</guimen"
+#~ "uitem></menuchoice>."
+#~ msgstr ""
+#~ "Clique em "
+#~ "<menuchoice><guimenu>Aplicações</guimenu><guimenuitem>Adicionar/Remover "
+#~ "Programas</guimenuitem></menuchoice>."
+
+#~ msgid ""
+#~ "Enter your password if prompted. The applications that you chose will be "
+#~ "downloaded and installed."
+#~ msgstr ""
+#~ "Introduza a sua palavra-passe caso seja solicitado. As aplicações escolhidas "
+#~ "serão descarregadas e instaladas."
+
+#~ msgid ""
+#~ "Search for an application, or select a category and find an application from "
+#~ "the list."
+#~ msgstr ""
+#~ "Procure por uma aplicação, ou seleccione uma categoria e encontre uma "
+#~ "aplicação da lista."
+
+#~ msgid ""
+#~ "Synaptic can be used to manage advanced software packages (such as server "
+#~ "applications) which Add/Remove Applications does not manage."
+#~ msgstr ""
+#~ "O Synaptic pode ser usado para gerir pacotes de software avançados (como "
+#~ "aplicações de servidor) que a ferramenta de Adicionar/Remover aplicações não "
+#~ "gere."
+
+#~ msgid ""
+#~ "Click <guibutton>Apply Changes</guibutton>, then click "
+#~ "<guibutton>Apply</guibutton> to start the installation."
+#~ msgstr ""
+#~ "Clique em <guibutton>Aplicar Alterações</guibutton>, de seguida em "
+#~ "<guibutton>Aplicar</guibutton> para iniciar a instalação."
+
+#~ msgid ""
+#~ "Check the box next to the application that you want to install. Do this for "
+#~ "all of the applications that you want to install."
+#~ msgstr ""
+#~ "Seleccione a caixa das aplicações que deseja instalar. Repita isto para "
+#~ "todas as aplicações que pretende instalar."
