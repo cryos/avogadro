@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-11-22 14:23+0000\n"
+"PO-Revision-Date: 2010-12-19 17:54+0000\n"
 "Last-Translator: carles ferrando <Unknown>\n"
 "Language-Team: Català <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgid ""
 "><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versió de l'aplicació: %2<br/><br/>Versió de la "
-"biblioteca: %3<br/><br/>Versió de Open Babel: %4"
+"biblioteca: %3<br/><br/>Versió d'Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -92,7 +92,7 @@ msgstr "Configuració"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
-msgstr "Obre un fitxer"
+msgstr "Obri un fitxer"
 
 #: src/main.cpp:260
 #, qt-format
@@ -190,7 +190,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:946
 msgid "Computational Chemistry Output"
-msgstr "Sortida de computació química"
+msgstr "Eixida de computació química"
 
 #: src/mainwindow.cpp:947
 msgid "Crystallographic Interchange CIF"
@@ -198,11 +198,11 @@ msgstr "Intercanvi crital·logràfic CIF"
 
 #: src/mainwindow.cpp:948
 msgid "GAMESS-US Output"
-msgstr "Sortida GAMESS-US"
+msgstr "Eixida GAMESS-US"
 
 #: src/mainwindow.cpp:949
 msgid "Gaussian 98/03 Output"
-msgstr "Sortida Gaussian 98/03"
+msgstr "Eixida Gaussian 98/03"
 
 #: src/mainwindow.cpp:950
 msgid "Gaussian Formatted Checkpoint"
@@ -218,7 +218,7 @@ msgstr "Mol MDL"
 
 #: src/mainwindow.cpp:953
 msgid "NWChem Output"
-msgstr "Sortida NWChem"
+msgstr "Eixida NWChem"
 
 #: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
 msgid "PDB"
@@ -258,18 +258,18 @@ msgstr "Llegint el fitxer multi molècula. Això pot tardar una mica ..."
 
 #: src/mainwindow.cpp:1120
 msgid "This file does not contain 3D coordinates."
-msgstr "Aquest fitxer no conté coordenades 3D."
+msgstr "Este fitxer no conté coordenades 3D."
 
 #: src/mainwindow.cpp:1124
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr "Voleu que Avogadro construeixi una geometria rugosa ?"
+msgstr "Voleu que Avogadro construïsca una geometria rugosa ?"
 
 #: src/mainwindow.cpp:1142
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"Aquest fitxer no conté coordinades 3D.\n"
+"Este fitxer no conté coordinades 3D.\n"
 "Podeu no estar habilitats per editar o visualitzar de forma correcta."
 
 #: src/mainwindow.cpp:1196
@@ -294,11 +294,11 @@ msgstr "S'ha carregat el fitxer…"
 
 #: src/mainwindow.cpp:1335
 msgid "Do you want to save the changes you made in the document?"
-msgstr "Voleu desar els canvis que heu fet al document?"
+msgstr "Voleu alçar els canvis que heu fet al document?"
 
 #: src/mainwindow.cpp:1344
 msgid "Your changes will be lost if you don't save them."
-msgstr "Els canvis es perdran si no els deseu."
+msgstr "Els canvis es perdran si no els alceu."
 
 #: src/mainwindow.cpp:1348
 msgctxt "Save"
@@ -312,11 +312,11 @@ msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:1351
 msgid "Save..."
-msgstr "Desa..."
+msgstr "Alça..."
 
 #: src/mainwindow.cpp:1351 src/savedialog.cpp:65
 msgid "Save"
-msgstr "Desa"
+msgstr "Alça"
 
 #: src/mainwindow.cpp:1434
 msgid "GAMESS Input"
@@ -340,7 +340,7 @@ msgstr "Entrada NWChem"
 
 #: src/mainwindow.cpp:1444
 msgid "Save Molecule As"
-msgstr "Anomena i desa la molècula"
+msgstr "Anomena i alça la molècula"
 
 #: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
 msgid "PNG"
@@ -365,7 +365,7 @@ msgstr "Exporta el gràfic de mapa de bits."
 #: src/mainwindow.cpp:1722
 #, qt-format
 msgid "Cannot save file %1."
-msgstr "No es pot desar el fitxer %1"
+msgstr "No es pot alçar el fitxer %1"
 
 #: src/mainwindow.cpp:1819
 #, qt-format
@@ -425,7 +425,7 @@ msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:3381
 msgid "Add"
-msgstr "Afegeix"
+msgstr "Afig"
 
 #: src/mainwindow.cpp:3386
 msgid "Duplicate"
@@ -452,7 +452,7 @@ msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
-" És impossible que aquesta aplicació funcioni de forma correcta. Si us plau, "
+" És impossible que esta aplicació funcioni de forma correcta. Per favor, "
 "corregiu-ne l'error."
 
 #: src/mainwindow.cpp:3468
@@ -611,7 +611,7 @@ msgstr "Disponible actualització de la versió d'Avogadro"
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
 msgid "Add Display Type"
-msgstr "Afegeix un tipus de visualització"
+msgstr "Afig un tipus de visualització"
 
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
@@ -643,7 +643,7 @@ msgstr "Color de:"
 #. i18n: file: src/engineprimitiveswidget.ui:44
 #. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
-msgstr "Afegeix les primitives seleccionades"
+msgstr "Afig les primitives seleccionades"
 
 #. i18n: file: src/engineprimitiveswidget.ui:55
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
@@ -657,7 +657,7 @@ msgstr "Esborra selecció primitiva"
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr "Afegeix totes les primitives"
+msgstr "Afig totes les primitives"
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
@@ -702,7 +702,7 @@ msgstr "Nota els enllaços"
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr "Nota l'ordre dels enllaços"
+msgstr "Nota l'orde dels enllaços"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
@@ -722,7 +722,7 @@ msgstr "&Fitxer"
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr "Obre &recent"
+msgstr "Obri &recent"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
@@ -800,7 +800,7 @@ msgstr "Eines"
 #. i18n: file: src/mainwindow.ui:260
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
-msgstr "&Obre"
+msgstr "&Obri"
 
 #. i18n: file: src/mainwindow.ui:255
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -812,7 +812,7 @@ msgstr "Ctrl+O"
 #. i18n: file: src/mainwindow.ui:276
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
-msgstr "&Surt"
+msgstr "&Ix"
 
 #. i18n: file: src/mainwindow.ui:268
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -858,7 +858,7 @@ msgstr "Ctrl+W"
 #. i18n: file: src/mainwindow.ui:325
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr "&Desa"
+msgstr "Al&ça"
 
 #. i18n: file: src/mainwindow.ui:320
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -868,7 +868,7 @@ msgstr "Ctrl+S"
 #. i18n: file: src/mainwindow.ui:330
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr "Anomena i des&a..."
+msgstr "Anomena i al&ça..."
 
 #. i18n: file: src/mainwindow.ui:333
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -878,7 +878,7 @@ msgstr "Ctrl+Shift+S"
 #. i18n: file: src/mainwindow.ui:338
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr "Desfés el desat"
+msgstr "Desfés l'alçat"
 
 #. i18n: file: src/mainwindow.ui:343
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -943,7 +943,7 @@ msgstr "Centre"
 #. i18n: file: src/mainwindow.ui:435
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
-msgstr "Alinea la visualització amb el eixos"
+msgstr "Alinea la visualització amb l'eixos"
 
 #. i18n: file: src/mainwindow.ui:440
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1233,40 +1233,11 @@ msgstr "Boira:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso Pulido,"
-"carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
-"Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
-"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
-"XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+msgstr " ,Launchpad Contributions:,carles ferrando"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
-"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,toniher@softcatala."
-"cat,,el.libre@gmail.com,,,toniher@softcatala.cat,,el.libre@gmail.com,,,"
-"avogadro-devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail."
-"com,,,avogadro-devel@lists.sourceforge.net,toniher@softcatala.cat,,el."
-"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,toniher@softcatala."
-"cat,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,"
-"toniher@softcatala.cat,,el.libre@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com"
+msgstr ",,"
 
 #~ msgid "PDF"
 #~ msgstr "PDF"
@@ -1279,6 +1250,9 @@ msgstr ""
 
 #~ msgid "EPS"
 #~ msgstr "EPS"
+
+#~ msgid "Backspace"
+#~ msgstr "Tecla de retrocés"
 
 #~ msgid "Axis:"
 #~ msgstr "Eix:"
@@ -2177,9 +2151,6 @@ msgstr ""
 #~ msgid "Steps:"
 #~ msgstr "Passos:"
 
-#~ msgid "Tool Settings"
-#~ msgstr "Barra de configuració"
-
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -2201,13 +2172,6 @@ msgstr ""
 #~ "l'escala dels enllaços i faça una optimització ràpida?"
 
 #~ msgid ""
-#~ "This file does not contain 3D coordinates. You may not be able to edit or "
-#~ "view properly."
-#~ msgstr ""
-#~ "Este fitxer no conté coordenades 3D. No podreu editar-lo ni visualitzar-"
-#~ "lo de forma correcta."
-
-#~ msgid ""
 #~ "This file appears to contain multiple molecule records. Avogadro will "
 #~ "only read the first molecule. If you save, all other molecules may be "
 #~ "lost."
@@ -2215,9 +2179,6 @@ msgstr ""
 #~ "Este fitxer sembla que conté múltiples molècules. L'Avogadro només pot "
 #~ "llegir la primera molècula. Si l'alceu, totes les altres molècules es "
 #~ "perdran."
-
-#~ msgid "Reading molecular file failed."
-#~ msgstr "Hi ha hagut un error en llegir el fitxer de molècula."
 
 #~ msgid "Navigate"
 #~ msgstr "Navega"
@@ -2256,9 +2217,6 @@ msgstr ""
 
 #~ msgid "tree"
 #~ msgstr "arbre"
-
-#~ msgid "index"
-#~ msgstr "índex"
 
 #~ msgid "Low"
 #~ msgstr "Baix"
@@ -2373,9 +2331,6 @@ msgstr ""
 
 #~ msgid "Animation..."
 #~ msgstr "Animació…"
-
-#~ msgid "&Extensions"
-#~ msgstr "&Extensions"
 
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "S'ha produït un error en llegir el fitxer %1 de trajectoria."
@@ -3383,9 +3338,6 @@ msgstr ""
 #~ msgid "Python Settings"
 #~ msgstr "Configuració de python"
 
-#~ msgid "Rendering:"
-#~ msgstr "Renderització:"
-
 #~ msgid "Backbone"
 #~ msgstr "Esquelet proteïc"
 
@@ -3935,9 +3887,6 @@ msgstr ""
 #~ msgid "Analytic"
 #~ msgstr "Analític"
 
-#~ msgid "Double Differenced Hessian"
-#~ msgstr "Hessià derivada parcial segona"
-
 #~ msgid "Print Internal Force Constants"
 #~ msgstr "Imprimeix constants de les forces internes"
 
@@ -4216,9 +4165,6 @@ msgstr ""
 #~ msgid "Use full scene antialiasing"
 #~ msgstr "Utilitza l'antialisat a tota l'escena"
 
-#~ msgid "Antialias"
-#~ msgstr "Antiàlies"
-
 #~ msgid "Set the background color to be transparent"
 #~ msgstr "Posa el color de fons transparent"
 
@@ -4331,22 +4277,6 @@ msgstr ""
 
 #~ msgid "Generate from SMILES:"
 #~ msgstr "Generat a partir de SMILES:"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versió de programa: %2<br/><br/> Versió de "
-#~ "llibreria: %3<br/><br/>Per a més informació ves a <a href=\\\"http://"
-#~ "avogadro.sourceforge.net/\">Pàgina d'inici d'Avogadro </a>.<br/><br/"
-#~ ">Aquest programa és subministra sense CAP GARANTIA de CAP MENA, INCLOENT-"
-#~ "HI LA GARANTIA DE DISSENY, VENDA o APTITUD PER QUALSEVOL COSA.<br/>"
-
-#~ msgid "Untitled"
-#~ msgstr "sense títol"
 
 #~ msgid "Color by Partial Charge"
 #~ msgstr "Color de la càrrega parcial."
@@ -4586,20 +4516,8 @@ msgstr ""
 #~ msgid "Build and display crystallographic unit cells"
 #~ msgstr "Construeix i mostra cel·les unitat cristalogràfiques"
 
-#~ msgid "Start Animation"
-#~ msgstr "Inicia l'animació"
-
-#~ msgid "Stop Animation"
-#~ msgstr "Atura l'animació"
-
-#~ msgid "Vibrations..."
-#~ msgstr "Vibracions..."
-
 #~ msgid "No vibrational displacements exist."
 #~ msgstr "No existeixen dislocaments vibracionals."
-
-#~ msgid "The computed vibrations do not match this molecule."
-#~ msgstr "Les vibracions computades no coincideixen amb esta molècula."
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "No s'han computat vibracions per esta molècula."
@@ -4741,12 +4659,3 @@ msgstr ""
 
 #~ msgid "Intensity (a.u.)"
 #~ msgstr "Intensitat (a.u.)"
-
-#~ msgid "Scale:"
-#~ msgstr "Escala:"
-
-#~ msgid "Display Force Vectors"
-#~ msgstr "Mostra els vectors força"
-
-#~ msgid "Backspace"
-#~ msgstr "Tecla de retrocés"
