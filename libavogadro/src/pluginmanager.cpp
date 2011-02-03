@@ -266,7 +266,7 @@ namespace Avogadro {
 
   void PluginManager::addToPluginPath(const QString &path)
   {
-    d->searchDirs << QStringList(path);
+    d->searchDirs << path;
   }
 
   void PluginManager::addToPluginPath(const QStringList &path)
