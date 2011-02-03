@@ -1,17 +1,16 @@
-# Greek translation for avogadro
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Thai translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2009-12-24 06:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
-"Language-Team: Greek <el@li.org>\n"
+"PO-Revision-Date: 2010-12-24 14:55+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,13 +19,13 @@ msgstr ""
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "Εντάξει"
+msgstr "ตกลง"
 
 #: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git รุ่น: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
@@ -47,27 +46,27 @@ msgstr ""
 #: src/mainwindow.cpp:1335 src/mainwindow.cpp:1563 src/mainwindow.cpp:2838
 #: src/mainwindow.cpp:3339 :69
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr ""
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr "Αποκοπή μορίου"
+msgstr "ตัดโมเลกุล"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr "Αποκοπή ατόμων"
+msgstr "ตัดอะตอม"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr "Επικόλληση"
+msgstr "วาง"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr "Καθαρισμός μορίου"
+msgstr "ล้างโมเลกุล"
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr "Καθαρισμός ατόμων"
+msgstr "ล้างอะตอม"
 
 #. i18n: file: src/projecttreeeditor.ui:179
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -76,35 +75,35 @@ msgstr "Καθαρισμός ατόμων"
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:3357 src/mainwindow.cpp:3374 :381 rc.cpp:393
 msgid "Settings"
-msgstr "Ρυθμίσεις"
+msgstr "ตั้งค่า"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:806
 msgid "Open File"
-msgstr "Άνοιγμα αρχείου"
+msgstr "เปิดแฟ้ม"
 
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr ""
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr "Το σύστημά σας δεν υποστηρίζει OpenGL"
+msgstr ""
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr "Το σύστημά σας υποστηρίζει OpenGL"
+msgstr ""
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
 msgid "About to test OpenGL capabilities."
-msgstr "Θα γίνει έλεγχος για OpenGL δυνατότητες."
+msgstr ""
 
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr "Βρέθηκαν δυνατότητες OpenGL: "
+msgstr ""
 
 msgctxt "main.cpp"
 msgid "Double Buffering."
@@ -142,62 +141,62 @@ msgstr ""
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
-msgstr "Μηνύματα"
+msgstr "ข้อความ"
 
 #: src/mainwindow.cpp:436
 msgid "Window"
-msgstr "Παράθυρο"
+msgstr "หน้าต่าง"
 
 #: src/mainwindow.cpp:439
 msgid "&Minimize"
-msgstr "&Ελαχιστοποίηση"
+msgstr "ย่อ&หาย"
 
 #: src/mainwindow.cpp:440
 msgid "Ctrl+M"
-msgstr "Ctrl+M"
+msgstr ""
 
 #: src/mainwindow.cpp:445
 msgid "&Zoom"
-msgstr "&Μεγέθυνση"
+msgstr "ย่อ-ข&ยาย"
 
 #: src/mainwindow.cpp:452 src/mainwindow.cpp:1701
 msgid "Bring All to Front"
-msgstr "Μεταφορά Όλων Εμπρός"
+msgstr "นำขึ้นมาข้างหน้าทั้งหมด"
 
 #: src/mainwindow.cpp:732
 msgid "&Tool Settings..."
-msgstr "&Ρυθμίσεις Εργαλείων"
+msgstr "ตั้งค่าเ&ครื่องมือ..."
 
 #: src/mainwindow.cpp:735
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr "Ctrl+T"
+msgstr ""
 
 #: src/mainwindow.cpp:740
 msgid "&Display Settings..."
-msgstr ""
+msgstr "ตั้งค่าการแ&สดงผล..."
 
 #: src/mainwindow.cpp:743
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr ""
 
 #: src/mainwindow.cpp:786 src/mainwindow.cpp:1274
 msgid "Common molecule formats"
-msgstr "Κοινές μορφές μορίων"
+msgstr "รูปแบบโมเลกุลทั่วไป"
 
 #: src/mainwindow.cpp:791 src/mainwindow.cpp:1271 src/mainwindow.cpp:1503
 #: src/mainwindow.cpp:1584
 msgid "All files"
-msgstr "Όλα τα αρχεία"
+msgstr "แฟ้มทั้งหมด"
 
 #: src/mainwindow.cpp:792 src/mainwindow.cpp:1268 src/mainwindow.cpp:1280
 msgid "CML"
-msgstr "CML"
+msgstr ""
 
 #: src/mainwindow.cpp:793
 msgid "Computational Chemistry Output"
-msgstr "Αποτελέσματα Υπολογιστικής Χημείας"
+msgstr ""
 
 #: src/mainwindow.cpp:794
 msgid "Crystallographic Interchange CIF"
@@ -205,11 +204,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:795
 msgid "GAMESS-US Output"
-msgstr "Αποτελέσματα GAMESS-US"
+msgstr ""
 
 #: src/mainwindow.cpp:796
 msgid "Gaussian 98/03 Output"
-msgstr "Αποτελέσματα Gaussian  98/03"
+msgstr ""
 
 #: src/mainwindow.cpp:797
 msgid "Gaussian Formatted Checkpoint"
@@ -217,7 +216,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:798
 msgid "HyperChem"
-msgstr "HyperChem"
+msgstr ""
 
 #: src/mainwindow.cpp:799
 msgid "MDL Mol"
@@ -229,195 +228,193 @@ msgstr ""
 
 #: src/mainwindow.cpp:801 src/mainwindow.cpp:1285
 msgid "PDB"
-msgstr "PDB"
+msgstr ""
 
 #: src/mainwindow.cpp:802 src/mainwindow.cpp:1287
 msgid "Sybyl Mol2"
-msgstr "Sybyl Mol2"
+msgstr ""
 
 #: src/mainwindow.cpp:803 src/mainwindow.cpp:1288
 msgid "XYZ"
-msgstr "XYZ"
+msgstr ""
 
 #: src/mainwindow.cpp:872 src/mainwindow.cpp:877 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "χωρίς τίτλο"
+msgstr "ไม่มีหัวเรื่อง"
 
 #: src/mainwindow.cpp:893
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr "Φόρτωση %1"
+msgstr "กำลังโหลด %1..."
 
 #: src/mainwindow.cpp:897
 #, qt-format
 msgid "Loading %1..."
-msgstr "Φόρτωση %1"
+msgstr "กำลังโหลด %1..."
 
 #: src/mainwindow.cpp:917 src/mainwindow.cpp:1160
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr "Η ανάγνωση του αρχείου μορίων απέτυχε, αρχείο %1"
+msgstr "การอ่านแฟ้มโมเลกุล %1 ล้มเหลว"
 
 #: src/mainwindow.cpp:940
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr "Ανάγνωση σύνθετου αρχείου.Πιθανόν να διαρκέσει..."
+msgstr "กำลังอ่านแฟ้มหลายโมเลกุล อาจใช้เวลาสักครู่..."
 
 #: src/mainwindow.cpp:967
 msgid "This file does not contain 3D coordinates."
-msgstr "Το αρχείο δεν περιέχει συντεταγμένες 3D"
+msgstr "แฟ้มนี้ไม่มีระบบพิกัดสามมิติ"
 
 #: src/mainwindow.cpp:971
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr "Θα θέλατε το Avogadro να σχεδιάσει πρόχειρα την γεωμετρία;"
+msgstr ""
 
 #: src/mainwindow.cpp:989
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"Το αρχείο δεν περιέχει 3D συντεταγμένες.\n"
-"Ίσως να μην είναι δυνατή η επεξεργασία ή/και η σωστή απεικόνιση του."
 
 #: src/mainwindow.cpp:1043
 msgid "Select Molecule to View"
-msgstr "Επιλέξτε Μόριο προς απεικόνιση"
+msgstr "เลือกโมเลกุลที่จะดู"
 
 #: src/mainwindow.cpp:1068
 msgid "Molecule Title"
-msgstr "Τίτλος μορίου"
+msgstr ""
 
 #: src/mainwindow.cpp:1152
 msgid "Atoms: "
-msgstr "Άτομα: "
+msgstr "อะตอม: "
 
 #: src/mainwindow.cpp:1153
 msgid " Bonds: "
-msgstr " Δεσμοί: "
+msgstr " พันธะ: "
 
 #: src/mainwindow.cpp:1169
 msgid "File Loaded..."
-msgstr "Το αρχείο Φορτώθηκε..."
+msgstr "โหลดแฟ้มแล้ว..."
 
 #: src/mainwindow.cpp:1182
 msgid "Do you want to save the changes you made in the document?"
-msgstr "Επιθυμείτε να αποθηκευτούν οι αλλαγές που κάνατε στο αρχείο?"
+msgstr "คุณต้องการจะบันทึกการเปลี่ยนแปลงไปยังเอกสารหรือไม่?"
 
 #: src/mainwindow.cpp:1191
 msgid "Your changes will be lost if you don't save them."
-msgstr "Οι αλλαγές θα χαθούν οριστικά αν δεν τις αποθηκεύσετε."
+msgstr "การเปลี่ยนแปลงของคุณที่ทำไว้จะสูญหาย ถ้าไม่ได้บันทึก"
 
 #: src/mainwindow.cpp:1195
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr "Ctrl+S"
+msgstr ""
 
 #: src/mainwindow.cpp:1196
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr ""
 
 #: src/mainwindow.cpp:1198
 msgid "Save..."
-msgstr "Αποθήκευση..."
+msgstr "บันทึก..."
 
 #: src/mainwindow.cpp:1198 src/savedialog.cpp:65
 msgid "Save"
-msgstr "Αποθήκευση"
+msgstr "บันทึก"
 
 #: src/mainwindow.cpp:1281
 msgid "GAMESS Input"
-msgstr "Είσοδος GAMESS"
+msgstr ""
 
 #: src/mainwindow.cpp:1282
 msgid "Gaussian Cartesian Input"
-msgstr "Είσοδος Gaussian Cartesian"
+msgstr ""
 
 #: src/mainwindow.cpp:1283
 msgid "Gaussian Z-matrix Input"
-msgstr "Είσοδος Gaussian Z-matrix"
+msgstr ""
 
 #: src/mainwindow.cpp:1284
 msgid "MDL SDfile"
-msgstr "Αρχείο MDL SD"
+msgstr ""
 
 #: src/mainwindow.cpp:1286
 msgid "NWChem Input"
-msgstr "Είσοδος NWChem"
+msgstr ""
 
 #: src/mainwindow.cpp:1291
 msgid "Save Molecule As"
-msgstr "Αποθήκευση μορίου ως"
+msgstr "บันทึกโมเลกุลเป็น"
 
 #: src/mainwindow.cpp:1493 src/mainwindow.cpp:1505
 msgid "PNG"
-msgstr "PNG"
+msgstr ""
 
 #: src/mainwindow.cpp:1500
 msgid "Common image formats"
-msgstr "Κοινοί τύποι εικόνων"
+msgstr "รูปแบบแฟ้มรูปภาพทั่วไป"
 
 #: src/mainwindow.cpp:1504
 msgid "BMP"
-msgstr "BMP"
+msgstr ""
 
 #: src/mainwindow.cpp:1506
 msgid "JPEG"
-msgstr "JPEG"
+msgstr ""
 
 #: src/mainwindow.cpp:1512 src/mainwindow.cpp:1593
 msgid "Export Bitmap Graphics"
-msgstr "Εξαγωγή Γραφικών Bitmap"
+msgstr ""
 
 #: src/mainwindow.cpp:1564
 #, qt-format
 msgid "Cannot save file %1."
-msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
+msgstr "ไม่สามารถบันทึกแฟ้ม %1"
 
 #: src/mainwindow.cpp:1574 src/mainwindow.cpp:1585
 msgid "PDF"
-msgstr "PDF"
+msgstr ""
 
 #: src/mainwindow.cpp:1581
 msgid "Common vector image formats"
-msgstr "Κοινοί τύποι διανυσματικών εικόνων"
+msgstr "รูปแบบแฟ้มภาพเวกเตอร์ทั่วไป"
 
 #: src/mainwindow.cpp:1586
 msgid "SVG"
-msgstr "SVG"
+msgstr ""
 
 #: src/mainwindow.cpp:1587
 msgid "EPS"
-msgstr "EPS"
+msgstr ""
 
 #: src/mainwindow.cpp:1733
 #, qt-format
 msgid "Untitled %1"
-msgstr "Ανώνυμο %1"
+msgstr "ไม่มีหัวเรื่อง %1"
 
 #: src/mainwindow.cpp:1838
 msgid "Unable to paste molecule."
-msgstr "Αδύνατη η επικόλληση του μορίου"
+msgstr "ไม่สามารถวางโมเลกุลได้"
 
 #: src/mainwindow.cpp:1867
 msgid "Paste failed (format unavailable)."
-msgstr "Απέτυχε η επικόλληση (άγνωστος τύπος αρχείου)"
+msgstr "การวางล้มเหลว (ไม่มีรูปแบบแฟ้มที่ใช้ได้)"
 
 #: src/mainwindow.cpp:2150
 msgid "Copy failed (mdl unavailable)."
-msgstr "Απέτυχε η αντιγραφή (μη διαθέσιμο MDL)."
+msgstr ""
 
 #: src/mainwindow.cpp:2276 src/mainwindow.cpp:2309 src/mainwindow.cpp:2376
 #: src/mainwindow.cpp:2981
 #, qt-format
 msgid "View %1"
-msgstr ""
+msgstr "ดู %1"
 
 #: src/mainwindow.cpp:2336
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr ""
+msgstr "ดู %1"
 
 #: src/mainwindow.cpp:2345
 msgid "Avogadro: Detached View"
@@ -425,11 +422,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:2576
 msgid "Normal Size"
-msgstr "Κανονικό μέγεθος"
+msgstr "ขนาดปกติ"
 
 #: src/mainwindow.cpp:2593
 msgid "Full Screen"
-msgstr "Λειτουργία πλήρους οθόνης"
+msgstr "เต็มจอ"
 
 #: src/mainwindow.cpp:2695
 msgid "Ctrl+Backspace"
@@ -438,98 +435,97 @@ msgstr ""
 #: src/mainwindow.cpp:2831
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
-msgstr "[*]Avogadro"
+msgstr ""
 
 #: src/mainwindow.cpp:2837
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr "%1[*] - %2"
+msgstr ""
 
 #: src/mainwindow.cpp:3293
 msgid "Add"
-msgstr "Προσθήκη"
+msgstr "เพิ่ม"
 
 #: src/mainwindow.cpp:3298
 msgid "Duplicate"
-msgstr "Αντιγραφή"
+msgstr "ทำสำเนา"
 
 #: src/mainwindow.cpp:3303
 msgid "Remove"
-msgstr "Αφαίρεση"
+msgstr "ลบออก"
 
 #: src/mainwindow.cpp:3331
 msgid "No tools or engines loaded."
-msgstr "Δεν φορτώθηκε κανένα εργαλείο ή μηχανή."
+msgstr ""
 
 #: src/mainwindow.cpp:3333
 msgid "No engines loaded."
-msgstr "Δεν φορτώθηκε καμία μηχανή"
+msgstr ""
 
 #: src/mainwindow.cpp:3335
 msgid "No tools loaded."
-msgstr "Δεν φορτώθηκε κανένα εργαλείο"
+msgstr "ยังไม่ได้โหลดเครื่องมือ"
 
 #: src/mainwindow.cpp:3336
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr ""
-" Η εφαρμογή μάλλον δε θα λειτουργήσει σωστά.Παρακαλώ διορθώστε το σφάλμα."
+msgstr " ดูเหมือนว่าแอพคลิเคชันทำงานได้ไม่ถูกต้อง กรุณาแก้ไขข้อผิดพลาดนี้"
 
 #: src/mainwindow.cpp:3380
 msgid "Objects"
-msgstr "Αντικείμενα"
+msgstr "วัตถุ"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 #: src/mainwindow.cpp:3386 :321
 msgid "Colors"
-msgstr "Χρώματα"
+msgstr "สี"
 
 #: src/mainwindow.cpp:3419
 msgid " copy"
-msgstr " αντιγραφή"
+msgstr " คัดลอก"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr "Όνομα: "
+msgstr "ชื่อ: "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr "Αναγνωριστικό: "
+msgstr ""
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr "Αρχείο: "
+msgstr "แฟ้ม: "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr "Περιγραφή:\n"
+msgstr "คำอธิบาย:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
 #: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr "Μόριο"
+msgstr "โมเลกุล"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr "Άτομα"
+msgstr "อะตอม"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr "Δεσμοί"
+msgstr "พันธะ"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr "Υπόλοιπα"
+msgstr ""
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -537,98 +533,98 @@ msgstr "Υπόλοιπα"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr "δεσμός %1"
+msgstr ""
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr "Ετικέτα"
+msgstr "ป้ายกำกับ"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr "Επιλογές Χρήστη"
+msgstr "การเลือกของผู้ใช้"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr "Σφάλμα"
+msgstr "ผิดพลาด"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr ""
+msgstr "เฉพาะป้ายกำกับเท่านั้นที่จะมีรายการย่อยได้"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
 #: src/projecttreemodel.cpp:65 :378
 msgid "Item"
-msgstr "Αντικείμενo"
+msgstr "รายการ"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr "Ευρετήριο"
+msgstr "ดัชนี"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr "Χαμηλό"
+msgstr "ต่ำ"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
 #: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr "Μέτριο"
+msgstr "ปานกลาง"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "Υψηλό"
+msgstr "สูง"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr "Μη ορισμένο"
+msgstr "ไม่ระบุ"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
 #: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr "Χωρίς"
+msgstr "ไม่มี"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr "Λίγο"
+msgstr ""
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr "Μέτριο"
+msgstr ""
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr "Πολύ"
+msgstr ""
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr "Μη ορισμένο"
+msgstr ""
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr "Έλεγχος Ενημέρωσης δικτύου απέτυχε"
+msgstr ""
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr "Αποσύνδεση δικτύου η αλλο σφάλμα"
+msgstr ""
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr "Διαθέσιμη ενημερωμένη έκδοση του Avogadro"
+msgstr ""
 
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
@@ -638,27 +634,27 @@ msgstr ""
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr "Τύπος:"
+msgstr ""
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr "Όνομα:"
+msgstr ""
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr "Περιγραφή:"
+msgstr ""
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
 msgid "Form"
-msgstr "Φόρμα"
+msgstr ""
 
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr "Χρώμα ανά:"
+msgstr ""
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
@@ -672,19 +668,19 @@ msgstr ""
 #. i18n: file: src/engineprimitiveswidget.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
-msgstr "Αφαίρεση επιλεγμένων πρωτευόντων"
+msgstr ""
 
 #. i18n: file: src/engineprimitiveswidget.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr "Προσθήκη όλων των πρωτευόντων"
+msgstr ""
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr "Εμφάνιση μόνο των επιλεγμένων πρωτευόντων"
+msgstr ""
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
@@ -694,32 +690,32 @@ msgstr ""
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr "Εισαγωγή αρχείου μορίων"
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Filename:"
-msgstr "Όνομα αρχείου:"
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:34
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
 msgid "Select..."
-msgstr "Επιλογή..."
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr "Μορφή:"
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr "Αυτόματη αναγνώριση με βάση την κατάληξη"
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
-msgstr "Διατήρηση δεσμού"
+msgstr ""
 
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
@@ -734,27 +730,27 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
 msgid "&Help"
-msgstr "&Βοήθεια"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:46
 #. i18n: ectx: property (title), widget (QMenu, menuFile)
 msgid "&File"
-msgstr "&Αρχείο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr "Άνοιγμα πρόσ&φατου"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
 msgid "Export"
-msgstr "Εξαγωγή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:62
 #. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
-msgstr "Εισαγωγή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:81
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
@@ -764,22 +760,22 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:85
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr "Γραμμές εργαλείων"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:94
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr "&Κατασκευή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:99
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
-msgstr "Π&ροβολή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:122
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Επεξεργασία"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:135
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -789,12 +785,12 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:140
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
-msgstr "&Επιλογή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:157
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr "Κύρια γραμμή εργαλείων"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:194
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
@@ -815,14 +811,14 @@ msgstr ""
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
-msgstr "Εργαλεία"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:253
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:261
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
-msgstr "&Άνοιγμα"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:256
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -834,7 +830,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:277
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
-msgstr "Έ&ξοδος"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:269
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -844,7 +840,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:282
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr "Πρόσφατο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:287
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -856,7 +852,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:300
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
-msgstr "&Νέο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:295
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -868,7 +864,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:313
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
-msgstr "&Κλείσιμο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:308
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -880,7 +876,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:326
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr "&Αποθήκευση"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:321
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -890,7 +886,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:331
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr "Αποθήκευση &ως..."
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:334
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -900,37 +896,37 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:339
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr "Επαναφορά στο αποθηκευμένο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:344
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr "&Γραφικά..."
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr "&Λειτουργία πλήρους οθόνης"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:356
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr "Esc"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:365
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr "Ορισμός χρώματος &φόντου..."
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr "&Σχετικά"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:382
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
-msgstr "Α&ναίρεση"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:385
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -940,7 +936,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:394
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr "Επανα&φορά"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:397
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -950,22 +946,22 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:406
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr "Νέα Όψη"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:418
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
-msgstr "Κλείσιμο προβολής"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:427
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
-msgstr "Κέντρο"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:441
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
-msgstr "Επι&κόλληση"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:444
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -975,7 +971,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:449
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
-msgstr "Αντιγραφή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:452
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -985,7 +981,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:457
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
-msgstr "Αποκοπή"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:460
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -995,17 +991,17 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:465
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
-msgstr "Καθαρισμός"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Backspace"
-msgstr "Backspace"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:470
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr "Επιλογή όλων"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:473
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -1015,7 +1011,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
-msgstr "Επιλογή κανενός"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:481
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -1025,12 +1021,12 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:490
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
-msgstr "Ρύθμιση Avogadro.."
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:501
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr "Οδηγοί"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:510
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1040,42 +1036,42 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:518
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Εμφάνιση αξόνων"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:526
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
-msgstr "Πληροφορίες αποσφαλμάτωσης"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:534
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
-msgstr "Βοήθεια Avogadro"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:539
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
-msgstr "Σημειώσεις έκδοσης"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:544
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr "Αναφορά σφάλματος"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:549
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "Συχνές ερωτήσεις"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:554
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr "Ιστοσελίδα Avogadro"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
-msgstr "Διαχείριση Επιπρόσθετων..."
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:572
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1090,7 +1086,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
-msgstr "Αρχείο μορίων"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:597
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1100,7 +1096,7 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:602
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr "&Διανυσματικά Γραφικά"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1122,17 +1118,17 @@ msgstr ""
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
-msgstr "Πρόσθετα"
+msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
-msgstr "Επεκτάσεις"
+msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:52
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
-msgstr "Λεπτομέρειες"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
@@ -1146,17 +1142,17 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
-msgstr "Τύπος"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:48
 #. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
-msgstr "Νέο αντικείμενο"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:51
 #. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
-msgstr "&Νέο αντικείμενο"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
@@ -1166,17 +1162,17 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr "Νέο &υπο-αντικείμνο"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
-msgstr "Διαγραφή αντικειμένου"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
-msgstr "&Διαγραφή αντικειμένου"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
@@ -1201,7 +1197,7 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
-msgstr "Μετακίνηση πάνω"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
@@ -1211,7 +1207,7 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
-msgstr "Μετακίνηση κάτω"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
@@ -1221,24 +1217,24 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr "Αντιστοιχία"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
 msgid "Settings..."
-msgstr "Ρυθμίσεις..."
+msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:34
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "General"
-msgstr "Γενικά"
+msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr "Ποιότητα:"
+msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
@@ -1250,45 +1246,12 @@ msgstr ""
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
 msgid "Fog:"
-msgstr "Ομίχλη"
+msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, "
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
-",Launchpad Contributions:,farkoius,stimpak"
+msgstr " ,Launchpad Contributions:,Narachai"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,a.brzns@gmail.com,elkosmas@gmail.com,,,a.brzns@gmail.com,elkosmas@gmail.com"
-",,,,a.brzns@gmail.com,elkosmas@gmail.com,,,,a.brzns@gmail.com,elkosmas@gmail."
-"com,,,,a.brzns@gmail.com,elkosmas@gmail.com,,,,a.brzns@gmail.com,elkosmas@gma"
-"il.com,,,,,"
-
-#, qt-format
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Έκδοση Εφαρμογής: %2<br/><br/>Έκδοση Βιβλιοθήκης: "
-#~ "%3<br/><br/>Για περισσότερες πληροφορίες ανατρέξτε εδώ <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>Το πρόγραμμα διατίθεται ΩΣ ΕΧΕΙ χωρίς ΚΑΜΙΑ ΕΓΓΥΗΣΗ "
-#~ "ΟΠΟΙΟΥΔΗΠΟΤΕ ΤΥΠΟΥ, ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΗΣ ΤΗΣ ΕΓΓΥΗΣΗΣ ΤΟΥ ΣΧΕΔΙΑΣΜΟΥ, ΤΗΣ "
-#~ "ΔΙΑΘΕΣΗΣ ΚΑΙ ΠΡΟΣΑΡΜΟΓΗΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.<br/>"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  farkoius https://launchpad.net/~farkoius\n"
-#~ "  stimpak https://launchpad.net/~vespenegeyser"
+msgstr ",,"
