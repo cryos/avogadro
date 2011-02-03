@@ -1783,7 +1783,7 @@ namespace Avogadro {
       case 7:
         // $BASIS GBASIS=N311 NGAUSS=6 NDFUNC=1 NPFUNC=1 DIFFSP=.T. DIFFS=.T. $END
         basis = GAMESS_BS_N311;
-        gauss = 2;
+        gauss = 6;
         nd = 1;
         np = 1;
         dsp = true;

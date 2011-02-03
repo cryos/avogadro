@@ -60,6 +60,7 @@ using Eigen::Vector3d;
 
    Atom::~Atom()
    {
+     delete d_ptr;
    }
 
    const Eigen::Vector3d * Atom::pos() const
