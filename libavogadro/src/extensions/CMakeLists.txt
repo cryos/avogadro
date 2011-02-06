@@ -138,3 +138,5 @@ avogadro_plugin(supercellextension
 
 avogadro_plugin(networkfetchextension networkfetchextension.cpp)
 
+# Subdirs
+add_subdirectory(crystalbuilder)
