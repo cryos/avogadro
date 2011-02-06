@@ -125,6 +125,8 @@ target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
 avogadro_plugin(gl2psextension 
   "gl2psextension.cpp;gl2ps/gl2ps.c")
 
+# Subdirs
+add_subdirectory(crystalbuilder)
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
 if (NOT WIN32)
