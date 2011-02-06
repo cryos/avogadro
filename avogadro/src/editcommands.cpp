@@ -49,6 +49,10 @@ namespace Avogadro {
   void CutCommand::redo()
   {
     QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Clipboard);
+    // For X11 middle click
+    if (QApplication::clipboard()->supportsSelection()) {
+      QApplication::clipboard()->setMimeData(m_copiedData, QClipboard::Selection);
+    }
     if (m_selectedList.size() == 0) {
       m_molecule->clear();
     }
