@@ -37,7 +37,7 @@ avogadro_plugin_nogl(forcefieldextension
   "${forcefieldextension_SRCS}"
   "forcefielddialog.ui;constraintsdialog.ui;conformersearchdialog.ui")
 set_target_properties(forcefieldextension PROPERTIES
-                        COMPILE_FLAGS "${RTTI_FLAG}")
+			COMPILE_FLAGS "${RTTI_FLAG}")
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(forcefieldextension PROPERTIES COMPILE_FLAGS "-fvisibility=default")
 endif()
@@ -77,7 +77,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythonterminalwidget.ui)
   target_link_libraries(pythonterminal ${PYTHON_LIBRARIES})
   set_target_properties(pythonterminal PROPERTIES
-                        COMPILE_FLAGS "${RTTI_FLAG}")
+			COMPILE_FLAGS "${RTTI_FLAG}")
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
@@ -122,9 +122,11 @@ avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
 target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
 
 # GL2PS
-avogadro_plugin(gl2psextension 
+avogadro_plugin(gl2psextension
   "gl2psextension.cpp;gl2ps/gl2ps.c")
 
+# Subdirs
+add_subdirectory(crystallography)
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
 if (NOT WIN32)
