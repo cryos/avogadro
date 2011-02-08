@@ -171,42 +171,46 @@ namespace Avogadro {
 
   void Animation::stop()
   {
-    m_timeLine->stop();
-    m_timeLine->setCurrentTime(0);
-    disconnect(m_timeLine, SIGNAL(frameChanged(int)),
-            this, SLOT(setFrame(int)));
+    if(m_molecule) {
+      m_timeLine->stop();
+      m_timeLine->setCurrentTime(0);
+      disconnect(m_timeLine, SIGNAL(frameChanged(int)),
+                 this, SLOT(setFrame(int)));
 
-    // restore original conformers
-    if (d->framesSet) {
-      m_molecule->lock()->lockForWrite();
-      m_molecule->setAllConformers(m_originalConformers);
-      m_molecule->lock()->unlock();
+      // restore original conformers
+      if (d->framesSet) {
+        m_molecule->lock()->lockForWrite();
+        m_molecule->setAllConformers(m_originalConformers);
+        m_molecule->lock()->unlock();
+      }
+      setFrame(0);
     }
-    setFrame(0);
   }
 
   void Animation::start()
   {
-    // set molecule conformers
-    if (d->framesSet) {
-      m_molecule->lock()->lockForWrite();
-      // don't delete the existing conformers -- we save them as m_originalConformers
-      m_molecule->setAllConformers(m_frames, false);
-      m_molecule->lock()->unlock();
+    if(m_molecule) {
+      // set molecule conformers
+      if (d->framesSet) {
+        m_molecule->lock()->lockForWrite();
+        // don't delete the existing conformers -- we save them as m_originalConformers
+        m_molecule->setAllConformers(m_frames, false);
+        m_molecule->lock()->unlock();
+      }
+
+      if (d->fps < 1.0)
+        d->fps = 1.0;
+      int interval = 1000 / d->fps;
+      m_timeLine->setUpdateInterval(interval);
+      int duration = interval * numFrames();
+      m_timeLine->setDuration(duration);
+      setFrame(0);
+
+      connect(m_timeLine, SIGNAL(frameChanged(int)),
+              this, SLOT(setFrame(int)));
+      m_timeLine->setCurrentTime(0);
+      m_timeLine->start();
     }
-
-    if (d->fps < 1.0)
-      d->fps = 1.0;
-    int interval = 1000 / d->fps;
-    m_timeLine->setUpdateInterval(interval);
-    int duration = interval * numFrames();
-    m_timeLine->setDuration(duration);
-    setFrame(0);
-
-    connect(m_timeLine, SIGNAL(frameChanged(int)),
-            this, SLOT(setFrame(int)));
-    m_timeLine->setCurrentTime(0);
-    m_timeLine->start();
   }
   
   void Animation::pause()
