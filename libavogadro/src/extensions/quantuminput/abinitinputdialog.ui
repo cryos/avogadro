@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AbinitInputDialog</class>
+ <widget class="QDialog" name="AbinitInputDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1122</width>
+    <height>687</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Abinit Input</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
+   <item>
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Title:</string>
+     </property>
+     <property name="buddy">
+      <cstring>titleLine</cstring>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="titleLine">
+     <property name="text">
+      <string>Title</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="4">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Processors:</string>
+       </property>
+       <property name="buddy">
+        <cstring>procSpin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QSpinBox" name="procSpin">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="4">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>k-points:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ngkpt1Spin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QSpinBox" name="ngkpt2Spin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="ngkpt3Spin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="ngkpt1Spin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLineEdit" name="ecutLineEdit">
+         <property name="text">
+          <string>10.0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Coordinate Format:</string>
+       </property>
+       <property name="buddy">
+        <cstring>coordCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QComboBox" name="coordCombo">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Cartesian (Angstrom)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Reduced</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Plane Wave cutoff (Ha):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QLineEdit" name="tolmxfLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>5.e-5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Tolerance on forces(Ha/bohr):</string>
+       </property>
+       <property name="buddy">
+        <cstring>ionmovCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Max lattice expansion:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <item>
+        <widget class="QLineEdit" name="dilatmxLineEdit">
+         <property name="text">
+          <string>1.05</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="4">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>k-point shift:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ngkpt1Spin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QLineEdit" name="shiftk2LineEdit">
+           <property name="text">
+            <string>0.0</string>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="shiftk3LineEdit">
+           <property name="text">
+            <string>0.0</string>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="shiftk1LineEdit">
+           <property name="text">
+            <string>0.0</string>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_14">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>58</width>
+             <height>26</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="4">
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>Number of bands:</string>
+       </property>
+       <property name="buddy">
+        <cstring>procSpin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_24">
+       <item>
+        <widget class="QSpinBox" name="nbandSpin">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_21">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="4">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string># k-point shifts:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ngkpt1Spin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_26">
+       <item>
+        <widget class="QSpinBox" name="nshiftkSpin">
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_23">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>Double grid PW cutoff (Ha):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_20">
+       <item>
+        <widget class="QLineEdit" name="pawecutdgLineEdit">
+         <property name="text">
+          <string>20.0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_17">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="9" column="4">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Occupation scheme:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ionmovCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="4">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>SCF tolerance type:</string>
+       </property>
+       <property name="buddy">
+        <cstring>coordCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item>
+        <widget class="QComboBox" name="toleranceTypeCombo">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Total Energy</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Wave Function norm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Total Potential</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Maximum Force</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Relative Force</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="9" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QComboBox" name="occoptCombo">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>1 - semiconducting</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Fermi Dirac</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Cold Smearing (Marzari)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 - Gaussian smearing</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_15">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="8" column="4">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Smearing width (Ha):</string>
+       </property>
+       <property name="buddy">
+        <cstring>ionmovCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_18">
+       <item>
+        <widget class="QLineEdit" name="tsmearLineEdit">
+         <property name="text">
+          <string>0.01</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_16">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Geometry Optimization:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ionmovCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="ionmovCombo">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>0 - no moving ions </string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - viscous damping</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - BFGS </string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - BFGS with energy</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string># Geometrical time steps:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ngkpt1Spin</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_25">
+       <item>
+        <widget class="QSpinBox" name="ntimeSpin">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_22">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="11" column="4">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>SCF tolerance:</string>
+       </property>
+       <property name="buddy">
+        <cstring>coordCombo</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="6">
+      <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <item>
+        <widget class="QLineEdit" name="tolXXXLineEdit">
+         <property name="text">
+          <string>1.e-10</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>58</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>Kinetic Energy smoothing (Ha):</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QLineEdit" name="ecutsmLineEdit">
+         <property name="text">
+          <string>0.5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>27</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="previewText">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="resetButton">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="enableFormButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Use Form</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="moreButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Hide Preview</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>48</width>
+         <height>26</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="computeButton">
+       <property name="text">
+        <string>Compute...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="generateButton">
+       <property name="text">
+        <string>Generate...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>procSpin</tabstop>
+  <tabstop>generateButton</tabstop>
+  <tabstop>closeButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>enableFormButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AbinitInputDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>451</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
