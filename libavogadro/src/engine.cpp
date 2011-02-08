@@ -338,19 +338,21 @@ namespace Avogadro {
 
   void Engine::useCustomPrimitives()
   {
-    m_customPrims = true;
-    m_atoms = m_molecule->atoms();
-    m_bonds = m_molecule->bonds();
+    if(m_molecule) {
+      m_customPrims = true;
+      m_atoms = m_molecule->atoms();
+      m_bonds = m_molecule->bonds();
 
-    // Now listen to the molecule
-    connect(m_molecule, SIGNAL(atomAdded(Atom*)),
-            this, SLOT(addAtom(Atom*)));
-    connect(m_molecule, SIGNAL(atomRemoved(Atom*)),
-            this, SLOT(removeAtom(Atom*)));
-    connect(m_molecule, SIGNAL(bondAdded(Bond*)),
-            this, SLOT(addBond(Bond*)));
-    connect(m_molecule, SIGNAL(bondRemoved(Bond*)),
-            this, SLOT(removeBond(Bond*)));
+      // Now listen to the molecule
+      connect(m_molecule, SIGNAL(atomAdded(Atom*)),
+              this, SLOT(addAtom(Atom*)));
+      connect(m_molecule, SIGNAL(atomRemoved(Atom*)),
+              this, SLOT(removeAtom(Atom*)));
+      connect(m_molecule, SIGNAL(bondAdded(Bond*)),
+              this, SLOT(addBond(Bond*)));
+      connect(m_molecule, SIGNAL(bondRemoved(Bond*)),
+              this, SLOT(removeBond(Bond*)));
+    }
   }
 
   const PrimitiveList Engine::primitives() const
