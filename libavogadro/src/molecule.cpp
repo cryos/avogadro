@@ -189,7 +189,7 @@ namespace Avogadro{
 
   void Molecule::removeAtom(Atom *atom)
   {
-    if(atom) {
+    if(atom && m_atomList.contains(atom)) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
         removeBond(bond);
