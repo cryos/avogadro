@@ -189,7 +189,7 @@ namespace Avogadro{
 
   void Molecule::removeAtom(Atom *atom)
   {
-    if(atom) {
+    if(atom && m_atomList.contains(atom)) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
         removeBond(bond);
@@ -241,7 +241,7 @@ namespace Avogadro{
 
   void Molecule::removeBond(Bond *bond)
   {
-    if(bond) {
+    if(bond && m_bondList.contains(bond)) {
       removeBond(bond->id());
     }
   }
@@ -357,7 +357,7 @@ namespace Avogadro{
   void Molecule::removeCube(Cube *cube)
   {
     Q_D(Molecule);
-    if(cube) {
+    if(cube && d->cubeList.contains(cube)) {
       d->cubes[cube->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = cube->index();
@@ -407,7 +407,7 @@ namespace Avogadro{
   void Molecule::removeMesh(Mesh *mesh)
   {
     Q_D(Molecule);
-    if(mesh) {
+    if(mesh && d->meshList.contains(mesh)) {
       d->meshes[mesh->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = mesh->index();
@@ -475,7 +475,7 @@ namespace Avogadro{
   void Molecule::removeResidue(Residue *residue)
   {
     Q_D(Molecule);
-    if(residue) {
+    if(residue && d->residueList.contains(residue)) {
       d->residues[residue->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = residue->index();
@@ -526,7 +526,7 @@ namespace Avogadro{
   void Molecule::removeRing(Fragment *ring)
   {
     Q_D(Molecule);
-    if(ring) {
+    if(ring && d->ringList.contains(ring)) {
       d->rings[ring->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = ring->index();
