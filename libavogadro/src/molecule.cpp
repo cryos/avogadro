@@ -704,7 +704,8 @@ namespace Avogadro{
 
   void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
   {
-    *m_dipoleMoment = moment;
+    if(!m_dipoleMoment)
+      m_dipoleMoment = new Vector3d(moment);
     m_estimatedDipoleMoment = false;
   }
 
@@ -1292,6 +1293,8 @@ namespace Avogadro{
     OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
     if (vd) {
       OpenBabel::vector3 moment = vd->GetData();
+      if(m_dipoleMoment)
+        delete m_dipoleMoment; // Prevent memory leak
       m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
       m_estimatedDipoleMoment = false;
     }
