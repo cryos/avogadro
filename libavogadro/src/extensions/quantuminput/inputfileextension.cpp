@@ -24,6 +24,7 @@
 
 #include "inputfileextension.h"
 
+#include "abinitinputdialog.h"
 #include "daltoninputdialog.h"
 #include "gamessukinputdialog.h"
 #include "gaussianinputdialog.h"
@@ -51,6 +52,11 @@ namespace Avogadro
     m_molecule(0)
   {
     QAction* action;
+
+    action = new QAction(this);
+    action->setText(tr("&Abinit..."));
+    action->setData("Abinit");
+    m_actions.append(action);
 
     action = new QAction(this);
     action->setText(tr("&Dalton..."));
@@ -91,6 +97,7 @@ namespace Avogadro
     action->setSeparator(true);
     m_actions.append(action);
 
+    m_hasDialog["Abinit"] = false;
     m_hasDialog["Dalton"] = false;
     m_hasDialog["GAMESS-UK"] = false;
     m_hasDialog["Gaussian"] = false;
@@ -195,19 +202,21 @@ namespace Avogadro
   InputDialog* InputFileExtension::createInputDialog(QString name)
   {
     // Returns 0 if dialog name is invalid
-    if (name == "Dalton")
-      return new DaltonInputDialog(static_cast<QWidget*>(parent()));;
-    if (name == "GAMESS-UK")
-      return new GAMESSUKInputDialog(static_cast<QWidget*>(parent()));;
-    if (name == "Gaussian")
-      return new GaussianInputDialog(static_cast<QWidget*>(parent()));;
-    if (name == "Molpro")
+    if (name == "Abinit")
+      return new AbinitInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "Dalton")
+      return new DaltonInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "GAMESS-UK")
+      return new GAMESSUKInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "Gaussian")
+      return new GaussianInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "Molpro")
       return new MolproInputDialog(static_cast<QWidget*>(parent()));
-    if (name == "MOPAC")
+    else if (name == "MOPAC")
       return new MOPACInputDialog(static_cast<QWidget*>(parent()));
-    if (name == "NWChem")
+    else if (name == "NWChem")
       return new NWChemInputDialog(static_cast<QWidget*>(parent()));
-    if (name == "QChem")
+    else if (name == "QChem")
       return new QChemInputDialog(static_cast<QWidget*>(parent()));
     return 0;
   }
