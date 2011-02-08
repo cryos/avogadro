@@ -8,6 +8,7 @@ set(PLUGIN_TARGET extensions)
 set(inputfileextension_SRCS
     inputfileextension.cpp
     inputdialog.cpp
+    abinitinputdialog.cpp
     daltoninputdialog.cpp
     gamessukinputdialog.cpp
     gaussianinputdialog.cpp
@@ -16,6 +17,7 @@ set(inputfileextension_SRCS
     nwcheminputdialog.cpp
     qcheminputdialog.cpp)
 set(inputfileextension_UIS
+  abinitinputdialog.ui
   gaussianinputdialog.ui
   daltoninputdialog.ui
   gamessukinputdialog.ui
