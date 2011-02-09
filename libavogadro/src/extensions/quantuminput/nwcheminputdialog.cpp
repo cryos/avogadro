@@ -75,7 +75,7 @@ namespace Avogadro
 
     QSettings settings;
     readSettings(settings);
-    
+
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
@@ -252,6 +252,9 @@ namespace Avogadro
     QString buffer;
     QTextStream mol(&buffer);
 
+    // Print input in output
+    mol << "echo\n\n";
+
     // Get the title and start the job
     mol << "start molecule\n\n";
 
@@ -317,7 +320,7 @@ namespace Avogadro
               << qSetFieldWidth(0) << "  "<< qSetFieldWidth(4) << QString("d") + QString::number(atom->GetIdx());
 
         mol << qSetFieldWidth(0) << '\n';
-      }     
+      }
 
       mol << " variables\n";
       FOR_ATOMS_OF_MOL(atom, &obmol)
@@ -401,7 +404,14 @@ namespace Avogadro
     mol << "end\n\n";
 
     // Basis set
-    mol << "basis\n";
+    mol << "basis";
+
+    // Need spherical keyword if using Dunning correlation consistent basis sets
+    if ( m_basisType == ccpVDZ || m_basisType == ccpVTZ )
+      mol << " spherical";
+
+    mol << endl;
+
     mol << "  * library " << getBasisType(m_basisType) << '\n';
     mol << "end\n\n";
 
@@ -411,11 +421,11 @@ namespace Avogadro
       case B3LYP:
         mol << "dft\n  xc b3lyp\n  mult " << m_multiplicity << "\nend\n\n";
         break;
-      case CCSD:
-        mol << "tce\n  ccsd\nend\n\n";
-        break;
       case MP2:
-        mol << "tce\n  mp2\nend\n\n";
+        mol << "mp2\n";
+        mol << "  # Exclude core electrons from MP2 treatment\n";
+        mol << "  freeze atomic\n";
+        mol << "end\n\n";
         break;
       default:
       case RHF:
@@ -432,17 +442,19 @@ namespace Avogadro
         mol << "dft ";
         break;
       case CCSD:
+        mol << "ccsd ";
+	break;
       case MP2:
-        mol << "tce ";
+        mol << "mp2 ";
         break;
       default:
       case RHF:
         mol << "scf ";
         break;
       }
-      
+
     mol << getCalculationType(m_calculationType) << endl;
-    
+
     return buffer;
   }
 
