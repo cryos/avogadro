@@ -42,7 +42,7 @@ namespace Avogadro {
 
   void Residue::addAtom(unsigned long id)
   {
-    if (!m_molecule->atomById(id))
+    if (!m_molecule || !m_molecule->atomById(id))
       return;
     if (!m_atoms.contains(id))
       m_atoms.push_back(id);
@@ -52,13 +52,12 @@ namespace Avogadro {
 
   void Residue::removeAtom(unsigned long id)
   {
+    if (!m_molecule || !m_molecule->atomById(id))
+      return;
     int index = m_atoms.indexOf(id);
     if (index != -1 ) {
       m_atoms.removeAt(index);
     }
-    if (!m_molecule->atomById(id))
-      return;
-
     m_molecule->atomById(id)->setResidue(FALSE_ID);
     disconnect(m_molecule->atomById(id), SIGNAL(updated()), this, SLOT(updateAtom()));
   }
