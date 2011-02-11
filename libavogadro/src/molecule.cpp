@@ -715,7 +715,10 @@ void Molecule::removeAtom(Atom *atom)
 
   void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
   {
-    *m_dipoleMoment = moment;
+    if(!m_dipoleMoment)
+      m_dipoleMoment = new Vector3d(moment);
+    else
+      *m_dipoleMoment = moment;
     m_estimatedDipoleMoment = false;
   }
 
@@ -1416,7 +1419,10 @@ void Molecule::removeAtom(Atom *atom)
     OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
     if (vd) {
       OpenBabel::vector3 moment = vd->GetData();
-      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+      if (!m_dipoleMoment)
+        m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+      else
+        *m_dipoleMoment = Vector3d(moment.x(), moment.y(), moment.z());
       m_estimatedDipoleMoment = false;
     }
 
