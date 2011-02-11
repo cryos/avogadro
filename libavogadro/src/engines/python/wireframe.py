@@ -58,3 +58,8 @@ class Engine(QObject):
       painter.setColor(color)
       painter.drawLine(endAtom.pos, center, self.width)
 
+  def readSettings(self, settings):
+    self.foo = settings.value("foo", QVariant(42))
+
+  def writeSettings(self, settings):
+    settings.setValue("foo", self.foo)
