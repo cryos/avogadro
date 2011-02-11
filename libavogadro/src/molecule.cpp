@@ -177,7 +177,8 @@ namespace Avogadro{
 
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
-    if (id < m_atomPos->size())
+    Q_ASSERT(m_atomPos);
+    if (m_atomPos && id < m_atomPos->size())
       (*m_atomPos)[id] = vec;
   }
 
