@@ -81,13 +81,17 @@ Setting up some useful git aliases for you. This can be used by typing git and
 the alias name. You can inspect all aliases in this script, or by reading
 .git/config in your clone.
 
-  prepush     - view a short form of the commits about to be pushed, relative to
-                origin/master
-  gerrit-push - push the current topic branch to Gerrit for code review.
+  prepush             - view a short form of the commits about to be pushed,
+                        relative to origin/master
+  gerrit-push         - push the current topic branch to Gerrit for code review.
+
+  gerrit-push-stable  - push the current topic branch for review if intended for
+                        stable branch
 
 EOF
 
 git config alias.prepush 'log --graph --stat origin/master..'
 git_branch="\$(git symbolic-ref HEAD | sed -e 's|^refs/heads/||')"
 git config alias.gerrit-push "!sh -c \"git push gerrit HEAD:refs/for/master/${git_branch}\""
+git config alias.gerrit-push-stable "!sh -c \"git push gerrit HEAD:refs/for/1.0/${git_branch}\""
 
