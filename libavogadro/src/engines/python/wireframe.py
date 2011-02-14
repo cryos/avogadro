@@ -26,9 +26,18 @@ class Engine(QObject):
     
   def settingsWidget(self):
     self.widget = QWidget()
+    layout = QVBoxLayout(self.widget)
+    self.widget.setLayout(layout)
+    label = QLabel("Wireframe width:", self.widget)
+
     slider = QSlider(Qt.Horizontal, self.widget)
     slider.setMinimum(1)
     slider.setMaximum(5)
+    slider.setValue(self.width)
+
+    layout.addWidget(label)
+    layout.addWidget(slider)
+    layout.addStretch()
 
     QObject.connect(slider, SIGNAL("valueChanged(int)"), self, SLOT("sliderChanged(int)"))
 
@@ -58,3 +67,10 @@ class Engine(QObject):
       painter.setColor(color)
       painter.drawLine(endAtom.pos, center, self.width)
 
+  def readSettings(self, settings):
+    # As opposed to C++, in PyQt4 toInt() returns a tuple,
+    # converted value is the first element
+    self.width = settings.value("width", 1).toInt()[0]
+
+  def writeSettings(self, settings):
+    settings.setValue("width", self.width)
