@@ -605,6 +605,9 @@ namespace Avogadro {
        */
       inline double computeFramesPerSecond();
 
+      /** Read settings and create required engines */
+      void loadEngines(QSettings &settings);
+
       bool              m_glslEnabled;
       Tool*             m_navigateTool; /// NavigateTool is a super tool
 
