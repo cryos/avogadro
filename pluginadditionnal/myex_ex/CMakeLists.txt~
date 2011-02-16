@@ -1,0 +1,41 @@
+
+project(MyExtension)
+cmake_minimum_required(VERSION 2.6)
+
+set( OpenBabel_DIR "/usr/include/openbabel-2.0/" )
+set( wiiusecpp_include_dir /home/myck/install/linux/wiiusecpp/src )
+set( wiiusecpp_lib_dir /usr/lib )
+set( wiiusecpp_lib_name wiiusecpp )
+
+set( plugin_type extension )
+set( plugin_name myextension )
+#set( in_CPP myextension.cpp )
+set( in_MOC_H src/myextension.h )
+set( in_UIS_H "" )
+set( in_RC_SCRS "" )
+
+find_package(Avogadro 0.9.4 REQUIRED)
+
+# Set up the build environment
+file(	GLOB_RECURSE source_files	src/* )
+include_directories( ${wiiusecpp_include_dir} )
+link_directories( ${wiiusecpp_lib_dir} )
+
+include(${Avogadro_USE_FILE})
+include_directories(${OpenBabel_DIR})
+
+### Génération des fichiers nécessaire pour la compilation 
+### et éditions de liens avec Qt, Avogadro & Co.
+QT4_WRAP_CPP(out_MOC_H ${in_MOC_H})
+qt4_wrap_ui(out_UIS_H ${in_UIS_H})
+qt4_add_resources(out_RC_SRCS ${in_RC_SCRS})
+
+#add_library(${plugin_name} MODULE ${in_CPP} ${out_UIS_H} ${out_MOC_H} ${out_RC_SRCS})
+add_library(${plugin_name} MODULE ${source_files} ${out_UIS_H} ${out_MOC_H} ${out_RC_SRCS})
+target_link_libraries(${plugin_name} avogadro)
+target_link_libraries( ${plugin_name} ${wiiusecpp_lib_name} )
+
+# ?
+install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/${plugin_type}")
+set_target_properties(${plugin_name} PROPERTIES OUTPUT_NAME ${plugin_name} PREFIX "")
+
