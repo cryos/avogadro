@@ -107,9 +107,6 @@ target_link_libraries(avogadro-app
 if(QtTesting)
   target_link_libraries(avogadro-app QtTesting)
 endif()
-if(Q_WS_X11)
-  target_link_libraries(avogadro-app ${X11_X11_LIB})
-endif()
 
 if(ENABLE_PYTHON)
   target_link_libraries(avogadro-app ${Boost_LIBRARIES})

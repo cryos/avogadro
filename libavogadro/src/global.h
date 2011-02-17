@@ -137,6 +137,13 @@ namespace Avogadro
   {
     public:
       /**
+       * Performs initialization of multi-threaded rendering
+       * @warning This function must be calledin the very beginning of application
+       * @return True on success
+       */
+      static bool initThreads();
+
+      /**
        * Create a translator instance for the Avogadro library.
        */
       static QPointer<QTranslator> createTranslator();

@@ -50,10 +50,6 @@
 #include "mainwindow.h"
 #include "application.h"
 
-#ifdef Q_WS_X11
-  #include <X11/Xlib.h>
-#endif
-
 #ifdef WIN32
   #include <stdlib.h>
 #endif
@@ -69,12 +65,11 @@ void printHelp(const QString &appName);
 
 int main(int argc, char *argv[])
 {
-#ifdef Q_WS_X11
-  if(Library::threadedGL()) {
-    std::cout << "Enabling Threads" << std::endl;
-    XInitThreads();
+  if(!Library::initThreads()) {
+    std::cout << "Failed to init threads - recompile Avogadro with "
+                 "disabled THREADEDGL" << std::endl;
+    return -2;
   }
-#endif
 
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");

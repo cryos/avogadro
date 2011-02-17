@@ -34,6 +34,10 @@
 #include <QStringList>
 #include <QProcess>
 
+#ifdef Q_WS_X11
+  #include <X11/Xlib.h>
+#endif
+
 namespace Avogadro
 {
   QPointer<QTranslator> Library::createTranslator()
@@ -84,10 +88,27 @@ namespace Avogadro
     return INSTALL_PREFIX;
   }
 
+  static bool threadedGLenabled = THREADED_GL;
+
   bool Library::threadedGL()
   {
-    return THREADED_GL;
+    return threadedGLenabled;
   }
 
+  bool Library::initThreads()
+  {
+    qDebug() << "threadedGLenabled" << threadedGLenabled;
+#if defined(Q_WS_X11) && defined(ENABLE_THREADED_GL)
+    if (threadedGLenabled) {
+      threadedGLenabled = (XInitThreads() != 0);
+    }
+    return threadedGLenabled;
+#else
+    // Nothing to do on other platforms
+    return true;
+#endif
+
+  }
 }
+
 
