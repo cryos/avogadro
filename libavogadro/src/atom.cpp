@@ -249,6 +249,7 @@ namespace Avogadro {
    unsigned int Atom::groupIndex() const
    {
      Q_D(const Atom);
+     m_molecule->calculateGroupIndices();
      return d->groupIndex;
    }
 
