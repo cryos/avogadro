@@ -58,7 +58,8 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-                          invalidRings(true), obmol(0), obunitcell(0),
+                          invalidRings(true), invalidGroupIndices(true),
+                          obmol(0), obunitcell(0),
                           obvibdata(0)
 #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
                         , obdosdata(0), obelectronictransitiondata(0)
@@ -73,6 +74,7 @@ namespace Avogadro{
       mutable Atom *                farthestAtom;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
+      mutable bool                  invalidGroupIndices;
       mutable std::vector<double>   energies;
 
       // std::vector used over QVector due to index issues, QVector uses ints
@@ -159,6 +161,7 @@ namespace Avogadro{
     // do some fancy footwork when we add an atom previously created
   Atom *Molecule::addAtom(unsigned long id)
   {
+    Q_D(const Molecule);
     Atom *atom = new Atom(this);
 
     if (!m_atomPos) {
@@ -180,6 +183,7 @@ namespace Avogadro{
     atom->setIndex(m_atomList.size()-1);
     // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+    d->invalidGroupIndices = true;
     emit atomAdded(atom);
     return atom;
   }
@@ -195,8 +199,9 @@ namespace Avogadro{
       setAtomPos(id, *vec);
   }
 
-void Molecule::removeAtom(Atom *atom)
+  void Molecule::removeAtom(Atom *atom)
   {
+    Q_D(const Molecule);
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
@@ -212,6 +217,7 @@ void Molecule::removeAtom(Atom *atom)
       atom->deleteLater();
 
       disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+      d->invalidGroupIndices = true;
       emit atomRemoved(atom);
     }
   }
@@ -780,50 +786,48 @@ void Molecule::removeAtom(Atom *atom)
 
   void Molecule::calculateGroupIndices() const
   {
-/*    OpenBabel::OBMol obmol = OBMol();
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-    for (unsigned int i = 0; i < obmol.NumAtoms(); ++i) {
-      atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
-    }
-#endif*/
-    QVector<unsigned int> group_number;   // numbers of atoms in each group
-    QVector<int> group_ele;    // elements of each group
-    QVector<unsigned int> atomGroupNumber;
-    atomGroupNumber.resize(numAtoms());
+    Q_D(const Molecule);
+    if(d->invalidGroupIndices) {
+      QVector<unsigned int> group_number;   // numbers of atoms in each group
+      QVector<int> group_ele;    // elements of each group
+      QVector<unsigned int> atomGroupNumber;
+      atomGroupNumber.resize(numAtoms());
 
-    for (unsigned int i = 0;
-         i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
-         ++i) {
-      bool match = false;
-      for (int j=0; j < group_number.size(); ++j) {
+      for (unsigned int i = 0;
+           i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
+           ++i) {
+        bool match = false;
+        for (int j=0; j < group_number.size(); ++j) {
           if ((atom(i)->atomicNumber()) == group_ele.at(j)) {
             group_number[j] += 1;
             atomGroupNumber[i] = group_number[j];
             match = true;
           }
-      }
-      if (!match) {
-        group_ele.push_back(atom(i)->atomicNumber());
-        group_number.push_back(1);
-        atomGroupNumber[i] = 1;
-      }
-    }
-
-    for (unsigned int i = 0;
-         i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
-         ++i) {
-      bool match = false;
-      for (int j=0; j<group_number.size(); ++j) {
-        if ((atom(i)->atomicNumber()) == group_ele.at(j) &&
-            (group_number.at(j) == 1)) {
-          match = true;
+        }
+        if (!match) {
+          group_ele.push_back(atom(i)->atomicNumber());
+          group_number.push_back(1);
+          atomGroupNumber[i] = 1;
         }
       }
-      if (match) {
-        atom(i)->setGroupIndex(0);
-      } else {
-        atom(i)->setGroupIndex(atomGroupNumber.at(i));
+
+      for (unsigned int i = 0;
+           i < numAtoms() && static_cast<int>(i) < atomGroupNumber.size();
+           ++i) {
+        bool match = false;
+        for (int j=0; j<group_number.size(); ++j) {
+          if ((atom(i)->atomicNumber()) == group_ele.at(j) &&
+              (group_number.at(j) == 1)) {
+            match = true;
+          }
+        }
+        if (match) {
+          atom(i)->setGroupIndex(0);
+        } else {
+          atom(i)->setGroupIndex(atomGroupNumber.at(i));
+        }
       }
+      d->invalidGroupIndices = false;
     }
   }
 
@@ -882,7 +886,7 @@ void Molecule::removeAtom(Atom *atom)
     Q_D(Molecule);
     Atom *atom = qobject_cast<Atom *>(sender());
     d->invalidGeomInfo = true;
-    calculateGroupIndices();
+    d->invalidGroupIndices = true;
     emit atomUpdated(atom);
   }
 
