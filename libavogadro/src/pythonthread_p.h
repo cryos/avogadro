@@ -34,7 +34,7 @@ namespace Avogadro {
   {
     public:
       PythonThread() { gstate = PyGILState_Ensure(); }
-      ~PythonThread() { if (gstate) PyGILState_Release(gstate); }
+      ~PythonThread() { if (gstate == PyGILState_LOCKED) PyGILState_Release(gstate); }
     private:
       PyGILState_STATE gstate;
   };
