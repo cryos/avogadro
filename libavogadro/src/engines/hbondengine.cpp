@@ -208,7 +208,7 @@ namespace Avogadro {
       return true;
     if (atom->atomicNumber() == 7) {
       int boSum = 0;
-      Molecule *mol = qobject_cast<Molecule*>(atom->parent());
+      Molecule *mol = atom->molecule();
       if (mol) {
         foreach (unsigned long id, atom->bonds())
           boSum += mol->bondById(id)->order();

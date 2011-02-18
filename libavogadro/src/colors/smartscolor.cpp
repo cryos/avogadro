@@ -138,7 +138,7 @@ namespace Avogadro {
       newcolor.setRgbF(0.2f, 0.2f, 0.2f);
     }
 
-    Molecule *molecule = qobject_cast<Molecule *>(atom->parent());
+    Molecule *molecule = atom->molecule();
     if (!molecule || !_pattern)
       return;
 

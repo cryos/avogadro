@@ -157,7 +157,7 @@ namespace Avogadro
     if (m_atoms.isEmpty())
       return;
 
-    Molecule *molecule = qobject_cast<Molecule*>(m_atoms.first()->parent());
+    Molecule *molecule = m_atoms.first()->molecule();
     if (!molecule) {
       qDebug() << "Error, null molecule returned in NeighborList::initOneTwo()";
       return;

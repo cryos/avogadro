@@ -133,6 +133,9 @@ namespace Avogadro {
      * @{
      */
 
+    /** @return A pointer to the Molecule that the Atom belongs to. */
+    Molecule * molecule() const { return m_molecule; }
+
     /**
       * @return The position of the atom.
       */
