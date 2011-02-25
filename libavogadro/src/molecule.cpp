@@ -189,15 +189,15 @@ namespace Avogadro{
 
   void Molecule::removeAtom(Atom *atom)
   {
-    if(atom) {
+    // 1 based arrays stored/shown to user
+    const int index = atom->index();
+    if(atom && m_atomList[index] == atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
         removeBond(bond);
       }
 
       m_atoms[atom->id()] = 0;
-      // 1 based arrays stored/shown to user
-      int index = atom->index();
       m_atomList.removeAt(index);
       for (int i = index; i < m_atomList.size(); ++i)
         m_atomList[i]->setIndex(i);
@@ -241,7 +241,7 @@ namespace Avogadro{
 
   void Molecule::removeBond(Bond *bond)
   {
-    if(bond) {
+    if(bond && m_bondList[bond->index()] == bond) {
       removeBond(bond->id());
     }
   }
@@ -357,10 +357,10 @@ namespace Avogadro{
   void Molecule::removeCube(Cube *cube)
   {
     Q_D(Molecule);
-    if(cube) {
+    // 0 based arrays stored/shown to user
+    const int index = cube->index();
+    if(cube && d->cubeList[index] == cube) {
       d->cubes[cube->id()] = 0;
-      // 0 based arrays stored/shown to user
-      int index = cube->index();
       d->cubeList.removeAt(index);
       for (int i = index; i < d->cubeList.size(); ++i)
         d->cubeList[i]->setIndex(i);
@@ -407,10 +407,10 @@ namespace Avogadro{
   void Molecule::removeMesh(Mesh *mesh)
   {
     Q_D(Molecule);
-    if(mesh) {
+    // 0 based arrays stored/shown to user
+    const int index = mesh->index();
+    if(mesh && d->meshList[index] == mesh) {
       d->meshes[mesh->id()] = 0;
-      // 0 based arrays stored/shown to user
-      int index = mesh->index();
       d->meshList.removeAt(index);
       for (int i = index; i < d->meshList.size(); ++i)
         d->meshList[i]->setIndex(i);
@@ -475,10 +475,10 @@ namespace Avogadro{
   void Molecule::removeResidue(Residue *residue)
   {
     Q_D(Molecule);
-    if(residue) {
+    // 0 based arrays stored/shown to user
+    const int index = residue->index();
+    if(residue && d->residueList[index] == residue) {
       d->residues[residue->id()] = 0;
-      // 0 based arrays stored/shown to user
-      int index = residue->index();
       d->residueList.removeAt(index);
       for (int i = index; i < d->residueList.size(); ++i) {
         d->residueList[i]->setIndex(i);
@@ -526,10 +526,10 @@ namespace Avogadro{
   void Molecule::removeRing(Fragment *ring)
   {
     Q_D(Molecule);
-    if(ring) {
+    // 0 based arrays stored/shown to user
+    const int index = ring->index();
+    if(ring && d->ringList[index] == ring) {
       d->rings[ring->id()] = 0;
-      // 0 based arrays stored/shown to user
-      int index = ring->index();
       d->ringList.removeAt(index);
       for (int i = index; i < d->ringList.size(); ++i) {
         d->ringList[i]->setIndex(i);
