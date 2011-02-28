@@ -337,6 +337,9 @@ namespace Avogadro {
 
   void Engine::useCustomPrimitives()
   {
+    if(!m_molecule)
+      return;
+
     m_customPrims = true;
     m_atoms = m_molecule->atoms();
     m_bonds = m_molecule->bonds();
