@@ -109,7 +109,7 @@ namespace Avogadro {
 
   void Animation::setFrame(int i)
   {
-    if (i <= 0 || i > (int)m_molecule->numConformers())
+    if (i <= 0 || !m_molecule || i > (int)m_molecule->numConformers())
       return; // nothing to do
 
     m_molecule->lock()->lockForWrite();
