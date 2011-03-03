@@ -146,7 +146,11 @@ namespace Avogadro {
         return d->fragment;
       }
       std::ifstream ifs;
+  #ifdef Q_OS_WIN32
+      ifs.open(fileName.toStdWString().c_str());
+  #else
       ifs.open(QFile::encodeName(fileName));
+  #endif
       if (!ifs) {
         QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
                               tr( "Cannot read file %1." )
