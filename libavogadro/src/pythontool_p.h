@@ -25,34 +25,34 @@
 #ifndef PYTHONTOOL_H
 #define PYTHONTOOL_H
 
-#include <avogadro/global.h>
 #include <avogadro/tool.h>
 #include <boost/python.hpp>
+#include "pythonplugin_p.h"
 
-#include <QObject>
 #include <QAction>
 
 namespace Avogadro {
 
   class PythonScript;
 
-  class PythonTool : public Tool
+  class PythonTool : public Tool, public PythonPlugin
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      explicit PythonTool(QObject *parent = 0, const QString &filename = QString(""));
+      explicit PythonTool(PythonScript *script, QObject *parent = 0);
       //! Destructor
       virtual ~PythonTool();
 
+      Plugin::Type type() const { return Plugin::ToolType; }
+
       //! \name To python delegated functions
       //@{
-      QString identifier() const;
+      QString identifier() const { return PythonPlugin::identifier(); }
       QString name() const;
       QString description() const;
       QString settingsTitle() const;
-      QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
@@ -64,17 +64,18 @@ namespace Avogadro {
       //@}
 
     private:
-      void loadScript(const QString &filename);
+      void loadScript(PythonScript *script);
+      QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
 
-      PythonScript          *m_script;
-      boost::python::object  m_instance;
+//      PythonScript          *m_script;
+//      boost::python::object  m_instance;
       QWidget               *m_settingsWidget;
-      QString                m_identifier;
+//      QString                m_identifier;
  
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };
-
+/*
   class PythonToolFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
@@ -101,7 +102,7 @@ namespace Avogadro {
       QString m_identifier, m_name, m_desc;
   };
 
-
+*/
 
 } // end namespace Avogadro
 

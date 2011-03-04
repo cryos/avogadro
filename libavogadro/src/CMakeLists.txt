@@ -193,6 +193,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythonscript.h
     pythonerror.h)
   list(APPEND libavogadro_MOC_HDRS
+    pythonplugin_p.h
     pythonengine_p.h
     pythonerror.h
     pythonextension_p.h
@@ -201,6 +202,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythoninterpreter.cpp
     pythonscript.cpp
     pythonerror.cpp
+    pythonplugin_p.cpp
     pythontool_p.cpp
     pythonengine_p.cpp
     pythonextension_p.cpp)

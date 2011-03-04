@@ -101,5 +101,8 @@ namespace Avogadro
     return identity;
   }
 
-
+  bool PythonScript::hasAttrString(const char *attrString) const
+  {
+    return PyObject_HasAttrString(module().ptr(), attrString);
+  }
 }

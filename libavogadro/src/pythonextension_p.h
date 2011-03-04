@@ -38,24 +38,27 @@
 #include <QDateTime>
 #include <QFileInfo>
 #include <QHash>
+#include "pythonplugin_p.h"
 
 namespace Avogadro {
 
   class PythonScript;
 
-  class PythonExtension : public Extension
+  class PythonExtension : public Extension, public PythonPlugin
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      explicit PythonExtension(QObject *parent = 0, const QString &filename = QString(""));
+      explicit PythonExtension(PythonScript *script, QObject *parent = 0);
       //! Deconstructor
       virtual ~PythonExtension();
 
+      Plugin::Type type() const { return Plugin::ExtensionType; }
+
       //! @name To python delegated functions
       //@{
-      QString identifier() const;
+      QString identifier() const { return PythonPlugin::identifier(); }
       QString name() const;
       QString description() const;
       QList<QAction *> actions() const;
@@ -71,14 +74,14 @@ namespace Avogadro {
       void dockWidgetDestroyed();
 
     private:
-      void loadScript(const QString &filename);
+      void loadScript(PythonScript *script);
 
-      PythonScript          *m_script;
-      boost::python::object  m_instance;
+//      PythonScript          *m_script;
+//      boost::python::object  m_instance;
       QDockWidget           *m_dockWidget;
-      QString                m_identifier;
+//      QString                m_identifier;
   };
-
+/*
   class PythonExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
@@ -104,7 +107,7 @@ namespace Avogadro {
       QString m_filename;
       QString m_identifier, m_name, m_desc;
   };
-
+*/
 } // end namespace Avogadro
 
 #endif

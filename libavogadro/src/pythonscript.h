@@ -65,6 +65,11 @@ namespace Avogadro {
        */
       QString identifier() const;
 
+      /**
+       * Returns true is script module has giveen attribute string
+       */
+      bool hasAttrString(const char *attrString) const;
+
 
     private:
       QString m_moduleName;

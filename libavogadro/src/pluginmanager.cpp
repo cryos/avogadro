@@ -4,6 +4,7 @@
   Copyright (C) 2008 Donald Ephraim Curtis
   Copyright (C) 2008,2009 Tim Vandermeersch
   Copyright (C) 2008,2009 Marcus D. Hanwell
+  Copyright (C) 2010,2011 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -27,11 +28,7 @@
 #include "pluginmanager.h"
 #include "config.h" // krazy:exclude=includes
 
-#ifdef ENABLE_PYTHON
-  #include "pythontool_p.h"
-  #include "pythonengine_p.h"
-  #include "pythonextension_p.h"
-#endif
+#include "pythonplugin_p.h"
 
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
@@ -571,11 +568,11 @@ namespace Avogadro {
       loadPluginDir(path + "/contrib", settings);
     }
 
-#ifdef ENABLE_PYTHON
-    // Load the python tools
-    QList<QString> scripts = toolScripts();
+//#ifdef ENABLE_PYTHON
+    /*// Load the python tools
+    const QList<QString> scripts = toolScripts();
     foreach(const QString &script, scripts) {
-      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonToolFactory(script));
+      PluginFactory *factory = new PythonToolFactory(script);
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);
@@ -586,9 +583,9 @@ namespace Avogadro {
     }
 
     // Load the python engines
-    QList<QString> enginescripts = engineScripts();
+    const QList<QString> enginescripts = engineScripts();
     foreach(const QString &script, enginescripts) {
-      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonEngineFactory(script));
+      PluginFactory *factory = new PythonEngineFactory(script);
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);
@@ -599,9 +596,21 @@ namespace Avogadro {
     }
 
     // Load the python extensions
-    QList<QString> extensionscripts = extensionScripts();
+    const QList<QString> extensionscripts = extensionScripts();
     foreach(const QString &script, extensionscripts) {
-      PluginFactory *factory = qobject_cast<PluginFactory *>(new PythonExtensionFactory(script));
+      PluginFactory *factory = new PythonExtensionFactory(script);
+      if (factory) {
+        QFileInfo info(script);
+        loadFactory(factory, info, settings);
+      }
+      else {
+        qDebug() << script << "failed to load. ";
+      }
+    }*/
+
+    const QList<QString> scripts = toolScripts() + engineScripts() + extensionScripts();
+    foreach(const QString &script, scripts) {
+      PluginFactory *factory = new PythonPluginFactory(script);
       if (factory) {
         QFileInfo info(script);
         loadFactory(factory, info, settings);
@@ -610,10 +619,35 @@ namespace Avogadro {
         qDebug() << script << "failed to load. ";
       }
     }
-#endif
+//#endif
 
     settings.endGroup(); // Plugins
     PluginManagerPrivate::factoriesLoaded = true;
+  }
+
+  void PluginManager::loadScriptDir(const QString &directory,
+                                    QSettings &settings)
+  {
+    const QDir dir(directory);
+    if(dir.exists()) {
+      qDebug() << "Searching for scripts in" << dir.canonicalPath();
+      loadScriptList(dir, dir.entryList(QDir::Files), settings);
+    }
+  }
+
+  void PluginManager::loadScriptList(const QDir &dir,
+                                     const QStringList &plugins, QSettings &settings)
+  {
+    foreach (const QString& script, plugins) {
+      PluginFactory *factory = new PythonPluginFactory(script);
+      if (factory) {
+        QFileInfo info(script);
+        loadFactory(factory, info, settings);
+      }
+      else {
+        qDebug() << script << "failed to load. ";
+      }
+    }
   }
 
   void PluginManager::loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings)

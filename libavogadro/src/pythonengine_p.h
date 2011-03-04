@@ -28,27 +28,29 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <boost/python.hpp>
+#include "pythonplugin_p.h"
 
 namespace Avogadro {
 
   class PythonScript;
 
-  class PythonEngine : public Engine
+  class PythonEngine : public Engine, public PythonPlugin
   {
     Q_OBJECT
 
     public:
       //! Constructor
-      explicit PythonEngine(QObject *parent = 0, const QString &filename = QString());
+      explicit PythonEngine(PythonScript *script, QObject *parent = 0);
       //! Deconstructor
       ~PythonEngine();
       //! Copy
       Engine *clone() const;
 
+      Plugin::Type type() const { return Plugin::EngineType; }
 
       //! \name To python delegetad functions
       //@{
-      QString identifier() const;
+      QString identifier() const { return PythonPlugin::identifier(); }
       QString name() const;
       QString description() const;
       Layers layers() const;
@@ -60,16 +62,16 @@ namespace Avogadro {
       //@}
       
     private:
-      void loadScript(const QString &filename);
+      void loadScript(PythonScript *script);
 
-      PythonScript          *m_script;
-      boost::python::object  m_instance;
+//      PythonScript          *m_script;
+//      boost::python::object  m_instance;
       QWidget               *m_settingsWidget;
-      QString                m_identifier;
+//      QString                m_identifier;
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };
-
+/*
   //! Generates instances of our PythonEngine class
   class PythonEngineFactory : public QObject, public PluginFactory
   {
@@ -96,7 +98,7 @@ namespace Avogadro {
       QString m_filename;
       QString m_identifier, m_name, m_desc;
   };
-
+*/
 } // end namespace Avogadro
 
 #endif

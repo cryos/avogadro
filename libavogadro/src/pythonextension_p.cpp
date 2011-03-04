@@ -42,60 +42,36 @@ using namespace boost::python;
 namespace Avogadro
 {
 
-  PythonExtension::PythonExtension(QObject *parent, const QString &filename) :
-      Extension(parent), m_script(0), m_dockWidget(0)
+  PythonExtension::PythonExtension(PythonScript *script, QObject *parent) :
+      Extension(parent), PythonPlugin(script), m_dockWidget(0)
   {
-    loadScript(filename);
+    loadScript(script);
   }
 
   PythonExtension::~PythonExtension()
   {
     PythonThread pt;
-    if (m_script)
-      delete m_script;
     if (m_dockWidget)
       m_dockWidget->deleteLater();
   }
 
-  QString PythonExtension::identifier() const
-  {
-    return m_identifier;
-  }
-
   QString PythonExtension::name() const
   {
-    PythonThread pt;
-    if (!PyObject_HasAttrString(m_instance.ptr(), "name"))
+    const QString name = PythonPlugin::name();
+    if(!name.isNull())
+      return name;
+    else
       return tr("Unknown Python Extension");
-
-    try {
-       prepareToCatchError();
-       const char *name = extract<const char*>(m_instance.attr("name")());
-       return QString(name);
-    } catch(error_already_set const &) {
-       catchError();
-    }
-
-    return tr("Unknown Python Extension");
   }
 
   QString PythonExtension::description() const
   {
-    PythonThread pt;
-    if (!PyObject_HasAttrString(m_instance.ptr(), "description"))
+    const QString desc = PythonPlugin::description();
+    if(!desc.isNull())
+      return desc;
+    else
       return tr("N/A");
-
-    try {
-       prepareToCatchError();
-       const char *name = extract<const char*>(m_instance.attr("description")());
-       return QString(name);
-    } catch(error_already_set const &) {
-       catchError();
-    }
-
-    return tr("N/A");
   }
-
 
   QList<QAction *> PythonExtension::actions() const
   {
@@ -123,7 +99,7 @@ namespace Avogadro
   // allows us to set the intended menu path for each action
   QString PythonExtension::menuPath(QAction *action) const
   {
-    if (!m_script || !PyObject_HasAttrString(m_instance.ptr(), "menuPath"))
+    if (!m_script || !hasAttrString("menuPath"))
       return tr("&Scripts");
 
     try {
@@ -226,7 +202,7 @@ namespace Avogadro
 
     if(!m_dockWidget)
     {
-      if (PyObject_HasAttrString(m_instance.ptr(), "dockWidget")) {
+      if (hasAttrString("dockWidget")) {
         try {
           prepareToCatchError();
           m_dockWidget = extract<QDockWidget*>(m_instance.attr("dockWidget")());
@@ -252,7 +228,7 @@ namespace Avogadro
   bool PythonExtension::paint(GLWidget *widget)
   {
     PythonThread pt;
-    if (!PyObject_HasAttrString(m_instance.ptr(), "paint"))
+    if (!hasAttrString("paint"))
       return false;
 
     try {
@@ -272,90 +248,31 @@ namespace Avogadro
   void PythonExtension::readSettings(QSettings &settings)
   {
     Extension::readSettings(settings);
-
-    if (!m_script)
-      return;
-    
-    PythonThread pt;
-
-    if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
-      return;
-
-    try {
-      prepareToCatchError();
-
-      boost::python::return_by_value::apply<QSettings*>::type qconverter;
-      PyObject *qobj = qconverter(&settings);
-      object real_qobj = object(handle<>(qobj));
-
-      m_instance.attr("readSettings")(real_qobj);
-    } catch(error_already_set const &) {
-      catchError();
-    }
+    PythonPlugin::readSettings(settings);
   }
 
   void PythonExtension::writeSettings(QSettings &settings) const
   {
     Extension::writeSettings(settings);
+    PythonPlugin::writeSettings(settings);
+  }
 
-    if (!m_script)
-      return;
-    
+  void PythonExtension::loadScript(PythonScript *script)
+  {
     PythonThread pt;
-
-    if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
-      return;
 
     try {
       prepareToCatchError();
-
-      boost::python::return_by_value::apply<QSettings*>::type qconverter;
-      PyObject *qobj = qconverter(&settings);
-      object real_qobj = object(handle<>(qobj));
-
-      m_instance.attr("writeSettings")(real_qobj);
-    } catch(error_already_set const &) {
+      m_instance = script->module().attr("Extension")();
+    } catch (error_already_set const &) {
       catchError();
+      return;
     }
-  }
 
-  void PythonExtension::loadScript(const QString &filename)
-  {
-    QFileInfo info(filename);
-    initializePython(info.canonicalPath());
-    PythonThread pt;
-
-    PythonScript *script = new PythonScript(filename);
-    m_identifier = script->identifier();
-
-    if (script->module()) {
-      // make sure there is an Extension class defined
-      if (PyObject_HasAttrString(script->module().ptr(), "Extension")) {
-        try {
-          prepareToCatchError();
-          m_instance = script->module().attr("Extension")();
-        } catch (error_already_set const &) {
-          catchError();
-          return;
-        }
-
-        // connect signal(s)
-        if (PyObject_HasAttrString(m_instance.ptr(), "__pyqtSignals__")) {
-          QObject *obj = extract<QObject*>(m_instance);
-          connect(obj, SIGNAL(message(const QString&)), this, SIGNAL(message(const QString&)));
-        }
-
-        m_script = script;
-
-      } else {
-        delete script;
-        PythonError::instance()->append(tr("PythonExtension: checking ") + filename + "...");
-        PythonError::instance()->append(tr("  - script has no 'Extension' class defined"));
-      }
-    } else {
-      delete script;
-      PythonError::instance()->append(tr("PythonExtension: checking ") + filename + "...");
-      PythonError::instance()->append(tr("  - no module"));
+    // connect signal(s)
+    if (hasAttrString("__pyqtSignals__")) {
+      QObject *obj = extract<QObject*>(m_instance);
+      connect(obj, SIGNAL(message(const QString&)), this, SIGNAL(message(const QString&)));
     }
   }
 

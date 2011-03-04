@@ -306,6 +306,8 @@ namespace Avogadro {
      * valid.
      */
     static void loadPluginDir(const QString &directory, QSettings &settings);
+    static void loadScriptDir(const QString &directory, QSettings &settings);
+    static void loadScriptList(const QDir &dir, const QStringList &plugins, QSettings &settings);
     static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo,
                             QSettings &settings);
     static QList<QString> scripts(const QString &type);

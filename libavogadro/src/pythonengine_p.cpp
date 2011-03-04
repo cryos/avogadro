@@ -43,10 +43,10 @@ using namespace boost::python;
 
 namespace Avogadro {
 
-  PythonEngine::PythonEngine(QObject *parent, const QString &filename) : Engine(parent), 
-      m_script(0), m_settingsWidget(0)
+  PythonEngine::PythonEngine(PythonScript *script, QObject *parent) :
+      Engine(parent), PythonPlugin(script), m_settingsWidget(0)
   {
-    loadScript(filename);
+    loadScript(script);
   }
 
   PythonEngine::~PythonEngine()
@@ -64,7 +64,7 @@ namespace Avogadro {
 
   Engine* PythonEngine::clone() const
   {
-    PythonEngine* engine = new PythonEngine(parent());
+    PythonEngine* engine = new PythonEngine(m_script, parent());
 
     engine->setAlias(alias());
     engine->setEnabled(isEnabled());
@@ -72,41 +72,22 @@ namespace Avogadro {
     return engine;
   }
 
-  QString PythonEngine::identifier() const
-  {
-    return m_identifier;
-  }
-
   QString PythonEngine::name() const
   {
-    PythonThread pt;
-    if (!PyObject_HasAttrString(m_instance.ptr(), "name"))
+    const QString name = PythonPlugin::name();
+    if(!name.isNull())
+      return name;
+    else
       return tr("Unknown Python Engine");
-
-    try {
-      prepareToCatchError();
-      const char *name = extract<const char*>(m_instance.attr("name")());
-      return QString(name);
-    } catch(error_already_set const &) {
-      catchError();
-      return tr("Unknown Python Engine");
-    }
   }
 
   QString PythonEngine::description() const
   {
-    PythonThread pt;
-    if (!PyObject_HasAttrString(m_instance.ptr(), "description"))
+    const QString desc = PythonPlugin::description();
+    if(!desc.isNull())
+      return desc;
+    else
       return tr("N/A");
-
-    try {
-      prepareToCatchError();
-      const char *desc = extract<const char*>(m_instance.attr("description")());
-      return QString(desc);
-    } catch(error_already_set const &) {
-      catchError();
-      return tr("N/A");
-    }
   }
 
 
@@ -142,7 +123,7 @@ namespace Avogadro {
       m_settingsWidget = new QWidget();
       m_settingsWidget->setLayout( new QVBoxLayout() );
 
-      if (PyObject_HasAttrString(m_instance.ptr(), "settingsWidget")) {
+      if (hasAttrString("settingsWidget")) {
         try {
           prepareToCatchError();
           QWidget *widget = extract<QWidget*>(m_instance.attr("settingsWidget")());
@@ -167,84 +148,26 @@ namespace Avogadro {
   void PythonEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
-
-    if (!m_script)
-      return;
-    
-    PythonThread pt;
-
-    if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
-      return;
-
-    try {
-      prepareToCatchError();
-
-      boost::python::return_by_value::apply<QSettings*>::type qconverter;
-      PyObject *qobj = qconverter(&settings);
-      object real_qobj = object(handle<>(qobj));
-
-      m_instance.attr("readSettings")(real_qobj);
-    } catch(error_already_set const &) {
-      catchError();
-    }
+    PythonPlugin::writeSettings(settings);
   }
 
   void PythonEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
+    PythonPlugin::readSettings(settings);
+  }
 
-    if (!m_script)
-      return;
-
-    if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
-      return;
+  void PythonEngine::loadScript(PythonScript *script)
+  {
+    PythonThread pt;
 
     try {
       prepareToCatchError();
-
-      boost::python::return_by_value::apply<QSettings*>::type qconverter;
-      PyObject *qobj = qconverter(&settings);
-      object real_qobj = object(handle<>(qobj));
-
-      m_instance.attr("writeSettings")(real_qobj);
-    } catch(error_already_set const &) {
+      // instatiate the new Engine
+      m_instance = script->module().attr("Engine")();
+    } catch (error_already_set const &) {
       catchError();
-    }
-  }
-
-  void PythonEngine::loadScript(const QString &filename)
-  {
-    QFileInfo info(filename);
-    initializePython(info.canonicalPath());
-    PythonThread pt;
-
-    PythonScript *script = new PythonScript(filename);
-    m_identifier = script->identifier();
-
-    if(script->module()) {
-      // make sure there is an Engine class defined
-      if (PyObject_HasAttrString(script->module().ptr(), "Engine")) {
-
-        try {
-          prepareToCatchError();
-          // instatiate the new Engine
-          m_instance = script->module().attr("Engine")();
-        } catch (error_already_set const &) {
-          catchError();
-          return;
-        }
-
-        m_script = script;
-
-      } else {
-        delete script;
-        PythonError::instance()->append(tr("PythonEngine: checking ") + filename + "...");
-        PythonError::instance()->append(tr("  - script has no 'Engine' class defined"));
-      }
-    } else {
-      delete script;
-      PythonError::instance()->append(tr("PythonEngine: checking ") + filename + "...");
-      PythonError::instance()->append(tr("  - no module"));
+      return;
     }
   }
 
@@ -258,7 +181,7 @@ namespace Avogadro {
     try {
       prepareToCatchError();
       // return layers from python script if the function is defined
-      if (PyObject_HasAttrString(m_instance.ptr(), "layers"))
+      if (hasAttrString("layers"))
         return extract<Engine::Layers>(m_instance.attr("layers")());
     } catch(error_already_set const &) {
       catchError();
@@ -278,7 +201,7 @@ namespace Avogadro {
     try {
       prepareToCatchError();
       // return transparencyDepth from python script if the function is defined
-      if (PyObject_HasAttrString(m_instance.ptr(), "transparencyDepth"))
+      if (hasAttrString("transparencyDepth"))
         return extract<double>(m_instance.attr("transparencyDepth")());
     } catch(error_already_set const &) {
       catchError();
