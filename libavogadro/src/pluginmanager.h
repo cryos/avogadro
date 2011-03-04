@@ -93,6 +93,13 @@ namespace Avogadro {
      */
     bool isEnabled() const;
 
+    /** */
+    bool isTrusted() const;
+
+    bool isNew() const;
+
+    bool isModified() const;
+
     PluginFactory *factory() const;
 
     /**
@@ -129,6 +136,11 @@ namespace Avogadro {
      * Should the plugin be loaded
      */
     void setEnabled( bool enable );
+
+    /** Is the plugin content assumed safe to be loaded */
+    void setTrusted( bool is_trusted );
+    void setNew( bool is_new);
+    void setModified( bool is_modified );
 
     void setFactory( PluginFactory *factory );
 
@@ -308,6 +320,7 @@ namespace Avogadro {
     static void loadPluginDir(const QString &directory, QSettings &settings);
     static void loadFactory(PluginFactory *factory, QFileInfo &fileInfo,
                             QSettings &settings);
+    static void loadFactory(PluginItem *item, QSettings &settings);
     static QList<QString> scripts(const QString &type);
     static void initializeSearchDirs(QStringList &searchDirs);
   };

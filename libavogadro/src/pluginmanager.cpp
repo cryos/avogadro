@@ -38,6 +38,8 @@
 #include <avogadro/extension.h>
 #include <avogadro/color.h>
 
+#include "pluginloader_p.h"
+
 // Include static headers
 #include "engines/bsdyengine.h"
 #include "colors/elementcolor.h"
@@ -63,7 +65,11 @@ namespace Avogadro {
       QString absoluteFilePath;
       Plugin::Type type;
       PluginFactory *factory;
-      bool enabled;
+      bool enabled : 1;
+      bool broken : 1;
+      bool trusted : 1;
+      bool is_new : 1;
+      bool modified : 1;
   };
 
   PluginItem::PluginItem() : d(new PluginItemPrivate)
@@ -90,6 +96,10 @@ namespace Avogadro {
     d->absoluteFilePath = filePath;
     d->enabled = enabled;
     d->factory = factory;
+    d->trusted = false;
+    d->broken = false;
+    d->is_new = false;
+    d->modified = false;
   }
 
   PluginItem::~PluginItem()
@@ -130,6 +140,21 @@ namespace Avogadro {
   bool PluginItem::isEnabled() const
   {
     return d->enabled;
+  }
+
+  bool PluginItem::isTrusted() const
+  {
+    return d->trusted;
+  }
+
+  bool PluginItem::isNew() const
+  {
+    return d->is_new;
+  }
+
+  bool PluginItem::isModified() const
+  {
+    return d->modified;
   }
 
   PluginFactory *PluginItem::factory() const
@@ -304,7 +329,8 @@ namespace Avogadro {
 
     foreach(PluginFactory *factory, factories(Plugin::ToolType)) {
       Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
-      d->tools.append(tool);
+      if(tool)
+        d->tools.append(tool);
     }
 
     qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
@@ -385,7 +411,8 @@ namespace Avogadro {
 
     foreach(PluginFactory *factory, factories(Plugin::ColorType))  {
       Color *color = static_cast<Color *>(factory->createInstance(parent));
-      d->colors.append(color);
+      if(color)
+        d->colors.append(color);
     }
 
     qSort(d->colors.begin(), d->colors.end(), colorGreaterThan);
@@ -618,29 +645,32 @@ namespace Avogadro {
 
   void PluginManager::loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings)
   {
-    settings.beginGroup(QString::number(factory->type()));
+    // create the PluginItem
+    PluginItem *item = new PluginItem(factory->name(), factory->identifier(),
+      factory->description(), factory->type(), fileInfo.fileName(),
+      fileInfo.absoluteFilePath(), factory);
+    loadFactory(item, settings);
+  }
+
+  void PluginManager::loadFactory(PluginItem *item, QSettings &settings)
+  {
+    settings.beginGroup(QString::number(item->type()));
 
     QVector< QList<PluginFactory *> > &ef =
         PluginManagerPrivate::m_enabledFactories();
     QVector< QList<PluginFactory *> > &df =
         PluginManagerPrivate::m_disabledFactories();
 
-    // create the PluginItem
-    PluginItem *item = new PluginItem(factory->name(), factory->identifier(),
-                                      factory->description(),
-                                      factory->type(), fileInfo.fileName(),
-                                      fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
-    if(settings.value(factory->identifier(), true).toBool()) {
-      ef[factory->type()].append(factory);
+    if(settings.value(item->identifier(), true).toBool()) {
+      ef[item->type()].append(item->factory());
       item->setEnabled(true);
-    }
-    else {
-      df[factory->type()].append(factory);
+    } else {
+      df[item->type()].append(item->factory());
       item->setEnabled(false);
     }
     // Store the PluginItem
-    PluginManagerPrivate::m_items()[factory->type()].append(item);
+    PluginManagerPrivate::m_items()[item->type()].append(item);
 
     settings.endGroup();
   }
@@ -776,17 +806,10 @@ namespace Avogadro {
       if (fileName.indexOf("pythonterminal") != -1)
         continue;
 #endif
-      // load the factory
-      QPluginLoader loader(dir.absoluteFilePath(fileName));
-      QObject *instance = loader.instance();
-      PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
-
-      if (factory) {
-        QFileInfo info(fileName);
-        loadFactory(factory, info, settings);
-      } else {
-        qDebug() << fileName << "failed to load. " << loader.errorString();
-      }
+      // load the item
+      PluginItem *item = PluginLoader::instance()->loadItem(dir.absoluteFilePath(fileName));
+      if (item)
+        loadFactory(item, settings);
     }
   }
 
