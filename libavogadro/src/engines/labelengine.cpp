@@ -137,7 +137,6 @@ namespace Avogadro {
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
         break;
       case 3: // Symbol & Number in Group
-        this->molecule()->calculateGroupIndices();
         gi = a->groupIndex();
         if (gi != 0) {
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
