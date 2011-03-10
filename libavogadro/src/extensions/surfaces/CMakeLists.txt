@@ -9,6 +9,7 @@ set(LINK_LIBS avogadro openqube)
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
+include_directories(${ZLIB_INCLUDE_DIR})
 ### Surfaces
 set(surfaceextension_SRCS
   surfaceextension.cpp
