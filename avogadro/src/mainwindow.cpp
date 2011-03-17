@@ -2935,15 +2935,16 @@ namespace Avogadro
           // Go through each submenu level, find the match
           // and update the "path" pointer
           for ( int i = 1; i < menuPath.size(); ++i ) {
-
+            bool found = false;
             foreach( QAction *menu, path->actions() ) {
               if ( menu->text() == menuPath.at( i ) ) {
                 nextPath = menu->menu();
+                found = true;
                 break;
               }
             } // end checking menu items
 
-            if ( !nextPath ) {
+            if ( !found ) {
               // add a new submenu
               nextPath = path->addMenu( menuPath.at( i ) );
             }
