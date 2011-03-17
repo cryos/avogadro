@@ -37,10 +37,11 @@
 
 #include <QtOpenGL/QGLWidget>
 
-class QUndoStack;
-class QMouseEvent;
 class QGLContext;
+class QLabel;
+class QMouseEvent;
 class QSettings;
+class QUndoStack;
 
 namespace Avogadro {
 
@@ -592,9 +593,19 @@ namespace Avogadro {
       virtual void renderAxesOverlay();
 
       /**
-       * Render a debug overlay with extra debug information on the GLWidget.
+       * @deprecated Use renderTextOverlay instead.
+       * @sa addTextOverlay
+       * @sa setRenderDebug
        */
       virtual void renderDebugOverlay();
+
+      /**
+       * Render a text overlay. This renders all valid strings added
+       * by addTextOverlay, as well as debug info if needed.
+       * @sa addTextOverlay
+       * @sa setRenderDebug
+       */
+      virtual void renderTextOverlay();
 
       /**
        * This will return a painting condition that must be met each time
@@ -692,6 +703,38 @@ namespace Avogadro {
        * One or more tools are deleted..
        */
       void toolsDestroyed();
+
+      /**
+       * Adds the QLabel @a label to the list of text drawn in the
+       * text overlay.
+       *
+       * @note The GLWidget does not take ownership of the label, but
+       * retains a QPointer to it. When the QLabel's text should no
+       * longer be rendered, simply delete the QLabel elsewhere and
+       * call render().
+       *
+       * @sa renderTextOverlay
+       */
+      void addTextOverlay(QLabel* label);
+
+      /**
+       * @overload
+       *
+       * Adds the QLabels in @a labels to the list of strings drawn in the
+       * text overlay.
+       *
+       * @note The GLWidget does not take ownership of the string, but
+       * retains a QPointer to it. When the QLabel's text should no
+       * longer be rendered, simply delete the QLabel elsewhere and
+       * call render().
+       *
+       * @note Call this functions instead of repeatedly calling
+       * addTextOverlay(QLabel*) guarantees that all the strings will
+       * be drawn consecutively.
+       *
+       * @sa renderTextOverlay
+       */
+      void addTextOverlay(const QList<QLabel*> &labels);
 
     Q_SIGNALS:
       /**
