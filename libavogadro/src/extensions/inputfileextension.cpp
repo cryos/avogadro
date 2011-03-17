@@ -180,7 +180,11 @@ namespace Avogadro
 
     // TODO: Switch to MoleculeFile
     ifstream ifs;
+#ifdef Q_CC_MSVC
+    ifs.open(filename.toStdWString().c_str());
+#else
     ifs.open(QFile::encodeName(filename));
+#endif
     if (!ifs) { // shouldn't happen, already checked file above
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(m_widget, tr("Avogadro"),
