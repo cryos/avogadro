@@ -174,6 +174,9 @@ namespace Avogadro {
 
   void Animation::stop()
   {
+    if(!m_molecule)
+      return;
+
     m_timeLine->stop();
     m_timeLine->setCurrentTime(0);
     disconnect(m_timeLine, SIGNAL(frameChanged(int)),
@@ -190,6 +193,9 @@ namespace Avogadro {
 
   void Animation::start()
   {
+    if(!m_molecule)
+      return;
+
     // set molecule conformers
     if (d->framesSet) {
       m_molecule->lock()->lockForWrite();
