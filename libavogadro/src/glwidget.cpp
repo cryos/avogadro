@@ -5,6 +5,7 @@
   Copyright (C) 2006,2007 Donald Ephraim Curtis
   Copyright (C) 2007      Benoit Jacob
   Copyright (C) 2007-2009 Marcus D. Hanwell
+  Copyright (C) 2011      David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -33,9 +34,11 @@
 #include "glpainter_p.h"
 #include "glhit.h"
 
+#include <QtGui/QMessageBox>
 #include <QtGui/QPen>
 #include <QtGui/QPainter>
 #include <QtGui/QPaintEngine>
+#include <QtGui/QUndoStack>
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
@@ -57,18 +60,17 @@
 
 #include "pluginmanager.h"
 
-#include <QDebug>
-#include <QUndoStack>
-#include <QDir>
-#include <QPluginLoader>
-#include <QTime>
-#include <QReadWriteLock>
-#include <QMessageBox>
+#include <QtCore/QDebug>
+#include <QtCore/QDir>
+#include <QtCore/QPluginLoader>
+#include <QtCore/QPointer>
+#include <QtCore/QReadWriteLock>
+#include <QtCore/QTime>
+#include <QtCore/QMutex>
 
 #ifdef ENABLE_THREADED_GL
-  #include <QWaitCondition>
-  #include <QMutex>
-  #include <QThread>
+  #include <QtCore/QWaitCondition>
+  #include <QtCore/QThread>
 #endif
 
 #ifdef ENABLE_GLSL
@@ -249,6 +251,8 @@ namespace Avogadro {
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
 
+    QMutex                 textOverlayMutex; // Protects textOverlayLabels
+    QList<QPointer<QLabel> > textOverlayLabels; // List of labels to render
     /**
       * Member GLPainterDevice which is passed to the engines.
       */
@@ -833,8 +837,8 @@ namespace Avogadro {
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
 
-    // If enabled show debug information
-    if (d->renderDebug) renderDebugOverlay();
+    // Render text overlay
+    renderTextOverlay();
 
     d->painter->end();
     d->molecule->lock()->unlock();
@@ -1029,27 +1033,78 @@ namespace Avogadro {
 
   void GLWidget::renderDebugOverlay()
   {
-    QList<Primitive *> list;
+    qDebug() << Q_FUNC_INFO << "is deprecated."
+             << "Please use renderTextOverlay() instead.";
+    return renderTextOverlay();
+  }
 
-    // Draw all text in while
+  void GLWidget::renderTextOverlay()
+  {
+    // Draw all text in white
     d->pd->painter()->setColor(1.0, 1.0, 1.0);
 
     int x = 5, y = 5;
-    y += d->pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
-    y += d->pd->painter()->drawText(x, y, tr("FPS: %L1").arg(computeFramesPerSecond(), 0, 'g', 3));
 
-    y += d->pd->painter()->drawText(x, y,
-                                    tr("View Size: %L1 x %L2").arg(d->pd->width()).arg(d->pd->height()) );
-    if (!d->molecule) {
-      y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
-      return;
+    if (d->renderDebug) {
+      // Title
+      y += d->pd->painter()->drawText
+        (x, y, "---- " + tr("Debug Information") + " ----");
+
+      // FPS
+      y += d->pd->painter()->drawText
+        (x, y, tr("FPS: %L1").arg(computeFramesPerSecond(), 0, 'g', 3));
+
+      // pd size
+      y += d->pd->painter()->drawText
+        (x, y, tr("View Size: %L1 x %L2")
+         .arg(d->pd->width()).arg(d->pd->height()) );
+
+      // Molecule info
+      if (!d->molecule) {
+        y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
+      }
+      else {
+        // numAtoms
+        y += d->pd->painter()->drawText
+          (x, y, tr("Atoms: %L1").arg(d->molecule->numAtoms()));
+
+        // numBonds
+        y += d->pd->painter()->drawText
+          (x, y, tr("Bonds: %L1").arg(d->molecule->numBonds()));
+      }
+    } // end debug
+
+    // textOverlay stuff
+    if (d->textOverlayLabels.size()) {
+      // Lock mutex
+      d->textOverlayMutex.lock();
+
+      // For null pointers:
+      QList<int> deadLabelIndices;
+
+      // Draw text
+
+      for (int i = 0; i < d->textOverlayLabels.size(); ++i) {
+        QPointer<QLabel> &label = d->textOverlayLabels[i];
+
+        // Check that QPointer is valid
+        if (label == 0) {
+          deadLabelIndices.append(i);
+          continue;
+        }
+
+        // Draw text
+        y += d->pd->painter()->drawText(x, y, label->text());
+      }
+
+      // Remove dead entries in reverse order
+      for (int i = deadLabelIndices.size()-1; i >= 0; --i) {
+        d->textOverlayLabels.removeAt(i);
+      }
+
+      // Release mutex
+      d->textOverlayMutex.unlock();
     }
-
-//    list = primitives().subList(Primitive::AtomType);
-    y += d->pd->painter()->drawText(x, y, tr("Atoms: %L1").arg(d->molecule->numAtoms()));
-
-//    list = primitives().subList(Primitive::BondType);
-    y += d->pd->painter()->drawText(x, y, tr("Bonds: %L1").arg(d->molecule->numBonds()));
   }
 
   bool GLWidget::event( QEvent *event )
@@ -1415,7 +1470,26 @@ namespace Avogadro {
     d->tool = 0;
     m_navigateTool = 0;
   }
-      
+
+  void GLWidget::addTextOverlay(QLabel* str)
+  {
+    d->textOverlayMutex.lock();
+    d->textOverlayLabels.append(QPointer<QLabel>(str));
+    d->textOverlayMutex.unlock();
+  }
+
+  void GLWidget::addTextOverlay(const QList<QLabel*> &strs)
+  {
+    d->textOverlayMutex.lock();
+    for (QList<QLabel*>::const_iterator
+           it = strs.constBegin(),
+           it_end = strs.constEnd();
+         it != it_end; ++it) {
+      d->textOverlayLabels.append(QPointer<QLabel>(*it));
+    }
+    d->textOverlayMutex.unlock();
+  }
+
   void GLWidget::setExtensions(QList<Extension*> extensions)
   {
     d->extensions = extensions;
