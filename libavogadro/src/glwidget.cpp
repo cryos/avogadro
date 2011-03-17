@@ -1905,23 +1905,56 @@ namespace Avogadro {
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
     d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
 
+    loadEngines(settings);
+
+    if(!d->engines.count())
+      loadDefaultEngines();
+  }
+
+  void GLWidget::loadEngines(QSettings &settings)
+  {
     int count = settings.beginReadArray("engines");
+    int numEnabled = 0;
+
+    PluginManager *plugins = PluginManager::instance();
+    QList<QString> allEngines = plugins->identifiers(Plugin::EngineType);
     for(int i=0; i<count; i++) {
       settings.setArrayIndex(i);
       QString engineClass = settings.value("engineID", QString()).toString();
-      PluginManager *plugins = PluginManager::instance();
       PluginFactory *factory = plugins->factory(engineClass,
                                                 Plugin::EngineType);
       if(!engineClass.isEmpty() && factory) {
         Engine *engine = static_cast<Engine *>(factory->createInstance(this));
         engine->readSettings(settings);
+        if(engine->isEnabled())
+          numEnabled++;
         addEngine(engine);
+        allEngines.removeAll(engineClass);
       }
     }
+
+    qDebug() << "Settings are missing for the next engines:" << allEngines;
+
+    // Add engines with missing settings
+    foreach(const QString &engineClass, allEngines) {
+      PluginFactory *factory = plugins->factory(engineClass,
+                                                Plugin::EngineType);
+      if(factory) {
+        Engine *engine = static_cast<Engine *>(factory->createInstance(this));
+        addEngine(engine);
+        allEngines.removeAll(engineClass);
+      }
+    }
+
     settings.endArray();
 
-    if(!d->engines.count())
-      loadDefaultEngines();
+    // Enable default engine if nothing is enabled
+    if(!d->engines.isEmpty() && (numEnabled == 0)) {
+      foreach(Engine *engine, d->engines) {
+        if(engine->identifier() == "Ball and Stick")
+          engine->setEnabled(true);
+      }
+    }
   }
 
   void GLWidget::loadDefaultEngines()
@@ -1934,7 +1967,7 @@ namespace Avogadro {
     PluginManager *plugins = PluginManager::instance();
     foreach(PluginFactory *factory, plugins->factories(Plugin::EngineType)) {
       Engine *engine = static_cast<Engine *>(factory->createInstance(this));
-      if (engine->name() == tr("Ball and Stick"))
+      if (engine->identifier() == "Ball and Stick")
         engine->setEnabled(true);
       addEngine(engine);
     }
@@ -1961,21 +1994,7 @@ namespace Avogadro {
     // clear the engine list
     d->engines.clear();
 
-    // read settings and create required engines
-    count = settings.beginReadArray("engines");
-    for(int i=0; i<count; i++) {
-      settings.setArrayIndex(i);
-      QString engineClass = settings.value("engineID", QString()).toString();
-      PluginManager *plugins = PluginManager::instance();
-      PluginFactory *factory = plugins->factory(engineClass,
-                                                Plugin::EngineType);
-      if(!engineClass.isEmpty() && factory) {
-        Engine *engine = static_cast<Engine *>(factory->createInstance(this));
-        engine->readSettings(settings);
-        addEngine(engine);
-      }
-    }
-    settings.endArray();
+    loadEngines(settings);
   }
 
 
