@@ -98,7 +98,11 @@ namespace Avogadro {
     progDialog.setValue(progDialog.maximum());
 
     //tell user if successful
+#ifdef Q_CC_MSVC
+    std::ifstream fin(videoFileName.toStdWString().c_str());
+#else
     std::ifstream fin(QFile::encodeName(videoFileName));
+#endif
     if(!fin.fail()) {
     fin.close();
     QString successMessage = "Video file " + videoFileName + " written.";
