@@ -191,7 +191,7 @@ endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 set(QT_MIN_VERSION "4.5.1") # we need at least version 4.5.1
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
-find_package(Linguist REQUIRED) # find and setup Linguist
+find_package(Linguist) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
