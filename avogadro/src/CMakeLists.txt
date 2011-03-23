@@ -60,13 +60,13 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-if(NOT WIN32)
+if(NOT WIN32 AND Linguist_FOUND)
   file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
   QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE avogadro_QM "${Avogadro_SOURCE_DIR}/avogadro/src/avogadro*.qm")
-endif(NOT WIN32)
+endif()
 
 # Some relative rpath handling for Linux
 if(CMAKE_SYSTEM_NAME MATCHES Linux AND ENABLE_RPATH)
