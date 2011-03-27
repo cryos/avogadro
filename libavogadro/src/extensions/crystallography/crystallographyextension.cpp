@@ -17,7 +17,9 @@
 
 /**
  * @todo "Don't work with crystals?"
- * @todo Create/display cuts along miller indices
+ * @todo Display cuts along miller indices (view along MP & new engine)
+ * @todo Merge with existing extensions: supercell & unit cell view params
+ * @todo New builder: nanoparticle
  * @todo Cache list of spacegroups
  * @todo Select spacegroup name style (HM or Hall)
  * @todo CEUnitCellParameter::isValid()
@@ -36,10 +38,13 @@
 #include "ui/cecoordinateeditor.h"
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
+#include "ui/ceslabbuilder.h"
 #include "ui/cetranslatewidget.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/neighborlist.h>
+#include <avogadro/bond.h>
 
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
@@ -62,6 +67,7 @@ namespace Avogadro
   CrystallographyExtension::CrystallographyExtension(QObject *parent)
     : Extension( parent ),
       m_mainwindow(0),
+      m_slabBuilder(0),
       m_translateWidget(0),
       m_molecule(0),
       m_displayProperties(false),
@@ -153,6 +159,10 @@ namespace Avogadro
     case PrimitiveReduceIndex:
     case NiggliReduceIndex:
       return tr("&Crystallography") + '>' + tr("&Reduce");
+      // case BuildSuperCellIndex:
+      // case BuildNanoparticleIndex:
+    case BuildSlabIndex:
+      return tr("&Crystallography") + '>' + tr("&Build");
     case ToggleUnitCellIndex:
     case PasteCrystalIndex:
     case ToggleUnitCellSepIndex:
@@ -301,7 +311,7 @@ namespace Avogadro
   }
 
   QUndoCommand* CrystallographyExtension::performAction(QAction *action,
-                                                       GLWidget *widget)
+                                                        GLWidget *widget)
   {
     switch (static_cast<ActionIndex>(action->data().toInt())) {
     case PerceiveSpacegroupIndex:
@@ -342,6 +352,9 @@ namespace Avogadro
       break;
     case NiggliReduceIndex:
       actionNiggliReduce();
+      break;
+    case BuildSlabIndex:
+      actionBuildSlab(widget);
       break;
     case ScaleToVolumeIndex:
       actionScaleToVolume();
@@ -1268,6 +1281,100 @@ namespace Avogadro
                                fcoords);
   }
 
+  void CrystallographyExtension::buildSuperCell(const unsigned int v1, const unsigned int v2, const unsigned int v3)
+  {
+    // Duplicates the entire unit cell the number of times specified
+    // Code adapted from supercellextension
+    // Code works in Cartesians, so we need to preserve cartesians for a while
+    CartFrac existingPreserveCartFrac = m_coordsPreserveCartFrac;
+    m_coordsPreserveCartFrac = Cartesian;
+
+    // Get the current cell matrix
+    const Eigen::Matrix3d cellMatrix
+      (unconvertLength(currentCellMatrix()).transpose());
+    const Eigen::Vector3d u1 (cellMatrix.col(0));
+    const Eigen::Vector3d u2 (cellMatrix.col(1));
+    const Eigen::Vector3d u3 (cellMatrix.col(2));
+
+    m_molecule->blockSignals(true);
+    const QList<Atom*> orig = m_molecule->atoms();
+    for (unsigned int a = 0; a < v1; ++a) {
+      for (unsigned int b = 0; b < v2; ++b)  {
+        for (unsigned int c = 0; c < v3; ++c)  {
+          // Do not copy the unit cell onto itself
+          if (a == 0 && b == 0 && c == 0) continue;
+	  // Find the displacement vector for this new replica
+	  ///@todo Find a cleaner way to do this directly in Eigen
+          const Eigen::Vector3d disp(u1.x() * a + u2.x() * b + u3.x() * c,
+				     u1.y() * a + u2.y() * b + u3.y() * c,
+				     u1.z() * a + u2.z() * b + u3.z() * c);
+
+          foreach(const Atom *atom, orig) {
+            Atom *newAtom = m_molecule->addAtom();
+            *newAtom = *atom;
+            newAtom->setPos((*atom->pos())+disp);
+          }
+        }
+        QCoreApplication::processEvents();
+      }
+    } // end of for loops
+    m_molecule->blockSignals(false);
+    m_molecule->updateMolecule();
+
+    // Update the length of the unit cell
+    CEUnitCellParameters p = currentCellParameters();
+    p.a *= v1;
+    p.b *= v2;
+    p.c *= v3;
+    setCurrentCellParameters(p); // still in Cartesian, don't increase volume
+    m_coordsPreserveCartFrac = existingPreserveCartFrac; // we might have been preserving fractional
+    m_molecule->update();
+  }
+
+  void CrystallographyExtension::rebuildBonds()
+  {
+    m_molecule->blockSignals(true);
+    // Remove any bonds
+    foreach(Bond *b, m_molecule->bonds())
+      m_molecule->removeBond(b);
+
+    // Migrated from supercellextension
+    // Add single bonds between all atoms closer than their combined atomic
+    // covalent radii.
+    std::vector<double> rad;
+    NeighborList nbrs(m_molecule, 2.5); // 2.5 is the maximum covalent radius expected
+
+    // Store the covalent radius for each atom
+    rad.reserve(m_molecule->numAtoms());
+    foreach (Atom *atom, m_molecule->atoms())
+      rad.push_back(OpenBabel::etab.GetCovalentRad(atom->atomicNumber()));
+
+    foreach (Atom *atom1, m_molecule->atoms()) {
+      foreach (Atom *atom2, nbrs.nbrs(atom1)) {
+        if (m_molecule->bond(atom1, atom2))
+          continue;
+        if (atom1->isHydrogen() && atom2->isHydrogen())
+          continue;
+        // bonded if closer than elemental Rcov + tolerance
+        double cutoff = (rad[atom1->index()] + rad[atom2->index()] + 0.45)
+               * (rad[atom1->index()] + rad[atom2->index()] + 0.45);
+
+        double d2  = ((*atom1->pos()) - (*atom2->pos())).squaredNorm();
+
+	// If atoms are closer than 0.4, we declare them as non-bonded (e.g., disorder)
+        if (d2 > cutoff || d2 < 0.40)
+          continue;
+
+        Bond *bond = m_molecule->addBond();
+        bond->setAtoms(atom1->id(), atom2->id(), 1);
+      }
+      QCoreApplication::processEvents();
+    }
+
+    m_molecule->blockSignals(false);
+    m_molecule->updateMolecule();
+  }
+
   void CrystallographyExtension::orientStandard()
   {
     // Let's be lazy here; Just pull out the parameters and reapply them.
@@ -1432,6 +1539,7 @@ namespace Avogadro
     OpenBabel::OBUnitCell *cell = currentCell();
 
     // For sanity checks:
+    // Currently unused
     double origVolume = currentVolume();
 
     // Cache the current fractional coordinates for later.
@@ -1810,6 +1918,17 @@ namespace Avogadro
     m_actions.append(a);
     CE_CACTION_DEBUG(ScaleToVolumeIndex);
     CE_CACTION_ASSERT(ScaleToVolumeIndex);
+
+    ///////////////////////////////////
+    // Build action group:
+    ag = new QActionGroup(this);
+    // BuildSlabIndex,
+    a = new QAction(tr("Slab..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    ag->addAction(a);
+    CE_CACTION_DEBUG(BuildSlabIndex);
+    CE_CACTION_ASSERT(BuildSlabIndex);
 
     // LooseSepIndex
     a = new QAction(this);
@@ -2389,6 +2508,32 @@ namespace Avogadro
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Reduce to Niggli Cell")));
+  }
+
+  void CrystallographyExtension::actionBuildSlab(GLWidget *glwidget)
+  {
+    // If there is an existing builder running, kill it and restart
+    if (m_slabBuilder) {
+      // Slab builder is a QPointer, and will set itself to zero on
+      // deletion. Deleting the CESlabBuilder before it finishes will
+      // restore the crystal to its original state.
+      delete m_slabBuilder;
+      m_slabBuilder = 0;
+    }
+
+    // hide the editors -- we're going to need some dock space and
+    // the cell shouldn't be modified during this process
+    hideEditors();
+
+    // Create the dock widget, add it to main window
+    CESlabBuilder *slabBuilder = new CESlabBuilder (this, m_mainwindow,
+                                                    glwidget);
+    m_slabBuilder = slabBuilder;
+    m_mainwindow->addDockWidget(slabBuilder->preferredDockWidgetArea(),
+                                slabBuilder);
+
+    // From here, the slab builder will handle itself.
+    slabBuilder->setVisible(true);
   }
 
   void CrystallographyExtension::actionScaleToVolume()
