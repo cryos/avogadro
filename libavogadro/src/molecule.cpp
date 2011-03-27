@@ -223,6 +223,38 @@ namespace Avogadro{
     removeAtom(atomById(id));
   }
 
+  void Molecule::removeAtoms(QList<Atom *> atoms)
+  {
+    Q_D(const Molecule);
+    QList<Bond*> bondsToRemove;
+
+    foreach(Atom *atom, atoms) {
+      if (!atom || atom->parent() != this)
+        continue;
+
+      // When deleting an atom this also implicitly deletes any bonds to the atom
+      foreach (unsigned long bond, atom->bonds()) {
+        bondsToRemove.append(bondById(bond));
+      }
+
+      m_atoms[atom->id()] = 0;
+      // 1 based arrays stored/shown to user
+      m_atomList.removeAt(atom->index());
+      disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
+      emit atomRemoved(atom);
+      atom->deleteLater();
+    }
+
+    d->invalidGroupIndices = true;
+
+    // Remove the bonds (before we change indices)
+    removeBonds(bondsToRemove);
+
+    // Now update all the indices after deleting everything
+    for (int i = 0; i < m_atomList.size(); ++i)
+      m_atomList[i]->setIndex(i);
+  }
+
   Bond *Molecule::addBond()
   {
     return addBond(m_bonds.size());
@@ -288,6 +320,45 @@ namespace Avogadro{
       disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
       emit bondRemoved(bond);
       bond->deleteLater();
+    }
+  }
+
+  void Molecule::removeBonds(QList<Bond *> bonds)
+  {
+    Q_D(Molecule);
+
+    foreach(Bond *bond, bonds) {
+      if(!bond || bond->parent() != this)
+        continue;
+
+      unsigned int id = bond->id();
+      Bond *bond = m_bonds[id];
+      m_bonds[id] = 0;
+      // indices shown to the user -- we update later in the procedure
+      m_bondList.removeAt(bond->index());
+
+      // Also delete the bond from the attached atoms
+      if (m_atoms.size() > bond->beginAtomId()) {
+        if (m_atoms[bond->beginAtomId()])
+          m_atoms[bond->beginAtomId()]->removeBond(id);
+      }
+      if (m_atoms.size() > bond->endAtomId()) {
+        if (m_atoms[bond->endAtomId()])
+          m_atoms[bond->endAtomId()]->removeBond(id);
+      }
+
+      disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
+      emit bondRemoved(bond);
+      bond->deleteLater();
+    }
+
+    d->invalidRings = true;
+    m_invalidPartialCharges = true;
+    m_invalidAromaticity = true;
+
+    // OK, now update the bond indexes
+    for (int i = 0; i < m_bondList.size(); ++i) {
+      m_bondList[i]->setIndex(i);
     }
   }
 
@@ -508,6 +579,28 @@ namespace Avogadro{
     Q_D(Molecule);
     if (id < d->residues.size())
       removeResidue(d->residues[id]);
+  }
+
+  void Molecule::removeResidues(QList<Residue *>residues)
+  {
+    Q_D(Molecule);
+    foreach(Residue *residue, residues) {
+      if (!residue || residue->parent() != this)
+        continue;
+
+      d->residues[residue->id()] = 0;
+      // 0 based arrays stored/shown to user
+      d->residueList.removeAt(residue->index());
+
+      disconnect(residue, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+      emit primitiveRemoved(residue);
+      residue->deleteLater();
+    }
+
+    // Update the indices shown to the user
+    for (int i = 0; i < d->residueList.size(); ++i) {
+      d->residueList[i]->setIndex(i);
+    }
   }
 
   Fragment * Molecule::addRing()
