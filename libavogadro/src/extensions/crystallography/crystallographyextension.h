@@ -18,6 +18,8 @@
 #ifndef CRYSTALLOGRAPHYEXTENSION_H
 #define CRYSTALLOGRAPHYEXTENSION_H
 
+#include "ui/ceslabbuilder.h"
+
 #include <avogadro/extension.h>
 #include <avogadro/molecule.h>
 
@@ -249,6 +251,9 @@ namespace Avogadro
     // Tool helpers/implementaions
     void fillUnitCell();
     void wrapAtomsToCell();
+    void buildSuperCell(const unsigned int v1,
+                        const unsigned int v2, const unsigned int v3);
+    void rebuildBonds();
     void orientStandard();
     Eigen::Matrix3d rotateCellMatrixToStandardOrientation(
       const Eigen::Matrix3d &in) const;
@@ -273,6 +278,8 @@ namespace Avogadro
       TranslateAtomsIndex,
       OrientStandardIndex,
       ScaleToVolumeIndex,
+      // Builders
+      BuildSlabIndex,
       LooseSepIndex,
       // Spacegroup
       PerceiveSpacegroupIndex,
@@ -309,6 +316,7 @@ namespace Avogadro
 
     QMainWindow *m_mainwindow;
     GLWidget *m_glwidget;
+    CESlabBuilder     *m_slabBuilder;
     CETranslateWidget *m_translateWidget;
     CEViewOptionsWidget *m_viewOptionsWidget;
     QList<QAction*> m_actions;
@@ -346,6 +354,7 @@ namespace Avogadro
     void actionPrimitiveReduce();
     void actionNiggliReduce();
     void actionToggleUnitCell();
+    void actionBuildSlab();
     void actionPasteCrystal();
     void actionToggleEditors();
     void actionToggleProperties();
