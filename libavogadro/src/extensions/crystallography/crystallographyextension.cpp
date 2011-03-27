@@ -17,7 +17,9 @@
 
 /**
  * @todo "Don't work with crystals?"
- * @todo Create/display cuts along miller indices
+ * @todo Display cuts along miller indices (view along MP & new engine)
+ * @todo Merge with existing extensions: supercell builder & unit cell view params
+ * @todo New builder: nanoparticle
  * @todo Cache list of spacegroups
  * @todo Select spacegroup name style (HM or Hall)
  * @todo CEUnitCellParameter::isValid()
@@ -35,6 +37,7 @@
 #include "ui/cecoordinateeditor.h"
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
+#include "ui/ceslabbuilder.h"
 #include "ui/cetranslatewidget.h"
 #include "ui/ceviewoptionswidget.h"
 
@@ -42,6 +45,8 @@
 #include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/obeigenconv.h>
+#include <avogadro/neighborlist.h>
+#include <avogadro/bond.h>
 
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
@@ -65,6 +70,7 @@ namespace Avogadro
     : Extension( parent ),
       m_mainwindow(0),
       m_glwidget(0),
+      m_slabBuilder(0),
       m_translateWidget(0),
       m_viewOptionsWidget(0),
       m_molecule(0),
@@ -158,6 +164,8 @@ namespace Avogadro
     case PrimitiveReduceIndex:
     case NiggliReduceIndex:
       return tr("&Crystallography") + '>' + tr("&Reduce");
+    case BuildSlabIndex:
+      return tr("&Crystallography") + '>' + tr("&Build");
     case ToggleUnitCellIndex:
     case PasteCrystalIndex:
     case ToggleUnitCellSepIndex:
@@ -359,6 +367,9 @@ namespace Avogadro
       break;
     case NiggliReduceIndex:
       actionNiggliReduce();
+      break;
+    case BuildSlabIndex:
+      actionBuildSlab();
       break;
     case ScaleToVolumeIndex:
       actionScaleToVolume();
@@ -1134,9 +1145,11 @@ namespace Avogadro
   void CrystallographyExtension::fillUnitCell()
   {
     OpenBabel::OBUnitCell *cell = currentCell();
-    Q_ASSERT(cell);
+    if (!cell)
+      return;
     const OpenBabel::SpaceGroup *sg = cell->GetSpaceGroup();
-    Q_ASSERT(sg);
+    if (!sg)
+      return; // nothing to do
 
     wrapAtomsToCell();
 
@@ -1338,6 +1351,102 @@ namespace Avogadro
     return newMat;
   }
 
+  void CrystallographyExtension::buildSuperCell(const unsigned int v1,
+                                                const unsigned int v2,
+                                                const unsigned int v3)
+  {
+    // Duplicates the entire unit cell the number of times specified
+    // Code adapted from supercellextension
+    // Code works in Cartesians, so we need to preserve cartesians for a while
+    CartFrac existingPreserveCartFrac = m_coordsPreserveCartFrac;
+    m_coordsPreserveCartFrac = Cartesian;
+
+    // Get the current cell matrix
+    Eigen::Matrix3d cellMatrix
+      (unconvertLength(currentCellMatrix()).transpose());
+    const Eigen::Vector3d u1 (cellMatrix.col(0));
+    const Eigen::Vector3d u2 (cellMatrix.col(1));
+    const Eigen::Vector3d u3 (cellMatrix.col(2));
+    Eigen::Vector3d displacement;
+
+    m_molecule->blockSignals(true);
+    const QList<Atom*> orig = m_molecule->atoms();
+    for (unsigned int a = 0; a < v1; ++a) {
+      for (unsigned int b = 0; b < v2; ++b)  {
+        for (unsigned int c = 0; c < v3; ++c)  {
+          // Do not copy the unit cell onto itself
+          if (a == 0 && b == 0 && c == 0) continue;
+          // Find the displacement vector for this new replica
+          displacement = static_cast<double>(a) * u1 +
+            static_cast<double>(b) * u2 +
+            static_cast<double>(c) * u3;
+
+          foreach(const Atom *atom, orig) {
+            Atom *newAtom = m_molecule->addAtom();
+            *newAtom = *atom;
+            newAtom->setPos((*atom->pos())+displacement);
+          }
+        }
+        // Make sure to return to the event loop
+        // or a big build can make the user think we've crashed
+        QCoreApplication::processEvents();
+      }
+    } // end of for loops
+    m_molecule->blockSignals(false);
+    m_molecule->updateMolecule();
+
+    // Update the length of the unit cell
+    cellMatrix.col(0) = Eigen::Vector3d(v1 * u1);
+    cellMatrix.col(1) = Eigen::Vector3d(v2 * u2);
+    cellMatrix.col(2) = Eigen::Vector3d(v3 * u3);
+    setCurrentCellMatrix(convertLength(Eigen::Matrix3d(cellMatrix.transpose())));
+    m_coordsPreserveCartFrac = existingPreserveCartFrac; // we might have been preserving fractional
+    m_molecule->update();
+  }
+
+  void CrystallographyExtension::rebuildBonds()
+  {
+    m_molecule->blockSignals(true);
+    // Remove any bonds
+    foreach(Bond *b, m_molecule->bonds())
+      m_molecule->removeBond(b);
+
+    // Migrated from supercellextension
+    // Add single bonds between all atoms closer than their combined atomic
+    // covalent radii.
+    std::vector<double> rad;
+    NeighborList nbrs(m_molecule, 2.5); // 2.5 is the maximum covalent radius expected
+
+    // Store the covalent radius for each atom
+    rad.reserve(m_molecule->numAtoms());
+    foreach (Atom *atom, m_molecule->atoms())
+      rad.push_back(OpenBabel::etab.GetCovalentRad(atom->atomicNumber()));
+
+    foreach (Atom *atom1, m_molecule->atoms()) {
+      foreach (Atom *atom2, nbrs.nbrs(atom1)) {
+        if (m_molecule->bond(atom1, atom2))
+          continue;
+        if (atom1->isHydrogen() && atom2->isHydrogen())
+          continue;
+        // bonded if closer than elemental Rcov + tolerance
+        double cutoff = (rad[atom1->index()] + rad[atom2->index()] + 0.45)
+               * (rad[atom1->index()] + rad[atom2->index()] + 0.45);
+
+        double d2  = ((*atom1->pos()) - (*atom2->pos())).squaredNorm();
+
+        // If atoms are closer than 0.4, we declare them as non-bonded (e.g., disorder)
+        if (d2 > cutoff || d2 < 0.40)
+          continue;
+
+        Bond *bond = m_molecule->addBond();
+        bond->setAtoms(atom1->id(), atom2->id(), 1);
+      }
+    }
+
+    m_molecule->blockSignals(false);
+    m_molecule->updateMolecule();
+  }
+
   void CrystallographyExtension::orientStandard()
   {
     setCurrentCellMatrix(currentCellMatrixInStandardOrientation());
@@ -1348,7 +1457,7 @@ namespace Avogadro
     // Create cell if none exists.
     bool hasCell = static_cast<bool>(currentCell());
     if (!hasCell) {
-      actionToggleUnitCell();
+      actionToggleUnitCell(); ///@todo remove extra undo from this
     }
 
     CEUndoState before (this);
@@ -1485,6 +1594,37 @@ namespace Avogadro
     }
 
     return;
+  }
+
+  void CrystallographyExtension::toggleUnitCell()
+  {
+    bool hasCell = static_cast<bool>(currentCell());
+
+    if (!hasCell) {
+      OpenBabel::OBUnitCell *cell
+        = new OpenBabel::OBUnitCell;
+      double size = m_molecule->radius() * 3.0; // Give a bit of extra slop
+      if (size < 1.0)
+        size = 1.0; // defense in case of empty (or one-atom) molecule
+
+      ///@todo This should actually check the x, y, z dimensions before doing this.
+      cell->SetData(size, size, size,
+                    90.0, 90.0, 90.0);
+
+      pushUndo(new CEAddCellUndoCommand(m_molecule, cell, this));
+      cell = 0; // Undo constructor takes ownership of cell.
+      emit cellChanged();
+      showEditors();
+      GLWidget::current()->setRenderUnitCellAxes(true);
+      refreshActions();
+    }
+    else {
+      pushUndo(new CERemoveCellUndoCommand(m_molecule, this));
+      emit cellChanged();
+      hideEditors();
+      GLWidget::current()->setRenderUnitCellAxes(false);
+      refreshActions();
+    }
   }
 
   // Implements the niggli reduction algorithm detailed in:
@@ -1925,6 +2065,15 @@ namespace Avogadro
     CE_CACTION_DEBUG(ScaleToVolumeIndex);
     CE_CACTION_ASSERT(ScaleToVolumeIndex);
 
+    ///////////////////////////////////
+    // Builders
+    // BuildSlabIndex,
+    a = new QAction(tr("&Slab..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(BuildSlabIndex);
+    CE_CACTION_ASSERT(BuildSlabIndex);
+
     // LooseSepIndex
     a = new QAction(this);
     a->setSeparator(true);
@@ -2165,6 +2314,10 @@ namespace Avogadro
 
       m_viewOptionsWidget->hide();
       m_dockWidgets.append(m_viewOptionsWidget);
+    if (!m_slabBuilder) {
+      m_slabBuilder = new CESlabBuilder(this);
+      m_slabBuilder->hide();
+      m_dockWidgets.append(m_slabBuilder);
     }
     if (!m_editors.size()) {
       m_editors.append(new CEParameterEditor(this));
@@ -2538,6 +2691,19 @@ namespace Avogadro
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Reduce to Niggli Cell")));
+  }
+
+  void CrystallographyExtension::actionBuildSlab()
+  {
+    // hide the editors -- we're going to need some dock space and
+    // the cell shouldn't be modified during this process
+    hideEditors();
+
+    m_slabBuilder->setGLWidget(m_glwidget);
+    m_slabBuilder->show();
+
+    connect(m_slabBuilder, SIGNAL(finished()),
+            this, SLOT(showEditors()));
   }
 
   void CrystallographyExtension::actionScaleToVolume()
