@@ -18,6 +18,8 @@
 #ifndef CRYSTALLOGRAPHYEXTENSION_H
 #define CRYSTALLOGRAPHYEXTENSION_H
 
+#include "ui/ceslabbuilder.h"
+
 #include <avogadro/extension.h>
 #include <avogadro/molecule.h>
 
@@ -247,9 +249,12 @@ namespace Avogadro
     // Tool helpers/implementaions
     void fillUnitCell();
     void wrapAtomsToCell();
+    void buildSuperCell(const unsigned int v1, const unsigned int v2, const unsigned int v3);
+    void rebuildBonds();
     void orientStandard();
     void showPasteDialog(const QString &text);
     bool niggliReduce();
+    void toggleUnitCell();
 
   private:
     void createActions();
@@ -266,6 +271,8 @@ namespace Avogadro
       TranslateAtomsIndex,
       OrientStandardIndex,
       ScaleToVolumeIndex,
+      // Builders
+      BuildSlabIndex,
       LooseSepIndex,
       // Spacegroup
       PerceiveSpacegroupIndex,
@@ -299,6 +306,7 @@ namespace Avogadro
     }
 
     QMainWindow *m_mainwindow;
+    QPointer<CESlabBuilder> m_slabBuilder;
     CETranslateWidget *m_translateWidget;
     QList<QAction*> m_actions;
     QList<CEAbstractEditor*> m_editors;
@@ -334,7 +342,7 @@ namespace Avogadro
     void actionSymmetrizeCrystal();
     void actionPrimitiveReduce();
     void actionNiggliReduce();
-    void actionToggleUnitCell();
+    void actionBuildSlab(GLWidget *glwidget);
     void actionPasteCrystal();
     void actionToggleEditors();
     void actionToggleProperties();
