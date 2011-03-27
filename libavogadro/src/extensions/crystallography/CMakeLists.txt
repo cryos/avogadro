@@ -17,6 +17,7 @@ set(crystallographyextension_SRCS
   ui/cecoordinateeditor.cpp
   ui/cematrixeditor.cpp
   ui/ceparametereditor.cpp
+  ui/ceslabbuilder.cpp
   ui/cetranslatewidget.cpp
 )
 
@@ -25,6 +26,7 @@ set(crystallographyextension_UIS
   ui/cecoordinateeditor.ui
   ui/cematrixeditor.ui
   ui/ceparametereditor.ui
+  ui/ceslabbuilder.ui
   ui/cetranslatewidget.ui
 )
 
