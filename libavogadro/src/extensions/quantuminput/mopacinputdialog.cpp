@@ -372,7 +372,7 @@ namespace Avogadro
     QString buffer;
     QTextStream mol(&buffer);
 
-    mol << " AUX ";
+    mol << " AUX LARGE ";
     mol << "CHARGE=" << m_charge << ' ';
     switch (m_multiplicity)
       {
