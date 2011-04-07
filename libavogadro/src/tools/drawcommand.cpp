@@ -897,7 +897,8 @@ namespace Avogadro {
           ids.append(d->id);
           d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
         }
-        d->preCommand->redo();
+        if (d->preCommand)
+          d->preCommand->redo();
       }
 
       // Make sure we call BeginModify / EndModify (e.g., PR#1720879)
@@ -910,7 +911,8 @@ namespace Avogadro {
           ids.append(d->id);
           d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
         }
-        d->postCommand->redo();
+        if (d->postCommand)
+          d->postCommand->redo();
       }
 
       d->molecule->update();
