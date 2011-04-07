@@ -793,11 +793,16 @@ namespace Avogadro {
       // Render the extensions (for now: python only)
       foreach (Extension *extension, d->extensions) {
         PythonExtension *pyext = qobject_cast<PythonExtension*>(extension);
-        if (pyext)
-          pyext->paint(this);
+        if (pyext) {
+          // If threaded GL is on, were are in rendering thread now. pyext
+          // needs to acquire GIL, but it's already acquired by GLWidget
+          // constructor. That's why here we use indirect queued call of
+          // PythonExtension::paint()
+          QMetaObject::invokeMethod(pyext, SLOT(paint), Qt::QueuedConnection,
+                                    Q_ARG(GLWidget*, this));
+        }
       }
 #endif
-
 
       // Now render transparent
       glEnable(GL_BLEND);
@@ -806,7 +811,8 @@ namespace Avogadro {
       foreach(Engine *engine, d->engines) {
         if(engine->isEnabled() && engine->layers() & Engine::Transparent) {
 #ifdef ENABLE_GLSL
-          if (m_glslEnabled) glUseProgramObjectARB(engine->shader());
+          if (m_glslEnabled)
+            glUseProgramObjectARB(engine->shader());
 #endif
           engine->renderTransparent(d->pd);
         }
