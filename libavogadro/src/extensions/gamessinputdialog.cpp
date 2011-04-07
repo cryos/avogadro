@@ -47,7 +47,7 @@ namespace Avogadro {
     ui.navigationTree->headerItem()->setHidden(true);
 
     // FIXME: Check for GAMESS and show as needed.
-    //    ui.computeButton->hide();
+    ui.computeButton->hide();
 
     m_highlighter = new GamessHighlighter(ui.previewText->document());
 
