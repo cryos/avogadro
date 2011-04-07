@@ -254,7 +254,7 @@ namespace Avogadro {
       foreach (unsigned long id, d->atomIds) {
         Atom *atom = d->molecule->atomById(id);
         Q_CHECK_PTR( atom );
-        
+
         if (atom) {
           if (atom->isHydrogen()) {
             qDebug() << "AdjustHydrogensPostCommand::redo(): Error, request to add hydrogens on hydrogen atom";
@@ -827,7 +827,7 @@ namespace Avogadro {
       int adjustHydrogens) : d(new ChangeElementDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "ChangeElementDrawCommand(id = " << atom->id() << ", old = " << oldElement 
+    qDebug() << "ChangeElementDrawCommand(id = " << atom->id() << ", old = " << oldElement
              << ", new = " << atom->atomicNumber() << ", adj=" << adjustHydrogens << ")";
 #endif
 
@@ -838,7 +838,7 @@ namespace Avogadro {
     d->id = atom->id();
     d->adjustHydrogens = adjustHydrogens;
   }
-    
+
   void ChangeElementDrawCommand::setAdjustHydrogens(int adjustHydrogens)
   {
     d->adjustHydrogens = adjustHydrogens;
@@ -892,7 +892,7 @@ namespace Avogadro {
     if (atom) {
       // Remove Hydrogens if needed
       if (d->adjustHydrogens) {
-        if (!d->preCommand && !atom->isHydrogen()) {
+        if (!atom->isHydrogen() && !d->preCommand) {
           QList<unsigned long> ids;
           ids.append(d->id);
           d->preCommand = new AdjustHydrogensPreCommand(d->molecule, ids);
@@ -904,7 +904,7 @@ namespace Avogadro {
       atom->setAtomicNumber(d->newElement);
 
       // Add hydrogens again if needed
-      if (d->adjustHydrogens && !atom->isHydrogen()) {
+      if (!atom->isHydrogen() && d->adjustHydrogens) {
         if (!d->postCommand) {
           QList<unsigned long> ids;
           ids.append(d->id);
