@@ -173,7 +173,7 @@ namespace Avogadro {
     
     PythonThread pt;
 
-    if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
       return;
 
     try {
@@ -183,7 +183,7 @@ namespace Avogadro {
       PyObject *qobj = qconverter(&settings);
       object real_qobj = object(handle<>(qobj));
 
-      m_instance.attr("readSettings")(real_qobj);
+      m_instance.attr("writeSettings")(real_qobj);
     } catch(error_already_set const &) {
       catchError();
     }
@@ -196,7 +196,7 @@ namespace Avogadro {
     if (!m_script)
       return;
 
-    if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
       return;
 
     try {
@@ -206,7 +206,7 @@ namespace Avogadro {
       PyObject *qobj = qconverter(&settings);
       object real_qobj = object(handle<>(qobj));
 
-      m_instance.attr("writeSettings")(real_qobj);
+      m_instance.attr("readSettings")(real_qobj);
     } catch(error_already_set const &) {
       catchError();
     }
