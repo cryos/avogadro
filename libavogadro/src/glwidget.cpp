@@ -1719,7 +1719,7 @@ namespace Avogadro {
 
   void GLWidget::renameNamedSelection(int index, const QString &name)
   {
-    if (name.isEmpty())
+    if (name.isEmpty() || index >= d->namedSelections.size())
       return;
 
     QPair<QString, QPair<QList<unsigned int>,QList<unsigned int> > > pair = d->namedSelections.takeAt(index);
