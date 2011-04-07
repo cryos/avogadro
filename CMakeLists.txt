@@ -289,16 +289,16 @@ endif(ENABLE_VERSIONED_PLUGIN_DIR)
 
 if(UNIX)
   set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
-      CACHE PATH "Install dir for libraries")
+      CACHE PATH "Install dir for libraries" FORCE)
   set(Avogadro_PLUGIN_INSTALL_DIR
       "${LIB_INSTALL_DIR}/avogadro${Plugin_Version}"
-      CACHE PATH "Install dir for plugins")
+      CACHE PATH "Install dir for plugins" FORCE)
 else(UNIX)
   set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
-      CACHE PATH "Install dir for libraries")
+      CACHE PATH "Install dir for libraries" FORCE)
   set(Avogadro_PLUGIN_INSTALL_DIR
       "lib${LIB_SUFFIX}/avogadro${Plugin_Version}"
-      CACHE PATH "Install dir for plugins")
+      CACHE PATH "Install dir for plugins" FORCE)
 endif(UNIX)
 set(INCLUDE_INSTALL_DIR  "include"
     CACHE PATH "Install dir for include files")
