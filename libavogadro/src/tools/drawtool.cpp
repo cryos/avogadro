@@ -512,20 +512,6 @@ namespace Avogadro {
                                               m_addHydrogens);
         }
       }
-
-      // clean up after drawing
-      m_beginAtom=0;
-      m_bond=0;
-      m_endAtom=0;
-      m_prevBond=0;
-      m_prevBondOrder=0;
-      m_prevAtomElement=0;
-      m_beginAtomAdded=false;
-      m_endAtomAdded=false;
-      m_hydrogenCommand = 0;
-
-      m_forceField->UnsetIgnoreAtom();
-      m_forceField->UnsetFixAtom();
     }
 
     // Either use a three-button mouse
@@ -566,6 +552,20 @@ namespace Avogadro {
         }
       }
     }
+
+    // clean up after drawing
+    m_beginAtom=0;
+    m_bond=0;
+    m_endAtom=0;
+    m_prevBond=0;
+    m_prevBondOrder=0;
+    m_prevAtomElement=0;
+    m_beginAtomAdded=false;
+    m_endAtomAdded=false;
+    m_hydrogenCommand = 0;
+
+    m_forceField->UnsetIgnoreAtom();
+    m_forceField->UnsetFixAtom();
 
     molecule->lock()->unlock();
     return undo;
