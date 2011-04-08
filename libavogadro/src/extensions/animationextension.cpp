@@ -221,7 +221,7 @@ namespace Avogadro {
     if (!qdir.exists(snapshotsDir))
       qdir.mkpath(snapshotsDir);
 
-    TrajVideoMaker::makeVideo(m_widget, snapshotsDir, videoFileName);
+    TrajVideoMaker::makeVideo(m_widget, m_animation, snapshotsDir, videoFileName);
 
   }
 
