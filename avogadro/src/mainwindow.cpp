@@ -2180,11 +2180,173 @@ protected:
     mol->EndModify();
     mol->ConnectTheDots();
     mol->PerceiveBondOrders();
-    
+
     //qDebug() << "molecule updated";
     return true;
   }
 
+  /// @todo this should live in a UnitCell class eventually
+  // Stable sort both ids and coords together to group all entries in
+  // ids together. Entries are not sorted in any particular order,
+  // just grouped. uniqIds and idCounts will contain a unique list of
+  // all ids in same order as in the sorted ids and a list containing
+  // how many of each id is in ids, respectively.
+  void poscarSort(QList<QString> *ids,
+                  QList<Eigen::Vector3d> *coords,
+                  QList<QString> *uniqueIds,
+                  QList<unsigned int> *idCounts)
+  {
+    Q_ASSERT(ids->size() == coords->size());
+    // Get unique list of ids and count them
+    uniqueIds->clear();
+    idCounts->clear();
+    for (QStringList::const_iterator
+           it = ids->constBegin(),
+           it_end = ids->constEnd();
+         it != it_end; ++it) {
+      int ind = uniqueIds->indexOf(*it);
+      if (ind != -1) {
+        ++((*idCounts)[ind]);
+      }
+      else {
+        uniqueIds->append(*it);
+        idCounts->append(1);
+      }
+    }
+
+    // Sort lists
+    QString curId;
+    QStringList::iterator idit;
+    QStringList::iterator idit_end = ids->end();
+    QList<Eigen::Vector3d>::iterator coordit;
+    QList<Eigen::Vector3d>::iterator coordit_end = coords->end();
+    unsigned int sorted = 0;
+    for (int uniqInd = 0; uniqInd < uniqueIds->size();
+         ++uniqInd) {
+      curId = (*uniqueIds)[uniqInd];
+      unsigned int found = 0;
+      unsigned int count = idCounts->at(uniqInd);
+      idit = ids->begin() + sorted;
+      coordit = coords->begin() + sorted;
+      while (found < count) {
+        // Should never reach the end
+        Q_ASSERT(idit != idit_end);
+        Q_ASSERT(coordit != coordit_end);
+        if (idit->compare(curId) == 0) {
+          qSwap(*idit, (*ids)[sorted]);
+          qSwap(*coordit, (*coords)[sorted]);
+          ++found;
+          ++sorted;
+        }
+        ++idit;
+        ++coordit;
+      }
+    }
+  }
+
+  /// @todo this should live in a UnitCell class eventually
+  QString getPOSCAR(Molecule *mol)
+  {
+    OBUnitCell *cell = mol->OBUnitCell();
+    if (!cell) {
+      return "";
+    }
+
+    QList<Atom*> atoms = mol->atoms();
+
+    // Atomic symbols:
+    QStringList ids;
+    for (QList<Atom*>::const_iterator it = atoms.constBegin(),
+           it_end = atoms.constEnd(); it != it_end; ++it) {
+      ids << OpenBabel::etab.GetSymbol((*it)->atomicNumber());
+    }
+
+    // Fractional coordinates
+    QList<Vector3d> fcoords;
+    const Vector3d *eigenptr;
+    vector3 obtmp;
+    for (QList<Atom*>::const_iterator it = atoms.begin(),
+           it_end = atoms.end(); it != it_end; ++it) {
+      // Convert eigen to OB
+      eigenptr = (*it)->pos();
+      obtmp.x() = eigenptr->x();
+      obtmp.y() = eigenptr->y();
+      obtmp.z() = eigenptr->z();
+      // Convert cartesian -> fractional
+      obtmp = cell->CartesianToFractional(obtmp);
+      // Back to eigen
+      fcoords << Vector3d(obtmp.x(), obtmp.y(), obtmp.z());
+    }
+
+    // For sorting
+    QStringList uniqueIds;
+    QList<unsigned int> idCounts;
+
+    Q_ASSERT(fcoords.size() == ids.size());
+
+    poscarSort(&ids, &fcoords, &uniqueIds, &idCounts);
+
+    Q_ASSERT(uniqueIds.size() == idCounts.size());
+
+    QString poscar;
+
+    // Comment line: composition
+    for (unsigned int i = 0;
+         i < static_cast<unsigned int>(uniqueIds.size());
+         ++i) {
+      poscar += QString("%1%2 ").arg(uniqueIds[i]).arg(idCounts[i]);
+    }
+    poscar += "\n";
+    // Scaling factor. Just 1.0
+    poscar += QString::number(1.0);
+    poscar += "\n";
+    // Unit Cell Vectors
+    std::vector< OpenBabel::vector3 > vecs = cell->GetCellVectors();
+    for (unsigned int i = 0; i < vecs.size(); i++) {
+      OpenBabel::vector3 &vec = vecs[i];
+      // Remove negative zeros
+      if (fabs(vec.x()) < 1e-10) {
+        vec.x() = 0.0;
+      }
+      if (fabs(vec.y()) < 1e-10) {
+        vec.y() = 0.0;
+      }
+      if (fabs(vec.z()) < 1e-10) {
+        vec.z() = 0.0;
+      }
+      poscar += QString("  %1 %2 %3\n")
+        .arg(vec.x(), 12, 'f', 8)
+        .arg(vec.y(), 12, 'f', 8)
+        .arg(vec.z(), 12, 'f', 8);
+    }
+    // Number of each type of atom
+    for (int i = 0; i < idCounts.size(); i++) {
+      poscar += QString::number(idCounts.at(i)) + " ";
+    }
+    poscar += "\n";
+    // Use fractional coordinates:
+    poscar += "Direct\n";
+    // Coordinates of each atom
+    for (int i = 0; i < fcoords.size(); i++) {
+      Eigen::Vector3d &fcoord = fcoords[i];
+      // Remove negative zeros
+      if (fabs(fcoord.x()) < 1e-10) {
+        fcoord.x() = 0.0;
+      }
+      if (fabs(fcoord.y()) < 1e-10) {
+        fcoord.y() = 0.0;
+      }
+      if (fabs(fcoord.z()) < 1e-10) {
+        fcoord.z() = 0.0;
+      }
+      poscar += QString("  %1 %2 %3\n")
+        .arg(fcoord.x(), 12, 'f', 8)
+        .arg(fcoord.y(), 12, 'f', 8)
+        .arg(fcoord.z(), 12, 'f', 8);
+    }
+
+    return poscar;
+  }
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
@@ -2225,6 +2387,10 @@ protected:
           bondCopy->setAtoms(posBegin->second, posEnd->second, bond->order());
         }
       } // end looping over bonds
+
+      // Copy unit cell
+      moleculeCopy->setOBUnitCell
+        (new OBUnitCell(*(d->molecule->OBUnitCell())));
     } // should now have a copy of our selected fragment
 
     OBConversion conv;
@@ -2256,12 +2422,20 @@ protected:
       clipboardImage.setText("SMILES", copyData);
     }
 
-    // Copy XYZ coordinates to the text selection buffer
-    OBFormat *xyzFormat = conv.FindFormat("xyz");
-    if ( xyzFormat && conv.SetOutFormat(xyzFormat)) {
-      output = conv.WriteString(&obmol);
-      copyData = output.c_str();
-      mimeData->setText(QString(copyData));
+    // Copy XYZ coordinates to the text selection buffer for finite
+    // systems, or POSCAR if a unit cell is available
+    OBUnitCell *cell = moleculeCopy->OBUnitCell();
+    if (!cell) {
+      OBFormat *xyzFormat = conv.FindFormat("xyz");
+      if ( xyzFormat && conv.SetOutFormat(xyzFormat)) {
+        output = conv.WriteString(&obmol);
+        copyData = output.c_str();
+        mimeData->setText(QString(copyData));
+      }
+    }
+    else {
+      QString poscar = getPOSCAR(moleculeCopy);
+      mimeData->setText(poscar);
     }
 
     // need to free our temporary moleculeCopy
@@ -2292,6 +2466,10 @@ protected:
 
     if ( mimeData ) {
       QApplication::clipboard()->setMimeData(mimeData, QClipboard::Clipboard);
+      // For X11 middle click
+      if (QApplication::clipboard()->supportsSelection()) {
+        QApplication::clipboard()->setMimeData(mimeData, QClipboard::Selection);
+      }
     }
   }
 
