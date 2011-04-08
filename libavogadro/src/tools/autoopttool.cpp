@@ -36,6 +36,7 @@
 
 #include <openbabel/obiter.h>
 #include <openbabel/mol.h>
+#include <openbabel/obconversion.h>
 
 #include <QtCore/QDebug>
 #include <QtCore/QtPlugin>
@@ -62,6 +63,9 @@ namespace Avogadro {
           "Right Mouse: Move Space\n\n"
           "Extra Function when running\n"
           "Left Mouse: Click and drag atoms to move them"));
+    // An OBConverison object must be instantiated before the
+    // FindForceField call will work.
+    OBConversion conv; Q_UNUSED(conv);
     m_forceField = OBForceField::FindForceField( "UFF" );
     // Check that the force field exists and was initialised OK
     if (!m_forceField) {
