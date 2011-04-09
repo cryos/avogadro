@@ -1,17 +1,16 @@
-# Afrikaans translation for avogadro
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Serbian translation for avogadro
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2009-12-24 06:02+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
-"Language-Team: Afrikaans <af@li.org>\n"
+"PO-Revision-Date: 2011-03-19 19:35+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +19,7 @@ msgstr ""
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "OK"
+msgstr "У реду"
 
 #: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
@@ -46,27 +45,27 @@ msgstr ""
 #: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
 #: src/mainwindow.cpp:3427 :69
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr "Авогадро"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr "Snij Molecule"
+msgstr ""
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr "Snij Atomen"
+msgstr ""
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr "Plak"
+msgstr "Убаци"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr "Molecule afwis"
+msgstr ""
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr "Atooms afwis"
+msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:179
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -75,11 +74,11 @@ msgstr "Atooms afwis"
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462 :381 rc.cpp:393
 msgid "Settings"
-msgstr "Bepalings"
+msgstr "Подешавања"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
-msgstr "Open Bestand"
+msgstr "Отвори датотеку"
 
 msgctxt "main.cpp"
 msgid "Avogadro"
@@ -141,11 +140,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
-msgstr "Berigs"
+msgstr "Поруке"
 
 #: src/mainwindow.cpp:537
 msgid "Window"
-msgstr "Venster"
+msgstr "Прозор"
 
 #: src/mainwindow.cpp:540
 msgid "&Minimize"
@@ -153,7 +152,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:541
 msgid "Ctrl+M"
-msgstr "Ctrl+M"
+msgstr ""
 
 #: src/mainwindow.cpp:546
 msgid "&Zoom"
@@ -161,7 +160,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
 msgid "Bring All to Front"
-msgstr "Breng alles naar voorgrond"
+msgstr ""
 
 #: src/mainwindow.cpp:885
 msgid "&Tool Settings..."
@@ -170,7 +169,7 @@ msgstr ""
 #: src/mainwindow.cpp:888
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr "Ctrl+T"
+msgstr ""
 
 #: src/mainwindow.cpp:893
 msgid "&Display Settings..."
@@ -179,7 +178,7 @@ msgstr ""
 #: src/mainwindow.cpp:896
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr ""
 
 #: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
 msgid "Common molecule formats"
@@ -1249,21 +1248,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:, ,Launchpad Contributions:,Sander Deryckere, "
-",Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
-"Deryckere, ,Launchpad Contributions:,Sander Deryckere, ,Launchpad "
-"Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander Deryckere, "
-",Launchpad Contributions:,Sander Deryckere"
+msgstr " ,Launchpad Contributions:,Мирослав Николић"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,sanderd17@gmail.com,,,sanderd17@gmail.com,,,sanderd17@gmail.com,,,sanderd"
-"17@gmail.com,,,sanderd17@gmail.com,,,sanderd17@gmail.com,,,sanderd17@gmail.co"
-"m"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  Sander Deryckere https://launchpad.net/~sanderd17"
+msgstr ",,miroslavnikolic@rocketmail.com"

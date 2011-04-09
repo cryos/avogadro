@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:23+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-09 16:32+0000\n"
+"X-Generator: Launchpad (build 12757)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -27,7 +27,6 @@ msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
 msgstr ""
 
-#: src/aboutdialog.cpp:68
 #, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
@@ -41,10 +40,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:916 src/mainwindow.cpp:966
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1159 src/mainwindow.cpp:1181
-#: src/mainwindow.cpp:1335 src/mainwindow.cpp:1563 src/mainwindow.cpp:2838
-#: src/mainwindow.cpp:3339 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
+#: src/mainwindow.cpp:3427 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -73,11 +72,11 @@ msgstr "Nullstill Atomer"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3357 src/mainwindow.cpp:3374 :381 rc.cpp:393
+#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Innstillinger"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:806
+#: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Åpne Fil"
 
@@ -117,7 +116,7 @@ msgctxt "main.cpp"
 msgid "Antialiasing."
 msgstr ""
 
-#: src/main.cpp:254
+#: src/main.cpp:260
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -139,234 +138,233 @@ msgid ""
 "  -v, --version\t\tShow version information\n"
 msgstr ""
 
-#: src/mainwindow.cpp:303
+#: src/mainwindow.cpp:404
 msgid "Messages"
 msgstr "Meldinger"
 
-#: src/mainwindow.cpp:436
+#: src/mainwindow.cpp:537
 msgid "Window"
 msgstr "Vindu"
 
-#: src/mainwindow.cpp:439
+#: src/mainwindow.cpp:540
 msgid "&Minimize"
 msgstr "&Minimer"
 
-#: src/mainwindow.cpp:440
+#: src/mainwindow.cpp:541
 msgid "Ctrl+M"
 msgstr "Ctrl + M"
 
-#: src/mainwindow.cpp:445
+#: src/mainwindow.cpp:546
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:452 src/mainwindow.cpp:1701
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
 msgid "Bring All to Front"
 msgstr "Flytt Alt Fram"
 
-#: src/mainwindow.cpp:732
+#: src/mainwindow.cpp:885
 msgid "&Tool Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:735
+#: src/mainwindow.cpp:888
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl + T"
 
-#: src/mainwindow.cpp:740
+#: src/mainwindow.cpp:893
 msgid "&Display Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:743
+#: src/mainwindow.cpp:896
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl + D"
 
-#: src/mainwindow.cpp:786 src/mainwindow.cpp:1274
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
 msgid "Common molecule formats"
 msgstr "Vanlige molekylformater"
 
-#: src/mainwindow.cpp:791 src/mainwindow.cpp:1271 src/mainwindow.cpp:1503
-#: src/mainwindow.cpp:1584
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
 msgid "All files"
 msgstr "Alle filer"
 
-#: src/mainwindow.cpp:792 src/mainwindow.cpp:1268 src/mainwindow.cpp:1280
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:793
+#: src/mainwindow.cpp:946
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:794
+#: src/mainwindow.cpp:947
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:948
 msgid "GAMESS-US Output"
 msgstr "GAMESS-US Utdata"
 
-#: src/mainwindow.cpp:796
+#: src/mainwindow.cpp:949
 msgid "Gaussian 98/03 Output"
 msgstr "Gaussian 98/03 Utdata"
 
-#: src/mainwindow.cpp:797
+#: src/mainwindow.cpp:950
 msgid "Gaussian Formatted Checkpoint"
 msgstr ""
 
-#: src/mainwindow.cpp:798
+#: src/mainwindow.cpp:951
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:799
+#: src/mainwindow.cpp:952
 msgid "MDL Mol"
 msgstr ""
 
-#: src/mainwindow.cpp:800
+#: src/mainwindow.cpp:953
 msgid "NWChem Output"
 msgstr "NWChem Utdata"
 
-#: src/mainwindow.cpp:801 src/mainwindow.cpp:1285
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
 msgid "PDB"
 msgstr ""
 
-#: src/mainwindow.cpp:802 src/mainwindow.cpp:1287
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
 msgid "Sybyl Mol2"
 msgstr ""
 
-#: src/mainwindow.cpp:803 src/mainwindow.cpp:1288
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:872 src/mainwindow.cpp:877 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "uten navn"
 
-#: src/mainwindow.cpp:893
+#: src/mainwindow.cpp:1046
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Laster %1..."
 
-#: src/mainwindow.cpp:897
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgid "Loading %1..."
 msgstr "Laster %1..."
 
-#: src/mainwindow.cpp:917 src/mainwindow.cpp:1160
+#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Kunne ikke lese molekylfil, fil %1."
 
-#: src/mainwindow.cpp:940
+#: src/mainwindow.cpp:1093
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Leser multimolekylfil. Dette kan ta en stund..."
 
-#: src/mainwindow.cpp:967
+#: src/mainwindow.cpp:1120
 msgid "This file does not contain 3D coordinates."
 msgstr "Denne filen inneholder ikke 3D-koordinater."
 
-#: src/mainwindow.cpp:971
+#: src/mainwindow.cpp:1124
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:989
+#: src/mainwindow.cpp:1142
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr "Denne filen inneholder ikke 3D-koordinater."
 
-#: src/mainwindow.cpp:1043
+#: src/mainwindow.cpp:1196
 msgid "Select Molecule to View"
 msgstr ""
 
-#: src/mainwindow.cpp:1068
+#: src/mainwindow.cpp:1221
 msgid "Molecule Title"
 msgstr "Molekyltittel"
 
-#: src/mainwindow.cpp:1152
+#: src/mainwindow.cpp:1305
 msgid "Atoms: "
 msgstr "Atomer: "
 
-#: src/mainwindow.cpp:1153
+#: src/mainwindow.cpp:1306
 msgid " Bonds: "
 msgstr " Bindinger: "
 
-#: src/mainwindow.cpp:1169
+#: src/mainwindow.cpp:1322
 msgid "File Loaded..."
 msgstr "Fil Lastet..."
 
-#: src/mainwindow.cpp:1182
+#: src/mainwindow.cpp:1335
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Vil du lagre endringene du har gjort i dokumentet?"
 
-#: src/mainwindow.cpp:1191
+#: src/mainwindow.cpp:1344
 msgid "Your changes will be lost if you don't save them."
 msgstr "Dine endringer vil gå tapt hvis du ikke lagrer dem."
 
-#: src/mainwindow.cpp:1195
+#: src/mainwindow.cpp:1348
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl + S"
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1349
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl + D"
 
-#: src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:1351
 msgid "Save..."
 msgstr "Lagre..."
 
-#: src/mainwindow.cpp:1198 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Lagre"
 
-#: src/mainwindow.cpp:1281
+#: src/mainwindow.cpp:1434
 msgid "GAMESS Input"
 msgstr "GAMESS Inndata"
 
-#: src/mainwindow.cpp:1282
+#: src/mainwindow.cpp:1435
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Kartesiske Inndata"
 
-#: src/mainwindow.cpp:1283
+#: src/mainwindow.cpp:1436
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-matrise Inndata"
 
-#: src/mainwindow.cpp:1284
+#: src/mainwindow.cpp:1437
 msgid "MDL SDfile"
 msgstr ""
 
-#: src/mainwindow.cpp:1286
+#: src/mainwindow.cpp:1439
 msgid "NWChem Input"
 msgstr "NWChem Inndata"
 
-#: src/mainwindow.cpp:1291
+#: src/mainwindow.cpp:1444
 msgid "Save Molecule As"
 msgstr "Lagre Molekyl Som"
 
-#: src/mainwindow.cpp:1493 src/mainwindow.cpp:1505
+#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1500
+#: src/mainwindow.cpp:1658
 msgid "Common image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1504
+#: src/mainwindow.cpp:1662
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:1664
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1512 src/mainwindow.cpp:1593
+#: src/mainwindow.cpp:1670
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1564
+#: src/mainwindow.cpp:1722
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Kan ikke lagre fil %1."
@@ -387,103 +385,103 @@ msgstr "SVG"
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1733
+#: src/mainwindow.cpp:1819
 #, qt-format
 msgid "Untitled %1"
 msgstr "Uten navn %1"
 
-#: src/mainwindow.cpp:1838
+#: src/mainwindow.cpp:1924
 msgid "Unable to paste molecule."
 msgstr "Kan ikke lime inn molekyl."
 
-#: src/mainwindow.cpp:1867
+#: src/mainwindow.cpp:1953
 msgid "Paste failed (format unavailable)."
 msgstr "Kunne ikke lime inn (format ikke tilgjengelig)."
 
-#: src/mainwindow.cpp:2150
+#: src/mainwindow.cpp:2236
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopiering mislyktes."
 
-#: src/mainwindow.cpp:2276 src/mainwindow.cpp:2309 src/mainwindow.cpp:2376
-#: src/mainwindow.cpp:2981
+#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
+#: src/mainwindow.cpp:3069
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2336
+#: src/mainwindow.cpp:2422
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2345
+#: src/mainwindow.cpp:2431
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2576
+#: src/mainwindow.cpp:2662
 msgid "Normal Size"
 msgstr "Normal Størrelse"
 
-#: src/mainwindow.cpp:2593
+#: src/mainwindow.cpp:2679
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
-#: src/mainwindow.cpp:2695
+#: src/mainwindow.cpp:2780
 msgid "Ctrl+Backspace"
 msgstr "Ctrl + Rettetast"
 
-#: src/mainwindow.cpp:2831
+#: src/mainwindow.cpp:2916
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2837
+#: src/mainwindow.cpp:2922
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3293
+#: src/mainwindow.cpp:3381
 msgid "Add"
 msgstr "Legg til"
 
-#: src/mainwindow.cpp:3298
+#: src/mainwindow.cpp:3386
 msgid "Duplicate"
 msgstr "Dupliser"
 
-#: src/mainwindow.cpp:3303
+#: src/mainwindow.cpp:3391
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/mainwindow.cpp:3331
+#: src/mainwindow.cpp:3419
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3333
+#: src/mainwindow.cpp:3421
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3335
+#: src/mainwindow.cpp:3423
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3336
+#: src/mainwindow.cpp:3424
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3380
+#: src/mainwindow.cpp:3468
 msgid "Objects"
 msgstr "Objekter"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3386 :321
+#: src/mainwindow.cpp:3474 :321
 msgid "Colors"
 msgstr "Farger"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3507
 msgid " copy"
 msgstr " kopier"
 
@@ -747,248 +745,248 @@ msgstr ""
 msgid "Export"
 msgstr "Eksporter"
 
-#. i18n: file: src/mainwindow.ui:62
+#. i18n: file: src/mainwindow.ui:61
 #. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
 msgstr "Importer"
 
-#. i18n: file: src/mainwindow.ui:81
+#. i18n: file: src/mainwindow.ui:80
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:85
+#. i18n: file: src/mainwindow.ui:84
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
 msgstr "Verktøylinjer"
 
-#. i18n: file: src/mainwindow.ui:94
+#. i18n: file: src/mainwindow.ui:93
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
 msgstr "&Bygg"
 
-#. i18n: file: src/mainwindow.ui:99
+#. i18n: file: src/mainwindow.ui:98
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:122
+#. i18n: file: src/mainwindow.ui:121
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
 msgstr "&Rediger"
 
-#. i18n: file: src/mainwindow.ui:135
+#. i18n: file: src/mainwindow.ui:134
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:140
+#. i18n: file: src/mainwindow.ui:139
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
 msgstr "&Velg"
 
-#. i18n: file: src/mainwindow.ui:157
+#. i18n: file: src/mainwindow.ui:156
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
 msgstr "Hovedvertøylinje"
 
-#. i18n: file: src/mainwindow.ui:194
+#. i18n: file: src/mainwindow.ui:193
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
 msgstr "Prosjekttre"
 
-#. i18n: file: src/mainwindow.ui:227
+#. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "Visningstyper"
 
-#. i18n: file: src/mainwindow.ui:236
+#. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "Verktøy"
 
-#. i18n: file: src/mainwindow.ui:253
+#. i18n: file: src/mainwindow.ui:252
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:261
+#. i18n: file: src/mainwindow.ui:260
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
 msgstr "&Åpne"
 
-#. i18n: file: src/mainwindow.ui:256
+#. i18n: file: src/mainwindow.ui:255
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
 msgstr "Ctrl + O"
 
-#. i18n: file: src/mainwindow.ui:266
+#. i18n: file: src/mainwindow.ui:265
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:277
+#. i18n: file: src/mainwindow.ui:276
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
 msgstr "&Avslutt"
 
-#. i18n: file: src/mainwindow.ui:269
+#. i18n: file: src/mainwindow.ui:268
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
 msgstr "Ctrl + Q"
 
-#. i18n: file: src/mainwindow.ui:282
+#. i18n: file: src/mainwindow.ui:281
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
 msgstr "Nylig"
 
-#. i18n: file: src/mainwindow.ui:287
+#. i18n: file: src/mainwindow.ui:286
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
 msgstr "Nullstill Siste"
 
-#. i18n: file: src/mainwindow.ui:292
+#. i18n: file: src/mainwindow.ui:291
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:300
+#. i18n: file: src/mainwindow.ui:299
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
 msgstr "&Ny"
 
-#. i18n: file: src/mainwindow.ui:295
+#. i18n: file: src/mainwindow.ui:294
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
 msgstr "Ctrl + N"
 
-#. i18n: file: src/mainwindow.ui:305
+#. i18n: file: src/mainwindow.ui:304
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:313
+#. i18n: file: src/mainwindow.ui:312
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:308
+#. i18n: file: src/mainwindow.ui:307
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
 msgstr "Ctrl + W"
 
-#. i18n: file: src/mainwindow.ui:318
+#. i18n: file: src/mainwindow.ui:317
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:326
+#. i18n: file: src/mainwindow.ui:325
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:321
+#. i18n: file: src/mainwindow.ui:320
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
 msgstr "Ctrl + S"
 
-#. i18n: file: src/mainwindow.ui:331
+#. i18n: file: src/mainwindow.ui:330
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:334
+#. i18n: file: src/mainwindow.ui:333
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl + Shift + S"
 
-#. i18n: file: src/mainwindow.ui:339
+#. i18n: file: src/mainwindow.ui:338
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
 msgstr "Gå tilbake til Lagret"
 
-#. i18n: file: src/mainwindow.ui:344
+#. i18n: file: src/mainwindow.ui:343
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:353
+#. i18n: file: src/mainwindow.ui:352
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:356
+#. i18n: file: src/mainwindow.ui:355
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
 msgstr "Esc"
 
-#. i18n: file: src/mainwindow.ui:365
+#. i18n: file: src/mainwindow.ui:364
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:370
+#. i18n: file: src/mainwindow.ui:369
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
 msgstr "&Om"
 
-#. i18n: file: src/mainwindow.ui:382
+#. i18n: file: src/mainwindow.ui:381
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
 msgstr "&Angre"
 
-#. i18n: file: src/mainwindow.ui:385
+#. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
 msgstr "Ctrl + Z"
 
-#. i18n: file: src/mainwindow.ui:394
+#. i18n: file: src/mainwindow.ui:393
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:397
+#. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl + Shift + Z"
 
-#. i18n: file: src/mainwindow.ui:406
+#. i18n: file: src/mainwindow.ui:405
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
 msgstr "Ny Visning"
 
-#. i18n: file: src/mainwindow.ui:418
+#. i18n: file: src/mainwindow.ui:417
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
 msgstr "Lukk Visning"
 
-#. i18n: file: src/mainwindow.ui:427
+#. i18n: file: src/mainwindow.ui:426
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
 msgstr "Sentrer"
 
-#. i18n: file: src/mainwindow.ui:441
+#. i18n: file: src/mainwindow.ui:440
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
 msgstr "&Lim inn"
 
-#. i18n: file: src/mainwindow.ui:444
+#. i18n: file: src/mainwindow.ui:443
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
 msgstr "Ctrl + V"
 
-#. i18n: file: src/mainwindow.ui:449
+#. i18n: file: src/mainwindow.ui:448
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
 msgstr "Kopier"
 
-#. i18n: file: src/mainwindow.ui:452
+#. i18n: file: src/mainwindow.ui:451
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
 msgstr "Ctrl + C"
 
-#. i18n: file: src/mainwindow.ui:457
+#. i18n: file: src/mainwindow.ui:456
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
 msgstr "Klipp ut"
 
-#. i18n: file: src/mainwindow.ui:460
+#. i18n: file: src/mainwindow.ui:459
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
 msgstr "Ctrl + X"
 
-#. i18n: file: src/mainwindow.ui:465
+#. i18n: file: src/mainwindow.ui:464
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
 msgstr "Nullstill"
@@ -998,117 +996,117 @@ msgstr "Nullstill"
 msgid "Backspace"
 msgstr "Rettetast"
 
-#. i18n: file: src/mainwindow.ui:470
+#. i18n: file: src/mainwindow.ui:469
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
 msgstr "Velg alle"
 
-#. i18n: file: src/mainwindow.ui:473
+#. i18n: file: src/mainwindow.ui:472
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
 msgstr "Ctrl + A"
 
-#. i18n: file: src/mainwindow.ui:478
+#. i18n: file: src/mainwindow.ui:477
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
 msgstr "Velg ingen"
 
-#. i18n: file: src/mainwindow.ui:481
+#. i18n: file: src/mainwindow.ui:480
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl + Shift + A"
 
-#. i18n: file: src/mainwindow.ui:490
+#. i18n: file: src/mainwindow.ui:489
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
 msgstr "Configurer Avogadro..."
 
-#. i18n: file: src/mainwindow.ui:501
+#. i18n: file: src/mainwindow.ui:500
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
 msgstr "Veiledninger"
 
-#. i18n: file: src/mainwindow.ui:510
+#. i18n: file: src/mainwindow.ui:509
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
 msgstr "Dupliser Visning"
 
-#. i18n: file: src/mainwindow.ui:518
+#. i18n: file: src/mainwindow.ui:517
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
 msgstr "Vis Akser"
 
-#. i18n: file: src/mainwindow.ui:526
+#. i18n: file: src/mainwindow.ui:525
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
 msgstr "Feilsøkingsinformasjon"
 
-#. i18n: file: src/mainwindow.ui:534
+#. i18n: file: src/mainwindow.ui:533
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
 msgstr "Avogadro Hjelp"
 
-#. i18n: file: src/mainwindow.ui:539
+#. i18n: file: src/mainwindow.ui:538
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
 msgstr "Versjonsmerknader"
 
-#. i18n: file: src/mainwindow.ui:544
+#. i18n: file: src/mainwindow.ui:543
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
 msgstr "Rapporter en feil"
 
-#. i18n: file: src/mainwindow.ui:549
+#. i18n: file: src/mainwindow.ui:548
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
 msgstr "OSS"
 
-#. i18n: file: src/mainwindow.ui:554
+#. i18n: file: src/mainwindow.ui:553
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
 msgstr "Avogadro Nettside"
 
-#. i18n: file: src/mainwindow.ui:563
+#. i18n: file: src/mainwindow.ui:562
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:572
+#. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:581
+#. i18n: file: src/mainwindow.ui:580
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
 msgstr "Løsne Visning"
 
-#. i18n: file: src/mainwindow.ui:586
+#. i18n: file: src/mainwindow.ui:585
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
 msgstr "Molekylfil..."
 
-#. i18n: file: src/mainwindow.ui:597
+#. i18n: file: src/mainwindow.ui:596
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:602
+#. i18n: file: src/mainwindow.ui:601
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
 msgstr "&Vektorgrafikk..."
 
-#. i18n: file: src/mainwindow.ui:610
+#. i18n: file: src/mainwindow.ui:609
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:618
+#. i18n: file: src/mainwindow.ui:617
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
 msgstr "Alle Molekyler i Fil..."
 
-#. i18n: file: src/mainwindow.ui:623
+#. i18n: file: src/mainwindow.ui:622
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
 msgstr ""
@@ -1260,8 +1258,9 @@ msgstr ""
 "Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl, ,Launchpad "
 "Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen "
 "Heggestøyl, ,Launchpad Contributions:,Anders Oftedal,Avogadro Team,Kenneth "
-"Langdalen,Simen Heggestøyl,Tor Syversen, ,Launchpad Contributions:,Avogadro "
-"Team,Simen Heggestøyl"
+"Langdalen,Simen Heggestøyl,Tor Syversen, ,Launchpad Contributions:,Anders "
+"Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl,Tor Syversen, "
+",Launchpad Contributions:,Avogadro Team,Simen Heggestøyl"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1277,4 +1276,6 @@ msgstr ""
 "adro-"
 "devel@lists.sourceforge.net,,simenheg@gmail.com,,,anders.oftedal@gmail.com,av"
 "ogadro-devel@lists.sourceforge.net,,simenheg@gmail.com,sol-"
-"moe@online.no,,,avogadro-devel@lists.sourceforge.net,simenheg@gmail.com"
+"moe@online.no,,,anders.oftedal@gmail.com,avogadro-"
+"devel@lists.sourceforge.net,,simenheg@gmail.com,sol-moe@online.no,,,avogadro-"
+"devel@lists.sourceforge.net,simenheg@gmail.com"
