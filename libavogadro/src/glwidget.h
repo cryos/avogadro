@@ -582,10 +582,34 @@ namespace Avogadro {
 
       /**
        * Render crystal unit cell axes
+
        * called by renderCrystal() automatically
        *
        */
       virtual void renderCrystalAxes();
+
+      /**
+       * Renders a parallelepiped with defining edge vectors \a v1, \a
+       * v2, \a v3, with offset \a offset. If the cube intersects the
+       * viewing volume's near-plane, an appropriate line-loop is
+       * rendered at the intersection to prevent "missing corners"
+       * that are visually disturbing.
+       *
+       * See
+       * http://davidlonie.blogspot.com/2011/04/gracefully-clipping-parallelepiped-in.html
+       * for pictures of what this does.
+       *
+       * @param offset Origin for edge vectors
+       * @param v1 Vector defining one edge starting from \a offset
+       * @param v2 Vector defining a second edge starting from \a offset
+       * @param v3 Vector defining a third edge starting from \a offset
+       *
+       * @return True if the parallelepiped is clipped, false otherwise.
+       */
+      virtual bool renderClippedBox(const Eigen::Vector3d &offset,
+                                    const Eigen::Vector3d &v1,
+                                    const Eigen::Vector3d &v2,
+                                    const Eigen::Vector3d &v3);
 
       /**
        * Render x, y, z axes as an overlay on the bottom left of the widget.
@@ -593,6 +617,7 @@ namespace Avogadro {
       virtual void renderAxesOverlay();
 
       /**
+       * Render a debug overlay with extra debug information on the GLWidget.
        * @deprecated Use renderTextOverlay instead.
        * @sa addTextOverlay
        * @sa setRenderDebug
