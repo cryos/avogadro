@@ -568,6 +568,7 @@ namespace Avogadro {
 
       /**
        * Render crystal unit cell axes
+
        * called by renderCrystal() automatically
        *
        */
