@@ -70,6 +70,8 @@
 
 #include <openbabel/mol.h>
 
+#include <Eigen/LU>
+
 using namespace OpenBabel;
 using namespace Eigen;
 
@@ -844,109 +846,614 @@ namespace Avogadro {
       renderCrystalAxes();
   }
 
-  // Render the unit cell axes, indicating the frame of the cell
-  //       4---5
-  //      /   /|
-  //     /   / |    (0 is the "origin" for this unit cell)
-  //    3---2  6    (7 is in the back corner = cellVector[2])
-  //    |   | /     (3 is cellVector[1])
-  //    |   |/      (1 is cellVector[0])
-  //    0---1
+}
+
+// Use anonymous namespace for renderClippedBox and helper functions
+namespace {
+  // Given two points a and b, and a plane defined by normal vector n
+  // and point p, does the plane intersect the line segment formed by
+  // ab? If so, intersection is overwritten with the point of
+  // intersection and the function returns true.
+  static inline bool isPlaneBetweenPoints(const Vector3d &a,
+                                          const Vector3d &b,
+                                          const Vector3d &n,
+                                          const Vector3d &p,
+                                          Vector3d *intersection)
+  {
+    // Resource:
+    // http://paulbourke.net/geometry/planeline/
+
+    const double denom = n.dot(b - a);
+
+    // Parallel (in or out of plane)
+    if (fabs(denom) < 1e-8)
+      return false;
+
+    // Otherwise it intersects the line ab. To find out if it
+    // intersects the line segment ab, more calcs are needed:
+    const double u = ( n.dot(p - a) ) / ( denom );
+
+    // if u is between (0,1], it intersects segment ab. Otherwise
+    // return false.
+    if (u <= 0 || u > 1)
+      return false;
+
+    // If we don't need to calculate the intersection, return true here
+    if (!intersection)
+      return true;
+
+    // Calculate intersection, return true
+    *intersection = a + u * (b - a);
+    return true;
+  }
+
+  // Given {x, y, z, w} returns {x, y, z} / w
+  static inline Vector3d V4toV3DivW(const Vector4d & v4)
+  {
+    return v4.start<3>()/v4.w();
+  }
+
+  // This is a backported function -- in 1.1.x+ this function is
+  // exposed as part of the glwidget API.
+  static bool renderClippedBox(const Eigen::Vector3d &origin,
+                               const Eigen::Vector3d &v1,
+                               const Eigen::Vector3d &v2,
+                               const Eigen::Vector3d &v3)
+  {
+    // Create points from vectors:
+    //
+    //         6------8  c1 = origin
+    //        /:     /|  c2 = origin + v1
+    //       / :    / |  c3 = origin + v2
+    //      /  4---/--7  c4 = origin + v3
+    //     /  /   /  /   c5 = origin + v1 + v2
+    //    3------5  /    c6 = origin + v2 + v3
+    //    | /    | /     c7 = origin + v1 + v3
+    //    |/     |/      c8 = origin + v1 + v2 + v3
+    //    1------2
+    //
+    const Eigen::Vector3d c1 = origin;
+    const Eigen::Vector3d c2 = origin + v1;
+    const Eigen::Vector3d c3 = origin + v2;
+    const Eigen::Vector3d c4 = origin + v3;
+    const Eigen::Vector3d c5 = c2 + v2;
+    const Eigen::Vector3d c6 = c3 + v3;
+    const Eigen::Vector3d c7 = c2 + v3;
+    const Eigen::Vector3d c8 = c5 + v3;
+
+    // Render original cell
+#define EIGEN_GLLINE(r1, r2)                    \
+    glVertex3d((r1).x(), (r1).y(), (r1).z());   \
+    glVertex3d((r2).x(), (r2).y(), (r2).z())
+
+    glBegin(GL_LINES);
+    EIGEN_GLLINE(c1,c2);
+    EIGEN_GLLINE(c1,c3);
+    EIGEN_GLLINE(c1,c4);
+    EIGEN_GLLINE(c2,c5);
+    EIGEN_GLLINE(c2,c7);
+    EIGEN_GLLINE(c3,c5);
+    EIGEN_GLLINE(c3,c6);
+    EIGEN_GLLINE(c4,c6);
+    EIGEN_GLLINE(c4,c7);
+    EIGEN_GLLINE(c5,c8);
+    EIGEN_GLLINE(c6,c8);
+    EIGEN_GLLINE(c7,c8);
+    glEnd();
+
+    // Now for the clipping part. We will find all intersections of
+    // the viewing volume's near-plane cell edges, and draw an
+    // appropriate polygon that highlights where the clipping
+    // occurs. This prevents odd "missing corners" that are visually
+    // disturbing.
+
+    // Determine near plane from three coplanar points:
+    // (http://www.songho.ca/opengl/gl_projectionmatrix.html is a
+    // helpful resource here.)
+    //
+    // We will convert following points (which are in the near plane)
+    // from NDC coordinates to object coordinates:
+    //
+    // (-1, -1, -1), (1,-1,-1), and (-1,1,-1).
+    //
+    // First get the current transformation matrix (T = PM, P is
+    // projection matrix, M is modelview matrix), which converts
+    // Object coordinates (O) to NDC coordinates (N) via:
+    //
+    // N = T O
+    //
+    // P and M are 4x4 column-major matrix in OpenGL. Grab P and M and
+    // convert them to Eigen (row-major) matrices.
+    //
+    // Projection:
+    //
+    GLdouble proj_dv[16];
+    glGetDoublev(GL_PROJECTION_MATRIX, proj_dv);
+    Eigen::Matrix4d proj;
+    proj << // Indexed to convert column-major -> row-major
+      proj_dv[0 + 0], proj_dv[4 + 0], proj_dv[8 + 0], proj_dv[12 + 0],
+      proj_dv[0 + 1], proj_dv[4 + 1], proj_dv[8 + 1], proj_dv[12 + 1],
+      proj_dv[0 + 2], proj_dv[4 + 2], proj_dv[8 + 2], proj_dv[12 + 2],
+      proj_dv[0 + 3], proj_dv[4 + 3], proj_dv[8 + 3], proj_dv[12 + 3];
+    //
+    // Modelview:
+    //
+    GLdouble modv_dv[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX, modv_dv);
+    Eigen::Matrix4d modv;
+    modv << // Indexed to convert column-major -> row-major
+      modv_dv[0 + 0], modv_dv[4 + 0], modv_dv[8 + 0], modv_dv[12 + 0],
+      modv_dv[0 + 1], modv_dv[4 + 1], modv_dv[8 + 1], modv_dv[12 + 1],
+      modv_dv[0 + 2], modv_dv[4 + 2], modv_dv[8 + 2], modv_dv[12 + 2],
+      modv_dv[0 + 3], modv_dv[4 + 3], modv_dv[8 + 3], modv_dv[12 + 3];
+    //
+    // Now invert the matrix so that we can find our three coplanar
+    // points in Object coordinates via:
+    //
+    // O = Inv(T) N
+    //
+    // Calculate T ( = PM ) here, too
+    //
+    Eigen::Matrix4d invT = (proj * modv).inverse();
+    //
+    // Now to get our three points and a normal vector:
+    // (V4toV3DivW converts {x,y,z,w} to {x,y,z}/w)
+    //
+    const Eigen::Vector3d p0 = V4toV3DivW(invT*Eigen::Vector4d(-1,-1,-1,1));
+    const Eigen::Vector3d p1 = V4toV3DivW(invT*Eigen::Vector4d(1,-1,-1,1));
+    const Eigen::Vector3d p2 = V4toV3DivW(invT*Eigen::Vector4d(-1,1,-1,1));
+    // This cross product ensures that n points into the viewing volume
+    const Eigen::Vector3d n  = (p2-p0).cross(p1-p0).normalized();
+    // point in plane slightly inside of viewing volume
+    const Eigen::Vector3d p_plane = p0 + 1e-4 * n;
+
+    // Check which edges of the plane are intersected by the view plane
+    //
+    //         6------8
+    //        /:     /|  edge = pts, hex     edge = pts, hex
+    //       / :    / |   e1  = 1 2  0x1      e7  = 3 6  0x12
+    //      /  4.../..7   e2  = 1 3  0x2      e8  = 4 6  0x14
+    //     /  /   /  /    e3  = 1 4  0x4      e9  = 4 7  0x18
+    //    3------5  /     e4  = 2 5  0x8      e10 = 5 8  0x20
+    //    | /    | /      e5  = 2 7  0x10     e11 = 6 8  0x21
+    //    |/     |/       e6  = 3 5  0x11     e12 = 7 8  0x22
+    //    1------2
+    //
+    // The intersections are stored bitwise in a quint16, the least
+    // significant bit representing e1 and the four most significant
+    // bits being 0. A bit == 1 indicates that the edge is
+    // intersected. Initialize to all 0s.
+    //
+    register quint16 intersections = 0;
+    //
+    // Define masks for the edge bits to prevent errors:
+    //
+#define E1MASK  0x001
+#define E2MASK  0x002
+#define E3MASK  0x004
+#define E4MASK  0x008
+#define E5MASK  0x010
+#define E6MASK  0x020
+#define E7MASK  0x040
+#define E8MASK  0x080
+#define E9MASK  0x100
+#define E10MASK 0x200
+#define E11MASK 0x400
+#define E12MASK 0x800
+    //
+    // Points of intersections:
+    //
+    unsigned short intersectionCount = 0;
+    Vector3d i1;
+    Vector3d i2;
+    Vector3d i3;
+    Vector3d i4;
+    Vector3d i5;
+    Vector3d i6;
+    Vector3d i7;
+    Vector3d i8;
+    Vector3d i9;
+    Vector3d i10;
+    Vector3d i11;
+    Vector3d i12;
+    //
+    // Test points
+    //
+    if (isPlaneBetweenPoints(c1, c2, n, p_plane, &i1)) {
+      intersections |= E1MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c1, c3, n, p_plane, &i2)) {
+      intersections |= E2MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c1, c4, n, p_plane, &i3)) {
+      intersections |= E3MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c2, c5, n, p_plane, &i4)) {
+      intersections |= E4MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c2, c7, n, p_plane, &i5)) {
+      intersections |= E5MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c3, c5, n, p_plane, &i6)) {
+      intersections |= E6MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c3, c6, n, p_plane, &i7)) {
+      intersections |= E7MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c4, c6, n, p_plane, &i8)) {
+      intersections |= E8MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c4, c7, n, p_plane, &i9)) {
+      intersections |= E9MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c5, c8, n, p_plane, &i10)) {
+      intersections |= E10MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c6, c8, n, p_plane, &i11)) {
+      intersections |= E11MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c7, c8, n, p_plane, &i12)) {
+      intersections |= E12MASK;
+      ++intersectionCount;
+    }
+
+    // Handle polygon drawing based on number of intersections
+    switch (intersectionCount) {
+
+      // Add vertex at Eigen::VectorXd, X >= 3
+#define VERTEX_AT_EIGENVECTOR(vec)                      \
+      glVertex3d((vec).x(), (vec).y(), (vec).z())
+
+      // Draw a line loop connecting the four Vector3ds.
+#define LINE_LOOP_4V(vec1, vec2, vec3, vec4)    \
+      glBegin(GL_LINE_LOOP);                    \
+      VERTEX_AT_EIGENVECTOR(vec1);              \
+      VERTEX_AT_EIGENVECTOR(vec2);              \
+      VERTEX_AT_EIGENVECTOR(vec3);              \
+      VERTEX_AT_EIGENVECTOR(vec4);              \
+      glEnd()
+
+      // Draw a line loop connecting the five Vector3ds.
+#define LINE_LOOP_5V(vec1, vec2, vec3, vec4, vec5)      \
+      glBegin(GL_LINE_LOOP);                            \
+      VERTEX_AT_EIGENVECTOR(vec1);                      \
+      VERTEX_AT_EIGENVECTOR(vec2);                      \
+      VERTEX_AT_EIGENVECTOR(vec3);                      \
+      VERTEX_AT_EIGENVECTOR(vec4);                      \
+      VERTEX_AT_EIGENVECTOR(vec5);                      \
+      glEnd()
+
+      // Draw a line loop connecting the six Vector3ds.
+#define LINE_LOOP_6V(vec1, vec2, vec3, vec4, vec5, vec6)        \
+      glBegin(GL_LINE_LOOP);                                    \
+      VERTEX_AT_EIGENVECTOR(vec1);                              \
+      VERTEX_AT_EIGENVECTOR(vec2);                              \
+      VERTEX_AT_EIGENVECTOR(vec3);                              \
+      VERTEX_AT_EIGENVECTOR(vec4);                              \
+      VERTEX_AT_EIGENVECTOR(vec5);                              \
+      VERTEX_AT_EIGENVECTOR(vec6);                              \
+      glEnd()
+
+    case 0:
+      // No intersections, just return.
+      return false;
+
+    case 1:
+      // Shouldn't happen, probably floating points errors. Print a
+      // warning and return.
+      qWarning() << "Viewing volume near-plane intersects unit cell only once.";
+      return false;
+
+    case 2:
+      // Also shouldn't happen. Bail.
+      qWarning() << "Viewing volume near-plane intersects unit cell only twice.";
+      return false;
+
+    case 3:
+      // Either one corner is in the frustum, or only one is
+      // out. Either way, just connect the points in the triangle.
+      glBegin(GL_LINE_LOOP);
+      if (intersections & E1MASK) {
+        VERTEX_AT_EIGENVECTOR(i1);
+      }
+      if (intersections & E2MASK) {
+        VERTEX_AT_EIGENVECTOR(i2);
+      }
+      if (intersections & E3MASK) {
+        VERTEX_AT_EIGENVECTOR(i3);
+      }
+      if (intersections & E4MASK) {
+        VERTEX_AT_EIGENVECTOR(i4);
+      }
+      if (intersections & E5MASK) {
+        VERTEX_AT_EIGENVECTOR(i5);
+      }
+      if (intersections & E6MASK) {
+        VERTEX_AT_EIGENVECTOR(i6);
+      }
+      if (intersections & E7MASK) {
+        VERTEX_AT_EIGENVECTOR(i7);
+      }
+      if (intersections & E8MASK) {
+        VERTEX_AT_EIGENVECTOR(i8);
+      }
+      if (intersections & E9MASK) {
+        VERTEX_AT_EIGENVECTOR(i9);
+      }
+      if (intersections & E10MASK) {
+        VERTEX_AT_EIGENVECTOR(i10);
+      }
+      if (intersections & E11MASK) {
+        VERTEX_AT_EIGENVECTOR(i11);
+      }
+      if (intersections & E12MASK) {
+        VERTEX_AT_EIGENVECTOR(i12);
+      }
+      glEnd();
+      return true;
+
+    case 4:
+      // Case of either two, four, or six corners outside the near
+      // plane.
+      //
+      // 2 corner cuts follow, enumerated in order of isolated
+      // coherent edge
+      //
+      switch (intersections) {
+      case ( E2MASK | E4MASK | E5MASK | E3MASK ):
+        // e1 excluded; e2, e4, e5, e3 intersected.
+        LINE_LOOP_4V(i2, i4, i5, i3);
+        return true;
+
+      case ( E1MASK | E6MASK | E7MASK | E3MASK ):
+        // e2 excluded; e1, e6, e7, e3 intersected.
+        LINE_LOOP_4V(i1, i6, i7, i3);
+        return true;
+
+      case ( E2MASK | E8MASK | E9MASK | E1MASK ):
+        // e3 excluded; e2, e8, e9, e1 intersected.
+        LINE_LOOP_4V(i2, i8, i9, i1);
+        return true;
+
+      case ( E1MASK | E6MASK | E10MASK | E5MASK ):
+        // e4 excluded; e1, e6, e10, e5 intersected.
+        LINE_LOOP_4V(i1, i6, i10, i5);
+        return true;
+
+      case ( E1MASK | E4MASK | E12MASK | E9MASK ):
+        // e5 excluded; e1, e4, e12, e9 intersected.
+        LINE_LOOP_4V(i1, i4, i12, i9);
+        return true;
+
+      case ( E2MASK | E4MASK | E10MASK | E7MASK ):
+        // e6 excluded; e2, e4, e10, e7 intersected.
+        LINE_LOOP_4V(i2, i4, i10, i7);
+        return true;
+
+      case ( E2MASK | E6MASK | E11MASK | E8MASK ):
+        // e7 excluded; e2, e6, e11, e8 intersected.
+        LINE_LOOP_4V(i2, i6, i11, i8);
+        return true;
+
+      case ( E3MASK | E7MASK | E11MASK | E9MASK ):
+        // e8 excluded; e3, e7, e11, e9 intersected.
+        LINE_LOOP_4V(i3, i7, i11, i9);
+        return true;
+
+      case ( E3MASK | E5MASK | E12MASK | E8MASK ):
+        // e9 excluded; e3, e5, e12, e8 intersected.
+        LINE_LOOP_4V(i3, i5, i12, i8);
+        return true;
+
+      case ( E4MASK | E12MASK | E11MASK | E6MASK ):
+        // e10 excluded; e4, e12, e11, e6 intersected.
+        LINE_LOOP_4V(i4, i12, i11, i6);
+        return true;
+
+      case ( E7MASK | E10MASK | E12MASK | E8MASK ):
+        // e11 excluded; e7, e10, e12, e8 intersected.
+        LINE_LOOP_4V(i7, i10, i12, i8);
+        return true;
+
+      case ( E5MASK | E10MASK | E11MASK | E9MASK ):
+        // e12 excluded; e5, e10, e11, e9 intersected.
+        LINE_LOOP_4V(i5, i10, i11, i9);
+        return true;
+
+      // Cases of the four coplanar corners outside of the near-plane
+
+      case ( E3MASK | E7MASK | E10MASK | E5MASK ):
+        // "parallel" to v1, v2; e3, e7, e10, e5 intersected.
+        LINE_LOOP_4V(i3, i7, i10, i5);
+        return true;
+
+      case ( E2MASK | E4MASK | E12MASK | E8MASK ):
+        // "parallel" to v1, v3; e2, e4, e12, e8 intersected.
+        LINE_LOOP_4V(i2, i4, i12, i8);
+        return true;
+
+      case ( E1MASK | E6MASK | E11MASK | E9MASK ):
+        // "parallel" to v2,v3; e1, e6, e11, e9 intersected.
+        LINE_LOOP_4V(i1, i6, i11, i9);
+        return true;
+
+      default:
+        // Shouldn't be any others:
+        // qWarning() << "Unhandled 4-point near-plane unit cell intersection.";
+        return false;
+
+      } // End switch on 4 intersections
+
+    case 5:
+      // Three or five corner split by near-plane. There are 14 of
+      // these that divide the cube into two spatially coherent
+      // volumes. They are enumerated by the three-corner combinations
+      // below:
+      switch (intersections) {
+
+      case ( E4MASK | E6MASK | E7MASK | E3MASK | E5MASK ):
+        // Corners: c1, c2, c3; e4, e6, e7, e3, e5 intersected.
+        LINE_LOOP_5V(i4, i6, i7, i3, i5);
+        return true;
+
+      case ( E2MASK | E4MASK | E5MASK | E9MASK | E8MASK ):
+        // Corners: c1, c2, c4; e2, e4, e5, e9, e8 intersected.
+        LINE_LOOP_5V(i2, i4, i5, i9, i8);
+        return true;
+
+      case ( E2MASK | E6MASK | E10MASK | E5MASK | E3MASK ):
+        // Corners: c1, c2, c5; e2, e6, e10, e5, e3 intersected.
+        LINE_LOOP_5V(i2, i6, i10, i5, i3);
+        return true;
+
+      case ( E2MASK | E4MASK | E12MASK | E9MASK | E3MASK ):
+        // Corners: c1, c2, c7; e2, e4, e12, e9, e3 intersected.
+        LINE_LOOP_5V(i2, i4, i12, i9, i3);
+        return true;
+
+      case ( E6MASK | E1MASK | E9MASK | E8MASK | E7MASK ):
+        // Corners: c1, c3, c4; e6, e1, e9, e8, e7 intersected.
+        LINE_LOOP_5V(i6, i1, i9, i8, i7);
+        return true;
+
+      case ( E3MASK | E7MASK | E10MASK | E4MASK | E1MASK ):
+        // Corners: c1, c3, c5; e3, e7, e10, e4, e1 intersected.
+        LINE_LOOP_5V(i3, i7, i10, i4, i1);
+        return true;
+
+      case ( E1MASK | E6MASK | E11MASK | E8MASK | E3MASK ):
+        // Corners: c1, c3, c6; e1, e6, e11, e8, e3 intersected.
+        LINE_LOOP_5V(i1, i6, i11, i8, i3);
+        return true;
+
+      case ( E1MASK | E9MASK | E11MASK | E7MASK | E2MASK ):
+        // Corners: c1, c4, c6; e1, e9, e11, e7, e2 intersected.
+        LINE_LOOP_5V(i1, i9, i11, i7, i2);
+        return true;
+
+      case ( E2MASK | E8MASK | E12MASK | E5MASK | E1MASK ):
+        // Corners: c1, c4, c7; e2, e8, e12, e5, e1 intersected.
+        LINE_LOOP_5V(i2, i8, i12, i5, i1);
+        return true;
+
+      case ( E5MASK | E10MASK | E7MASK | E2MASK | E1MASK ):
+        // Corners: c2, c3, c5; e5, e10, e7, e2, e1 intersected.
+        LINE_LOOP_5V(i5, i10, i7, i2, i1);
+        return true;
+
+      case ( E6MASK | E11MASK | E9MASK | E3MASK | E2MASK ):
+        // Corners: c3, c4, c6; e6, e11, e9, e3, e2 intersected.
+        LINE_LOOP_5V(i6, i11, i9, i3, i2);
+        return true;
+
+      case ( E5MASK | E3MASK | E7MASK | E11MASK | E12MASK ):
+        // Corners: c4, c6, c7; e5, e3, e7, e11, e12 intersected.
+        LINE_LOOP_5V(i5, i3, i7, i11, i12);
+        return true;
+
+      case ( E3MASK | E7MASK | E10MASK | E12MASK | E9MASK ):
+        // Corners: c4, c6, c8; e3, e7, e10, e12, e9 intersected.
+        LINE_LOOP_5V(i3, i7, i10, i12, i9);
+        return true;
+
+      case ( E3MASK | E5MASK | E10MASK | E11MASK | E8MASK ):
+        // Corners: c4, c7, c8; e3, e5, e10, e11, e8 intersected.
+        LINE_LOOP_5V(i3, i5, i10, i11, i8);
+        return true;
+
+      default:
+        // Shouldn't be any others:
+        // qWarning() << "Unhandled 5-point near-plane unit cell intersection.";
+        return false;
+      }
+
+    case 6:
+      // Diagonal slices with four corners each in each volume.
+      switch (intersectionCount) {
+
+      case ( E4MASK | E6MASK | E7MASK | E8MASK | E9MASK | E5MASK ):
+        // Corners: c1, c2, c3, c4; e4, e6, e7, e8, e9, e5 intersected.
+        LINE_LOOP_6V(i4, i6, i7, i8, i9, i5);
+        return true;
+
+      case ( E2MASK | E3MASK | E9MASK | E12MASK | E10MASK | E6MASK ):
+        // Corners: c1, c2, c5, c7; e2, e3, e9, e12, e10, e6 intersected.
+        LINE_LOOP_6V(i2, i3, i9, i12, i10, i6);
+        return true;
+
+      case ( E1MASK | E3MASK | E8MASK | E11MASK | E10MASK | E4MASK ):
+        // Corners: c1, c3, c5, c6; e1, e3, e8, e11, e10, e4 intersected.
+        LINE_LOOP_6V(i1, i3, i8, i11, i10, i4);
+        return true;
+
+      case ( E2MASK | E7MASK | E11MASK | E12MASK | E5MASK | E1MASK ):
+        // Corners: c1, c4, c6, c7; e2, e7, e11, e12, e5, e1 intersected.
+        LINE_LOOP_6V(i2, i7, i11, i12, i5, i1);
+        return true;
+
+      default:
+        // Shouldn't be any others:
+        // qWarning() << "Unhandled 5-point near-plane unit cell intersection.";
+        return false;
+      }
+
+    default:
+      // It doesn't make sense for more intersections to exist.
+      qWarning() << "Unhandled" << intersectionCount << "point near-plane"
+                 << "unit cell intersection.";
+
+      return false;
+
+    }
+    // Shouldn't happen
+    return false;
+  }
+}
+
+namespace Avogadro {
+
   void GLWidget::renderCrystalAxes()
   {
-    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
-    vector3 v0(0.0, 0.0, 0.0);
-    vector3 v1(cellVectors[0]);
-    vector3 v3(cellVectors[1]);
-    vector3 v7(cellVectors[2]);
-    vector3 v2, v4, v5, v6;
-    v2 = v1 + v3;
-    v4 = v3 + v7;
-    v6 = v1 + v7;
-    v5 = v4 + v1;
+    const matrix3x3 obmat (d->molecule->OBUnitCell()->GetCellMatrix());
+
+    const Vector3d v1 (obmat(0,0), obmat(0,1), obmat(0,2));
+    const Vector3d v2 (obmat(1,0), obmat(1,1), obmat(1,2));
+    const Vector3d v3 (obmat(2,0), obmat(2,1), obmat(2,2));
+    Vector3d offset;
 
     glDisable(GL_LIGHTING);
     glColor4f(1.0, 1.0, 1.0, 0.7);
     glLineWidth(2.0);
+
+    // Move to origin
+    glPushMatrix();
+    glTranslated(0, 0, 0);
+
     for (int a = 0; a < d->aCells; a++) {
       for (int b = 0; b < d->bCells; b++)  {
         for (int c = 0; c < d->cCells; c++)  {
-          glPushMatrix();
-          glTranslated(
-                       cellVectors[0].x() * a
-                       + cellVectors[1].x() * b
-                       + cellVectors[2].x() * c,
-                       cellVectors[0].y() * a
-                       + cellVectors[1].y() * b
-                       + cellVectors[2].y() * c,
-                       cellVectors[0].z() * a
-                       + cellVectors[1].z() * b
-                       + cellVectors[2].z() * c );
+          // Calculate offset for this cell
+          offset = (a * v1 + b * v2 + c * v3);
 
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v1.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v3.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v1.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v3.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v3.AsArray());
-          glVertex3dv(v4.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v4.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v6.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v1.AsArray());
-          glVertex3dv(v6.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v6.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v4.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glPopMatrix();
+          // Draw the clipped box
+          renderClippedBox(offset, v1, v2, v3);
         }
       }
-    } // end of for loops
+    }
+
+    // Reset GL state
+    glPopMatrix();
     glEnable(GL_LIGHTING);
   }
 
