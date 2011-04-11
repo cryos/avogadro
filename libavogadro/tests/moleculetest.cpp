@@ -238,6 +238,12 @@ void MoleculeTest::removeAtom()
   QVERIFY(m_molecule->numAtoms() == 1);
   m_molecule->removeAtom(0ul);
   QVERIFY(m_molecule->numAtoms() == 0);
+
+  // Check behavior of removing an atom that is owned by a different
+  // molecule. Should not crash.
+  Molecule mol;
+  a = mol.addAtom();
+  m_molecule->removeAtom(a);
 }
 
 void MoleculeTest::addBond()
@@ -256,6 +262,12 @@ void MoleculeTest::removeBond()
   QVERIFY(m_molecule->numBonds() == 1);
   m_molecule->removeBond(0ul);
   QVERIFY(m_molecule->numBonds() == 0);
+
+  // Check behavior of removing a bond that is owned by a different
+  // molecule. Should not crash.
+  Molecule mol;
+  b = mol.addBond(0ul);
+  m_molecule->removeBond(b);
 }
 
 void MoleculeTest::center()
