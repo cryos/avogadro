@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2011-01-03 13:43+0000\n"
+"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"PO-Revision-Date: 2011-02-09 13:53+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:21+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
+"X-Generator: Launchpad (build 12792)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,33 +30,33 @@ msgstr "(Git 修正: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>應用程式版本: %2<br/><br/>Library Version: %3<br/><br/"
-">Open Babel 版本: %4"
+"<h3>%1</h3><br/><br/>應用程式版本: %2<br/><br/>Library Version: %3<br/><br/>Open "
+"Babel 版本: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
 #: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
-#: src/mainwindow.cpp:3427:69
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
+#: src/mainwindow.cpp:3606 :69
 msgid "Avogadro"
 msgstr "Avogadro 亞佛加厥"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Qt 版本: %1<br/><br/>更多訊息請見 <a href=\"http://avogadro."
-"openmolecules.net/\">Avogadro 網頁</a>.<br/><br/>The 使用本軟體不提供任何形式"
-"的保證, 包括設計, 商業用或是符合特定目的.<br/>"
+"<br/><br/>Qt 版本: %1<br/><br/>更多訊息請見 <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro 網頁</a>.<br/><br/>The "
+"使用本軟體不提供任何形式的保證, 包括設計, 商業用或是符合特定目的.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -66,15 +66,15 @@ msgstr "剪下分子"
 msgid "Cut Atoms"
 msgstr "剪下原子"
 
-#: src/editcommands.cpp:97
+#: src/editcommands.cpp:101
 msgid "Paste"
 msgstr "貼上"
 
-#: src/editcommands.cpp:132
+#: src/editcommands.cpp:136
 msgid "Clear Molecule"
 msgstr "清除分子"
 
-#: src/editcommands.cpp:134
+#: src/editcommands.cpp:138
 msgid "Clear Atoms"
 msgstr "清除原子"
 
@@ -83,7 +83,7 @@ msgstr "清除原子"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462:381 rc.cpp:393
+#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
 msgid "Settings"
 msgstr "設定"
 
@@ -149,11 +149,11 @@ msgstr "拿到前面"
 
 #: src/mainwindow.cpp:582
 msgid "Record Test..."
-msgstr ""
+msgstr "錄影測試..."
 
 #: src/mainwindow.cpp:585
 msgid "Play Test..."
-msgstr ""
+msgstr "播放測試..."
 
 #: src/mainwindow.cpp:885
 msgid "&Tool Settings..."
@@ -375,90 +375,90 @@ msgstr "無法貼上分子"
 msgid "Paste failed (format unavailable)."
 msgstr "無法貼上 (檔案格式無法使用)"
 
-#: src/mainwindow.cpp:2236
+#: src/mainwindow.cpp:2402
 msgid "Copy failed (mdl unavailable)."
 msgstr "無法複製"
 
-#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
-#: src/mainwindow.cpp:3069
+#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
+#: src/mainwindow.cpp:3247
 #, qt-format
 msgid "View %1"
 msgstr "檢視 %1"
 
-#: src/mainwindow.cpp:2422
+#: src/mainwindow.cpp:2600
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "觀看 %1"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2609
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 分離觀看"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2840
 msgid "Normal Size"
 msgstr "正常大小"
 
-#: src/mainwindow.cpp:2679
+#: src/mainwindow.cpp:2857
 msgid "Full Screen"
 msgstr "全螢幕"
 
-#: src/mainwindow.cpp:2780
+#: src/mainwindow.cpp:2958
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3094
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2922
+#: src/mainwindow.cpp:3100
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3381
+#: src/mainwindow.cpp:3560
 msgid "Add"
 msgstr "新增"
 
-#: src/mainwindow.cpp:3386
+#: src/mainwindow.cpp:3565
 msgid "Duplicate"
 msgstr "製作複本"
 
-#: src/mainwindow.cpp:3391
+#: src/mainwindow.cpp:3570
 msgid "Remove"
 msgstr "移除"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3598
 msgid "No tools or engines loaded."
 msgstr "沒有載入工具或引擎"
 
-#: src/mainwindow.cpp:3421
+#: src/mainwindow.cpp:3600
 msgid "No engines loaded."
 msgstr "沒有載入引擎"
 
-#: src/mainwindow.cpp:3423
+#: src/mainwindow.cpp:3602
 msgid "No tools loaded."
 msgstr "沒有載入工具"
 
-#: src/mainwindow.cpp:3424
+#: src/mainwindow.cpp:3603
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr " 這個應用程式無法正常使用. 請先更正錯誤."
 
-#: src/mainwindow.cpp:3468
+#: src/mainwindow.cpp:3647
 msgid "Objects"
 msgstr "物件"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3474:321
+#: src/mainwindow.cpp:3653 :321
 msgid "Colors"
 msgstr "顏色"
 
-#: src/mainwindow.cpp:3507
+#: src/mainwindow.cpp:3686
 msgid " copy"
 msgstr " 複製"
 
@@ -531,7 +531,7 @@ msgstr "只有標籤才能有子項目"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "項目"
 
@@ -546,7 +546,7 @@ msgstr "低"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "中等"
@@ -563,7 +563,7 @@ msgstr "未設定"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "無"
@@ -1226,32 +1226,22 @@ msgstr "霧化:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,Kaihsu Tai,"
-"iychiang, ,Launchpad Contributions:,Kaihsu Tai,iychiang, ,Launchpad "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,Kaihsu "
+"Tai,iychiang, ,Launchpad Contributions:,Kaihsu Tai,iychiang, ,Launchpad "
+"Contributions:,Kaihsu Tai,XsLiDian,iychiang, ,Launchpad "
 "Contributions:,Kaihsu Tai,XsLiDian,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
-"iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
-"iychiang1809@gmail.com,,,,iychiang1809@gmail.com,,,,iychiang1809@gmail."
-"com,,,,xslidian@gmail.com,iychiang1809@gmail.com"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Common vector image formats"
-#~ msgstr "一般向量圖形格式"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
+"iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iy"
+"chiang1809@gmail.com,,,,iychiang1809@gmail.com,,,,iychiang1809@gmail.com,,,,x"
+"slidian@gmail.com,iychiang1809@gmail.com,,,,xslidian@gmail.com,iychiang1809@g"
+"mail.com"
 
 #~ msgid "Animation..."
 #~ msgstr "動畫"
@@ -1301,15 +1291,19 @@ msgstr ""
 #~ msgid "Axes"
 #~ msgstr "軸"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "距離（2->3）：%1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "距離（3->4）：%1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "角度：%1 %2"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "距離（1->2）：%1 %2"
 
@@ -1361,6 +1355,7 @@ msgstr ""
 #~ msgid "Steps per Update:"
 #~ msgstr "每次更新步數："
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1388,18 +1383,22 @@ msgstr ""
 #~ msgid "Animate Trajectory"
 #~ msgstr "動畫軌跡"
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "無法讀取軌跡檔 %1"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "Open trajectory file"
 #~ msgstr "開啟軌跡檔案"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "原子的數目: %1"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "平面角：%1 %2"
 
@@ -1412,6 +1411,7 @@ msgstr ""
 #~ msgid "Dipole"
 #~ msgstr "雙極"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "可旋轉的鍵的數目: %1"
 
@@ -1811,6 +1811,7 @@ msgstr ""
 #~ msgid "Reading molecular file failed."
 #~ msgstr "無法讀取分子檔"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1821,6 +1822,7 @@ msgstr ""
 #~ "view properly."
 #~ msgstr "這檔案不含 3 D 坐標, 您可能無法編輯或是觀看該檔"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1828,12 +1830,14 @@ msgstr ""
 #~ "無法寫入檔案 %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "無法寫入 %1 的檔案格式"
 
 #~ msgid "Saving file."
 #~ msgstr "存檔"
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "無法寫入檔案 %1"
 
@@ -1944,6 +1948,7 @@ msgstr ""
 #~ msgid "Conformer"
 #~ msgstr "構形異構物"
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "構形異構物 %1"
 
@@ -2004,10 +2009,8 @@ msgstr ""
 #~ msgstr ""
 #~ "調整工具（F10）\n"
 #~ "\n"
-#~ "滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的"
-#~ "平面)\n"
-#~ "滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平"
-#~ "面的垂直方向移動) 。\n"
+#~ "滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平面)\n"
+#~ "滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面的垂直方向移動) 。\n"
 #~ "滑鼠右鍵：點擊並拖曳可以旋轉所選的原子。"
 
 #~ msgid ""
@@ -2018,12 +2021,10 @@ msgstr ""
 #~ msgstr ""
 #~ "選取工具（F11）\n"
 #~ "1. 先從選擇模式的選單中挑選需要的型式, 如選擇原子、殘基或片段\n"
-#~ "2. 可以點選原子或是鍵. 也使用拖曳 (會出現一個方框) 可以選擇特定範圍內的原"
-#~ "子\n"
+#~ "2. 可以點選原子或是鍵. 也使用拖曳 (會出現一個方框) 可以選擇特定範圍內的原子\n"
 #~ "3. 使用 Ctrl 鍵來切換選擇，Shift 鍵來加入新的選項\n"
 #~ "\n"
-#~ "譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點"
-#~ "選需要的原子"
+#~ "譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需要的原子"
 
 #~ msgid "AutoRotate"
 #~ msgstr "自動旋轉 (可以設定的旋轉軸, 選轉方向及速度)"
@@ -2105,6 +2106,7 @@ msgstr ""
 #~ "Your molecule must contain at least two atoms to add a bond constraint"
 #~ msgstr "您的分子至少要有兩個原子用來加入鍵的約束"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "鍵角 %1"
 
@@ -2123,6 +2125,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "扭轉 %1"
 
@@ -2141,6 +2144,7 @@ msgstr ""
 #~ msgid "Atom/Bond"
 #~ msgstr "原子/鍵"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "鍵 %1"
 
@@ -2189,13 +2193,14 @@ msgstr ""
 #~ msgid "&Molecular Mechanics"
 #~ msgstr "&分子力學"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "能量 = %1 %2"
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr "無效的 OpenGL 上下文"
 
 #~ msgid "OpenGL error"
@@ -2384,12 +2389,9 @@ msgstr ""
 #~ msgstr "從目前選項中新增配位基"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
-#~ msgstr ""
-#~ "這檔案還有多個分子的紀錄. Avogadro 將只會讀取第一個分子. 如果您存檔, 將會"
-#~ "失去其他分子的紀錄"
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ msgstr "這檔案還有多個分子的紀錄. Avogadro 將只會讀取第一個分子. 如果您存檔, 將會失去其他分子的紀錄"
 
 #~ msgid "gamessEfpDock"
 #~ msgstr "gamessEfpDock"
@@ -2477,6 +2479,7 @@ msgstr ""
 #~ msgid "Gaussian Input"
 #~ msgstr "輸入 Gaussian"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -2508,6 +2511,7 @@ msgstr ""
 #~ msgid " ("
 #~ msgstr " ("
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "原子 %1"
 
@@ -3348,8 +3352,7 @@ msgstr ""
 #~ msgstr ""
 #~ "導覽工具（F9）\n"
 #~ "滑鼠左鍵：點擊並拖曳可以旋轉分子。\n"
-#~ "滑鼠中鍵：點擊並拖曳以縮放分子的大小 (或是滾輪向前轉是放大, 向後轉是縮"
-#~ "小)。\n"
+#~ "滑鼠中鍵：點擊並拖曳以縮放分子的大小 (或是滾輪向前轉是放大, 向後轉是縮小)。\n"
 #~ "滑鼠右鍵：點擊並拖曳可以移動分子檢視的位置。"
 
 #~ msgid ""
@@ -3366,13 +3369,10 @@ msgstr ""
 #~ "鍵中心調整工具\n"
 #~ "旋轉, 放大縮小, 移動的功能與導覽工具相同\n"
 #~ "*調整功能如下\n"
-#~ "1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以"
-#~ "選轉該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
-#~ "2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以"
-#~ "繞著藍色平面改變鍵角.\n"
+#~ "1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
+#~ "2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞著藍色平面改變鍵角.\n"
 #~ "3. 使用滑鼠右鍵可以改變鍵的長度\n"
-#~ "譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回"
-#~ "到適當的形狀."
+#~ "譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到適當的形狀."
 
 #~ msgid "Core Potential"
 #~ msgstr "Core Potential"
@@ -3410,14 +3410,15 @@ msgstr ""
 #~ msgid "Initial Guess:"
 #~ msgstr "Initial Guess:"
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
 #~ "目前 Avogadro 的工作視窗是 %1x%2 畫素, 而畫面比例是 %3.\n"
 #~ "您可以保留這設定, 例如, 如果您想要使用 POV-Ray\n"
@@ -3448,17 +3449,28 @@ msgstr ""
 #~ msgid "&Basic Setup"
 #~ msgstr "建立 (&B)"
 
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
 #~ msgid "Navigate"
 #~ msgstr "導覽"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "無法讀取檔案 %1 的格式。"
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "無法讀取檔案 %1。"
 
 #~ msgid "Manipulate"
 #~ msgstr "調整"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
 
 #~ msgid "index"
 #~ msgstr "索引"
@@ -3489,6 +3501,9 @@ msgstr ""
 
 #~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
 #~ msgstr "依元素標示顏色 (碳=灰色, 氧=紅色, ...)"
+
+#~ msgid "Common vector image formats"
+#~ msgstr "一般向量圖形格式"
 
 #~ msgid "Unknown"
 #~ msgstr "未知"
@@ -3570,32 +3585,36 @@ msgstr ""
 #~ msgid "Color by Distance"
 #~ msgstr "以不同顏色表示距離"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更"
-#~ "多資訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
+#~ "<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更多資訊請上 Avogadro "
+#~ "的網站 <a href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
 
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>應用程式版本: %2<br/><br/>函式庫版本: %3<br/><br/"
-#~ ">Open Babel 版本: %4<br/><br/>Qt Version: %5<br/><br/>更多資訊請見 <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/"
-#~ "><br/>使用本軟體不提供任何保證 (包括設計、銷售及是用於特定目的)<br/>"
+#~ "<h3>%1</h3><br/><br/>應用程式版本: %2<br/><br/>函式庫版本: %3<br/><br/>Open Babel 版本: "
+#~ "%4<br/><br/>Qt Version: %5<br/><br/>更多資訊請見 <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>使用本軟體不提供任何保證 (包括設計、銷售及是用於特定目的)<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Antialiasing."
@@ -3629,6 +3648,7 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "正要測試 OpenGL 之相容性"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -3684,19 +3704,20 @@ msgstr ""
 #~ msgstr "無效的影片檔名. 必須包含完整的路徑"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr "無效的影片檔名. 必須包含完整的子目錄名稱與檔名, 結尾是 .avi"
 
 #~ msgid "could not set format to XYZ"
 #~ msgstr "無法設為 XYZ 的格式"
 
+#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "無法讀取軌跡檔 %1"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 #~ msgstr "軌跡檔 %1 的原子數目與現在的分子不符合"
 
 #~ msgid "Trajectory..."
@@ -3756,21 +3777,25 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "軌跡檔 (*.xyz)"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "這兩個分子有不同的原子數目 %1 %2"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "無法讀取 mol 檔案 %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "寫入檔案 %1"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "將寫入檔案 %1"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑及檔名, 且以 .avi 結尾"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
@@ -3830,12 +3855,10 @@ msgstr ""
 #~ msgstr "無法啟動 POV-Ray."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
-#~ msgstr ""
-#~ "您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔"
-#~ "案. 您確定要這樣做嗎?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
+#~ msgstr "您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔案. 您確定要這樣做嗎?"
 
 #~ msgid "Angle"
 #~ msgstr "角度"

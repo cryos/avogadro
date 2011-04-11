@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-11-20 12:52+0000\n"
+"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"PO-Revision-Date: 2011-02-04 14:06+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:21+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
+"X-Generator: Launchpad (build 12792)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,8 +30,8 @@ msgstr "גרסת גיט: %1"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>גרסת תוכנה: %2<br/><br/>גרסת ספריה: %3<br/><br/>גרסת "
 "בבל פתוח: %4"
@@ -40,24 +40,24 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
 #: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
-#: src/mainwindow.cpp:3427:69
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
+#: src/mainwindow.cpp:3606 :69
 msgid "Avogadro"
 msgstr "אבוגדרו"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>גרסת Qt: %1<br/><br/>למידע נוסף עיין ב <a href=\"http://avogadro."
-"openmolecules.net/\">דף הבית של אבוגדרו</a>.<br/><br/>The התוכנה מסופקת כפי "
-"שהיא וללא אחריות מכל סוג, כולל אחריות על עיצוב, מסחריות והתאמה לשימושים "
-"ספציפיים.<br/>"
+"<br/><br/>גרסת Qt: %1<br/><br/>למידע נוסף עיין ב <a "
+"href=\"http://avogadro.openmolecules.net/\">דף הבית של "
+"אבוגדרו</a>.<br/><br/>The התוכנה מסופקת כפי שהיא וללא אחריות מכל סוג, כולל "
+"אחריות על עיצוב, מסחריות והתאמה לשימושים ספציפיים.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -67,15 +67,15 @@ msgstr "חתוך מולקולה"
 msgid "Cut Atoms"
 msgstr "חתוך אטומים"
 
-#: src/editcommands.cpp:97
+#: src/editcommands.cpp:101
 msgid "Paste"
 msgstr "הדבק"
 
-#: src/editcommands.cpp:132
+#: src/editcommands.cpp:136
 msgid "Clear Molecule"
 msgstr "נקה מולקולה"
 
-#: src/editcommands.cpp:134
+#: src/editcommands.cpp:138
 msgid "Clear Atoms"
 msgstr "נקה אטומים"
 
@@ -84,7 +84,7 @@ msgstr "נקה אטומים"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462:381 rc.cpp:393
+#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -378,90 +378,90 @@ msgstr "לא ניתן להדביק את המולקולה."
 msgid "Paste failed (format unavailable)."
 msgstr "הדבקה נכשלה (פורמט לא זמין)."
 
-#: src/mainwindow.cpp:2236
+#: src/mainwindow.cpp:2402
 msgid "Copy failed (mdl unavailable)."
 msgstr "העתקה נכשלה (mdl לא זמין)."
 
-#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
-#: src/mainwindow.cpp:3069
+#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
+#: src/mainwindow.cpp:3247
 #, qt-format
 msgid "View %1"
 msgstr "הצג %1"
 
-#: src/mainwindow.cpp:2422
+#: src/mainwindow.cpp:2600
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "הצג מספר %1"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2609
 msgid "Avogadro: Detached View"
 msgstr "אבוגדרו: תצוגה חופשית"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2840
 msgid "Normal Size"
 msgstr "גודל רגיל"
 
-#: src/mainwindow.cpp:2679
+#: src/mainwindow.cpp:2857
 msgid "Full Screen"
 msgstr "מסך מלא"
 
-#: src/mainwindow.cpp:2780
+#: src/mainwindow.cpp:2958
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3094
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]אבוגדרו"
 
-#: src/mainwindow.cpp:2922
+#: src/mainwindow.cpp:3100
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3381
+#: src/mainwindow.cpp:3560
 msgid "Add"
 msgstr "הוספה"
 
-#: src/mainwindow.cpp:3386
+#: src/mainwindow.cpp:3565
 msgid "Duplicate"
 msgstr "שכפל"
 
-#: src/mainwindow.cpp:3391
+#: src/mainwindow.cpp:3570
 msgid "Remove"
 msgstr "הסר"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3598
 msgid "No tools or engines loaded."
 msgstr "לא נטענו כלים או מנועים."
 
-#: src/mainwindow.cpp:3421
+#: src/mainwindow.cpp:3600
 msgid "No engines loaded."
 msgstr "לא נטענו מנועים."
 
-#: src/mainwindow.cpp:3423
+#: src/mainwindow.cpp:3602
 msgid "No tools loaded."
 msgstr "לא נטענו כלים."
 
-#: src/mainwindow.cpp:3424
+#: src/mainwindow.cpp:3603
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr " לא סביר שהתוכנה תפעל באופן תקין. אנא תגן שגיאה זו."
 
-#: src/mainwindow.cpp:3468
+#: src/mainwindow.cpp:3647
 msgid "Objects"
 msgstr "פריטים"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3474:321
+#: src/mainwindow.cpp:3653 :321
 msgid "Colors"
 msgstr "צבעים"
 
-#: src/mainwindow.cpp:3507
+#: src/mainwindow.cpp:3686
 msgid " copy"
 msgstr " העתק"
 
@@ -534,7 +534,7 @@ msgstr "רק תוויות יכולות להכיל תת פריטים"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "פריט"
 
@@ -549,7 +549,7 @@ msgstr "נמוכה"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "בינונית"
@@ -566,7 +566,7 @@ msgstr "לא מוגדר"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "ללא"
@@ -1229,45 +1229,37 @@ msgstr "ערפל:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,ofir, ,Launchpad Contributions:,dlonie,ofir, ,"
-"Launchpad Contributions:,Avogadro Team,dlonie,ofir, ,Launchpad "
+",Launchpad Contributions:,ofir, ,Launchpad Contributions:,dlonie,ofir, "
+",Launchpad Contributions:,Avogadro Team,dlonie,ofir, ,Launchpad "
 "Contributions:,Avogadro Team,dlonie,ofir, ,Launchpad Contributions:,Avogadro "
-"Team,dlonie,ofir, ,Launchpad Contributions:,Avogadro Team,dlonie,ofir"
+"Team,dlonie,ofir, ,Launchpad Contributions:,Avogadro Team,dlonie,ofir, "
+",Launchpad Contributions:,Avogadro Team,dlonie,ofir"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,loniedavid@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"loniedavid@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"loniedavid@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"loniedavid@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"loniedavid@gmail.com,"
+",,,,,loniedavid@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,loniedavid@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,loniedavid@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,loniedavid@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,loniedavid@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,loniedavid@gmail.com,"
 
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Common vector image formats"
-#~ msgstr "סוגי תמונת וקטור נפוצים"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
-
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>גירסת תוכנה: %2<br/><br/>גירסת ספריה: %3<br/><br/"
-#~ ">גירסת Open Babel: %4<br/><br/>גירסת Qt: %5<br/><br/>למידע נוסף לחץ: <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">דף הבית של אבוגדרו</a>.<br/"
-#~ "><br/>התוכנה מוצעת כפי שהיא, ללא אחריות מכל סוג, ובפרט ללא אחריות על "
-#~ "עיצובה, מסחריותה והתאמתה למטרה מסויימת. <br/>"
+#~ "<h3>%1</h3><br/><br/>גירסת תוכנה: %2<br/><br/>גירסת ספריה: %3<br/><br/>גירסת "
+#~ "Open Babel: %4<br/><br/>גירסת Qt: %5<br/><br/>למידע נוסף לחץ: <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">דף הבית של "
+#~ "אבוגדרו</a>.<br/><br/>התוכנה מוצעת כפי שהיא, ללא אחריות מכל סוג, ובפרט ללא "
+#~ "אחריות על עיצובה, מסחריותה והתאמתה למטרה מסויימת. <br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Direct Rendering."
@@ -1301,9 +1293,22 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "עומד לבחון יכולות OpenGL."
 
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Common vector image formats"
+#~ msgstr "סוגי תמונת וקטור נפוצים"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
 #~ msgid "Backspace"
 #~ msgstr "מחיקה לאחור"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

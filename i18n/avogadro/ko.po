@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-11-20 12:47+0000\n"
+"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"PO-Revision-Date: 2011-02-04 14:01+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:21+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
+"X-Generator: Launchpad (build 12792)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,29 +30,28 @@ msgstr "(Git 리비전: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>"
-"오픈 바벨 버전: %4"
+"<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>오픈 바벨 버전: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
 #: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
-#: src/mainwindow.cpp:3427:69
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
+#: src/mainwindow.cpp:3606 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -63,15 +62,15 @@ msgstr "분자 잘라내기"
 msgid "Cut Atoms"
 msgstr "원자 절단하기"
 
-#: src/editcommands.cpp:97
+#: src/editcommands.cpp:101
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/editcommands.cpp:132
+#: src/editcommands.cpp:136
 msgid "Clear Molecule"
 msgstr "분자 제거"
 
-#: src/editcommands.cpp:134
+#: src/editcommands.cpp:138
 msgid "Clear Atoms"
 msgstr "원자 제거"
 
@@ -80,7 +79,7 @@ msgstr "원자 제거"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462:381 rc.cpp:393
+#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
 msgid "Settings"
 msgstr "설정"
 
@@ -241,8 +240,7 @@ msgstr "%1 분자모형 파일을 읽는 데 실패함"
 
 #: src/mainwindow.cpp:1093
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr ""
-"Multi-분자 파일을 읽고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다..."
+msgstr "Multi-분자 파일을 읽고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다..."
 
 #: src/mainwindow.cpp:1120
 msgid "This file does not contain 3D coordinates."
@@ -366,91 +364,90 @@ msgstr "분자를 붙여넣을 수 없습니다"
 msgid "Paste failed (format unavailable)."
 msgstr "붙여넣기 실패 (사용불가능한 포맷)"
 
-#: src/mainwindow.cpp:2236
+#: src/mainwindow.cpp:2402
 msgid "Copy failed (mdl unavailable)."
 msgstr "복사 실패 (mdl 사용불가능)"
 
-#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
-#: src/mainwindow.cpp:3069
+#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
+#: src/mainwindow.cpp:3247
 #, qt-format
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2422
+#: src/mainwindow.cpp:2600
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2609
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 분리된 보기"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2840
 msgid "Normal Size"
 msgstr "보통 크기"
 
-#: src/mainwindow.cpp:2679
+#: src/mainwindow.cpp:2857
 msgid "Full Screen"
 msgstr "전체 화면"
 
-#: src/mainwindow.cpp:2780
+#: src/mainwindow.cpp:2958
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3094
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2922
+#: src/mainwindow.cpp:3100
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3381
+#: src/mainwindow.cpp:3560
 msgid "Add"
 msgstr "추가"
 
-#: src/mainwindow.cpp:3386
+#: src/mainwindow.cpp:3565
 msgid "Duplicate"
 msgstr "복사"
 
-#: src/mainwindow.cpp:3391
+#: src/mainwindow.cpp:3570
 msgid "Remove"
 msgstr "삭제"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3598
 msgid "No tools or engines loaded."
 msgstr "도구나 엔진을 불러올 수 없습니다:"
 
-#: src/mainwindow.cpp:3421
+#: src/mainwindow.cpp:3600
 msgid "No engines loaded."
 msgstr "엔진을 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3423
+#: src/mainwindow.cpp:3602
 msgid "No tools loaded."
 msgstr "도구를 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3424
+#: src/mainwindow.cpp:3603
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr ""
-" 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
+msgstr " 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
 
-#: src/mainwindow.cpp:3468
+#: src/mainwindow.cpp:3647
 msgid "Objects"
 msgstr "개체"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3474:321
+#: src/mainwindow.cpp:3653 :321
 msgid "Colors"
 msgstr "색상"
 
-#: src/mainwindow.cpp:3507
+#: src/mainwindow.cpp:3686
 msgid " copy"
 msgstr " 복사"
 
@@ -523,7 +520,7 @@ msgstr "오직 라벨만 하위 항목을 가질 수 있습니다"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "항목"
 
@@ -538,7 +535,7 @@ msgstr "낮음"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "미디어"
@@ -555,7 +552,7 @@ msgstr "정의되지 않음"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "없음"
@@ -1218,43 +1215,40 @@ msgstr "안개:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,Kim "
-"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,"
-"Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro "
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
+"Contributions:,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Kim Hanjo,Sang-hyeon "
+"Lee, ,Launchpad Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim "
+"Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad Contributions:,Avogadro "
 "Team,Bundo,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
-"Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee,"
-"dlonie, ,Launchpad Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim "
-"Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad Contributions:,Avogadro Team,Bundo,"
-"Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad Contributions:,"
-"Avogadro Team,Bundo,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee,dlonie"
+"Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim Hanjo,Sang-hyeon "
+"Lee,dlonie, ,Launchpad Contributions:,Avogadro Team,Bundo,Geoff "
+"Hutchison,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim Hanjo,Sang-hyeon "
+"Lee,dlonie, ,Launchpad Contributions:,Avogadro Team,Bundo,Geoff "
+"Hutchison,Kim Hanjo,Sang-hyeon Lee,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,,lordmiss@lordmiss.com,,,,"
-"avogadro-devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-devel@lists."
-"sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavid@gmail."
-"com,,,avogadro-devel@lists.sourceforge.net,bundo@bundo.biz,,"
-"lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavid@gmail."
-"com,,,avogadro-devel@lists.sourceforge.net,bundo@bundo.biz,,"
-"lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavid@gmail.com"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Common vector image formats"
-#~ msgstr "일반적인 벡터 이미지 포맷"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
+",,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com"
 
 #~ msgid "Hydrogen"
 #~ msgstr "수소"
@@ -1271,35 +1265,51 @@ msgstr ""
 #~ msgid "Phosphorus"
 #~ msgstr "인"
 
+#~ msgid "Common vector image formats"
+#~ msgstr "일반적인 벡터 이미지 포맷"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/"
-#~ "><br/>더 많은 정보를 위해 <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro 홈페이지</a>를 참조하세요.<br/><br/>The program is provided "
-#~ "AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, "
-#~ "MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/"
-#~ "><br/>Open Babel 버전: %4<br/><br/>Qt 버전: %5<br/><br/>자세한 내용은  <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro 홈페이지</a>를 참조 "
-#~ "하십시오.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
 #~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>더 많은 정보를 위해 "
+#~ "<a href=\"http://avogadro.openmolecules.net/\">Avogadro 홈페이지</a>를 "
+#~ "참조하세요.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND, "
+#~ "INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
+
+#, qt-format
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>Open Babel "
+#~ "버전: %4<br/><br/>Qt 버전: %5<br/><br/>자세한 내용은  <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro 홈페이지</a>를 참조 "
+#~ "하십시오.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND, "
+#~ "INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
 #~ "PARTICULAR PURPOSE.<br/>"
 
 #~ msgctxt "main.cpp"
@@ -1334,6 +1344,7 @@ msgstr ""
 #~ msgid "Double Buffering."
 #~ msgstr "더블 버퍼링."
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

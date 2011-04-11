@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-11-20 12:36+0000\n"
+"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"PO-Revision-Date: 2011-02-04 13:47+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:21+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
+"X-Generator: Launchpad (build 12792)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,34 +30,35 @@ msgstr "(Git sürüm: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: %3<br/"
-"><br/>Open Babel Sürümü: %4"
+"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: "
+"%3<br/><br/>Open Babel Sürümü: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
 #: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
-#: src/mainwindow.cpp:3427:69
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
+#: src/mainwindow.cpp:3606 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Qt Sürümü: %1<br/><br/>Daha fazla bilgi için <a href=\"http://"
-"avogadro.openmolecules.net/\">Avogadro ana sayfası</a>nı ziyaret edin.<br/"
-"><br/>Bu program OLDUĞU GİBİ sunulmaktadır, HERHANGİ BELİRLİ AMAÇ İÇİN "
-"TASARIM, TİCARİ UYGUNLUK VE YETERLİLİK DAHİL HİÇBİR GARANTİSİ YOKTUR.<br/>"
+"<br/><br/>Qt Sürümü: %1<br/><br/>Daha fazla bilgi için <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro ana sayfası</a>nı "
+"ziyaret edin.<br/><br/>Bu program OLDUĞU GİBİ sunulmaktadır, HERHANGİ "
+"BELİRLİ AMAÇ İÇİN TASARIM, TİCARİ UYGUNLUK VE YETERLİLİK DAHİL HİÇBİR "
+"GARANTİSİ YOKTUR.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -67,15 +68,15 @@ msgstr "Molekülü kes"
 msgid "Cut Atoms"
 msgstr "Atomları kes"
 
-#: src/editcommands.cpp:97
+#: src/editcommands.cpp:101
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/editcommands.cpp:132
+#: src/editcommands.cpp:136
 msgid "Clear Molecule"
 msgstr "Molekülü temizle"
 
-#: src/editcommands.cpp:134
+#: src/editcommands.cpp:138
 msgid "Clear Atoms"
 msgstr "Atomları temizle"
 
@@ -84,7 +85,7 @@ msgstr "Atomları temizle"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462:381 rc.cpp:393
+#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -378,74 +379,74 @@ msgstr "Molekül yapıştırılamadı."
 msgid "Paste failed (format unavailable)."
 msgstr "Yapıştırma başarısız (biçim erişilemez)."
 
-#: src/mainwindow.cpp:2236
+#: src/mainwindow.cpp:2402
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopyalama başarısız (mdl erişilemez)."
 
-#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
-#: src/mainwindow.cpp:3069
+#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
+#: src/mainwindow.cpp:3247
 #, qt-format
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:2422
+#: src/mainwindow.cpp:2600
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2609
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Ayrılmış Görüntü"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2840
 msgid "Normal Size"
 msgstr "Normal Boyut"
 
-#: src/mainwindow.cpp:2679
+#: src/mainwindow.cpp:2857
 msgid "Full Screen"
 msgstr "Tam Ekran"
 
-#: src/mainwindow.cpp:2780
+#: src/mainwindow.cpp:2958
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3094
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2922
+#: src/mainwindow.cpp:3100
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3381
+#: src/mainwindow.cpp:3560
 msgid "Add"
 msgstr "Ekle"
 
-#: src/mainwindow.cpp:3386
+#: src/mainwindow.cpp:3565
 msgid "Duplicate"
 msgstr "Çoğalt"
 
-#: src/mainwindow.cpp:3391
+#: src/mainwindow.cpp:3570
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3598
 msgid "No tools or engines loaded."
 msgstr "Herhangi bir araç veya motor yüklenmedi."
 
-#: src/mainwindow.cpp:3421
+#: src/mainwindow.cpp:3600
 msgid "No engines loaded."
 msgstr "Herhangi bir motor yüklenmedi."
 
-#: src/mainwindow.cpp:3423
+#: src/mainwindow.cpp:3602
 msgid "No tools loaded."
 msgstr "Herhangi bir araç yüklenmedi."
 
-#: src/mainwindow.cpp:3424
+#: src/mainwindow.cpp:3603
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -453,17 +454,17 @@ msgstr ""
 " Bu program doğru bir şekilde çalışacağa benzemiyor. Lütfen bu hatayı "
 "düzeltin."
 
-#: src/mainwindow.cpp:3468
+#: src/mainwindow.cpp:3647
 msgid "Objects"
 msgstr "Nesneler"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3474:321
+#: src/mainwindow.cpp:3653 :321
 msgid "Colors"
 msgstr "Renkler"
 
-#: src/mainwindow.cpp:3507
+#: src/mainwindow.cpp:3686
 msgid " copy"
 msgstr " kopyala"
 
@@ -536,7 +537,7 @@ msgstr "sadece etiketler alt öğe sahip olabilirler"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Öğe"
 
@@ -551,7 +552,7 @@ msgstr "Düşük"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Orta"
@@ -568,7 +569,7 @@ msgstr "Tanımlanmamış"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Hiç"
@@ -1234,45 +1235,38 @@ msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
 "Contributions:,Efe Çiftci,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
-"Contributions:,Efe Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,"
-"huseyinkozan, ,Launchpad Contributions:,Efe Çiftci,Macky,Osman Tosun,Yahuda,"
-"aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe Çiftci,Macky,"
-"Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,"
-"Efe Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
-"Contributions:,Efe Çiftci,K. Deniz Ogut,Macky,Osman Tosun,Yahuda,aLsanCaK,"
-"hknrgl,huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Efe Çiftci,K. "
-"Deniz Ogut,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan"
+"Contributions:,Efe Çiftci,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe "
+"Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Efe Çiftci,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe "
+"Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Avogadro Team,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Avogadro Team,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,"
-"hknrgl@gmail.com,huseyinkozan@gmail.com,,,efeciftci@gmail.com,,,hknrgl@gmail."
-"com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,avogadro-devel@lists.sourceforge.net,efe."
-"ciftci@linux.org.tr,,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail."
-"com,,,hknrgl@gmail.com,huseyinkozan@gmail.com"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Common vector image formats"
-#~ msgstr "Genel vektörel resim biçimleri"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,hknrgl@g"
+"mail.com,huseyinkozan@gmail.com,,,efeciftci@gmail.com,,,hknrgl@gmail.com,huse"
+"yinkozan@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedrich_gauss_77@hotmail."
+"com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.cif"
+"tci@linux.org.tr,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,"
+"hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedr"
+"ich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkoza"
+"n@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedrich_gauss_77@hotmail.com,rai"
+"nman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@lin"
+"ux.org.tr,,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl"
+"@gmail.com,huseyinkozan@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,efe.ciftci@linux.org.tr,,carl_friedrich_gauss_77@"
+"hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,"
+",avogadro-"
+"devel@lists.sourceforge.net,efe.ciftci@linux.org.tr,,carl_friedrich_gauss_77@"
+"hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com"
 
 #~ msgid "Load File..."
 #~ msgstr "Dosya yükle..."
@@ -1286,9 +1280,11 @@ msgstr ""
 #~ msgid "Tool Settings"
 #~ msgstr "Araç ayarları"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Dosya biçimi okunamıyor %1."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1296,6 +1292,7 @@ msgstr ""
 #~ "Dosya Okunamıyor %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Dosya okunamıyor %1."
 
@@ -1310,9 +1307,8 @@ msgstr ""
 #~ "düzenleme yapamayabilirsiniz."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Bu dosyada birden fazla molekül kaydı var. Avagadro sadece ilk molekülü "
 #~ "okuyacak. Kaydederseniz diğerleri kaybolabilir."
@@ -1327,9 +1323,11 @@ msgstr ""
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Molekül dosyası okunamadı."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "%1 dosyasının formatı yazılamıyor."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1340,23 +1338,39 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Dosya kaydediliyor."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "%1 dosyasına yazılamıyor."
+
+#~ msgid "Common vector image formats"
+#~ msgstr "Genel vektörel resim biçimleri"
 
 #~ msgid "Save succeeded."
 #~ msgstr "Kayıt başarılı."
 
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
 #~ msgid "Saving molecular file failed."
 #~ msgstr "Molekül dosyası kaydedilemedi."
 
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#, qt-format
 #~ msgctxt "%1 is residue name, %2 is residue index"
 #~ msgid "Residue %1 %2"
 #~ msgstr "Kalıntı %1 %2"
 
+#, qt-format
 #~ msgctxt "%1 is element, %L2 is atom index"
 #~ msgid "Atom %1 %L2"
 #~ msgstr "Atom %1 %L2"
 
+#, qt-format
 #~ msgctxt "%L1 is bond index"
 #~ msgid "Bond %L1"
 #~ msgstr "Bağ %L1"
@@ -1367,20 +1381,22 @@ msgstr ""
 #~ msgid "1"
 #~ msgstr "1"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: %3<br/"
-#~ "><br/>Daha fazla bilgi için <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro ana sayfasını</a> kontrol edin.<br/><br/>Program, tasarım, "
-#~ "satılabilirlik ve özel bir duruma uygunluk gibi durumlar için yetki "
-#~ "vermemektedir. (The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
 #~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE).<br/>"
+#~ "PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: "
+#~ "%3<br/><br/>Daha fazla bilgi için <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro ana sayfasını</a> "
+#~ "kontrol edin.<br/><br/>Program, tasarım, satılabilirlik ve özel bir duruma "
+#~ "uygunluk gibi durumlar için yetki vermemektedir. (The program is provided AS "
+#~ "IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, "
+#~ "MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE).<br/>"
 
 #~ msgid "This file contains does not contain 3D coordinates."
 #~ msgstr "Bu dosya 3D koordinatlarını içermiyor."
@@ -1532,20 +1548,23 @@ msgstr ""
 #~ msgid "Mendelevium"
 #~ msgstr "Mendelevyum"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Uygulama Versiyonu: %2<br/><br/>Kütüphane Versiyonu: "
 #~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Versiyon: %5<br/><br/>Daha "
 #~ "fazla bilgi için <a href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "anasayfasını ziyaret edin</a>.<br/><br/>Bu program hiçbir tasarım, ticari "
-#~ "ve belirli bir amaca uygunluk garantisi vermez..<br/>"
+#~ "anasayfasını ziyaret edin</a>.<br/><br/>Bu program hiçbir tasarım, ticari ve "
+#~ "belirli bir amaca uygunluk garantisi vermez..<br/>"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

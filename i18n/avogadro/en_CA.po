@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-02-03 10:51-0500\n"
-"PO-Revision-Date: 2010-11-20 12:44+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"PO-Revision-Date: 2011-02-22 13:08+0000\n"
+"Last-Translator: Roman Stingler <Unknown>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-03 15:21+0000\n"
-"X-Generator: Launchpad (build 12309)\n"
+"X-Launchpad-Export-Date: 2011-04-11 15:20+0000\n"
+"X-Generator: Launchpad (build 12792)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,35 +30,35 @@ msgstr "(Git revision: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
 #: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:2923
-#: src/mainwindow.cpp:3427:69
+#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
+#: src/mainwindow.cpp:3606 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -68,15 +68,15 @@ msgstr "Cut Molecule"
 msgid "Cut Atoms"
 msgstr "Cut Atoms"
 
-#: src/editcommands.cpp:97
+#: src/editcommands.cpp:101
 msgid "Paste"
 msgstr "Paste"
 
-#: src/editcommands.cpp:132
+#: src/editcommands.cpp:136
 msgid "Clear Molecule"
 msgstr "Clear Molecule"
 
-#: src/editcommands.cpp:134
+#: src/editcommands.cpp:138
 msgid "Clear Atoms"
 msgstr "Clear Atoms"
 
@@ -85,7 +85,7 @@ msgstr "Clear Atoms"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3445 src/mainwindow.cpp:3462:381 rc.cpp:393
+#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Settings"
 
@@ -151,11 +151,11 @@ msgstr "Bring All to Front"
 
 #: src/mainwindow.cpp:582
 msgid "Record Test..."
-msgstr ""
+msgstr "Record Test..."
 
 #: src/mainwindow.cpp:585
 msgid "Play Test..."
-msgstr ""
+msgstr "Play Test..."
 
 #: src/mainwindow.cpp:885
 msgid "&Tool Settings..."
@@ -379,74 +379,74 @@ msgstr "Unable to paste molecule."
 msgid "Paste failed (format unavailable)."
 msgstr "Paste failed (format unavailable)."
 
-#: src/mainwindow.cpp:2236
+#: src/mainwindow.cpp:2402
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copy failed (mdl unavailable)."
 
-#: src/mainwindow.cpp:2362 src/mainwindow.cpp:2395 src/mainwindow.cpp:2462
-#: src/mainwindow.cpp:3069
+#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
+#: src/mainwindow.cpp:3247
 #, qt-format
 msgid "View %1"
 msgstr "View %1"
 
-#: src/mainwindow.cpp:2422
+#: src/mainwindow.cpp:2600
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "View %1"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2609
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Detached View"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2840
 msgid "Normal Size"
 msgstr "Normal Size"
 
-#: src/mainwindow.cpp:2679
+#: src/mainwindow.cpp:2857
 msgid "Full Screen"
 msgstr "Full Screen"
 
-#: src/mainwindow.cpp:2780
+#: src/mainwindow.cpp:2958
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3094
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2922
+#: src/mainwindow.cpp:3100
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3381
+#: src/mainwindow.cpp:3560
 msgid "Add"
 msgstr "Add"
 
-#: src/mainwindow.cpp:3386
+#: src/mainwindow.cpp:3565
 msgid "Duplicate"
 msgstr "Duplicate"
 
-#: src/mainwindow.cpp:3391
+#: src/mainwindow.cpp:3570
 msgid "Remove"
 msgstr "Remove"
 
-#: src/mainwindow.cpp:3419
+#: src/mainwindow.cpp:3598
 msgid "No tools or engines loaded."
 msgstr "No tools or engines loaded."
 
-#: src/mainwindow.cpp:3421
+#: src/mainwindow.cpp:3600
 msgid "No engines loaded."
 msgstr "No engines loaded."
 
-#: src/mainwindow.cpp:3423
+#: src/mainwindow.cpp:3602
 msgid "No tools loaded."
 msgstr "No tools loaded."
 
-#: src/mainwindow.cpp:3424
+#: src/mainwindow.cpp:3603
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -454,17 +454,17 @@ msgstr ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 
-#: src/mainwindow.cpp:3468
+#: src/mainwindow.cpp:3647
 msgid "Objects"
 msgstr "Objects"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3474:321
+#: src/mainwindow.cpp:3653 :321
 msgid "Colors"
 msgstr "Colours"
 
-#: src/mainwindow.cpp:3507
+#: src/mainwindow.cpp:3686
 msgid " copy"
 msgstr " copy"
 
@@ -537,7 +537,7 @@ msgstr "only labels can have sub items"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Item"
 
@@ -552,7 +552,7 @@ msgstr "Low"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Medium"
@@ -569,7 +569,7 @@ msgstr "Undefined"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "None"
@@ -942,7 +942,7 @@ msgstr "Centre"
 #. i18n: file: src/mainwindow.ui:435
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
-msgstr ""
+msgstr "Align View To Axes"
 
 #. i18n: file: src/mainwindow.ui:440
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1233,45 +1233,39 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:,Itai "
-"Molenaar, ,Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:,"
-"Itai Molenaar, ,Launchpad Contributions:,Itai Molenaar, ,Launchpad "
-"Contributions:,Itai Molenaar,Luke Hollins, ,Launchpad Contributions:,"
-"Avogadro Team,Itai Molenaar,Ken Sharp,Luke Hollins, ,Launchpad "
-"Contributions:,Avogadro Team,Itai Molenaar,Ken Sharp,Luke Hollins, ,"
-"Launchpad Contributions:,Avogadro Team,Itai Molenaar,Ken Sharp,Luke Hollins"
+"Molenaar, ,Launchpad Contributions:,Itai Molenaar, ,Launchpad "
+"Contributions:,Itai Molenaar, ,Launchpad Contributions:,Itai Molenaar, "
+",Launchpad Contributions:,Itai Molenaar,Luke Hollins, ,Launchpad "
+"Contributions:,Avogadro Team,Itai Molenaar,Ken Sharp,Luke Hollins, "
+",Launchpad Contributions:,Avogadro Team,Itai Molenaar,Ken Sharp,Luke "
+"Hollins, ,Launchpad Contributions:,Avogadro Team,Itai Molenaar,Ken "
+"Sharp,Luke Hollins, ,Launchpad Contributions:,Avogadro Team,Itai "
+"Molenaar,Ken Sharp,Luke Hollins,Roman Stingler"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,"
-"imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,,"
-"avogadro-devel@lists.sourceforge.net,imolenaar28@gmail.com,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,"
+",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imo"
+"lenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,,avogadr"
+"o-devel@lists.sourceforge.net,imolenaar28@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,,"
 
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Common vector image formats"
-#~ msgstr "Common vector image formats"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
-
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 
 #~ msgid "Navigate"
 #~ msgstr "Navigate"
@@ -1279,6 +1273,7 @@ msgstr ""
 #~ msgid "Tool Settings"
 #~ msgstr "Tool Settings"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1286,9 +1281,11 @@ msgstr ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Cannot read file format of file %1."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Cannot read file %1."
 
@@ -1300,13 +1297,11 @@ msgstr ""
 #~ "view properly."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Reading molecular file failed."
@@ -1321,15 +1316,18 @@ msgstr ""
 #~ msgid "Save succeeded."
 #~ msgstr "Save succeeded."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Cannot write to file format of file %1."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Cannot write to the file %1."
 
 #~ msgid "Saving file."
 #~ msgstr "Saving file."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1337,8 +1335,17 @@ msgstr ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
 
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
 #~ msgid "Saving molecular file failed."
 #~ msgstr "Saving molecular file failed."
+
+#~ msgid "Common vector image formats"
+#~ msgstr "Common vector image formats"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
 
 #~ msgid "Untitled"
 #~ msgstr "Untitled"
@@ -1353,9 +1360,13 @@ msgstr ""
 #~ msgid "Manipulate"
 #~ msgstr "Manipulate"
 
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1874,6 +1885,7 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animation..."
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1898,6 +1910,7 @@ msgstr ""
 #~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 #~ msgstr "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Read trajectory file %1 failed."
 
@@ -1917,24 +1930,24 @@ msgstr ""
 #~ msgstr "Invalid video filename.  Must include full directory path"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 
 #~ msgid "could not set format to XYZ"
 #~ msgstr "could not set format to XYZ"
 
+#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Problem reading traj file %1"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 #~ msgstr ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 
 #~ msgid ""
 #~ "Your molecule must contain at least four atoms to add a torsion constraint"
@@ -1957,9 +1970,11 @@ msgstr ""
 #~ msgid "Add constraint"
 #~ msgstr "Add constraint"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Number of rotatable bonds: %1"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Number of atoms: %1"
 
@@ -2020,6 +2035,7 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Cancel"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energy = %1 %2"
 
@@ -2054,11 +2070,11 @@ msgstr ""
 #~ msgstr "Input Generator..."
 
 #~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics "
-#~ "force fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics force "
+#~ "fields"
 #~ msgstr ""
-#~ "Optimize molecules and generate conformers using molecular mechanics "
-#~ "force fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics force "
+#~ "fields"
 
 #~ msgid " ("
 #~ msgstr " ("
@@ -2238,9 +2254,11 @@ msgstr ""
 #~ msgid "Save Movie File"
 #~ msgstr "Save Movie File"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Two molecules have different number atoms %1 %2"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Read mol file %1 failed."
 
@@ -2280,15 +2298,17 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Create linear interpolation for animations"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Would write file to %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Wrote file %1."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Invalid movie filename. Must include full directory path and name, ending "
 #~ "with .avi"
@@ -2366,13 +2386,13 @@ msgstr ""
 #~ msgstr "POV-Ray failed to start."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 #~ msgstr ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 
 #~ msgid "Image files (*.png *.pbm)"
 #~ msgstr "Image files (*.png *.pbm)"
@@ -2412,11 +2432,9 @@ msgstr ""
 #~ msgstr "Bond Properties..."
 
 #~ msgid ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray "
-#~ "program."
+#~ "Create POV-Ray files and render them using the command line POV-Ray program."
 #~ msgstr ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray "
-#~ "program."
+#~ "Create POV-Ray files and render them using the command line POV-Ray program."
 
 #~ msgid "Atom"
 #~ msgstr "Atom"
@@ -2461,6 +2479,7 @@ msgstr ""
 #~ msgid "Start Atom"
 #~ msgstr "Start Atom"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -2473,6 +2492,7 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotatable"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Bond %1"
 
@@ -2482,12 +2502,14 @@ msgstr ""
 #~ msgid "Angle (°)"
 #~ msgstr "Angle (°)"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Angle %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Torsion (°)"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsion %1"
 
@@ -2497,6 +2519,7 @@ msgstr ""
 #~ msgid "Y (Å)"
 #~ msgstr "Y (Å)"
 
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Atom Index %1"
 
@@ -2506,6 +2529,7 @@ msgstr ""
 #~ msgid "Python Terminal"
 #~ msgstr "Python Terminal"
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Conformer %1"
 
@@ -2534,11 +2558,11 @@ msgstr ""
 #~ msgstr "Q-Chem Input Deck Generator Warning"
 
 #~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Q-Chem input deck preview pane?"
+#~ "Would you like to update the preview text, losing all changes made in the Q-"
+#~ "Chem input deck preview pane?"
 #~ msgstr ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Q-Chem input deck preview pane?"
+#~ "Would you like to update the preview text, losing all changes made in the Q-"
+#~ "Chem input deck preview pane?"
 
 #~ msgid "QChem Input Deck (*.qcin)"
 #~ msgstr "QChem Input Deck (*.qcin)"
@@ -2622,11 +2646,11 @@ msgstr ""
 #~ msgstr "Super Cell"
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a "
-#~ "unit cell."
+#~ "This document is currently an isolated molecule. You need to create a unit "
+#~ "cell."
 #~ msgstr ""
-#~ "This document is currently an isolated molecule. You need to create a "
-#~ "unit cell."
+#~ "This document is currently an isolated molecule. You need to create a unit "
+#~ "cell."
 
 #~ msgid "GLSL Shaders"
 #~ msgstr "GLSL Shaders"
@@ -2682,22 +2706,23 @@ msgstr ""
 #~ msgid "Build and display crystallographic unit cells"
 #~ msgstr "Build and display crystallographic unit cells"
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Set Aspect Ratio"
@@ -2770,12 +2795,12 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 
 #~ msgid "OpenGL error"
 #~ msgstr "OpenGL error"
@@ -2870,6 +2895,7 @@ msgstr ""
 #~ msgid "Force Field:"
 #~ msgstr "Force Field:"
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -2975,21 +3001,26 @@ msgstr ""
 #~ msgid " Snap-to Bonds"
 #~ msgstr " Snap-to Bonds"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distance (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Dihedral Angle: %1 %2"
 
 #~ msgid "Manipulation of bond lengths, angles, and torsions"
 #~ msgstr "Manipulation of bond lengths, angles, and torsions"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distance (3->4): %1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Angle: %1 %2"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distance (1->2): %1 %2"
 
@@ -3294,6 +3325,7 @@ msgstr ""
 #~ msgid "Windows Bitmap"
 #~ msgstr "Windows Bitmap"
 
+#, qt-format
 #~ msgid "Unknown extension: %1"
 #~ msgstr "Unknown extension: %1"
 
@@ -3310,11 +3342,11 @@ msgstr ""
 #~ msgstr "Spectra Import"
 
 #~ msgid ""
-#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
-#~ "jdx);;All Files (* *.*)"
+#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX "
+#~ "(*.jdx);;All Files (* *.*)"
 #~ msgstr ""
-#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
-#~ "jdx);;All Files (* *.*)"
+#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX "
+#~ "(*.jdx);;All Files (* *.*)"
 
 #~ msgid "Import Spectra"
 #~ msgstr "Import Spectra"
@@ -3343,12 +3375,14 @@ msgstr ""
 #~ msgid "Customi&ze <<"
 #~ msgstr "Customi&ze <<"
 
+#, qt-format
 #~ msgid "A problem occurred while writing file %1"
 #~ msgstr "A problem occurred while writing file %1"
 
 #~ msgid "Invalid Filename"
 #~ msgstr "Invalid Filename"
 
+#, qt-format
 #~ msgid "Image successfully written to %1"
 #~ msgstr "Image successfully written to %1"
 
@@ -3743,20 +3777,23 @@ msgstr ""
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Antialiasing."
@@ -3790,6 +3827,7 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "About to test OpenGL capabilities."
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

@@ -1,16 +1,16 @@
-# Swedish translation for avogadro
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Uyghur translation for avogadro
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-04-09 12:27-0400\n"
-"PO-Revision-Date: 2011-02-04 13:48+0000\n"
-"Last-Translator: Dostojevskji <darkangel_nr1@hotmail.com>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2011-03-22 16:16+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -87,219 +87,219 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr "Väte"
+msgstr ""
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr "Helium"
+msgstr ""
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr "Litium"
+msgstr ""
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr "Beryllium"
+msgstr ""
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr "Bor"
+msgstr ""
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr "Kol"
+msgstr ""
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr "Kväve"
+msgstr ""
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr "Syre"
+msgstr ""
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr "Fluor"
+msgstr ""
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr "Neon"
+msgstr ""
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr "Natrium"
+msgstr ""
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr "Magnesium"
+msgstr ""
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr "Aluminium"
+msgstr ""
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr "Kisel"
+msgstr ""
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr "Fosfor"
+msgstr ""
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr "Svavel"
+msgstr ""
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr "Klor"
+msgstr ""
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr "Argon"
+msgstr ""
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr "Kalium"
+msgstr ""
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr "Kalcium"
+msgstr ""
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr "Skandium"
+msgstr ""
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr "Titan"
+msgstr ""
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr "Vanadin"
+msgstr ""
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr "Krom"
+msgstr ""
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr "Mangan"
+msgstr ""
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr "Järn"
+msgstr ""
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr "Kobolt"
+msgstr ""
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr "Nickel"
+msgstr ""
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr "Koppar"
+msgstr ""
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr "Zink"
+msgstr ""
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr "Gallium"
+msgstr ""
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr "Germanium"
+msgstr ""
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr "Arsenik"
+msgstr ""
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr "Selen"
+msgstr ""
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr "Brom"
+msgstr ""
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr "Krypton"
+msgstr ""
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr "Rubidium"
+msgstr ""
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr "Strontium"
+msgstr ""
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr "Yttrium"
+msgstr ""
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr "Zirkonium"
+msgstr ""
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr "Niob"
+msgstr ""
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr "Molybden"
+msgstr ""
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr "Teknetium"
+msgstr ""
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr "Rutenium"
+msgstr ""
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr "Rodium"
+msgstr ""
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr "Palladium"
+msgstr ""
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr "Silver"
+msgstr ""
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr "Kadmium"
+msgstr ""
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr "Indium"
+msgstr ""
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr "Tenn"
+msgstr ""
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr "Antimon"
+msgstr ""
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr "Tellur"
+msgstr ""
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr "Jod"
+msgstr ""
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr "Xenon"
+msgstr ""
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
@@ -307,75 +307,75 @@ msgstr ""
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr "Barium"
+msgstr ""
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr "Lantan"
+msgstr ""
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr "Cerium"
+msgstr ""
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr "Praseodym"
+msgstr ""
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr "Neodym"
+msgstr ""
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr "Prometium"
+msgstr ""
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr "Samarium"
+msgstr ""
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr "Europium"
+msgstr ""
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr "Gadolinium"
+msgstr ""
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr "Terbium"
+msgstr ""
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr "Dysprosium"
+msgstr ""
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr "Holmium"
+msgstr ""
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr "Erbium"
+msgstr ""
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr "Tulium"
+msgstr ""
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr "Ytterbium"
+msgstr ""
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr "Lutetium"
+msgstr ""
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr "Hafnium"
+msgstr ""
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr "Tantal"
+msgstr ""
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
@@ -383,151 +383,151 @@ msgstr ""
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr "Rhenium"
+msgstr ""
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr "Osmium"
+msgstr ""
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr "Iridium"
+msgstr ""
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr "platina"
+msgstr ""
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr "Guld"
+msgstr ""
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr "Kvicksilver"
+msgstr ""
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr "Tallium"
+msgstr ""
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr "Bly"
+msgstr ""
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr "Vismut"
+msgstr ""
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr "Polonium"
+msgstr ""
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr "Astat"
+msgstr ""
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr "Radon"
+msgstr ""
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr "Francium"
+msgstr ""
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr "Radium"
+msgstr ""
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr "Aktinium"
+msgstr ""
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr "Torium"
+msgstr ""
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr "Protaktinium"
+msgstr ""
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr "Uran"
+msgstr ""
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr "Neptunium"
+msgstr ""
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr "Plutonium"
+msgstr ""
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr "Americium"
+msgstr ""
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr "Curium"
+msgstr ""
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr "Berkelium"
+msgstr ""
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr "Californium"
+msgstr ""
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr "Einsteinium"
+msgstr ""
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr "Fermium"
+msgstr ""
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr "Mendelevium"
+msgstr ""
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr "Nobelium"
+msgstr ""
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr "Lawrencium"
+msgstr ""
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr "Rutherfordium"
+msgstr ""
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr "Dubnium"
+msgstr ""
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr "Seaborgium"
+msgstr ""
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr "Bohrium"
+msgstr ""
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr "Hassium"
+msgstr ""
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr "Meitnerium"
+msgstr ""
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr "Darmstadtium"
+msgstr ""
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr "Röntgenium"
+msgstr ""
 
 #: src/elementtranslator.cpp:375
 msgid "Copernicium"
@@ -535,11 +535,11 @@ msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr "Ununtrium"
+msgstr ""
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr "Ununquadium"
+msgstr ""
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
@@ -547,15 +547,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr "Ununhexium"
+msgstr ""
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr "Ununseptium"
+msgstr ""
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr "Ununoctium"
+msgstr ""
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
@@ -567,7 +567,7 @@ msgstr ""
 
 #: src/engines/axesengine.h:42
 msgid "Axes"
-msgstr "Axlar"
+msgstr ""
 
 #: src/engines/axesengine.h:43
 msgid "Renders the x, y, and z axes at the origin"
@@ -591,7 +591,7 @@ msgstr ""
 
 #: src/engines/dipoleengine.h:43
 msgid "Dipole"
-msgstr "två polig"
+msgstr ""
 
 #: src/engines/dipoleengine.h:44
 msgid "Renders molecular dipole moments"
@@ -762,7 +762,7 @@ msgstr ""
 #: src/extensions/animationdialog.cpp:83
 #, qt-format
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:104
 msgid "Save Video File"
@@ -809,7 +809,7 @@ msgstr ""
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr "Animering..."
+msgstr ""
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:151
@@ -924,39 +924,33 @@ msgstr ""
 #: src/extensions/conformersearchdialog.cpp:131
 #, qt-format
 msgid "Number of atoms: %1"
-msgstr "Antalet atomer: %1"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:132
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr "Antalet vridbara bindningar: %1"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr "Lägg till restriktion"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr ""
-"Din molekyl ska innehålla minst en atom för att kunna lägga till en "
-"restriktion"
 
 #: src/extensions/constraintsdialog.cpp:369
 msgid ""
 "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
-"Din molekyl ska innehålla minst två atomer för att kunna lägga till en "
-"restriktion för bindningen"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
 msgstr ""
-"Din molekyl ska innehålla minst tre atomer för att kunna lägga till en "
-"restriktion för vinkeln"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
@@ -3336,15 +3330,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/tools/aligntool.cpp:257 :27
 msgid "Axis:"
-msgstr "Axel:"
+msgstr ""
 
 #: src/tools/aligntool.cpp:268
 msgid "Align:"
-msgstr "Räta upp"
+msgstr ""
 
 #: src/tools/aligntool.cpp:273
 msgid "Everything"
-msgstr "Allting"
+msgstr ""
 
 #: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:470
 msgid "Molecule"
@@ -3352,7 +3346,7 @@ msgstr ""
 
 #: src/tools/aligntool.cpp:278 src/tools/aligntool.h:40
 msgid "Align"
-msgstr "Rada upp"
+msgstr ""
 
 #: src/tools/aligntool.h:41
 msgid "Align molecules to a Cartesian axis"
@@ -3374,24 +3368,15 @@ msgid ""
 "Extra Function when running\n"
 "Left Mouse: Click and drag atoms to move them"
 msgstr ""
-"Automatiskt optimeringsverktyg\n"
-"\n"
-"Navigeringen fungerar vid klick på tomma utrymmen:\n"
-"Vänster knapp: Rotera rymd\n"
-"Mittenknapp: Zooma rymd\n"
-"Höger knapp: Flytta rymd\n"
-"\n"
-"Extrafunktion vid körning:\n"
-"Vänster knapp: Klicka och dra atomer för att flytta dem"
 
 #: src/tools/autoopttool.cpp:227
 msgid "AutoOpt: Could not setup force field...."
-msgstr "Automatisk optimering: Kunde inte ställa in kraftfält..."
+msgstr ""
 
 #: src/tools/autoopttool.cpp:235
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
-msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:239
 #, qt-format
@@ -3400,15 +3385,15 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:264
 msgid "Force Field:"
-msgstr "Kraftfält:"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:279
 msgid "Steps per Update:"
-msgstr "Steg per uppdatering:"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:290
 msgid "Algorithm:"
-msgstr "Algoritm:"
+msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
@@ -3424,15 +3409,15 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:295
 msgid "Molecular Dynamics (300K)"
-msgstr "Molekyldynamik (300 K)"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:296
 msgid "Molecular Dynamics (600K)"
-msgstr "Molekyldynamik (600 K)"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:297
 msgid "Molecular Dynamics (900K)"
-msgstr "Molekyldynamik (900 K)"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:299 src/tools/autoopttool.cpp:385
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
@@ -3441,11 +3426,11 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:301
 msgid "Fixed atoms are movable"
-msgstr "Fasta atomer är flyttbara"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:303
 msgid "Ignored atoms are movable"
-msgstr "Ignorerade atomer är flyttbara"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:358 src/tools/autorotatetool.cpp:224
 msgid "Stop"
@@ -3457,7 +3442,7 @@ msgstr ""
 
 #: src/tools/autoopttool.h:90
 msgid "AutoOptimization"
-msgstr "Auto Optimering"
+msgstr ""
 
 #: src/tools/autoopttool.h:91
 msgid "Automatic optimization of molecular geometry"
@@ -3469,31 +3454,31 @@ msgstr ""
 
 #: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
-msgstr "Automatiskt rotationsverktyg"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
-msgstr "x rotation:"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
-msgstr "x rotation"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
-msgstr "Y-rotation:"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
-msgstr "y rotation"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
-msgstr "z rotation:"
+msgstr ""
 
 #: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
-msgstr "z rotation"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1580
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
@@ -3515,7 +3500,7 @@ msgstr ""
 
 #: src/tools/autorotatetool.h:53
 msgid "AutoRotate"
-msgstr "Auto Rotera"
+msgstr ""
 
 #: src/tools/autorotatetool.h:54
 msgid "Automatic rotation of molecules"
@@ -3546,15 +3531,15 @@ msgstr ""
 
 #: src/tools/bondcentrictool.cpp:1597
 msgid " Show Angles"
-msgstr " Visa vinklar"
+msgstr ""
 
 #: src/tools/bondcentrictool.cpp:1600
 msgid " Snap-to Bonds"
-msgstr " Låsande bindningar"
+msgstr ""
 
 #: src/tools/bondcentrictool.cpp:1603
 msgid "Snap-to Threshold: "
-msgstr "Lås till tröskel: "
+msgstr ""
 
 #: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
 msgid "Bond Centric Manipulation"
@@ -3632,7 +3617,7 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:281
 msgid "Distance(s):"
-msgstr "Avstånd:"
+msgstr ""
 
 #. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3646,7 +3631,7 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
-msgstr "Mät"
+msgstr ""
 
 #: src/tools/clickmeasuretool.h:49
 msgid "Measure bond lengths, angles, and dihedrals"
@@ -3692,19 +3677,19 @@ msgstr ""
 
 #: src/tools/drawtool.cpp:403 src/tools/drawtool.cpp:409
 msgid "Draw Atom"
-msgstr "Rita atom"
+msgstr ""
 
 #: src/tools/drawtool.cpp:450
 msgid "Draw Bond"
-msgstr "Rita bindning"
+msgstr ""
 
 #: src/tools/drawtool.cpp:459 src/tools/drawtool.h:53
 msgid "Draw"
-msgstr "Rita"
+msgstr ""
 
 #: src/tools/drawtool.cpp:784
 msgid "Element:"
-msgstr "Gundämne:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
@@ -3714,19 +3699,19 @@ msgstr ""
 
 #: src/tools/drawtool.cpp:815
 msgid "Bond Order:"
-msgstr "Bindningsordning:"
+msgstr ""
 
 #: src/tools/drawtool.cpp:820
 msgid "Single"
-msgstr "Enkel"
+msgstr ""
 
 #: src/tools/drawtool.cpp:821
 msgid "Double"
-msgstr "Dubbel"
+msgstr ""
 
 #: src/tools/drawtool.cpp:822
 msgid "Triple"
-msgstr "Trippel"
+msgstr ""
 
 #: src/tools/drawtool.cpp:837
 msgid "Adjust Hydrogens"
@@ -4493,7 +4478,7 @@ msgstr ""
 #. i18n: file: src/extensions/animationdialog.ui:45
 #. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
 msgid "0/0"
-msgstr "0/0"
+msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:171
 #. i18n: ectx: property (text), widget (QCheckBox, dynBondsBox)
@@ -4509,7 +4494,7 @@ msgstr ""
 #. i18n: file: src/extensions/animationdialog.ui:198
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
-msgstr "fps"
+msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:225
 #. i18n: ectx: property (text), widget (QPushButton, saveVideoButton)
@@ -9018,58 +9003,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Dostojevskji, ,Launchpad "
-"Contributions:,Dostojevskji, ,Launchpad Contributions:,Dostojevskji, "
-",Launchpad Contributions:,Dostojevskji, ,Launchpad "
-"Contributions:,Dostojevskji, ,Launchpad Contributions:,Dostojevskji, "
-",Launchpad Contributions:,Dostojevskji, ,Launchpad "
-"Contributions:,Dostojevskji, ,Launchpad Contributions:,Dostojevskji, "
-",Launchpad Contributions:,Dostojevskji"
+msgstr " ,Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotma"
-"il.com,,,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotmail.com,,,darkangel_nr"
-"1@hotmail.com,,,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotmail.com,,,darka"
-"ngel_nr1@hotmail.com,,,darkangel_nr1@hotmail.com"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesium"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Avstånd (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Avstånd (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Avstånd (3->4): %1 %2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Type:"
-#~ msgstr "Typ:"
-
-#~ msgid "Name:"
-#~ msgstr "Namn:"
-
-#~ msgid "Description:"
-#~ msgstr "Beskrivning :"
+msgstr ","
