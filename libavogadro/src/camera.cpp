@@ -2,6 +2,7 @@
   Camera - Class for representing the view.
 
   Copyright (C) 2007 Benoit Jacob
+  Copyright (C) 2011 David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -25,6 +26,7 @@
 #include "camera.h"
 #include "glwidget.h"
 #include <avogadro/molecule.h>
+#include <Eigen/LU>
 
 using namespace Eigen;
 
@@ -261,6 +263,49 @@ namespace Avogadro
   Eigen::Vector3d Camera::transformedZAxis() const
   {
     return d->modelview.linear().col(2);
+  }
+
+  bool Camera::nearClippingPlane(Vector3d *normal, Vector3d *point)
+  {
+    // Determine near plane from three coplanar points:
+    // (http://www.songho.ca/opengl/gl_projectionmatrix.html is a
+    // helpful resource here.)
+
+    // We will convert following points (which are in the near plane)
+    // from NDC coordinates to object coordinates:
+    //
+    // (-1, -1, -1), (1,-1,-1), and (-1,1,-1).
+    //
+    // First get the current transformation matrix (T = PM, P is
+    // projection matrix, M is modelview matrix), which converts
+    // Object coordinates (O) to NDC coordinates (N) via:
+    //
+    // N = T O
+    //
+    // These are stored in the private class, no need to query OpenGL
+    // for them.
+    const Matrix4d &proj = d->projection.matrix();
+    const Matrix4d &modv = d->modelview.matrix();
+
+    // Now invert the matrix so that we can find our three coplanar
+    // points in Object coordinates via:
+    //
+    // O = Inv(T) N
+    //
+    // Calculate T ( = PM ) here, too:
+    const Matrix4d invT ((proj * modv).inverse());
+
+    // Now to get three points and a normal vector:
+    // (V4toV3DivW converts {x,y,z,w} to {x,y,z}/w)
+    *point = V4toV3DivW(invT * Vector4d(-1,-1,-1,1) );
+    const Vector3d p1 ( V4toV3DivW(invT * Vector4d(1,-1,-1,1) ));
+    const Vector3d p2 ( V4toV3DivW(invT * Vector4d(-1,1,-1,1) ));
+
+    // This cross product ensures that the normal points into the
+    // viewing volume:
+    *normal = (p2-(*point)).cross(p1-(*point)).normalized();
+
+    return true;
   }
 
 } // end namespace Avogadro
