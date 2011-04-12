@@ -86,13 +86,14 @@ namespace Avogadro {
     m_inputData = inputData;
     m_molecule = m_inputData->m_molecule;
 
-    connect(m_inputData->m_molecule, SIGNAL(primitiveAdded( Primitive* )),
-        this, SLOT(updatePreviewText()));
-    connect(m_inputData->m_molecule, SIGNAL(primitiveUpdated( Primitive* )),
-        this, SLOT(updatePreviewText()));
-    connect(m_inputData->m_molecule, SIGNAL(primitiveRemoved( Primitive* )),
-        this, SLOT(updatePreviewText()));
-    connect(m_inputData->m_molecule, SIGNAL(updated()), this, SLOT(updatePreviewText()));
+    connect(m_inputData->m_molecule, SIGNAL(atomAdded(Atom*)),
+            this, SLOT(updatePreviewText()));
+    connect(m_inputData->m_molecule, SIGNAL(atomUpdated(Atom*)),
+            this, SLOT(updatePreviewText()));
+    connect(m_inputData->m_molecule, SIGNAL(atomRemoved(Atom*)),
+            this, SLOT(updatePreviewText()));
+    connect(m_inputData->m_molecule, SIGNAL(updated()),
+            this, SLOT(updatePreviewText()));
   }
 
   void GamessInputDialog::connectBasic()
