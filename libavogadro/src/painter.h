@@ -447,9 +447,9 @@ namespace Avogadro
                          const QFont & /*font*/) = 0;
 
     /**
-     * Placeholder to draw a box.
-     * @param corner1 First corner of the box.
-     * @param corner2 Second corner of the box.
+     * Placeholder to draw a cube.
+     * @param corner1 First corner of the cube.
+     * @param corner2 Second corner of the cube.
      * @todo Implement this primitive.
      */
     virtual void drawBox(const Eigen::Vector3d &corner1,
