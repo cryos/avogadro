@@ -4,6 +4,7 @@
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Marcus D. Hanwell
+  Copyright (C) 2011 David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -50,6 +51,18 @@ namespace Avogadro
   void Painter::drawSphere(const Eigen::Vector3d *center, double radius)
   {
     drawSphere(*center, radius);
+  }
+
+  void Painter::drawQuadrilateral(const Eigen::Vector3d & p1,
+                                  const Eigen::Vector3d & p2,
+                                  const Eigen::Vector3d & p3,
+                                  const Eigen::Vector3d & p4,
+                                  double w)
+  {
+    this->drawLine(p1, p2, w);
+    this->drawLine(p2, p3, w);
+    this->drawLine(p3, p4, w);
+    this->drawLine(p4, p1, w);
   }
 
 } // end namespace Avogadro

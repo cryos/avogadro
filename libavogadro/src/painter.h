@@ -5,6 +5,7 @@
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007-2008 Marcus D. Hanwell
   Copyright (C) 2010 Konstantin Tokarev
+  Copyright (C) 2011 David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -114,11 +115,11 @@ namespace Avogadro
      * @param alpha component of the color.
      */
     virtual void setColor(float red, float green, float blue, float alpha = 1.0) = 0;
-    
+
     /**
-     * Set the color to paint elements by its name 
+     * Set the color to paint elements by its name
      * @param name name of the color to be used
-     */    
+     */
     virtual void setColor(QString name) = 0;
 
     /**
@@ -302,6 +303,11 @@ namespace Avogadro
     /**
      * Draws the outline of a two dimensional quadrilateral in three dimensional space.
      *
+     * @warning The default implementaion of this function simply
+     * calls drawLine repeatedly to draw the specified shape. This may
+     * be very inefficent on certain paint devices and should be
+     * reimplemented in such cases.
+     *
      * @param point1 the first of the four corners of the quadrilateral.
      * @param point2 the second of the four corners of the quadrilateral.
      * @param point3 the third of the four corners of the quadrilateral.
@@ -312,7 +318,8 @@ namespace Avogadro
                                    const Eigen::Vector3d & point2,
                                    const Eigen::Vector3d & point3,
                                    const Eigen::Vector3d & point4,
-                                   double lineWidth) = 0;
+                                   double lineWidth);
+
     /**
      * Draws a continuous mesh of triangles.
      * @param mesh the mesh to be drawn.
@@ -374,7 +381,7 @@ namespace Avogadro
      *     drawText(int, int, const QString &) const
      */
     virtual int drawText(const Eigen::Vector3d & pos,
-                          const QString &string) = 0;
+                         const QString &string) = 0;
 
     /**
      * Draws text at a given scene position, inside the scene, using given font
