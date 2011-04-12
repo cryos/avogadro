@@ -321,6 +321,52 @@ namespace Avogadro
                                    double lineWidth);
 
     /**
+     * Draws the outline of a pentagon in three dimensional space.
+     *
+     * @warning The default implementaion of this function simply
+     * calls drawLine repeatedly to draw the specified shape. This may
+     * be very inefficent on certain paint devices and should be
+     * reimplemented in such cases.
+     *
+     * @param point1 the first of the five corners of the pentagon.
+     * @param point2 the second of the five corners of the pentagon.
+     * @param point3 the third of the five corners of the pentagon.
+     * @param point4 the fourth of the five corners of the pentagon.
+     * @param point5 the last of the five corners of the pentagon.
+     * @param lineWidth the thickness of the line the pentagon will be drawn with.
+     */
+    virtual void drawPentagon(const Eigen::Vector3d & point1,
+                              const Eigen::Vector3d & point2,
+                              const Eigen::Vector3d & point3,
+                              const Eigen::Vector3d & point4,
+                              const Eigen::Vector3d & point5,
+                              const double lineWidth);
+
+    /**
+     * Draws the outline of a hexagon in three dimensional space.
+     *
+     * @warning The default implementaion of this function simply
+     * calls drawLine repeatedly to draw the specified shape. This may
+     * be very inefficent on certain paint devices and should be
+     * reimplemented in such cases.
+     *
+     * @param point1 the first of the six corners of the hexagon.
+     * @param point2 the second of the six corners of the hexagon.
+     * @param point3 the third of the six corners of the hexagon.
+     * @param point4 the fourth of the six corners of the hexagon.
+     * @param point4 the fifth of the six corners of the hexagon.
+     * @param point5 the last of the six corners of the hexagon.
+     * @param lineWidth the thickness of the line the hexagon will be drawn with.
+     */
+    virtual void drawHexagon(const Eigen::Vector3d & point1,
+                             const Eigen::Vector3d & point2,
+                             const Eigen::Vector3d & point3,
+                             const Eigen::Vector3d & point4,
+                             const Eigen::Vector3d & point5,
+                             const Eigen::Vector3d & point6,
+                             const double lineWidth);
+
+    /**
      * Draws a continuous mesh of triangles.
      * @param mesh the mesh to be drawn.
      * @param mode the mode to use. 0 = filled, 1 = lines and 2 = points.
@@ -408,6 +454,75 @@ namespace Avogadro
      */
     virtual void drawBox(const Eigen::Vector3d &corner1,
                          const Eigen::Vector3d &corner2) = 0;
+
+    /**
+     * @overload
+     *
+     * Draws the outline of a parallelpiped at \a offset with three
+     * vectors \a v1, \a v2, and \a v3 defining the edges.
+     *
+     * @verbatim
+       6------8  c1 = origin
+      /:     /|  c2 = origin + v1
+     / :    / |  c3 = origin + v2
+    /  4---/--7  c4 = origin + v3
+   /  /   /  /   c5 = origin + v1 + v2
+  3------5  /    c6 = origin + v2 + v3
+  | /    | /     c7 = origin + v1 + v3
+  |/     |/      c8 = origin + v1 + v2 + v3
+  1------2
+@endverbatim
+     *
+     * @param offset Corner of the box.
+     * @param v1 Edge of box, pointing relative to \a offset.
+     * @param v2 Edge of box, pointing relative to \a offset.
+     * @param v3 Edge of box, pointing relative to \a offset.
+     * @param linewidth The width of the line.
+     */
+    virtual void drawBoxEdges(const Eigen::Vector3d &offset,
+                              const Eigen::Vector3d &v1,
+                              const Eigen::Vector3d &v2,
+                              const Eigen::Vector3d &v3,
+                              const double linewidth);
+
+    /**
+     * Draws the outline of a box with the given corners.
+     * @verbatim
+       6------8
+      /:     /|
+     / :    / |
+    /  4---/--7
+   /  /   /  /
+  3------5  /
+  | /    | /
+  |/     |/
+  1------2
+@endverbatim
+     *
+     * @warning The default implementaion of this function simply
+     * calls drawLine repeatedly to draw the specified shape. This may
+     * be very inefficent on certain paint devices and should be
+     * reimplemented in such cases.
+     *
+     * @param c1 Corner
+     * @param c2 Corner
+     * @param c3 Corner
+     * @param c4 Corner
+     * @param c5 Corner
+     * @param c6 Corner
+     * @param c7 Corner
+     * @param c8 Corner
+     * @param linewidth The width of the line.
+     */
+    virtual void drawBoxEdges(const Eigen::Vector3d &c1,
+                              const Eigen::Vector3d &c2,
+                              const Eigen::Vector3d &c3,
+                              const Eigen::Vector3d &c4,
+                              const Eigen::Vector3d &c5,
+                              const Eigen::Vector3d &c6,
+                              const Eigen::Vector3d &c7,
+                              const Eigen::Vector3d &c8,
+                              const double linewidth);
 
     /**
      * Placeholder to draw a torus.

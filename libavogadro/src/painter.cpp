@@ -65,4 +65,98 @@ namespace Avogadro
     this->drawLine(p4, p1, w);
   }
 
+  void Painter::drawPentagon(const Eigen::Vector3d & p1,
+                             const Eigen::Vector3d & p2,
+                             const Eigen::Vector3d & p3,
+                             const Eigen::Vector3d & p4,
+                             const Eigen::Vector3d & p5,
+                             const double w)
+  {
+    this->drawLine(p1, p2, w);
+    this->drawLine(p2, p3, w);
+    this->drawLine(p3, p4, w);
+    this->drawLine(p4, p5, w);
+    this->drawLine(p5, p1, w);
+  }
+
+  void Painter::drawHexagon(const Eigen::Vector3d & p1,
+                            const Eigen::Vector3d & p2,
+                            const Eigen::Vector3d & p3,
+                            const Eigen::Vector3d & p4,
+                            const Eigen::Vector3d & p5,
+                            const Eigen::Vector3d & p6,
+                            const double w)
+  {
+    this->drawLine(p1, p2, w);
+    this->drawLine(p2, p3, w);
+    this->drawLine(p3, p4, w);
+    this->drawLine(p4, p5, w);
+    this->drawLine(p5, p6, w);
+    this->drawLine(p6, p1, w);
+  }
+
+  void Painter::drawBoxEdges(const Eigen::Vector3d &offset,
+                             const Eigen::Vector3d &v1,
+                             const Eigen::Vector3d &v2,
+                             const Eigen::Vector3d &v3,
+                             const double linewidth)
+  {
+    //       6------8  c1 = origin
+    //      /:     /|  c2 = origin + v1
+    //     / :    / |  c3 = origin + v2
+    //    /  4---/--7  c4 = origin + v3
+    //   /  /   /  /   c5 = origin + v1 + v2
+    //  3------5  /    c6 = origin + v2 + v3
+    //  | /    | /     c7 = origin + v1 + v3
+    //  |/     |/      c8 = origin + v1 + v2 + v3
+    //  1------2
+    const Eigen::Vector3d &c1 (offset);
+    const Eigen::Vector3d  c2 (c1 + v1);
+    const Eigen::Vector3d  c3 (c1 + v2);
+    const Eigen::Vector3d  c4 (c1 + v3);
+    const Eigen::Vector3d  c5 (c2 + v2);
+    const Eigen::Vector3d  c6 (c3 + v3);
+    const Eigen::Vector3d  c7 (c2 + v3);
+    const Eigen::Vector3d  c8 (c5 + v3);
+    this->drawBoxEdges(c1, c2, c3, c4, c5, c6, c7, c8, linewidth);
+  }
+
+  void Painter::drawBoxEdges(const Eigen::Vector3d &c1,
+                             const Eigen::Vector3d &c2,
+                             const Eigen::Vector3d &c3,
+                             const Eigen::Vector3d &c4,
+                             const Eigen::Vector3d &c5,
+                             const Eigen::Vector3d &c6,
+                             const Eigen::Vector3d &c7,
+                             const Eigen::Vector3d &c8,
+                             const double w)
+  {
+    //      6------8
+    //     /:     /|
+    //    / :    / |
+    //   /  4---/--7
+    //  /  /   /  /
+    // 3------5  /
+    // | /    | /
+    // |/     |/
+    // 1------2
+    // Near "plane":
+    this->drawLine(c1, c2, w);
+    this->drawLine(c2, c5, w);
+    this->drawLine(c5, c3, w);
+    this->drawLine(c3, c1, w);
+
+    // Far "plane":
+    this->drawLine(c4, c7, w);
+    this->drawLine(c7, c8, w);
+    this->drawLine(c8, c6, w);
+    this->drawLine(c6, c4, w);
+
+    // Connect
+    this->drawLine(c1, c4, w);
+    this->drawLine(c2, c7, w);
+    this->drawLine(c5, c8, w);
+    this->drawLine(c3, c6, w);
+  }
+
 } // end namespace Avogadro
