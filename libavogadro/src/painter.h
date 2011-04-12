@@ -411,8 +411,8 @@ namespace Avogadro
      *     drawText(int, int, const QString &) const
      */
     virtual int drawText(const Eigen::Vector3d & /*pos*/,
-                          const QString & /*string*/, const QFont & /*font*/) {
-      return 0; }
+                         const QString & /*string*/,
+                         const QFont & /*font*/) = 0;
 
     /**
      * Placeholder to draw a box.
