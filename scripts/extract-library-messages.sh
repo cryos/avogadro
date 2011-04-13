@@ -14,7 +14,7 @@ I18NDIR="i18n/libavogadro"          # i18n dir
 echo "Preparing rc files"
 cd ${BASEDIR}
 # we use simple sorting to make sure the lines do not jump around too much from system to system
-find . -name '*.rc' -o -name '*.ui' -o -name '*.kcfg' | sort > ${WDIR}/rcfiles.list
+find . -name '*.rc' -o -name '*.ui' -o -name '*.kcfg' | grep -v 'test' | grep -v 'example' | sort > ${WDIR}/rcfiles.list
 cat ${WDIR}/rcfiles.list | xargs ${WDIR}/scripts/extractrc.sh > ${WDIR}/rc.cpp
 # additional string for KAboutData
 echo 'i18nc("NAME OF TRANSLATORS","Your names");' >> ${WDIR}/rc.cpp
@@ -26,12 +26,12 @@ echo "Done preparing rc files"
 echo "Extracting messages"
 cd ${BASEDIR}
 # see above on sorting
-find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | grep -v "example" | sort > ${WDIR}/infiles.list
+find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | grep -v 'test' | grep -v "example" | sort > ${WDIR}/infiles.list
 echo "rc.cpp" >> ${WDIR}/infiles.list
 cd ${WDIR}
-xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
+xgettext --from-code=UTF-8 -C -T --qt -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
 	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
-  -ktr:1,2c -ktrUtf8:1,2c -ktr:1 -ktrUtf8:1 --qt \
+  -ktrUtf8:1,2c -ktr:1,1t -ktr:1,2c,2t -ktr:1,1,2c,3t -ktrUtf8:1 \
   --package-name=${PACKAGE} --package-version=${VERSION} \
 	--msgid-bugs-address="${BUGADDR}" --foreign-user --copyright-holder="The Avogadro Project" \
 	--files-from=infiles.list -D ${BASEDIR} -D ${WDIR} -o ${PROJECT}.pot || { echo "error while calling xgettext. aborting."; exit 1; }
