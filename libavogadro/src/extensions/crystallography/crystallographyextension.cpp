@@ -145,10 +145,10 @@ namespace Avogadro
     case SetSpacegroupIndex:
     case FillUnitCellIndex:
     case SymmetrizeCrystalIndex:
-      return "&Crystallography>Space&group";
+      return tr("&Crystallography") + '>' + tr("Space&group");
     case PrimitiveReduceIndex:
     case NiggliReduceIndex:
-      return "&Crystallography>&Reduce";
+      return tr("&Crystallography") + '>' + tr("&Reduce");
     case ToggleUnitCellIndex:
     case PasteCrystalIndex:
     case ToggleUnitCellSepIndex:
@@ -160,27 +160,27 @@ namespace Avogadro
     case ScaleToVolumeIndex:
     case LooseSepIndex:
     case SettingsMainSep1Index:
-      return "&Crystallography";
+      return tr("&Crystallography");
     case UnitsLengthAngstromIndex:
     case UnitsLengthBohrIndex:
     case UnitsLengthNanometerIndex:
     case UnitsLengthPicometerIndex:
-      return "&Crystallography>&Settings>&Length Unit";
+      return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Length Unit");
     case UnitsAngleDegreeIndex:
     case UnitsAngleRadianIndex:
-      return "&Crystallography>&Settings>&Angle Unit";
+      return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Angle Unit");
     case CoordsCartIndex:
     case CoordsFracIndex:
-      return "&Crystallography>&Settings>&Coordinate Display";
+      return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Coordinate Display");
     case CoordsPreserveCartIndex:
     case CoordsPreserveFracIndex:
-      return "&Crystallography>&Settings>Coordinate &Preservation";
+      return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("Coordinate &Preservation");
     case MatrixCartIndex:
     case MatrixFracIndex:
     case MatrixCoordDisplaySep1Index:
     case MatrixRowVectorsIndex:
     case MatrixColumnVectorsIndex:
-      return "&Crystallography>&Settings>&Matrix Display";
+      return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Matrix Display");
     default:
       qDebug() << "Unknown action...";
       return "";
