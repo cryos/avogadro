@@ -19,7 +19,7 @@ if (WIN32)
   ##############################################
   find_file(zlib_DLL "zlib1.dll" PATHS
       "C:/src/zlib-1.2.3/projects/visualc6/Win32_DLL_Release"
-      ${zlib_DIR}
+      ${ZLIB_DLL_DIR}
   )
   install(FILES ${zlib_DLL} DESTINATION bin)
 
@@ -30,11 +30,13 @@ if (WIN32)
       "C:/src/libxml2"
       "C:/src/libxml2-2.7.3"
       "C:/src/libxml2-2-7-3"
+      ${LIBXML_DIR}
   )
   find_file(libxml2_DLL "libxml2.dll" PATHS
       "${libxml2_DIR}/win32/bin.msvc"
       "${libxml2_DIR}/bin"
       "${libxml2_DIR}/lib"
+      ${LIBXML_DLL_DIR}
   )
   install(FILES ${libxml2_DLL} DESTINATION bin)
 
@@ -48,6 +50,11 @@ if (WIN32)
       "C:/src/openbabel-2.2.1"
       "C:/src/openbabel-2.2.x"
   )
+  
+  if( NOT EXISTS "${openbabel_SRCDIR}" )
+    find_path( openbabel_SRCDIR "openbabel-2.0.pc.cmake" PATHS ${OPENBABEL2_DIR} )
+  endif()
+  
 
   # Data files needed by OpenBabel
   file(GLOB openbabel_FILES "${openbabel_SRCDIR}/data/*.txt")
@@ -65,12 +72,21 @@ if (WIN32)
       "${openbabel_SRCDIR}/src/Release"
       "${openbabel_SRCDIR}/Release"
       "${openbabel_SRCDIR}"
+      ${OPENBABEL2_DLL_DIR}
   )
-  set(openbabel_DLLs
-      "${openbabel_BINDIR}/openbabel-2.dll"
-      "${openbabel_BINDIR}/inchi.dll")
+  
+  if( EXISTS "${openbabel_BINDIR}/inchi.dll" )
+    set(openbabel_DLLs
+        "${openbabel_BINDIR}/openbabel-2.dll"
+        "${openbabel_BINDIR}/inchi.dll")
+  else()
+    set(openbabel_DLLs
+        "${openbabel_BINDIR}/openbabel-2.dll"
+        "${openbabel_BINDIR}/libinchi.dll")
+  endif()
+  
   install(FILES ${openbabel_DLLs} DESTINATION bin)
-
+  
   file(GLOB openbabel_FORMATS "${openbabel_BINDIR}/*.obf")
   install(FILES ${openbabel_FORMATS} DESTINATION bin)
 
@@ -83,6 +99,7 @@ if (WIN32)
       "C:/src/qt-4.4.5/bin"
       "C:/src/qt-4.5.0/bin"
       "C:/src/qt-4.5.1/bin"
+      ${QT_BIN_DIR}
   )
   set(qt_DEPS
     "${qt_BINDIR}/QtCore4.dll"
@@ -97,6 +114,7 @@ if (WIN32)
   if(ENABLE_GLSL AND GLEW_FOUND)
     find_file(glew_DLL "glew32.dll" PATHS
         "C:/src/glew/bin"
+        ${GLEW_DLL_DIR}
     )
     install(FILES ${glew_DLL} DESTINATION bin)
   endif(ENABLE_GLSL AND GLEW_FOUND)

@@ -285,7 +285,7 @@ namespace Avogadro {
     conv.SetInAndOutFormats("XYZ","XYZ");
 
 #ifdef Q_CC_MSVC
-    std::ofstream file(fileName.toStdWString().c_str());
+    std::ofstream file(filename.toStdWString().c_str());
 #else
     std::ofstream file(QFile::encodeName(filename));
 #endif

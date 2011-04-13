@@ -99,6 +99,7 @@ endif(OPENBABEL2_EXECUTABLE)
 
 # Test if we are using trunk
 if(NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
+  message(STATUS "OpenBabel2 version: ${OPENBABEL2_VERSION}")
   macro_ensure_version("2.2.99" "${OPENBABEL2_VERSION}" OPENBABEL_IS_NEWER_THAN_2_2_99)
 endif()
 
