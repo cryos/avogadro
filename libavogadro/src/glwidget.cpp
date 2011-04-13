@@ -873,111 +873,726 @@ namespace Avogadro {
       renderCrystalAxes();
   }
 
-  // Render the unit cell axes, indicating the frame of the cell
-  //       4---5
-  //      /   /|
-  //     /   / |    (0 is the "origin" for this unit cell)
-  //    3---2  6    (7 is in the back corner = cellVector[2])
-  //    |   | /     (3 is cellVector[1])
-  //    |   |/      (1 is cellVector[0])
-  //    0---1
   void GLWidget::renderCrystalAxes()
   {
-    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
-    vector3 v0(0.0, 0.0, 0.0);
-    vector3 v1(cellVectors[0]);
-    vector3 v3(cellVectors[1]);
-    vector3 v7(cellVectors[2]);
-    vector3 v2, v4, v5, v6;
-    v2 = v1 + v3;
-    v4 = v3 + v7;
-    v6 = v1 + v7;
-    v5 = v4 + v1;
+    const matrix3x3 obmat (d->molecule->OBUnitCell()->GetCellMatrix());
 
-    glDisable(GL_LIGHTING);
-    glColor4f(d->cellColor.redF(), d->cellColor.greenF(), d->cellColor.blueF(), 0.7);
-    //glColor4f(1.0, 1.0, 1.0, 0.7);
-    glLineWidth(2.0);
+    const Vector3d v1 (obmat(0,0), obmat(0,1), obmat(0,2));
+    const Vector3d v2 (obmat(1,0), obmat(1,1), obmat(1,2));
+    const Vector3d v3 (obmat(2,0), obmat(2,1), obmat(2,2));
+    Vector3d offset;
+
+    d->painter->setColor(d->cellColor.redF(), d->cellColor.greenF(), d->cellColor.blueF(), 0.7);
+
     for (int a = 0; a < d->aCells; a++) {
       for (int b = 0; b < d->bCells; b++)  {
         for (int c = 0; c < d->cCells; c++)  {
-          glPushMatrix();
-          glTranslated(
-                       cellVectors[0].x() * a
-                       + cellVectors[1].x() * b
-                       + cellVectors[2].x() * c,
-                       cellVectors[0].y() * a
-                       + cellVectors[1].y() * b
-                       + cellVectors[2].y() * c,
-                       cellVectors[0].z() * a
-                       + cellVectors[1].z() * b
-                       + cellVectors[2].z() * c );
+          // Calculate offset for this cell
+          offset = (a * v1 + b * v2 + c * v3);
 
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v1.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v3.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v0.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v1.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v3.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v3.AsArray());
-          glVertex3dv(v4.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v4.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v2.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v5.AsArray());
-          glVertex3dv(v6.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v1.AsArray());
-          glVertex3dv(v6.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v6.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glBegin(GL_LINE_STRIP);
-          glVertex3dv(v4.AsArray());
-          glVertex3dv(v7.AsArray());
-          glEnd();
-
-          glPopMatrix();
+          // Draw the clipped box with a linewidth of 2.0
+          renderClippedBox(offset, v1, v2, v3, 2.0);
         }
       }
-    } // end of for loops
-    glEnable(GL_LIGHTING);
+    }
+  }
+
+}
+
+// Use anonymous namespace for renderClippedBox helper functions
+namespace {
+  // Given two points a and b, and a plane defined by normal vector n
+  // and point p, does the plane intersect the line segment formed by
+  // ab? If so, intersection is overwritten with the point of
+  // intersection and the function returns true.
+  static inline bool isPlaneBetweenPoints(const Vector3d &a,
+                                          const Vector3d &b,
+                                          const Vector3d &n,
+                                          const Vector3d &p,
+                                          Vector3d *intersection)
+  {
+    // Resource:
+    // http://paulbourke.net/geometry/planeline/
+
+    const double denom = n.dot(b - a);
+
+    // Parallel (in or out of plane)
+    if (fabs(denom) < 1e-8)
+      return false;
+
+    // Otherwise it intersects the line ab. To find out if it
+    // intersects the line segment ab, more calcs are needed:
+    const double u = ( n.dot(p - a) ) / ( denom );
+
+    // if u is between (0,1], it intersects segment ab. Otherwise
+    // return false.
+    if (u <= 0 || u > 1)
+      return false;
+
+    // If we don't need to calculate the intersection, return true here
+    if (!intersection)
+      return true;
+
+    // Calculate intersection, return true
+    *intersection = a + u * (b - a);
+    return true;
+  }
+
+  // Adapted from Malcolm McLean's example at
+  // http://bytes.com/topic/c/answers/621985-print-binary-representation
+  char* debug16bit(const quint16 x) {
+    static char buff[sizeof(quint16) * CHAR_BIT + 1];
+    unsigned int i;
+    int j = sizeof(int) * CHAR_BIT - 1;
+
+    buff[j] = 0;
+    for(i=0;i<sizeof(int) * CHAR_BIT; i++)
+      {
+        if(x & (1 << i))
+          buff[j] = '1';
+        else
+          buff[j] = '0';
+        j--;
+      }
+    return buff;
+  }
+}
+
+namespace Avogadro {
+  bool GLWidget::renderClippedBox(const Eigen::Vector3d &origin,
+                                  const Eigen::Vector3d &v1,
+                                  const Eigen::Vector3d &v2,
+                                  const Eigen::Vector3d &v3,
+                                  const double lineWidth)
+  {
+    // Create points from vectors:
+    //
+    //         6------8  c1 = origin
+    //        /:     /|  c2 = origin + v1
+    //       / :    / |  c3 = origin + v2
+    //      /  4---/--7  c4 = origin + v3
+    //     /  /   /  /   c5 = origin + v1 + v2
+    //    3------5  /    c6 = origin + v2 + v3
+    //    | /    | /     c7 = origin + v1 + v3
+    //    |/     |/      c8 = origin + v1 + v2 + v3
+    //    1------2
+    //
+    // Edges are defined as:
+    // edge = pts, hexID   edge = pts, hexID
+    //  e1  = 1 2  0x1      e7  = 3 6  0x12
+    //  e2  = 1 3  0x2      e8  = 4 6  0x14
+    //  e3  = 1 4  0x4      e9  = 4 7  0x18
+    //  e4  = 2 5  0x8      e10 = 5 8  0x20
+    //  e5  = 2 7  0x10     e11 = 6 8  0x21
+    //  e6  = 3 5  0x11     e12 = 7 8  0x22
+
+    // Create all points
+    const Eigen::Vector3d &c1 = origin;
+    const Eigen::Vector3d  c2 = origin + v1;
+    const Eigen::Vector3d  c3 = origin + v2;
+    const Eigen::Vector3d  c4 = origin + v3;
+    const Eigen::Vector3d  c5 = c2 + v2;
+    const Eigen::Vector3d  c6 = c3 + v3;
+    const Eigen::Vector3d  c7 = c2 + v3;
+    const Eigen::Vector3d  c8 = c5 + v3;
+
+    d->painter->drawBoxEdges(c1, c2, c3, c4, c5, c6, c7, c8, lineWidth);
+
+    // Now for the clipping part. We will find all intersections of
+    // the viewing volume's near-plane cell edges, and draw an
+    // appropriate polygon that highlights where the clipping
+    // occurs. This prevents odd "missing corners" that are visually
+    // disturbing.
+
+    // Grab a point in the near clipping plane and it's normal. If
+    // there is no clipping plane, return.
+    Vector3d clipNormal;
+    Vector3d clipPoint;
+    if (!d->camera->nearClippingPlane(&clipNormal, &clipPoint)) {
+      return false;
+    }
+
+    // Nudge the point slightly inside of the viewing volume to ensure
+    // that the clip outline isn't clipped itself
+    clipPoint += 1e-4 * clipNormal;
+
+    // Check which edges of the plane are intersected by the view
+    // plane.
+    //
+    // The intersections are stored bitwise in a quint16, the
+    // least significant bit representing e1 and the four most
+    // significant bits being 0. A bit == 1 indicates that the edge is
+    // intersected. Initialize to all 0s.
+    //
+    register quint16 intersections = 0;
+    //
+    // Define masks for the edge bits to prevent errors:
+    //
+    unsigned enum {
+      E1MASK =  0x001,
+      E2MASK =  0x002,
+      E3MASK =  0x004,
+      E4MASK =  0x008,
+      E5MASK =  0x010,
+      E6MASK =  0x020,
+      E7MASK =  0x040,
+      E8MASK =  0x080,
+      E9MASK =  0x100,
+      E10MASK = 0x200,
+      E11MASK = 0x400,
+      E12MASK = 0x800
+    };
+    //
+    // Points of intersections:
+    //
+    unsigned short intersectionCount = 0;
+    Vector3d i1;
+    Vector3d i2;
+    Vector3d i3;
+    Vector3d i4;
+    Vector3d i5;
+    Vector3d i6;
+    Vector3d i7;
+    Vector3d i8;
+    Vector3d i9;
+    Vector3d i10;
+    Vector3d i11;
+    Vector3d i12;
+    //
+    // Test points
+    //
+    if (isPlaneBetweenPoints(c1, c2, clipNormal, clipPoint, &i1)) {
+      intersections |= E1MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c1, c3, clipNormal, clipPoint, &i2)) {
+      intersections |= E2MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c1, c4, clipNormal, clipPoint, &i3)) {
+      intersections |= E3MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c2, c5, clipNormal, clipPoint, &i4)) {
+      intersections |= E4MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c2, c7, clipNormal, clipPoint, &i5)) {
+      intersections |= E5MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c3, c5, clipNormal, clipPoint, &i6)) {
+      intersections |= E6MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c3, c6, clipNormal, clipPoint, &i7)) {
+      intersections |= E7MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c4, c6, clipNormal, clipPoint, &i8)) {
+      intersections |= E8MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c4, c7, clipNormal, clipPoint, &i9)) {
+      intersections |= E9MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c5, c8, clipNormal, clipPoint, &i10)) {
+      intersections |= E10MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c6, c8, clipNormal, clipPoint, &i11)) {
+      intersections |= E11MASK;
+      ++intersectionCount;
+    }
+    if (isPlaneBetweenPoints(c7, c8, clipNormal, clipPoint, &i12)) {
+      intersections |= E12MASK;
+      ++intersectionCount;
+    }
+
+    // Set stipple pattern for clip lines. glPopAttrib() must be
+    // called at all exit points that follow.
+    glPushAttrib(GL_LINE_BIT);
+    const GLushort clipStipple = 0xF0F0; // A = 1010
+    const GLint clipStippleFactor = 1;
+    glLineStipple(clipStippleFactor, clipStipple);
+    glEnable(GL_LINE_STIPPLE);
+
+    // Handle polygon drawing based on number of intersections
+    switch (intersectionCount) {
+
+    case 0:
+      // No intersections, just return.
+      glPopAttrib();
+      return false;
+
+    case 1:
+      // Shouldn't happen, probably floating points errors. Print a
+      // warning and return.
+      qWarning() << "Viewing volume near-plane intersects unit cell only once.";
+      glPopAttrib();
+      return false;
+
+    case 2:
+      // Also shouldn't happen. Bail.
+      qWarning() << "Viewing volume near-plane intersects unit cell only twice.";
+      glPopAttrib();
+      return false;
+
+    case 3: {
+      // Either one corner is in the frustum, or only one is
+      // out. Either way, just connect the points in the triangle.
+      const Vector3d * triangle[3];
+      unsigned short triangleInd = 0;
+
+      if (intersections & E1MASK) {
+        triangle[triangleInd++] = &i1;
+      }
+      if (intersections & E2MASK) {
+        triangle[triangleInd++] = &i2;
+      }
+      if (intersections & E3MASK) {
+        triangle[triangleInd++] = &i3;
+      }
+      if (intersections & E4MASK) {
+        triangle[triangleInd++] = &i4;
+      }
+      if (intersections & E5MASK) {
+        triangle[triangleInd++] = &i5;
+      }
+      if (intersections & E6MASK) {
+        triangle[triangleInd++] = &i6;
+      }
+      if (intersections & E7MASK) {
+        triangle[triangleInd++] = &i7;
+      }
+      if (intersections & E8MASK) {
+        triangle[triangleInd++] = &i8;
+      }
+      if (intersections & E9MASK) {
+        triangle[triangleInd++] = &i9;
+      }
+      if (intersections & E10MASK) {
+        triangle[triangleInd++] = &i10;
+      }
+      if (intersections & E11MASK) {
+        triangle[triangleInd++] = &i11;
+      }
+      if (intersections & E12MASK) {
+        triangle[triangleInd++] = &i12;
+      }
+
+      // If there were more/less than three intersections, something is
+      // buggy above
+      Q_ASSERT(triangleInd == 3);
+
+      d->painter->drawLine(*(triangle[0]), *(triangle[1]), lineWidth);
+      d->painter->drawLine(*(triangle[1]), *(triangle[2]), lineWidth);
+      d->painter->drawLine(*(triangle[2]), *(triangle[0]), lineWidth);
+
+      glPopAttrib();
+      return true;
+    }
+
+    case 4:
+      // Case of either two, four, or six corners outside the near
+      // plane.
+      //
+      // 2 corner cuts follow, enumerated in order of isolated
+      // coherent edge
+      //
+      switch (intersections) {
+      case ( E2MASK | E4MASK | E5MASK | E3MASK ):
+        // e1 excluded; e2, e4, e5, e3 intersected.
+        d->painter->drawQuadrilateral(i2, i4, i5, i3, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E1MASK | E6MASK | E7MASK | E3MASK ):
+        // e2 excluded; e1, e6, e7, e3 intersected.
+        d->painter->drawQuadrilateral(i1, i6, i7, i3, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E2MASK | E8MASK | E9MASK | E1MASK ):
+        // e3 excluded; e2, e8, e9, e1 intersected.
+        d->painter->drawQuadrilateral(i2, i8, i9, i1, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E1MASK | E6MASK | E10MASK | E5MASK ):
+        // e4 excluded; e1, e6, e10, e5 intersected.
+        d->painter->drawQuadrilateral(i1, i6, i10, i5, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E1MASK | E4MASK | E12MASK | E9MASK ):
+        // e5 excluded; e1, e4, e12, e9 intersected.
+        d->painter->drawQuadrilateral(i1, i4, i12, i9, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E2MASK | E4MASK | E10MASK | E7MASK ):
+        // e6 excluded; e2, e4, e10, e7 intersected.
+        d->painter->drawQuadrilateral(i2, i4, i10, i7, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E2MASK | E6MASK | E11MASK | E8MASK ):
+        // e7 excluded; e2, e6, e11, e8 intersected.
+        d->painter->drawQuadrilateral(i2, i6, i11, i8, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E3MASK | E7MASK | E11MASK | E9MASK ):
+        // e8 excluded; e3, e7, e11, e9 intersected.
+        d->painter->drawQuadrilateral(i3, i7, i11, i9, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E3MASK | E5MASK | E12MASK | E8MASK ):
+        // e9 excluded; e3, e5, e12, e8 intersected.
+        d->painter->drawQuadrilateral(i3, i5, i12, i8, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E4MASK | E12MASK | E11MASK | E6MASK ):
+        // e10 excluded; e4, e12, e11, e6 intersected.
+        d->painter->drawQuadrilateral(i4, i12, i11, i6, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E7MASK | E10MASK | E12MASK | E8MASK ):
+        // e11 excluded; e7, e10, e12, e8 intersected.
+        d->painter->drawQuadrilateral(i7, i10, i12, i8, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E5MASK | E10MASK | E11MASK | E9MASK ):
+        // e12 excluded; e5, e10, e11, e9 intersected.
+        d->painter->drawQuadrilateral(i5, i10, i11, i9, lineWidth);
+        glPopAttrib();
+        return true;
+
+      // Cases of the four coplanar corners outside of the near-plane
+
+      case ( E3MASK | E7MASK | E10MASK | E5MASK ):
+        // "parallel" to v1, v2; e3, e7, e10, e5 intersected.
+        d->painter->drawQuadrilateral(i3, i7, i10, i5, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E2MASK | E4MASK | E12MASK | E8MASK ):
+        // "parallel" to v1, v3; e2, e4, e12, e8 intersected.
+        d->painter->drawQuadrilateral(i2, i4, i12, i8, lineWidth);
+        glPopAttrib();
+        return true;
+
+      case ( E1MASK | E6MASK | E11MASK | E9MASK ):
+        // "parallel" to v2,v3; e1, e6, e11, e9 intersected.
+        d->painter->drawQuadrilateral(i1, i6, i11, i9, lineWidth);
+        glPopAttrib();
+        return true;
+
+      default:
+        // Shouldn't be any others:
+        qWarning() << "Unhandled 4-point near-plane unit cell intersection:"
+                   << debug16bit(intersections);
+        glPopAttrib();
+        return false;
+
+      } // End switch on 4 intersections
+
+    case 5:
+      // Three or five corner split by near-plane, enumerated by the
+      // three-corner combinations below:
+      switch (intersections) {
+
+      case ( E4MASK | E6MASK | E7MASK | E3MASK | E5MASK ): {
+        // Corners: c1, c2, c3; e4, e6, e7, e3, e5 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i4 << i6 << i7 << i3 << i5;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E4MASK | E5MASK | E9MASK | E8MASK ): {
+        // Corners: c1, c2, c4; e2, e4, e5, e9, e8 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i4 << i5 << i9 << i8;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E6MASK | E10MASK | E5MASK | E3MASK ): {
+        // Corners: c1, c2, c5; e2, e6, e10, e5, e3 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i6 << i10 << i5 << i3;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E4MASK | E12MASK | E9MASK | E3MASK ): {
+        // Corners: c1, c2, c7; e2, e4, e12, e9, e3 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i4 << i12 << i9 << i3;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E6MASK | E1MASK | E9MASK | E8MASK | E7MASK ): {
+        // Corners: c1, c3, c4; e6, e1, e9, e8, e7 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i6 << i1 << i9 << i8 << i7;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E3MASK | E7MASK | E10MASK | E4MASK | E1MASK ): {
+        // Corners: c1, c3, c5; e3, e7, e10, e4, e1 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i3 << i7 << i10 << i4 << i1;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E6MASK | E11MASK | E8MASK | E3MASK ): {
+        // Corners: c1, c3, c6; e1, e6, e11, e8, e3 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i6 << i11 << i8 << i3;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E9MASK | E11MASK | E7MASK | E2MASK ): {
+        // Corners: c1, c4, c6; e1, e9, e11, e7, e2 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i9 << i11 << i7 << i2;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E8MASK | E12MASK | E5MASK | E1MASK ): {
+        // Corners: c1, c4, c7; e2, e8, e12, e5, e1 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i8 << i12 << i5 << i1;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E5MASK | E10MASK | E7MASK | E2MASK | E1MASK ): {
+        // Corners: c2, c3, c5; e5, e10, e7, e2, e1 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i5 << i10 << i7 << i2 << i1;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E3MASK | E8MASK | E12MASK | E4MASK ): {
+        // Corners: c2, c4, c7; e1, e3, e8, e12, e4 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i3 << i8 << i12 << i4;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E6MASK | E10MASK | E12MASK | E9MASK ): {
+        // Corners: c2, c5, c7; e1, e6, e10, e12, e9 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i6 << i10 << i12 << i9;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E6MASK | E11MASK | E12MASK | E5MASK ): {
+        // Corners: c2, c5, c8; e1, e6, e11, e12, e5 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i6 << i11 << i12 << i5;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E4MASK | E10MASK | E11MASK | E9MASK ): {
+        // Corners: c2, c7, c8; e1, e4, e10, e11, e9 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i4 << i10 << i11 << i9;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E6MASK | E11MASK | E9MASK | E3MASK | E2MASK ): {
+        // Corners: c3, c4, c6; e6, e11, e9, e3, e2 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i6 << i11 << i9 << i3 << i2;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E4MASK | E2MASK | E8MASK | E11MASK | E10MASK ): {
+        // Corners: c3, c5, c6; e4, e2, e8, e11, e10 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i4 << i2 << i8 << i11 << i10;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E4MASK | E12MASK | E11MASK | E7MASK ): {
+        // Corners: c3, c5, c8; e2, e4, e12, e11, e7 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i4 << i12 << i11 << i7;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E6MASK | E10MASK | E12MASK | E8MASK ): {
+        // Corners: c3, c6, c8; e2, e6, e10, e12, e8 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i6 << i10 << i12 << i8;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E5MASK | E3MASK | E7MASK | E11MASK | E12MASK ): {
+        // Corners: c4, c6, c7; e5, e3, e7, e11, e12 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i5 << i3 << i7 << i11 << i12;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E3MASK | E7MASK | E10MASK | E12MASK | E9MASK ): {
+        // Corners: c4, c6, c8; e3, e7, e10, e12, e9 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i3 << i7 << i10 << i12 << i9;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E3MASK | E5MASK | E10MASK | E11MASK | E8MASK ): {
+        // Corners: c4, c7, c8; e3, e5, e10, e11, e8 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i3 << i5 << i10 << i11 << i8;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E4MASK | E6MASK | E7MASK | E8MASK | E12MASK ): {
+        // Corners: c5, c6, c8; e4, e6, e7, e8, e12 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i4 << i6 << i7 << i8 << i12;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E4MASK | E6MASK | E11MASK | E9MASK | E5MASK ): {
+        // Corners: c5, c7, c8; e4, e6, e11, e9, e5 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i4 << i6 << i11 << i9 << i5;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E7MASK | E8MASK | E9MASK | E5MASK | E10MASK ): {
+        // Corners: c6, c7, c8; e7, e8, e9, e5, e10 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i7 << i8 << i9 << i5 << i10;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      default:
+        // Shouldn't be any others:
+        qWarning() << "Unhandled 5-point near-plane unit cell intersection:"
+                   << debug16bit(intersections);
+        glPopAttrib();
+        return false;
+      }
+
+    case 6:
+      // Diagonal slices with four corners each in each volume.
+      switch (intersections) {
+
+      case ( E4MASK | E6MASK | E7MASK | E8MASK | E9MASK | E5MASK ): {
+        // Corners: c1, c2, c3, c4; e4, e6, e7, e8, e9, e5 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i4 << i6 << i7 << i8 << i9 << i5;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E3MASK | E9MASK | E12MASK | E10MASK | E6MASK ): {
+        // Corners: c1, c2, c5, c7; e2, e3, e9, e12, e10, e6 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i3 << i9 << i12 << i10 << i6;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E1MASK | E3MASK | E8MASK | E11MASK | E10MASK | E4MASK ): {
+        // Corners: c1, c3, c5, c6; e1, e3, e8, e11, e10, e4 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i1 << i3 << i8 << i11 << i10 << i4;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      case ( E2MASK | E7MASK | E11MASK | E12MASK | E5MASK | E1MASK ): {
+        // Corners: c1, c4, c6, c7; e2, e7, e11, e12, e5, e1 intersected.
+        QList<Eigen::Vector3d> points;
+        points << i2 << i7 << i11 << i12 << i5 << i1;
+        d->painter->drawLineLoop(points, lineWidth);
+        glPopAttrib();
+        return true;
+      }
+
+      default:
+        // Shouldn't be any others:
+        qWarning() << "Unhandled 6-point near-plane unit cell intersection:"
+                   << debug16bit(intersections);
+        glPopAttrib();
+        return false;
+      }
+
+    default:
+      // It doesn't make sense for more intersections to exist.
+      qWarning() << "Unhandled" << intersectionCount << "point near-plane"
+                 << "unit cell intersection:"
+                 << debug16bit(intersections);
+
+      glPopAttrib();
+      return false;
+    }
+
+    // Shouldn't happen
+    glPopAttrib();
+    return false;
   }
 
   void GLWidget::renderAxesOverlay()
