@@ -460,6 +460,7 @@ namespace Avogadro
     // Draw a line between two points of the specified thickness
     if(!d->isValid()) { return; }
 
+    glPushAttrib(GL_LIGHTING_BIT);
     glDisable(GL_LIGHTING);
 
     glLineWidth(lineWidth);
@@ -471,7 +472,7 @@ namespace Avogadro
     glVertex3dv(end.data());
     glEnd();
 
-    glEnable(GL_LIGHTING);
+    glPopAttrib();
   }
 
   void GLPainter::drawMultiLine(const Eigen::Vector3d &end1,
@@ -935,11 +936,8 @@ namespace Avogadro
   {
     assert( d->widget );
 
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glPushMatrix();
-    glLoadIdentity();
+    glPushAttrib(GL_LIGHTING_BIT);
     glDisable(GL_LIGHTING);
-    glDisable(GL_CULL_FACE);
 
     glLineWidth(lineWidth);
     d->color.apply();
@@ -951,7 +949,6 @@ namespace Avogadro
     glVertex3dv(point4.data());
     glEnd();
 
-    glPopMatrix();
     glPopAttrib();
   }
 
