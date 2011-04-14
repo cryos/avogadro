@@ -7,6 +7,7 @@ set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/extensions)
 include_directories(
   ../
   ${CMAKE_CURRENT_BINARY_DIR}
+  ${ZLIB_INCLUDE_DIR}
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
