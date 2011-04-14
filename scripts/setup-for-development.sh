@@ -24,7 +24,7 @@ do
 "
   read -ep "Is the name and email address above correct? [Y/n] " correct
   if [ "$correct" == "n" ] || [ "$correct" == "N" ]; then
-    setup_user
+    setup_git_user
   else
     break
   fi
