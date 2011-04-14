@@ -29,8 +29,7 @@
 #include <openbabel/residue.h>
 #include <openbabel/atom.h>
 
-#include <QtCore/QFile>
-#include <QtCore/QDebug>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -393,11 +392,7 @@ namespace Avogadro {
     filename += residue + ".zmat";
 
     ifstream ifs;
-#ifdef Q_CC_MSVC
-    ifs.open(filename.toStdWString().c_str());
-#else
-    ifs.open(QFile::encodeName(filename));
-#endif
+    ifs.open(filename.toAscii());
 
     if (!ifs) { // file doesn't exist
       qDebug() << " Cannot open residue file: " << filename;
