@@ -157,11 +157,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-#ifdef Q_CC_MSVC
-    ifs.open(m_fileName.toStdWString().c_str());
-#else
-    ifs.open(QFile::encodeName(m_fileName)); // This handles utf8 file names etc
-#endif
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     ifs.seekg(d->streampos.at(i));
  
     if (!ifs) // Should not happen, already checked file could be opened
@@ -207,23 +203,15 @@ namespace Avogadro {
 
     // Now attempt to open the file.new for writing
     ofstream ofs;
-    QString newFilename(m_fileName + QLatin1String(".new"));
-#ifdef Q_CC_MSVC
-    ofs.open(newFilename.toStdWString().c_str());
-#else
-    ofs.open(QFile::encodeName(newFilename));
-#endif
+    QString newFilename(m_fileName.toLocal8Bit() + QLatin1String(".new"));
+    ofs.open(newFilename.toAscii().data()); // This handles utf8 file names etc
     if (!ofs) {
       m_error.append(tr("Could not open file '%1' for writing.").arg(m_fileName));
       return false;
     }
     // Copy molecules 0 to i-1 to .new file
     ifstream ifs;
-#ifdef Q_CC_MSVC
-    ifs.open(m_fileName.toStdWString().c_str());
-#else
-    ifs.open(QFile::encodeName(m_fileName));
-#endif
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) {
       m_error.append(tr("Could not open file '%1' for reading.").arg(m_fileName));
       return false;
@@ -396,11 +384,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-#ifdef Q_CC_MSVC
-    ifs.open(fileName.toStdWString().c_str());
-#else
-    ifs.open(QFile::encodeName(fileName));
-#endif
+    ifs.open(fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
     OpenBabel::OBMol *obMol = new OpenBabel::OBMol;
@@ -470,11 +454,7 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-#ifdef Q_CC_MSVC
-    ofs.open(newFileName.toStdWString().c_str());
-#else
-    ofs.open(QFile::encodeName(newFileName));
-#endif
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) {// Should not happen, already checked file could be opened
       qDebug() << "ofs is bad";
       return false;
@@ -567,11 +547,7 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-#ifdef Q_CC_MSVC
-    ofs.open(newFileName.toStdWString().c_str());
-#else
-    ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
-#endif
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) // Should not happen, already checked file could be opened
       return false;
     
@@ -710,11 +686,7 @@ namespace Avogadro {
 
         // Now attempt to read the molecule in
         ifstream ifs;
-    #ifdef Q_CC_MSVC
-        ifs.open(m_moleculeFile->m_fileName.toStdWString().c_str());
-    #else
-        ifs.open(QFile::encodeName(m_moleculeFile->m_fileName)); // This handles utf8 file names etc
-    #endif
+        ifs.open(m_moleculeFile->m_fileName.toLocal8Bit()); // This handles utf8 file names etc
         if (!ifs) // Should not happen, already checked file could be opened
           return;
       
