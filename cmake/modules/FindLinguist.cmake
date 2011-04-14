@@ -19,9 +19,9 @@ FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate-qt4 lupdate PATHS
 
 if(QT_LUPDATE_EXECUTABLE)
   message(STATUS "Found lupdate: ${QT_LUPDATE_EXECUTABLE}")
-else(QT_LUPDATE_EXECUTABLE)
+elseif(Linguist_FIND_REQUIRED)
   message(FATAL_ERROR "Could NOT find lupdate")
-endif(QT_LUPDATE_EXECUTABLE)
+endif()
 
 FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt4 lrelease PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
@@ -31,9 +31,9 @@ FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt4 lrelease PATHS
 
 if(QT_LRELEASE_EXECUTABLE)
   message(STATUS "Found lrelease: ${QT_LRELEASE_EXECUTABLE}")
-else(QT_LRELEASE_EXECUTABLE)
+elseif(Linguist_FIND_REQUIRED)
   message(FATAL_ERROR "Could NOT find lrelease")
-endif(QT_LRELEASE_EXECUTABLE)
+endif()
 
 FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert-qt4 lconvert PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
@@ -43,9 +43,9 @@ FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert-qt4 lconvert PATHS
 
 if(QT_LCONVERT_EXECUTABLE)
   message(STATUS "Found lconvert: ${QT_LCONVERT_EXECUTABLE}")
-else(QT_LCONVERT_EXECUTABLE)
+elseif(Linguist_FIND_REQUIRED)
   message(FATAL_ERROR "Could NOT find lconvert")
-endif(QT_LCONVERT_EXECUTABLE)
+endif()
 
 mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE QT_LCONVERT_EXECUTABLE)
 
