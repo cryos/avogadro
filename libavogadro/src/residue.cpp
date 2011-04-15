@@ -42,8 +42,14 @@ namespace Avogadro {
 
   void Residue::addAtom(unsigned long id)
   {
-    if (!m_molecule->atomById(id))
+    if (!m_molecule) {
+      qWarning() << Q_FUNC_INFO << "Parent molecule was not set!";
       return;
+    }
+    if(!m_molecule->atomById(id)){
+      qWarning() << Q_FUNC_INFO << QString("Atom with id=%1 was not found in the parent molecule!").arg(id);
+      return;
+    }
     if (!m_atoms.contains(id))
       m_atoms.push_back(id);
     m_molecule->atomById(id)->setResidue(m_id);
@@ -52,13 +58,18 @@ namespace Avogadro {
 
   void Residue::removeAtom(unsigned long id)
   {
+    if (!m_molecule) {
+      qWarning() << Q_FUNC_INFO << "Parent molecule was not set!";
+      return;
+    }
+    if(!m_molecule->atomById(id)){
+      qWarning() << Q_FUNC_INFO << QString("Atom with id=%1 was not found in the parent molecule!").arg(id);
+      return;
+    }
     int index = m_atoms.indexOf(id);
     if (index != -1 ) {
       m_atoms.removeAt(index);
     }
-    if (!m_molecule->atomById(id))
-      return;
-
     m_molecule->atomById(id)->setResidue(FALSE_ID);
     disconnect(m_molecule->atomById(id), SIGNAL(updated()), this, SLOT(updateAtom()));
   }
