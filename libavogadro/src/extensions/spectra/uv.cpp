@@ -19,8 +19,6 @@
 
 #include <openbabel/generic.h>
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-
 #include "uv.h"
 #include "spectradialog.h"
 
@@ -149,12 +147,10 @@ namespace Avogadro {
         plotObject->addPoint ( wavelength, 0 );
       }
     }
-  } 
+  }
 
   QString UVSpectra::getTSV() {
     return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
 
 }
-
-#endif

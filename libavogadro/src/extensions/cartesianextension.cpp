@@ -45,11 +45,6 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-// New OB can resolve atomic number from IUPAC name
-#if (OB_VERSION < OB_VERSION_CHECK(2, 2, 99))
-  int GetAtomicNum(string name, int &iso);
-#endif
-  
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
                                                       m_unit(CoordinateUnit(0)),
                                                       m_format(CoordinateFormat(0)),
@@ -57,14 +52,14 @@ namespace Avogadro
   {
     setupUi(this);
     readSettings();
-    
+
     cartesianEdit->setTextColor(Qt::black);
     cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
     connect(sortBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSort()));
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
     connect(formatBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeFormat()));
-    
+
     connect(pasteButton, SIGNAL(clicked()), this, SLOT(paste()));
     connect(copyButton, SIGNAL(clicked()), this, SLOT(copy()));
     connect(cutButton, SIGNAL(clicked()), this, SLOT(cut()));
@@ -89,7 +84,7 @@ namespace Avogadro
 
   void CartesianEditor::changeUnits()
   {
-    if (unitsBox->currentIndex() == int(FRACTIONAL) && 
+    if (unitsBox->currentIndex() == int(FRACTIONAL) &&
         m_molecule->OBUnitCell() == 0) {
       // no unit cell
       QMessageBox::warning(this,
@@ -108,7 +103,7 @@ namespace Avogadro
     m_format = CoordinateFormat(formatBox->currentIndex());
     updateCoordinates();
   }
-    
+
   void CartesianEditor::paste()
   {
     QClipboard *clipboard = QApplication::clipboard();
@@ -164,12 +159,12 @@ namespace Avogadro
     }
     delete tmpMol;
   }
-  
+
   bool CartesianEditor::parseText(OBMol *mol)
   {
     QString coord = cartesianEdit->toPlainText();
     QStringList coordStrings = coord.split(QRegExp("\n"));
-    
+
     matrix3x3 xform;
     switch (m_unit) {
     case ANGSTROM:
@@ -189,7 +184,7 @@ namespace Avogadro
     // Guess format
 
     // split on any non-word symbol, except '.'
-    QStringList data = coordStrings.at(0).trimmed().split(QRegExp("\\s+|,|;")); 
+    QStringList data = coordStrings.at(0).trimmed().split(QRegExp("\\s+|,|;"));
     // Format definition, will be used for parsing
     int NameCol=-1, Xcol=-1, Ycol=-1, Zcol=-1;
     QString format("");
@@ -200,13 +195,13 @@ namespace Avogadro
       if (data.at(i) == "") {
         continue;
       }
-      
+
       a = data.at(i).toInt(&ok);
       if (ok) {
         format += "i";
         continue;
       }
-      
+
       b = data.at(i).toDouble(&ok);
       if (ok) {
         if ((int)b == b && b!=0)
@@ -235,7 +230,7 @@ namespace Avogadro
     }
     else { // more columns
         for (int i=0; i<format.length(); i++) {
-              
+
             if ((format.at(i)=='d') || (format.length()==4 && format.at(i)=='i')) {
               // double
               if (Xcol==-1) {
@@ -257,20 +252,16 @@ namespace Avogadro
               // string
               if (NameCol != -1)  // just found
                 continue;
-          
+
               // Try to find element name or symbol inside it
               int n,iso;
               QString s = data.at(i);
               while (s.length()!=0) { // recognize name with number
                 iso = 0;
-                #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-                  n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
-                #else
-                  n = GetAtomicNum(s.toStdString(), iso);
-                #endif
+                n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
                 if (iso != 0)
                   n = 1;
-            
+
                 if (n!=0) {
                   NameCol=i;
                   break;
@@ -290,16 +281,16 @@ namespace Avogadro
     if ((NameCol==-1) && format != "ddd") {
       return false;
     }
-      
+
     // Read and apply coordinates
     mol->BeginModify();
     for (int N=0; N<coordStrings.size(); N++) {
       if (coordStrings.at(N).trimmed() == "") {
         continue;
-      }      
+      }
       double x=0, y=0, z=0;
-      int _n=0,_iso=0;      
-      OBAtom *atom  = mol->NewAtom();      
+      int _n=0,_iso=0;
+      OBAtom *atom  = mol->NewAtom();
       QStringList s_data = coordStrings.at(N).trimmed().split(QRegExp("\\s+|,|;"));
       if (s_data.size() != data.size()) {
         return false;
@@ -317,18 +308,14 @@ namespace Avogadro
         } else if (i == NameCol) {
 
             // Try to find element name or symbol inside it
-              
+
               QString _s = s_data.at(i);
               while (_s.length()!=0) { // recognize name with number
                 _iso=0;
-                #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-                  _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
-                #else
-                  _n = GetAtomicNum(_s.toStdString(), _iso);
-                #endif
+                _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
                 if (_iso != 0)
                   _n = 1;
-            
+
                 if (_n!=0)
                   break;
                 else
@@ -352,12 +339,8 @@ namespace Avogadro
           atom->SetAtomicNum(_n);
       }
       if (xform.determinant() == 0.0) { // fractional coordinates
-        #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-          atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
-        #else
-          atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix() * pos);
-        #endif
-      }         
+        atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
+      }
       else {
         atom->SetVector(xform * pos);
       }
@@ -365,10 +348,10 @@ namespace Avogadro
     mol->EndModify();
     mol->ConnectTheDots();
     mol->PerceiveBondOrders();
-    
+
     return true;
   }
-  
+
   void CartesianEditor::updateCoordinates()
   {
     m_illegalInput = false;
@@ -382,16 +365,16 @@ namespace Avogadro
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
-        
+
         // Do sorting
         // FIXME: add new function for it?
         QList<Atom *> localAtom;
         QMultiMap<double, Atom*> tmpMap;
         QMultiMap<double, Atom*>::const_iterator it;
 
-        int n=0;   
+        int n=0;
         foreach (Atom *a, m_molecule->atoms()) {
-          double key;  
+          double key;
           switch (m_sort) {
           case ELEMENT:
             key = static_cast<double>(-1*a->atomicNumber());
@@ -411,11 +394,11 @@ namespace Avogadro
           }
           tmpMap.insert(key, a);
         }
-        
+
         it=tmpMap.constBegin();
         for (int i=0; it !=tmpMap.constEnd(); i++,it++ )
           localAtom.push_back(it.value());
-        
+
         matrix3x3 xform;
         switch (m_unit) {
         case ANGSTROM:
@@ -437,16 +420,13 @@ namespace Avogadro
           //Atom *atom = m_molecule->atom(i);
           Atom *atom = localAtom.at(i);
           if (xform.determinant() == 0.0) { // fractional coordinates
-            #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-              pos = m_molecule->OBUnitCell()->CartesianToFractional(atom->OBAtom().GetVector());
-            #else
-              pos = m_molecule->OBUnitCell()->GetFractionalMatrix() * atom->OBAtom().GetVector();
-            #endif
-          }         
+            pos = m_molecule->OBUnitCell()->CartesianToFractional(
+                  atom->OBAtom().GetVector());
+          }
           else {
             pos = xform * atom->OBAtom().GetVector();
           }
-  
+
           switch (m_format) {
           case XYZ:
             coordStream.setFieldWidth(3);
@@ -470,7 +450,7 @@ namespace Avogadro
             coordStream << fixed << forcepoint << right << pos.x() << pos.y()
               << pos.z() << endl;
             break;
-            
+
           case GAMESS:
             coordStream.setFieldWidth(3);
             coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
@@ -493,14 +473,14 @@ namespace Avogadro
             coordStream.setFieldWidth(18);
             coordStream << fixed << forcepoint << right << pos.x() << pos.y()
               << pos.z() << endl;
-            break;          
+            break;
 
           case TURBOMOLE:
             coordStream.setFieldWidth(14);
             coordStream << fixed << forcepoint << left << right << pos.x();
             coordStream.setFieldWidth(18);
             coordStream << pos.y()
-              << pos.z();            
+              << pos.z();
             coordStream.setFieldWidth(5);
             coordStream << left << right << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())) << endl;
             break;
@@ -517,12 +497,12 @@ namespace Avogadro
         delete coord;
     }
   }
-   
+
   void CartesianEditor::updateAtoms(Atom*)
   {
     updateCoordinates();
   }
- 
+
   void CartesianEditor::moleculeChanged(Molecule *)
   {
     updateCoordinates();
@@ -543,9 +523,9 @@ namespace Avogadro
     settings.setValue("cartesian/sort", m_sort);
     settings.setValue("cartesian/format", m_format);
     if (m_unit != FRACTIONAL)
-      settings.setValue("cartesian/unit", m_unit);    
+      settings.setValue("cartesian/unit", m_unit);
   }
-  
+
   void CartesianEditor::readSettings()
   {
     QSettings settings;
@@ -603,7 +583,7 @@ namespace Avogadro
   {
     Q_UNUSED(action)
     QUndoCommand *undo = 0;
-        
+
     if (!m_molecule)
       return 0; // nothing we can do
 
@@ -616,50 +596,19 @@ namespace Avogadro
     }
 
     if (widget)
-      m_widget = widget;    
+      m_widget = widget;
 
     if (!m_dialog) {
       m_dialog = new CartesianEditor(m_widget);
-      m_dialog->setMolecule(m_molecule);      
+      m_dialog->setMolecule(m_molecule);
     }
-     
+
     m_dialog->show();
     m_dialog->updateCoordinates();
 
     return undo;
   }
-  
 
-  
-#if (OB_VERSION < OB_VERSION_CHECK(2, 2, 99))
-  //int OBElementTable::GetAtomicNum(string name, int &iso)
-  int GetAtomicNum(string name, int &iso)
-  {
-    int n = OpenBabel::etab.GetAtomicNum(name.c_str(), iso);
-    if (iso != 0)
-      return 0;  // "D" ot "T"
-    if (n != 0)
-      return n;  // other element symbols
-
-    // not match => we've got IUPAC name
-
-    for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
-      if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))
-          return i;
-      
-    if (!QString::compare(name.c_str(), "Deuterium", Qt::CaseInsensitive)) {
-        iso = 2;
-        return(1);
-    } else if (!QString::compare(name.c_str(), "Tritium", Qt::CaseInsensitive)) {
-        iso = 3;
-        return(1);
-    } else
-      iso = 0;
-    return(0);
-  }
-#endif
-  
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2( cartesianextension, Avogadro::CartesianExtensionFactory )
-

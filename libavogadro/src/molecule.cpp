@@ -60,10 +60,8 @@ namespace Avogadro{
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
                           invalidRings(true), invalidGroupIndices(true),
                           obmol(0), obunitcell(0),
-                          obvibdata(0)
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-                        , obdosdata(0), obelectronictransitiondata(0)
-#endif
+                          obvibdata(0), obdosdata(0),
+                          obelectronictransitiondata(0)
     {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
@@ -99,11 +97,9 @@ namespace Avogadro{
       // TODO: Cache an OBMol, in which case the vib. data (and others)
       //       won't be necessary
       OpenBabel::OBVibrationData *  obvibdata;
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
       OpenBabel::OBDOSData *        obdosdata;
       OpenBabel::OBElectronicTransitionData *
                                     obelectronictransitiondata;
-#endif
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -1242,7 +1238,6 @@ namespace Avogadro{
       obmol.SetData(d->obvibdata->Clone(&obmol));
     }
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     // Copy dos, if needed
     if (d->obdosdata != NULL) {
       obmol.SetData(d->obdosdata->Clone(&obmol));
@@ -1252,7 +1247,7 @@ namespace Avogadro{
     if (d->obelectronictransitiondata != NULL) {
       obmol.SetData(d->obelectronictransitiondata->Clone(&obmol));
     }
-#endif
+
     return obmol;
   }
 
@@ -1391,7 +1386,6 @@ namespace Avogadro{
       d->obvibdata = vibData;
     }
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     // Copy DOS data
     if (obmol->HasData(OpenBabel::OBGenericDataType::DOSData)) {
       OpenBabel::OBDOSData *dosData = static_cast<OpenBabel::OBDOSData*>(obmol->GetData(OpenBabel::OBGenericDataType::DOSData));
@@ -1405,7 +1399,6 @@ namespace Avogadro{
         (obmol->GetData(OpenBabel::OBGenericDataType::ElectronicTransitionData));
       d->obelectronictransitiondata = etd;
     }
-#endif
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;

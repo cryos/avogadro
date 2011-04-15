@@ -19,8 +19,6 @@
 
 #include <openbabel/generic.h>
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-
 #include "cd.h"
 
 #include <QtGui/QMessageBox>
@@ -143,7 +141,7 @@ namespace Avogadro {
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
           double w = m_xList.at(j);
-          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 
+          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) /
             (22.97 * x / 1241) // <-- normalization constant (22.97 / X_0)
             / sqrt(2 * M_PI * s2); // <-- gaussian normalization
         }
@@ -165,7 +163,7 @@ namespace Avogadro {
         plotObject->addPoint ( wavelength, 0 );
       }
     }
-  } 
+  }
 
   /*void CDSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
@@ -191,5 +189,3 @@ namespace Avogadro {
   }
 
 }
-
-#endif

@@ -9,28 +9,28 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-include (MacroEnsureVersion)
+include(MacroEnsureVersion)
 
-if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
+if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
   # in cache already
   set(OPENBABEL2_FOUND TRUE)
 
-else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
+else()
   if(NOT WIN32)
 
     # Use the newer PkgConfig stuff
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.2.2)
+    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.3.0)
 
     # Maintain backwards compatibility with previous version of module
     if(OPENBABEL2_FOUND STREQUAL "1")
       set(OPENBABEL2_VERSION_MET TRUE)
       set(OPENBABEL2_INCLUDE_DIR ${OPENBABEL2_INCLUDE_DIRS})
-    endif(OPENBABEL2_FOUND STREQUAL "1")
+    endif()
 
   else(NOT WIN32)
     set(OPENBABEL2_VERSION_MET TRUE)
-  endif(NOT WIN32)
+  endif()
 
   if(OPENBABEL2_VERSION_MET)
 
@@ -46,7 +46,7 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
           set(OPENBABEL2_INCLUDE_DIR ${OPENBABEL2_INCLUDE_DIR}/openbabel-2.0)
         endif(OPENBABEL2_INCLUDE_DIR)
       endif(NOT OPENBABEL2_INCLUDE_DIR)
-    endif(WIN32)
+    endif()
 
     find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
       PATHS
@@ -54,25 +54,25 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
       ${GNUWIN32_DIR}/lib
       $ENV{OPENBABEL2_LIBRARIES}
     )
-  endif(OPENBABEL2_VERSION_MET)
+  endif()
 
   if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
     set(OPENBABEL2_FOUND TRUE)
   endif(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
 
-  if (OPENBABEL2_FOUND)
-    if (NOT OpenBabel2_FIND_QUIETLY)
-      message(STATUS "Found OpenBabel 2.2 or later: ${OPENBABEL2_LIBRARIES}")
-    endif (NOT OpenBabel2_FIND_QUIETLY)
-  else (OPENBABEL2_FOUND)
-    if (OpenBabel2_FIND_REQUIRED)
-      message(FATAL_ERROR "Could NOT find OpenBabel 2.2 or later ")
-    endif (OpenBabel2_FIND_REQUIRED)
-  endif (OPENBABEL2_FOUND)
+  if(OPENBABEL2_FOUND)
+    if(NOT OpenBabel2_FIND_QUIETLY)
+      message(STATUS "Found OpenBabel 2.3 or later: ${OPENBABEL2_LIBRARIES}")
+    endif()
+  else()
+    if(OpenBabel2_FIND_REQUIRED)
+      message(FATAL_ERROR "Could NOT find OpenBabel 2.3 or later ")
+    endif()
+  endif()
 
   mark_as_advanced(OPENBABEL2_INCLUDE_DIR OPENBABEL2_LIBRARIES)
 
-endif (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
+endif()
 
 # Search for Open Babel2 executable
 if(OPENBABEL2_EXECUTABLE)
@@ -80,10 +80,10 @@ if(OPENBABEL2_EXECUTABLE)
   # in cache already
   set(OPENBABEL2_EXECUTABLE_FOUND TRUE)
 
-else(OPENBABEL2_EXECUTABLE)
+else()
   find_program(OPENBABEL2_EXECUTABLE NAMES babel
     PATHS
-    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.2.2]
+    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.3.0]
     $ENV{OPENBABEL2_EXECUTABLE}
   )
 
@@ -95,13 +95,4 @@ else(OPENBABEL2_EXECUTABLE)
     message(STATUS "Found OpenBabel2 executable: ${OPENBABEL2_EXECUTABLE}")
   endif(OPENBABEL2_EXECUTABLE_FOUND)
 
-endif(OPENBABEL2_EXECUTABLE)
-
-# Test if we are using trunk
-if(NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
-  macro_ensure_version("2.2.99" "${OPENBABEL2_VERSION}" OPENBABEL_IS_NEWER_THAN_2_2_99)
-endif()
-
-if (NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
-  add_definitions("-DOB_VERSION=0" "-D'OB_VERSION_CHECK(x,y,z)=1'")
 endif()
