@@ -22,6 +22,8 @@
 #include "trajvideomaker.h"
 #include "povpainter.h"
 #include <avogadro/molecule.h>
+#include <avogadro/animation.h>
+
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QProgressDialog>
@@ -36,16 +38,18 @@ namespace Avogadro {
 
   TrajVideoMaker::~TrajVideoMaker(){}
 
-  void TrajVideoMaker::makeVideo(GLWidget *widget, QString workDirectory,
-			QString videoFileName)
+  void TrajVideoMaker::makeVideo(GLWidget *widget, Animation *animation,
+                                 const QString& workingDirectory,
+                                 const QString& videoFileName)
   {
+    QString workDirectory = workingDirectory;
     if (!workDirectory.endsWith('/'))
       workDirectory += '/';
 
     // check widget is okay
     if (!widget) {
       QMessageBox::warning( NULL, QObject::tr( "Avogadro" ),
-			    QObject::tr( "GL widget was not correctly initialized in order to make a video" ));
+                            QObject::tr( "GL widget was not correctly initialized in order to make a video" ));
       return;
     }
 
@@ -53,24 +57,24 @@ namespace Avogadro {
     // check molecule is okay
     if (!molecule) {
       QMessageBox::warning( NULL, QObject::tr( "Avogadro" ),
-			    QObject::tr( "GL widget has no molecule" ));
+                            QObject::tr( "GL widget has no molecule" ));
       return;
     }
 
     double aspectRatio = getAspectRatio(widget);
     //start the progress dialog
     QProgressDialog progDialog(QObject::tr("Building video "),
-			  QObject::tr("Cancel"), 0,
-			  molecule->numConformers()*2);
+                               QObject::tr("Cancel"), 0,
+                               molecule->numConformers()*2);
     progDialog.setMinimumDuration(1);
     progDialog.setValue(0);
 
     //list of pngfiles for mencoder
     std::vector<QString> pngFiles;
 
-    for (unsigned int i=0; i < molecule->numConformers(); i++) {
+    for (int i = 0; i < animation->numFrames(); ++i) {
       QString povFileName = workDirectory + QString::number(i) + ".pov";
-      molecule->setConformer(i);
+      animation->setFrame(i);
 
       // write the pov file
       // must be in own scope so object is destroyed and file is closed after
@@ -126,7 +130,7 @@ namespace Avogadro {
 
   template <class QStringIterator>
   void TrajVideoMaker::runMencoder(QString pngFileDirectory, QString videoFileName,
-				   QStringIterator startPngFiles, QStringIterator endPngFiles)
+                                   QStringIterator startPngFiles, QStringIterator endPngFiles)
   {
     //executable for mencoder
     const QString mencoderexe = "mencoder -ovc lavc -lavcopts vcodec=mpeg4 -of avi -o ";

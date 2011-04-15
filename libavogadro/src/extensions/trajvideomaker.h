@@ -26,6 +26,8 @@
 
 namespace Avogadro {
 
+class Animation;
+
   class TrajVideoMaker
   {
   public:
@@ -34,7 +36,9 @@ namespace Avogadro {
     //! Destructor
     virtual ~TrajVideoMaker();
 
-    static void makeVideo(GLWidget *widget, QString workDirectory, QString videoFileName);
+    static void makeVideo(GLWidget *widget, Animation *animation,
+                          const QString& workDirectory,
+                          const QString& videoFileName);
 
   private:
     static double getAspectRatio(GLWidget* widget);
