@@ -11,7 +11,10 @@ set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
 set (CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
 set (CPACK_CREATE_DESKTOP_LINKS "avogadro")
 
-if (WIN32)
+if(WIN32)
+  option(ENABLE_DEPRECATED_INSTALL_RULES "Should deprecated, Windows specific, install rules be enabled?" OFF)
+endif()
+if (WIN32 AND ENABLE_DEPRECATED_INSTALL_RULES)
   # Set the directories to defaults if not set
 
   ##############################################
@@ -99,7 +102,7 @@ if (WIN32)
         "C:/src/glew/bin"
     )
     install(FILES ${glew_DLL} DESTINATION bin)
-  endif(ENABLE_GLSL AND GLEW_FOUND)
+  endif()
 
   ##############################################
   # Python (Optional)                          #
@@ -183,9 +186,9 @@ if (WIN32)
     file(GLOB extensionScripts "${Avogadro_SOURCE_DIR}/libavogadro/src/extensions/python/*.py")
     install(FILES ${extensionScripts} DESTINATION bin/extensionScripts)
 
-  endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+  endif()
 
-endif (WIN32)
+endif()
 
 if(APPLE)
   set(CMAKE_OSX_ARCHITECTURES "ppc;i386")
