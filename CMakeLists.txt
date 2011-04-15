@@ -330,16 +330,16 @@ endif()
 
 if(UNIX)
   set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
-      CACHE STRING "Install dir for libraries")
+      CACHE STRING "Install dir for libraries" FORCE)
   set(Avogadro_PLUGIN_INSTALL_DIR
       "${LIB_INSTALL_DIR}/avogadro${Plugin_Version}"
-      CACHE STRING "Install dir for plugins")
+      CACHE STRING "Install dir for plugins" FORCE)
 else()
   set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
-      CACHE STRING "Install dir for libraries")
+      CACHE STRING "Install dir for libraries" FORCE)
   set(Avogadro_PLUGIN_INSTALL_DIR
       "lib${LIB_SUFFIX}/avogadro${Plugin_Version}"
-      CACHE STRING "Install dir for plugins")
+      CACHE STRING "Install dir for plugins" FORCE)
 endif()
 set(INCLUDE_INSTALL_DIR  "include"
     CACHE STRING "Install dir for include files")
