@@ -22,12 +22,10 @@
 
 #include "ir.h"
 #include "nmr.h"
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-  #include "dos.h"
-  #include "uv.h"
-  #include "cd.h"
-  #include "raman.h"
-#endif
+#include "dos.h"
+#include "uv.h"
+#include "cd.h"
+#include "raman.h"
 
 #include <QtGui/QPen>
 #include <QtGui/QColor>
@@ -57,7 +55,7 @@
 using namespace OpenBabel;
 using namespace std;
 
-namespace Avogadro {  
+namespace Avogadro {
 
   SpectraDialog::SpectraDialog( QWidget *parent, Qt::WindowFlags f ) :
       QDialog( parent, f )
@@ -69,12 +67,10 @@ namespace Avogadro {
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     m_spectra_dos = new DOSSpectra(this);
     m_spectra_uv = new UVSpectra(this);
     m_spectra_cd = new CDSpectra(this);
     m_spectra_raman = new RamanSpectra(this);
-#endif
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -155,12 +151,10 @@ namespace Avogadro {
     writeSettings();
     delete m_spectra_ir;
     delete m_spectra_nmr;
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     delete m_spectra_dos;
     delete m_spectra_uv;
     delete m_spectra_cd;
     delete m_spectra_raman;
-#endif
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -172,12 +166,10 @@ namespace Avogadro {
 
     m_spectra_ir->clear();
     m_spectra_nmr->clear();
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     m_spectra_dos->clear();
     m_spectra_uv->clear();
     m_spectra_cd->clear();
     m_spectra_raman->clear();
-#endif
 
     updatePlot();
 
@@ -211,8 +203,6 @@ namespace Avogadro {
       m_spectra_nmr->setAtom(""); // Empty string will grab from current selection in the dialog.
     }
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-
     // Check for DOS data
     bool hasDOS = m_spectra_dos->checkForData(m_molecule);
     if (hasDOS) {
@@ -240,15 +230,6 @@ namespace Avogadro {
       ui.combo_spectra->addItem(tr("Raman", "Raman spectrum"));
       ui.tab_widget->addTab(m_spectra_raman->getTabWidget(), tr("&Raman Settings"));
     }
-    
-#else
-
-    bool hasDOS = false;
-    bool hasUV = false;
-    bool hasCD = false;
-    bool hasRaman = false;
-    
-#endif
 
     // Change this when other spectra are added!!
     if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD && !hasRaman) { // Actions if there are no spectra loaded
@@ -574,7 +555,7 @@ namespace Avogadro {
       }
       if (data.at(0).toDouble() && data.at(1).toDouble()) {
         x.append(data.at(0).toDouble());
-        y.append(data.at(1).toDouble());        
+        y.append(data.at(1).toDouble());
       }
       else {
         qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
@@ -603,21 +584,18 @@ namespace Avogadro {
     }
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName();
     QStringList types;
-    // Define data types here. Make sure to include "IR" for IR data and "NMR" for NMR data, etc. 
+    // Define data types here. Make sure to include "IR" for IR data and "NMR" for NMR data, etc.
     // Put the default file extension in (*.ext), i.e. (.out)
     types
       << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
       << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" )
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
       << tr("Turbomole UV data (spectrum)", "Do not remove 'UV' or '(spectrum)' -- needed for parsing later" )
-      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" )
-#endif
-;
+      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" );
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
     if (!ok) return;
-    
+
     QStringList filters;
     filters
       << type
@@ -663,7 +641,7 @@ namespace Avogadro {
         if (type.contains("PWscf")) { // Plane wave self consistant field output
           delim	= "\\s+"; // finds all whitespace
           cue = "#  mode";
-          end = ""; 
+          end = "";
           wavenumber_idx= 2;
           intensity_idx	= 4;
         }
@@ -687,7 +665,7 @@ namespace Avogadro {
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
           QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
-            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
             continue;
           }
@@ -714,8 +692,6 @@ namespace Avogadro {
       obmol->SetData(obvib);
       m_molecule->setOBMol(obmol);
     }
-
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     else if (type.contains("CD")) { // We have CD data loaded
       // Set m_spectra
       m_spectra = "CD";
@@ -769,7 +745,7 @@ namespace Avogadro {
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
           QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
-            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
             continue;
           }
@@ -866,7 +842,7 @@ namespace Avogadro {
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
           QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
-            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
             continue;
           }
@@ -909,7 +885,7 @@ namespace Avogadro {
       obmol->SetData(etd);
       m_molecule->setOBMol(obmol);
     }
-#endif
+
     setMolecule(m_molecule);
   }
 
@@ -1072,17 +1048,17 @@ namespace Avogadro {
       }
     }
     QRectF defaultRect = ui.plot->defaultDataRect();
-    x1 = minX-(maxX-minX)*0.01;    
+    x1 = minX-(maxX-minX)*0.01;
     x2 = maxX+(maxX-minX)*0.01;
     if (m_labelsUp) {
-      y1 = minY-(maxY-minY)*0.03;    
+      y1 = minY-(maxY-minY)*0.03;
       y2 = maxY+(maxY-minY)*0.1;
     } else {
-      y1 = minY-(maxY-minY)*0.1;    
+      y1 = minY-(maxY-minY)*0.1;
       y2 = maxY+(maxY-minY)*0.03;
     }
     QRectF dataRect(x1,y1,x2,y2);
-    QRectF fullRect(defaultRect.united(dataRect));         
+    QRectF fullRect(defaultRect.united(dataRect));
     if (defaultRect.width() < 0) {
       x1 = fullRect.left();
       x2 = fullRect.right();
@@ -1095,7 +1071,7 @@ namespace Avogadro {
       fullRect.setBottom(x2);
       fullRect.setTop(x1);
     }
-    ui.plot->setDefaultLimits(fullRect);    
+    ui.plot->setDefaultLimits(fullRect);
     //qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
     ui.plot->update();
   }
@@ -1115,7 +1091,6 @@ namespace Avogadro {
       return m_spectra_ir;
     else if (m_spectra == "NMR")
       return m_spectra_nmr;
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     else if (m_spectra == "DOS")
       return m_spectra_dos;
     else if (m_spectra == "UV")
@@ -1124,7 +1099,6 @@ namespace Avogadro {
       return m_spectra_cd;
     else if (m_spectra == "Raman")
       return m_spectra_raman;
-#endif
     return NULL;
   }
 
@@ -1150,4 +1124,3 @@ namespace Avogadro {
     event->accept();
   }
 }
-

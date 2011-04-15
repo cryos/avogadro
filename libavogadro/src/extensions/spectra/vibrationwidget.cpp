@@ -46,7 +46,7 @@ namespace Avogadro {
   VibrationWidget::VibrationWidget(QWidget *parent, Qt::WindowFlags f)
     : QWidget(parent, f), m_widget(0), m_molecule(0), m_vibrations(0),
       m_indexMap(0), m_currentRow(0), m_filter(0)
-  {    
+  {
     ui.setupUi(this);
 
     // Make sure the columns span the whole width of the table widget
@@ -78,7 +78,7 @@ namespace Avogadro {
             this, SLOT(pauseButtonClicked(bool)));
 
     connect(ui.spectraButton, SIGNAL(clicked()),
-            this, SLOT(spectraButtonClicked()));    
+            this, SLOT(spectraButtonClicked()));
   }
 
   VibrationWidget::~VibrationWidget()
@@ -116,27 +116,21 @@ namespace Avogadro {
     vector<double> intensities = m_vibrations->GetIntensities();
     m_frequencies = frequencies;
     m_intensities = intensities;
-    #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-      vector<double> raman_activities = m_vibrations->GetRamanActivities();
-      if (raman_activities.size() == 0) {
-        //resize(274, height());
-        ui.vibrationTable->setColumnCount(2);
-        if(parentWidget())
-          parentWidget()->setMinimumWidth(274);
-      }
-      else {
-        //resize(310, height());
-        ui.vibrationTable->setColumnCount(3);
-        ui.vibrationTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Activity"));
-        if(parentWidget())
-          parentWidget()->setMinimumWidth(310);
-      }
-    #else
-        //resize(274, height());
-        ui.vibrationTable->setColumnCount(2);
-        if(parentWidget())
-          parentWidget()->setMinimumWidth(274);
-    #endif
+    vector<double> raman_activities = m_vibrations->GetRamanActivities();
+    if (raman_activities.size() == 0) {
+      //resize(274, height());
+      ui.vibrationTable->setColumnCount(2);
+      if(parentWidget())
+        parentWidget()->setMinimumWidth(274);
+    }
+    else {
+      //resize(310, height());
+      ui.vibrationTable->setColumnCount(3);
+      ui.vibrationTable->setHorizontalHeaderItem(2,
+                                                 new QTableWidgetItem("Activity"));
+      if(parentWidget())
+        parentWidget()->setMinimumWidth(310);
+    }
 
     // Generate an index vector to map sorted indicies to the old indices
     m_indexMap->clear();
@@ -187,22 +181,19 @@ namespace Avogadro {
       else {
         newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
       }
-      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-        QTableWidgetItem *newRaman;
-        if (row >= raman_activities.size()) {
-          newRaman = new QTableWidgetItem("-");
-        }
-        else {
-          newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0, 'f', 3));
-        }
-        newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-      #endif
+      QTableWidgetItem *newRaman;
+      if (row >= raman_activities.size()) {
+        newRaman = new QTableWidgetItem("-");
+      }
+      else {
+        newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0,
+                                                   'f', 3));
+      }
+      newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
-      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-        ui.vibrationTable->setItem(row, 2, newRaman);
-      #endif
+      ui.vibrationTable->setItem(row, 2, newRaman);
     }
 
     // enable export button
@@ -210,7 +201,7 @@ namespace Avogadro {
   }
 
   void VibrationWidget::changeFilter(QString str)
-  {      
+  {
     m_filter = str.toDouble();
     for (size_t i = 0; i < m_frequencies.size(); ++i) {
       if (i < m_intensities.size()) {
@@ -320,7 +311,7 @@ namespace Avogadro {
   {
     emit showSpectra();
   }
-  
+
 /*  void VibrationWidget::exportVibrationData(bool)
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -330,7 +321,7 @@ namespace Avogadro {
 
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
     QString filename 	= QFileDialog::getSaveFileName(this, tr("Export Vibrational Data"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
-    
+
     QFile file (filename);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
       qWarning() << "Cannot open file " << filename << " for writing!";
@@ -362,7 +353,7 @@ namespace Avogadro {
 
       out << format.arg(frequencies[line], 0, 'f', 2).arg(intensity);
     }
-    
+
     file.close();
 
     return;

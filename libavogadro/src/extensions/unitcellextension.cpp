@@ -220,7 +220,7 @@ namespace Avogadro {
       if (m_molecule)
         m_molecule->update();
     }
-  }  
+  }
 
   vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
   {
@@ -278,11 +278,7 @@ namespace Avogadro {
     foreach(OBAtom *atom, atoms) {
       uniqueV = atom->GetVector();
       // Assert: won't crash because we already ensure uc != NULL
-      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-        uniqueV = uc->CartesianToFractional(uniqueV);
-      #else
-        uniqueV *= uc->GetFractionalMatrix();
-      #endif
+      uniqueV = uc->CartesianToFractional(uniqueV);
       uniqueV = transformedFractionalCoordinate(uniqueV);
       coordinates.push_back(uniqueV);
 
@@ -308,19 +304,11 @@ namespace Avogadro {
 
         addAtom = mol.NewAtom();
         addAtom->Duplicate(atom);
-        #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-          addAtom->SetVector(uc->FractionalToCartesian(updatedCoordinate));
-        #else
-          addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
-        #endif
+        addAtom->SetVector(uc->FractionalToCartesian(updatedCoordinate));
       } // end loop of transformed atoms
 
       // Put the original atom into the proper space in the unit cell too
-      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-        atom->SetVector(uc->FractionalToCartesian(uniqueV));
-      #else
-        atom->SetVector(uc->GetOrthoMatrix() * uniqueV);
-      #endif
+      atom->SetVector(uc->FractionalToCartesian(uniqueV));
     } // end loop of atoms
 
     // m_molecule->ConnectTheDots();
@@ -332,4 +320,3 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(unitcellextension, Avogadro::UnitCellExtensionFactory)
-

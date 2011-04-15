@@ -19,8 +19,6 @@
 
 #include <openbabel/generic.h>
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-
 #include "dos.h"
 
 #include <QtGui/QMessageBox>
@@ -77,7 +75,7 @@ namespace Avogadro {
     settings.setValue("spectra/DOS/densityUnits", ui.combo_density->currentIndex());
 //qDebug() <<  ui.spin_valence->value();
     settings.setValue("spectra/DOS/valence", ui.spin_valence->value());
-    
+
   }
 
   void DOSSpectra::readSettings()
@@ -196,7 +194,7 @@ namespace Avogadro {
       if (use_fermi) energy -= m_fermi;
       plotObject->addPoint ( energy, density );
     }
-  } 
+  }
 
   /*void DOSSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
@@ -273,5 +271,3 @@ namespace Avogadro {
     m_dialog->getUi()->cb_import->setChecked(true);
   }
 }
-
-#endif

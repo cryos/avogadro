@@ -19,8 +19,6 @@
 
 #include <openbabel/generic.h>
 
-#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
-
 #include "raman.h"
 
 #include <QtGui/QMessageBox>
@@ -106,7 +104,7 @@ namespace Avogadro {
       }
     }*/
 
-    // 
+    //
     double maxIntensity=0;
     for (unsigned int i = 0; i < intensities.size(); i++) {
       if (intensities.at(i) >= maxIntensity) {
@@ -154,13 +152,13 @@ namespace Avogadro {
     }
 
     AbstractIRSpectra::getCalculatedPlotObject(plotObject);
-    
-    // Add labels for gaussians?    
+
+    // Add labels for gaussians?
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
       assignGaussianLabels(plotObject, true, m_labelYThreshold);
-      m_dialog->labelsUp(true);      
-    }    
-  } 
+      m_dialog->labelsUp(true);
+    }
+  }
 
   /*void RamanSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
@@ -198,8 +196,5 @@ namespace Avogadro {
   {
     m_W = W;
     emit plotDataChanged();
-  }  
+  }
 }
-
-#endif
-
