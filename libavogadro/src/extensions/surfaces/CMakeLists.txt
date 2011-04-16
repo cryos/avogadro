@@ -5,7 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 # Also, add the openqube library.
 add_subdirectory(openqube)
 
-set(LINK_LIBS avogadro openqube)
+set(LINK_LIBS openqube)
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
