@@ -124,7 +124,7 @@ namespace Avogadro {
     } // end if molecule
   } // end parameters changed
 
-  vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
+  static vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
   {
     // ensure the fractional coordinate is entirely within the unit cell
     vector3 returnValue(originalCoordinate);

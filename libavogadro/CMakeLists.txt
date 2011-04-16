@@ -66,7 +66,6 @@ function(avogadro_plugin_nogl plugin_name src_list)
       set(_plugin_type "STATIC")
       set(plugins_built_static ${plugins_built_static} ${plugin_name}
         CACHE INTERNAL "Static Avogadro plugins")
-      message("Building ${plugin_name} as a static plugin.")
       break()
     endif()
   endforeach()
@@ -74,14 +73,12 @@ function(avogadro_plugin_nogl plugin_name src_list)
   add_library(${plugin_name} ${_plugin_type} ${src_list} ${moc_files}
               ${plugin_UIS_H} ${plugin_RC_SRCS})
   if("${_plugin_type}" STREQUAL "MODULE")
-    set_target_properties(${plugin_name} PROPERTIES
-                          COMPILE_FLAGS "${NO_RTTI_FLAG}")
     install(TARGETS ${plugin_name} DESTINATION ${DESTINATION_DIR})
   else()
     # Needed to remove circular dependencies, will be linked to avogadro
     list(REMOVE_ITEM LINK_LIBS "avogadro")
     set_target_properties(${plugin_name} PROPERTIES
-      COMPILE_FLAGS "${NO_RTTI_FLAG} -DQT_STATICPLUGIN ${CMAKE_SHARED_LIBRARY_CXX_FLAGS}")
+      COMPILE_FLAGS "-DQT_STATICPLUGIN ${CMAKE_SHARED_LIBRARY_CXX_FLAGS}")
   endif()
   target_link_libraries(${plugin_name} ${LINK_LIBS} ${QT_QTCORE_LIBRARY}
                         ${QT_QTGUI_LIBRARY} ${OPENBABEL2_LIBRARIES})
