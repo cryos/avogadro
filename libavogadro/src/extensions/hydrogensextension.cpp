@@ -192,5 +192,4 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtensionFactory)
-
+Q_EXPORT_PLUGIN2(hydrogenextension, Avogadro::HydrogensExtensionFactory)
