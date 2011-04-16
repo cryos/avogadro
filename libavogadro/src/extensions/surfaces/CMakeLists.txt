@@ -5,7 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 # Also, add the openqube library.
 add_subdirectory(openqube)
 
-set(LINK_LIBS avogadro openqube)
+set(LINK_LIBS openqube avogadro ${ZLIB_LIBRARIES})
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
@@ -37,17 +37,8 @@ avogadro_plugin_nogl(surfaceextension
   surfacedialog.ui
 )
 
-target_link_libraries(surfaceextension
-   ${LINK_LIBS}
-   ${ZLIB_LIBRARIES}
-)
-
 avogadro_plugin_nogl(orbitalextension
   "${orbitalextension_SRCS}"
   "${orbitalextension_UIS}"
 )
 
-target_link_libraries(orbitalextension
-  ${LINK_LIBS}
-  ${ZLIB_LIBRARIES}
-)
