@@ -479,7 +479,7 @@ namespace Avogadro
       }
       case Cube::ESP:
         // FIXME To be implemented - calculate an ESP cube
-        return 0;
+        return;
       case Cube::ElectronDensity: {
         qDebug() << "m_cubes.size() =" << m_cubes.size();
         Cube *cube = m_molecule->cubeById(m_cubes[2]);
