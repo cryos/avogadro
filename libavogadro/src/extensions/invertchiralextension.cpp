@@ -86,7 +86,7 @@ namespace Avogadro {
       // harder, since we have to flip two neighbors
       OBMol obmol = m_molecule->OBMol();
       foreach(Primitive *primitive, selectedAtoms) {
-        Atom *atom = qobject_cast<Atom *>(primitive);
+        Atom *atom = static_cast<Atom *>(primitive);
         if (!atom)
           continue; // shouldn't happen, since we specifically requested Primitive::AtomType
 

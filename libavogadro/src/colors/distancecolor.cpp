@@ -50,7 +50,7 @@ namespace Avogadro {
       return;
 
     const Atom *atom = static_cast<const Atom*>(p);
-    Molecule *molecule = qobject_cast<Molecule *>(atom->parent());
+    Molecule *molecule = atom->molecule();
     if (!molecule)
       return;
 

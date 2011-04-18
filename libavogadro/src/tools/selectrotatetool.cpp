@@ -507,7 +507,7 @@ namespace Avogadro {
     QColor color;
     QColor oldColor;
     if(m_currentPrimitive->type() == Primitive::AtomType) {
-      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      Atom *a = static_cast<Atom*>(m_currentPrimitive);
       if (!a)
         return;
       oldColor.setNamedColor(a->customColorName());
@@ -525,7 +525,7 @@ namespace Avogadro {
   void SelectRotateTool::resetAtomColor()
   {
     if(m_currentPrimitive->type() == Primitive::AtomType) {
-      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      Atom *a = static_cast<Atom*>(m_currentPrimitive);
       if (!a)
         return;
       a->setCustomColorName("");
@@ -537,7 +537,7 @@ namespace Avogadro {
      bool ok;
      QString label;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       Atom *a = static_cast<Atom*>(m_currentPrimitive);
        if (!a)
          return;
        label = QInputDialog::getText(0, tr("Change label of the atom"),
@@ -546,7 +546,7 @@ namespace Avogadro {
          a->setCustomLabel(label);
      }
      else if(m_currentPrimitive->type() == Primitive::BondType) {
-       Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
+       Bond *b = static_cast<Bond*>(m_currentPrimitive);
        if(!b)
          return;
        label = QInputDialog::getText(0, tr("Change label of the bond"),
@@ -559,13 +559,13 @@ namespace Avogadro {
   void SelectRotateTool::resetAtomLabel()
   {
      if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       Atom *a = static_cast<Atom*>(m_currentPrimitive);
        if (!a)
          return;
        a->setCustomLabel("");
      }
      else if(m_currentPrimitive->type() == Primitive::BondType) {
-       Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
+       Bond *b = static_cast<Bond*>(m_currentPrimitive);
        if(!b)
          return;
        b->setCustomLabel("");
@@ -578,7 +578,7 @@ namespace Avogadro {
      QString radius_str;
      double radius;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
-       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       Atom *a = static_cast<Atom*>(m_currentPrimitive);
        if (!a)
          return;
        radius_str = QInputDialog::getText(0, tr("Change radius of the atom"),
@@ -595,7 +595,7 @@ namespace Avogadro {
   void SelectRotateTool::resetAtomRadius()
   {
     if(m_currentPrimitive->type() == Primitive::AtomType) {
-      Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+      Atom *a = static_cast<Atom*>(m_currentPrimitive);
       if (!a)
         return;
       a->setCustomRadius(0);
