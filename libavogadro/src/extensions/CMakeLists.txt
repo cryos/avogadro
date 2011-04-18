@@ -23,7 +23,7 @@ avogadro_plugin_nogl(propextension
 avogadro_plugin_nogl(cartesianextension
   cartesianextension.cpp
   cartesianeditor.ui
-  edit.qrc)
+  cartesianextension.qrc)
 
 avogadro_plugin_nogl(molecularpropextension
   molecularpropextension.cpp
@@ -85,7 +85,7 @@ set(animationextension_SRCS animationextension.cpp animationdialog.cpp
 avogadro_plugin_nogl(animationextension
   "${animationextension_SRCS}"
   animationdialog.ui
-  animation.qrc)
+  animationextension.qrc)
 
 ### POV-Ray extension
 avogadro_plugin_nogl(povrayextension
