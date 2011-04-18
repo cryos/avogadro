@@ -16,6 +16,7 @@ set(Avogadro_STATIC_PLUGINS bsdyengine navigatetool elementcolor
 
 # Create an empty variable to accumulate statically linked plugins in
 set(plugins_built_static "" CACHE INTERNAL "Static Avogadro plugins")
+set(plugins_rcc_static "" CACHE INTERNAL "Static resources for Avogadro plugins")
 
 # Use this function to add a new plugin. It also uses the global variables
 # LINK_LIBS to determine what libraries the plugin should link to and
@@ -54,10 +55,6 @@ function(avogadro_plugin_nogl plugin_name src_list)
     # Process the UI file for this plugin
     qt4_wrap_ui(plugin_UIS_H ${ui_plugin_files})
   endif()
-  if(NOT "${qrc_plugin_files}" STREQUAL "")
-    # Process the RC file and add it to the plugin
-    qt4_add_resources(plugin_RC_SRCS ${qrc_plugin_files})
-  endif()
 
   # Check if the plugin should be compiled static or not
   set(_plugin_type "MODULE")
@@ -69,6 +66,15 @@ function(avogadro_plugin_nogl plugin_name src_list)
       break()
     endif()
   endforeach()
+
+  if(NOT "${qrc_plugin_files}" STREQUAL "")
+    # Process the RC file and add it to the plugin
+    qt4_add_resources(plugin_RC_SRCS ${qrc_plugin_files})
+    if("${_plugin_type}" STREQUAL "STATIC")
+      set(plugins_rcc_static ${plugins_rcc_static} ${plugin_name}
+        CACHE INTERNAL "Static resources for Avogadro plugins")
+    endif()
+  endif()
 
   add_library(${plugin_name} ${_plugin_type} ${src_list} ${moc_files}
               ${plugin_UIS_H} ${plugin_RC_SRCS})

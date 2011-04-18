@@ -237,6 +237,17 @@ foreach(plugin ${plugins_built_static})
   set(static_plugin_instantiation "${static_plugin_instantiation}
 Q_IMPORT_PLUGIN(${plugin})")
 endforeach()
+set(static_plugin_instantiation "${static_plugin_instantiation}
+void initAvogadroResources()
+{
+")
+foreach(plugin ${plugins_rcc_static})
+  set(static_plugin_instantiation "${static_plugin_instantiation}
+Q_INIT_RESOURCE(${plugin});")
+endforeach()
+set(static_plugin_instantiation "${static_plugin_instantiation}
+}
+")
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
   "${static_plugin_instantiation}\n")
 configure_file(${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
