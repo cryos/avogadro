@@ -536,6 +536,10 @@ namespace Avogadro {
       settings.endGroup(); // ExtraPlugins
     }
 
+    // Initialize the resource files for our static plugins. Note that the
+    // function must be declared outside of a namespace.
+    initAvogadroResources();
+
     // Load the static plugins
     QVector<QList<PluginFactory *> > &ef =
       PluginManagerPrivate::m_enabledFactories();
