@@ -45,6 +45,7 @@
 #include <openbabel/generic.h>
 #include <openbabel/forcefield.h>
 #include <openbabel/obiter.h>
+#include <openbabel/builder.h>
 
 #include <QDir>
 #include <QDebug>
@@ -606,7 +607,8 @@ namespace Avogadro{
 
   void Molecule::addHydrogens(Atom *a,
                               const QList<unsigned long> &atomIds,
-                              const QList<unsigned long> &bondIds)
+                              const QList<unsigned long> &bondIds,
+                              const int userShape)
   {
     if (atomIds.size() != bondIds.size()) {
       qDebug() << "Error, addHydrogens called with atom & bond id lists of different size!";
@@ -618,43 +620,76 @@ namespace Avogadro{
       OpenBabel::OBAtom *obatom = obmol.GetAtom(a->index()+1);
       // Set implicit valence for unusual elements not handled by OpenBabel
       // PR#2803076
-      switch (obatom->GetAtomicNum()) {
-      case 3:
-      case 11:
-      case 19:
-      case 37:
-      case 55:
-      case 85:
-      case 87:
-        obatom->SetImplicitValence(1);
-        obatom->SetHyb(1);
-        obmol.SetImplicitValencePerceived();
-        break;
+      int atomicNum = obatom->GetAtomicNum();
+      int shape = userShape;
+      if (!shape) {
+        // No shape / hybridization specified, so assign one
+        // if needed (OB is usually pretty good for organics)
+        switch (atomicNum) {
+          // Alkali metals
+        case 3:
+        case 11:
+        case 19:
+        case 37:
+        case 55:
+        case 85:
+        case 87:
+          obatom->SetImplicitValence(1);
+          obatom->SetHyb(1);
+          obmol.SetImplicitValencePerceived();
+          break;
 
-      case 4:
-      case 12:
-      case 20:
-      case 38:
-      case 56:
-      case 88:
-        obatom->SetImplicitValence(2);
-        obatom->SetHyb(2);
-        obmol.SetImplicitValencePerceived();
-        break;
+          // Alkaline earth
+        case 4:
+        case 12:
+        case 20:
+        case 38:
+        case 56:
+        case 88:
+          obatom->SetImplicitValence(2);
+          obatom->SetHyb(2);
+          obmol.SetImplicitValencePerceived();
+          break;
 
-      case 84: // Po
-        obatom->SetImplicitValence(2);
-        obatom->SetHyb(3);
-        obmol.SetImplicitValencePerceived();
-        break;
+        case 84: // Po
+          obatom->SetImplicitValence(2);
+          obatom->SetHyb(3);
+          obmol.SetImplicitValencePerceived();
+          break;
 
-      default: // do nothing
-        break;
+        case 46: // Pd(II)
+        case 78: // Pt(II)
+        case 79: // Au(III)
+          shape = 4; // fall through below
+          break;
+
+        default: // do nothing
+          // Transition metals, Ln, Ac default to octahedral
+          if ((atomicNum >= 21 && atomicNum <= 30)
+              || (atomicNum >=39 && atomicNum <= 45)
+              || (atomicNum >=57 && atomicNum <= 77)
+              || (atomicNum >= 89)) {
+            shape = 6; // fall through below
+          }
+          break;
+        }
+
+        if (shape) {
+          int valence = shape;
+          if (shape < 4) {
+            valence++; // sp3 = 4 hydrogens, sp2 = 3
+          }
+          obatom->SetImplicitValence(valence);
+          obatom->SetHyb(shape);
+          obmol.SetHybridizationPerceived();
+          obmol.SetImplicitValencePerceived();
+        }// Otherwise, handle by OB defaults
+        obmol.AddHydrogens(obatom);
       }
-      obmol.AddHydrogens(obatom);
     }
-    else
+    else // no atom specified, do the whole molecule
       obmol.AddHydrogens();
+
     // All new atoms in the OBMol must be the additional hydrogens
     unsigned int numberAtoms = numAtoms();
     int j = 0;
