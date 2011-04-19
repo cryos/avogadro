@@ -35,7 +35,7 @@ namespace Avogadro {
   class Atom;
   class Bond;
 
-  struct AdjustHydrogens 
+  struct AdjustHydrogens
   {
     enum Option {
       NoOption = 0x0,
@@ -43,11 +43,11 @@ namespace Avogadro {
       AddOnRedo = 0x2,
       RemoveOnUndo = 0x4,
       AddOnUndo = 0x8,
-      
+
       Never = NoOption,
       Always = RemoveOnRedo | AddOnRedo | RemoveOnUndo | AddOnUndo,
       OnRedo = RemoveOnRedo | AddOnRedo,
-      OnUndo = RemoveOnUndo | AddOnUndo  
+      OnUndo = RemoveOnUndo | AddOnUndo
     };
     // typedef QFlags<Option> Options;
     Q_DECLARE_FLAGS(Options, Option)
@@ -64,7 +64,7 @@ namespace Avogadro {
     explicit AdjustHydrogensPreCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
     AdjustHydrogensPreCommand(Molecule *molecule, unsigned long atomId);
     ~AdjustHydrogensPreCommand();
- 
+
     virtual void undo();
     virtual void redo();
 
@@ -77,10 +77,10 @@ namespace Avogadro {
   class AdjustHydrogensPostCommand : public QUndoCommand
   {
   public:
-    explicit AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
-    AdjustHydrogensPostCommand(Molecule *molecule, unsigned long atomId);
+    explicit AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>(), int hybridization = 0);
+    AdjustHydrogensPostCommand(Molecule *molecule, unsigned long atomId, int hybridization = 0);
     ~AdjustHydrogensPostCommand();
- 
+
     virtual void undo();
     virtual void redo();
 
@@ -93,24 +93,26 @@ namespace Avogadro {
    * @class AddAtomDrawCommand
    *
    * supported flags:
-   * 
+   *
    * AdjustHydrogens::AddOnRedo
    *
-   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom after 
+   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom after
    *   creating it and store the hydrogen atom and C-H bond ids for later calls.
    *
    * AdjustHydrogens::RemoveOnUndo
    *
-   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before deleting 
+   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before deleting
    *   the atom.
    */
   class AddAtomDrawCommand : public QUndoCommand
   {
   public:
-    AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, 
-        unsigned int element, AdjustHydrogens::Options adjustHydrogens = AdjustHydrogens::Never);
-    AddAtomDrawCommand(Molecule *molecule, Atom *atom, 
-        AdjustHydrogens::Options adjustHydrogens = AdjustHydrogens::Never);
+    AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos,
+                       unsigned int element, AdjustHydrogens::Options adjustHydrogens = AdjustHydrogens::Never,
+                       int hybridization = 0);
+    AddAtomDrawCommand(Molecule *molecule, Atom *atom,
+                       AdjustHydrogens::Options adjustHydrogens = AdjustHydrogens::Never,
+                       int hybridization = 0);
     ~AddAtomDrawCommand();
 
     virtual void undo();
@@ -139,7 +141,7 @@ namespace Avogadro {
    * @class AddBondDrawCommand
    *
    * supported flags:
-   * 
+   *
    * AdjustHydrogens::RemoveOnRedo
    *
    *   AdjustHydrogensPreCommand::redo() : Remove the hydrogens before creating
@@ -147,18 +149,18 @@ namespace Avogadro {
    *
    * AdjustHydrogens::AddOnRedo
    *
-   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom(s) after 
-   *   creating the bond and store the hydrogen atom and C-H bond ids for later 
+   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom(s) after
+   *   creating the bond and store the hydrogen atom and C-H bond ids for later
    *   calls.
    *
    * AdjustHydrogens::RemoveOnUndo
    *
-   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before 
+   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before
    *   deleting the bond.
    *
    * AdjustHydrogens::AddOnUndo
    *
-   *   AdjustHydrogensPreCommand::undo() : Add the hydrogens again to restore 
+   *   AdjustHydrogensPreCommand::undo() : Add the hydrogens again to restore
    *   the atoms to their original state.
    */
   class AddBondDrawCommand : public QUndoCommand
@@ -197,7 +199,7 @@ namespace Avogadro {
   class ChangeElementDrawCommand : public QUndoCommand
   {
   public:
-    ChangeElementDrawCommand(Molecule *molecule, Atom *atom, 
+    ChangeElementDrawCommand(Molecule *molecule, Atom *atom,
                              unsigned int element, bool adjustValence);
     ~ChangeElementDrawCommand();
 

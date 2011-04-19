@@ -45,6 +45,7 @@
 #include <openbabel/generic.h>
 #include <openbabel/forcefield.h>
 #include <openbabel/obiter.h>
+#include <openbabel/builder.h>
 
 #include <QDir>
 #include <QDebug>
@@ -606,7 +607,8 @@ namespace Avogadro{
 
   void Molecule::addHydrogens(Atom *a,
                               const QList<unsigned long> &atomIds,
-                              const QList<unsigned long> &bondIds)
+                              const QList<unsigned long> &bondIds,
+                              int valence)
   {
     if (atomIds.size() != bondIds.size()) {
       qDebug() << "Error, addHydrogens called with atom & bond id lists of different size!";
@@ -650,6 +652,13 @@ namespace Avogadro{
 
       default: // do nothing
         break;
+      }
+      if (valence) {
+        qDebug() << " hybrid " << valence;
+        obatom->SetImplicitValence(valence);
+        obatom->SetHyb(valence);
+        obmol.SetHybridizationPerceived();
+        obmol.SetImplicitValencePerceived();
       }
       obmol.AddHydrogens(obatom);
     }

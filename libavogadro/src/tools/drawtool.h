@@ -4,6 +4,7 @@
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007-2009 Marcus D. Hanwell
   Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2011 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -109,6 +110,8 @@ namespace Avogadro {
       void bondOrderChanged( int index );
       void setBondOrder(int i);
 
+      void hybridizationChanged( int index);
+
       void clearKeyPressBuffer();
 
     private:
@@ -130,6 +133,8 @@ namespace Avogadro {
       Bond *m_bond;
       int m_bondOrder;
 
+      int m_hybridization;
+
       int m_prevAtomElement;
 
       Bond *m_prevBond;
@@ -143,6 +148,7 @@ namespace Avogadro {
       QComboBox *m_comboElements;
       QList<int> m_elementsIndex;
       QComboBox *m_comboBondOrder;
+      QComboBox *m_comboHybrid;
       QCheckBox *m_addHydrogensCheck;
       QPushButton *m_tableButton;
       PeriodicTableView *m_periodicTable;

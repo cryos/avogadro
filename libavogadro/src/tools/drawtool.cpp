@@ -73,6 +73,7 @@ namespace Avogadro {
                                         m_element(6),
                                         m_bond(0),
                                         m_bondOrder(1),
+                                        m_hybridization(0),
                                         m_prevAtomElement(0),
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
@@ -399,13 +400,13 @@ namespace Avogadro {
         // an existing atom or to endAtom that we also created
         AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
-          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, atomAdjustHydrogens);
+          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, atomAdjustHydrogens, m_hybridization);
           beginAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
         AddAtomDrawCommand *endAtomDrawCommand = 0;
         if(m_endAtomAdded) {
-          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, atomAdjustHydrogens);
+          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, atomAdjustHydrogens, m_hybridization);
           endAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
@@ -767,6 +768,12 @@ namespace Avogadro {
     return m_bondOrder;
   }
 
+  void DrawTool::hybridizationChanged(int index)
+  {
+    qDebug() << " hybridization changed " << m_hybridization;
+    m_hybridization = index;
+  }
+
   void DrawTool::setAddHydrogens( int state )
   {
     m_addHydrogens = (state == Qt::Checked);
@@ -812,6 +819,7 @@ namespace Avogadro {
       m_elementsIndex.append(0);
       m_comboElements->setCurrentIndex(2);
 
+      // Bond Order
       QLabel *labelBO = new QLabel(tr("Bond Order:"));
       labelBO->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelBO->setMaximumHeight(15);
@@ -821,6 +829,20 @@ namespace Avogadro {
       m_comboBondOrder->addItem(tr("Double"));
       m_comboBondOrder->addItem(tr("Triple"));
 
+      // Hybridization
+      QLabel *labelHybrid = new QLabel(tr("Hybridization:"));
+      labelHybrid->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      labelHybrid->setMaximumHeight(15);
+
+      m_comboHybrid = new QComboBox(m_settingsWidget);
+      m_comboHybrid->addItem(tr("Automatic"));
+      m_comboHybrid->addItem(tr("sp / linear"));
+      m_comboHybrid->addItem(tr("sp2 / planar"));
+      m_comboHybrid->addItem(tr("sp3 / tetrahedral"));
+      m_comboHybrid->addItem(tr("square planar"));
+      m_comboHybrid->addItem(tr("trigonal bipyramidal"));
+      m_comboHybrid->addItem(tr("octahedral"));
+
       // Improve the layout of the widgets
       QHBoxLayout* tmp = new QHBoxLayout;
       tmp->addWidget(m_comboElements);
@@ -828,11 +850,16 @@ namespace Avogadro {
       QHBoxLayout* tmp2 = new QHBoxLayout;
       tmp2->addWidget(m_comboBondOrder);
       tmp2->addStretch(1);
+      QHBoxLayout* tmp3 = new QHBoxLayout;
+      tmp3->addWidget(m_comboHybrid);
+      tmp3->addStretch(1);
       QGridLayout* grid = new QGridLayout;
       grid->addWidget(labelElement, 0, 0, Qt::AlignRight);
       grid->addLayout(tmp, 0, 1);
       grid->addWidget(labelBO, 1, 0, Qt::AlignRight);
       grid->addLayout(tmp2, 1, 1);
+      grid->addWidget(labelHybrid, 2, 0, Qt::AlignRight);
+      grid->addLayout(tmp3, 2, 1);
 
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
       m_addHydrogensCheck->setCheckState(m_addHydrogens ? Qt::Checked : Qt::Unchecked);
@@ -848,6 +875,9 @@ namespace Avogadro {
 
       connect(m_comboBondOrder, SIGNAL(currentIndexChanged(int)),
               this, SLOT(bondOrderChanged(int)));
+
+      connect(m_comboHybrid, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(hybridizationChanged(int)));
 
       connect(m_addHydrogensCheck, SIGNAL(stateChanged(int)),
               this, SLOT(setAddHydrogens(int)));
