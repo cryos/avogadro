@@ -94,7 +94,7 @@ namespace Avogadro
 
   // Characters to ignore when parsing text input:
   const QRegExp CE_PARSE_IGNORE_REGEXP
-    ("\\s+|,|;|\\||\\[|\\]|\\{|\\}|\\(|\\)|\\&|\\\\|/|<|>|-");
+    ("\\s+|,|;|\\||\\[|\\]|\\{|\\}|\\(|\\)|\\&|/|<|>");
 
   class CrystallographyExtension : public Extension
   {
