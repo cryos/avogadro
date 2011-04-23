@@ -49,6 +49,10 @@ endif()
 
 mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE QT_LCONVERT_EXECUTABLE)
 
+if(QT_LUPDATE_EXECUTABLE AND QT_LRELEASE_EXECUTABLE AND QT_LCONVERT_EXECUTABLE)
+  set(Linguist_FOUND TRUE)
+endif()
+
 # QT4_WRAP_TS(outfiles infiles ...)
 # outfiles receives .qm generated files from
 # .ts files in arguments
