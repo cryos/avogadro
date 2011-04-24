@@ -47,6 +47,7 @@
 #include <QDebug>
 #include <QColorDialog>
 #include <QInputDialog>
+#include <QPushButton>
 
 using namespace std;
 using namespace OpenBabel;
@@ -55,7 +56,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
-    m_selectionBox(false), m_selectionMode(0), m_settingsWidget(0)
+    m_selectionBox(false), m_widget(0), m_selectionMode(0), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
@@ -105,11 +106,13 @@ namespace Avogadro {
     m_lastDraggingPosition = event->pos();
     m_initialDraggingPosition = event->pos();
 
+    m_widget = widget; // save for defining centroids
+
     //! List of hits from a selection/pick
     m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
         event->pos().y()-SEL_BOX_HALF_SIZE,
         SEL_BOX_SIZE, SEL_BOX_SIZE);
-        
+
     if (event->buttons() & Qt::LeftButton && !m_hits.size()) {
       m_leftButtonPressed = true;
       event->accept();
@@ -119,12 +122,12 @@ namespace Avogadro {
       m_leftButtonPressed = true;
     } else
       m_leftButtonPressed = false;
-    
+
     if (event->buttons() & Qt::RightButton) {
       m_rightButtonPressed = true;
     } else
       m_rightButtonPressed = false;
-      
+
     if(!m_selectionBox) {
       widget->setCursor(Qt::CrossCursor);
     }
@@ -135,6 +138,8 @@ namespace Avogadro {
   QUndoCommand* SelectRotateTool::mouseReleaseEvent(GLWidget *widget,
                                                     QMouseEvent *event)
   {
+    m_widget = widget; // save for defining centroids
+
     // Reset the cursor
     widget->setCursor(Qt::ArrowCursor);
 
@@ -455,12 +460,70 @@ namespace Avogadro {
     setSelectionMode(index + 1);
   }
 
+  void SelectRotateTool::defineCentroid(bool)
+  {
+    if (!m_widget)
+      return;
+
+    // loop through selected atoms
+    QList<Primitive*> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
+    if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
+      m_selectedPrimitivesCenter = m_widget->center();
+    } else {
+      // Calculate the centroid of the selection
+      foreach(Primitive *item, selectedAtoms) {
+        // Atom::pos() returns a pointer to the position
+        m_selectedPrimitivesCenter += *(static_cast<Atom*>(item)->pos());
+      }
+      m_selectedPrimitivesCenter /= double(selectedAtoms.size());
+    }
+
+    // OK, now create a dummy atom at that point
+    Atom *atom = m_widget->molecule()->addAtom();
+    atom->setAtomicNumber(0);
+    atom->setPos(m_selectedPrimitivesCenter);
+    m_widget->update();
+  }
+
+  void SelectRotateTool::defineCenterOfMass(bool)
+  {
+    if (!m_widget)
+      return;
+
+    // loop through selected atoms
+    QList<Primitive*> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
+    if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
+      foreach(Atom *atom, m_widget->molecule()->atoms()) {
+        selectedAtoms.append(atom);
+      }
+    }
+
+    // Calculate the centroid of the selection
+    Vector3d selectedCenter(0.0, 0.0, 0.0);
+    double atomMass, totalMass = 0.0;
+    Atom *atom;
+    foreach(Primitive *item, selectedAtoms) {
+      // Atom::pos() returns a pointer to the position
+      atom = static_cast<Atom*>(item);
+      atomMass = OpenBabel::etab.GetMass(atom->atomicNumber()); // TODO: Does not consider isotopes
+      selectedCenter += *(static_cast<Atom*>(item)->pos()) * atomMass;
+      totalMass += atomMass;
+    }
+    selectedCenter /= totalMass;
+
+    // OK, now create a dummy atom at that point
+    atom = m_widget->molecule()->addAtom();
+    atom->setAtomicNumber(0);
+    atom->setPos(selectedCenter);
+    m_widget->update();
+  }
+
   QWidget *SelectRotateTool::settingsWidget()
   {
     if(!m_settingsWidget) {
       m_settingsWidget = new QWidget;
 
-      QLabel *labelMode = new QLabel(tr("Selection Mode:"));
+      QLabel *labelMode = new QLabel(tr("Selection Mode:"), m_settingsWidget);
       labelMode->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelMode->setMaximumHeight(15);
 
@@ -469,17 +532,26 @@ namespace Avogadro {
       m_comboSelectionMode->addItem(tr("Residue"));
       m_comboSelectionMode->addItem(tr("Molecule"));
 
+      QPushButton *centroidButton = new QPushButton(tr("Add Center of Atoms"), m_settingsWidget);
+      QPushButton *centerOfMassButton = new QPushButton(tr("Add Center of Mass"), m_settingsWidget);
+
       QHBoxLayout* tmp = new QHBoxLayout;
       tmp->addWidget(labelMode);
       tmp->addWidget(m_comboSelectionMode);
       tmp->addStretch(1);
       m_layout = new QVBoxLayout();
       m_layout->addLayout(tmp);
+      m_layout->addWidget(centroidButton);
+      m_layout->addWidget(centerOfMassButton);
       m_layout->addStretch(1);
       m_settingsWidget->setLayout(m_layout);
 
       connect(m_comboSelectionMode, SIGNAL(currentIndexChanged(int)),
               this, SLOT(selectionModeChanged(int)));
+      connect(centroidButton, SIGNAL(clicked(bool)),
+              this, SLOT(defineCentroid(bool)));
+      connect(centerOfMassButton, SIGNAL(clicked(bool)),
+              this, SLOT(defineCenterOfMass(bool)));
 
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));

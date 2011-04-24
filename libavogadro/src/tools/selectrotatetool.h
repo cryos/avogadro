@@ -4,6 +4,7 @@
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007,2008 by Marcus D. Hanwell
   Copyright (C) 2010 Konstantin Tokarev
+  Copyright (C) 2011 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -79,6 +80,8 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void selectionModeChanged( int index );
+      void defineCentroid(bool);
+      void defineCenterOfMass(bool);
       void changeAtomColor();
       void resetAtomColor();
       void changeAtomLabel();
@@ -90,7 +93,7 @@ namespace Avogadro {
       void selectionBox(float sx, float sy, float ex, float ey);
 
       bool                m_leftButtonPressed;  // rotation
-	  bool                m_rightButtonPressed;
+      bool                m_rightButtonPressed;
       bool                m_movedSinceButtonPressed;
 
       //! Temporary var for adding selection box
@@ -100,6 +103,7 @@ namespace Avogadro {
       QPoint              m_lastDraggingPosition;
 
       Eigen::Vector3d     m_selectedPrimitivesCenter;    // centroid of selected atoms
+      GLWidget           *m_widget; // for defining centroids
 
       int                 m_selectionMode;      // atom, residue, molecule
 
