@@ -56,7 +56,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   SelectRotateTool::SelectRotateTool(QObject *parent) : Tool(parent),
-    m_selectionBox(false), m_selectionMode(0), m_settingsWidget(0)
+    m_selectionBox(false), m_widget(0), m_selectionMode(0), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/select/select.png")));
