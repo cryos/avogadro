@@ -1,5 +1,5 @@
 /**********************************************************************
-  ceabstracteditor.h Base class for crystal builder editor dockwidgets
+  ceabstractdockwidget.h Base class for crystal builder dockwidgets
 
   Copyright (C) 2011 by David C. Lonie
 
@@ -15,11 +15,10 @@
   limitations under the License.
  ***********************************************************************/
 
-#ifndef CEABSTRACTEDITOR_H
-#define CEABSTRACTEDITOR_H
+#ifndef CEABSTRACTDOCKWIDGET_H
+#define CEABSTRACTDOCKWIDGET_H
 
 #include <QtGui/QDockWidget>
-#include "ceabstractdockwidget.h"
 
 class QMainWindow;
 
@@ -27,36 +26,28 @@ namespace Avogadro
 {
   class CrystallographyExtension;
 
-  class CEAbstractEditor : public CEAbstractDockWidget
+  class CEAbstractDockWidget : public QDockWidget
   {
     Q_OBJECT
 
   public:
-    CEAbstractEditor(CrystallographyExtension *ext, QMainWindow *w);
-    virtual ~CEAbstractEditor();
+    CEAbstractDockWidget(CrystallographyExtension *ext, QMainWindow *w);
+    virtual ~CEAbstractDockWidget();
 
-    bool isLocked() {return m_isLocked;}
+    Qt::DockWidgetArea preferredDockWidgetArea();
 
   signals:
-    void editStarted();
-    void editAccepted();
-    void editRejected();
-
-    void invalidInput();
-    void validInput();
     void visibilityChanged();
 
-  public slots:
-    virtual void refreshEditor() = 0;
-    virtual void lockEditor() = 0;
-    virtual void unlockEditor() = 0;
-
   protected slots:
-    virtual void markAsInvalid() = 0;
-    virtual void markAsValid() = 0;
+    virtual void storeDockWidgetArea(Qt::DockWidgetArea a);
 
   protected:
-    bool m_isLocked;
+    virtual void closeEvent(QCloseEvent *);
+    virtual void showEvent(QShowEvent *);
+    virtual void hideEvent(QHideEvent *);
+
+    CrystallographyExtension *m_ext;
   };
 
 }

@@ -12,6 +12,7 @@ set(crystallographyextension_SRCS
   ceundo.cpp
   crystallographyextension.cpp
   crystalpastedialog.cpp
+  ui/ceabstractdockwidget.cpp
   ui/ceabstracteditor.cpp
   ui/cecoordinateeditor.cpp
   ui/cematrixeditor.cpp
