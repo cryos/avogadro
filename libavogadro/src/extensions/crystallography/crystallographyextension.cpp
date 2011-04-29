@@ -1078,7 +1078,7 @@ namespace Avogadro
   {
     OpenBabel::OBUnitCell *cell = currentCell();
     QList<Eigen::Vector3d> coords;
-#if QT_VERSION >= 0x407000
+#if QT_VERSION >= 0x040700
     coords.reserve(fcoords.size());
 #endif
 
