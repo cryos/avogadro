@@ -37,7 +37,8 @@ namespace DynamicDisplay {
 
   DynamicDisplayExtension::DynamicDisplayExtension(QObject *parent)
     : Extension(parent),
-      m_dialog(0)
+      m_dialog(0),
+      m_molecule(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("0&2: Dynamic Dialog..."));

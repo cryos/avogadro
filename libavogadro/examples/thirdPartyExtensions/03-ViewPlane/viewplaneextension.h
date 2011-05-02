@@ -61,7 +61,6 @@ namespace ViewPlane {
   private:
     // List of actions implemented by the extension
     QList<QAction *> m_actions;
-    Avogadro::Molecule *m_molecule;
   };
 
   // Plugin factory setup
