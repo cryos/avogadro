@@ -5,8 +5,8 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Avogadro
-PROJECT_NUMBER         = 1.1.0
-OUTPUT_DIRECTORY       = doc/api
+PROJECT_NUMBER         = @Avogadro_VERSION_FULL@
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/api
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
@@ -50,7 +50,7 @@ EXTRACT_STATIC         = NO
 EXTRACT_LOCAL_CLASSES  = NO
 EXTRACT_LOCAL_METHODS  = NO
 HIDE_UNDOC_MEMBERS     = NO
-HIDE_UNDOC_CLASSES     = YES
+HIDE_UNDOC_CLASSES     = NO
 HIDE_FRIEND_COMPOUNDS  = YES
 HIDE_IN_BODY_DOCS      = NO
 INTERNAL_DOCS          = NO
@@ -83,9 +83,9 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = libavogadro/src/ \
-		         libavogadro/examples/thirdPartyExtensions/ \
-			 doc/
+INPUT                  = @Avogadro_SOURCE_DIR@/libavogadro/src/ \
+             @Avogadro_SOURCE_DIR@/libavogadro/examples/thirdPartyExtensions/ \
+       @Avogadro_SOURCE_DIR@/doc/
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -242,8 +242,8 @@ SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration::additions related to external references
 #---------------------------------------------------------------------------
-TAGFILES               =
-GENERATE_TAGFILE       =
+TAGFILES               = @TAGFILES@
+GENERATE_TAGFILE       = @CMAKE_CURRENT_BINARY_DIR@/api/html/avogadro.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 PERL_PATH              = /usr/bin/perl

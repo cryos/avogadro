@@ -1,3 +1,23 @@
+# Doxygen related code
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+
+if (not APPLE)
+  set(TAGFILES
+    "${QT_DOC_DIR}/html/qt.tags=http://doc.qt.nokia.com/4.${QT_VERSION_MINOR}")
+else()
+  set(TAGFILES
+    "${QT_DOC_DIR}/qt.tags=http://doc.qt.nokia.com/4.${QT_VERSION_MINOR}")
+endif()
+
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
+    ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+
+  add_custom_target(doxygen
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/api
+    COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+endif()
+
 # find the required tools
 find_program(DOCBOOK2PDF_EXECUTABLE docbook2pdf)
 find_program(DOCBOOK2HTML_EXECUTABLE docbook2html)
