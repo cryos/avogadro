@@ -39,6 +39,7 @@ namespace OpenBabel {
 namespace Avogadro
 {
   class CEAbstractEditor;
+  class CETranslateWidget;
 
   struct CEUnitCellParameters {
     double a, b, c, alpha, beta, gamma;
@@ -254,6 +255,7 @@ namespace Avogadro
       TogglePropertiesIndex,
       ToggleGUISepIndex,
       WrapAtomsIndex,
+      TranslateAtomsIndex,
       OrientStandardIndex,
       ScaleToVolumeIndex,
       LooseSepIndex,
@@ -289,6 +291,7 @@ namespace Avogadro
     }
 
     QMainWindow *m_mainwindow;
+    CETranslateWidget *m_translateWidget;
     QList<QAction*> m_actions;
     QList<CEAbstractEditor*> m_editors;
     Molecule *m_molecule;
@@ -328,6 +331,7 @@ namespace Avogadro
     void actionToggleEditors();
     void actionToggleProperties();
     void actionWrapAtoms();
+    void actionTranslateAtoms(GLWidget *gl);
     void actionOrientStandard();
     void actionScaleToVolume();
 

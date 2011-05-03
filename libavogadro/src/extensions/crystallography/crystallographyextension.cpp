@@ -36,6 +36,7 @@
 #include "ui/cecoordinateeditor.h"
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
+#include "ui/cetranslatewidget.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
@@ -61,6 +62,7 @@ namespace Avogadro
   CrystallographyExtension::CrystallographyExtension(QObject *parent)
     : Extension( parent ),
       m_mainwindow(0),
+      m_translateWidget(0),
       m_molecule(0),
       m_displayProperties(false),
       m_latticeProperty(0),
@@ -156,6 +158,7 @@ namespace Avogadro
     case TogglePropertiesIndex:
     case ToggleGUISepIndex:
     case WrapAtomsIndex:
+    case TranslateAtomsIndex:
     case OrientStandardIndex:
     case ScaleToVolumeIndex:
     case LooseSepIndex:
@@ -295,7 +298,7 @@ namespace Avogadro
   }
 
   QUndoCommand* CrystallographyExtension::performAction(QAction *action,
-                                                       GLWidget */*widget*/)
+                                                       GLWidget *widget)
   {
     switch (static_cast<ActionIndex>(action->data().toInt())) {
     case PerceiveSpacegroupIndex:
@@ -324,6 +327,9 @@ namespace Avogadro
       break;
     case WrapAtomsIndex:
       actionWrapAtoms();
+      break;
+    case TranslateAtomsIndex:
+      actionTranslateAtoms(widget);
       break;
     case OrientStandardIndex:
       actionOrientStandard();
@@ -1778,6 +1784,13 @@ namespace Avogadro
     CE_CACTION_DEBUG(WrapAtomsIndex);
     CE_CACTION_ASSERT(WrapAtomsIndex);
 
+    // TranslateAtomsIndex
+    a = new QAction(tr("&Translate Atoms..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(TranslateAtomsIndex);
+    CE_CACTION_ASSERT(TranslateAtomsIndex);
+
     // OrientStandardIndex
     a = new QAction(tr("Rotate To Standard &Orientation"), this);
     a->setData(++counter);
@@ -2285,6 +2298,17 @@ namespace Avogadro
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Wrap Atoms To Cell")));
+  }
+
+  void CrystallographyExtension::actionTranslateAtoms(GLWidget *gl)
+  {
+    if (!m_translateWidget) {
+      m_translateWidget = new CETranslateWidget (this, m_mainwindow, gl);
+      m_mainwindow->addDockWidget
+        (m_translateWidget->preferredDockWidgetArea(),
+         m_translateWidget);
+    }
+    m_translateWidget->show();
   }
 
   void CrystallographyExtension::actionOrientStandard()
