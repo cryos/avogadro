@@ -85,7 +85,7 @@ the alias name. You can inspect all aliases in this script, or by reading
                      relative to origin/master
   gerrit-push      - push the current topic branch to Gerrit for code review.
 
-  gerrit-push-1_0  - push the current topic branch for review if intended for
+  gerrit-push-1-0  - push the current topic branch for review if intended for
                      1.0 branch
 
 EOF
@@ -93,5 +93,5 @@ EOF
 git config alias.prepush 'log --graph --stat origin/master..'
 git_branch="\$(git symbolic-ref HEAD | sed -e 's|^refs/heads/||')"
 git config alias.gerrit-push "!sh -c \"git push gerrit HEAD:refs/for/master/${git_branch}\""
-git config alias.gerrit-push-1_0 "!sh -c \"git push gerrit HEAD:refs/for/1.0/${git_branch}\""
+git config alias.gerrit-push-1-0 "!sh -c \"git push gerrit HEAD:refs/for/1.0/${git_branch}\""
 
