@@ -46,21 +46,21 @@ function(avogadro_plugin plugin_name src_list)
   target_link_libraries(${plugin_name} avogadro)
 
   if(UNIX)
-    add_custom_target("${CMAKE_PROJECT_NAME}.mf"
-      COMMAND avopkg -wizard "${CMAKE_PROJECT_NAME}"
+    add_custom_target("${plugin_name}.mf"
+      COMMAND avopkg -wizard "${plugin_name}"
     )
-    add_custom_target(manifest
-      DEPENDS "${CMAKE_PROJECT_NAME}.mf"
+    add_custom_target("${plugin_name}.manifest"
+      DEPENDS "${plugin_name}.mf"
     )
-    add_custom_target("${CMAKE_PROJECT_NAME}.avo"
-      COMMAND avopkg -pack "${CMAKE_PROJECT_NAME}.mf"
+    add_custom_target("${plugin_name}.avo"
+      COMMAND avopkg -pack "${plugin_name}.mf"
     )
-    add_custom_target(package
-      DEPENDS "${CMAKE_PROJECT_NAME}.avo"
+    add_custom_target("${plugin_name}.package"
+      DEPENDS "${plugin_name}.avo"
     )
-    add_custom_target(install_package
-      COMMAND avopkg "${CMAKE_PROJECT_NAME}.avo"
-      DEPENDS "${CMAKE_PROJECT_NAME}.avo"
+    add_custom_target("${plugin_name}.install_package"
+      COMMAND avopkg "${plugin_name}.avo"
+      DEPENDS "${plugin_name}.avo"
     )
   endif(UNIX)
     
