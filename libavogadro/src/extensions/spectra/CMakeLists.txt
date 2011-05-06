@@ -10,12 +10,6 @@ avogadro_plugin_nogl(vibrationextension
   vibrationwidget.ui)
 
 ### Spectra
-if(OPENBABEL_IS_NEWER_THAN_2_2_99)
-  avogadro_plugin_nogl(spectraextension
+avogadro_plugin_nogl(spectraextension
   "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;abstract_ir.cpp;ir.cpp;nmr.cpp;dos.cpp;uv.cpp;cd.cpp;raman.cpp"
   "spectradialog.ui;tab_ir_raman.ui;tab_nmr.ui;tab_dos.ui;tab_uv.ui;tab_cd.ui")
-else(OPENBABEL_IS_NEWER_THAN_2_2_99)
-  avogadro_plugin_nogl(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;abstract_ir.cpp;ir.cpp;nmr.cpp"
-  "spectradialog.ui;tab_ir_raman.ui;tab_nmr.ui")
-endif(OPENBABEL_IS_NEWER_THAN_2_2_99)
