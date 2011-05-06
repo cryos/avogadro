@@ -6,29 +6,49 @@ namespace Avogadro {
 
 \section avogadro Introduction
 
-Avogadro is a molecular modeling / viewing / editing tool.
-The core design allows every feature to be
-extended via a plugin. This allows new features and tools to be easily added
-and removed and extension into new applications.
+Avogadro is a molecular modeling / viewing / editing tool. More
+importantly, it is a platform for developing chemical and molecular
+visualization and interactive simulations.
+
+The core design allows every feature to be extended via a plugin. This
+allows new features and tools to be easily added and removed and
+extension into new applications. Almost every feature in Avogadro is
+developed as a plugin, so the source code itself serves as examples for other developers.
 
 \subsection main Main Classes
 
-libavogadro interfaces: Plugins for extending Avogadro
-- Painter : General interface for graphical output: OpenGL, POVRay, etc.
-- Engine : Interface for display types: graphical styles for molecules and other data
-- Extension : Interface for user menu commands
-- DockExtension : Interface for dock widgets
-- Tool : Interface for mouse tools
+Plugins for extending Avogadro:
 - Color : Interface for coloring atoms, bonds, etc.
+- Engine : Interface for display types: graphical styles for rendering molecules and other data
+- Extension : Interface for user menu commands
+  - DockExtension : Interface for dock widgets
+- Painter : General interface for graphical output: OpenGL, POVRay, etc.
+- Tool : Interface for mouse tools
 
-libavogadro classes:
+libavogadro classes: Main classes
 - GLWidget : Widget for rendering 3d representations of a molecule.
 - Navigate : Class for manipulating the 3d viewpoint
 - Primitive : Base class for all model components
+  - Molecule : Class for representing molecules
   - Atom : Class for representing atoms
   - Bond : Class for representing bonds
   - Residue : Class for representing residues
-  - Molecule : Class for representing molecules
+
+\subsection tutorial Tutorial
+
+In many cases, if you want to add features to Avogadro, you wish to add an Extension or DockExtension. We have set up a series of tutorials for third-party extensions (i.e., building outside the main Avogadro source).
+
+\link tpe-toc Third-Party Extensions\endlink
+
+More information can also be found on the <a href="http://avogadro.openmolecules.net/wiki/Category:Developer">Avogadro Developer website.</a>
+
+\subsection links Useful Links
+
+APIs:
+- Qt: http://doc.qt.nokia.com/classes.html
+- OpenBabel: http://openbabel.org/api/
+- Eigen Tutorial: http://eigen.tuxfamily.org/dox/GettingStarted.html
+- CMake: http://www.cmake.org/cmake/help/documentation.html
 
 **/
 
