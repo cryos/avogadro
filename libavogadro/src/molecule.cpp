@@ -648,6 +648,18 @@ namespace Avogadro{
         obmol.SetImplicitValencePerceived();
         break;
 
+      case 26:
+        obatom->SetImplicitValence(6);
+        obatom->SetHyb(6);
+        obmol.SetImplicitValencePerceived();
+        break;
+
+      case 53:
+        obatom->SetImplicitValence(5);
+        obatom->SetHyb(5);
+        obmol.SetImplicitValencePerceived();
+        break;
+
       default: // do nothing
         break;
       }
