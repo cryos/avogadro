@@ -45,13 +45,13 @@ of this page.
 \section links Useful Links
 
 APIs:
-- Qt: http://doc.qt.nokia.com/4.5/classes.html
+- Qt: http://doc.qt.nokia.com/classes.html
 - Avogadro: http://avogadro.openmolecules.net/api/dev/
-- OpenBabel: http://openbabel.org/api/2.2.0/
-- Eigen::MatrixBase: http://eigen.tuxfamily.org/dox/classEigen_1_1MatrixBase.html
+- OpenBabel: http://openbabel.org/api/
+- Eigen Tutorial: http://eigen.tuxfamily.org/dox/GettingStarted.html
 
 Tools:
-- Qt Designer: http://doc.qt.nokia.com/4.5/designer-quick-start.html
+- Qt Designer: http://doc.qt.nokia.com/designer-quick-start.html
 
 **/
 

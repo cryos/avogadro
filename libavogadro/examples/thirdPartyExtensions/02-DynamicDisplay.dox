@@ -76,13 +76,15 @@ If you're feeling adventurous, try out the following:
   least three unique ways to do this.
 - Allow the user to change the atomic number that is checked for in
   DynamicDisplayDialog::update.
-- This implementation can actually be rather inefficient; all atoms in
+- This implementation can actually be very inefficient; all atoms in
   the molecule are counted each time an atom is
   changed/added/removed. If there are a large number of atoms in the
-  molecule and a large change is enacted, this may cause problems,
-  including a temporarily non-responsive user interface. Try to
+  molecule and a large change is enacted, this may cause problems (i.e., a "race condition"),
+  including a temporarily non-responsive user interface or inaccurate counts. Try to
   implement a QTimer from the QtCore module that will limit the
   frequency of the update.
+- You can also handle signals from Molecule, including Molecule::atomAdded, Molecule::atomRemoved
+  which would improve performance, rather than querying every atom repeatedly.
 
 **/
 
