@@ -464,10 +464,12 @@ namespace Avogadro {
      * @param atom If supplied only add hydrogens to the specified atom.
      * @param atomIds Unique Atom IDs when adding hydrogens in undo/redo.
      * @param bondIds Unique Bond IDs when adding hydrogens in undo/redo.
+     * @param geometry The geometry/valence of the atom (e.g., 3 = sp3 tetrahedral, 6 = octahedral)
      */
     void addHydrogens(Atom *atom = 0,
                       const QList<unsigned long> &atomIds = QList<unsigned long>(),
-                      const QList<unsigned long> &bondIds = QList<unsigned long>());
+                      const QList<unsigned long> &bondIds = QList<unsigned long>(),
+                      int geometry = 0);
 
     /**
      * Remove all hydrogens from the molecule.

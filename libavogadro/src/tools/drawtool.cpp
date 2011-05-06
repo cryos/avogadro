@@ -400,13 +400,13 @@ namespace Avogadro {
         // an existing atom or to endAtom that we also created
         AddAtomDrawCommand *beginAtomDrawCommand = 0;
         if(m_beginAtomAdded) {
-          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, atomAdjustHydrogens);
+          beginAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_beginAtom, atomAdjustHydrogens, m_hybridization);
           beginAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
         AddAtomDrawCommand *endAtomDrawCommand = 0;
         if(m_endAtomAdded) {
-          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, atomAdjustHydrogens);
+          endAtomDrawCommand = new AddAtomDrawCommand(widget->molecule(), m_endAtom, atomAdjustHydrogens, m_hybridization);
           endAtomDrawCommand->setText(tr("Draw Atom"));
         }
 
@@ -770,6 +770,7 @@ namespace Avogadro {
 
   void DrawTool::hybridizationChanged(int index)
   {
+    qDebug() << " hybridization changed " << m_hybridization;
     m_hybridization = index;
   }
 

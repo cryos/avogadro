@@ -164,9 +164,11 @@ namespace Avogadro {
       QList<unsigned long> atomIds;
       QHash<unsigned long, QList<unsigned long> > hydrogenIds;
       QHash<unsigned long, QList<unsigned long> > bondIds;
+      int hybridization;
   };
 
-  AdjustHydrogensPostCommand::AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds)
+  AdjustHydrogensPostCommand::AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds,
+                                                         int hybridization)
       : d(new AdjustHydrogensPostCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
@@ -174,9 +176,11 @@ namespace Avogadro {
 #endif
     d->molecule = molecule;
     d->atomIds = atomIds;
+    d->hybridization = hybridization;
   }
 
-  AdjustHydrogensPostCommand::AdjustHydrogensPostCommand(Molecule *molecule, unsigned long atomId)
+  AdjustHydrogensPostCommand::AdjustHydrogensPostCommand(Molecule *molecule, unsigned long atomId,
+                                                         int hybridization)
       : d(new AdjustHydrogensPostCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
@@ -184,6 +188,7 @@ namespace Avogadro {
 #endif
     d->molecule = molecule;
     d->atomIds.append(atomId);
+    d->hybridization = hybridization;
   }
 
   AdjustHydrogensPostCommand::~AdjustHydrogensPostCommand()
@@ -230,7 +235,7 @@ namespace Avogadro {
             continue;
           }
 
-          d->molecule->addHydrogens(atom); // new ids...
+          d->molecule->addHydrogens(atom, QList<unsigned long>(), QList<unsigned long>(), d->hybridization); // new ids...
           // save the new ids for reuse
           foreach (unsigned long nbrId, atom->neighbors()) {
             Atom *nbr = d->molecule->atomById(nbrId);
@@ -261,7 +266,7 @@ namespace Avogadro {
             continue;
           }
 
-          d->molecule->addHydrogens(atom, d->hydrogenIds.value(atom->id()), d->bondIds.value(atom->id()));
+          d->molecule->addHydrogens(atom, d->hydrogenIds.value(atom->id()), d->bondIds.value(atom->id()), d->hybridization);
         }
       }
 
@@ -276,7 +281,7 @@ namespace Avogadro {
   class AddAtomDrawCommandPrivate {
     public:
       AddAtomDrawCommandPrivate() : molecule(0), atom(0), id(FALSE_ID),
-      prevId(false), postCommand(0) {}
+                                    prevId(false), hybridization(0), postCommand(0) {}
 
       Molecule *molecule;
       Atom *atom;
@@ -285,12 +290,13 @@ namespace Avogadro {
       unsigned long id;
       bool prevId;
       AdjustHydrogens::Options adjustHydrogens;
+      int hybridization;
 
       QUndoCommand *postCommand;
   };
 
   AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element,
-      AdjustHydrogens::Options adjustHydrogens) : d(new AddAtomDrawCommandPrivate)
+                                         AdjustHydrogens::Options adjustHydrogens, int hybridization) : d(new AddAtomDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
     qDebug() << "AddAtomDrawCommand_ctor1(element = " << element << ", adj = " << adjustHydrogens << ")";
@@ -300,9 +306,10 @@ namespace Avogadro {
     d->pos = pos;
     d->element = element;
     d->adjustHydrogens = adjustHydrogens;
+    d->hybridization = hybridization;
   }
 
-  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, AdjustHydrogens::Options adjustHydrogens)
+  AddAtomDrawCommand::AddAtomDrawCommand(Molecule *molecule, Atom *atom, AdjustHydrogens::Options adjustHydrogens, int hybridization)
       : d(new AddAtomDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
@@ -315,6 +322,7 @@ namespace Avogadro {
     d->atom = atom;
     d->id = atom->id();
     d->adjustHydrogens = adjustHydrogens;
+    d->hybridization = hybridization;
   }
 
   AddAtomDrawCommand::~AddAtomDrawCommand()
@@ -349,7 +357,7 @@ namespace Avogadro {
   {
     if (d->atom) { // initial creation
       if (d->adjustHydrogens != AdjustHydrogens::Never && !d->atom->isHydrogen()) {
-        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id);
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id, d->hybridization);
         if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
           d->postCommand->redo();
       }
@@ -374,7 +382,7 @@ namespace Avogadro {
 
     if (d->adjustHydrogens != AdjustHydrogens::Never && !atom->isHydrogen()) {
       if (!d->postCommand)
-        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id);
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id, d->hybridization);
       if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
         d->postCommand->redo();
     }
@@ -841,7 +849,7 @@ namespace Avogadro {
     d->id = atom->id();
     d->adjustHydrogens = adjustHydrogens;
   }
-    
+
   void ChangeElementDrawCommand::setAdjustHydrogens(bool adjustHydrogens)
   {
     d->adjustHydrogens = adjustHydrogens;
