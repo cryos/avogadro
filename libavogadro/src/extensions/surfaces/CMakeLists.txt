@@ -25,6 +25,7 @@ set(orbitalextension_SRCS
   orbitalwidget.cpp
   vdwsurface.cpp
   qtiocompressor/qtiocompressor.cpp
+  htmldelegate.cpp
 )
 
 set(orbitalextension_UIS

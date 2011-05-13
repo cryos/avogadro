@@ -34,6 +34,7 @@ namespace Avogadro {
     double energy;
     int index;
     QString description; // (HOMO|LUMO)[(+|-)N]
+    QString symmetry; // e.g., A1g (with subscripts)
     calcInfo *queueEntry;
     // Progress data:
     int min;
@@ -43,12 +44,39 @@ namespace Avogadro {
     int totalStages;
   };
 
+  // Allow progress bars to be embedded in the table
+  class ProgressBarDelegate : public QStyledItemDelegate
+  {
+    Q_OBJECT
+      public:
+    ProgressBarDelegate(QObject *parent = 0) : QStyledItemDelegate(parent) {};
+    QSize sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const {
+      return QSize(60, 30);};
+
+    void paint(QPainter *p, const QStyleOptionViewItem &o, const QModelIndex &ind) const {
+      QStyleOptionProgressBarV2 opt;
+      // Call initFrom() which will set the style based on the parent
+      // GRH: This is critical to get things right on Mac
+      //   otherwise the status bars always look disabled
+      opt.initFrom(qobject_cast<QWidget*>(this->parent()));
+
+      opt.rect = o.rect;
+      opt.minimum = 1; // percentage
+      opt.maximum = 100;
+      opt.textVisible = true;
+      int percent = ind.model()->data(ind, Qt::DisplayRole).toInt();
+      opt.progress = percent;
+      opt.text = QString("%1%").arg(QString::number(percent));
+      QApplication::style()->drawControl(QStyle::CE_ProgressBar, &opt, p);
+    }
+  };
+
   // Used for sorting:
   class OrbitalSortingProxyModel : public QSortFilterProxyModel
   {
     Q_OBJECT
 
-  public:
+      public:
     OrbitalSortingProxyModel(QObject *parent = 0) : QSortFilterProxyModel(parent), m_HOMOFirst(false) {};
 
     bool isHOMOFirst() {return m_HOMOFirst;};
@@ -65,37 +93,17 @@ namespace Avogadro {
     bool m_HOMOFirst;
   };
 
-  // Allow progress bars to be embedded in the table
-  class ProgressBarDelegate : public QStyledItemDelegate
-  {
-    Q_OBJECT
-  public:
-    ProgressBarDelegate(QObject *parent = 0) : QStyledItemDelegate(parent) {};
-    QSize sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const {
-      return QSize(120, 30);};
-    void paint(QPainter *p, const QStyleOptionViewItem &o, const QModelIndex &ind) const {
-      QStyleOptionProgressBarV2 opt;
-      opt.rect = o.rect;
-      opt.minimum = 1;
-      opt.maximum = 100;
-      opt.textVisible = true;
-      int percent = ind.model()->data(ind, Qt::DisplayRole).toInt();
-      opt.progress = percent;
-      opt.text = QString("%1%").arg(QString::number(percent));
-      QApplication::style()->drawControl(QStyle::CE_ProgressBar, &opt, p);
-    }
-  };
-
   class OrbitalTableModel : public QAbstractTableModel
   {
     Q_OBJECT
 
-    public:
+      public:
 
     enum Column {
       C_Description = 0,
       C_Energy,
-      C_Status,
+      C_Symmetry,
+      C_Status, // also occupation (0/1/2)
 
       COUNT
     };
@@ -106,7 +114,7 @@ namespace Avogadro {
     virtual ~OrbitalTableModel();
 
     int rowCount(const QModelIndex&) const {return m_orbitals.size();};
-    int columnCount(const QModelIndex&) const {return COUNT;}; // Energy, description, progress
+    int columnCount(const QModelIndex&) const;
 
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
