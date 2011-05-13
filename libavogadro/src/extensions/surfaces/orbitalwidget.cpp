@@ -18,6 +18,7 @@
 
 #include "orbitalwidget.h"
 #include "orbitalsettingsdialog.h"
+#include "htmldelegate.h"
 
 #include <QDebug>
 #include <QSettings>
@@ -39,6 +40,7 @@ namespace Avogadro {
     ui.table->setModel(m_sortedTableModel);
     ui.table->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     ui.table->setItemDelegateForColumn(OrbitalTableModel::C_Status, new ProgressBarDelegate(this));
+    ui.table->setItemDelegateForColumn(OrbitalTableModel::C_Symmetry, new HTMLDelegate(this));
 
     connect(ui.table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(tableClicked(const QItemSelection&)));
@@ -114,10 +116,10 @@ namespace Avogadro {
     m_sortedTableModel->sort(0, Qt::AscendingOrder);
 
     // // Find HOMO and scroll to it
-    // QModelIndex homo = m_tableModel->HOMO();
-    // homo = m_sortedTableModel->mapFromSource(homo);
-    // qDebug() << "HOMO at: " << homo.row();
-    // ui.table->scrollTo(homo, QAbstractItemView::PositionAtCenter);
+    QModelIndex homo = m_tableModel->HOMO();
+    homo = m_sortedTableModel->mapFromSource(homo);
+    qDebug() << "HOMO at: " << homo.row();
+    ui.table->scrollTo(homo, QAbstractItemView::PositionAtCenter);
   }
 
   void OrbitalWidget::setQuality(OrbitalQuality q)

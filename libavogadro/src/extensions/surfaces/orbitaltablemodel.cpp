@@ -31,18 +31,37 @@ namespace Avogadro {
   {
   }
 
+  int OrbitalTableModel::columnCount(const QModelIndex&) const
+  {
+    return COUNT;
+  }
+
   QVariant OrbitalTableModel::data(const QModelIndex & index, int role) const
   {
-    if (role != Qt::DisplayRole || !index.isValid())
+    if ((role != Qt::DisplayRole && role != Qt::TextAlignmentRole) || !index.isValid())
       return QVariant();
 
+    if (role == Qt::TextAlignmentRole) {
+      switch (Column(index.column())) {
+      case C_Energy:
+        return Qt::AlignRight + Qt::AlignVCenter; // numeric alignment
+      case C_Status: // everything else can be centered
+      case C_Description:
+      case C_Symmetry:
+      default:
+        return Qt::AlignHCenter + Qt::AlignVCenter;
+      }
+    }
+
     const Orbital orb = m_orbitals.at(index.row());
+    QString symbol; // use subscripts
+    int subscriptStart;
 
     switch (Column(index.column())) {
     case C_Description:
       return orb.description;
     case C_Energy:
-      return QString::number(orb.energy, 'g', 5);
+      return QString("%L1").arg(orb.energy, 0, 'f', 3);
     case C_Status: {
       // Check for divide by zero
       if (orb.max == orb.min)
@@ -53,7 +72,18 @@ namespace Avogadro {
       percent /= float(stages);
       percent += (orb.stage - 1) * ( 100.0 / float(stages) );
       return percent;
-    }
+    } case C_Symmetry:
+      symbol = orb.symmetry;
+      if (symbol.length() > 1) {
+        subscriptStart = 1;
+        if (symbol[0] == '?')
+          subscriptStart++;
+        symbol.insert(subscriptStart, QString("<sub>"));
+        symbol.append(QString("</sub>"));
+        }
+      symbol.replace('\'', QString("<sup>'</sup>"));
+      symbol.replace('"', QString("<sup>\"</sup>"));
+      return symbol;
     default:
     case COUNT:
       return QVariant();
@@ -71,9 +101,11 @@ namespace Avogadro {
       case C_Description:
         return tr("Orbital");
       case C_Energy:
-        return tr("Energy");
+        return tr("Energy (eV)");
       case C_Status:
         return tr("Status");
+      case C_Symmetry:
+        return tr("Symmetry");
       default:
       case COUNT:
       return QVariant();
@@ -112,6 +144,7 @@ namespace Avogadro {
       orb.energy = 0;
       orb.index = -1;
       orb.description = "";
+      orb.symmetry = "";
       orb.queueEntry = 0;
       orb.min = 0;
       orb.max = 0;
