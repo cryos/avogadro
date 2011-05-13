@@ -42,7 +42,7 @@ namespace Avogadro {
     case C_Description:
       return orb.description;
     case C_Energy:
-      return QString::number(orb.energy, 'g', 5);
+      return QString("%L1").arg(orb.energy, 0, 'g', 3);
     case C_Status: {
       // Check for divide by zero
       if (orb.max == orb.min)
@@ -71,7 +71,7 @@ namespace Avogadro {
       case C_Description:
         return tr("Orbital");
       case C_Energy:
-        return tr("Energy");
+        return tr("Energy (eV)");
       case C_Status:
         return tr("Status");
       default:

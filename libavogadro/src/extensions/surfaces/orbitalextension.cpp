@@ -155,7 +155,11 @@ namespace Avogadro
         qDebug() << desc;
 
         Orbital orb;
-        orb.energy = 0; // TODO
+        if (molecule->property("alphaOrbitalEnergies").isValid()) {
+          QList<QVariant> alphaEnergies = molecule->property("alphaOrbitalEnergies").toList();
+          orb.energy = alphaEnergies[i].toDouble();
+        } else
+          orb.energy = 0;
         orb.index = i;
         orb.description = desc;
         orb.queueEntry = 0;

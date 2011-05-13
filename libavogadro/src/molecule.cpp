@@ -1400,6 +1400,28 @@ namespace Avogadro{
       d->obelectronictransitiondata = etd;
     }
 
+    // Copy orbital energies, symbols, and occupations to dynamic properties (as QList<>)
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicData)) {
+      OpenBabel::OBOrbitalData *od =
+        static_cast<OpenBabel::OBOrbitalData*>(obmol->GetData(OpenBabel::OBGenericDataType::ElectronicData));
+
+      // Source (from OBMol)
+      std::vector<OpenBabel::OBOrbital> alphaOrbitals, betaOrbitals;
+      std::vector<OpenBabel::OBOrbital>::iterator orbitalIter;
+      alphaOrbitals = od->GetAlphaOrbitals();
+
+      // Destinations
+      QList<QVariant> alphaEnergies, betaEnergies;
+      QStringList alphaSymmetries, betaSymmetries;
+      for (orbitalIter = alphaOrbitals.begin(); orbitalIter != alphaOrbitals.end(); ++orbitalIter) {
+        alphaEnergies.append(QVariant(orbitalIter->GetEnergy() * 27.21138));
+        alphaSymmetries.append(orbitalIter->GetSymbol().c_str());
+      }
+      // TODO: Beta orbitals and occupations
+      setProperty("alphaOrbitalEnergies", alphaEnergies);
+      setProperty("alphaOrbitalSymmetries", alphaSymmetries);
+    }
+
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
     OpenBabel::OBPairData *property;
