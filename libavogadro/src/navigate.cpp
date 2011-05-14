@@ -51,7 +51,15 @@ namespace Avogadro {
       t = u;
     }
 
-    widget->camera()->modelview().pretranslate(transformedGoal * t);
+    switch(widget->projection())
+    {
+      case GLWidget::perspective:
+        widget->camera()->modelview().pretranslate(transformedGoal * t);
+        break;
+      case GLWidget::orthographic:
+        widget->camera()->scale(1+t);
+        break;
+    }
   }
 
   void Navigate::translate(GLWidget *widget, const Eigen::Vector3d &what,

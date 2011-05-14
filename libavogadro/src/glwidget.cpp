@@ -209,6 +209,8 @@ namespace Avogadro {
     unsigned char          bCells;
     unsigned char          cCells;
 
+    GLWidget::projectionType projection;
+
     QColor                 cellColor;
 
     Molecule              *molecule;
@@ -1921,6 +1923,20 @@ namespace Avogadro {
     return d->cCells;
   }
 
+  void GLWidget::setProjection(GLWidget::projectionType type)
+  {
+    d->projection = type;
+    updateGeometry();
+    d->camera->initializeViewPoint();
+    update();
+  }
+
+  GLWidget::projectionType GLWidget::projection() const
+  {
+    return d->projection;
+  }
+
+
   inline double GLWidget::computeFramesPerSecond()
   {
     static QTime time;
@@ -1961,6 +1977,7 @@ namespace Avogadro {
     settings.setValue("renderDebug", d->renderDebug);
     settings.setValue("allowQuickRender", d->allowQuickRender);
     settings.setValue("renderUnitCellAxes", d->renderUnitCellAxes);
+    settings.setValue("projection", d->projection);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -1983,6 +2000,7 @@ namespace Avogadro {
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
     d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
+    d->projection = settings.value("projection", GLWidget::perspective).toInt();
 
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++) {

@@ -30,6 +30,7 @@
 
 #include <avogadro/primitivelist.h>
 #include <avogadro/extension.h>
+#include <avogadro/glwidget.h>
 
 #include <QMainWindow>
 #include <QFileDialog>
@@ -76,6 +77,12 @@ namespace Avogadro {
       bool renderDebug() const;
       bool quickRender() const;
       bool renderUnitCellAxes() const;
+
+      /**
+       * Return projection type in GLWiget
+       * @return projection type
+      **/
+      GLWidget::projectionType projection() const;
 
       /**
        * @param fileName fileName to load (defaults to loading a blank file)
@@ -149,6 +156,9 @@ namespace Avogadro {
       void setBackgroundColor();
       void setPainterQuality(int quality);
       void setFogLevel(int level);
+
+      void setPerspective();
+      void setOrthographic();
 
       void setRenderAxes(bool render);
       void setRenderDebug(bool render);

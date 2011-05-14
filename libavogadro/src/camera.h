@@ -181,6 +181,10 @@ namespace Avogadro {
         * @sa prerotate()*/
       void prerotate(const double &angle, const Eigen::Vector3d &axis);
 
+      void scale(const double &coefficient);
+
+      void prescale(const double &coeffcient);
+
       /**
        * Performs an unprojection from window coordinates to space coordinates.
        * @param v The vector to unproject, expressed in window coordinates.
@@ -285,6 +289,8 @@ namespace Avogadro {
         * the bottom row with these values.
         */
       void normalize();
+
+      double scalingCoefficient();
 
     private:
       CameraPrivate * const d;

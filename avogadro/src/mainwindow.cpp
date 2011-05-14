@@ -286,6 +286,8 @@ protected:
     QTabWidget *centralTab;
     FlatTabWidget *bottomFlat;
 
+    QActionGroup *projectionGroup;
+
     ToolGroup *toolGroup;
     QAction    *actionRecentFile[MainWindow::maxRecentFiles];
 
@@ -501,6 +503,11 @@ protected:
     ui.actionRevert->setEnabled(false);
     ui.actionSave->setEnabled(false);
 
+    // Creat and assign an action group for "View > Projection"
+    d->projectionGroup = new QActionGroup(this);
+    d->projectionGroup->addAction(ui.actionPerspective);
+    d->projectionGroup->addAction(ui.actionOrthographic);
+
 #ifdef Q_WS_MAC
     // Find the Avogadro global preferences action
     // and make sure it ends up in the Mac Application menu
@@ -711,6 +718,21 @@ protected:
   void MainWindow::show()
   {
     QMainWindow::show();
+  }
+
+  GLWidget::projectionType MainWindow::projection() const
+  {
+     return d->glWidget->projection();
+  }
+
+  void MainWindow::setPerspective()
+  {
+    d->glWidget->setProjection(GLWidget::perspective);
+  }
+
+  void MainWindow::setOrthographic()
+  {
+    d->glWidget->setProjection(GLWidget::orthographic);
   }
 
   bool MainWindow::renderAxes() const
@@ -2985,6 +3007,10 @@ protected:
              this, SLOT( resetDisplayTypes() ) );
     connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ),
              this, SLOT( setBackgroundColor() ) );
+    connect( ui.actionPerspective, SIGNAL( triggered() ),
+             this, SLOT( setPerspective() ) );
+    connect( ui.actionOrthographic , SIGNAL( triggered() ),
+             this, SLOT( setOrthographic() ) );
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
             this, SLOT(setRenderAxes(bool)));
     connect(ui.actionDisplayUnitCellAxes, SIGNAL(triggered(bool)),
@@ -3260,6 +3286,17 @@ protected:
     ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
+
+    // Set the initial state of View > Projection
+    switch(projection())
+    {
+      case GLWidget::perspective:
+        ui.actionPerspective->setChecked(true);
+        break;
+      case GLWidget::orthographic:
+        ui.actionOrthographic->setChecked(true);
+        break;
+    }
 
     ui.actionCloseView->setEnabled(count > 1);
     ui.actionDetachView->setEnabled(count > 1);
