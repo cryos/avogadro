@@ -47,9 +47,7 @@ namespace Avogadro {
     const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
     double u = minDistanceToGoal / distanceToGoal - 1.0;
 
-    if(t < u) {
-      t = u;
-    }
+    if(t < u) t = u;
 
     switch(widget->projection())
     {

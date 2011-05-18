@@ -286,6 +286,7 @@ protected:
     QTabWidget *centralTab;
     FlatTabWidget *bottomFlat;
 
+    // Pointer to an action group for "View > Projection"
     QActionGroup *projectionGroup;
 
     ToolGroup *toolGroup;
@@ -3287,7 +3288,7 @@ protected:
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
 
-    // Set the initial state of View > Projection
+    // Set the initial state of the action group for "View > Projection"
     switch(projection())
     {
       case GLWidget::perspective:

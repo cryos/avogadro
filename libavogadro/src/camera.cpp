@@ -27,9 +27,6 @@
 #include <avogadro/molecule.h>
 #include <Eigen/LU>
 
-// Just a temporary header
-#include <QDebug>
-
 using namespace Eigen;
 
 namespace Avogadro
@@ -75,20 +72,9 @@ namespace Avogadro
   void Camera::normalize()
   {
     /*
-    Eigen::Block<Matrix4d, 3, 1> c0(d->modelview.matrix(), 0, 0),
-                                 c1(d->modelview.matrix(), 0, 1),
-                                 c2(d->modelview.matrix(), 0, 2);
-    c0.normalize();
-    c1.normalize();
-    c1 -= c0.dot(c1) * c0;
-    c1.normalize();
-    c2.normalize();
-    c2 -= c0.dot(c2) * c0;
-    c2 -= c1.dot(c2) * c1;
-    c2.normalize();
-    d->modelview.matrix().row(3) << 0, 0, 0, 1;
-    //*/
-
+     Gram–Schmidt process to orthonormalise vectors
+     http://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process#The_Gram.E2.80.93Schmidt_process
+    */
     double sc = scalingCoefficient();
 
     Eigen::Vector3d x = d->modelview.linear().col(0);
@@ -114,13 +100,6 @@ namespace Avogadro
 
   double Camera::scalingCoefficient()
   {
-    /*
-    double sumLenght = 0.0;
-    sumLenght += d->modelview.linear().col(0).norm();
-    sumLenght += d->modelview.linear().col(1).norm();
-    sumLenght += d->modelview.linear().col(2).norm();
-    return sumLenght / 3.0;
-    */
     double volume = d->modelview.linear().determinant();
     return pow(volume,1.0/3.0);
   }
@@ -165,11 +144,6 @@ namespace Avogadro
   void Camera::scale(const double &coefficient)
   {
     d->modelview.scale(coefficient);
-  }
-
-  void Camera::prescale(const double &coefficient)
-  {
-    d->modelview.prescale(coefficient);
   }
 
   double Camera::distance(const Eigen::Vector3d & point) const
@@ -249,10 +223,12 @@ namespace Avogadro
     switch(d->parent->projection())
       {
       case GLWidget::perspective:
+        // Renders the perpective projection of the molecule
         gluPerspective( d->angleOfViewY, aspectRatio, zNear, zFar );
         break;
       case GLWidget::orthographic:
-        glOrtho(-molRadius*aspectRatio, molRadius*aspectRatio, -molRadius, molRadius, zNear, 2*zFar);
+        // Renders the orthographic projection of the molecule
+        glOrtho( -molRadius*aspectRatio, molRadius*aspectRatio, -molRadius, molRadius, zNear, 2*zFar );
         break;
       }
 

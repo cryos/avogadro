@@ -157,7 +157,13 @@ namespace Avogadro {
       void setPainterQuality(int quality);
       void setFogLevel(int level);
 
+      /**
+       * Slot to switch glWiget to the perspective projection mode
+       */
       void setPerspective();
+      /**
+       * Slot to switch glWiget to the orthographic projection mode
+       */
       void setOrthographic();
 
       void setRenderAxes(bool render);
