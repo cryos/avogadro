@@ -1,9 +1,14 @@
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+# Also, add the openqube library unless we are using the system openqube
+option(Avogadro_USE_SYSTEM_OPENQUBE "Use the system OpenQube?" OFF)
+if(Avogadro_USE_SYSTEM_OPENQUBE)
+  find_package(OpenQube REQUIRED)
 
-# Also, add the openqube library.
-add_subdirectory(openqube)
+else()
+  add_subdirectory(openqube)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+endif()
 
 set(LINK_LIBS avogadro openqube)
 set(PLUGIN_LABEL extensions)
