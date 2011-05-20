@@ -51,7 +51,7 @@ namespace Avogadro
     connect(ui.edit_matrix, SIGNAL(textChanged()),
             this, SLOT(enableButtons()));
 
-    ui.edit_matrix->setCurrentFont(QFont("Monospace",
+    ui.edit_matrix->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
     m_charFormat = ui.edit_matrix->textCursor().charFormat();
   }
