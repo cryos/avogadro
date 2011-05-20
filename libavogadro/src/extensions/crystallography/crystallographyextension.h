@@ -71,7 +71,13 @@ namespace Avogadro
     Radian
   };
 
-  const int CE_FONTSIZE = 10;
+#ifdef Q_WS_MAC
+  const QString CE_FONT = "Monaco";
+  const int CE_FONTSIZE = 12;
+#else
+  const QString CE_FONT = "Monospace";
+  const int CE_FONTSIZE = 11;
+#endif
 
   const QString CE_DIALOG_TITLE =
     QT_TRANSLATE_NOOP("CrystallographyExtension", "Avogadro");

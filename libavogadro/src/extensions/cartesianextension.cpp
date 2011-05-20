@@ -45,6 +45,12 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
+#ifdef Q_WS_MAC
+  static const QString EDITOR_FONT = "Monaco";
+#else
+  static const QString EDITOR_FONT = "Monospace";
+#endif
+
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
                                                       m_unit(CoordinateUnit(0)),
                                                       m_format(CoordinateFormat(0)),
@@ -54,7 +60,8 @@ namespace Avogadro
     readSettings();
 
     cartesianEdit->setTextColor(Qt::black);
-    cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
+    cartesianEdit->setCurrentFont(QFont(EDITOR_FONT,
+                                        QApplication::font().pointSize() + 1));
 
     connect(sortBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSort()));
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
