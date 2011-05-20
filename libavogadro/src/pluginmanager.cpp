@@ -38,10 +38,6 @@
 #include <avogadro/extension.h>
 #include <avogadro/color.h>
 
-// Include static headers
-#include "engines/bsdyengine.h"
-#include "colors/elementcolor.h"
-
 #include <QSettings>
 #include <QDir>
 #include <QList>
@@ -50,6 +46,9 @@
 #include <QDebug>
 #include <QProcess>
 #include <QFileInfo>
+#include <QCoreApplication>
+
+#include "staticplugins.cpp"
 
 namespace Avogadro {
 
@@ -537,20 +536,18 @@ namespace Avogadro {
       settings.endGroup(); // ExtraPlugins
     }
 
-    QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
+    // Initialize the resource files for our static plugins. Note that the
+    // function must be declared outside of a namespace.
+    initAvogadroResources();
 
-    // Load the static plugins first
-    PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
-    if (bsFactory)
-      ef[bsFactory->type()].append(bsFactory);
-    else
-      qDebug() << "Instantiation of the static ball and sticks plugin failed.";
-
-    PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
-    if (elementFactory)
-      ef[elementFactory->type()].append(elementFactory);
-    else
-      qDebug() << "Instantiation of the static element color plugin failed.";
+    // Load the static plugins
+    QVector<QList<PluginFactory *> > &ef =
+      PluginManagerPrivate::m_enabledFactories();
+    foreach(QObject *instance, QPluginLoader::staticInstances()) {
+      PluginFactory *factory = qobject_cast<PluginFactory *>(instance);
+      if (factory)
+        ef[factory->type()].append(factory);
+    }
 
     QSettings settings;
     settings.beginGroup("Plugins");

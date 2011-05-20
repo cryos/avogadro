@@ -23,7 +23,7 @@ avogadro_plugin_nogl(propextension
 avogadro_plugin_nogl(cartesianextension
   cartesianextension.cpp
   cartesianeditor.ui
-  edit.qrc)
+  cartesianextension.qrc)
 
 avogadro_plugin_nogl(molecularpropextension
   molecularpropextension.cpp
@@ -36,14 +36,12 @@ set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
 avogadro_plugin_nogl(forcefieldextension
   "${forcefieldextension_SRCS}"
   "forcefielddialog.ui;constraintsdialog.ui;conformersearchdialog.ui")
-set_target_properties(forcefieldextension PROPERTIES
-			COMPILE_FLAGS "${RTTI_FLAG}")
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(forcefieldextension PROPERTIES COMPILE_FLAGS "-fvisibility=default")
 endif()
 
 ### hydrogens
-avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
+avogadro_plugin_nogl(hydrogensextension hydrogensextension.cpp)
 
 ### invertchirality
 avogadro_plugin_nogl(invertchiralextension invertchiralextension.cpp)
@@ -76,8 +74,6 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     "pythonterminal.cpp;highlighter.cpp"
     pythonterminalwidget.ui)
   target_link_libraries(pythonterminal ${PYTHON_LIBRARIES})
-  set_target_properties(pythonterminal PROPERTIES
-			COMPILE_FLAGS "${RTTI_FLAG}")
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
@@ -89,7 +85,7 @@ set(animationextension_SRCS animationextension.cpp animationdialog.cpp
 avogadro_plugin_nogl(animationextension
   "${animationextension_SRCS}"
   animationdialog.ui
-  animation.qrc)
+  animationextension.qrc)
 
 ### POV-Ray extension
 avogadro_plugin_nogl(povrayextension
