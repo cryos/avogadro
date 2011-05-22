@@ -462,6 +462,27 @@ namespace Avogadro {
       int cCells();
 
       /**
+       * The type of projection
+       */
+      enum ProjectionType
+      {
+        Perspective   = 1,
+        Orthographic  = 2
+      };
+
+      /**
+       * Set the type of projection
+       * @param type type of projection
+       */
+      void setProjection(ProjectionType type);
+
+      /**
+        * Get the type of projection
+        * @return type of projection
+        */
+      ProjectionType projection() const;
+
+      /**
        * Static pointer to the current GLWidget.
        */
       static GLWidget *m_current;
