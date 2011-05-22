@@ -108,7 +108,7 @@ namespace Avogadro {
         *         the camera orientation and position
         * @sa setModelview(), const Eigen::Transform3d & modelview() const */
       Eigen::Transform3d & modelview();
-      /** Calls gluPerspective() with parameters automatically chosen
+      /** Calls gluPerspective() or glOrtho() with parameters automatically chosen
         * for rendering the GLWidget's molecule with this camera. Should be called
         * only in GL_PROJECTION matrix mode. Example code is given
         * in the class's comment.
@@ -180,6 +180,13 @@ namespace Avogadro {
         *             axis.norm() must be close to 1.
         * @sa prerotate()*/
       void prerotate(const double &angle, const Eigen::Vector3d &axis);
+
+      /** Multiply the camera's "modelview" matrix by a scaling coeficient. It affect the
+        * linear part of the the camera's "modelview" matrix only. Use this method if you
+        * want to give the impression that the camera is zooming in or out.
+        * @param coefficient the scaling coefficient
+        */
+      void scale(const double &coefficient);
 
       /**
        * Performs an unprojection from window coordinates to space coordinates.
@@ -274,17 +281,21 @@ namespace Avogadro {
        */
       Eigen::Vector3d transformedZAxis() const;
       
-      /** The linear component (ie the 3x3 topleft block) of the camera matrix must
-        * always be a rotation. But after several hundreds of operations on it,
-        * it can drift farther and farther away from being a rotation. This method
-        * normalizes the camera matrix so that the linear component is guaranteed to be
-        * a rotation. Concretely, it performs a Gram-Schmidt orthonormalization to
-        * transform the linear component into a nearby rotation.
-        *
-        * The bottom row must always have entries 0, 0, 0, 1. This function overwrites
-        * the bottom row with these values.
+      /** The linear component (ie the 3x3 topleft block) of the camera's "modelview" matrix
+        * must always be a rotation (orthonormal). But after several hundreds of operations on it,
+        * it can drift farther and farther away from being a rotation. This method orthonormalizes
+        * the camera's "modelview" matrix so that the linear component is guaranteed to be
+        * a rotation.
         */
       void normalize();
+
+      /**
+       * Calculate the isotropic scaling coefficient of the camera's "modelview" matrix. It
+       * assumes the intial volume of the camera's "modelview" space (determinant of the
+       * camera's "modelview" matrix linear component) is equal to unit.
+       * @return scaling coefficient
+       */
+      double scalingCoefficient();
 
     private:
       CameraPrivate * const d;

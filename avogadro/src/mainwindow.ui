@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>23</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -97,6 +97,13 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
+    <widget class="QMenu" name="menuProjection">
+     <property name="title">
+      <string>Projection</string>
+     </property>
+     <addaction name="actionPerspective"/>
+     <addaction name="actionOrthographic"/>
+    </widget>
     <addaction name="actionNewView"/>
     <addaction name="actionDuplicateView"/>
     <addaction name="actionDetachView"/>
@@ -108,6 +115,7 @@
     <addaction name="actionResetDisplayTypes"/>
     <addaction name="actionSetBackgroundColor"/>
     <addaction name="separator"/>
+    <addaction name="menuProjection"/>
     <addaction name="actionDisplayAxes"/>
     <addaction name="actionDisplayUnitCellAxes"/>
     <addaction name="actionDebugInformation"/>
@@ -620,6 +628,25 @@
   <action name="actionResetDisplayTypes">
    <property name="text">
     <string>Reset Display Types</string>
+   </property>
+  </action>
+  <action name="actionPerspective">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Perspective</string>
+   </property>
+  </action>
+  <action name="actionOrthographic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Orthographic</string>
    </property>
   </action>
  </widget>

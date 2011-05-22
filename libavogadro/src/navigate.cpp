@@ -47,11 +47,17 @@ namespace Avogadro {
     const double minDistanceToGoal = 2.0 * CAMERA_NEAR_DISTANCE;
     double u = minDistanceToGoal / distanceToGoal - 1.0;
 
-    if(t < u) {
-      t = u;
-    }
+    if(t < u) t = u;
 
-    widget->camera()->modelview().pretranslate(transformedGoal * t);
+    switch(widget->projection())
+    {
+      case GLWidget::perspective:
+        widget->camera()->modelview().pretranslate(transformedGoal * t);
+        break;
+      case GLWidget::orthographic:
+        widget->camera()->scale(1+t);
+        break;
+    }
   }
 
   void Navigate::translate(GLWidget *widget, const Eigen::Vector3d &what,
