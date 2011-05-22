@@ -210,6 +210,8 @@ namespace Avogadro {
     unsigned char          bCells;
     unsigned char          cCells;
 
+    GLWidget::ProjectionType projection;
+
     QColor                 cellColor;
 
     Molecule              *molecule;
@@ -547,7 +549,7 @@ namespace Avogadro {
     // setup the OpenGL projection matrix using the camera
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
-    d->camera->applyPerspective();
+    d->camera->applyProjection();
 
     // setup the OpenGL modelview matrix using the camera
     glMatrixMode( GL_MODELVIEW );
@@ -565,7 +567,7 @@ namespace Avogadro {
     glMatrixMode( GL_PROJECTION );
     glPushMatrix();
     glLoadIdentity();
-    d->camera->applyPerspective();
+    d->camera->applyProjection();
 
     // setup the OpenGL modelview matrix using the camera
     glMatrixMode( GL_MODELVIEW );
@@ -2215,7 +2217,7 @@ namespace Avogadro {
     gluPickMatrix( cx,viewport[3]-cy, w, h,viewport );
 
     // now multiply that projection matrix with the perspective of the camera
-    d->camera->applyPerspective();
+    d->camera->applyProjection();
 
     // now load the modelview matrix from the camera
     glMatrixMode( GL_MODELVIEW );
@@ -2567,6 +2569,20 @@ namespace Avogadro {
     return d->cCells;
   }
 
+  void GLWidget::setProjection(GLWidget::ProjectionType type)
+  {
+    d->projection = type;
+    updateGeometry();
+    d->camera->initializeViewPoint();
+    update();
+  }
+
+  GLWidget::ProjectionType GLWidget::projection() const
+  {
+    return d->projection;
+  }
+
+
   inline double GLWidget::computeFramesPerSecond()
   {
     static QTime time;
@@ -2607,6 +2623,7 @@ namespace Avogadro {
     settings.setValue("renderDebug", d->renderDebug);
     settings.setValue("allowQuickRender", d->allowQuickRender);
     settings.setValue("renderUnitCellAxes", d->renderUnitCellAxes);
+    settings.setValue("projection", d->projection);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -2629,6 +2646,9 @@ namespace Avogadro {
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
     d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
+    int pr = settings.value("projection", GLWidget::Perspective).toInt();
+    // Makes the compiler happy about the type conversion.
+    d->projection = GLWidget::ProjectionType(pr);
 
     loadEngines(settings);
 

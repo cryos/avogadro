@@ -43,6 +43,7 @@ namespace Avogadro
       Eigen::Transform3d modelview, projection;
       const GLWidget *parent;
       double angleOfViewY;
+      double orthoScale;
   };
 
   Camera::Camera(const GLWidget *parent, double angleOfViewY) : d(new CameraPrivate)
@@ -51,6 +52,7 @@ namespace Avogadro
     d->projection.setIdentity();
     d->parent = parent;
     d->angleOfViewY = angleOfViewY;
+    d->orthoScale = 1.0;
   }
 
   Camera::~Camera()
@@ -73,18 +75,38 @@ namespace Avogadro
 
   void Camera::normalize()
   {
-    Eigen::Block<Matrix4d, 3, 1> c0(d->modelview.matrix(), 0, 0),
-                                 c1(d->modelview.matrix(), 0, 1),
-                                 c2(d->modelview.matrix(), 0, 2);
-    c0.normalize();
-    c1.normalize();
-    c1 -= c0.dot(c1) * c0;
-    c1.normalize();
-    c2.normalize();
-    c2 -= c0.dot(c2) * c0;
-    c2 -= c1.dot(c2) * c1;
-    c2.normalize();
-    d->modelview.matrix().row(3) << 0, 0, 0, 1;
+    /*
+     Gram–Schmidt process to orthonormalise vectors
+     http://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process#The_Gram.E2.80.93Schmidt_process
+    */
+
+    double sc = scalingCoefficient();
+
+    Eigen::Vector3d x = d->modelview.linear().col(0);
+    Eigen::Vector3d y = d->modelview.linear().col(1);
+    Eigen::Vector3d z = d->modelview.linear().col(2);
+
+    y -= y.dot(x)/x.dot(x) * x;
+    z -= z.dot(x)/x.dot(x) * x;
+    z -= z.dot(y)/y.dot(y) * y;
+
+    x.normalize();
+    y.normalize();
+    z.normalize();
+
+    x *= sc;
+    y *= sc;
+    z *= sc;
+
+    d->modelview.linear().col(0) = x;
+    d->modelview.linear().col(1) = y;
+    d->modelview.linear().col(2) = z;
+  }
+
+  double Camera::scalingCoefficient()
+  {
+    double volume = fabs(d->modelview.linear().determinant());
+    return pow(volume,1.0/3.0);
   }
 
   const GLWidget *Camera::parent() const
@@ -124,6 +146,20 @@ namespace Avogadro
     normalize();
   }
 
+  void Camera::scale(double coefficient)
+  {
+    switch (d->parent->projection()) {
+    case GLWidget::Perspective:
+      d->modelview.scale(coefficient);
+      break;
+    case GLWidget::Orthographic:
+      d->orthoScale *= coefficient;
+      break;
+    default:
+      break;
+    }
+  }
+
   double Camera::distance(const Eigen::Vector3d & point) const
   {
     return ( d->modelview * point ).norm();
@@ -147,6 +183,7 @@ namespace Avogadro
   void Camera::initializeViewPoint()
   {
     d->modelview.setIdentity();
+    d->orthoScale = 1.0;
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 ) return;
 
@@ -189,6 +226,11 @@ namespace Avogadro
 
   void Camera::applyPerspective() const
   {
+    this->applyProjection();
+  }
+
+  void Camera::applyProjection() const
+  {
     if( d->parent == 0 ) return;
     if( d->parent->molecule() == 0 ) return;
 
@@ -197,7 +239,23 @@ namespace Avogadro
     double zNear = std::max( CAMERA_NEAR_DISTANCE, distanceToMolCenter - molRadius );
     double zFar = distanceToMolCenter + molRadius;
     double aspectRatio = static_cast<double>(d->parent->width()) / d->parent->height();
-    gluPerspective( d->angleOfViewY, aspectRatio, zNear, zFar );
+
+    switch(d->parent->projection()) {
+    case GLWidget::Perspective:
+      // Renders the perpective projection of the molecule
+      gluPerspective( d->angleOfViewY, aspectRatio, zNear, zFar );
+      break;
+    case GLWidget::Orthographic: {
+      // Renders the orthographic projection of the molecule
+      const double halfHeight = d->orthoScale * molRadius;
+      const double halfWidth = halfHeight * aspectRatio;
+      glOrtho(-halfWidth, halfWidth, -halfHeight, halfHeight, zNear, zFar);
+      break;
+    }
+    default:
+      break;
+    }
+
     glGetDoublev(GL_PROJECTION_MATRIX, d->projection.data());
   }
 
@@ -238,32 +296,32 @@ namespace Avogadro
 
   Eigen::Vector3d Camera::backTransformedXAxis() const
   {
-    return d->modelview.linear().row(0).transpose();
+    return d->modelview.linear().row(0).transpose().normalized();
   }
 
   Eigen::Vector3d Camera::backTransformedYAxis() const
   {
-    return d->modelview.linear().row(1).transpose();
+    return d->modelview.linear().row(1).transpose().normalized();
   }
 
   Eigen::Vector3d Camera::backTransformedZAxis() const
   {
-    return d->modelview.linear().row(2).transpose();
+    return d->modelview.linear().row(2).transpose().normalized();
   }
 
   Eigen::Vector3d Camera::transformedXAxis() const
   {
-    return d->modelview.linear().col(0);
+    return d->modelview.linear().col(0).normalized();
   }
 
   Eigen::Vector3d Camera::transformedYAxis() const
   {
-    return d->modelview.linear().col(1);
+    return d->modelview.linear().col(1).normalized();
   }
 
   Eigen::Vector3d Camera::transformedZAxis() const
   {
-    return d->modelview.linear().col(2);
+    return d->modelview.linear().col(2).normalized();
   }
 
   bool Camera::nearClippingPlane(Vector3d *normal, Vector3d *point)
