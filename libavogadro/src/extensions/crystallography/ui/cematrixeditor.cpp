@@ -78,7 +78,7 @@ namespace Avogadro
         mat = m_ext->currentCellMatrix().transpose();
         break;
       }
-      this->setWindowTitle(tr("Cell &Matrix (%1)",
+      this->setWindowTitle(tr("Cell Matrix (%1)",
                               "Unit cell matrix, arg is vector style "
                               "(row or column")
                            .arg(vectorStyleStr));
@@ -95,7 +95,7 @@ namespace Avogadro
         mat = m_ext->currentFractionalMatrix().transpose();
         break;
       }
-      this->setWindowTitle(tr("Fractional Cell &Matrix (%1)",
+      this->setWindowTitle(tr("Fractional Cell Matrix (%1)",
                               "Unit cell matrix, arg is vector style "
                               "(row or column")
                            .arg(vectorStyleStr));
