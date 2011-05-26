@@ -9,5 +9,6 @@ build
 ui_*.h
 moc_*.cxx
 qrc_*.cxx
+doc/api
 cmake_install*
 cmake_uninstall*
