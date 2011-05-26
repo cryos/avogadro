@@ -116,18 +116,19 @@ namespace Avogadro
 
     void setMolecule(Molecule *molecule);
 
-    void writeSettings();
-    void readSettings();
+    void writeSettings(QSettings &settings) const;
+    void readSettings(QSettings &settings);
 
     // Settings access:
-    LengthUnit lengthUnit() {return m_lengthUnit;};
-    AngleUnit angleUnit() {return m_angleUnit;};
+    LengthUnit lengthUnit() const {return m_lengthUnit;};
+    AngleUnit angleUnit() const {return m_angleUnit;};
 
-    CartFrac coordsCartFrac() {return m_coordsCartFrac;};
-    CartFrac coordsPreserveCartFrac() {return m_coordsPreserveCartFrac;};
+    CartFrac coordsCartFrac() const {return m_coordsCartFrac;};
+    CartFrac coordsPreserveCartFrac() const
+    {return m_coordsPreserveCartFrac;};
 
-    CartFrac matrixCartFrac() {return m_matrixCartFrac;};
-    VectorStyle matrixVectorStyle() {return m_matrixVectorStyle;};
+    CartFrac matrixCartFrac() const {return m_matrixCartFrac;};
+    VectorStyle matrixVectorStyle() const {return m_matrixVectorStyle;};
 
     // Undo friends
     friend class CEUndoState;
@@ -182,7 +183,7 @@ namespace Avogadro
       m_matrixVectorStyle = v; matrixVectorStyleChanged(v);};
 
     //  Conversion factor (storage * [factor] = display)
-    double lengthConversionFactor()
+    double lengthConversionFactor() const
     {
       // Storage is in angstrom, so convert appropriately.
       switch (lengthUnit()) {
@@ -193,7 +194,7 @@ namespace Avogadro
       case Picometer: return 1e2;
       }
     }
-    double angleConversionFactor()
+    double angleConversionFactor() const
     {
       // Storage is in degree, so convert appropriately.
       switch (angleUnit()) {
@@ -203,28 +204,28 @@ namespace Avogadro
       }
     }
     //  storage -> display
-    double convertLength(double length);
-    Eigen::Vector3d convertLength(const Eigen::Vector3d&);
-    Eigen::Matrix3d convertLength(const Eigen::Matrix3d&);
-    double convertAngle(double angle);
+    double convertLength(double length) const;
+    Eigen::Vector3d convertLength(const Eigen::Vector3d&) const;
+    Eigen::Matrix3d convertLength(const Eigen::Matrix3d&) const;
+    double convertAngle(double angle) const;
     //  display -> storage
-    double unconvertLength(double length);
-    Eigen::Vector3d unconvertLength(const Eigen::Vector3d&);
-    Eigen::Matrix3d unconvertLength(const Eigen::Matrix3d&);
-    double unconvertAngle(double angle);
+    double unconvertLength(double length) const;
+    Eigen::Vector3d unconvertLength(const Eigen::Vector3d&) const;
+    Eigen::Matrix3d unconvertLength(const Eigen::Matrix3d&) const;
+    double unconvertAngle(double angle) const;
 
     // Molecule access functions
-    inline OpenBabel::OBUnitCell* currentCell() {
+    inline OpenBabel::OBUnitCell* currentCell() const {
       return (m_molecule) ? m_molecule->OBUnitCell() : 0 ;}
-    Eigen::Matrix3d currentCellMatrix();
-    Eigen::Matrix3d currentFractionalMatrix();
-    CEUnitCellParameters currentCellParameters();
-    QList<Eigen::Vector3d> currentFractionalCoords();
-    QList<Eigen::Vector3d> currentCartesianCoords();
-    QList<int> currentAtomicNumbers();
-    QList<QString> currentAtomicSymbols();
-    QString currentLatticeType();
-    double currentVolume();
+    Eigen::Matrix3d currentCellMatrix() const;
+    Eigen::Matrix3d currentFractionalMatrix() const;
+    CEUnitCellParameters currentCellParameters() const;
+    QList<Eigen::Vector3d> currentFractionalCoords() const;
+    QList<Eigen::Vector3d> currentCartesianCoords() const;
+    QList<int> currentAtomicNumbers() const;
+    QList<QString> currentAtomicSymbols() const;
+    QString currentLatticeType() const;
+    double currentVolume() const;
 
     // Molecule modifiers
     void setCurrentCell(OpenBabel::OBUnitCell*);
