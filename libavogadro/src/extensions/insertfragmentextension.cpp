@@ -45,7 +45,7 @@ namespace Avogadro {
     SMILESIndex
   };
 
-  InsertFragmentExtension::InsertFragmentExtension(QObject *parent) : 
+  InsertFragmentExtension::InsertFragmentExtension(QObject *parent) :
     Extension(parent),
     m_dialog(0),
     m_molecule(0)
@@ -87,7 +87,7 @@ namespace Avogadro {
     m_molecule = molecule;
   }
 
-  QUndoCommand* InsertFragmentExtension::performAction(QAction *action, 
+  QUndoCommand* InsertFragmentExtension::performAction(QAction *action,
                                                        GLWidget *widget)
   {
     if (m_molecule == NULL || widget == NULL)
@@ -126,7 +126,7 @@ namespace Avogadro {
               pFF->ConjugateGradients(250, 1.0e-4);
               pFF->UpdateCoordinates(obfragment);
             }
-            
+
             fragment.setOBMol(&obfragment);
             if (selectedAtom == -1) { // if we're not connecting to a specific atom, add Hs, center
               fragment.addHydrogens(); // hydrogen addition is done by InsertCommand when connecting
@@ -155,9 +155,11 @@ namespace Avogadro {
   {
     Extension::writeSettings(settings);
     settings.setValue("smiles", m_smilesString);
+    /* @todo bring back multiple directory paths
     if (m_dialog) {
       settings.setValue("fragmentPath", m_dialog->directoryList().join("\n"));
     }
+    */
   }
 
   void InsertFragmentExtension::readSettings(QSettings &settings)
@@ -165,12 +167,14 @@ namespace Avogadro {
     Extension::readSettings(settings);
 
     m_smilesString = settings.value("smiles").toString();
+    /*
     if(m_dialog) {
       if (settings.contains("fragmentPath")) {
         QString directoryList = settings.value("fragmentPath").toString();
         m_dialog->setDirectoryList(directoryList.split('\n'));
       }
     }
+    */
   }
 
   // only called by the fragment dialog (not SMILES)

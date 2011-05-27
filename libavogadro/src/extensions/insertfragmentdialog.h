@@ -50,14 +50,12 @@ namespace Avogadro {
 
     const Molecule &fragment();
 
-    const QStringList directoryList() const;
-    void setDirectoryList(const QStringList);
-
   public Q_SLOTS:
     void refresh();
 
-    void addDirectory(bool);
-    void clearDirectoryList(bool);
+    void filterTextChanged(const QString &);
+
+    void clearFilterText(bool);
     void insertButtonClicked(bool);
 
   Q_SIGNALS:
@@ -66,7 +64,6 @@ namespace Avogadro {
   private:
     Ui::InsertFragmentDialog ui;
 
-    QStringList m_directoryList;
     InsertFragmentPrivate *d;
   };
 
