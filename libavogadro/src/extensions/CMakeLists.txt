@@ -56,7 +56,7 @@ avogadro_plugin_nogl(unitcellextension
 
 ### insert fragment
 avogadro_plugin_nogl(insertfragmentextension
-  "insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
+  "insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp;sortfiltertreeproxymodel.cpp"
   insertfragmentdialog.ui)
 
 ### insert peptide (builder)
