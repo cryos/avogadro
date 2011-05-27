@@ -56,8 +56,9 @@ namespace Avogadro {
   public Q_SLOTS:
     void refresh();
 
-    void addDirectory(bool);
-    void clearDirectoryList(bool);
+    void filterTextChanged(const QString &);
+
+    void clearFilterText(bool);
     void insertButtonClicked(bool);
 
   Q_SIGNALS:

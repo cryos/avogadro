@@ -23,7 +23,8 @@
  **********************************************************************/
 
 #include "insertfragmentdialog.h"
-//#include "directorytreemodel.h"
+#include "sortfiltertreeproxymodel.h"
+
 // Defines INSTALL_PREFIX among other things
 #include "config.h" // krazy:exclude=includes
 
@@ -41,6 +42,7 @@
 #include <QDir>
 #include <QCloseEvent>
 #include <QDebug>
+#include <QSortFilterProxyModel>
 #include <QFileSystemModel>
 
 using namespace OpenBabel;
@@ -52,7 +54,9 @@ namespace Avogadro {
     Molecule     fragment;
     OBConversion conv;
     OBBuilder    builder;
+    SortFilterTreeProxyModel *proxy;
     QFileSystemModel *model;
+    QModelIndex  proxyRoot;
     
     QString      currentFileName;
 
@@ -93,15 +97,22 @@ namespace Avogadro {
 
     d->currentFileName.clear();
 
-    // There has to be a better way to set this based on the installation prefix
+    // TODO: it would be great to allow multiple directories, but that needs our own directory model
     m_directoryList = DefaultDirectoryList();
     d->model = new QFileSystemModel(this);
     d->model->setReadOnly(true);
     QModelIndex rootIndex = d->model->setRootPath(m_directoryList.first());
 
     ui.setupUi(this);
-    ui.directoryTreeView->setModel(d->model);
-    ui.directoryTreeView->setRootIndex(rootIndex);
+
+    d->proxy = new SortFilterTreeProxyModel(this);
+    d->proxy->setSourceModel(d->model);
+    d->proxy->setSortLocaleAware(true); // important for files
+    d->proxyRoot = d->proxy->mapFromSource(rootIndex); // map from the root path to the proxy index
+    d->proxy->setSourceRoot(rootIndex); // FOR our custom filter class, to prevent us from becoming rootless!
+
+    ui.directoryTreeView->setModel(d->proxy);
+    ui.directoryTreeView->setRootIndex(d->proxyRoot); // remember to map from the source to the proxy index
     for (int i = 1; i < d->model->columnCount(); ++i)
       ui.directoryTreeView->hideColumn(i);
 
@@ -112,10 +123,12 @@ namespace Avogadro {
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
             this, SLOT(insertButtonClicked(bool)));
-    //    connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
-    //            this, SLOT(addDirectory(bool)));
-    //    connect(ui.clearListButton, SIGNAL(clicked(bool)),
-    //            this, SLOT(clearDirectoryList(bool)));
+
+    connect(ui.filterLineEdit, SIGNAL(textChanged(const QString &)),
+            this, SLOT(filterTextChanged(const QString &)));
+
+    connect(ui.clearToolButton, SIGNAL(clicked(bool)),
+            this, SLOT(clearFilterText(bool)));
   }
 
   InsertFragmentDialog::~InsertFragmentDialog()
@@ -181,23 +194,19 @@ namespace Avogadro {
     ui.directoryTreeView->update();
   }
 
-  void InsertFragmentDialog::addDirectory(bool)
+  void InsertFragmentDialog::clearFilterText(bool)
   {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                    "/home");
-
-    // If this is a new directory, add it in
-    if (!m_directoryList.contains(dir)) {
-      m_directoryList << dir;
-      refresh();
-    }
+    ui.filterLineEdit->setText("");
+    //    refresh();
   }
 
-  void InsertFragmentDialog::clearDirectoryList(bool)
+  void InsertFragmentDialog::filterTextChanged(const QString &newFilter)
   {
-    m_directoryList.clear();
-    m_directoryList = DefaultDirectoryList();
-    refresh();
+    if (!d || !d->proxy)
+      return; // no dialog or proxy model to set
+
+    QRegExp reg(newFilter, Qt::CaseSensitive, QRegExp::WildcardUnix);
+    d->proxy->setFilterRegExp(reg);
   }
 
   void InsertFragmentDialog::insertButtonClicked(bool)
