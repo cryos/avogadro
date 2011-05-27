@@ -95,6 +95,7 @@ namespace Avogadro {
     d->proxy = new SortFilterTreeProxyModel(this);
     d->proxy->setSourceModel(d->model);
     d->proxy->setSortLocaleAware(true); // important for files
+<<<<<<< HEAD
     // map from the root path to the proxy index
     d->proxyRoot = d->proxy->mapFromSource(rootIndex);
     // Our custom class needs this to prevent becoming rootless
@@ -103,6 +104,13 @@ namespace Avogadro {
     ui.directoryTreeView->setModel(d->proxy);
     // remember to map from the source to the proxy index
     ui.directoryTreeView->setRootIndex(d->proxyRoot);
+=======
+    d->proxyRoot = d->proxy->mapFromSource(rootIndex); // map from the root path to the proxy index
+    d->proxy->setSourceRoot(rootIndex); // FOR our custom filter class, to prevent us from becoming rootless!
+
+    ui.directoryTreeView->setModel(d->proxy);
+    ui.directoryTreeView->setRootIndex(d->proxyRoot); // remember to map from the source to the proxy index
+>>>>>>> Add a search filter for file and dir names.
     for (int i = 1; i < d->model->columnCount(); ++i)
       ui.directoryTreeView->hideColumn(i);
 
