@@ -39,6 +39,7 @@
 #include <QtGui/QPainter>
 #include <QtGui/QPaintEngine>
 #include <QtGui/QUndoStack>
+#include <QtGui/QLabel>
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
@@ -54,9 +55,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
-
-// Include static engine headers
-#include "engines/bsdyengine.h"
+#include <avogadro/engine.h>
 
 #include "pluginmanager.h"
 
