@@ -52,7 +52,7 @@ namespace Avogadro
     connect(ui.edit_coords, SIGNAL(textChanged()),
             this, SLOT(enableButtons()));
 
-    ui.edit_coords->setCurrentFont(QFont("Monospace",
+    ui.edit_coords->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
     m_charFormat = ui.edit_coords->textCursor().charFormat();
   }
@@ -113,7 +113,7 @@ namespace Avogadro
     ui.edit_coords->setText(text);
     ui.edit_coords->blockSignals(false);
 
-    ui.edit_coords->setCurrentFont(QFont("Monospace",
+    ui.edit_coords->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
 
     this->setEnabled(true);
@@ -145,7 +145,7 @@ namespace Avogadro
     ui.edit_coords->blockSignals(true);
     tc.mergeCharFormat(redFormat);
     ui.edit_coords->blockSignals(false);
-    ui.edit_coords->setCurrentFont(QFont("Monospace",
+    ui.edit_coords->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
   }
 
@@ -158,7 +158,7 @@ namespace Avogadro
     ui.edit_coords->blockSignals(true);
     tc.setCharFormat(m_charFormat);
     ui.edit_coords->blockSignals(false);
-    ui.edit_coords->setCurrentFont(QFont("Monospace",
+    ui.edit_coords->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
   }
 
