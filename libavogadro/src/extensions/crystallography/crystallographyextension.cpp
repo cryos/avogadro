@@ -216,8 +216,13 @@ namespace Avogadro
             this, SLOT(refreshEditors()));
 
     refreshEditors();
-    showEditors();
     refreshProperties();
+
+    // If it's a PDB file, we won't show these by default
+    if (m_molecule->numResidues() != 0)
+      return;
+
+    showEditors();
     showProperties();
   }
 
