@@ -22,7 +22,8 @@
 
 namespace Avogadro
 {
-  CEMatrixEditor::CEMatrixEditor(CrystallographyExtension *ext, QMainWindow *w)
+  CEMatrixEditor::CEMatrixEditor(CrystallographyExtension *ext,
+                                 QMainWindow *w)
     : CEAbstractEditor(ext, w)
   {
     ui.setupUi(this);
@@ -51,9 +52,16 @@ namespace Avogadro
     connect(ui.edit_matrix, SIGNAL(textChanged()),
             this, SLOT(enableButtons()));
 
+    // Forward signals from the TextMatrixEditor
+    this->connect(this->ui.edit_matrix, SIGNAL(isInvalid()),
+                  SIGNAL(invalidInput()));
+    this->connect(this->ui.edit_matrix, SIGNAL(isValid()),
+                  SIGNAL(validInput()));
+
     ui.edit_matrix->setCurrentFont(QFont(CE_FONT,
                                          CE_FONTSIZE));
-    m_charFormat = ui.edit_matrix->textCursor().charFormat();
+
+    *(this->ui.edit_matrix->delimiters()) = CE_PARSE_IGNORE_REGEXP;
   }
 
   CEMatrixEditor::~CEMatrixEditor()
@@ -102,28 +110,8 @@ namespace Avogadro
       break;
     }
 
-    // Clean up matrix
-    for (unsigned short row = 0; row < 3; ++row) {
-      for (unsigned short col = 0; col < 3; ++col) {
-        double &current = mat(row,col);
-        // Remove negative zeros:
-        if (fabs(current) < 1e-10) {
-          current = 0.0;
-        }
-      }
-    }
-
-    char text[256];
-    snprintf(text, 256,
-             "%9.5f %9.5f %9.5f\n"
-             "%9.5f %9.5f %9.5f\n"
-             "%9.5f %9.5f %9.5f\n",
-             mat(0, 0), mat(0, 1), mat(0, 2),
-             mat(1, 0), mat(1, 1), mat(1, 2),
-             mat(2, 0), mat(2, 1), mat(2, 2));
-
     ui.edit_matrix->blockSignals(true);
-    ui.edit_matrix->setText(text);
+    ui.edit_matrix->setMatrix(mat);
     ui.edit_matrix->blockSignals(false);
 
     ui.edit_matrix->setCurrentFont(QFont("Monospace",
@@ -154,30 +142,12 @@ namespace Avogadro
 
   void CEMatrixEditor::markAsInvalid()
   {
-    QTextCursor tc (ui.edit_matrix->document());
-    QTextCharFormat redFormat;
-    redFormat.setForeground(QBrush(Qt::red));
-    tc.movePosition(QTextCursor::Start);
-    tc.movePosition(QTextCursor::End,
-                    QTextCursor::KeepAnchor);
-    ui.edit_matrix->blockSignals(true);
-    tc.mergeCharFormat(redFormat);
-    ui.edit_matrix->blockSignals(false);
-    ui.edit_matrix->setCurrentFont(QFont("Monospace",
-                                         CE_FONTSIZE));
+    // Handled internally by TextMatrixEditor
   }
 
   void CEMatrixEditor::markAsValid()
   {
-    QTextCursor tc (ui.edit_matrix->document());
-    tc.movePosition(QTextCursor::Start);
-    tc.movePosition(QTextCursor::End,
-                    QTextCursor::KeepAnchor);
-    ui.edit_matrix->blockSignals(true);
-    tc.setCharFormat(m_charFormat);
-    ui.edit_matrix->blockSignals(false);
-    ui.edit_matrix->setCurrentFont(QFont("Monospace",
-                                         CE_FONTSIZE));
+    // Handled internally by TextMatrixEditor
   }
 
   void CEMatrixEditor::enableButtons()
@@ -192,40 +162,7 @@ namespace Avogadro
     // disabled to ensure that this assertion passes.
     Q_ASSERT(m_ext->matrixCartFrac() != Fractional);
 
-    // Clear selection, otherwise there is a crash on Qt 4.7.2.
-    QTextCursor tc = ui.edit_matrix->textCursor();
-    tc.clearSelection();
-    ui.edit_matrix->setTextCursor(tc);
-
-    QString text = ui.edit_matrix->document()->toPlainText();
-    QStringList lines = text.split("\n",
-                                   QString::SkipEmptyParts);
-    if (lines.size() != 3) {
-      emit invalidInput();
-      return Eigen::Matrix3d::Zero();
-    }
-
-    QList<QStringList> stringVecs;
-    Eigen::Matrix3d mat;
-    for (int row = 0; row < 3; ++row) {
-      stringVecs.append(lines.at(row).simplified()
-                        .split(CE_PARSE_IGNORE_REGEXP,
-                               QString::SkipEmptyParts));
-      QStringList &stringVec = stringVecs[row];
-      if (stringVec.size() != 3) {
-        emit invalidInput();
-        return Eigen::Matrix3d::Zero();
-      }
-      for (int col = 0; col < 3; ++col) {
-        bool ok;
-        double val = stringVec[col].toDouble(&ok);
-        if (!ok) {
-          emit invalidInput();
-          return Eigen::Matrix3d::Zero();
-        }
-        mat(row,col) = val;
-      }
-    }
+    Eigen::Matrix3d mat (this->ui.edit_matrix->matrix());
 
     // Transpose if needed
     if (m_ext->matrixVectorStyle() == ColumnVectors) {
@@ -234,7 +171,6 @@ namespace Avogadro
       mat.transposeInPlace();
     }
 
-    emit validInput();
     return mat;
   }
 
