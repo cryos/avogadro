@@ -61,9 +61,6 @@ namespace Avogadro
 
   private:
     Ui::CEMatrixEditor ui;
-
-    QTextCharFormat m_charFormat;
-
   };
 
 }
