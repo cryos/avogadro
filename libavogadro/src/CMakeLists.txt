@@ -56,6 +56,7 @@ set(libavogadro_HDRS
   primitivelist.h
   protein.h
   residue.h
+  textmatrixeditor.h
   toolgroup.h
   tool.h
   undosequence.h
@@ -105,6 +106,7 @@ set(libavogadro_SRCS
   residue.cpp
   sphere_p.cpp
   textrenderer_p.cpp
+  textmatrixeditor.cpp
   tool.cpp
   toolgroup.cpp
   undosequence.cpp
@@ -138,6 +140,7 @@ set(libavogadro_MOC_HDRS
   protein.h
   readfilethread_p.h
   residue.h
+  textmatrixeditor.h
   tool.h
   toolgroup.h
   zmatrix.h
