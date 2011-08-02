@@ -1400,6 +1400,43 @@ namespace Avogadro{
       d->obelectronictransitiondata = etd;
     }
 
+    // Copy orbital energies, symbols, and occupations to dynamic properties (as QList<>)
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicData)) {
+      OpenBabel::OBOrbitalData *od =
+        static_cast<OpenBabel::OBOrbitalData*>(obmol->GetData(OpenBabel::OBGenericDataType::ElectronicData));
+
+      // Source (from OBMol)
+      std::vector<OpenBabel::OBOrbital> alphaOrbitals, betaOrbitals;
+      std::vector<OpenBabel::OBOrbital>::iterator orbitalIter;
+      alphaOrbitals = od->GetAlphaOrbitals();
+
+      // Destinations
+      QList<QVariant> alphaEnergies, alphaOcc;
+      QStringList alphaSymmetries;
+      for (orbitalIter = alphaOrbitals.begin(); orbitalIter != alphaOrbitals.end(); ++orbitalIter) {
+        alphaEnergies.append(QVariant(orbitalIter->GetEnergy() * 27.21138)); // convert to eV
+        alphaSymmetries.append(orbitalIter->GetSymbol().c_str());
+        alphaOcc.append(QVariant(orbitalIter->GetOccupation()));
+      }
+      setProperty("alphaOrbitalEnergies", alphaEnergies);
+      setProperty("alphaOrbitalSymmetries", alphaSymmetries);
+      setProperty("alphaOrbitalOccupations", alphaOcc);
+
+      if (od->IsOpenShell()) { // Find and set the beta orbitals
+        betaOrbitals = od->GetBetaOrbitals(); // shouldn't be empty
+        QList<QVariant> betaEnergies, betaOcc;
+        QStringList betaSymmetries;
+        for (orbitalIter = betaOrbitals.begin(); orbitalIter != betaOrbitals.end(); ++orbitalIter) {
+          betaEnergies.append(QVariant(orbitalIter->GetEnergy() * 27.21138)); // convert to eV
+          betaSymmetries.append(orbitalIter->GetSymbol().c_str());
+          betaOcc.append(QVariant(orbitalIter->GetOccupation()));
+        }
+        setProperty("betaOrbitalEnergies", betaEnergies);
+        setProperty("betaOrbitalSymmetries", betaSymmetries);
+        setProperty("betaOrbitalOccupations", betaOcc);
+      }
+    }
+
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
     OpenBabel::OBPairData *property;
