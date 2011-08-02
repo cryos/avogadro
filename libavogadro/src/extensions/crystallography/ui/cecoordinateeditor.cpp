@@ -69,11 +69,11 @@ namespace Avogadro
     switch (m_ext->coordsCartFrac()) {
     case Cartesian:
       pos = m_ext->currentCartesianCoords();
-      setWindowTitle(tr("Cartesian &Coordinates"));
+      setWindowTitle(tr("Cartesian Coordinates"));
       break;
     case Fractional:
       pos = m_ext->currentFractionalCoords();
-      setWindowTitle(tr("Fractional &Coordinates"));
+      setWindowTitle(tr("Fractional Coordinates"));
       break;
     }
 
