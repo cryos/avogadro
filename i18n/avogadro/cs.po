@@ -9,10 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-06 09:07+0000\n"
 "Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,29 +33,29 @@ msgstr "(revize v Gitu: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
-"%3<br/><br/>Verze Open Babel: %4"
+"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/><br/"
+">Verze Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 "<br/><br/>Verze Qt: %1<br/><br/>Více informací najdete na stránkách projektu "
 "<a href=\"http://avogadro.openmolecules.net/\">Avogadro</a>.<br/><br/> Tento "
@@ -86,45 +87,13 @@ msgstr "Smazat atomy"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Nastavení"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Otevřít soubor"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
-"Použití: %1 [volby] [soubory]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (verze %2)\n"
-"\n"
-"Volby:\n"
-"  -h, --help\t\tUkázat tuto nápovědu s volbami\n"
-"  -v, --version\t\tUkázat informace o verzi\n"
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -146,7 +115,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zvětšení"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Přenést vše do popředí"
 
@@ -176,15 +145,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Základní molekuly"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -220,51 +189,51 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "NWChem výstup"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "bez názvu"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Nahrávání %1..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "Nahrává se %1..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Načítání souboru molekul selhalo, soubor %1."
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Provádí se čtení souboru s více molekulami. Chvíli to může trvat..."
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "Tento soubor neobsahuje 3D souřadnice."
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Chcete, aby Avogadro sestavil hrubé uspořádání?"
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -272,200 +241,200 @@ msgstr ""
 "Tento soubor neobsahuje 3D souřadnice.\n"
 "Mohou nastat problémy se čtením nebo úpravou."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr "Vybrat molekulu pro zobrazení"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Název molekuly"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Atomy: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Vazby: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Soubor načten..."
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Chcete uložit změny, které jste provedl v dokumentu?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
 "Změny, které jste provedl v dokumentu, budou ztraceny, pokud je neuložíte."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Uložit..."
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Uložit"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "Vstup GAMESS"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussovský kartézský vstup"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussovský Z-maticový vstup"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "NWChem vstup"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Uložit molekulu jako"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "Běžné formáty obrázků"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "Vyvést bitmapu do souboru"
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Nemohu uložit soubor %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Bez názvu %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "Nelze vložit molekulu."
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Vložení selhalo (nedostupný formát)."
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopírování selhalo (mdl není dostupné)."
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "Zobrazit %1"
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Zobrazit %1"
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: oddělený pohled"
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Normální velikost"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "Celá obrazovka"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Přidat"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Zdvojit"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr "Nejsou nahrány žádné nástroje nebo stroje."
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr "Nejsou nahrány žádné stroje."
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr "Nejsou nahrány žádné nástroje."
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Aplikace pravděpodobně nebude fungovat správně. Prosím, opravte tuto chybu."
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Předměty"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Barvy"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " kopírovat"
 
@@ -538,7 +507,7 @@ msgstr "pouze popisky mohou mít podřízené položky"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Položka"
 
@@ -553,7 +522,7 @@ msgstr "Nízký"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Střední"
@@ -570,7 +539,7 @@ msgstr "Neurčen"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Žádný"
@@ -1236,36 +1205,62 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
-"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
-"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, Pavel Fric, "
-",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
+"Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
+"Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, Pavel Fric, ,Launchpad "
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,"
+"Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav "
+"Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav Rehak,"
+"Vojtěch Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav Rehak,Vojtěch "
+"Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,"
+"fri, ,Launchpad Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri, ,"
+"Launchpad Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
-"ech.trefny@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,"
-",avogadro-"
-"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com, "
-"pavelfric@seznam.cz,,,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfri"
-"c@seznam.cz,,,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam"
-".cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,p"
-"avelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.tre"
-"fny@gmail.com,pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam"
-".cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,ven"
-"ca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,pavel.konko"
-"l@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.c"
-"z,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pav"
-"elfric@seznam.cz"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
+"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge."
+"net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com, pavelfric@seznam.cz,,,"
+"venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,pavel."
+"konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,"
+"pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech."
+"trefny@gmail.com,pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,pavel."
+"konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,"
+"pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech."
+"trefny@gmail.com,pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Usage: %1 [options] [files]\n"
+#~ "\n"
+#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  -h, --help\t\tShow help options (this)\n"
+#~ "  -v, --version\t\tShow version information\n"
+#~ msgstr ""
+#~ "Použití: %1 [volby] [soubory]\n"
+#~ "\n"
+#~ "Avogadro - Advanced Molecular Editor (verze %2)\n"
+#~ "\n"
+#~ "Volby:\n"
+#~ "  -h, --help\t\tUkázat tuto nápovědu s volbami\n"
+#~ "  -v, --version\t\tUkázat informace o verzi\n"
 
 #~ msgid "Load File..."
 #~ msgstr "Otveřít soubor..."
@@ -1294,7 +1289,6 @@ msgstr ""
 #~ msgid "Tool Settings"
 #~ msgstr "Nastavení nástrojů"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1302,11 +1296,9 @@ msgstr ""
 #~ "Nemohu načíst soubor %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Nemohu rozpoznat typ souboru %1."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Nemohu načíst soubor %1."
 
@@ -1317,12 +1309,13 @@ msgstr ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo "
-#~ "úpravou."
+#~ "Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením "
+#~ "nebo úpravou."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze "
 #~ "první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být "
@@ -1331,7 +1324,6 @@ msgstr ""
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Načítání souboru molekul selhalo."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1342,7 +1334,6 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Ukládám soubor."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Nemohu zapisovat do souboru %1."
 
@@ -1368,7 +1359,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1762,7 +1752,6 @@ msgstr ""
 #~ msgid "video files (*.avi)"
 #~ msgstr "Video soubory (*.avi)"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1782,14 +1771,12 @@ msgstr ""
 #~ msgid "Polygon"
 #~ msgstr "Polygon"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Počet atomů: %1"
 
 #~ msgid "Animation"
 #~ msgstr "Animace"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Počet rotačních vazeb: %1"
 
@@ -1820,7 +1807,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Ukončit"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energie = %1 %2"
 
@@ -1941,7 +1927,6 @@ msgstr ""
 #~ msgid "Valence"
 #~ msgstr "Valence"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -1966,18 +1951,15 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotace"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Vazba %1"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Úhel %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Zkroucení (°)"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Zkroucení %1"
 
@@ -2063,19 +2045,15 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Vzdálenost (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Úhel: %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Vzdálenost (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Vzdálenost (1->2): %1 %2"
 
@@ -2730,7 +2708,6 @@ msgstr ""
 #~ msgid "Surface"
 #~ msgstr "Povrch"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Načítání souboru trajektorie %1 selahalo."
 
@@ -2743,10 +2720,11 @@ msgstr ""
 #~ msgid "Invalid video filename.  Must include full directory path"
 #~ msgstr "Neplatný soubor, Musíte uvést úplnou cestu"
 
-#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-#~ msgstr "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
 
 #~ msgid "ForceField"
 #~ msgstr "Silové pole"
@@ -2805,15 +2783,12 @@ msgstr ""
 #~ msgid "Save Traj File"
 #~ msgstr "Uložit soubor trajektorie"
 
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Načítání souboru molekul %1 selhalo."
 
-#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Soubor bude zapsán do %1."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Soubor %1."
 
@@ -2821,16 +2796,16 @@ msgstr ""
 #~ msgstr "Neplatný název videa. Musíte zadat plnou cestu k souboru."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
-#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící na "
-#~ ".avi"
+#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící "
+#~ "na .avi"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "Zvolili jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru "
 #~ "POV-Ray. To znamená, že nebude uložen žádný výstup. Jste si jisti?"
@@ -2881,20 +2856,18 @@ msgstr ""
 #~ msgid "Building video "
 #~ msgstr "Sestavuji video "
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
-#~ "%3<br/><br/>Pro více informací navštivte <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">domovskou stránku "
-#~ "projektu</a>.<br/><br/>Program je poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, "
-#~ "VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
+#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/"
+#~ "><br/>Pro více informací navštivte <a href=\"http://avogadro."
+#~ "openmolecules.net/\">domovskou stránku projektu</a>.<br/><br/>Program je "
+#~ "poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, VČETNĚ ZÁRUKY PRODEJNOSTI NEBO "
+#~ "POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
 
 #~ msgid "Untitled"
 #~ msgstr "Nepojmenováno"
@@ -2941,8 +2914,8 @@ msgstr ""
 #~ msgstr "Musíte určit platný soubor .avi"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Neplatný název souboru. Musíte určit kompletní cestu k souboru a jméno "
 #~ "včetně koncovky .avi"
@@ -3283,7 +3256,6 @@ msgstr ""
 #~ msgid "Direct Rendering."
 #~ msgstr "Přímé Renderování."
 
-#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -3301,23 +3273,20 @@ msgstr ""
 #~ "  -h, --nápověda\t\tZobrazí možnosti nápovědy (toto)\n"
 #~ "  -v, --verze\t\tZobrazí informace o verzi\n"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-#~ "information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
-#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
-#~ "PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
-#~ "%3<br/><br/>Verze Open Babel: %4<br/><br/>Verze Qt: %5<br/><br/>Pro více "
-#~ "informací zkontrolujte <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">domovskou stránku "
-#~ "Avogadro</a>.<br/><br/>Tento program je zajišťován BEZ žádné ZÁRUKY "
-#~ "JAKÉHOKOLIV DRUHU, VČETNĚ ZÁRUKY ZA DESIGN, PRODEJNOSTI A VHODNOSTI PRO "
-#~ "URČITÝ ÚČEL.<br/>"
+#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/"
+#~ "><br/>Verze Open Babel: %4<br/><br/>Verze Qt: %5<br/><br/>Pro více "
+#~ "informací zkontrolujte <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">domovskou stránku Avogadro</a>.<br/><br/>Tento program je zajišťován "
+#~ "BEZ žádné ZÁRUKY JAKÉHOKOLIV DRUHU, VČETNĚ ZÁRUKY ZA DESIGN, PRODEJNOSTI "
+#~ "A VHODNOSTI PRO URČITÝ ÚČEL.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "OpenGL capabilities found: "

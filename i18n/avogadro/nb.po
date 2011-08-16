@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 14:04+0000\n"
 "Last-Translator: Simen Heggestøyl <simenheg@gmail.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,27 +31,27 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -78,35 +79,13 @@ msgstr "Nullstill Atomer"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Innstillinger"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Åpne Fil"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -128,7 +107,7 @@ msgstr "Ctrl + M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Flytt Alt Fram"
 
@@ -158,15 +137,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl + D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Vanlige molekylformater"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Alle filer"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -202,248 +181,248 @@ msgstr ""
 msgid "NWChem Output"
 msgstr "NWChem Utdata"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr ""
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr ""
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "uten navn"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Laster %1..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "Laster %1..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Kunne ikke lese molekylfil, fil %1."
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Leser multimolekylfil. Dette kan ta en stund..."
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "Denne filen inneholder ikke 3D-koordinater."
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr "Denne filen inneholder ikke 3D-koordinater."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr ""
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Molekyltittel"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Atomer: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Bindinger: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Fil Lastet..."
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Vil du lagre endringene du har gjort i dokumentet?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "Dine endringer vil gå tapt hvis du ikke lagrer dem."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl + S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl + D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Lagre..."
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Lagre"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "GAMESS Inndata"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Kartesiske Inndata"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-matrise Inndata"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr ""
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "NWChem Inndata"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Lagre Molekyl Som"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Kan ikke lagre fil %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Uten navn %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "Kan ikke lime inn molekyl."
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Kunne ikke lime inn (format ikke tilgjengelig)."
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopiering mislyktes."
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Normal Størrelse"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl + Rettetast"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Legg til"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Dupliser"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Objekter"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Farger"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " kopier"
 
@@ -516,7 +495,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Element"
 
@@ -531,7 +510,7 @@ msgstr "Lav"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Middels"
@@ -548,7 +527,7 @@ msgstr "Ikke angitt"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Ingen"
@@ -1213,36 +1192,31 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Anders Oftedal,Kenneth Langdalen, ,Launchpad "
 "Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen, ,Launchpad "
-"Contributions:,Anders Oftedal,Kenneth Langdalen, ,Launchpad "
+"Contributions:,Anders Oftedal,Kenneth Langdalen, ,Launchpad Contributions:,"
+"Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl, ,Launchpad "
 "Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen "
 "Heggestøyl, ,Launchpad Contributions:,Anders Oftedal,Avogadro Team,Kenneth "
-"Langdalen,Simen Heggestøyl, ,Launchpad Contributions:,Anders "
-"Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl, ,Launchpad "
-"Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen "
-"Heggestøyl, ,Launchpad Contributions:,Anders Oftedal,Avogadro Team,Kenneth "
+"Langdalen,Simen Heggestøyl, ,Launchpad Contributions:,Anders Oftedal,"
+"Avogadro Team,Kenneth Langdalen,Simen Heggestøyl, ,Launchpad Contributions:,"
+"Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl,Tor "
+"Syversen, ,Launchpad Contributions:,Anders Oftedal,Avogadro Team,Kenneth "
 "Langdalen,Simen Heggestøyl,Tor Syversen, ,Launchpad Contributions:,Anders "
-"Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl,Tor Syversen, "
-",Launchpad Contributions:,Anders Oftedal,Avogadro Team,Kenneth "
-"Langdalen,Simen Heggestøyl,Tor Syversen"
+"Oftedal,Avogadro Team,Kenneth Langdalen,Simen Heggestøyl,Tor Syversen"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,anders.oftedal@gmail.com,,,,anders.oftedal@gmail.com,avogadro-"
-"devel@lists.sourceforge.net,,,,anders.oftedal@gmail.com,,,,anders.oftedal@gma"
-"il.com,avogadro-"
-"devel@lists.sourceforge.net,,simen@simenh.com,,,anders.oftedal@gmail.com,avog"
-"adro-"
-"devel@lists.sourceforge.net,,simen@simenh.com,,,anders.oftedal@gmail.com,avog"
-"adro-"
-"devel@lists.sourceforge.net,,simen@simenh.com,,,anders.oftedal@gmail.com,avog"
-"adro-"
-"devel@lists.sourceforge.net,,simenheg@gmail.com,,,anders.oftedal@gmail.com,av"
-"ogadro-devel@lists.sourceforge.net,,simenheg@gmail.com,sol-"
-"moe@online.no,,,anders.oftedal@gmail.com,avogadro-"
-"devel@lists.sourceforge.net,,simenheg@gmail.com,sol-"
-"moe@online.no,,,anders.oftedal@gmail.com,avogadro-"
-"devel@lists.sourceforge.net,,simenheg@gmail.com,sol-moe@online.no"
+",,anders.oftedal@gmail.com,,,,anders.oftedal@gmail.com,avogadro-devel@lists."
+"sourceforge.net,,,,anders.oftedal@gmail.com,,,,anders.oftedal@gmail.com,"
+"avogadro-devel@lists.sourceforge.net,,simen@simenh.com,,,anders."
+"oftedal@gmail.com,avogadro-devel@lists.sourceforge.net,,simen@simenh.com,,,"
+"anders.oftedal@gmail.com,avogadro-devel@lists.sourceforge.net,,simen@simenh."
+"com,,,anders.oftedal@gmail.com,avogadro-devel@lists.sourceforge.net,,"
+"simenheg@gmail.com,,,anders.oftedal@gmail.com,avogadro-devel@lists."
+"sourceforge.net,,simenheg@gmail.com,sol-moe@online.no,,,anders.oftedal@gmail."
+"com,avogadro-devel@lists.sourceforge.net,,simenheg@gmail.com,sol-moe@online."
+"no,,,anders.oftedal@gmail.com,avogadro-devel@lists.sourceforge.net,,"
+"simenheg@gmail.com,sol-moe@online.no"
 
 #~ msgid "0/0"
 #~ msgstr "0/0"
@@ -1256,7 +1230,6 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animasjon..."
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1%2"
 

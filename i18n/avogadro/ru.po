@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 13:46+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,35 +31,35 @@ msgstr "(Подверсия Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
-"%3<br/><br/>Версия Open Babel: %4"
+"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %3<br/"
+"><br/>Версия Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 "<br/><br/>Версия Qt: %1<br/><br/>Дальнейшую информацию вы можете получить на "
-"<a href=\"http://avogadro.openmolecules.net/\">сайте "
-"Avogadro</a>.<br/><br/>Эта программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ "
-"ГАРАНТИЙ; даже без подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или "
-"ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+"<a href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/"
+">Эта программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
+"подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+"КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,45 +86,13 @@ msgstr "Удалить атомы"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Открыть файл"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-"Avogadro: \t%1 (Хэш %2)\n"
-"LibAvogadro: \t%3 (Хэш %4)\n"
-"Qt: \t\t%5\n"
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
-"Использование: %1 [опции] [файлы]\n"
-"\n"
-"Avogadro - это продвинутый молекулярный редактор и просмотрщик (версия %2)\n"
-"\n"
-"Опции:\n"
-"  -h, --help\t\tПоказать эту справку\n"
-"  -v, --version\t\tПоказать информацию о версии\n"
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -145,7 +114,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Масштаб"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Вынести всё на передний план"
 
@@ -175,15 +144,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Распространённые форматы молекул"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -219,52 +188,52 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Выходной файл NWChem"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "безымянный"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Загрузка %1..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "Загрузка %1..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Сбой при чтении файла молекул, файл %1."
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 "Файл содержит несколько молекул. Его чтение может занять некоторое время..."
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "Этот файл не содержит 3D-координат"
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Хотите, чтобы Avogadro построил приближенную геометрию?"
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -272,182 +241,182 @@ msgstr ""
 "Этот файл не содержит 3D-координат.\n"
 "Вы, возможно, не сможет изменить или корректно просмотреть его."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr "Выберите молекулу для просмотра"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Название молекулы"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Атомы: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Связи: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Файл загружен..."
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Вы хотите сохранить изменения в документе?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "Изменения будут утеряны, если вы не сохраните их."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Сохранить"
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "Входной файл GAMESS"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Входной файл Gaussian (декартовы координаты)"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Входной файл Gaussian (Z-матрица)"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "Входной файл NWChem"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Сохранить молекулу как"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "Распространенные форматы изображений"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "Экспорт растрового изображения"
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Невозможно сохранить файл %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Безымянный %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "Не удалось вставить молекулу."
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Вставка не удалась (формат недоступен)"
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Открепленное окно просмотра"
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Нормальный размер"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "Полноэкранный режим"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Добавить"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr "Не загружены инструменты или движки."
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr "Не загружены движки."
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr "Не загружены инструменты."
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -455,17 +424,17 @@ msgstr ""
 " Маловероятно, что это приложение будет работать корректно. Пожалуста "
 "исправьте эту ошибку."
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Объекты"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Цвета"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " копировать"
 
@@ -538,7 +507,7 @@ msgstr "только метки могут иметь вложенные зна�
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Объект"
 
@@ -553,7 +522,7 @@ msgstr "Низкое"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Среднее"
@@ -570,7 +539,7 @@ msgstr "Неопределенное"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Нет"
@@ -1169,8 +1138,7 @@ msgstr "Л"
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr ""
-"Переместить элемент вправо (как первый подэлемент следующего элемента)"
+msgstr "Переместить элемент вправо (как первый подэлемент следующего элемента)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
@@ -1236,36 +1204,33 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
 "Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
-"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
-"Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
-"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Koptev "
-"Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
-"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nkolay "
-"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr E. "
-"Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
+"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
+"Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,"
+"Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Bushmelyov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,"
+"Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,"
+"Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
+"Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,"
+"DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr "
+"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,"
+"Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,"
+"Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr E. Antonov,Vasily Astanin,"
+"Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey "
+"Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay "
+"Parukhin,Oleg Koptev,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,"
+"Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
 "Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010,poruchik, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,Avogadro Team,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg "
-"Koptev,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir "
+"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,"
+"Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,"
+"Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr E. Antonov,Vasily Astanin,"
+"Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey "
+"Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay "
+"Parukhin,Oleg Koptev,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010,"
+"poruchik, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,"
+"Avogadro Team,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay "
+"Parukhin,Oleg Koptev,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir "
 "Kurg,dn2010,poruchik, ,Launchpad Contributions:,Alexei Klimenko,Andrey "
 "Smolenkov,Avogadro Team,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick "
 "Gorbunov,Nkolay Parukhin,Oleg Koptev,Panda-Yuliya,Petr E. Antonov,Vasily "
@@ -1274,27 +1239,56 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
-"nnulen@yandex.ru,,,nik@sevpinro.ru,panda-"
-"yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@"
-"sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin"
-"@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@"
-"gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@g"
-"mail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@"
-"yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010"
-"@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail.com,,mad"
-"cad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,kopte"
-"v.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,par"
-"ukhin@gmail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,av"
-"ogadro-"
-"devel@lists.sourceforge.net,,,annulen@yandex.ru,,parukhin@gmail.com,koptev.ol"
-"eg@gmail.com,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,annulen@yandex.ru,,parukhin@gmail.com,koptev.ol"
-"eg@gmail.com,,,madcad@yandex.ru,,dn2010@km.ru,"
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
+"annulen@yandex.ru,,,nik@sevpinro.ru,panda-yuliya@mail.ru,,madcad@yandex.ru,,"
+"dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,,madcad@yandex.ru,,"
+"dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@gmail.com,,madcad@yandex.ru,,"
+"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,,madcad@yandex.ru,,"
+"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail."
+"com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail."
+"com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,"
+"annulen@yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail.com,,madcad@yandex."
+"ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,koptev."
+"oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,"
+"parukhin@gmail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km."
+"ru,,,,,,avogadro-devel@lists.sourceforge.net,,,annulen@yandex.ru,,"
+"parukhin@gmail.com,koptev.oleg@gmail.com,,,madcad@yandex.ru,,dn2010@km."
+"ru,,,,,,avogadro-devel@lists.sourceforge.net,,,annulen@yandex.ru,,"
+"parukhin@gmail.com,koptev.oleg@gmail.com,,,madcad@yandex.ru,,dn2010@km.ru,"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Хэш %2)\n"
+#~ "LibAvogadro: \t%3 (Хэш %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Usage: %1 [options] [files]\n"
+#~ "\n"
+#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  -h, --help\t\tShow help options (this)\n"
+#~ "  -v, --version\t\tShow version information\n"
+#~ msgstr ""
+#~ "Использование: %1 [опции] [файлы]\n"
+#~ "\n"
+#~ "Avogadro - это продвинутый молекулярный редактор и просмотрщик (версия "
+#~ "%2)\n"
+#~ "\n"
+#~ "Опции:\n"
+#~ "  -h, --help\t\tПоказать эту справку\n"
+#~ "  -v, --version\t\tПоказать информацию о версии\n"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Похоже, в этом файле содержатся записи о нескольких молекулах. Avogadro "
 #~ "может считать только первую запись. При сохранении записи о всех других "
@@ -1700,7 +1694,6 @@ msgstr ""
 #~ msgid "Ring"
 #~ msgstr "Цикл"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1719,7 +1712,6 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Анимация..."
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Количество атомов: %1"
 
@@ -1741,7 +1733,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Отменить"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Энергия = %1 %2"
 
@@ -1832,18 +1823,15 @@ msgstr ""
 #~ msgid "Valence"
 #~ msgstr "Валентность"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Атом %1"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Связь %1"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Угол (°)"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Угол %1"
 
@@ -1853,7 +1841,6 @@ msgstr ""
 #~ msgid "Y (Å)"
 #~ msgstr "Y (Å)"
 
-#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Конформер %1"
 
@@ -1866,7 +1853,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1933,11 +1919,9 @@ msgstr ""
 #~ msgid "C:"
 #~ msgstr "C:"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Расстояние (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Расстояние (1->2): %1 %2"
 
@@ -1950,11 +1934,9 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Расстояние (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Угол: %1 %2"
 
@@ -2211,14 +2193,12 @@ msgstr ""
 #~ msgid "Steps per Update:"
 #~ msgstr "Шагов до обновления:"
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Диэдральный угол: %1 %2"
 
 #~ msgid "Element:"
 #~ msgstr "Элемент:"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -2226,7 +2206,6 @@ msgstr ""
 #~ "Невозможно считать %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -2234,7 +2213,6 @@ msgstr ""
 #~ "Невозможно записать файл %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Невозможно записать файл %1."
 
@@ -2361,11 +2339,9 @@ msgstr ""
 #~ msgid "fps"
 #~ msgstr "кадров/с"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Не удалось прочитать файл траектории %1."
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -2384,7 +2360,6 @@ msgstr ""
 #~ msgid "Measure"
 #~ msgstr "Измерение"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Число вращающихся связей: %1"
 
@@ -2433,11 +2408,9 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Вращаемый"
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Невозможно определить формат файла %1."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Невозможно считать файл %1."
 
@@ -2472,10 +2445,9 @@ msgstr ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть или "
-#~ "редактировать его корректно."
+#~ "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть "
+#~ "или редактировать его корректно."
 
-#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Невозможно произвести запись в формате файла %1."
 
@@ -2556,7 +2528,8 @@ msgstr ""
 
 #~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 #~ msgstr ""
-#~ "Отображает связи как каркас, отлично подходит для очень больших (био)молекул"
+#~ "Отображает связи как каркас, отлично подходит для очень больших (био)"
+#~ "молекул"
 
 #~ msgid "Must specify a valid .avi file name"
 #~ msgstr "Нужно указать правильное имя .avi файла"
@@ -2584,7 +2557,8 @@ msgstr ""
 
 #~ msgid "Your molecule must contain at least one atom to add a constraint"
 #~ msgstr ""
-#~ "В вашей молекуле должен быть как минимум один атом для добавления ограничения"
+#~ "В вашей молекуле должен быть как минимум один атом для добавления "
+#~ "ограничения"
 
 #~ msgid "Animate trajectories, reactions, and vibratins."
 #~ msgstr "Анимировать траектории, реакции и колебания"
@@ -2711,7 +2685,6 @@ msgstr ""
 #~ "MOPAC is already running. Wait until the previous calculation is finished."
 #~ msgstr "MOPAC уже запущен. Подождите завершения предыдущего расчета."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Записан файл %1."
 
@@ -2797,7 +2770,6 @@ msgstr ""
 #~ msgid "Torsion (°)"
 #~ msgstr "Двугранный угол (°)"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Двугранный угол %1"
 
@@ -2856,8 +2828,8 @@ msgstr ""
 #~ msgstr "Первое действие"
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a unit "
-#~ "cell."
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
 #~ msgstr ""
 #~ "Сейчас в этом документе изолированная молекула. Вам нужно создать "
 #~ "элементарную ячеку."
@@ -3733,13 +3705,12 @@ msgstr ""
 #~ msgid "Undefined"
 #~ msgstr "Не определено"
 
-#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Не удалось прочитать файл траектории %1"
 
-#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
 #~ msgstr "Файл траектории %1 не соответствует числу атомов в данной молекуле"
 
 #~ msgid "Import Trajectory"
@@ -3749,8 +3720,8 @@ msgstr ""
 #~ msgstr "Генератор входного файла..."
 
 #~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics force "
-#~ "fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
 #~ msgstr ""
 #~ "Оптимизировать молекулы и выбрать конформеры, используя "
 #~ "молекулярномеханические силовые поля"
@@ -3770,7 +3741,6 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "файл траектории (*.xyz)"
 
-#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "У двух молекул разные номера атомов %1 %2"
 
@@ -3792,11 +3762,11 @@ msgstr ""
 #~ msgstr "Не правильное имя видеофайла.  Имя должно содержать полный путь"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
-#~ "Не правильное имя видеофайла.  Имя должно содержать полный путь и название, "
-#~ "оканчивающееся на .avi"
+#~ "Не правильное имя видеофайла.  Имя должно содержать полный путь и "
+#~ "название, оканчивающееся на .avi"
 
 #~ msgid "movie files (*.avi)"
 #~ msgstr "видеофайлы (*.avi)"
@@ -3963,10 +3933,9 @@ msgstr ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
 #~ msgstr ""
-#~ "Окна для отображения свойств атомов, связей, валентных и двугранных углов. "
-#~ "Также включает редактор декартовых координат"
+#~ "Окна для отображения свойств атомов, связей, валентных и двугранных "
+#~ "углов. Также включает редактор декартовых координат"
 
-#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Номер атома %1"
 
@@ -3982,25 +3951,23 @@ msgstr ""
 #~ msgid "Rendering:"
 #~ msgstr "Рендеринг:"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
-#~ "%3<br/><br/>Дальнейшую информацию вы можете получить на <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта "
-#~ "программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
-#~ "подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
-#~ "КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+#~ "%3<br/><br/>Дальнейшую информацию вы можете получить на <a href=\"http://"
+#~ "avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа "
+#~ "поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых "
+#~ "гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
 #~ msgstr ""
-#~ "Цвет согласно аминокислотному остатку (тип аминокислоты, гидрофобность, ...)"
+#~ "Цвет согласно аминокислотному остатку (тип аминокислоты, "
+#~ "гидрофобность, ...)"
 
 #~ msgid "Cartoon"
 #~ msgstr "карикатура"
@@ -4041,12 +4008,10 @@ msgstr ""
 #~ msgid "1"
 #~ msgstr "1"
 
-#, qt-format
 #~ msgctxt "%1 is element, %L2 is atom index"
 #~ msgid "Atom %1 %L2"
 #~ msgstr "Атом %1 %L2"
 
-#, qt-format
 #~ msgctxt "%L1 is bond index"
 #~ msgid "Bond %L1"
 #~ msgstr "Связь %L1"
@@ -4057,27 +4022,24 @@ msgstr ""
 #~ msgid "Backspace"
 #~ msgstr "Возвратиться"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-#~ "information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
-#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
-#~ "PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Версия приложения: %2<br/><br/>Версия библиотеки: "
-#~ "%3<br/><br/>Версия Open Babel: %4<br/><br/>Версия Qt: "
-#~ "%5<br/><br/>Дополнительная информация на <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Домашней странице "
-#~ "Avogadro</a>.<br/><br/>Программа представлена КАК ЕСТЬ, без ВСЯЧЕСКИХ "
-#~ "ГАРАНТИЙ, ВКЛЮЧАЯ ГАРАНТИИ ТОГО, ЧТО ОНА РАБОТАЕТ КАК ЗАДУМАНО, ПРИГОДНА ДЛЯ "
-#~ "КАКОГО-ЛИБО ИСПОЛЬЗОВАНИЯ И ПРОДАЖИ.<br/>"
+#~ "%3<br/><br/>Версия Open Babel: %4<br/><br/>Версия Qt: %5<br/><br/"
+#~ ">Дополнительная информация на <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Домашней странице Avogadro</a>.<br/><br/>Программа представлена КАК "
+#~ "ЕСТЬ, без ВСЯЧЕСКИХ ГАРАНТИЙ, ВКЛЮЧАЯ ГАРАНТИИ ТОГО, ЧТО ОНА РАБОТАЕТ КАК "
+#~ "ЗАДУМАНО, ПРИГОДНА ДЛЯ КАКОГО-ЛИБО ИСПОЛЬЗОВАНИЯ И ПРОДАЖИ.<br/>"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Неверное имя видеофайла. Должно содержать полный путь к каталогу и имя, "
 #~ "оканчивающееся на .avi"
@@ -4097,15 +4059,14 @@ msgstr ""
 #~ msgid "Open a shader parameters file"
 #~ msgstr "Открыть файл параметров шейдеров"
 
-#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-#~ "ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
-#~ "value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
-#~ "1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
 #~ msgstr ""
 #~ "Текущее изображение в Avogadro имеет размер %1x%2 пикселей, и соотношение "
 #~ "сторон составляет %3.\n"
@@ -4161,7 +4122,6 @@ msgstr ""
 #~ msgid "Avogadro"
 #~ msgstr "Avogadro"
 
-#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

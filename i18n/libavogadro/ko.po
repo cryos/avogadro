@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 14:03+0000\n"
 "Last-Translator: Kim Hanjo <lordmiss@lordmiss.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -573,7 +574,7 @@ msgstr "축"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "x, y, z축을 기원으로 표현"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:2011
+#: src/engines/bsdyengine.h:41
 msgid "Ball and Stick"
 msgstr "공과 막대 모형"
 
@@ -790,14 +791,14 @@ msgstr "비디오 파일 (*.avi)"
 #: src/extensions/forcefieldextension.cpp:236
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
-#: src/extensions/quantuminput/inputfileextension.cpp:158
-#: src/extensions/quantuminput/inputfileextension.cpp:168
+#: src/extensions/quantuminput/inputfileextension.cpp:165
+#: src/extensions/quantuminput/inputfileextension.cpp:175
 #: src/extensions/selectextension.cpp:276
 #: src/extensions/selectextension.cpp:288
-#: src/extensions/selectextension.cpp:294 src/extensions/trajvideomaker.cpp:47
-#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:84
-#: src/extensions/trajvideomaker.cpp:108 src/extensions/trajvideomaker.cpp:113
-#: src/extensions/trajvideomaker.cpp:152
+#: src/extensions/selectextension.cpp:294 src/extensions/trajvideomaker.cpp:51
+#: src/extensions/trajvideomaker.cpp:59 src/extensions/trajvideomaker.cpp:88
+#: src/extensions/trajvideomaker.cpp:112 src/extensions/trajvideomaker.cpp:117
+#: src/extensions/trajvideomaker.cpp:156
 #: src/extensions/unitcellextension.cpp:127
 #: src/extensions/unitcellextension.cpp:255
 msgid "Avogadro"
@@ -827,7 +828,7 @@ msgstr "확장기능"
 
 #: src/extensions/animationextension.cpp:135
 #: src/extensions/insertfragmentdialog.cpp:144
-#: src/extensions/quantuminput/inputfileextension.cpp:159
+#: src/extensions/quantuminput/inputfileextension.cpp:166
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "%1 파일 포맷을 읽을 수 없습니다."
@@ -854,7 +855,9 @@ msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로를 포함�
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자로 끝나야 합니다."
+msgstr ""
+"잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자"
+"로 끝나야 합니다."
 
 #: src/extensions/animationextension.cpp:238
 #, qt-format
@@ -879,7 +882,7 @@ msgstr "궤도 파일 %1의 원자 수가 현재의 분자 수와 일치하지 �
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39 :3511
+#: src/extensions/animationextension.h:39:3651
 msgid "Animation"
 msgstr "애니메이션"
 
@@ -889,20 +892,19 @@ msgstr "궤도, 반응, 진동 애니메이션으로 표시"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:96 :423
+#: src/extensions/cartesianextension.cpp:99:369
 msgid "Cartesian Editor"
 msgstr ""
 
-#: src/extensions/cartesianextension.cpp:97
-msgid ""
-"No unit cell defined for molecule -- cannot use fractional coordinates."
+#: src/extensions/cartesianextension.cpp:100
+msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
-#: src/extensions/cartesianextension.cpp:571
+#: src/extensions/cartesianextension.cpp:559
 msgid "Cartesian Editor..."
 msgstr "Cartesian 편집기..."
 
-#: src/extensions/cartesianextension.cpp:586
+#: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:82
@@ -940,253 +942,315 @@ msgstr "구속을 추가"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr "분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
+msgstr ""
+"분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
-msgstr "분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합니다"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgstr ""
+"분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합"
+"니다"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr "분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니다"
+msgstr ""
+"분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니"
+"다"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr "분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 합니다"
+msgstr ""
+"분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 "
+"합니다"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:428
-#: src/extensions/crystallography/crystallographyextension.cpp:678
+#: src/extensions/crystallography/crystallographyextension.cpp:152
+#: src/extensions/crystallography/crystallographyextension.cpp:155
+#: src/extensions/crystallography/crystallographyextension.cpp:168
+#: src/extensions/crystallography/crystallographyextension.cpp:173
+#: src/extensions/crystallography/crystallographyextension.cpp:176
+#: src/extensions/crystallography/crystallographyextension.cpp:179
+#: src/extensions/crystallography/crystallographyextension.cpp:182
+#: src/extensions/crystallography/crystallographyextension.cpp:188
+msgid "&Crystallography"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:152
+msgid "Space&group"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:155
+msgid "&Reduce"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:173
+#: src/extensions/crystallography/crystallographyextension.cpp:176
+#: src/extensions/crystallography/crystallographyextension.cpp:179
+#: src/extensions/crystallography/crystallographyextension.cpp:182
+#: src/extensions/crystallography/crystallographyextension.cpp:188
+#, fuzzy
+msgid "&Settings"
+msgstr "그리기 설정"
+
+#: src/extensions/crystallography/crystallographyextension.cpp:173
+#, fuzzy
+msgid "&Length Unit"
+msgstr "%1 길이"
+
+#: src/extensions/crystallography/crystallographyextension.cpp:176
+#, fuzzy
+msgid "&Angle Unit"
+msgstr "각 %1"
+
+#: src/extensions/crystallography/crystallographyextension.cpp:179
+#, fuzzy
+msgid "&Coordinate Display"
+msgstr "새로운 창"
+
+#: src/extensions/crystallography/crystallographyextension.cpp:182
+msgid "Coordinate &Preservation"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:188
+#, fuzzy
+msgid "&Matrix Display"
+msgstr "새로운 창"
+
+#: src/extensions/crystallography/crystallographyextension.cpp:437
+#: src/extensions/crystallography/crystallographyextension.cpp:687
 msgid "Hide &Editors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:442
-#: src/extensions/crystallography/crystallographyextension.cpp:682
-#: src/extensions/crystallography/crystallographyextension.cpp:1752
+#: src/extensions/crystallography/crystallographyextension.cpp:451
+#: src/extensions/crystallography/crystallographyextension.cpp:691
+#: src/extensions/crystallography/crystallographyextension.cpp:1764
 msgid "Show &Editors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:519
-#: src/extensions/crystallography/crystallographyextension.cpp:687
+#: src/extensions/crystallography/crystallographyextension.cpp:528
+#: src/extensions/crystallography/crystallographyextension.cpp:696
 msgid "Hide &Property Display"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:551
-#: src/extensions/crystallography/crystallographyextension.cpp:691
-#: src/extensions/crystallography/crystallographyextension.cpp:1760
+#: src/extensions/crystallography/crystallographyextension.cpp:560
+#: src/extensions/crystallography/crystallographyextension.cpp:700
+#: src/extensions/crystallography/crystallographyextension.cpp:1772
 msgid "Show &Property Display"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:620
+#: src/extensions/crystallography/crystallographyextension.cpp:629
 #, qt-format
 msgctxt "Unit cell lattice"
 msgid "Lattice Type: %1"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:624
+#: src/extensions/crystallography/crystallographyextension.cpp:633
 #, qt-format
 msgid "Spacegroup: %1"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:626
+#: src/extensions/crystallography/crystallographyextension.cpp:635
 #, qt-format
 msgid "Unit cell volume: %L1%2"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:642
+#: src/extensions/crystallography/crystallographyextension.cpp:651
 msgid "Remove &Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:646
-#: src/extensions/crystallography/crystallographyextension.cpp:1730
+#: src/extensions/crystallography/crystallographyextension.cpp:655
+#: src/extensions/crystallography/crystallographyextension.cpp:1742
 msgid "Add &Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:950
-#: src/extensions/crystallography/crystallographyextension.cpp:955
-msgid "Undefined"
-msgstr ""
-
-#: src/extensions/crystallography/crystallographyextension.cpp:957
-msgctxt "Lattice type"
-msgid "Triclinic"
-msgstr ""
-
-#: src/extensions/crystallography/crystallographyextension.cpp:959
-msgctxt "Lattice type"
-msgid "Monoclinic"
-msgstr ""
-
 #: src/extensions/crystallography/crystallographyextension.cpp:961
-msgctxt "Lattice type"
-msgid "Orthorhombic"
-msgstr ""
-
-#: src/extensions/crystallography/crystallographyextension.cpp:963
-msgctxt "Lattice type"
-msgid "Tetragonal"
-msgstr ""
-
-#: src/extensions/crystallography/crystallographyextension.cpp:965
-msgctxt "Lattice type"
-msgid "Rhombohedral"
-msgstr ""
-
 #: src/extensions/crystallography/crystallographyextension.cpp:967
-msgctxt "Lattice type"
-msgid "Hexagonal"
+msgid "Undefined"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:969
 msgctxt "Lattice type"
+msgid "Triclinic"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:971
+msgctxt "Lattice type"
+msgid "Monoclinic"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:973
+msgctxt "Lattice type"
+msgid "Orthorhombic"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:975
+msgctxt "Lattice type"
+msgid "Tetragonal"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:977
+msgctxt "Lattice type"
+msgid "Rhombohedral"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:979
+msgctxt "Lattice type"
+msgid "Hexagonal"
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:981
+msgctxt "Lattice type"
 msgid "Cubic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1296
+#: src/extensions/crystallography/crystallographyextension.cpp:1308
 msgid "Paste Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1667
+#: src/extensions/crystallography/crystallographyextension.cpp:1679
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1676
+#: src/extensions/crystallography/crystallographyextension.cpp:1688
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1737
+#: src/extensions/crystallography/crystallographyextension.cpp:1749
 msgid "I&mport Crystal from Clipboard..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1775
+#: src/extensions/crystallography/crystallographyextension.cpp:1787
 msgid "&Wrap Atoms to Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1782
+#: src/extensions/crystallography/crystallographyextension.cpp:1794
+msgid "&Translate Atoms..."
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:1801
 msgid "Rotate To Standard &Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1789
+#: src/extensions/crystallography/crystallographyextension.cpp:1808
 msgid "Scale Cell To &Volume..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1804
+#: src/extensions/crystallography/crystallographyextension.cpp:1823
 msgid "Perceive Space&group..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1811
+#: src/extensions/crystallography/crystallographyextension.cpp:1830
 msgid "Set &Spacegroup..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1818
+#: src/extensions/crystallography/crystallographyextension.cpp:1837
 msgid "&Fill Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1819
+#: src/extensions/crystallography/crystallographyextension.cpp:1838
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1826
+#: src/extensions/crystallography/crystallographyextension.cpp:1845
 msgid "Sy&mmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1833
+#: src/extensions/crystallography/crystallographyextension.cpp:1852
 msgid "Reduce Cell (&Primitive)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1840
+#: src/extensions/crystallography/crystallographyextension.cpp:1859
 msgid "Reduce Cell (&Niggli)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1858
+#: src/extensions/crystallography/crystallographyextension.cpp:1877
 msgid "&Angstrom"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1868
+#: src/extensions/crystallography/crystallographyextension.cpp:1887
 msgid "&Bohr"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1877
+#: src/extensions/crystallography/crystallographyextension.cpp:1896
 msgid "&Nanometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1886
+#: src/extensions/crystallography/crystallographyextension.cpp:1905
 msgid "&Picometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1898
+#: src/extensions/crystallography/crystallographyextension.cpp:1917
 msgid "&Degree"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1908
+#: src/extensions/crystallography/crystallographyextension.cpp:1927
 msgid "&Radian"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1920
+#: src/extensions/crystallography/crystallographyextension.cpp:1939
 msgid "Display &cartesian coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1929
+#: src/extensions/crystallography/crystallographyextension.cpp:1948
 msgid "Display &fractional coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1942
+#: src/extensions/crystallography/crystallographyextension.cpp:1961
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1952
+#: src/extensions/crystallography/crystallographyextension.cpp:1971
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1966
+#: src/extensions/crystallography/crystallographyextension.cpp:1985
 msgid "Display &cartesian matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1976
+#: src/extensions/crystallography/crystallographyextension.cpp:1995
 msgid "Display &fractional matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1996
+#: src/extensions/crystallography/crystallographyextension.cpp:2015
 msgid "Display as &row vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2006
+#: src/extensions/crystallography/crystallographyextension.cpp:2025
 msgid "Display as &column vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2027
-#: src/extensions/crystallography/crystallographyextension.cpp:2159
-#: src/extensions/crystallography/crystallographyextension.cpp:2310
+#: src/extensions/crystallography/crystallographyextension.cpp:2046
+#: src/extensions/crystallography/crystallographyextension.cpp:2178
+#: src/extensions/crystallography/crystallographyextension.cpp:2340
 msgid "Select tolerance in current cartesian units:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2049
-#: src/extensions/crystallography/crystallographyextension.cpp:2179
-#: src/extensions/crystallography/crystallographyextension.cpp:2330
+#: src/extensions/crystallography/crystallographyextension.cpp:2068
+#: src/extensions/crystallography/crystallographyextension.cpp:2198
+#: src/extensions/crystallography/crystallographyextension.cpp:2360
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2065
+#: src/extensions/crystallography/crystallographyextension.cpp:2084
 msgid "Perceive Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2099
+#: src/extensions/crystallography/crystallographyextension.cpp:2118
 msgid "Set Spacegroup:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2113
+#: src/extensions/crystallography/crystallographyextension.cpp:2132
 msgid "Set Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2126
+#: src/extensions/crystallography/crystallographyextension.cpp:2145
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
@@ -1195,51 +1259,51 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:93
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
-#: src/extensions/crystallography/crystallographyextension.cpp:2145
+#: src/extensions/crystallography/crystallographyextension.cpp:2164
 msgid "Fill Unit Cell"
 msgstr "단위 세포 채우기"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2193
+#: src/extensions/crystallography/crystallographyextension.cpp:2212
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2212
+#: src/extensions/crystallography/crystallographyextension.cpp:2231
 msgid "Symmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2287
+#: src/extensions/crystallography/crystallographyextension.cpp:2306
 msgid "Wrap Atoms To Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2296
+#: src/extensions/crystallography/crystallographyextension.cpp:2326
 msgid "Rotate to Standard Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2348
+#: src/extensions/crystallography/crystallographyextension.cpp:2378
 msgid "Reduce to Primitive Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2361
+#: src/extensions/crystallography/crystallographyextension.cpp:2391
 msgid "Reduce to Niggli Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2371
+#: src/extensions/crystallography/crystallographyextension.cpp:2401
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2385
+#: src/extensions/crystallography/crystallographyextension.cpp:2415
 msgid "Scale Unit Cell Volume"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.h:102
+#: src/extensions/crystallography/crystallographyextension.h:110
 msgid "Crystallography"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.h:103
+#: src/extensions/crystallography/crystallographyextension.h:111
 msgid "Construct and analyze periodic structures."
 msgstr ""
 
@@ -1269,13 +1333,14 @@ msgid ""
 msgstr ""
 
 #: src/extensions/crystallography/ui/cecoordinateeditor.cpp:72
-msgid "Cartesian &Coordinates"
-msgstr ""
+#, fuzzy
+msgid "Cartesian Coordinates"
+msgstr "Cartesian 정보"
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:76 :610
-msgid "Fractional &Coordinates"
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:76:556
+msgid "Fractional Coordinates"
 msgstr ""
 
 #: src/extensions/crystallography/ui/cecoordinateeditor.cpp:283
@@ -1289,13 +1354,13 @@ msgstr ""
 #: src/extensions/crystallography/ui/cematrixeditor.cpp:81
 #, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
-msgid "Cell &Matrix (%1)"
+msgid "Cell Matrix (%1)"
 msgstr ""
 
 #: src/extensions/crystallography/ui/cematrixeditor.cpp:98
 #, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
-msgid "Fractional Cell &Matrix (%1)"
+msgid "Fractional Cell Matrix (%1)"
 msgstr ""
 
 #: src/extensions/crystallography/ui/cematrixeditor.cpp:251
@@ -1304,6 +1369,17 @@ msgstr ""
 
 #: src/extensions/crystallography/ui/ceparametereditor.cpp:220
 msgid "Set Unit Cell Params"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:636
+#, fuzzy
+msgid "Translate Atoms"
+msgstr "원자 삭제"
+
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:188
+msgid "Please select one or more atoms."
 msgstr ""
 
 #: src/extensions/fileimportextension.cpp:54
@@ -1408,7 +1484,7 @@ msgstr "힘 영역 최적화"
 #: src/extensions/forcefieldextension.cpp:580
 #: src/extensions/forcefieldextension.cpp:583
 #: src/extensions/forcefieldextension.cpp:586
-#: src/extensions/trajvideomaker.cpp:63
+#: src/extensions/trajvideomaker.cpp:67
 msgid "Cancel"
 msgstr "취소"
 
@@ -1514,7 +1590,7 @@ msgid "Add or remove hydrogens"
 msgstr "수소를 추가하거나 제거"
 
 #: src/extensions/insertfragmentdialog.cpp:152
-#: src/extensions/quantuminput/inputfileextension.cpp:169
+#: src/extensions/quantuminput/inputfileextension.cpp:176
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "%1 파일을 읽을 수 없습니다."
@@ -1548,7 +1624,7 @@ msgstr "SMILES 조각 삽입:"
 #. i18n: file: src/extensions/insertfragmentdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
 #: src/extensions/insertfragmentextension.cpp:187
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1045
+#: src/extensions/insertfragmentextension.h:34:735
 msgid "Insert Fragment"
 msgstr "조각 삽입"
 
@@ -1565,7 +1641,7 @@ msgstr "펩티드..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :751 rc.cpp:970
+#: src/extensions/insertpeptideextension.h:43:738 rc.cpp:957
 msgid "Insert Peptide"
 msgstr "펩티드 삽입"
 
@@ -1718,8 +1794,8 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
-"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습니다. 이렇게 하면 아무 결과도 저장되지 "
-"않습니다. 정말로 이렇게 할까요?"
+"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습"
+"니다. 이렇게 하면 아무 결과도 저장되지 않습니다. 정말로 이렇게 할까요?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -1731,7 +1807,9 @@ msgstr "파일에 기록할 수 없습니다."
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr "파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니까?"
+msgstr ""
+"파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니"
+"까?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
@@ -1741,7 +1819,9 @@ msgstr "POV-Ray를 시작하는데 실패했습니다."
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
-msgstr "POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것입니다."
+msgstr ""
+"POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것"
+"입니다."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
@@ -1798,7 +1878,7 @@ msgstr "이형태체 정보"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43 :1076 rc.cpp:1577 rc.cpp:1919
+#: src/extensions/propextension.h:43:1216 rc.cpp:1717 rc.cpp:2059
 msgid "Properties"
 msgstr "속성"
 
@@ -1806,7 +1886,9 @@ msgstr "속성"
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
-msgstr "원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포함하고 있음."
+msgstr ""
+"원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포"
+"함하고 있음."
 
 #: src/extensions/propmodel.cpp:274
 msgid "Yes"
@@ -1818,7 +1900,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:432 :502
+#: src/extensions/propmodel.cpp:432:448
 msgid "Element"
 msgstr "원소"
 
@@ -1901,7 +1983,7 @@ msgstr "각 %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:484 :571
+#: src/extensions/propmodel.cpp:484:517
 msgid "Angle"
 msgstr "각도"
 
@@ -1922,8 +2004,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:516
-#: src/extensions/surfaces/orbitaltablemodel.cpp:74 :1889
+#: src/extensions/propmodel.cpp:516:2029
 msgid "Energy"
 msgstr "에너지"
 
@@ -1969,6 +2050,123 @@ msgstr ""
 msgid "QTAIM extension"
 msgstr ""
 
+#: src/extensions/quantuminput/abinitinputdialog.cpp:328
+#, fuzzy
+msgid "Abinit Input Deck Generator Warning"
+msgstr "가우스 입력 데크 생성기 경고"
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:329
+#, fuzzy
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"Abinit input deck preview pane?"
+msgstr ""
+"MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
+"업데이트 하시겠습니까?"
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:417
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:255
+#: src/extensions/quantuminput/inputdialog.cpp:61
+msgid "Save Input Deck"
+msgstr ""
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:437
+#: src/extensions/quantuminput/abinitinputdialog.cpp:450
+msgid "Abinit_Input_Deck"
+msgstr ""
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:443
+#, fuzzy
+msgid "Abinit Running."
+msgstr "MOPAC 실행중."
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:444
+#, fuzzy
+msgid ""
+"Abinit is already running. Please wait until the previous calculation is "
+"finished."
+msgstr "MOPAC이 이미 실행중입니다. 이전의 계산이 끝날 때까지 기다려주십시오."
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:456
+#, fuzzy
+msgid "Abinit Not Installed."
+msgstr "MOPAC이 설치되지 않았습니다."
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:457
+#, fuzzy
+msgid "The abinit executable cannot be found."
+msgstr "실행가능한 G03이 발견되지 않았습니다"
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:484
+msgid ""
+"Pseudos (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *.psp)"
+msgstr ""
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:508
+#, fuzzy
+msgid "abinit failed to start."
+msgstr "G03을 시작하는데 실패했습니다"
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:509
+#, fuzzy
+msgid "abinit did not start. Perhaps it is not installed correctly."
+msgstr "G03이 시작하지 않았습니다. 아마도 완전히 설치되지 않은 것 같습니다."
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:515
+#, fuzzy
+msgid "Running Abinit calculation..."
+msgstr "MOPAC 계산 실행중..."
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:567
+#, fuzzy
+msgid "Abinit Crashed."
+msgstr "MOPAC 충돌"
+
+#: src/extensions/quantuminput/abinitinputdialog.cpp:568
+#, fuzzy
+msgid "Abinit did not run correctly. Perhaps it is not installed correctly."
+msgstr ""
+"MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니"
+"다."
+
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#: src/extensions/quantuminput/abinitinputdialog.cpp:591
+#: src/extensions/quantuminput/daltoninputdialog.cpp:356
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:187
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:391
+#: src/extensions/quantuminput/molproinputdialog.cpp:172
+#: src/extensions/quantuminput/mopacinputdialog.cpp:268
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:176
+#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3098
+msgid "Show Preview"
+msgstr "미리보기"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:813
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1619
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:463
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:473
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:410
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:406
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:420
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#: src/extensions/quantuminput/abinitinputdialog.cpp:595
+#: src/extensions/quantuminput/daltoninputdialog.cpp:360
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:191
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:395
+#: src/extensions/quantuminput/molproinputdialog.cpp:176
+#: src/extensions/quantuminput/mopacinputdialog.cpp:273
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:180
+#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1182
+msgid "Hide Preview"
+msgstr "미리보기 숨기기"
+
 #: src/extensions/quantuminput/daltoninputdialog.cpp:289
 msgid "Dalton Input File Generator Warning"
 msgstr ""
@@ -1982,40 +2180,6 @@ msgstr ""
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
 msgid "Dalton Input File"
 msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#: src/extensions/quantuminput/daltoninputdialog.cpp:356
-#: src/extensions/quantuminput/gamessukinputdialog.cpp:187
-#: src/extensions/quantuminput/gaussianinputdialog.cpp:391
-#: src/extensions/quantuminput/molproinputdialog.cpp:172
-#: src/extensions/quantuminput/mopacinputdialog.cpp:268
-#: src/extensions/quantuminput/nwcheminputdialog.cpp:176
-#: src/extensions/quantuminput/qcheminputdialog.cpp:169 :2958
-msgid "Show Preview"
-msgstr "미리보기"
-
-#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1619
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:463
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:473
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:410
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:406
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:420
-#. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#: src/extensions/quantuminput/daltoninputdialog.cpp:360
-#: src/extensions/quantuminput/gamessukinputdialog.cpp:191
-#: src/extensions/quantuminput/gaussianinputdialog.cpp:395
-#: src/extensions/quantuminput/molproinputdialog.cpp:176
-#: src/extensions/quantuminput/mopacinputdialog.cpp:273
-#: src/extensions/quantuminput/nwcheminputdialog.cpp:180
-#: src/extensions/quantuminput/qcheminputdialog.cpp:173 :1601
-msgid "Hide Preview"
-msgstr "미리보기 숨기기"
 
 #: src/extensions/quantuminput/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -2092,6 +2256,8 @@ msgstr "GAMESS"
 msgid "Create input files for the GAMESS quantum chemistry package"
 msgstr "GAMESS 양자 화학 패키지를 위해 입력 파일을 형성"
 
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:39
+#. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:101
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1529
@@ -2106,15 +2272,15 @@ msgstr "GAMESS 양자 화학 패키지를 위해 입력 파일을 형성"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:631 :1067
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1047
 msgid "Title"
 msgstr "제목"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1543
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1544
 msgid "Advanced Settings Changed"
 msgstr "고급 설정이 변경됨"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1544
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1545
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
@@ -2122,11 +2288,11 @@ msgstr ""
 "고급 설정이 변경되었습니다.\n"
 "저장하지 않으시겠습니까?"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1565
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1566
 msgid "Advanced Settings Reset"
 msgstr "고급 설정이 초기화됨"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1566
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1567
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
@@ -2134,11 +2300,11 @@ msgstr ""
 "고급 설정을 초기화 하시겠습니까?\n"
 "모든 변경사항을 잃게됩니다!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1578
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1579
 msgid "Basic Settings Reset"
 msgstr "기본 설정 초기화"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1579
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1580
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
@@ -2146,7 +2312,7 @@ msgstr ""
 "기본 설정 내용을 초기화 하시겠습니까?\n"
 "모든 변경사항을 잃게됩니다!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1645
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1646
 msgid "GAMESS Input Deck"
 msgstr ""
 
@@ -2172,12 +2338,9 @@ msgstr "가우스 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr "가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
-
-#: src/extensions/quantuminput/gaussianinputdialog.cpp:255
-#: src/extensions/quantuminput/inputdialog.cpp:61
-msgid "Save Input Deck"
 msgstr ""
+"가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트"
+"를 업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -2218,35 +2381,40 @@ msgid "G03 Crashed."
 msgstr "G03 충돌"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr "가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입니다."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr ""
+"가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입"
+"니다."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:56
+#: src/extensions/quantuminput/inputfileextension.cpp:57
+msgid "&Abinit..."
+msgstr ""
+
+#: src/extensions/quantuminput/inputfileextension.cpp:62
 msgid "&Dalton..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:61
+#: src/extensions/quantuminput/inputfileextension.cpp:67
 msgid "&GAMESS-UK..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:66
+#: src/extensions/quantuminput/inputfileextension.cpp:72
 msgid "&Gaussian..."
 msgstr "&Gaussian..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:71
+#: src/extensions/quantuminput/inputfileextension.cpp:77
 msgid "&MOLPRO..."
 msgstr "&MOLPRO..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:76
+#: src/extensions/quantuminput/inputfileextension.cpp:82
 msgid "M&OPAC..."
 msgstr "M&OPAC..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:81
+#: src/extensions/quantuminput/inputfileextension.cpp:87
 msgid "&NWChem..."
 msgstr "&NWChem..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:86
+#: src/extensions/quantuminput/inputfileextension.cpp:92
 msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
 
@@ -2280,7 +2448,9 @@ msgstr "MOPAC 입력 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr "MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
+msgstr ""
+"MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
+"업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
@@ -2310,7 +2480,8 @@ msgstr "MOPAC을 시작하는데 실패했습니다"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:207
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
+msgstr ""
+"MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:212
 msgid "Running MOPAC calculation..."
@@ -2322,7 +2493,9 @@ msgstr "MOPAC 충돌"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:248
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr "MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
+msgstr ""
+"MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니"
+"다."
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:126
 msgid "NWChem Input Deck Generator Warning"
@@ -2346,7 +2519,9 @@ msgstr "Q-Chem 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
-msgstr "Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
+msgstr ""
+"Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
+"업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
 msgid "QChem Input Deck"
@@ -2394,7 +2569,7 @@ msgstr "잔류물에 의한 선택"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231 :252
+#: src/extensions/selectextension.cpp:231:198
 msgid "Residue name"
 msgstr "잔류물 이름"
 
@@ -2456,7 +2631,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41 :3189
+#: src/extensions/shaderextension.h:41:3329
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2464,27 +2639,28 @@ msgstr ""
 msgid "Load and use OpenGL 2.0 GLSL shaders"
 msgstr "OpenGL 2.0 GLSL shader를 열고 사용하기"
 
-#: src/extensions/spectra/cd.cpp:108 src/extensions/spectra/uv.cpp:92
+#: src/extensions/spectra/cd.cpp:106 src/extensions/spectra/uv.cpp:90
 msgid "Wavelength (nm)"
 msgstr ""
 
-#: src/extensions/spectra/cd.cpp:109
+#: src/extensions/spectra/cd.cpp:107
 msgid "Intensity (arb. units)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:141
+#: src/extensions/spectra/dos.cpp:139
+#: src/extensions/surfaces/orbitaltablemodel.cpp:105
 msgid "Energy (eV)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:148
+#: src/extensions/spectra/dos.cpp:146
 msgid "Density of States (states/cell)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:151
+#: src/extensions/spectra/dos.cpp:149
 msgid "Density of States (states/atom)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:154
+#: src/extensions/spectra/dos.cpp:152
 msgid "Density of States (states/valence electron)"
 msgstr ""
 
@@ -2506,9 +2682,10 @@ msgid ""
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
-"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각화를 위해 임의의 값이 주어집니다."
+"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각"
+"화를 위해 임의의 값이 주어집니다."
 
-#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:141
+#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:139
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
@@ -2516,286 +2693,286 @@ msgstr ""
 msgid "Shift (ppm)"
 msgstr ""
 
-#: src/extensions/spectra/raman.cpp:47 src/extensions/spectra/raman.cpp:81
+#: src/extensions/spectra/raman.cpp:45 src/extensions/spectra/raman.cpp:79
 msgid "Activity"
 msgstr ""
 
-#: src/extensions/spectra/raman.cpp:48
+#: src/extensions/spectra/raman.cpp:46
 msgid "Intensity"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:92
+#: src/extensions/spectra/spectradialog.cpp:88
 msgid "X Axis"
 msgstr "X 축"
 
-#: src/extensions/spectra/spectradialog.cpp:93
+#: src/extensions/spectra/spectradialog.cpp:89
 msgid "Y Axis"
 msgstr "Y 축"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:196 :3250
+#: src/extensions/spectra/spectradialog.cpp:188:3390
 msgid "&Appearance"
 msgstr "모양(&A)"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:197 :3316
+#: src/extensions/spectra/spectradialog.cpp:189:3456
 msgid "E&xport Image"
 msgstr "이미지 내보내기(&E)"
 
-#: src/extensions/spectra/spectradialog.cpp:202
+#: src/extensions/spectra/spectradialog.cpp:194
 msgctxt "Infrared spectra option"
 msgid "Infrared"
 msgstr "적외선"
 
-#: src/extensions/spectra/spectradialog.cpp:203
+#: src/extensions/spectra/spectradialog.cpp:195
 msgid "&Infrared Spectra Settings"
 msgstr "적외선 스펙트럼 설정"
 
-#: src/extensions/spectra/spectradialog.cpp:209
+#: src/extensions/spectra/spectradialog.cpp:201
 msgctxt "NMR spectra option"
 msgid "NMR"
 msgstr "NMR"
 
-#: src/extensions/spectra/spectradialog.cpp:210
+#: src/extensions/spectra/spectradialog.cpp:202
 msgid "&NMR Spectra Settings"
 msgstr "NMR 스펙트럼 설정"
 
-#: src/extensions/spectra/spectradialog.cpp:219
+#: src/extensions/spectra/spectradialog.cpp:209
 msgctxt "Density of States"
 msgid "DOS"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:220
+#: src/extensions/spectra/spectradialog.cpp:210
 msgid "&Density Of States Settings"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:226
+#: src/extensions/spectra/spectradialog.cpp:216
 msgctxt "Ultra-Violet spectrum"
 msgid "UV"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:227
+#: src/extensions/spectra/spectradialog.cpp:217
 msgid "&UV Settings"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:233
+#: src/extensions/spectra/spectradialog.cpp:223
 msgctxt "Circular Dichromism spectrum"
 msgid "CD"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:234
+#: src/extensions/spectra/spectradialog.cpp:224
 msgid "&CD Settings"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:240
+#: src/extensions/spectra/spectradialog.cpp:230
 msgctxt "Raman spectrum"
 msgid "Raman"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:241
+#: src/extensions/spectra/spectradialog.cpp:231
 msgid "&Raman Settings"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:256
+#: src/extensions/spectra/spectradialog.cpp:237
 msgid "No data"
 msgstr "데이터 없음"
 
-#: src/extensions/spectra/spectradialog.cpp:322
+#: src/extensions/spectra/spectradialog.cpp:303
 msgid "Dark"
 msgstr "어둡게"
 
-#: src/extensions/spectra/spectradialog.cpp:333
+#: src/extensions/spectra/spectradialog.cpp:314
 msgid "Light"
 msgstr "밝게"
 
-#: src/extensions/spectra/spectradialog.cpp:344
+#: src/extensions/spectra/spectradialog.cpp:325
 msgid "Publication"
 msgstr "출판"
 
-#: src/extensions/spectra/spectradialog.cpp:355
+#: src/extensions/spectra/spectradialog.cpp:336
 msgid "Handdrawn"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:381
+#: src/extensions/spectra/spectradialog.cpp:362
 msgid "New Scheme"
 msgstr "새 도표"
 
-#: src/extensions/spectra/spectradialog.cpp:389
+#: src/extensions/spectra/spectradialog.cpp:370
 msgid "Confirm Scheme Removal"
 msgstr "도표 제거 확인"
 
-#: src/extensions/spectra/spectradialog.cpp:389
+#: src/extensions/spectra/spectradialog.cpp:370
 msgid "Really remove current scheme?"
 msgstr "최근의 도표를 제거하시겠습니까?"
 
-#: src/extensions/spectra/spectradialog.cpp:399
+#: src/extensions/spectra/spectradialog.cpp:380
 msgid "Change Scheme Name"
 msgstr "도표 이름 변경"
 
-#: src/extensions/spectra/spectradialog.cpp:400
+#: src/extensions/spectra/spectradialog.cpp:381
 msgid "Enter new name for current scheme:"
 msgstr "최근의 도표에 대한 새로운 이름 입력:"
 
-#: src/extensions/spectra/spectradialog.cpp:413
+#: src/extensions/spectra/spectradialog.cpp:394
 msgid "Select Background Color"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:423
+#: src/extensions/spectra/spectradialog.cpp:404
 msgid "Select Foreground Color"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:433
+#: src/extensions/spectra/spectradialog.cpp:414
 msgid "Select Calculated Spectra Color"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:443
+#: src/extensions/spectra/spectradialog.cpp:424
 msgid "Select Imported Spectra Color"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:507
+#: src/extensions/spectra/spectradialog.cpp:488
 msgid "Export Calculated Spectrum"
 msgstr "계산된 스펙트럼 내보내기"
 
-#: src/extensions/spectra/spectradialog.cpp:507
+#: src/extensions/spectra/spectradialog.cpp:488
 msgid "Tab Separated Values (*.tsv)"
 msgstr "탭으로 분리된 값 (*.tsv)"
 
-#: src/extensions/spectra/spectradialog.cpp:531
+#: src/extensions/spectra/spectradialog.cpp:512
 msgid "Tab Separated Values"
 msgstr "탭으로 분리된 값"
 
-#: src/extensions/spectra/spectradialog.cpp:532
+#: src/extensions/spectra/spectradialog.cpp:513
 msgid "Comma Separated Values"
 msgstr "쉼표로 분리된 값"
 
-#: src/extensions/spectra/spectradialog.cpp:533
+#: src/extensions/spectra/spectradialog.cpp:514
 msgid "JCAMP-DX"
 msgstr "JCAMP-DX"
 
-#: src/extensions/spectra/spectradialog.cpp:534
-#: src/extensions/spectra/spectradialog.cpp:624
-#: src/extensions/spectra/spectradialog.cpp:926
+#: src/extensions/spectra/spectradialog.cpp:515
+#: src/extensions/spectra/spectradialog.cpp:602
+#: src/extensions/spectra/spectradialog.cpp:902
 msgid "All Files"
 msgstr "모든 파일"
 
-#: src/extensions/spectra/spectradialog.cpp:536
+#: src/extensions/spectra/spectradialog.cpp:517
 msgid "Import Spectra"
 msgstr "스펙트럼 가져오기"
 
-#: src/extensions/spectra/spectradialog.cpp:562
-#: src/extensions/spectra/spectradialog.cpp:758
-#: src/extensions/spectra/spectradialog.cpp:855
+#: src/extensions/spectra/spectradialog.cpp:543
+#: src/extensions/spectra/spectradialog.cpp:734
+#: src/extensions/spectra/spectradialog.cpp:831
 msgid "Spectra Import"
 msgstr "스펙트럼 가져오기"
 
-#: src/extensions/spectra/spectradialog.cpp:562
-#: src/extensions/spectra/spectradialog.cpp:947
+#: src/extensions/spectra/spectradialog.cpp:543
+#: src/extensions/spectra/spectradialog.cpp:923
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "알려지지 않은 확장자: %1"
 
-#: src/extensions/spectra/spectradialog.cpp:609
+#: src/extensions/spectra/spectradialog.cpp:590
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr "PWscf IR 데이터 (*.out)"
 
-#: src/extensions/spectra/spectradialog.cpp:610
+#: src/extensions/spectra/spectradialog.cpp:591
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
 msgstr "Turbomole IR 데이터 (control)"
 
-#: src/extensions/spectra/spectradialog.cpp:612
+#: src/extensions/spectra/spectradialog.cpp:592
 msgctxt "Do not remove 'UV' or '(spectrum)' -- needed for parsing later"
 msgid "Turbomole UV data (spectrum)"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:613
+#: src/extensions/spectra/spectradialog.cpp:593
 msgctxt "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later"
 msgid "Turbomole CD data (cdspectrum)"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:617
+#: src/extensions/spectra/spectradialog.cpp:595
 msgid "Data Format"
 msgstr "데이터 형식"
 
-#: src/extensions/spectra/spectradialog.cpp:617
+#: src/extensions/spectra/spectradialog.cpp:595
 msgctxt "noun, not verb"
 msgid "Format:"
 msgstr "형식:"
 
-#: src/extensions/spectra/spectradialog.cpp:626
+#: src/extensions/spectra/spectradialog.cpp:604
 msgid "Load Spectral Data"
 msgstr "스펙트럼 데이터 불러오기"
 
-#: src/extensions/spectra/spectradialog.cpp:758
-#: src/extensions/spectra/spectradialog.cpp:855
+#: src/extensions/spectra/spectradialog.cpp:734
+#: src/extensions/spectra/spectradialog.cpp:831
 #, qt-format
 msgid "Turbomole CD file is improperly formatted  : %1"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:919
+#: src/extensions/spectra/spectradialog.cpp:895
 msgid "Portable Network Graphics"
 msgstr "PNG"
 
-#: src/extensions/spectra/spectradialog.cpp:920
+#: src/extensions/spectra/spectradialog.cpp:896
 msgid "jpeg"
 msgstr "jpeg"
 
-#: src/extensions/spectra/spectradialog.cpp:921
+#: src/extensions/spectra/spectradialog.cpp:897
 msgid "Tagged Image File Format"
 msgstr "선택된 이미지 파일 형식"
 
-#: src/extensions/spectra/spectradialog.cpp:922
+#: src/extensions/spectra/spectradialog.cpp:898
 msgid "Windows Bitmap"
 msgstr "Windows 비트맵"
 
-#: src/extensions/spectra/spectradialog.cpp:923
+#: src/extensions/spectra/spectradialog.cpp:899
 msgid "Portable Pixmap"
 msgstr "휴대용 픽스맵(PPM)"
 
-#: src/extensions/spectra/spectradialog.cpp:924
+#: src/extensions/spectra/spectradialog.cpp:900
 msgid "X11 Bitmap"
 msgstr "X11 비트맵"
 
-#: src/extensions/spectra/spectradialog.cpp:925
+#: src/extensions/spectra/spectradialog.cpp:901
 msgid "X11 Pixmap"
 msgstr "X11 픽스맵"
 
-#: src/extensions/spectra/spectradialog.cpp:929
+#: src/extensions/spectra/spectradialog.cpp:905
 msgid "Save Spectra Image"
 msgstr "스펙트럼 이미지 저장"
 
-#: src/extensions/spectra/spectradialog.cpp:947
+#: src/extensions/spectra/spectradialog.cpp:923
 msgid "Invalid Filename"
 msgstr "잘못된 파일명"
 
-#: src/extensions/spectra/spectradialog.cpp:980
+#: src/extensions/spectra/spectradialog.cpp:956
 msgid "Error"
 msgstr "오류"
 
-#: src/extensions/spectra/spectradialog.cpp:980
+#: src/extensions/spectra/spectradialog.cpp:956
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr "%1 파일을 기록하는 도중에 문제가 발생했습니다"
 
-#: src/extensions/spectra/spectradialog.cpp:982
+#: src/extensions/spectra/spectradialog.cpp:958
 msgid "Success!"
 msgstr "성공!"
 
-#: src/extensions/spectra/spectradialog.cpp:982
+#: src/extensions/spectra/spectradialog.cpp:958
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr "%1 로 이미지가 성공적으로 쓰여졌습니다"
 
-#: src/extensions/spectra/spectradialog.cpp:1008
+#: src/extensions/spectra/spectradialog.cpp:984
 msgid "&Advanced <<"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1022 :3244
+#: src/extensions/spectra/spectradialog.cpp:998:3384
 msgid "&Advanced >>"
 msgstr ""
 
@@ -2811,7 +2988,7 @@ msgstr "스펙트럼"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "양자화학 계산 결과로부터 스펙트럼을 보여줌"
 
-#: src/extensions/spectra/uv.cpp:93
+#: src/extensions/spectra/uv.cpp:91
 msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
@@ -2821,7 +2998,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202 :2429
+#: src/extensions/spectra/vibrationextension.cpp:202:2569
 msgid "Vibrational Analysis"
 msgstr "진동 계산"
 
@@ -2837,32 +3014,32 @@ msgstr "진동"
 msgid "Visualize vibrational modes from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectra/vibrationwidget.cpp:147
+#: src/extensions/spectra/vibrationwidget.cpp:141
 #, qt-format
 msgid "Sorting %1 vibrations by frequency..."
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
-#: src/extensions/spectra/vibrationwidget.cpp:289
-#: src/extensions/spectra/vibrationwidget.cpp:299 :3523
+#: src/extensions/spectra/vibrationwidget.cpp:280
+#: src/extensions/spectra/vibrationwidget.cpp:290:3663
 msgid "Start &Animation"
 msgstr "애니메이션 시작(&A)"
 
-#: src/extensions/spectra/vibrationwidget.cpp:290
+#: src/extensions/spectra/vibrationwidget.cpp:281
 msgid "Stop &Animation"
 msgstr "애니메이션 중지(&A)"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:182
 #. i18n: ectx: property (text), widget (QPushButton, pauseButton)
+#: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:310
-#: src/extensions/spectra/vibrationwidget.cpp:313 :3526
+#: src/extensions/spectra/vibrationwidget.cpp:304:3666
 msgid "Pause"
 msgstr ""
 
-#: src/extensions/spectra/vibrationwidget.cpp:311
+#: src/extensions/spectra/vibrationwidget.cpp:302
 msgid "Continue"
 msgstr ""
 
@@ -2897,14 +3074,14 @@ msgstr ""
 msgid "Orbitals"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:152
-#: src/extensions/surfaces/orbitaltablemodel.cpp:89
+#: src/extensions/surfaces/orbitalextension.cpp:164
+#: src/extensions/surfaces/orbitaltablemodel.cpp:122
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:153
-#: src/extensions/surfaces/orbitaltablemodel.cpp:98
+#: src/extensions/surfaces/orbitalextension.cpp:165
+#: src/extensions/surfaces/orbitaltablemodel.cpp:131
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
 msgstr ""
@@ -2913,17 +3090,21 @@ msgstr ""
 msgid "Calculate and visualize molecular orbitals"
 msgstr ""
 
-#: src/extensions/surfaces/orbitaltablemodel.cpp:72
+#: src/extensions/surfaces/orbitaltablemodel.cpp:103
 msgid "Orbital"
 msgstr ""
 
-#: src/extensions/surfaces/orbitaltablemodel.cpp:76
+#: src/extensions/surfaces/orbitaltablemodel.cpp:107
 msgid "Status"
+msgstr ""
+
+#: src/extensions/surfaces/orbitaltablemodel.cpp:109
+msgid "Symmetry"
 msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:76
 #: src/extensions/surfaces/surfacedialog.cpp:77
-#: src/extensions/surfaces/surfaceextension.cpp:520
+#: src/extensions/surfaces/surfaceextension.cpp:521
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2999,7 +3180,7 @@ msgstr "전자 밀도 계산하기"
 msgid "VdW"
 msgstr ""
 
-#: src/extensions/surfaces/surfaceextension.cpp:487
+#: src/extensions/surfaces/surfaceextension.cpp:488
 msgid "Electron Density"
 msgstr "전자 밀도"
 
@@ -3007,35 +3188,35 @@ msgstr "전자 밀도"
 msgid "Calculate molecular orbitals and other surfaces"
 msgstr "분자 오비탈과 다른 표면 계산"
 
-#: src/extensions/trajvideomaker.cpp:48
+#: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:56
+#: src/extensions/trajvideomaker.cpp:60
 msgid "GL widget has no molecule"
 msgstr "GL 위젯은 분자를 가지고 있지 않음"
 
-#: src/extensions/trajvideomaker.cpp:62
+#: src/extensions/trajvideomaker.cpp:66
 msgid "Building video "
 msgstr "비디오 만들기 "
 
-#: src/extensions/trajvideomaker.cpp:84
+#: src/extensions/trajvideomaker.cpp:88
 msgid "Could not run povray."
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:112
+#: src/extensions/trajvideomaker.cpp:116
 msgid "Video file not written."
 msgstr "비디오 파일이 작성되지 않았습니다."
 
-#: src/extensions/trajvideomaker.cpp:152
+#: src/extensions/trajvideomaker.cpp:156
 msgid "Could not run mencoder."
 msgstr "멘코더를 실행할 수 없음"
 
-#: src/extensions/trajvideomaker.cpp:163
+#: src/extensions/trajvideomaker.cpp:167
 msgid "Set Aspect Ratio"
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:164
+#: src/extensions/trajvideomaker.cpp:168
 #, qt-format
 msgid ""
 "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
@@ -3077,13 +3258,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100 :459
+#: src/extensions/unitcellparamdialog.cpp:100:405
 msgid "Apply"
 msgstr "적용"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98 :601
+#: src/extensions/unitcellparamdialog.cpp:98:547
 msgid "OK"
 msgstr "OK"
 
@@ -3107,46 +3288,46 @@ msgstr ""
 msgid "Track motion using Wii remotes"
 msgstr ""
 
-#: src/glwidget.cpp:472
+#: src/glwidget.cpp:471
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
 "OpenGL application?), or you found a bug."
 msgstr ""
 
-#: src/glwidget.cpp:477
+#: src/glwidget.cpp:476
 msgid "OpenGL error"
 msgstr "OpenGL 오류"
 
-#: src/glwidget.cpp:1051
+#: src/glwidget.cpp:1670
 msgid "Debug Information"
 msgstr "디버그 정보"
 
-#: src/glwidget.cpp:1055
+#: src/glwidget.cpp:1674
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1059
+#: src/glwidget.cpp:1678
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr ""
 
-#: src/glwidget.cpp:1064
+#: src/glwidget.cpp:1683
 msgid "No molecule set"
 msgstr "설정된 분자 없음"
 
-#: src/glwidget.cpp:1069
+#: src/glwidget.cpp:1688
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "원자: %L1"
 
-#: src/glwidget.cpp:1073
+#: src/glwidget.cpp:1692
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "결합: %L1"
 
-#: src/molecule.cpp:122
+#: src/molecule.cpp:118
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "제목없음"
@@ -3335,9 +3516,7 @@ msgid ""
 "Right Mouse: \tReset alignment."
 msgstr ""
 
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:29
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/tools/aligntool.cpp:257 :27
+#: src/tools/aligntool.cpp:257
 msgid "Axis:"
 msgstr "축:"
 
@@ -3349,7 +3528,7 @@ msgstr "정렬:"
 msgid "Everything"
 msgstr "전체"
 
-#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:470
+#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:533
 msgid "Molecule"
 msgstr "분자"
 
@@ -3365,7 +3544,7 @@ msgstr "Cartesian 축에 맞추어 분자 정렬"
 msgid "Align Settings"
 msgstr "정렬 설정"
 
-#: src/tools/autoopttool.cpp:58
+#: src/tools/autoopttool.cpp:59
 msgid ""
 "Auto Optimization Tool\n"
 "\n"
@@ -3378,74 +3557,74 @@ msgid ""
 "Left Mouse: Click and drag atoms to move them"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:227
+#: src/tools/autoopttool.cpp:231
 msgid "AutoOpt: Could not setup force field...."
 msgstr "자동설정: 힘영역을 설정할 수 없습니다...."
 
-#: src/tools/autoopttool.cpp:235
+#: src/tools/autoopttool.cpp:239
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "자동설정: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:239
+#: src/tools/autoopttool.cpp:243
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:264
+#: src/tools/autoopttool.cpp:268
 msgid "Force Field:"
 msgstr "역장:"
 
-#: src/tools/autoopttool.cpp:279
+#: src/tools/autoopttool.cpp:283
 msgid "Steps per Update:"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:290
+#: src/tools/autoopttool.cpp:294
 msgid "Algorithm:"
 msgstr "알고리즘:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:293 :733
+#: src/tools/autoopttool.cpp:297:720
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:294 :736
+#: src/tools/autoopttool.cpp:298:723
 msgid "Conjugate Gradients"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:295
+#: src/tools/autoopttool.cpp:299
 msgid "Molecular Dynamics (300K)"
 msgstr "분자동역학 (300K)"
 
-#: src/tools/autoopttool.cpp:296
+#: src/tools/autoopttool.cpp:300
 msgid "Molecular Dynamics (600K)"
 msgstr "분자동역학 (600K)"
 
-#: src/tools/autoopttool.cpp:297
+#: src/tools/autoopttool.cpp:301
 msgid "Molecular Dynamics (900K)"
 msgstr "분자동역학 (900K)"
 
-#: src/tools/autoopttool.cpp:299 src/tools/autoopttool.cpp:385
+#: src/tools/autoopttool.cpp:303 src/tools/autoopttool.cpp:389
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "시작"
 
-#: src/tools/autoopttool.cpp:301
+#: src/tools/autoopttool.cpp:305
 msgid "Fixed atoms are movable"
 msgstr "고정된 원자를 움직일 수 있습니다"
 
-#: src/tools/autoopttool.cpp:303
+#: src/tools/autoopttool.cpp:307
 msgid "Ignored atoms are movable"
 msgstr "무시된 원자를 움직일 수 있습니다"
 
-#: src/tools/autoopttool.cpp:358 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:362 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "중지"
 
-#: src/tools/autoopttool.cpp:566
+#: src/tools/autoopttool.cpp:570
 msgid "AutoOpt Molecule"
 msgstr "분자 자동설정"
 
@@ -3489,6 +3668,8 @@ msgstr "z 회전:"
 msgid "z rotation"
 msgstr "z 회전"
 
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:790
+#. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1580
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:489
@@ -3503,7 +3684,7 @@ msgstr "z 회전"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296 :1595 rc.cpp:2646 rc.cpp:2757
+#: src/tools/autorotatetool.cpp:296:1176 rc.cpp:1735 rc.cpp:2786
 msgid "Reset"
 msgstr "초기화"
 
@@ -3628,9 +3809,7 @@ msgstr "*4"
 msgid "Distance(s):"
 msgstr "거리:"
 
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:189
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/tools/clickmeasuretool.cpp:291 :45
+#: src/tools/clickmeasuretool.cpp:291
 msgid "Angle:"
 msgstr "각:"
 
@@ -3652,7 +3831,7 @@ msgstr "측정 설정"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3735
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3875
 msgid "Add Atom"
 msgstr "원자 추가"
 
@@ -3672,7 +3851,7 @@ msgstr "결합 제거"
 msgid "Change Element"
 msgstr "원소 바꾸기"
 
-#: src/tools/drawcommand.cpp:948 src/tools/drawtool.cpp:497
+#: src/tools/drawcommand.cpp:950 src/tools/drawtool.cpp:497
 msgid "Change Bond Order"
 msgstr "결합 차수 변경"
 
@@ -3702,7 +3881,7 @@ msgstr "원소:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:811 :2060
+#: src/tools/drawtool.cpp:811:2200
 msgid "Other..."
 msgstr "기타..."
 
@@ -3780,7 +3959,7 @@ msgstr ""
 msgid "Navigate Settings"
 msgstr "내비게이션 설정"
 
-#: src/tools/selectrotatetool.cpp:62
+#: src/tools/selectrotatetool.cpp:63
 msgid ""
 "Selection Tool (F11)\n"
 "Click to pick individual atoms, residues, or fragments\n"
@@ -3789,53 +3968,63 @@ msgid ""
 "Use Ctrl to toggle the selection and shift to add to the selection"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:463
+#: src/tools/selectrotatetool.cpp:526
 msgid "Selection Mode:"
 msgstr "선택 모드:"
 
-#: src/tools/selectrotatetool.cpp:468
+#: src/tools/selectrotatetool.cpp:531
 msgid "Atom/Bond"
 msgstr "원자/결합"
 
-#: src/tools/selectrotatetool.cpp:469
+#: src/tools/selectrotatetool.cpp:532
 msgid "Residue"
 msgstr "잔류물"
 
-#: src/tools/selectrotatetool.cpp:519
+#: src/tools/selectrotatetool.cpp:535
+#, fuzzy
+msgid "Add Center of Atoms"
+msgstr "원자의 수:"
+
+#: src/tools/selectrotatetool.cpp:536
+#, fuzzy
+msgid "Add Center of Mass"
+msgstr "제약조건 추가"
+
+#: src/tools/selectrotatetool.cpp:591
 msgid "Change color of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:543
+#: src/tools/selectrotatetool.cpp:615
 msgid "Change label of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:544 src/tools/selectrotatetool.cpp:553
+#: src/tools/selectrotatetool.cpp:616 src/tools/selectrotatetool.cpp:625
 msgid "New Label:"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:552
+#: src/tools/selectrotatetool.cpp:624
 msgid "Change label of the bond"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:584
+#: src/tools/selectrotatetool.cpp:656
 msgid "Change radius of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:585
+#: src/tools/selectrotatetool.cpp:657
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
 msgstr ""
 
-#: src/tools/selectrotatetool.h:52
+#: src/tools/selectrotatetool.h:53
 msgid "Selection"
 msgstr "선택"
 
-#: src/tools/selectrotatetool.h:53
+#: src/tools/selectrotatetool.h:54
 msgid "Select atoms, residues, and molecules"
 msgstr "원자, 잔류물, 분자 선택"
 
-#: src/tools/selectrotatetool.h:54
+#: src/tools/selectrotatetool.h:55
 msgid "Selection Settings"
 msgstr "선택 설정"
 
@@ -3861,7 +4050,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39 :2147
+#: src/tools/zmatrixtool.h:39:2287
 msgid "Z-Matrix"
 msgstr ""
 
@@ -3872,85 +4061,6 @@ msgstr "z-matrix 만들기/편집"
 #: src/tools/zmatrixtool.h:41
 msgid "Z-Matrix Settings"
 msgstr "Z-Matrix 설정"
-
-#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:14
-#. i18n: ectx: property (windowTitle), widget (QDialog, HelloWorldDialog)
-msgid "Hello World Extension"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:22
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Hello World!"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:47
-#. i18n: ectx: property (text), widget (QPushButton, push_hide)
-#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:45
-#. i18n: ectx: property (text), widget (QPushButton, push_hide)
-msgid "Hide"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:14
-#. i18n: ectx: property (windowTitle), widget (QDialog, DynamicDisplayDialog)
-msgid "Dynamic Display Extension"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:20
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Number of hydrogen atoms:"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:54
-#. i18n: ectx: property (text), widget (QLabel, label_numHydrogens)
-#. i18n: file: src/extensions/spectra/tab_dos.ui:67
-#. i18n: ectx: property (text), widget (QLabel, label_fermi)
-msgid "TextLabel"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:14
-#. i18n: ectx: property (windowTitle), widget (QDialog, RotateSelectionDialog)
-msgid "Rotate Selection Extension"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:44
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "x:"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:57
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "y:"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:70
-#. i18n: ectx: property (text), widget (QLabel, label_5)
-msgid "z:"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:155
-#. i18n: ectx: property (text), widget (QLabel, label_6)
-msgid "Vector (Å)"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:165
-#. i18n: ectx: property (text), widget (QLabel, label_7)
-msgid "Offset (Å)"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:225
-#. i18n: ectx: property (text), widget (QPushButton, push_apply)
-msgid "&Apply to selected atoms"
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:245
-#. i18n: ectx: property (text), widget (QPushButton, push_useBond)
-msgid "Use selected &bond..."
-msgstr ""
-
-#. i18n: file: examples/thirdPartyExtensions/05-ConformerPlot/conformerplotdialog.ui:14
-#. i18n: ectx: property (windowTitle), widget (QDialog, ConformerPlotDialog)
-msgid "Conformer Plot Extension"
-msgstr ""
 
 #. i18n: file: src/colors/residuecolorsettings.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, ResidueColorSettings)
@@ -4522,6 +4632,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:181
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
 msgid "Fractional"
 msgstr ""
 
@@ -4610,10 +4722,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
-"type=\"text/css\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -4772,39 +4884,36 @@ msgstr ""
 msgid "Atomic &identites:"
 msgstr ""
 
-#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:48
+#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:52
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
-"type=\"text/css\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"</style></head><body style=\" font-family:'Monospace'; font-size:13pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Na 0.00000 0.00000 "
-"0.00000</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"size:12pt;\">Na 0.00000 0.00000 0.00000</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Cl 0.50000 0.50000 "
-"0.50000</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
-"indent:0px;\"></p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"size:12pt;\">Cl 0.50000 0.50000 0.50000</span></p></body></html>"
 msgstr ""
 
-#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:70
+#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:74
 #. i18n: ectx: property (text), widget (QPushButton, push_coords_apply)
-#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:79
+#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_matrix_apply)
 #. i18n: file: src/extensions/crystallography/ui/ceparametereditor.ui:321
 #. i18n: ectx: property (text), widget (QPushButton, push_params_apply)
 msgid "&Apply"
 msgstr ""
 
-#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:77
+#. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, push_coords_reset)
-#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:86
+#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:91
 #. i18n: ectx: property (text), widget (QPushButton, push_matrix_reset)
 #. i18n: file: src/extensions/crystallography/ui/ceparametereditor.ui:328
 #. i18n: ectx: property (text), widget (QPushButton, push_params_reset)
@@ -4813,34 +4922,35 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CEMatrixEditor)
-msgid "Cell &Matrix"
+msgid "Cell Matrix"
 msgstr ""
 
-#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:57
+#. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:62
 #. i18n: ectx: property (html), widget (QTextEdit, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
-"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
-"type=\"text/css\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"</style></head><body style=\" font-family:'Monospace'; font-size:13pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">3.00000 0.00000 "
-"0.00000</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"size:12pt;\">3.00000 0.00000 0.00000</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">0.00000 3.00000 "
-"0.00000</p>\n"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"size:12pt;\">0.00000 3.00000 0.00000</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">0.00000 0.00000 "
-"3.00000</p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"size:12pt;\">0.00000 0.00000 3.00000</span></p></body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/ceparametereditor.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CEParameterEditor)
-msgid "Cell &Parameters"
-msgstr ""
+#, fuzzy
+msgid "Cell Parameters"
+msgstr "단위 세포 매개 변수"
 
 #. i18n: file: src/extensions/crystallography/ui/ceparametereditor.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4894,6 +5004,80 @@ msgstr "C:"
 #. i18n: file: src/extensions/crystallography/ui/ceparametereditor.ui:265
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "γ:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:27
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "&Translate "
+msgstr "서식(&T)"
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:44
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_translateMode)
+msgid "by arbitrary vector"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:49
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_translateMode)
+msgid "selected atom to origin"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:57
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+msgid "Translation vector:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:69
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "&X:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:98
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "&Y:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:127
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "&Z:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:159
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&Vector units:"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:176
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_units)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:387
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:419
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:356
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:273
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:352
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:366
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+msgid "Cartesian"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:189
+#. i18n: ectx: property (text), widget (QPushButton, push_go)
+#, fuzzy
+msgid "&Translate"
+msgstr "서식(&T)"
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:202
+#. i18n: ectx: property (text), widget (QCheckBox, cb_wrap)
+msgid "&Keep atoms in unit cell"
+msgstr ""
+
+#. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:212
+#. i18n: ectx: property (text), widget (QLabel, label_error)
+msgid "I'm an error message!"
 msgstr ""
 
 #. i18n: file: src/extensions/fileimportdialog.ui:20
@@ -5406,6 +5590,8 @@ msgstr "렌더링"
 
 #. i18n: file: src/extensions/povraydialog.ui:118
 #. i18n: ectx: property (text), widget (QPushButton, close)
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:847
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1633
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3015
@@ -5482,16 +5668,13 @@ msgstr ""
 msgid "Path:"
 msgstr ""
 
-#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:32
-#. i18n: ectx: property (windowTitle), widget (QDialog, DaltonInputDialog)
-msgid "Dalton Input"
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, AbinitInputDialog)
+msgid "Abinit Input"
 msgstr ""
 
-#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:69
-#. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
-msgid "Basics"
-msgstr ""
-
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:29
+#. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:81
 #. i18n: ectx: property (text), widget (QLabel, title)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1614
@@ -5512,6 +5695,286 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Title:"
 msgstr "제목:"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:48
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:97
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Processors:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:85
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#, fuzzy
+msgid "k-points:"
+msgstr "점"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:148
+#. i18n: ectx: property (text), widget (QLineEdit, ecutLineEdit)
+msgid "10.0"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:170
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#, fuzzy
+msgid "Coordinate Format:"
+msgstr "데이터 형식"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:189
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#, fuzzy
+msgid "Cartesian (Angstrom)"
+msgstr "Cartesian 편집기..."
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:194
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+msgid "Reduced"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:217
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Plane Wave cutoff (Ha):"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:232
+#. i18n: ectx: property (text), widget (QLineEdit, tolmxfLineEdit)
+msgid "5.e-5"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:254
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+msgid "Tolerance on forces(Ha/bohr):"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:264
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "Max lattice expansion:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:273
+#. i18n: ectx: property (text), widget (QLineEdit, dilatmxLineEdit)
+msgid "1.05"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:295
+#. i18n: ectx: property (text), widget (QLabel, label_12)
+msgid "k-point shift:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:309
+#. i18n: ectx: property (text), widget (QLineEdit, shiftk2LineEdit)
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:319
+#. i18n: ectx: property (text), widget (QLineEdit, shiftk3LineEdit)
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:329
+#. i18n: ectx: property (text), widget (QLineEdit, shiftk1LineEdit)
+#, fuzzy
+msgid "0.0"
+msgstr "0/0"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:356
+#. i18n: ectx: property (text), widget (QLabel, label_24)
+#, fuzzy
+msgid "Number of bands:"
+msgstr "결합의 수:"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:393
+#. i18n: ectx: property (text), widget (QLabel, label_18)
+msgid "# k-point shifts:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:433
+#. i18n: ectx: property (text), widget (QLabel, label_19)
+msgid "Double grid PW cutoff (Ha):"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:442
+#. i18n: ectx: property (text), widget (QLineEdit, pawecutdgLineEdit)
+msgid "20.0"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:464
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Occupation scheme:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:474
+#. i18n: ectx: property (text), widget (QLabel, label_16)
+#, fuzzy
+msgid "SCF tolerance type:"
+msgstr "표면 형식:"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:493
+#. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
+#, fuzzy
+msgid "Total Energy"
+msgstr "에너지"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:498
+#. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
+msgid "Wave Function norm"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:503
+#. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
+#, fuzzy
+msgid "Total Potential"
+msgstr "정전기 전위"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:508
+#. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
+#, fuzzy
+msgid "Maximum Force"
+msgstr "최대:"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:513
+#. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
+msgid "Relative Force"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:542
+#. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
+msgid "1 - semiconducting"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:547
+#. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
+msgid "3 - Fermi Dirac"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:552
+#. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
+msgid "4 - Cold Smearing (Marzari)"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:557
+#. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
+#, fuzzy
+msgid "7 - Gaussian smearing"
+msgstr "가우스 실행중"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:580
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+msgid "Smearing width (Ha):"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:592
+#. i18n: ectx: property (text), widget (QLineEdit, tsmearLineEdit)
+msgid "0.01"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:614
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "Geometry Optimization:"
+msgstr "구조 최적화"
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:630
+#. i18n: ectx: property (text), item, widget (QComboBox, ionmovCombo)
+msgid "0 - no moving ions "
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:635
+#. i18n: ectx: property (text), item, widget (QComboBox, ionmovCombo)
+msgid "1 - viscous damping"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:640
+#. i18n: ectx: property (text), item, widget (QComboBox, ionmovCombo)
+msgid "2 - BFGS "
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:645
+#. i18n: ectx: property (text), item, widget (QComboBox, ionmovCombo)
+msgid "3 - BFGS with energy"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:668
+#. i18n: ectx: property (text), widget (QLabel, label_23)
+msgid "# Geometrical time steps:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:705
+#. i18n: ectx: property (text), widget (QLabel, label_17)
+msgid "SCF tolerance:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:717
+#. i18n: ectx: property (text), widget (QLineEdit, tolXXXLineEdit)
+msgid "1.e-10"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:739
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+msgid "Kinetic Energy smoothing (Ha):"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:748
+#. i18n: ectx: property (text), widget (QLineEdit, ecutsmLineEdit)
+msgid "0.5"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:800
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:499
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:512
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:490
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:361
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:444
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:459
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+msgid "Use Form"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:833
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3001
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:532
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:381
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:479
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
+msgid "Compute..."
+msgstr "계산..."
+
+#. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:840
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1626
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3008
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:519
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:539
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:510
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:388
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:464
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:486
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+msgid "Generate..."
+msgstr "산출..."
+
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:32
+#. i18n: ectx: property (windowTitle), widget (QDialog, DaltonInputDialog)
+msgid "Dalton Input"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:69
+#. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
+msgid "Basics"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:98
 #. i18n: ectx: property (toolTip), widget (QLineEdit, titleLine)
@@ -6502,42 +6965,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, excitations)
 msgid "No. excitations:"
 msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:499
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:512
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:490
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:361
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:444
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:459
-#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-msgid "Use Form"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1626
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3008
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:519
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:539
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:510
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:388
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:464
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:486
-#. i18n: ectx: property (text), widget (QPushButton, generateButton)
-msgid "Generate..."
-msgstr "산출..."
 
 #. i18n: file: src/extensions/quantuminput/gamessefpmatchdialog.ui:16
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessEfpMatchDialog)
@@ -7971,17 +8398,6 @@ msgstr "모두 초기화"
 msgid "Defaults"
 msgstr "기본값"
 
-#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3001
-#. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:532
-#. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:381
-#. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:479
-#. i18n: ectx: property (text), widget (QPushButton, computeButton)
-msgid "Compute..."
-msgstr "계산..."
-
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, GAMESSUKInputDialog)
 msgid "GAMESS-UK Input"
@@ -8058,21 +8474,6 @@ msgstr ""
 msgid "Format:"
 msgstr "형식:"
 
-#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:387
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:419
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:356
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:273
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:352
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:366
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-msgid "Cartesian"
-msgstr ""
-
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:392
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:424
@@ -8105,11 +8506,6 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
 msgid "Gaussian Input"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:97
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "Processors:"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:175
@@ -8543,6 +8939,11 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Fermi Energy: "
+msgstr ""
+
+#. i18n: file: src/extensions/spectra/tab_dos.ui:67
+#. i18n: ectx: property (text), widget (QLabel, label_fermi)
+msgid "TextLabel"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
@@ -9013,34 +9414,31 @@ msgstr "원자 제거하기"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim "
-"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-"
-"hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, "
-",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie"
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
+"Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon "
+"Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, ,"
+"Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie, ,Launchpad "
+"Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avo"
-"gadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avo"
-"gadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avo"
-"gadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avo"
-"gadro-"
-"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avo"
-"gadro-devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com"
+",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists.sourceforge."
+"net,lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avogadro-devel@lists."
+"sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com,,,"
+"avogadro-devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail."
+"com,,,avogadro-devel@lists.sourceforge.net,lordmiss@lordmiss.com,,"
+"loniedavid@gmail.com,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,,loniedavid@gmail.com"
 
 #~ msgid "Ununbium"
 #~ msgstr "운운븀"
@@ -9093,20 +9491,18 @@ msgstr ""
 #~ msgid "Save Movie File"
 #~ msgstr "동영상 파일 저장"
 
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "%1 mol 파일 열기에 실패함"
 
-#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "%1 %2 두 원자가 서로 다른 번호를 가지고 있습니다"
 
-#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "%1 파일을 저장할 수 없습니다"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
+#~ msgstr ""
+#~ "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #~ msgid "Save Traj File"
 #~ msgstr "궤도 파일 저장"
@@ -9114,7 +9510,6 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "애니메이션을 위한 선형 보간법을 생성"
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "%1 파일로 작성됨"
 
@@ -9127,14 +9522,15 @@ msgstr ""
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL 위젯이 동영상을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
-#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "%1 파일로 작성할 것입니다."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
-#~ msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나야 합니다"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나"
+#~ "야 합니다"
 
 #~ msgid "Save Molpro Input Deck"
 #~ msgstr "Molpro 입력 데크 저장"
@@ -9157,24 +9553,14 @@ msgstr ""
 #~ msgid "Save NWChem Input Deck"
 #~ msgstr "NWChem 입력 데크 저장"
 
-#~ msgid "Cartesian Properties"
-#~ msgstr "Cartesian 정보"
-
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "%1 결합"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "비틀림 %1"
 
-#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "원자 색인 %1"
-
-#, qt-format
-#~ msgid "Angle %1"
-#~ msgstr "각 %1"
 
 #~ msgid "Save QChem Input Deck"
 #~ msgstr "QChem 입력 데크 저장"
@@ -9192,7 +9578,8 @@ msgstr ""
 #~ msgstr "내보내기(&E)..."
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking place?"
+#~ "Should the navigate tool display visual cues about the action taking "
+#~ "place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
@@ -9234,9 +9621,6 @@ msgstr ""
 
 #~ msgid "&Vibrations..."
 #~ msgstr "진동(&V)..."
-
-#~ msgid "&Template"
-#~ msgstr "서식(&T)"
 
 #~ msgid "Custom Value"
 #~ msgstr "사용자 정의 값"

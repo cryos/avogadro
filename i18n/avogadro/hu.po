@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 13:54+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,27 +31,27 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -78,35 +79,13 @@ msgstr "Atomok törlése"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Beállítások"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Fájl megnyitása"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -128,7 +107,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "Na&gyítás"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Mindent felülre"
 
@@ -158,15 +137,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Gyakori molekulák"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Minden fájl"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -202,51 +181,51 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "NWChem Kimenet"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "névtelen"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "%1 betöltése..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "%1 betöltése..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Hiba a molekula fájlának olvasása közben: %1"
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Többmolekulás fájl olvasása. Ez eltarthat egy darabig."
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "Ez a fájl nem tartalmaz 3D koordinátákat."
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Kívánja hogy az Avogadro felépítsen egy nyers geometriát?"
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -254,200 +233,199 @@ msgstr ""
 "Ez a fájl nem tartalmaz 3D koorditátákat.\n"
 "Lehet hogy nem tudja majd tökéletesen megnézni vagy módosítani."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr "Válasszon ki egy molekulát amit megnéz"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Molekula címe"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Atomok: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Kötések: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Fájl betöltve..."
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
-"El szeretné menteni a változtatásokat, amiket a dokumentumon végzett?"
+msgstr "El szeretné menteni a változtatásokat, amiket a dokumentumon végzett?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "A módosításai elvesznek, ha nem menti azokat."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Mentés..."
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Mentés"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "GAMESS Bemenet"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Cartesian bemenet"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-mátrix Bemenet"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "MDL SDfájl"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "NWChem Bemenet"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Molekula Mentése Másként"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "Gyakori képformátumok"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "Exportálás Bitmap Képbe"
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Nem lehet menteni a fájlt: %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Névtelen %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "A molekula beszúrása nem lehetséges"
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Beszúrás nem sikerült. (A formátum nem támogatott)"
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Sikertelen másolás (mdl nem támogatott)"
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "Nézet %1"
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Nézet sorszáma %1"
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: leválasztott nézet"
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Normál méret"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "Teljes képernyő"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Megkettőzés"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr "Nincsenek segédeszközök vagy motorok betöltve."
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr "Nincsenek motorok betöltve"
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr "Nincsenek segédeszközök betöltve."
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Ez az alkalmazás valószínűleg nem fog helyesen működni. Javítsa ezt a hibát."
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Objektumok"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Színek"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " Másolás"
 
@@ -520,7 +498,7 @@ msgstr "Csak a feliratoknak lehetnek al-tételeik"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Tétel"
 
@@ -535,7 +513,7 @@ msgstr "Alacsony"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Közepes"
@@ -552,7 +530,7 @@ msgstr "Nincs megadva"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nincs"
@@ -1216,31 +1194,27 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Andras Bibok, ,Launchpad Contributions:,Andras "
-"Bibok,Csörföly Dániel,Roth Róbert, ,Launchpad Contributions:,Andras "
-"Bibok,Avogadro Team,Csörföly Dániel,Roth Róbert, ,Launchpad "
-"Contributions:,Andras Bibok,Avogadro Team,Csörföly Dániel,Roth Róbert, "
-",Launchpad Contributions:,Andras Bibok,Avogadro Team,Csörföly Dániel,Robert "
-"Roth, ,Launchpad Contributions:,Andras Bibok,Avogadro Team,Csörföly "
-"Dániel,Robert Roth, ,Launchpad Contributions:,Andras Bibok,Avogadro "
-"Team,Csörföly Dániel,Robert Roth, ,Launchpad Contributions:,Andras "
-"Bibok,Avogadro Team,Csörföly Dániel,Robert Roth"
+"Bibok,Csörföly Dániel,Roth Róbert, ,Launchpad Contributions:,Andras Bibok,"
+"Avogadro Team,Csörföly Dániel,Roth Róbert, ,Launchpad Contributions:,Andras "
+"Bibok,Avogadro Team,Csörföly Dániel,Roth Róbert, ,Launchpad Contributions:,"
+"Andras Bibok,Avogadro Team,Csörföly Dániel,Robert Roth, ,Launchpad "
+"Contributions:,Andras Bibok,Avogadro Team,Csörföly Dániel,Robert Roth, ,"
+"Launchpad Contributions:,Andras Bibok,Avogadro Team,Csörföly Dániel,Robert "
+"Roth, ,Launchpad Contributions:,Andras Bibok,Avogadro Team,Csörföly Dániel,"
+"Robert Roth"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,biboka@t-online.hu,,,biboka@t-"
-"online.hu,csorfolydaniel@gmail.com,,,,biboka@t-online.hu,avogadro-"
-"devel@lists.sourceforge.net,csorfolydaniel@gmail.com,,,,biboka@t-"
-"online.hu,avogadro-"
-"devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-"
-"online.hu,avogadro-"
-"devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-"
-"online.hu,avogadro-"
-"devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-"
-"online.hu,avogadro-"
-"devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-"
-"online.hu,avogadro-"
-"devel@lists.sourceforge.net,szelmalomharc@gmail.com,evfool@gmail.com"
+",,biboka@t-online.hu,,,biboka@t-online.hu,csorfolydaniel@gmail.com,,,,"
+"biboka@t-online.hu,avogadro-devel@lists.sourceforge.net,csorfolydaniel@gmail."
+"com,,,,biboka@t-online.hu,avogadro-devel@lists.sourceforge.net,"
+"szelmalomharc@gmail.com,,,,biboka@t-online.hu,avogadro-devel@lists."
+"sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-online.hu,avogadro-"
+"devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-online.hu,"
+"avogadro-devel@lists.sourceforge.net,szelmalomharc@gmail.com,,,,biboka@t-"
+"online.hu,avogadro-devel@lists.sourceforge.net,szelmalomharc@gmail.com,"
+"evfool@gmail.com"
 
 #~ msgid "EPS"
 #~ msgstr "EPS"
@@ -1454,23 +1428,20 @@ msgstr ""
 #~ msgid "Axes"
 #~ msgstr "Tengelyek"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-#~ "information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
-#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
-#~ "PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Alkalmazás verzió: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Verzió: %4<br/><br/>Qt Version: %5<br/><br/>További "
-#~ "információért látogass az <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "honlapjára</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF "
-#~ "ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR "
-#~ "A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Verzió: %4<br/><br/>Qt Version: %5<br/><br/"
+#~ ">További információért látogass az <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro honlapjára</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Antialiasing."
@@ -1504,7 +1475,6 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Teszt az OpenGL képességeihez."
 
-#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -1565,15 +1535,12 @@ msgstr ""
 #~ msgid "*2"
 #~ msgstr "*2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Távolság (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Távolság (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Távolság (1->2): %1 %2"
 
@@ -1595,11 +1562,9 @@ msgstr ""
 #~ msgid "Add constraint"
 #~ msgstr "Megszorítások hozzáadása"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Az elforduló kötések száma: %1"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Atomok száma: %1"
 
@@ -1816,7 +1781,6 @@ msgstr ""
 #~ msgid "&Molecular Mechanics"
 #~ msgstr "&molekulamechanika"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1829,11 +1793,9 @@ msgstr ""
 #~ msgid "Axis:"
 #~ msgstr "Tengely:"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1841,18 +1803,15 @@ msgstr ""
 #~ "Nem sikerült olvasni ebből ebből a fájlból: %1.\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Nem olvasható a fájlformátum a %1 fájlban."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Nem olvasható a fájl: %1"
 
 #~ msgid "Force Field:"
 #~ msgstr "Erőtér:"
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1874,7 +1833,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1959,7 +1917,6 @@ msgstr ""
 #~ msgid "video files (*.avi)"
 #~ msgstr "video fájlok (*.avi)"
 
-#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Probléma a traj fájl olvasás közben: %1"
 

@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 13:46+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
 "X-Generator: Launchpad (build 12792)\n"
-"Language: uk\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,35 +30,35 @@ msgstr "(Git-версія: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версія програми: %2<br/><br/>Версія бібліотеки: "
-"%3<br/><br/>Версія Open Babel: %4"
+"<h3>%1</h3><br/><br/>Версія програми: %2<br/><br/>Версія бібліотеки: %3<br/"
+"><br/>Версія Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 "<br/><br/>Версія Qt: %1<br/><br/>Докладніші відомості можна знайти на <a "
-"href=\"http://avogadro.openmolecules.net/\">домашній сторінці "
-"Avogadro</a>.<br/><br/>Ця програма надається вам у користування як є, БЕЗ "
-"ЖОДНИХ ГАРАНТІЙ, ЗОКРЕМА ГАРАНТІЇ ТОГО, ЩО ВОНА МОЖЕ ВИКОНУВАТИ ПЕВНІ "
-"ФУНКЦІЇ, ПРИДАТНА ДО РОБОТИ ТА ВИКОРИСТАННЯ З ПЕВНОЮ МЕТОЮ.<br/>"
+"href=\"http://avogadro.openmolecules.net/\">домашній сторінці Avogadro</a>."
+"<br/><br/>Ця програма надається вам у користування як є, БЕЗ ЖОДНИХ "
+"ГАРАНТІЙ, ЗОКРЕМА ГАРАНТІЇ ТОГО, ЩО ВОНА МОЖЕ ВИКОНУВАТИ ПЕВНІ ФУНКЦІЇ, "
+"ПРИДАТНА ДО РОБОТИ ТА ВИКОРИСТАННЯ З ПЕВНОЮ МЕТОЮ.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,45 +85,13 @@ msgstr "Стерти атоми"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Параметри"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Відкрити файл"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-"Avogadro: \t%1 (хеш %2)\n"
-"LibAvogadro: \t%3 (хеш %4)\n"
-"Qt: \t\t%5\n"
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
-"Використання: %1 [параметри] [файли]\n"
-"\n"
-"Avogadro — редактор молекул з додатковими можливостями (версія %2)\n"
-"\n"
-"Параметри:\n"
-"  -h, --help\t\tпоказати довідку з параметрів (цю довідку)\n"
-"  -v, --version\t\tпоказати відомості щодо версії\n"
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -145,7 +113,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Масштаб"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Пересунути все на передній план"
 
@@ -175,15 +143,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Звичайні формати молекул"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Усі файли"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -219,51 +187,51 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Формат NWChem"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "без назви"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Завантаження %1..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "Завантаження %1..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Спроба читання файла молекул зазнала невдачі, файл %1."
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Читання файла з декількома молекулами. Зачекайте…"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "У цьому файлі не міститься просторових координат."
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Бажаєте, щоб Avogadro виконала наближену побудову?"
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -271,199 +239,199 @@ msgstr ""
 "У цьому файлі не міститься просторових координат.\n"
 "Ймовірно, належне редагування або перегляд цього файла неможливі."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr "Виберіть молекулу для перегляду"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Назва молекули"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Атоми: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Зв'язки: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Файл завантажено…"
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Бажаєте зберегти внесені вами у документ зміни?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "Внесені вами зміни буде втрачено, якщо ви не збережете їх."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Зберегти..."
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Зберегти"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "Імпорт з GAMESS"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Імпорт з Gaussian (декартові координати)"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Імпорт з Gaussian (Z-матриця)"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "SDfile MDL"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "Імпорт з NWChem"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Зберегти молекулу як"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "Поширені формати зображень"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "Експорт до растрового зображення"
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Не вдалося зберегти файл %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Без назви %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "Не вдалося вставити молекулу."
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Невдала спроба вставлення (недоступний формат)."
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Спроба копіювання зазнала невдачі (недоступна mdl)."
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "Перегляд %1"
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Перегляд %1"
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Окреме вікно перегляду"
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Звичайний розмір"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "На весь екран"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] — %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Додати"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Здублювати"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Вилучити"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr "Не завантажено інструментів або рушіїв."
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr "Не завантажено жодного рушія."
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr "Не завантажено жодного інструменту."
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Здається, додаток не працюватиме коректно. Будь ласка, виправте цю помилку."
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Об'єкти"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Кольори"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " копія"
 
@@ -536,7 +504,7 @@ msgstr "піделементи можуть мати лише мітки"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Елемент"
 
@@ -551,7 +519,7 @@ msgstr "Низька"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Середня"
@@ -568,7 +536,7 @@ msgstr "Невизначена"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Немає"
@@ -1233,25 +1201,53 @@ msgstr "Рівень туману:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad "
-"Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:, ,Launchpad "
-"Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,Vladimir "
-"Kurg,svv, ,Launchpad Contributions:,Valeriy,Vladimir Kurg,svv, ,Launchpad "
-"Contributions:,Valeriy,Vasiliy Meshko,Vladimir Kurg,Yuri Chornoivan,svv, "
-",Launchpad Contributions:,Valeriy,Vasiliy Meshko,Vladimir Kurg,Yuri "
-"Chornoivan,svv, ,Launchpad Contributions:,Valeriy,Vasiliy Meshko,Vladimir "
-"Kurg,Yuri Chornoivan,svv, ,Launchpad Contributions:,Valeriy,Vasiliy "
-"Meshko,Vladimir Kurg,Yuri Chornoivan,svv"
+",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,"
+"Vladimir Kurg,svv, ,Launchpad Contributions:, ,Launchpad Contributions:,"
+"Vladimir Kurg,svv, ,Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad "
+"Contributions:,Valeriy,Vladimir Kurg,svv, ,Launchpad Contributions:,Valeriy,"
+"Vasiliy Meshko,Vladimir Kurg,Yuri Chornoivan,svv, ,Launchpad Contributions:,"
+"Valeriy,Vasiliy Meshko,Vladimir Kurg,Yuri Chornoivan,svv, ,Launchpad "
+"Contributions:,Valeriy,Vasiliy Meshko,Vladimir Kurg,Yuri Chornoivan,svv, ,"
+"Launchpad Contributions:,Valeriy,Vasiliy Meshko,Vladimir Kurg,Yuri "
+"Chornoivan,svv"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,skrypnychuk@gmail.com,,,,skrypnychuk@gmail.com,,,,,,skrypnychuk@gmail.com,"
-",,,skrypnychuk@gmail.com,,,,,skrypnychuk@gmail.com,,,,vasiliymeshko@gmail.com"
-",,yurchor@gmail.com,skrypnychuk@gmail.com,,,,vasiliymeshko@gmail.com,,yurchor"
-"@gmail.com,skrypnychuk@gmail.com,,,,vasiliymeshko@gmail.com,,yurchor@gmail.co"
-"m,skrypnychuk@gmail.com,,,,vasiliymeshko@gmail.com,,yurchor@gmail.com,skrypny"
-"chuk@gmail.com"
+",,,skrypnychuk@gmail.com,,,,skrypnychuk@gmail.com,,,,,,skrypnychuk@gmail."
+"com,,,,skrypnychuk@gmail.com,,,,,skrypnychuk@gmail.com,,,,"
+"vasiliymeshko@gmail.com,,yurchor@gmail.com,skrypnychuk@gmail.com,,,,"
+"vasiliymeshko@gmail.com,,yurchor@gmail.com,skrypnychuk@gmail.com,,,,"
+"vasiliymeshko@gmail.com,,yurchor@gmail.com,skrypnychuk@gmail.com,,,,"
+"vasiliymeshko@gmail.com,,yurchor@gmail.com,skrypnychuk@gmail.com"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (хеш %2)\n"
+#~ "LibAvogadro: \t%3 (хеш %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Usage: %1 [options] [files]\n"
+#~ "\n"
+#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  -h, --help\t\tShow help options (this)\n"
+#~ "  -v, --version\t\tShow version information\n"
+#~ msgstr ""
+#~ "Використання: %1 [параметри] [файли]\n"
+#~ "\n"
+#~ "Avogadro — редактор молекул з додатковими можливостями (версія %2)\n"
+#~ "\n"
+#~ "Параметри:\n"
+#~ "  -h, --help\t\tпоказати довідку з параметрів (цю довідку)\n"
+#~ "  -v, --version\t\tпоказати відомості щодо версії\n"
 
 #~ msgid "Navigate"
 #~ msgstr "Навігація"
@@ -1583,21 +1579,18 @@ msgstr ""
 #~ msgid "Meitnerium"
 #~ msgstr "Майтнерій"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: "
-#~ "%3<br/><br/>За додатковою інформацією зверніться до <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Домашньої сторінки "
-#~ "Avogadro</a>.<br/><br/>Програма надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ "
-#~ "БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ "
-#~ "ЦІЛЕЙ.<br/>"
+#~ "<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: %3<br/"
+#~ "><br/>За додатковою інформацією зверніться до <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Домашньої сторінки Avogadro</a>.<br/><br/>Програма "
+#~ "надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ "
+#~ "ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ ЦІЛЕЙ.<br/>"
 
 #~ msgid "PDF"
 #~ msgstr "PDF"
@@ -1636,7 +1629,6 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Про тест сумісності з OpenGL."
 
-#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -1668,20 +1660,18 @@ msgstr ""
 #~ msgid "Direct Rendering."
 #~ msgstr "Безпосередня обробка."
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-#~ "information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
-#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
-#~ "PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Версія програми: %2<br/><br/>Версія бібліотеки: "
-#~ "%3<br/><br/>Версія Open Babel: %4<br/><br/>Версія Qt: %5<br/><br/>Докладніші "
-#~ "відомості можна знайти на <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">домашній сторінці "
-#~ "Avogadro</a>.<br/><br/>Ця програма надається вам у користування як є, БЕЗ \n"
+#~ "%3<br/><br/>Версія Open Babel: %4<br/><br/>Версія Qt: %5<br/><br/"
+#~ ">Докладніші відомості можна знайти на <a href=\"http://avogadro."
+#~ "openmolecules.net/\">домашній сторінці Avogadro</a>.<br/><br/>Ця програма "
+#~ "надається вам у користування як є, БЕЗ \n"
 #~ "ЖОДНИХ ГАРАНТІЙ, ЗОКРЕМА ГАРАНТІЇ ТОГО, ЩО ВОНА МОЖЕ ВИКОНУВАТИ ПЕВНІ \n"
 #~ "ФУНКЦІЇ, ПРИДАТНА ДО РОБОТИ ТА ВИКОРИСТАННЯ З ПЕВНОЮ МЕТОЮ.<br/>"

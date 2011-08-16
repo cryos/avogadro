@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-04-09 12:27-0400\n"
+"POT-Creation-Date: 2011-08-16 11:43-0400\n"
 "PO-Revision-Date: 2011-02-04 13:34+0000\n"
 "Last-Translator: David Rodrigues <david.rodrigues@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,35 +31,35 @@ msgstr "(Revisão Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da Biblioteca: "
 "%3<br/><br/>Versão do Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1069 src/mainwindow.cpp:1119
-#: src/mainwindow.cpp:1141 src/mainwindow.cpp:1312 src/mainwindow.cpp:1334
-#: src/mainwindow.cpp:1488 src/mainwindow.cpp:1721 src/mainwindow.cpp:3101
-#: src/mainwindow.cpp:3606 :69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
+#: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3610:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
-"<br/><br/>Versão do Qt: %1<br/><br/>Para mais informações visite a <a "
-"href=\"http://avogadro.openmolecules.net/\">página do "
-"Avogadro</a>.<br/><br/>O programa é fornecido COMO ESTÁ SEM GARANTIAS DE "
-"QUALQUER TIPO, INCLUINDO A GARANTIA DE CONSTRUÇÃO, COMERCIALIZAÇÃO OU "
-"ADEQUAÇÃO PARA USO OU FIM ESPECÍFICO.<br/>"
+"<br/><br/>Versão do Qt: %1<br/><br/>Para mais informações visite a <a href="
+"\"http://avogadro.openmolecules.net/\">página do Avogadro</a>.<br/><br/>O "
+"programa é fornecido COMO ESTÁ SEM GARANTIAS DE QUALQUER TIPO, INCLUINDO A "
+"GARANTIA DE CONSTRUÇÃO, COMERCIALIZAÇÃO OU ADEQUAÇÃO PARA USO OU FIM "
+"ESPECÍFICO.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,45 +86,13 @@ msgstr "Limpar Átomos"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3624 src/mainwindow.cpp:3641 :381 rc.cpp:393
+#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
 msgid "Settings"
 msgstr "Preferências"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:959
 msgid "Open File"
 msgstr "Abrir Ficheiro"
-
-#: src/main.cpp:260
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-msgstr ""
-"Avogadro: \t%1 (Hash %2)\n"
-"LibAvogadro: \t%3 (Hash %4)\n"
-"Qt: \t\t%5\n"
-
-#: src/main.cpp:276
-#, qt-format
-msgctxt "main.cpp"
-msgid ""
-"Usage: %1 [options] [files]\n"
-"\n"
-"Avogadro - Advanced Molecular Editor (version %2)\n"
-"\n"
-"Options:\n"
-"  -h, --help\t\tShow help options (this)\n"
-"  -v, --version\t\tShow version information\n"
-msgstr ""
-"Utilização: %1 [opções] [ficheiros]\n"
-"\n"
-"Avogadro - Editor Molecular Avançado (versão %2)\n"
-"\n"
-"Opções:\n"
-"  -h, --help\t\tMostra estas opções de ajuda\n"
-"  -v, --version\t\tMostra a informação da versão\n"
 
 #: src/mainwindow.cpp:404
 msgid "Messages"
@@ -145,7 +114,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:553 src/mainwindow.cpp:1787
+#: src/mainwindow.cpp:553 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "Trazer todos para a frente"
 
@@ -175,15 +144,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:939 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:939 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "Formatos comuns de moléculas"
 
-#: src/mainwindow.cpp:944 src/mainwindow.cpp:1424 src/mainwindow.cpp:1661
+#: src/mainwindow.cpp:944 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: src/mainwindow.cpp:945 src/mainwindow.cpp:1421 src/mainwindow.cpp:1433
+#: src/mainwindow.cpp:945 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
@@ -219,51 +188,51 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Output do NWChem"
 
-#: src/mainwindow.cpp:954 src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:954 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1025 src/mainwindow.cpp:1030 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1029 src/mainwindow.cpp:1034 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "sem título"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1050
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Carregando %1..."
 
-#: src/mainwindow.cpp:1050
+#: src/mainwindow.cpp:1054
 #, qt-format
 msgid "Loading %1..."
 msgstr "Carregando %1..."
 
-#: src/mainwindow.cpp:1070 src/mainwindow.cpp:1313
+#: src/mainwindow.cpp:1074 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Leitura do ficheiro da molécula falhou, ficheiro %1."
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1097
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "A ler ficheiro multi-molécula. Pode demorar algum tempo..."
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1124
 msgid "This file does not contain 3D coordinates."
 msgstr "Este ficheiro não contém coordenadas 3D."
 
-#: src/mainwindow.cpp:1124
+#: src/mainwindow.cpp:1128
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Pretende que o Avogadro construa uma geometria aproximada?"
 
-#: src/mainwindow.cpp:1142
+#: src/mainwindow.cpp:1146
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -271,182 +240,182 @@ msgstr ""
 "Este ficheiro não contém coordenadas 3D.\n"
 "Pode não conseguir editá-lo ou visualizá-lo apropriadamente."
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1200
 msgid "Select Molecule to View"
 msgstr "Seleccione a Molécula a Visualizar"
 
-#: src/mainwindow.cpp:1221
+#: src/mainwindow.cpp:1225
 msgid "Molecule Title"
 msgstr "Título da Molécula"
 
-#: src/mainwindow.cpp:1305
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "Átomos: "
 
-#: src/mainwindow.cpp:1306
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " Ligações: "
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "Ficheiro Carregado..."
 
-#: src/mainwindow.cpp:1335
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Pretende gravar as alterações feitas no documento?"
 
-#: src/mainwindow.cpp:1344
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "As suas alterações serão perdidas se não as gravar."
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1349
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1351
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "Guardar..."
 
-#: src/mainwindow.cpp:1351 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Guardar"
 
-#: src/mainwindow.cpp:1434
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "Input do GAMESS"
 
-#: src/mainwindow.cpp:1435
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Input do Gaussian em Coordenadas Cartesianas"
 
-#: src/mainwindow.cpp:1436
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "Input do Gaussian em Matriz-Z"
 
-#: src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "Input do NWChem"
 
-#: src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "Guardar Molécula Como"
 
-#: src/mainwindow.cpp:1651 src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1658
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "Formatos de imagem comuns"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1664
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1670
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "Exportar Gráficos Bitmap"
 
-#: src/mainwindow.cpp:1722
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Não foi possível salvar o arquivo %1."
 
-#: src/mainwindow.cpp:1819
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sem título %1"
 
-#: src/mainwindow.cpp:1924
+#: src/mainwindow.cpp:1928
 msgid "Unable to paste molecule."
 msgstr "Não foi possível colar a molécula."
 
-#: src/mainwindow.cpp:1953
+#: src/mainwindow.cpp:1957
 msgid "Paste failed (format unavailable)."
 msgstr "Colar falhou (formato indisponível)."
 
-#: src/mainwindow.cpp:2402
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copiar falhou (mdl indisponível)."
 
-#: src/mainwindow.cpp:2540 src/mainwindow.cpp:2573 src/mainwindow.cpp:2640
-#: src/mainwindow.cpp:3247
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:2600
+#: src/mainwindow.cpp:2604
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Visualizar %1"
 
-#: src/mainwindow.cpp:2609
+#: src/mainwindow.cpp:2613
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista Separada"
 
-#: src/mainwindow.cpp:2840
+#: src/mainwindow.cpp:2844
 msgid "Normal Size"
 msgstr "Tamanho Normal"
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2861
 msgid "Full Screen"
 msgstr "Ecrã Completo"
 
-#: src/mainwindow.cpp:2958
+#: src/mainwindow.cpp:2962
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3094
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3100
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3560
+#: src/mainwindow.cpp:3564
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/mainwindow.cpp:3565
+#: src/mainwindow.cpp:3569
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:3570
+#: src/mainwindow.cpp:3574
 msgid "Remove"
 msgstr "Remover"
 
-#: src/mainwindow.cpp:3598
+#: src/mainwindow.cpp:3602
 msgid "No tools or engines loaded."
 msgstr "Nenhuma ferramenta ou motor carregado."
 
-#: src/mainwindow.cpp:3600
+#: src/mainwindow.cpp:3604
 msgid "No engines loaded."
 msgstr "Nenhum motor carregado."
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3606
 msgid "No tools loaded."
 msgstr "Nenhuma ferramenta carregada."
 
-#: src/mainwindow.cpp:3603
+#: src/mainwindow.cpp:3607
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -454,17 +423,17 @@ msgstr ""
 " É improvável que a aplicação funcione correctamente. Por favor, corrija "
 "este erro."
 
-#: src/mainwindow.cpp:3647
+#: src/mainwindow.cpp:3651
 msgid "Objects"
 msgstr "Objetos"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3653 :321
+#: src/mainwindow.cpp:3657:321
 msgid "Colors"
 msgstr "Cores"
 
-#: src/mainwindow.cpp:3686
+#: src/mainwindow.cpp:3690
 msgid " copy"
 msgstr " copiar"
 
@@ -537,7 +506,7 @@ msgstr "apenas os nomes podem ter sub-items"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Item"
 
@@ -552,7 +521,7 @@ msgstr "Baixa"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Média"
@@ -569,7 +538,7 @@ msgstr "Indefinida"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nenhum"
@@ -1234,32 +1203,57 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Arrepiadd,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Tiago Silva,nitrofurano, ,Launchpad "
+"Boscariol,Tiago Silva,nitrofurano, ,Launchpad Contributions:,Arrepiadd,"
+"Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
+"nitrofurano, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,Geoff "
+"Hutchison,Ivo Fernandes,Leandro Boscariol,Luis Pratas,Tiago,nitrofurano, ,"
+"Launchpad Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo "
+"Fernandes,Leandro Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Tiago Silva,nitrofurano, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo "
-"Fernandes,Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
+"Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad Contributions:,"
+"Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo Fernandes,"
+"Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo "
 "Fernandes,Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,ivofernandes12@gmail.com,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.c"
-"om,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.c"
-"om,,,,"
+",,,,ivofernandes12@gmail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+"ivofernandes12@gmail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,david."
+"rodrigues@gmail.com,,ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists."
+"sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.com,,,,"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Usage: %1 [options] [files]\n"
+#~ "\n"
+#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  -h, --help\t\tShow help options (this)\n"
+#~ "  -v, --version\t\tShow version information\n"
+#~ msgstr ""
+#~ "Utilização: %1 [opções] [ficheiros]\n"
+#~ "\n"
+#~ "Avogadro - Editor Molecular Avançado (versão %2)\n"
+#~ "\n"
+#~ "Opções:\n"
+#~ "  -h, --help\t\tMostra estas opções de ajuda\n"
+#~ "  -v, --version\t\tMostra a informação da versão\n"
 
 #~ msgid "Lead"
 #~ msgstr "Chumbo"
@@ -1291,7 +1285,6 @@ msgstr ""
 #~ msgid "Radium"
 #~ msgstr "Rádio"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1299,11 +1292,9 @@ msgstr ""
 #~ "Não foi possível ler o arquivo %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Não foi possível ler o formato do arquivo %1"
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Não foi possível ler o arquivo %1"
 
@@ -1315,17 +1306,17 @@ msgstr ""
 #~ "visualizar adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
-#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá ler "
-#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá "
+#~ "ler apenas a primeira molécula. Se você salvar, todas as outras moléculas "
 #~ "poderão ser perdidas."
 
 #~ msgid "Navigate"
 #~ msgstr "Navegar"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1336,7 +1327,6 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Salvando Arquivo."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Não foi possível escrever no arquivo %1."
 
@@ -1353,7 +1343,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1390,7 +1379,6 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animação..."
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1476,38 +1464,35 @@ msgstr ""
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da Biblioteca: "
-#~ "%3<br/><br/>Para mais informações consulte a <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Página do "
-#~ "Avogadro</a>.<br/><br/>O programa é disponibilizado COMO ESTÁ com NENHUMA "
-#~ "GARANTIA DE QUALQUER TIPO, INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO E "
-#~ "APLICAÇÃO A UM PROPÓSITO PARTICULAR.<br/>"
+#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da "
+#~ "Biblioteca: %3<br/><br/>Para mais informações consulte a <a href=\"http://"
+#~ "avogadro.openmolecules.net/\">Página do Avogadro</a>.<br/><br/>O programa "
+#~ "é disponibilizado COMO ESTÁ com NENHUMA GARANTIA DE QUALQUER TIPO, "
+#~ "INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO E APLICAÇÃO A UM "
+#~ "PROPÓSITO PARTICULAR.<br/>"
 
-#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-#~ "information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
-#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
-#~ "PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Vesão da biblioteca: "
-#~ "%3<br/><br/>Versão Open Babel: %4<br/><br/>Qt Version: %5<br/><br/>Para mais "
-#~ "informações veja a <a href=\"http://avogadro.openmolecules.net/\">página "
-#~ "inicial Avogadro</a>.<br/><br/>O programa e fornecido COMO ESTÁ e sem "
-#~ "GARANTIAS DE QUALQUER TIPO, INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO "
-#~ "E AJUSTAMENTO A QUALQUER USO PARTICULAR.<br/>"
+#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Vesão da "
+#~ "biblioteca: %3<br/><br/>Versão Open Babel: %4<br/><br/>Qt Version: %5<br/"
+#~ "><br/>Para mais informações veja a <a href=\"http://avogadro."
+#~ "openmolecules.net/\">página inicial Avogadro</a>.<br/><br/>O programa e "
+#~ "fornecido COMO ESTÁ e sem GARANTIAS DE QUALQUER TIPO, INCLUÍNDO A "
+#~ "GARANTIA DE DESIGN, COMERCIALIZAÇÃO E AJUSTAMENTO A QUALQUER USO "
+#~ "PARTICULAR.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Double Buffering."
@@ -1541,7 +1526,6 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Sobre como testar os recursos OpenGL."
 
-#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
