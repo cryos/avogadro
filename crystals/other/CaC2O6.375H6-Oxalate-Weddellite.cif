@@ -1,0 +1,99 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9000764.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9000764
+loop_
+_publ_author_name
+'Tazzoli, V.'
+'Domeneghetti, M. C.'
+_publ_section_title
+;
+ The crystal structures of whewellite and weddellite: re-examination and
+ comparison
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              327
+_journal_page_last               334
+_journal_volume                  65
+_journal_year                    1980
+_chemical_formula_sum            'C2 H6 Ca O6.375'
+_chemical_name_mineral           Weddellite
+_space_group_IT_number           87
+_symmetry_space_group_name_Hall  '-I 4'
+_symmetry_space_group_name_H-M   'I 4/m'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   12.371
+_cell_length_b                   12.371
+_cell_length_c                   7.357
+_cell_volume                     1125.927
+_exptl_crystal_density_diffrn    2.031
+_[local]_cod_chemical_formula_sum_orig 'C2 Ca O6.375 H6'
+_cod_database_code               9000764
+_amcsd_database_code             AMCSD#0000776
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2+y,1/2+z
+y,-x,-z
+1/2+y,1/2-x,1/2-z
+-y,x,z
+1/2-y,1/2+x,1/2+z
+x,y,-z
+1/2+x,1/2+y,1/2-z
+-x,-y,z
+1/2-x,1/2-y,1/2+z
+-y,x,-z
+1/2-y,1/2+x,1/2-z
+y,-x,z
+1/2+y,1/2-x,1/2+z
+-x,-y,-z
+1/2-x,1/2-y,1/2-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+C 0.01411 0.02039 0.01206 0.00140 0.00028 -0.00088
+Ca 0.01357 0.01233 0.01083 0.00085 0.00000 0.00000
+O1 0.01427 0.02845 0.01308 0.00318 0.00221 0.00092
+O2 0.07606 0.01450 0.01547 -0.00271 -0.00613 0.00309
+OW1 0.06047 0.02093 0.02312 -0.00457 0.00000 0.00000
+OW2 0.02931 0.04908 0.03348 0.01233 0.00000 0.00000
+Wat3 0.08234 0.08234 0.10891 0.00000 0.00000 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_U_iso_or_equiv
+C 0.44640 0.24150 0.10530 1.00000 0.01558
+Ca 0.19930 0.30110 0.00000 1.00000 0.01229
+O1 0.35640 0.24580 0.18290 1.00000 0.01849
+O2 0.23550 0.46340 0.17990 1.00000 0.03534
+OW1 0.14900 0.11450 0.00000 1.00000 0.03483
+OW2 0.01920 0.38410 0.00000 1.00000 0.03762
+Wat3 0.00000 0.00000 0.68300 0.58000 0.09119
+Wat30 0.00000 0.00000 0.24000 0.17000 0.08866
+H1 0.16600 0.07100 0.10500 1.00000 0.06333
+H2 0.35000 0.01800 0.11500 1.00000 0.06333

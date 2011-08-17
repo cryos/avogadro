@@ -1,0 +1,83 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 16:46:06 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1213 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1009031.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1009031
+loop_
+_publ_author_name
+'Waser, J.'
+'Levy, H. A.'
+'Peterson, S. W.'
+_publ_section_title
+;
+ The structure of PdO
+ Locality: synthetic
+;
+_journal_name_full               'Acta Crystallographica'
+_journal_page_first              661
+_journal_page_last               663
+_journal_volume                  6
+_journal_year                    1953
+_chemical_compound_source        synthetic
+_chemical_formula_structural     'Pd O'
+_chemical_formula_sum            'O Pd'
+_chemical_name_mineral           Palladinite
+_chemical_name_systematic        'Palladium oxide'
+_symmetry_cell_setting           tetragonal
+_symmetry_Int_Tables_number      131
+_symmetry_space_group_name_H-M   'P 42/m m c S'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_formula_units_Z            2
+_cell_length_a                   3.03(1)
+_cell_length_b                   3.03(1)
+_cell_length_c                   5.33(2)
+_cell_volume                     48.9
+_cod_database_code               1009031
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-x,-y,z
+1/2-y,1/2+x,1/2+z
+1/2+y,1/2-x,1/2+z
+-x,y,-z
+x,-y,-z
+1/2+y,1/2+x,1/2-z
+1/2-y,1/2-x,1/2-z
+-x,-y,-z
+x,y,-z
+1/2+y,1/2-x,1/2-z
+1/2-y,1/2+x,1/2-z
+x,-y,z
+-x,y,z
+1/2-y,1/2-x,1/2+z
+1/2+y,1/2+x,1/2+z
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+Pd1 Pd2+ 2 a 0. 0. 0. 1. 0 d
+O1 O2- 2 f 0.5 0. 0.25 1. 0 d
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+Pd2+ 2.000
+O2- -2.000
+_amcsd_database_code             AMCSD#0009095
+_exptl_crystal_density_diffrn    8.308

@@ -1,0 +1,74 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9004485.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_9004485
+loop_
+_publ_author_name
+'Jacobsen S D'
+'Smyth J R'
+'Swope R J'
+'Downs R T'
+_publ_section_title
+;
+ Rigid-body character of the SO4 groups in celestine, anglesite and
+ barite
+;
+_journal_name_full               'The Canadian Mineralogist'
+_journal_page_first              1053
+_journal_page_last               1060
+_journal_volume                  36
+_journal_year                    1998
+_chemical_formula_sum            'Ba O4 S'
+_[local]_cod_chemical_formula_sum_orig 'Ba S O4'
+_chemical_name_mineral           Barite
+_symmetry_space_group_name_H-M   'P b n m'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   7.1540
+_cell_length_b                   8.8790
+_cell_length_c                   5.4540
+_cell_volume                     346.440
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,y,1/2-z
+-x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+1/2-x,1/2+y,1/2-z
+1/2-x,1/2+y,z
+1/2+x,1/2-y,-z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ba 0.15842 0.18453 0.25000
+S 0.19082 0.43749 0.75000
+O1 0.10720 0.58700 0.75000
+O2 0.04980 0.31760 0.75000
+O3 0.31180 0.41940 0.97040
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Ba 0.01025 0.00843 0.01298 -0.00048 0.00000 0.00000
+S 0.00910 0.00840 0.00930 0.00033 0.00000 0.00000
+O1 0.02660 0.01310 0.02800 0.01050 0.00000 0.00000
+O2 0.01170 0.02090 0.02020 -0.00670 0.00000 0.00000
+O3 0.01490 0.01490 0.01030 -0.00200 -0.00280 0.00080
+_cod_database_code 9004485

@@ -1,0 +1,53 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910041
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 239 from the second edition of Structure of Crystals by Wyckoff.
+published by The Chemical Catalog Company, INC, New York in 1931
+& www.mse.berkeley.edu/classes/matsci102/W2C.pdf
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              239
+_journal_page_last               239
+_journal_year                    1931
+_chemical_formula_structural     W2C
+_chemical_formula_sum            'C W2'
+_symmetry_cell_setting           trigonal
+_symmetry_Int_Tables_number      147
+_symmetry_space_group_name_H-M   'P -3'
+_audit_creation_date             2005-11-12
+_audit_creation_method
+;
+Page 239 from the second edition of Structure of Crystals by Wyckoff.
+published by The Chemical Catalog Company, INC, New York in 1931
+& www.mse.berkeley.edu/classes/matsci102/W2C.pdf
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   2.99
+_cell_length_b                   2.99
+_cell_length_c                   4.72
+_cell_volume                     42.197
+_[local]_cod_chemical_formula_sum_orig 'W2 C'
+_cod_database_code               5910041
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 C
+0.33333 0.66667 0.25000 W1
+0.66667 0.33333 0.75000 W2
