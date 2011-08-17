@@ -1,0 +1,101 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9009668.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9009668
+loop_
+_publ_author_name
+'Sitepu, H.'
+'O'Connor B H'
+'Li, D.'
+_publ_section_title
+;
+ Comparative evaluation of the March and generalized spherical harmonic
+ preferred orientation models using X-ray diffraction data for molybdite
+ and calcite powders
+ Note: GSH model
+ Locality: synthetic
+;
+_journal_name_full               'Journal of Applied Crystallography'
+_journal_page_first              158
+_journal_page_last               167
+_journal_volume                  38
+_journal_year                    2005
+_chemical_formula_sum            'C Ca O3'
+_chemical_name_mineral           Calcite
+_space_group_IT_number           167
+_symmetry_space_group_name_Hall  '-R 3 2"c'
+_symmetry_space_group_name_H-M   'R -3 c :H'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_length_a                   4.9920
+_cell_length_b                   4.9920
+_cell_length_c                   17.069
+_cell_volume                     368.373
+_exptl_crystal_density_diffrn    2.707
+_[local]_cod_cif_authors_sg_H-M  'R -3 c'
+_[local]_cod_chemical_formula_sum_orig 'Ca C O3'
+_cod_database_code               9009668
+_amcsd_database_code             AMCSD#0012500
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+2/3+x,1/3+y,1/3+z
+1/3+x,2/3+y,2/3+z
+x,x-y,1/2+z
+2/3+x,1/3+x-y,5/6+z
+1/3+x,2/3+x-y,1/6+z
+y,x,1/2-z
+2/3+y,1/3+x,5/6-z
+1/3+y,2/3+x,1/6-z
+-x+y,y,1/2+z
+2/3-x+y,1/3+y,5/6+z
+1/3-x+y,2/3+y,1/6+z
+-x,-x+y,1/2-z
+2/3-x,1/3-x+y,5/6-z
+1/3-x,2/3-x+y,1/6-z
+-y,-x,1/2+z
+2/3-y,1/3-x,5/6+z
+1/3-y,2/3-x,1/6+z
+x-y,-y,1/2-z
+2/3+x-y,1/3-y,5/6-z
+1/3+x-y,2/3-y,1/6-z
+y,-x+y,-z
+2/3+y,1/3-x+y,1/3-z
+1/3+y,2/3-x+y,2/3-z
+-x+y,-x,z
+2/3-x+y,1/3-x,1/3+z
+1/3-x+y,2/3-x,2/3+z
+-x,-y,-z
+2/3-x,1/3-y,1/3-z
+1/3-x,2/3-y,2/3-z
+-y,x-y,z
+2/3-y,1/3+x-y,1/3+z
+1/3-y,2/3+x-y,2/3+z
+x-y,x,-z
+2/3+x-y,1/3+x,1/3-z
+1/3+x-y,2/3+x,2/3-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Ca 0.00000 0.00000 0.00000 0.01525
+C 0.00000 0.00000 0.25000 0.02084
+O 0.25000 0.00000 0.25000 0.02084

@@ -1,0 +1,51 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910153
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Pages 231 & 239 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931.
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              231
+_journal_page_last               239
+_journal_year                    1931
+_chemical_formula_structural     WO2
+_chemical_formula_sum            'O2 W'
+_chemical_name_systematic        'Tungsten dioxide'
+_symmetry_cell_setting           tetragonal
+_symmetry_Int_Tables_number      136
+_symmetry_space_group_name_H-M   'P 42/m n m'
+_audit_creation_date             2005-03-11
+_audit_creation_method
+;
+Pages 231 & 239 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931.
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_length_a                   4.86
+_cell_length_b                   4.86
+_cell_length_c                   2.77
+_cell_volume                     56.661
+_[local]_cod_chemical_formula_sum_orig 'W O2'
+_cod_database_code               5910153
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.000000 0.000000 0.000000 W
+0.300000 0.300000 0.000000 O

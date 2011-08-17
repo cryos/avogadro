@@ -1,0 +1,55 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910133
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Pages 8 & 10 from the second edition supplement of The Structure
+of Crystals by Wyckoff R W G. published by Reinhold Publishing
+Corporation, INC,Camden,N. J. in 1935 & http://database.iem.ac.ru/mincryst
+;
+_journal_name_full
+'The second edition supplement of The Structure of Crystals'
+_journal_page_first              8
+_journal_page_last               10
+_journal_year                    1935
+_chemical_formula_structural     In
+_chemical_formula_sum            In
+_chemical_name_systematic        Indium
+_symmetry_cell_setting           tetragonal
+_symmetry_Int_Tables_number      139
+_symmetry_space_group_name_H-M   'I 4/m m m'
+_audit_creation_date             2005-07-11
+_audit_creation_method
+;
+Pages 8 & 10 from the second edition supplement of The Structure
+of Crystals by Wyckoff R W G. published by Reinhold Publishing
+Corporation, INC,Camden,N. J. in 1935 & http://database.iem.ac.ru/mincryst
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                4.583
+_cell_angle_beta                 4.583
+_cell_angle_gamma                4.936
+_cell_length_a                   90
+_cell_length_b                   90
+_cell_length_c                   90
+_cell_volume                     4225.771
+_cod_database_code               5910133
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.000000 0.000000 0.000000 In1
+0.500000 0.500000 0.000000 In2
+0.500000 0.000000 0.500000 In3
+0.000000 0.500000 0.500000 In4

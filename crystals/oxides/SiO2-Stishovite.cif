@@ -1,0 +1,85 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9012691.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9012691
+loop_
+_publ_author_name
+'Hill, R. J.'
+'Newton, M. D.'
+'Gibbs, G. V.'
+_publ_section_title
+;
+ A crystal chemical study of stishovite
+ Locality: synthetic
+;
+_journal_name_full               'Journal of Solid State Chemistry'
+_journal_page_first              185
+_journal_page_last               200
+_journal_volume                  47
+_journal_year                    1983
+_chemical_formula_sum            'O2 Si'
+_chemical_name_mineral           Stishovite
+_space_group_IT_number           136
+_symmetry_space_group_name_Hall  '-P 4n 2n'
+_symmetry_space_group_name_H-M   'P 42/m n m'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   4.1773
+_cell_length_b                   4.1773
+_cell_length_c                   2.6655
+_cell_volume                     46.513
+_exptl_crystal_density_diffrn    4.290
+_[local]_cod_chemical_formula_sum_orig 'Si O2'
+_cod_database_code               9012691
+_amcsd_database_code             AMCSD#0013555
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-y,-x,z
+y,x,-z
+1/2+y,1/2-x,1/2-z
+1/2-y,1/2+x,1/2+z
+1/2+x,1/2-y,1/2+z
+1/2-x,1/2+y,1/2-z
+x,y,-z
+-x,-y,z
+y,x,z
+-y,-x,-z
+1/2-y,1/2+x,1/2-z
+1/2+y,1/2-x,1/2+z
+1/2-x,1/2+y,1/2+z
+1/2+x,1/2-y,1/2-z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Si 0.00235 0.00235 0.00177 0.00014 0.00000 0.00000
+O 0.00306 0.00306 0.00231 -0.00095 0.00000 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Si 0.00000 0.00000 0.00000
+O 0.30608 0.30608 0.00000

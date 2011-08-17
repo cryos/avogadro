@@ -1,0 +1,79 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9004097.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9004097
+loop_
+_publ_author_name
+'Hawthorne, F. C.'
+'Ferguson, R. B.'
+_publ_section_title
+;
+ Refinement of the crystal structure of cryolite
+;
+_journal_name_full               'The Canadian Mineralogist'
+_journal_page_first              377
+_journal_page_last               382
+_journal_volume                  13
+_journal_year                    1975
+_chemical_formula_sum            'Al F6 Na3'
+_chemical_name_mineral           Cryolite
+_space_group_IT_number           14
+_symmetry_space_group_name_Hall  '-P 2yn'
+_symmetry_space_group_name_H-M   'P 1 21/n 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 90.278
+_cell_angle_gamma                90
+_cell_length_a                   5.4024
+_cell_length_b                   5.5959
+_cell_length_c                   7.7564
+_cell_volume                     234.483
+_exptl_crystal_density_diffrn    2.973
+_[local]_cod_chemical_formula_sum_orig 'Al Na3 F6'
+_cod_database_code               9004097
+_amcsd_database_code             AMCSD#0005078
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2-y,1/2+z
+1/2-x,1/2+y,1/2-z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Al 0.00825 0.00827 0.00872 0.00000 0.00004 0.00000
+Na1 0.01359 0.01356 0.01365 0.00000 -0.00053 0.00000
+Na2 0.01825 0.01767 0.02310 -0.00268 0.00004 0.00033
+F1 0.01931 0.02023 0.01033 0.00055 -0.00344 -0.00169
+F2 0.01382 0.01731 0.01972 0.00671 0.00376 0.00183
+F3 0.01684 0.01344 0.02246 -0.00513 -0.00134 0.00526
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Al 0.00000 0.00000 0.00000
+Na1 0.00000 0.00000 0.50000
+Na2 0.51330 -0.05190 0.24740
+F1 0.10260 0.04550 0.21940
+F2 -0.27320 0.17370 0.04620
+F3 0.16340 0.26900 -0.06300
