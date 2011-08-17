@@ -1,0 +1,66 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2101932.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2101932
+loop_
+_publ_author_name
+'Brock, C. P.'
+'Fu, Y.'
+_publ_section_title
+;
+ Rigid-Body Disorder Models for the High-Temperature Phase of Ferrocene
+;
+_journal_issue                   6
+_journal_name_full               'Acta Crystallographica Section B'
+_journal_page_first              928
+_journal_page_last               938
+_journal_volume                  53
+_journal_year                    1997
+_chemical_formula_sum            'C10 H10 Fe'
+_[local]_cod_chemical_formula_sum_orig 'C10 H10 Fe1'
+_chemical_formula_weight         186.04
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_Hall  '-P 2yab'
+_symmetry_space_group_name_H-M   'P 1 21/a 1'
+_cell_angle_alpha                90.0
+_cell_angle_beta                 120.95(8)
+_cell_angle_gamma                90.0
+_cell_formula_units_Z            2
+_cell_length_a                   10.443(5)
+_cell_length_b                   7.572(4)
+_cell_length_c                   5.824(4)
+_cell_volume                     395.0(5)
+_diffrn_radiation_type           neutron
+_diffrn_radiation_wavelength     1.0399
+_[local]_cod_data_source_file    cr0517.cif
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Fe .0 .0 .0
+C(11) .0227(4) .2623(4) -.0218(10)
+C(12) .0395(3) .1790(5) -.2170(6)
+C(13) .1593(4) .0635(4) -.0900(8)
+C(14) .2165(4) .0753(5) .1836(7)
+C(15) .1322(5) .1982(5) .2258(7)
+H(11) -.0624 .3567 -.0567
+H(12) -.0304 .1975 -.4297
+H(13) .1985 -.0233 -.1871
+H(14) .3079 -.0006 .3359
+H(15) .1467 .2342 .4165
+_cod_database_code 2101932

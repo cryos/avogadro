@@ -3,7 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2008,2009 Tim Vandermeersch
-  Copyright (C) 2008-2010 Geoffrey Hutchison
+  Copyright (C) 2008-2011 Geoffrey Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -45,18 +45,18 @@ namespace Avogadro {
 
   class InsertFragmentCommandPrivate {
     public:
-      InsertFragmentCommandPrivate() : 
-        molecule(0), 
+      InsertFragmentCommandPrivate() :
+        molecule(0),
         generatedMolecule(0), widget(0),
         startAtom(-1), endAtom(-1) {};
-    
+
     Molecule *molecule;
     Molecule moleculeCopy, generatedMolecule;
     GLWidget *widget;
     int startAtom, endAtom; // if we're using OBBuilder::Connect()
   };
 
-  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, 
+  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule,
                                                const Molecule &generatedMolecule,
                                                GLWidget *widget,
                                                const QString commandName, int start, int end)
@@ -86,30 +86,49 @@ namespace Avogadro {
   {
     unsigned int initialAtoms = d->molecule->numAtoms() - 1;
     bool emptyMol = (d->molecule->numAtoms() == 0);
+    Atom *endAtom, *startAtom;
+
     if (emptyMol)
       initialAtoms = 0;
 
     *(d->molecule) += d->generatedMolecule;
+    // OK, now get the first atom of the newly placed fragment
+    // We need to do this before removing hydrogens
+    // (when all the indices will change)
+    if (d->endAtom == -1) {
+      // We'll connect to the first atom of the fragment
+      d->endAtom = initialAtoms + 1;
+      endAtom = d->molecule->atom(initialAtoms + 1);
+    } else {
+      endAtom = d->molecule->atomById(d->endAtom);
+    }
 
     // Do we need to connect the fragment to the original molecule?
     if (d->startAtom != -1 && !emptyMol) {
       // OK, first, we should see if this atom is a hydrogen
-      Atom *startAtom = d->molecule->atomById(d->startAtom);
+      startAtom = d->molecule->atomById(d->startAtom);
       if (startAtom->isHydrogen()) {
         // get the bonded non-hydrogen and remove this atom
         Atom *hydrogen = startAtom;
-        if (hydrogen->neighbors().size())
+        if (hydrogen->neighbors().size()) {
           startAtom = d->molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
-        d->molecule->removeAtom(hydrogen);
+          d->molecule->removeAtom(hydrogen);
+        }
       } else { // heavy atom -- remove attached hydrogens
         d->molecule->removeHydrogens(startAtom);
       }
 
-      if (d->endAtom == -1) { // connect to the first atom of the fragment
-        d->endAtom = initialAtoms + 1;
+      // same procedure as the start atom -- check if endAtom is an H
+      if (endAtom->isHydrogen()) {
+        // get the bonded non-hydrogen and remove this atom
+        Atom *hydrogen = endAtom;
+        if (hydrogen->neighbors().size()) {
+          endAtom = d->molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
+          d->molecule->removeAtom(hydrogen);
+        }
+      } else { // heavy atom -- remove attached hydrogens
+        d->molecule->removeHydrogens(endAtom);
       }
-      Atom *endAtom = d->molecule->atomById(d->endAtom);
-      d->molecule->removeHydrogens(endAtom); // make sure to adjust valence on this atom
 
       OpenBabel::OBMol mol = d->molecule->OBMol();
       // Open Babel indexes atoms from 1, not 0

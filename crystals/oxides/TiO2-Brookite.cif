@@ -1,0 +1,65 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9009087.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9009087
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+ Second edition. Interscience Publishers, New York, New York
+;
+_journal_name_full               'Crystal Structures'
+_journal_page_first              239
+_journal_page_last               444
+_journal_volume                  1
+_journal_year                    1963
+_chemical_formula_sum            'O2 Ti'
+_chemical_name_mineral           Brookite
+_space_group_IT_number           61
+_symmetry_space_group_name_Hall  '-P 2ac 2ab'
+_symmetry_space_group_name_H-M   'P b c a'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   9.184
+_cell_length_b                   5.447
+_cell_length_c                   5.145
+_cell_volume                     257.380
+_exptl_crystal_density_diffrn    4.123
+_[local]_cod_chemical_formula_sum_orig 'Ti O2'
+_cod_database_code               9009087
+_amcsd_database_code             AMCSD#0011419
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,1/2+z
+-x,1/2+y,1/2-z
+1/2-x,1/2+y,z
+1/2+x,1/2-y,-z
+1/2+x,y,1/2-z
+1/2-x,-y,1/2+z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ti 0.12900 0.09720 -0.13710
+O1 0.01010 0.14860 0.18240
+O2 0.23040 0.11300 -0.46290

@@ -1,0 +1,84 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9004484.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9004484
+loop_
+_publ_author_name
+'Jacobsen, S. D.'
+'Smyth, J. R.'
+'Swope, R. J.'
+'Downs, R. T.'
+_publ_section_title
+;
+ Rigid-body character of the SO4 groups in celestine, anglesite and
+ barite
+;
+_journal_name_full               'The Canadian Mineralogist'
+_journal_page_first              1053
+_journal_page_last               1060
+_journal_volume                  36
+_journal_year                    1998
+_chemical_formula_sum            'O4 Pb S'
+_chemical_name_mineral           Anglesite
+_space_group_IT_number           62
+_symmetry_space_group_name_Hall  '-P 2c 2ab'
+_symmetry_space_group_name_H-M   'P b n m'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   6.9549
+_cell_length_b                   8.472
+_cell_length_c                   5.3973
+_cell_volume                     318.019
+_exptl_crystal_density_diffrn    6.334
+_[local]_cod_chemical_formula_sum_orig 'Pb S O4'
+_cod_database_code               9004484
+_amcsd_database_code             AMCSD#0005518
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,y,1/2-z
+-x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+1/2-x,1/2+y,1/2-z
+1/2-x,1/2+y,z
+1/2+x,1/2-y,-z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Pb 0.02194 0.01293 0.02321 0.00110 0.00000 0.00000
+S 0.01240 0.00960 0.00880 -0.00030 0.00000 0.00000
+O1 0.02500 0.01400 0.03500 0.00800 0.00000 0.00000
+O2 0.01500 0.02200 0.02500 -0.00800 0.00000 0.00000
+O3 0.01950 0.01920 0.01290 -0.00240 -0.00570 0.00160
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Pb 0.16716 0.18798 0.25000
+S 0.18490 0.43580 0.75000
+O1 0.09460 0.59150 0.75000
+O2 0.04240 0.30720 0.75000
+O3 0.30900 0.41890 0.97260
