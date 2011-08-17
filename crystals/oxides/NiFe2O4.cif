@@ -1,0 +1,251 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910064
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 292 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931
+& http://jcrystal.com/steffenweber/gallery/StructureTypes/st4.html
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              292
+_journal_page_last               292
+_journal_year                    1931
+_chemical_formula_structural     NiFe2O4
+_chemical_formula_sum            'Fe2 Ni O4'
+_chemical_name_systematic        NiFe2O4
+_space_group_IT_number           227
+_symmetry_cell_setting           cubic
+_symmetry_Int_Tables_number      227
+_symmetry_space_group_name_Hall  '-F 4vw 2vw 3'
+_symmetry_space_group_name_H-M   'F d -3 m :2'
+_audit_creation_date             2005-04-11
+_audit_creation_method
+;
+Page 292 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931
+& http://jcrystal.com/steffenweber/gallery/StructureTypes/st4.html
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   8.34
+_cell_length_b                   8.34
+_cell_length_c                   8.34
+_cell_volume                     580.094
+_[local]_cod_cif_authors_sg_H-M  'F d -3 m'
+_[local]_cod_chemical_formula_sum_orig 'Ni Fe2 O4'
+_cod_database_code               5910064
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x+1/4,-z,y+1/4
+x+1/4,z+1/4,-y
+z+1/4,y+1/4,-x
+-z,y+1/4,x+1/4
+-y,x+1/4,z+1/4
+y+1/4,-x,z+1/4
+z,x,y
+y,z,x
+-y+1/4,-z+1/4,x
+z,-x+1/4,-y+1/4
+-y+1/4,z,-x+1/4
+-z+1/4,-x+1/4,y
+-z+1/4,x,-y+1/4
+y,-z+1/4,-x+1/4
+x,-y+1/4,-z+1/4
+-x+1/4,y,-z+1/4
+-x+1/4,-y+1/4,z
+y+1/4,x+1/4,-z
+-y,-x,-z
+z+1/4,-y,x+1/4
+-z,-y,-x
+-x,z+1/4,y+1/4
+-x,-z,-y
+-x,-y,-z
+-x+3/4,z,-y+3/4
+-x+3/4,-z+3/4,y
+-z+3/4,-y+3/4,x
+z,-y+3/4,-x+3/4
+y,-x+3/4,-z+3/4
+-y+3/4,x,-z+3/4
+-z,-x,-y
+-y,-z,-x
+y+3/4,z+3/4,-x
+-z,x+3/4,y+3/4
+y+3/4,-z,x+3/4
+z+3/4,x+3/4,-y
+z+3/4,-x,y+3/4
+-y,z+3/4,x+3/4
+-x,y+3/4,z+3/4
+x+3/4,-y,z+3/4
+x+3/4,y+3/4,-z
+-y+3/4,-x+3/4,z
+y,x,z
+-z+3/4,y,-x+3/4
+z,y,x
+x,-z+3/4,-y+3/4
+x,z,y
+x,y+1/2,z+1/2
+x+1/4,-z+1/2,y+3/4
+x+1/4,z+3/4,-y+1/2
+z+1/4,y+3/4,-x+1/2
+-z,y+3/4,x+3/4
+-y,x+3/4,z+3/4
+y+1/4,-x+1/2,z+3/4
+z,x+1/2,y+1/2
+y,z+1/2,x+1/2
+-y+1/4,-z+3/4,x+1/2
+z,-x+3/4,-y+3/4
+-y+1/4,z+1/2,-x+3/4
+-z+1/4,-x+3/4,y+1/2
+-z+1/4,x+1/2,-y+3/4
+y,-z+3/4,-x+3/4
+x,-y+3/4,-z+3/4
+-x+1/4,y+1/2,-z+3/4
+-x+1/4,-y+3/4,z+1/2
+y+1/4,x+3/4,-z+1/2
+-y,-x+1/2,-z+1/2
+z+1/4,-y+1/2,x+3/4
+-z,-y+1/2,-x+1/2
+-x,z+3/4,y+3/4
+-x,-z+1/2,-y+1/2
+-x,-y+1/2,-z+1/2
+-x+3/4,z+1/2,-y+1/4
+-x+3/4,-z+1/4,y+1/2
+-z+3/4,-y+1/4,x+1/2
+z,-y+1/4,-x+1/4
+y,-x+1/4,-z+1/4
+-y+3/4,x+1/2,-z+1/4
+-z,-x+1/2,-y+1/2
+-y,-z+1/2,-x+1/2
+y+3/4,z+1/4,-x+1/2
+-z,x+1/4,y+1/4
+y+3/4,-z+1/2,x+1/4
+z+3/4,x+1/4,-y+1/2
+z+3/4,-x+1/2,y+1/4
+-y,z+1/4,x+1/4
+-x,y+1/4,z+1/4
+x+3/4,-y+1/2,z+1/4
+x+3/4,y+1/4,-z+1/2
+-y+3/4,-x+1/4,z+1/2
+y,x+1/2,z+1/2
+-z+3/4,y+1/2,-x+1/4
+z,y+1/2,x+1/2
+x,-z+1/4,-y+1/4
+x,z+1/2,y+1/2
+x+1/2,y,z+1/2
+x+3/4,-z,y+3/4
+x+3/4,z+1/4,-y+1/2
+z+3/4,y+1/4,-x+1/2
+-z+1/2,y+1/4,x+3/4
+-y+1/2,x+1/4,z+3/4
+y+3/4,-x,z+3/4
+z+1/2,x,y+1/2
+y+1/2,z,x+1/2
+-y+3/4,-z+1/4,x+1/2
+z+1/2,-x+1/4,-y+3/4
+-y+3/4,z,-x+3/4
+-z+3/4,-x+1/4,y+1/2
+-z+3/4,x,-y+3/4
+y+1/2,-z+1/4,-x+3/4
+x+1/2,-y+1/4,-z+3/4
+-x+3/4,y,-z+3/4
+-x+3/4,-y+1/4,z+1/2
+y+3/4,x+1/4,-z+1/2
+-y+1/2,-x,-z+1/2
+z+3/4,-y,x+3/4
+-z+1/2,-y,-x+1/2
+-x+1/2,z+1/4,y+3/4
+-x+1/2,-z,-y+1/2
+-x+1/2,-y,-z+1/2
+-x+1/4,z,-y+1/4
+-x+1/4,-z+3/4,y+1/2
+-z+1/4,-y+3/4,x+1/2
+z+1/2,-y+3/4,-x+1/4
+y+1/2,-x+3/4,-z+1/4
+-y+1/4,x,-z+1/4
+-z+1/2,-x,-y+1/2
+-y+1/2,-z,-x+1/2
+y+1/4,z+3/4,-x+1/2
+-z+1/2,x+3/4,y+1/4
+y+1/4,-z,x+1/4
+z+1/4,x+3/4,-y+1/2
+z+1/4,-x,y+1/4
+-y+1/2,z+3/4,x+1/4
+-x+1/2,y+3/4,z+1/4
+x+1/4,-y,z+1/4
+x+1/4,y+3/4,-z+1/2
+-y+1/4,-x+3/4,z+1/2
+y+1/2,x,z+1/2
+-z+1/4,y,-x+1/4
+z+1/2,y,x+1/2
+x+1/2,-z+3/4,-y+1/4
+x+1/2,z,y+1/2
+x+1/2,y+1/2,z
+x+3/4,-z+1/2,y+1/4
+x+3/4,z+3/4,-y
+z+3/4,y+3/4,-x
+-z+1/2,y+3/4,x+1/4
+-y+1/2,x+3/4,z+1/4
+y+3/4,-x+1/2,z+1/4
+z+1/2,x+1/2,y
+y+1/2,z+1/2,x
+-y+3/4,-z+3/4,x
+z+1/2,-x+3/4,-y+1/4
+-y+3/4,z+1/2,-x+1/4
+-z+3/4,-x+3/4,y
+-z+3/4,x+1/2,-y+1/4
+y+1/2,-z+3/4,-x+1/4
+x+1/2,-y+3/4,-z+1/4
+-x+3/4,y+1/2,-z+1/4
+-x+3/4,-y+3/4,z
+y+3/4,x+3/4,-z
+-y+1/2,-x+1/2,-z
+z+3/4,-y+1/2,x+1/4
+-z+1/2,-y+1/2,-x
+-x+1/2,z+3/4,y+1/4
+-x+1/2,-z+1/2,-y
+-x+1/2,-y+1/2,-z
+-x+1/4,z+1/2,-y+3/4
+-x+1/4,-z+1/4,y
+-z+1/4,-y+1/4,x
+z+1/2,-y+1/4,-x+3/4
+y+1/2,-x+1/4,-z+3/4
+-y+1/4,x+1/2,-z+3/4
+-z+1/2,-x+1/2,-y
+-y+1/2,-z+1/2,-x
+y+1/4,z+1/4,-x
+-z+1/2,x+1/4,y+3/4
+y+1/4,-z+1/2,x+3/4
+z+1/4,x+1/4,-y
+z+1/4,-x+1/2,y+3/4
+-y+1/2,z+1/4,x+3/4
+-x+1/2,y+1/4,z+3/4
+x+1/4,-y+1/2,z+3/4
+x+1/4,y+1/4,-z
+-y+1/4,-x+1/4,z
+y+1/2,x+1/2,z
+-z+1/4,y+1/2,-x+3/4
+z+1/2,y+1/2,x
+x+1/2,-z+1/4,-y+3/4
+x+1/2,z+1/2,y
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 Ni
+0.62500 0.62500 0.62500 Fe
+0.38700 0.38700 0.38700 O

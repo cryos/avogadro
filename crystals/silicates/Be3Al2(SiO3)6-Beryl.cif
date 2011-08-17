@@ -1,0 +1,93 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1010541.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1010541
+_chemical_name_systematic          'Triberyllium dialuminium catena-silicate'
+_chemical_formula_structural       'Be3 Al2 Si6 O18'
+_chemical_formula_sum              'Al2 Be3 O18 Si6'
+_publ_section_title
+;
+The Structure of Beryl, Be~3~ Al~2~ Si~6~ O~18~
+;
+loop_
+_publ_author_name                  'Bragg, W L'
+_journal_name_full
+;
+Proceedings of the Royal Society of London, Series A: Mathematical and
+Physical Sciences (76,1906-)
+;
+_journal_coden_ASTM                PRLAAZ
+_journal_volume                    111
+_journal_year                      1926
+_journal_page_first                691
+_journal_page_last                 714
+_cell_length_a                     9.21(1)
+_cell_length_b                     9.21(1)
+_cell_length_c                     9.17(1)
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  120
+_cell_volume                       673.6
+_cell_formula_units_Z              2
+_symmetry_space_group_name_H-M     'P 6/m c c S'
+_symmetry_Int_Tables_number        192
+_symmetry_cell_setting             hexagonal
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  '-x,-y,z'
+  'y-x,-x,z'
+  'x-y,x,z'
+  '-y,x-y,z'
+  'y,y-x,z'
+  'y,x,-z'
+  '-y,-x,-z'
+  '-x,y-x,-z'
+  'x,x-y,-z'
+  'x-y,-y,-z'
+  'y-x,y,-z'
+  'x,y,1/2-z'
+  '-x,-y,1/2-z'
+  'y-x,-x,1/2-z'
+  'x-y,x,1/2-z'
+  '-y,x-y,1/2-z'
+  'y,y-x,1/2-z'
+  'y,x,1/2+z'
+  '-y,-x,1/2+z'
+  '-x,y-x,1/2+z'
+  'x,x-y,1/2+z'
+  'x-y,-y,1/2+z'
+  'y-x,y,1/2+z'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  Al3+   3.000
+  Be2+   2.000
+  Si4+   4.000
+  O2-   -2.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  Al1   Al3+   4 d 0.6667 0.3333 0. 1.  0 d
+  Be1   Be2+   6 g 0.5 0. 0. 1.  0 d
+  Si1   Si4+  12 l 0.39 0.12 0.25 1.  0 d
+  O1    O2-   24 m 0.48 0.15 0.1 1.  0 d
+  O2    O2-   12 l 0.3 0.24 0.25 1.  0 d
+_cod_database_code 1010541

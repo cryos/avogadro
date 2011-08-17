@@ -1,0 +1,85 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910314
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Pages 40 & 41 from the Structure of Crystals, vol. 3 by Wyckoff R W G. 
+published by Interscience Publishers, Inc. in 1951 
+;
+_journal_name_full               'The Structure of Crystals'
+_journal_page_first              40
+_journal_page_last               41
+_journal_volume                  3
+_journal_year                    1951
+_chemical_formula_structural     CoSO4
+_chemical_formula_sum            'Co O4 S'
+_space_group_IT_number           62
+_symmetry_cell_setting           orthorhombic
+_symmetry_Int_Tables_number      62
+_symmetry_space_group_name_Hall  '-P 2ac 2n'
+_symmetry_space_group_name_H-M   'P n m a'
+_audit_creation_date             2006-02-07
+_audit_creation_method
+;
+Pages 40 & 41 from the Structure of Crystals, vol. 3 by Wyckoff R W G. 
+published by Interscience Publishers, Inc. in 1951 
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   8.624
+_cell_length_b                   6.715
+_cell_length_c                   4.744
+_cell_volume                     274.726
+_[local]_cod_chemical_formula_sum_orig 'Co S O4'
+_cod_database_code               5910314
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x+1/2,-y+1/2,-z+1/2
+-x,y+1/2,-z
+-x+1/2,-y,z+1/2
+-x,-y,-z
+-x+1/2,y+1/2,z+1/2
+x,-y+1/2,z
+x+1/2,y,-z+1/2
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 Co1
+0.00000 0.50000 0.00000 Co2
+0.50000 0.00000 0.50000 Co3
+0.50000 0.50000 0.50000 Co4
+0.18600 0.25000 0.45800 S1
+0.68600 0.25000 0.04200 S2
+-0.18600 -0.25000 -0.45800 S3
+-0.68600 -0.25000 -0.04200 S4
+0.13000 0.25000 0.75000 O1
+0.63000 0.25000 -0.25000 O2
+-0.13000 -0.25000 -0.75000 O3
+-0.63000 -0.25000 0.25000 O4
+0.36700 0.25000 0.45800 O5
+0.86700 0.25000 0.04200 O6
+-0.36700 -0.25000 -0.45800 O7
+-0.86700 -0.25000 -0.04200 O8
+0.13000 0.06100 0.31900 O9
+0.63000 0.43900 0.18100 O10
+0.13000 0.43900 0.31900 O11
+0.63000 0.06100 0.18100 O12
+-0.13000 -0.06100 -0.31900 O13
+-0.63000 -0.43900 -0.18100 O14
+-0.13000 -0.43900 -0.31900 O15
+-0.63000 -0.06100 -0.18100 O16

@@ -1,0 +1,116 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2102945.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2102945
+_space_group_IT_number           161
+_symmetry_space_group_name_Hall  'R 3 -2"c'
+_symmetry_space_group_name_H-M   'R 3 c :H'
+_[local]_cod_cif_authors_sg_H-M  'R 3c'
+loop_
+_publ_author_name
+'Mir, M.'
+'Mascarenhas, Y.P.'
+'Mastelaro, V.R.'
+'Neves, P.P.'
+'Doriguetto, A.C.'
+'Garcia, D.'
+'Lente, M.H.'
+'Eiras, J.A.'
+_publ_section_title
+; X-ray powder difraction structural characterization of
+Pb(1-x)Ba(x)Zr(0.65)Ti(0.35)O3 ceramic.
+;
+_journal_coeditor_code           KD5005
+_journal_issue                   5
+_journal_name_full               'Acta Crystallographica, Section B'
+_journal_page_first              713
+_journal_page_last               718
+_journal_volume                  63
+_journal_year                    2007
+_chemical_formula_analytical     'Pb (Zr0.65 Ti0.35) O3'
+_chemical_formula_moiety         'Pb Zi0.65 Ti0.35 O3'
+_chemical_formula_structural     'Pb (Zr0.65 Ti0.35) O3'
+_chemical_formula_sum            'O3 Pb Ti0.35 Zr0.65'
+_[local]_cod_chemical_formula_sum_orig 'O3 Pb1 Ti0.35 Zr0.65'
+_chemical_name_common            'Lead Zirconium Titanium Oxide'
+_chemical_name_systematic        ' Lead Zirconium Titanium Oxide'
+_symmetry_cell_setting           rhombohedral
+_cell_angle_alpha                90.00000
+_cell_angle_beta                 90.00000
+_cell_angle_gamma                120.00000
+_cell_formula_units_Z            6
+_cell_length_a                   5.7779174(9)
+_cell_length_b                   5.7779174(9)
+_cell_length_c                   14.26920510(15)
+_cell_measurement_temperature    300
+_cell_volume                     412.547(9)
+_computing_structure_refinement  FULLPROF
+_diffrn_ambient_temperature      298
+_diffrn_measurement_method       'theta/2theta step scans'
+_diffrn_radiation_monochromator  Si
+_diffrn_radiation_type           X-ray
+_refine_ls_number_parameters     13
+_refine_ls_number_reflns         46
+_refine_ls_number_restraints     0
+_[local]_cod_data_source_file    kd5005.cif
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-y,x-y,z
+-x+y,-x,z
+-y,-x,z+1/2
+-x+y,y,z+1/2
+x,x-y,z+1/2
+x+2/3,y+1/3,z+1/3
+-y+2/3,x-y+1/3,z+1/3
+-x+y+2/3,-x+1/3,z+1/3
+-y+2/3,-x+1/3,z+5/6
+-x+y+2/3,y+1/3,z+5/6
+x+2/3,x-y+1/3,z+5/6
+x+1/3,y+2/3,z+2/3
+-y+1/3,x-y+2/3,z+2/3
+-x+y+1/3,-x+2/3,z+2/3
+-y+1/3,-x+2/3,z+1/6
+-x+y+1/3,y+2/3,z+1/6
+x+1/3,x-y+2/3,z+1/6
+loop_
+_atom_type_symbol
+_atom_type_scat_dispersion_real
+_atom_type_scat_dispersion_imag
+_atom_type_scat_source
+pb -4.81800 8.50500
+International_Tables_for_Crystallography_Vol.C(1991)_Tables_6.1.1.4_and_6.1.1.5
+ti 0.18900 1.80700
+International_Tables_for_Crystallography_Vol.C(1991)_Tables_6.1.1.4_and_6.1.1.5
+zr -0.31400 2.24500
+International_Tables_for_Crystallography_Vol.C(1991)_Tables_6.1.1.4_and_6.1.1.5
+o 0.04700 0.03200
+International_Tables_for_Crystallography_Vol.C(1991)_Tables_6.1.1.4_and_6.1.1.5
+loop_
+_atom_site_type_symbol
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+_atom_site_adp_type
+_atom_site_occupancy
+Pb Pb1 0.00000 0.00000 0.00000 0.00000 Uiso 1.00000
+Ti Ti1 0.00000 0.00000 -0.252(3) 0.00000 Uiso 0.65000
+Zr Zr1 0.00000 0.00000 -0.252(3) 0.00000 Uiso 0.35000
+O O1 0.16324 0.34281 -0.1990(13) 0.00000 Uiso 1.00000
+_cod_database_code 2102945

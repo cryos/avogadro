@@ -44,7 +44,7 @@ namespace Avogadro {
 
   public:
     //! Constructor
-    explicit InsertFragmentDialog(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit InsertFragmentDialog(QWidget *parent = 0, QString directory = "fragments", Qt::WindowFlags f = 0);
     //! Destructor
     ~InsertFragmentDialog();
 
@@ -55,11 +55,11 @@ namespace Avogadro {
 
     void filterTextChanged(const QString &);
 
-    void clearFilterText(bool);
-    void insertButtonClicked(bool);
+    void clearFilterText();
+    void activated();
 
   Q_SIGNALS:
-    void insertClicked();
+    void performInsert();
 
   private:
     Ui::InsertFragmentDialog ui;

@@ -1,0 +1,87 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9004096.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9004096
+loop_
+_publ_author_name
+'Hawthorne, F. C.'
+'Ferguson, R. B.'
+_publ_section_title
+;
+ Anhydrous sulphates. II. Refinement of the crystal structure of anhydrite
+;
+_journal_name_full               'The Canadian Mineralogist'
+_journal_page_first              289
+_journal_page_last               292
+_journal_volume                  13
+_journal_year                    1975
+_chemical_formula_sum            'Ca O4 S'
+_chemical_name_mineral           Anhydrite
+_space_group_IT_number           63
+_symmetry_space_group_name_Hall  '-A 2a 2a'
+_symmetry_space_group_name_H-M   'A m m a'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   6.993
+_cell_length_b                   6.995
+_cell_length_c                   6.245
+_cell_volume                     305.481
+_exptl_crystal_density_diffrn    2.960
+_[local]_cod_chemical_formula_sum_orig 'Ca S O4'
+_cod_database_code               9004096
+_amcsd_database_code             AMCSD#0005077
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2+y,1/2+z
+1/2+x,y,-z
+1/2+x,1/2+y,1/2-z
+1/2-x,-y,z
+1/2-x,1/2-y,1/2+z
+x,-y,z
+x,1/2-y,1/2+z
+-x,y,-z
+-x,1/2+y,1/2-z
+1/2-x,y,z
+1/2-x,1/2+y,1/2+z
+1/2+x,-y,-z
+1/2+x,1/2-y,1/2-z
+-x,-y,-z
+-x,1/2-y,1/2-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Ca 0.00850 0.00935 0.00699 0.00000 0.00000 0.00000
+S 0.00837 0.00669 0.00585 0.00000 0.00000 0.00000
+O1 0.01947 0.00835 0.00960 0.00000 0.00000 0.00000
+O2 0.00870 0.01683 0.01014 0.00000 0.00268 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ca 0.75000 0.00000 0.34760
+S 0.25000 0.00000 0.15556
+O1 0.25000 0.16990 0.01620
+O2 0.08190 0.00000 0.29750
