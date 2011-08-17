@@ -1,0 +1,54 @@
+data_5910000
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Pages 55 & 61 from the second edition supplement of The Structure
+of Crystals by Wyckoff R W G. published by Reinhold Publishing
+Corporation, INC,Camden,N. J. in 1935
+;
+_journal_name_full
+'The second edition supplement of The Structure of Crystals'
+_journal_page_first              55
+_journal_page_last               61
+_journal_year                    1935
+_chemical_formula_structural     MgTiO3
+_chemical_formula_sum            'Mg O3 Ti'
+_chemical_name_systematic        'Magnesium titanate'
+_symmetry_cell_setting           trigonal
+_symmetry_Int_Tables_number      148
+_symmetry_space_group_name_H-M   'R -3'
+_audit_creation_date             2005-06-11
+_audit_creation_method
+;
+Pages 55 & 61 from the second edition supplement of The Structure
+of Crystals by Wyckoff R W G. published by Reinhold Publishing
+Corporation, INC,Camden,N. J. in 1935
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                54.39
+_cell_angle_beta                 54.39
+_cell_angle_gamma                54.39
+_cell_length_a                   5.54
+_cell_length_b                   5.54
+_cell_length_c                   5.54
+_cell_volume                     104.499
+_[local]_cod_chemical_formula_sum_orig 'Mg Ti O3'
+_cod_database_code               5910000
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.35800 0.35800 0.35800 Mg1
+-0.35800 -0.35800 -0.35800 Mg2
+0.14200 0.14200 0.14200 Ti1
+-0.14200 -0.14200 -0.14200 Ti2
+0.55500 -0.05500 0.25000 O1
+-0.55500 0.05500 -0.25000 O2
+-0.05500 0.25000 0.55500 O3
+0.05500 -0.25000 -0.55500 O4
+0.25000 0.55500 -0.05500 O5
+-0.25000 -0.55500 0.05500 O6

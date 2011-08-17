@@ -1,7 +1,7 @@
 /**********************************************************************
   InsertFragment - Insert molecular fragments or SMILES
 
-  Copyright (C) 2009 by Geoffrey R. Hutchison
+  Copyright (C) 2009-2001 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -22,6 +22,7 @@
 #include "insertfragmentextension.h"
 #include "insertcommand.h"
 
+#include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/primitivelist.h>
@@ -41,16 +42,23 @@ namespace Avogadro {
 
   enum FragmentIndex
   {
-    FragmentFromFileIndex = 0,
+    CrystalFromFileIndex = 0,
+    FragmentFromFileIndex,
     SMILESIndex
   };
 
   InsertFragmentExtension::InsertFragmentExtension(QObject *parent) :
     Extension(parent),
-    m_dialog(0),
+    m_fragmentDialog(0),
+    m_crystalDialog(0),
     m_molecule(0)
   {
     QAction *action = new QAction(this);
+    action->setText(tr("Crystal..."));
+    action->setData(CrystalFromFileIndex);
+    m_actions.append(action);
+
+    action = new QAction(this);
     action->setText(tr("Fragment..."));
     action->setData(FragmentFromFileIndex);
     m_actions.append(action);
@@ -60,15 +68,18 @@ namespace Avogadro {
     action->setData(SMILESIndex);
     m_actions.append(action);
 
-    m_dialog = new InsertFragmentDialog(static_cast<QWidget*>(parent));
-    connect(m_dialog, SIGNAL(insertClicked()), this, SLOT(performInsert()));
+    // Dialog is created later, if needed
   }
 
   InsertFragmentExtension::~InsertFragmentExtension()
   {
-    if (m_dialog) {
-      delete m_dialog;
-      m_dialog = 0;
+    if (m_fragmentDialog) {
+      delete m_fragmentDialog;
+      m_fragmentDialog = 0;
+    }
+    if (m_crystalDialog) {
+      delete m_crystalDialog;
+      m_crystalDialog = 0;
     }
   }
 
@@ -94,14 +105,14 @@ namespace Avogadro {
       return NULL; // nothing we can do
 
     if (action->data() == SMILESIndex) {
-
+      // Read a SMILES and use the OBBuilder class to build it and insert the new fragment
       OBBuilder builder;
       Molecule fragment;
       OBMol obfragment;
       OBConversion conv;
 
-      int selectedAtom = -1;
-      bool ok;
+      bool ok, noConnection;
+      QList<int> selectedIds;
       QString smiles = QInputDialog::getText((widget),
                                              tr("Insert SMILES"),
                                              tr("Insert SMILES fragment:"),
@@ -112,8 +123,15 @@ namespace Avogadro {
         std::string SmilesString(smiles.toAscii());
 
         QList<Primitive *> selectedAtoms = widget->selectedPrimitives().subList(Primitive::AtomType);
-        if (selectedAtoms.size() == 1) { // TODO: Expand to handle multiple addition points
-          selectedAtom = selectedAtoms[0]->id();
+        if (!selectedAtoms.empty()) {
+          // Loop through the selection and add the ids
+          // But if it's a hydrogen, we need to find the attached parent
+          // (making sure it's not also selected)
+          selectedIds.append(findSelectedForInsert(selectedAtoms));
+          noConnection = false;
+        } else {
+          selectedIds.append(-1);
+          noConnection = true;
         }
 
         if(conv.SetInFormat("smi")
@@ -121,34 +139,48 @@ namespace Avogadro {
           {
             builder.Build(obfragment);
 
-            OBForceField* pFF =  OBForceField::FindForceField("UFF");
+            // Let's do a quick cleanup
+            OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
             if (pFF && pFF->Setup(obfragment)) {
+              pFF->ConjugateGradients(250, 1.0e-4);
+              pFF->UpdateCoordinates(obfragment);
+            } // Note tricky assignment used as logic below
+            else if ((pFF = OBForceField::FindForceField("UFF")) && pFF->Setup(obfragment)) {
               pFF->ConjugateGradients(250, 1.0e-4);
               pFF->UpdateCoordinates(obfragment);
             }
 
             fragment.setOBMol(&obfragment);
-            if (selectedAtom == -1) { // if we're not connecting to a specific atom, add Hs, center
-              fragment.addHydrogens(); // hydrogen addition is done by InsertCommand when connecting
+            if (noConnection) { // if we're not connecting to a specific atom, add Hs, center
+              fragment.addHydrogens(); // hydrogen addition is done by InsertCommand when bonding
               fragment.center();
             }
           }
       }
 
-      return new InsertFragmentCommand(m_molecule, fragment, widget, tr("Insert SMILES"), selectedAtom);
-    }
-    else if (action->data() == FragmentFromFileIndex) {
-      m_widget = widget; // save for delayed response
-
-      if (m_dialog == NULL) {
-        m_dialog = new InsertFragmentDialog(widget);
-        connect(m_dialog, SIGNAL(insertClicked()), this, SLOT(performInsert()));
+      foreach(int id, selectedIds) {
+        emit performCommand(new InsertFragmentCommand(m_molecule, fragment, widget, tr("Insert SMILES"), id));
       }
-      m_dialog->show();
+    } else if (action->data() == FragmentFromFileIndex) { // molecular fragments
+        if (m_fragmentDialog == NULL) {
+          m_fragmentDialog = new InsertFragmentDialog(widget, "fragments");
+          m_fragmentDialog->setWindowTitle(tr("Insert Fragment"));
+          connect(m_fragmentDialog, SIGNAL(performInsert()), this, SLOT(insertFragment()));
+        }
+        m_fragmentDialog->show();
 
-      return NULL; // delayed action on user clicking the Insert button
+    } else { // crystals
+      if (m_crystalDialog == NULL) {
+        m_crystalDialog = new InsertFragmentDialog(widget, "crystals");
+        m_crystalDialog->setWindowTitle(tr("Insert Crystal"));
+        connect(m_crystalDialog, SIGNAL(performInsert()), this, SLOT(insertCrystal()));
+      }
+      m_crystalDialog->show();
     }
-    return NULL; // some other action
+
+    m_widget = widget; // save for delayed response
+
+    return NULL; // delayed action on user clicking the Insert button
   }
 
   void InsertFragmentExtension::writeSettings(QSettings &settings) const
@@ -177,18 +209,81 @@ namespace Avogadro {
     */
   }
 
-  // only called by the fragment dialog (not SMILES)
-  void InsertFragmentExtension::performInsert()
+  QList<int> InsertFragmentExtension::findSelectedForInsert(QList<Primitive*> selectedAtomList) const
   {
-    if (m_dialog) {
-      // check to see if we're going to connect to an existing atom using OBBuilder::Connect()
-      int selectedAtom = -1;
-      QList<Primitive *> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
-      if (selectedAtoms.size() == 1) { // TODO: Expand to handle multiple addition points
-        selectedAtom = selectedAtoms[0]->id();
-      }
+    QList<int> selectedIds;
 
-      emit performCommand(new InsertFragmentCommand(m_molecule, m_dialog->fragment(), m_widget, tr("Insert Fragment"), selectedAtom));
+    foreach(const Primitive *primitive, selectedAtomList) {
+      const Atom *atom = static_cast<const Atom*>(primitive); // we know it's an atom, since AtomType was requested
+      if (!atom->isHydrogen()) {
+        // Only append if it doesn't have a selected hydrogen attached
+        bool noSelectedHatoms = true;
+        foreach (unsigned long int neighborId, atom->neighbors())
+          {
+            Atom *neighbor = m_molecule->atomById(neighborId);
+            if (neighbor->isHydrogen()) { // check if it's selected
+              if (selectedAtomList.contains(neighbor)) {
+                noSelectedHatoms = false;
+                break;
+              }
+            }
+          }
+        if (noSelectedHatoms) // add the heavy atom
+          selectedIds.append(atom->id());
+
+      } else {
+        const Atom *hydrogen = atom;
+        if (!hydrogen->neighbors().empty()) {
+          atom = m_molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
+        }
+        selectedIds.append(atom->id());
+      }
+    }
+
+    return selectedIds;
+  }
+
+  void InsertFragmentExtension::insertCrystal()
+  {
+    InsertFragmentDialog *dialog = qobject_cast<InsertFragmentDialog *>(this->sender());
+    if (!dialog)
+      return;
+
+    const Molecule fragment = dialog->fragment();
+    if (fragment.numAtoms() == 0)
+      return;
+
+    *m_molecule = fragment;
+    m_molecule->update();
+    emit moleculeChanged(m_molecule, Extension::NewWindow);
+  }
+
+  // only called by the fragment dialog (not SMILES)
+  void InsertFragmentExtension::insertFragment()
+  {
+    InsertFragmentDialog *dialog = qobject_cast<InsertFragmentDialog *>(this->sender());
+    if (!dialog)
+      return;
+
+    // Get the fragment and make sure it exists (e.g., we didn't try to insert a directory
+    const Molecule fragment = dialog->fragment();
+    if (fragment.numAtoms() == 0)
+      return;
+
+    // Check to see if we're going to connect to an existing atom using OBBuilder::Connect()
+    QList<Primitive *> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
+    QList<int> selectedIds;
+    if (!selectedAtoms.empty()) {
+      // Loop through the selection and add the ids
+      // But if it's a hydrogen, we need to find the attached parent
+      // (making sure it's not also selected)
+      selectedIds.append(findSelectedForInsert(selectedAtoms));
+    } else {
+      selectedIds.append(-1);
+    }
+
+    foreach(int id, selectedIds) {
+      emit performCommand(new InsertFragmentCommand(m_molecule, fragment, m_widget, tr("Insert Fragment"), id));
     }
   }
 

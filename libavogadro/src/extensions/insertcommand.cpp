@@ -45,18 +45,18 @@ namespace Avogadro {
 
   class InsertFragmentCommandPrivate {
     public:
-      InsertFragmentCommandPrivate() : 
-        molecule(0), 
+      InsertFragmentCommandPrivate() :
+        molecule(0),
         generatedMolecule(0), widget(0),
         startAtom(-1), endAtom(-1) {};
-    
+
     Molecule *molecule;
     Molecule moleculeCopy, generatedMolecule;
     GLWidget *widget;
     int startAtom, endAtom; // if we're using OBBuilder::Connect()
   };
 
-  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, 
+  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule,
                                                const Molecule &generatedMolecule,
                                                GLWidget *widget,
                                                const QString commandName, int start, int end)
@@ -98,9 +98,10 @@ namespace Avogadro {
       if (startAtom->isHydrogen()) {
         // get the bonded non-hydrogen and remove this atom
         Atom *hydrogen = startAtom;
-        if (hydrogen->neighbors().size())
+        if (hydrogen->neighbors().size()) {
           startAtom = d->molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
-        d->molecule->removeAtom(hydrogen);
+          d->molecule->removeAtom(hydrogen);
+        }
       } else { // heavy atom -- remove attached hydrogens
         d->molecule->removeHydrogens(startAtom);
       }
@@ -109,7 +110,18 @@ namespace Avogadro {
         d->endAtom = initialAtoms + 1;
       }
       Atom *endAtom = d->molecule->atomById(d->endAtom);
-      d->molecule->removeHydrogens(endAtom); // make sure to adjust valence on this atom
+      // same procedure as the start atom -- check if endAtom is an H
+      qDebug() << " end atom " << endAtom->atomicNumber();
+      if (endAtom->isHydrogen()) {
+        // get the bonded non-hydrogen and remove this atom
+        Atom *hydrogen = endAtom;
+        if (hydrogen->neighbors().size()) {
+          endAtom = d->molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
+          d->molecule->removeAtom(hydrogen);
+        }
+      } else { // heavy atom -- remove attached hydrogens
+        d->molecule->removeHydrogens(endAtom);
+      }
 
       OpenBabel::OBMol mol = d->molecule->OBMol();
       // Open Babel indexes atoms from 1, not 0
