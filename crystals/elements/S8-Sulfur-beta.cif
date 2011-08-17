@@ -1,0 +1,103 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2011-06-11 06:04:15 +0000 (Sat, 11 Jun 2011) $
+#$Revision: 20519 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/9009891.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9009891
+loop_
+_publ_author_name
+'Templeton, L. K.'
+'Templeton, D. H.'
+'Zalkin, A.'
+_publ_section_title
+;
+ Crystal structure of monoclinic sulfur
+ Locality: synthetic
+ Note: this is known as the beta phase of sulfur
+;
+_journal_name_full               'Inorganic Chemistry'
+_journal_page_first              1999
+_journal_page_last               2001
+_journal_volume                  15
+_journal_year                    1976
+_chemical_formula_sum            S8
+_chemical_name_mineral           Sulphur
+_space_group_IT_number           14
+_symmetry_space_group_name_Hall  '-P 2ybc'
+_symmetry_space_group_name_H-M   'P 1 21/c 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 95.92
+_cell_angle_gamma                90
+_cell_length_a                   10.926
+_cell_length_b                   10.855
+_cell_length_c                   10.790
+_cell_volume                     1272.888
+_exptl_crystal_density_diffrn    2.008
+_[local]_cod_chemical_formula_sum_orig S.75
+_cod_database_code               9009891
+_amcsd_database_code             AMCSD#0013275
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,1/2+z
+-x,1/2+y,1/2-z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+S1 0.05953 0.04876 0.06193 0.00722 0.00215 0.00798
+S2 0.04357 0.07447 0.07662 -0.01266 -0.00392 0.00785
+S3 0.07460 0.05839 0.05142 -0.00874 -0.02267 -0.00405
+S4 0.07701 0.03673 0.06358 -0.01039 -0.01469 0.00102
+S5 0.05383 0.04901 0.04382 0.00544 0.00253 -0.00292
+S6 0.05889 0.05167 0.03660 -0.00076 -0.01000 0.00304
+S7 0.05725 0.04306 0.05307 -0.01190 0.00025 -0.00785
+S8 0.06776 0.05674 0.04800 0.00063 0.01165 -0.01406
+S9 0.04559 0.07092 0.11272 0.00380 -0.01900 0.00886
+S10 0.09625 0.08485 0.06839 -0.00760 -0.01646 0.03547
+S11 0.10259 0.07346 0.04813 -0.00253 -0.02280 -0.01013
+S12 0.05826 0.07979 0.05826 0.00886 0.01520 -0.00127
+S13 0.06459 0.05700 0.05446 0.00507 -0.00380 0.01520
+S14 0.06206 0.09879 0.05193 0.00253 -0.01266 -0.01900
+S15 0.06966 0.10259 0.07219 0.00000 0.02660 -0.01647
+S16 0.05953 0.05319 0.12032 0.00253 0.00380 -0.01647
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+S1 0.23330 0.52510 0.02990 1.00000
+S2 0.15380 0.35550 0.00700 1.00000
+S3 0.25720 0.25230 -0.10220 1.00000
+S4 0.37200 0.14390 0.01340 1.00000
+S5 0.53980 0.22830 0.03810 1.00000
+S6 0.55310 0.31540 0.20750 1.00000
+S7 0.51330 0.49790 0.17800 1.00000
+S8 0.33170 0.52460 0.20230 1.00000
+S9 0.17830 -0.10830 0.08230 0.50000
+S10 0.05050 -0.07100 0.20390 0.50000
+S11 0.00740 0.11250 0.18800 0.50000
+S12 -0.15530 0.12730 0.07900 0.50000
+S13 -0.11990 0.17090 -0.09810 0.50000
+S14 -0.12660 0.01050 -0.19660 0.50000
+S15 0.05100 -0.04660 -0.20300 0.50000
+S16 0.08990 -0.18220 -0.07430 0.50000

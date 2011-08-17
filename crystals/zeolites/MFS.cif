@@ -1,0 +1,67 @@
+data_MFS
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                   7.5430(0)
+_cell_length_b                  14.3880(0)
+_cell_length_c                  19.0160(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma               90.0000(0)
+
+_symmetry_space_group_name_H-M     'I m m 2'
+_symmetry_Int_Tables_number         44
+_symmetry_cell_setting             orthorhombic
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'1/2+x,1/2+y,1/2+z'
+'-x,+y,+z'
+'1/2-x,1/2+y,1/2+z'
+'+x,-y,+z'
+'1/2+x,1/2-y,1/2+z'
+'-x,-y,+z'
+'1/2-x,1/2-y,1/2+z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+    O1    O     0.3258    0.2230    0.2521
+    O2    O     0.2506    0.2668    0.1212
+    O3    O     0.0000    0.2057    0.2054
+    O4    O     0.2489    0.0915    0.1619
+    O5    O     0.2510    0.5914    0.0332
+    O6    O     0.1744    0.7591    0.9877
+    O7    O     0.5000    0.7187    0.0253
+    O8    O     0.0000    0.0913    0.9489
+    O9    O     0.0000    0.2383    0.8679
+   O10    O     0.0000    0.5911    0.8191
+   O11    O     0.5000    0.0000    0.0953
+   O12    O     0.1746    0.0000    0.0463
+   O13    O     0.5000    0.5000    0.9657
+   O14    O     0.1742    0.5000    0.9172
+    T1    Si    0.2063    0.1968    0.1848
+    T2    Si    0.2937    0.7004    0.0421
+    T3    Si    0.0000    0.2032    0.9482
+    T4    Si    0.0000    0.6993    0.7977
+    T5    Si    0.2935    0.0000    0.1166
+    T6    Si    0.2936    0.5000    0.9873
+    T7    Si    0.0000    0.5000    0.8683
+    T8    Si    0.0000    0.0000    0.9978
+

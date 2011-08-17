@@ -1,0 +1,76 @@
+#------------------------------------------------------------------------------
+#$Date: 2011-06-11 06:04:15 +0000 (Sat, 11 Jun 2011) $
+#$Revision: 20519 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/1/1011053.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1011053
+_chemical_name_systematic          'Silicon carbide - II.'
+_chemical_name_mineral             'Moissanite 6H'
+_chemical_formula_structural       'Si C'
+_chemical_formula_sum              'Si C'
+_publ_section_title
+;
+Die Gitterstruktur des Karborunds ( Si C ) I.
+;
+loop_
+_publ_author_name                  'Ott, H'
+_journal_name_full
+;
+Zeitschrift fuer Kristallographie, Kristallgeometrie, Kristallphysik,
+Kristallchemie (-144,1977)
+;
+_journal_coden_ASTM                ZEKGAX
+_journal_volume                    61
+_journal_year                      1925
+_journal_page_first                515
+_journal_page_last                 531
+_cell_length_a                     3.095
+_cell_length_b                     3.095
+_cell_length_c                     15.17
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  120
+_cell_volume                       125.8
+_cell_formula_units_Z              6
+_exptl_crystal_density_meas        3.12
+_symmetry_space_group_name_H-M     'P 63'
+_symmetry_Int_Tables_number        173
+_symmetry_cell_setting             hexagonal
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  '-y,x-y,z'
+  'y-x,-x,z'
+  '-x,-y,1/2+z'
+  'y,y-x,1/2+z'
+  'x-y,x,1/2+z'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  C4-   -4.000
+  Si4+   4.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  C1    C4-    2 a 0. 0. 0. 1.  0 d
+  C2    C4-    2 b 0.3333 0.6667 0.1667 1.  0 d
+  C3    C4-    2 b 0.3333 0.6667 0.8333 1.  0 d
+  Si1   Si4+   2 a 0. 0. 0.125 1.  0 d
+  Si2   Si4+   2 b 0.3333 0.6667 0.2917 1.  0 d
+  Si3   Si4+   2 b 0.3333 0.6667 0.9583 1.  0 d
+_cod_database_code 1011053

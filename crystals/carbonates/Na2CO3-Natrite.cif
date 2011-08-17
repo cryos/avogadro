@@ -1,0 +1,89 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9011304.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9011304
+loop_
+_publ_author_name
+'Dusek, M.'
+'Chapuis, G.'
+'Meyer, M.'
+'Petricek, V.'
+_publ_section_title
+;
+ Sodium carbonate revisited
+ Locality: synthetic
+ Sample: Gamma phase, T = 295 K
+;
+_journal_name_full               'Acta Crystallographica, Section B'
+_journal_page_first              337
+_journal_page_last               352
+_journal_volume                  59
+_journal_year                    2003
+_chemical_formula_sum            'C Na2 O3'
+_chemical_name_mineral           Natrite
+_space_group_IT_number           12
+_symmetry_space_group_name_Hall  '-C 2y'
+_symmetry_space_group_name_H-M   'C 1 2/m 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 101.35
+_cell_angle_gamma                90
+_cell_length_a                   8.920
+_cell_length_b                   5.245
+_cell_length_c                   6.050
+_cell_volume                     277.516
+_diffrn_ambient_temperature      295
+_exptl_crystal_density_diffrn    2.537
+_[local]_cod_chemical_formula_sum_orig 'Na2 C O3'
+_cod_database_code               9011304
+_amcsd_database_code             AMCSD#0009711
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2+y,z
+x,-y,z
+1/2+x,1/2-y,z
+-x,y,-z
+1/2-x,1/2+y,-z
+-x,-y,-z
+1/2-x,1/2-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Na1 0.01757 0.01860 0.01713 0.00000 0.00672 0.00000
+Na2 0.01919 0.01561 0.01686 0.00000 0.00714 0.00000
+Na3 0.02174 0.02568 0.03070 0.00000 0.00888 0.00000
+C 0.01110 0.01219 0.01190 0.00000 0.00370 0.00000
+O1 0.03180 0.01881 0.02990 -0.00956 0.01172 0.00055
+O2 0.01480 0.03240 0.02370 0.00000 0.01040 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Na1 0.00000 0.00000 0.00000 0.01731
+Na2 0.00000 0.00000 0.50000 0.01673
+Na3 0.17055 0.50000 0.74801 0.02554
+C 0.16446 0.50000 0.24914 0.01155
+O1 0.10159 0.29384 0.28535 0.02607
+O2 0.28987 0.50000 0.17757 0.02274

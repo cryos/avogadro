@@ -1,0 +1,48 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910029
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 275 from the second edition of Structure of Crystals by Wyckoff  
+published by The Chemical Catalog Company, INC, New York in 1931 
+& http://www.crystallography.net/
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              275
+_journal_page_last               275
+_journal_year                    1931
+_chemical_formula_structural     MgCO3
+_chemical_formula_sum            'C Mg O3'
+_symmetry_cell_setting           trigonal
+_symmetry_Int_Tables_number      167
+_symmetry_space_group_name_H-M   'R -3 c'
+_audit_creation_date             2005-28-12
+_audit_creation_method
+;
+Page 275 from the second edition of Structure of Crystals by Wyckoff  
+published by The Chemical Catalog Company, INC, New York in 1931 
+& http://www.crystallography.net/
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                47.36
+_cell_angle_beta                 47.36
+_cell_angle_gamma                47.36
+_cell_length_a                   5.87
+_cell_length_b                   5.87
+_cell_length_c                   5.87
+_cell_volume                     100.131
+_[local]_cod_chemical_formula_sum_orig 'Mg C O3'
+_cod_database_code               5910029
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.25000 0.25000 0.25000 Mg
+0.00000 0.00000 0.00000 C
+0.23940 -0.23940 0.00000 O

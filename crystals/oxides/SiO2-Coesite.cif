@@ -1,0 +1,73 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9000802.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9000802
+loop_
+_publ_author_name
+'Levien, L.'
+'Prewitt, C. T.'
+_publ_section_title
+;
+ High-pressure crystal structure and compressibility of coesite
+ P = 1 atm isotropic refinement
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              324
+_journal_page_last               333
+_journal_volume                  66
+_journal_year                    1981
+_chemical_formula_sum            'O2 Si'
+_chemical_name_mineral           Coesite
+_space_group_IT_number           15
+_symmetry_space_group_name_Hall  '-C 2yc'
+_symmetry_space_group_name_H-M   'C 1 2/c 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 120.34
+_cell_angle_gamma                90
+_cell_length_a                   7.1356
+_cell_length_b                   12.3692
+_cell_length_c                   7.1736
+_cell_volume                     546.439
+_diffrn_ambient_pressure         100
+_exptl_crystal_density_diffrn    2.921
+_[local]_cod_chemical_formula_sum_orig 'Si O2'
+_cod_database_code               9000802
+_amcsd_database_code             AMCSD#0000815
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2+y,z
+x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+-x,y,1/2-z
+1/2-x,1/2+y,1/2-z
+-x,-y,-z
+1/2-x,1/2-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Si1 0.14033 0.10833 0.07227 0.00519
+Si2 0.50682 0.15799 0.54077 0.00507
+O1 0.00000 0.00000 0.00000 0.00899
+O2 0.50000 0.11630 0.75000 0.00861
+O3 0.26600 0.12340 0.94010 0.01001
+O4 0.31140 0.10380 0.32820 0.01026
+O5 0.01720 0.21170 0.47820 0.00950

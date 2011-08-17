@@ -1,0 +1,66 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9008587.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9008587
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+ Second edition. Interscience Publishers, New York, New York
+ Sample is stable room conditions to 110 C
+;
+_journal_name_full               'Crystal Structures'
+_journal_page_first              7
+_journal_page_last               83
+_journal_volume                  1
+_journal_year                    1963
+_chemical_formula_sum            Pu
+_chemical_name_mineral           Plutonium-alpha
+_space_group_IT_number           11
+_symmetry_space_group_name_Hall  '-P 2yb'
+_symmetry_space_group_name_H-M   'P 1 21/m 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 101.80
+_cell_angle_gamma                90
+_cell_length_a                   6.1835
+_cell_length_b                   4.8244
+_cell_length_c                   10.973
+_cell_volume                     320.425
+_exptl_crystal_density_diffrn    20.232
+_cod_database_code               9008587
+_amcsd_database_code             AMCSD#0010918
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,z
+-x,1/2+y,-z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Pu1 0.33200 0.25000 0.15500
+Pu2 0.77400 0.25000 0.17500
+Pu3 0.14400 0.25000 0.34100
+Pu4 0.65800 0.25000 0.45700
+Pu5 0.01600 0.25000 0.62100
+Pu6 0.46500 0.25000 0.64400
+Pu7 0.33700 0.25000 0.92600
+Pu8 0.89200 0.25000 0.89700

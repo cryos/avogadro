@@ -1,0 +1,92 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9001004.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9001004
+loop_
+_publ_author_name
+'Reeder, R. J.'
+'Markgraf, S. A.'
+_publ_section_title
+;
+ High-temperature crystal chemistry of dolomite
+ Sample: Anisotropic refinement, Temperature = 24 deg C
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              795
+_journal_page_last               804
+_journal_volume                  71
+_journal_year                    1986
+_chemical_formula_sum            'C2 Ca Mg O6'
+_chemical_name_mineral           Dolomite
+_space_group_IT_number           148
+_symmetry_space_group_name_Hall  '-R 3'
+_symmetry_space_group_name_H-M   'R -3 :H'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_length_a                   4.8069
+_cell_length_b                   4.8069
+_cell_length_c                   16.002
+_cell_volume                     320.210
+_diffrn_ambient_temperature      297.15
+_exptl_crystal_density_diffrn    2.869
+_[local]_cod_cif_authors_sg_H-M  'R -3'
+_[local]_cod_chemical_formula_sum_orig 'Ca Mg C2 O6'
+_cod_database_code               9001004
+_amcsd_database_code             AMCSD#0001025
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+2/3+x,1/3+y,1/3+z
+1/3+x,2/3+y,2/3+z
+y,-x+y,-z
+2/3+y,1/3-x+y,1/3-z
+1/3+y,2/3-x+y,2/3-z
+-x+y,-x,z
+2/3-x+y,1/3-x,1/3+z
+1/3-x+y,2/3-x,2/3+z
+-x,-y,-z
+2/3-x,1/3-y,1/3-z
+1/3-x,2/3-y,2/3-z
+-y,x-y,z
+2/3-y,1/3+x-y,1/3+z
+1/3-y,2/3+x-y,2/3+z
+x-y,x,-z
+2/3+x-y,1/3+x,1/3-z
+1/3+x-y,2/3+x,2/3-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Ca 0.00975 0.00975 0.00986 0.00487 0.00000 0.00000
+Mg 0.00711 0.00711 0.00960 0.00356 0.00000 0.00000
+C 0.00860 0.00860 0.00895 0.00430 0.00000 0.00000
+O 0.00939 0.01299 0.01531 0.00729 -0.00199 -0.00331
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ca 0.00000 0.00000 0.00000
+Mg 0.00000 0.00000 0.50000
+C 0.00000 0.00000 0.24289
+O 0.24800 -0.03540 0.24393

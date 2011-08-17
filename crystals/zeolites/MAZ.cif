@@ -1,0 +1,69 @@
+data_MAZ
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                  18.1020(0)
+_cell_length_b                  18.1020(0)
+_cell_length_c                   7.6180(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma              120.0000(0)
+
+_symmetry_space_group_name_H-M     'P 63/m m c'
+_symmetry_Int_Tables_number         194
+_symmetry_cell_setting             hexagonal
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'-y,+x-y,+z'
+'-x+y,-x,+z'
+'-x,-y,1/2+z'
+'+y,-x+y,1/2+z'
+'+x-y,+x,1/2+z'
+'-y,-x,+z'
+'-x+y,+y,+z'
+'+x,+x-y,+z'
+'+y,+x,1/2+z'
+'+x-y,-y,1/2+z'
+'-x,-x+y,1/2+z'
+'-x,-y,-z'
+'+y,-x+y,-z'
+'+x-y,+x,-z'
+'+x,+y,1/2-z'
+'-y,+x-y,1/2-z'
+'-x+y,-x,1/2-z'
+'+y,+x,-z'
+'+x-y,-y,-z'
+'-x,-x+y,-z'
+'-y,-x,1/2-z'
+'-x+y,+y,1/2-z'
+'+x,+x-y,1/2-z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+    O1    O     0.0000    0.2801    0.0000
+    O2    O     0.1193    0.4365    0.9225
+    O3    O     0.1620    0.3239    0.0227
+    O4    O     0.0959    0.3839    0.2500
+    O5    O     0.5263    0.2631    0.2500
+    O6    O     0.5736    0.1473    0.2500
+    T1    Si    0.0943    0.3561    0.0487
+    T2    Si    0.4934    0.1624    0.2500
+

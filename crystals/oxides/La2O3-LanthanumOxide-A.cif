@@ -1,0 +1,87 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2002286.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_2002286
+_chemical_name_systematic          'Lanthanum oxide - A'
+_chemical_formula_structural       'La2 O3'
+_chemical_formula_sum              'La2 O3'
+_publ_section_title                'Strukturuntersuchungen an La2 O3'
+loop_
+_publ_author_name
+  'Mueller-Buschbaum, Hk'
+  'Schnering, H G von'
+_journal_name_full
+;
+Zeitschrift fuer Anorganische und Allgemeine Chemie
+;
+_journal_volume                    340
+_journal_year                      1965
+_journal_page_first                232
+_journal_page_last                 245
+_cell_length_a                     3.9373
+_cell_length_b                     3.9373
+_cell_length_c                     6.1299
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  120
+_cell_volume                       82.3
+_cell_formula_units_Z              1
+_symmetry_space_group_name_H-M     'P 63/m m c'
+_symmetry_Int_Tables_number        194
+_symmetry_cell_setting             hexagonal
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  '-y,x-y,z'
+  'y-x,-x,z'
+  '-y,-x,z'
+  'y-x,y,z'
+  'x,x-y,z'
+  '-x,-y,-z'
+  'y,y-x,-z'
+  'x-y,x,-z'
+  'y,x,-z'
+  'x-y,-y,-z'
+  '-x,y-x,-z'
+  '-x,-y,1/2+z'
+  'y,y-x,1/2+z'
+  'x-y,x,1/2+z'
+  'y,x,1/2+z'
+  'x-y,-y,1/2+z'
+  '-x,y-x,1/2+z'
+  'x,y,1/2-z'
+  '-y,x-y,1/2-z'
+  'y-x,-x,1/2-z'
+  '-y,-x,1/2-z'
+  'y-x,y,1/2-z'
+  'x,x-y,1/2-z'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  La3+   3.000
+  O2-   -2.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  La1   La3+   4 f 0.3333 0.6667 0.234 0.5  0 d
+  O1    O2-    2 a 0. 0. 0. 0.5  0 d
+  O2    O2-    4 f 0.3333 0.6667 0.639 0.5  0 d
+_refine_ls_R_factor_all            0.075
+_cod_database_code 2002286
