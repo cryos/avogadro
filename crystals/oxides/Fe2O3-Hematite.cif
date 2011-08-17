@@ -1,0 +1,75 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1011240.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1011240
+_chemical_name_systematic          'Iron(III) oxide'
+_chemical_name_mineral             'Hematite'
+_chemical_formula_structural       'Fe2 O3'
+_chemical_formula_sum              'Fe2 O3'
+_publ_section_title                'The Structure of Hematite'
+_space_group_IT_number           167
+_symmetry_space_group_name_Hall  '-P 3* 2n'
+_symmetry_space_group_name_H-M   'R -3 c :R'
+_[local]_cod_cif_authors_sg_H-M  'R -3 c R'
+loop_
+_publ_author_name
+  'Pauling, L'
+  'Hendricks, S B'
+_journal_name_full                 'Journal of the American Chemical Society'
+_journal_coden_ASTM                JACSAT
+_journal_volume                    47
+_journal_year                      1925
+_journal_page_first                781
+_journal_page_last                 790
+_cell_length_a                     5.43
+_cell_length_b                     5.43
+_cell_length_c                     5.43
+_cell_angle_alpha                  55.28
+_cell_angle_beta                   55.28
+_cell_angle_gamma                  55.28
+_cell_volume                       100.8
+_cell_formula_units_Z              2
+_exptl_crystal_density_meas        5.26(4)
+_symmetry_cell_setting             trigonal
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  'y,z,x'
+  'z,x,y'
+  '-x,-y,-z'
+  '-y,-z,-x'
+  '-z,-x,-y'
+  '1/2+y,1/2+x,1/2+z'
+  '1/2+z,1/2+y,1/2+x'
+  '1/2+x,1/2+z,1/2+y'
+  '1/2-y,1/2-x,1/2-z'
+  '1/2-z,1/2-y,1/2-x'
+  '1/2-x,1/2-z,1/2-y'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  Fe3+   3.000
+  O2-   -2.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  Fe1   Fe3+   4 c 0.105(1) 0.105(1) 0.105(1) 1.  0 d
+  O1    O2-   12 f 0.292(7) -0.292(7) 0. 0.5  0 d
+_cod_database_code 1011240

@@ -1,0 +1,113 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1008928.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1008928
+_chemical_name_systematic          'Scandium oxide'
+_chemical_formula_structural       'Sc2 O3'
+_chemical_formula_sum              'O3 Sc2'
+_publ_section_title
+;
+Neutron diffraction studies on scandium orthovanadate and scandium oxide
+;
+loop_
+_publ_author_name
+  'Milligan, W O'
+  'Vernon, L W'
+  'Levy, H A'
+  'Peterson, S W'
+_journal_name_full                 'Journal of Physical Chemistry'
+_journal_coden_ASTM                JPCHAX
+_journal_volume                    57
+_journal_year                      1953
+_journal_page_first                535
+_journal_page_last                 537
+_cell_length_a                     9.79
+_cell_length_b                     9.79
+_cell_length_c                     9.79
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  90
+_cell_volume                       938.3
+_cell_formula_units_Z              16
+_symmetry_space_group_name_H-M     'I a -3'
+_symmetry_Int_Tables_number        206
+_symmetry_cell_setting             cubic
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  'x,-y,1/2-z'
+  '1/2-x,y,-z'
+  '-x,1/2-y,z'
+  'y,z,x'
+  '-y,1/2-z,x'
+  'y,-z,1/2-x'
+  '1/2-y,z,-x'
+  'z,x,y'
+  '1/2-z,x,-y'
+  '-z,1/2-x,y'
+  'z,-x,1/2-y'
+  '-x,-y,-z'
+  '-x,y,1/2+z'
+  '1/2+x,-y,z'
+  'x,1/2+y,-z'
+  '-y,-z,-x'
+  'y,1/2+z,-x'
+  '-y,z,1/2+x'
+  '1/2+y,-z,x'
+  '-z,-x,-y'
+  '1/2+z,-x,y'
+  'z,1/2+x,-y'
+  '-z,x,1/2+y'
+  '1/2+x,1/2+y,1/2+z'
+  '1/2+x,1/2-y,-z'
+  '-x,1/2+y,1/2-z'
+  '1/2-x,-y,1/2+z'
+  '1/2+y,1/2+z,1/2+x'
+  '1/2-y,-z,1/2+x'
+  '1/2+y,1/2-z,-x'
+  '-y,1/2+z,1/2-x'
+  '1/2+z,1/2+x,1/2+y'
+  '-z,1/2+x,1/2-y'
+  '1/2-z,-x,1/2+y'
+  '1/2+z,1/2-x,-y'
+  '1/2-x,1/2-y,1/2-z'
+  '1/2-x,1/2+y,z'
+  'x,1/2-y,1/2+z'
+  '1/2+x,y,1/2-z'
+  '1/2-y,1/2-z,1/2-x'
+  '1/2+y,z,1/2-x'
+  '1/2-y,1/2+z,x'
+  'y,1/2-z,1/2+x'
+  '1/2-z,1/2-x,1/2-y'
+  'z,1/2-x,1/2+y'
+  '1/2+z,x,1/2-y'
+  '1/2-z,1/2+x,y'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  Sc3+   3.000
+  O2-   -2.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  Sc1   Sc3+   8 b 0.25 0.25 0.25 1.  0 d
+  Sc2   Sc3+  24 d -0.03(1) 0. 0.25 1.  0 d
+  O1    O2-   48 e 0.385 0.145 0.38 1.  0 d
+_cod_database_code 1008928

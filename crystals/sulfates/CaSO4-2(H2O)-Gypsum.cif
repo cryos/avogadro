@@ -1,0 +1,246 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2011-01-02 20:00:31 +0000 (Sun, 02 Jan 2011) $
+#$Revision: 5310 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2300259.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2300259
+loop_
+_publ_author_name
+'Henry, Paul F.'
+'Weller, Mark T.'
+'Wilson, Chick C.'
+_publ_section_title
+;
+ Neutron powder diffraction in materials with incoherent scattering: an
+ illustration of Rietveld refinement quality from nondeuterated gypsum
+;
+_journal_issue                   6
+_journal_name_full               'Journal of Applied Crystallography'
+_journal_page_first              1176
+_journal_page_last               1188
+_journal_volume                  42
+_journal_year                    2009
+_chemical_formula_sum            'Ca H4 O6 S'
+_chemical_formula_weight         172.17
+_chemical_name_systematic        ' ?'
+_space_group_IT_number           15
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_Hall  '-I 2yc'
+_symmetry_space_group_name_H-M   'I 1 2/c 1'
+_cell_angle_alpha                90.0
+_cell_angle_beta                 118.4837(12)
+_cell_angle_gamma                90.0
+_cell_formula_units_Z            4
+_cell_length_a                   5.68021(13)
+_cell_length_b                   15.2139(4)
+_cell_length_c                   6.53032(15)
+_cell_volume                     496.025(22)
+_pd_block_id                     2009-10-13T15:29|I2A_phase1|Paul_Henry||
+_pd_phase_name                   gypsum
+_[local]_cod_data_source_file    cg5117.cif
+_[local]_cod_data_source_block   I2A_phase_1
+_cod_depositor_comments
+;
+The following automatic conversions were performed:
+'_geom_bond_publ_flag' value 'N' changed to 'n' according to
+'/home/saulius/struct/CIF-dictionaries/cif_core.dic' dictionary named
+'cif_core.dic' version 2.4.1 from 2010-06-29 (40
+times).
+
+'_geom_angle_publ_flag' value 'N' changed to 'n' according to
+'/home/saulius/struct/CIF-dictionaries/cif_core.dic' dictionary named
+'cif_core.dic' version 2.4.1 from 2010-06-29 (67 times).
+
+Automatic conversion script
+Id: cif_fix_enum 1527 2010-12-29 10:47:43Z saulius 
+;
+_cod_database_code               2300259
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 +x,+y,+z
+2 -x,+y,-z+1/2
+-1 -x,-y,-z
+-2 +x,-y,+z+1/2
+101 +x+1/2,+y+1/2,+z+1/2
+102 -x+1/2,+y+1/2,-z
+-101 -x+1/2,-y+1/2,-z+1/2
+-102 +x+1/2,-y+1/2,+z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_22
+_atom_site_aniso_U_23
+_atom_site_aniso_U_33
+CA1 0.0138(22) 0.0 0.0038(19) 0.0126(24) 0.0 0.0005(23)
+S2 0.0034(35) 0.0 0.0010(29) 0.007(4) 0.0 0.011(4)
+O3 0.0094(10) -0.0005(11) 0.0022(10) 0.0206(14) 0.0082(11) 0.0087(11)
+O4 0.0053(11) -0.0037(13) -0.0003(10) 0.0223(14) 0.0027(12) 0.0115(12)
+O5 0.0219(15) -0.0077(15) 0.0176(13) 0.0243(20) -0.0058(15) 0.0267(16)
+H6 0.0317(27) -0.0016(24) 0.0352(24) 0.039(4) 0.0008(23) 0.0510(31)
+H7 0.0381(30) 0.0016(35) 0.0233(31) 0.039(4) -0.0103(33) 0.050(4)
+loop_
+_atom_site_type_symbol
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_thermal_displace_type
+_atom_site_U_iso_or_equiv
+_atom_site_symmetry_multiplicity
+Ca CA1 0.5 0.07872(29) 0.25 1.0 Uani 0.00883 4
+S S2 0.0 0.0775(4) 0.75 1.0 Uani 0.00836 4
+O O3 0.9649(4) 0.13261(16) 0.5519(4) 1.0 Uani 0.01377 8
+O O4 0.7572(4) 0.02286(17) 0.6674(4) 1.0 Uani 0.01478 8
+O O5 0.3808(6) 0.18264(20) 0.4569(5) 1.0 Uani 0.02183 8
+H H6 0.2486(9) 0.15985(28) 0.5068(9) 1.0 Uani 0.03425 8
+H H7 0.4067(10) 0.2419(4) 0.4937(10) 1.0 Uani 0.04127 8
+loop_
+_atom_type_symbol
+_atom_type_number_in_cell
+Ca 4.0
+S 4.0
+O 24.0
+H 16.0
+loop_
+_geom_angle_atom_site_label_1
+_geom_angle_atom_site_label_2
+_geom_angle_atom_site_label_3
+_geom_angle
+_geom_angle_site_symmetry_1
+_geom_angle_site_symmetry_2
+_geom_angle_site_symmetry_3
+_geom_angle_publ_flag
+S2 CA1 S2 179.3187(32) 1_554 . 1_655 n
+S2 CA1 O3 152.88(15) 1_554 . 1_555 n
+S2 CA1 O3 27.60(9) 1_554 . 2_655 n
+S2 CA1 O4 151.95(15) 1_554 . 1_555 n
+S2 CA1 O4 27.57(10) 1_554 . 2_655 n
+S2 CA1 O4 83.24(10) 1_554 . -1_656 n
+S2 CA1 O4 96.31(11) 1_554 . -2_444 n
+S2 CA1 O5 103.48(12) 1_554 . 1_555 n
+S2 CA1 O5 76.98(11) 1_554 . 2_655 n
+S2 CA1 O3 27.60(9) 1_655 . 1_555 n
+S2 CA1 O3 152.88(15) 1_655 . 2_655 n
+S2 CA1 O4 27.57(10) 1_655 . 1_555 n
+S2 CA1 O4 151.95(15) 1_655 . 2_655 n
+S2 CA1 O4 96.31(11) 1_655 . -1_656 n
+S2 CA1 O4 83.24(10) 1_655 . -2_444 n
+S2 CA1 O5 76.98(11) 1_655 . 1_555 n
+S2 CA1 O5 103.48(12) 1_655 . 2_655 n
+O3 CA1 O3 142.68(23) 1_555 . 2_655 n
+O3 CA1 O4 55.16(7) 1_555 . 1_555 n
+O3 CA1 O4 141.70(8) 1_555 . 2_655 n
+O3 CA1 O4 123.85(10) 1_555 . -1_656 n
+O3 CA1 O4 82.08(8) 1_555 . -2_444 n
+O3 CA1 O5 79.53(12) 1_555 . 1_555 n
+O3 CA1 O5 75.89(11) 1_555 . 2_655 n
+O3 CA1 O4 141.70(8) 2_655 . 1_555 n
+O3 CA1 O4 55.16(7) 2_655 . 2_655 n
+O3 CA1 O4 82.08(8) 2_655 . -1_656 n
+O3 CA1 O4 123.85(10) 2_655 . -2_444 n
+O3 CA1 O5 75.89(11) 2_655 . 1_555 n
+O3 CA1 O5 79.53(12) 2_655 . 2_655 n
+O4 CA1 O4 141.02(23) 1_555 . 2_655 n
+O4 CA1 O4 68.81(11) 1_555 . -1_656 n
+O4 CA1 O4 85.66(10) 1_555 . -2_444 n
+O4 CA1 O5 77.71(10) 1_555 . 1_555 n
+O4 CA1 O5 131.02(11) 1_555 . 2_655 n
+O4 CA1 O4 85.66(10) 2_655 . -1_656 n
+O4 CA1 O4 68.81(11) 2_655 . -2_444 n
+O4 CA1 O5 131.02(11) 2_655 . 1_555 n
+O4 CA1 O5 77.71(10) 2_655 . 2_655 n
+O4 CA1 O4 98.15(20) -1_656 . -2_444 n
+O4 CA1 O5 86.00(9) -1_656 . 1_555 n
+O4 CA1 O5 160.14(9) -1_656 . 2_655 n
+O4 CA1 O5 160.14(9) -2_555 . 1_555 n
+O4 CA1 O5 86.00(9) -2_555 . 2_655 n
+O5 CA1 O5 96.68(21) 1_555 . 2_655 n
+CA1 S2 CA1 179.3187(32) 1_455 . 1_556 n
+CA1 S2 O3 53.67(12) 1_455 . 1_455 n
+CA1 S2 O3 125.85(21) 1_455 . 2_656 n
+CA1 S2 O4 53.08(10) 1_455 . 1_455 n
+CA1 S2 O4 127.41(20) 1_455 . 2_656 n
+CA1 S2 O3 125.85(21) 1_556 . 1_455 n
+CA1 S2 O3 53.67(12) 1_556 . 2_656 n
+CA1 S2 O4 127.41(20) 1_556 . 1_455 n
+CA1 S2 O4 53.08(10) 1_556 . 2_656 n
+O3 S2 O3 110.6(4) 1_455 . 2_656 n
+O3 S2 O4 106.75(12) 1_455 . 1_455 n
+O3 S2 O4 110.70(14) 1_455 . 2_656 n
+O3 S2 O4 110.70(14) 2_656 . 1_455 n
+O3 S2 O4 106.75(12) 2_656 . 2_656 n
+O4 S2 O4 111.4(4) 1_455 . 2_656 n
+CA1 O3 S2 98.73(18) 1_555 . 1_655 n
+CA1 O4 CA1 111.19(11) 1_555 . -1_656 n
+CA1 O4 S2 99.36(16) 1_555 . 1_655 n
+CA1 O4 S2 149.17(15) -1_656 . 1_655 n
+CA1 O5 H6 114.28(34) 1_555 . 1_555 n
+CA1 O5 H7 137.8(4) 1_555 . 1_555 n
+H6 O5 H7 107.5(5) 1_555 . 1_555 n
+loop_
+_geom_bond_atom_site_label_1
+_geom_bond_atom_site_label_2
+_geom_bond_distance
+_geom_bond_site_symmetry_1
+_geom_bond_site_symmetry_2
+_geom_bond_publ_flag
+CA1 CA1 4.049(5) . -1_655 n
+CA1 CA1 4.049(5) . -1_656 n
+CA1 S2 3.14368(9) . 1_554 n
+CA1 S2 3.14368(9) . 1_655 n
+CA1 O3 2.5624(30) . 1_555 n
+CA1 O3 2.5624(30) . 2_655 n
+CA1 O4 2.5471(24) . 1_555 n
+CA1 O4 2.5471(24) . 2_655 n
+CA1 O4 2.359(4) . -1_656 n
+CA1 O4 2.359(4) . -2_554 n
+CA1 O5 2.378(5) . 1_555 n
+CA1 O5 2.378(5) . 2_655 n
+CA1 H6 2.942(5) . 1_555 n
+CA1 H6 2.942(5) . 2_655 n
+CA1 H7 3.127(7) . 1_555 n
+CA1 H7 3.127(7) . 2_655 n
+S2 CA1 3.14368(9) . 1_455 n
+S2 CA1 3.14368(9) . 1_556 n
+S2 O3 1.473(4) . 1_455 n
+S2 O3 1.473(4) . 2_656 n
+S2 O4 1.474(4) . 1_455 n
+S2 O4 1.474(4) . 2_656 n
+O3 CA1 2.5624(30) . 1_555 n
+O3 S2 1.473(4) . 1_655 n
+O3 H6 1.819(5) . 1_655 n
+O3 H7 1.945(6) . -102_444 n
+O4 CA1 2.5471(24) . 1_555 n
+O4 CA1 2.359(4) . -1_656 n
+O4 S2 1.474(4) . 1_655 n
+O5 CA1 2.378(5) . 1_555 n
+O5 H6 1.011(6) . 1_555 n
+O5 H7 0.926(8) . 1_555 n
+H6 CA1 2.942(5) . 1_555 n
+H6 O3 1.819(5) . 1_455 n
+H6 O5 1.011(6) . 1_555 n
+H6 H7 1.563(7) . 1_555 n
+H7 CA1 3.127(7) . 1_555 n
+H7 O3 1.945(6) . -102_344 n
+H7 O5 0.926(8) . 1_555 n
+H7 H6 1.563(7) . 1_555 n
+loop_
+_pd_block_diffractogram_id
+2009-10-13T15:29|I2A_H_01|Paul_Henry|D20_Ge115_1.87Ang
+2009-10-13T15:29|I2A_H_02|Paul_Henry|D20_Ge117_1.36Ang

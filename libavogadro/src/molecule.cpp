@@ -1551,7 +1551,6 @@ namespace Avogadro{
   Molecule &Molecule::operator=(const Molecule& other)
   {
     // FIXME: Copy all the other stuff in the molecule!
-    //Q_D(Molecule);
     clear();
     //const MoleculePrivate *e = other.d_func();
     m_atoms.resize(other.m_atoms.size(), 0);
@@ -1608,6 +1607,13 @@ namespace Avogadro{
         residue->addAtom(atomId);
       }
       residue->setAtomIds(r->atomIds());
+    }
+
+    // Copy unit cells
+    Q_D(Molecule);
+    if (other.OBUnitCell() != NULL) {
+      d->obunitcell = new OpenBabel::OBUnitCell;
+      *d->obunitcell = *(other.OBUnitCell()); // Copy the object not the pointer
     }
 
     return *this;

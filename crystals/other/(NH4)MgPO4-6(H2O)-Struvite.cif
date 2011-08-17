@@ -1,0 +1,82 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9007674.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9007674
+loop_
+_publ_author_name
+'Ferraris, G.'
+'Fuess, H.'
+'Joswig, W.'
+_publ_section_title
+;
+ Neutron diffraction study of MgNH4PO4*6H2O (struvite)
+ and survey of water molecules donating short hydrogen bonds
+;
+_journal_name_full               'Acta Crystallographica, Section B'
+_journal_page_first              253
+_journal_page_last               258
+_journal_volume                  42
+_journal_year                    1986
+_chemical_formula_sum            'H16 Mg N O10 P'
+_chemical_name_mineral           Struvite
+_space_group_IT_number           31
+_symmetry_space_group_name_Hall  'P 2ac -2'
+_symmetry_space_group_name_H-M   'P m n 21'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   6.955
+_cell_length_b                   6.142
+_cell_length_c                   11.218
+_cell_volume                     479.206
+_exptl_crystal_density_diffrn    1.701
+_[local]_cod_chemical_formula_sum_orig 'Mg N H16 P O10'
+_cod_database_code               9007674
+_amcsd_database_code             AMCSD#0009609
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,-y,1/2+z
+-x,y,z
+1/2-x,-y,1/2+z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Mg 0.00000 0.37660 0.37410 0.01621
+N 0.00000 0.36570 0.73510 0.03293
+HN1 0.00000 0.21860 0.78320 0.04179
+HN2 0.00000 0.33110 0.64730 0.07802
+HN3 0.11480 0.45570 0.75350 0.06497
+P 0.00000 -0.00690 0.00190 0.01381
+O1 0.00000 -0.02360 -0.13510 0.02115
+O2 0.00000 -0.23820 0.05580 0.02153
+O3 0.18230 0.11390 0.04360 0.01874
+OW1 0.00000 0.68290 0.28780 0.03369
+OW2 0.00000 0.07680 0.46640 0.03812
+OW3 0.21790 0.26180 0.26430 0.02432
+OW4 0.21150 0.48520 0.48740 0.03040
+H11 0.00000 0.71920 0.20170 0.03559
+H12 0.00000 0.81740 0.32990 0.05117
+H21 0.11570 0.00700 0.49990 0.03179
+H31 0.19890 0.20070 0.18240 0.03116
+H32 0.31690 0.17020 0.30200 0.03318
+H41 0.32000 0.39040 0.51200 0.03331
+H42 0.25110 0.63540 0.50270 0.03394

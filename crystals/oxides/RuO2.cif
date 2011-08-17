@@ -1,0 +1,57 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2101852.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2101852
+loop_
+_publ_author_name
+'Bolzan, A. A.'
+'Fong, C.'
+'Kennedy, B. J.'
+'Howard, C. J.'
+_publ_section_title
+;
+ Structural Studies of Rutile-Type Metal Dioxides
+;
+_journal_issue                   3
+_journal_name_full               'Acta Crystallographica Section B'
+_journal_page_first              373
+_journal_page_last               380
+_journal_volume                  53
+_journal_year                    1997
+_chemical_formula_sum            'O2 Ru'
+_[local]_cod_chemical_formula_sum_orig 'O2 Ru1'
+_symmetry_cell_setting           tetragonal
+_symmetry_space_group_name_Hall  '-P 4n 2n'
+_symmetry_space_group_name_H-M   'P 42/m n m'
+_cell_angle_alpha                90.0
+_cell_angle_beta                 90.0
+_cell_angle_gamma                90.0
+_cell_formula_units_Z            2
+_cell_length_a                   4.4968(2)
+_cell_length_b                   4.4968(2)
+_cell_length_c                   3.10490(10)
+_diffrn_radiation_type           neutron
+_diffrn_radiation_wavelength     1.377
+_[local]_cod_data_source_file    br0044.cif
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ru .0 .0 .0
+O .30530(10) .30530(10) .0
+_cod_database_code 2101852
