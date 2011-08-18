@@ -18,6 +18,7 @@ set(crystallographyextension_SRCS
   ui/cematrixeditor.cpp
   ui/ceparametereditor.cpp
   ui/cetranslatewidget.cpp
+  ui/ceviewoptionswidget.cpp
 )
 
 set(crystallographyextension_UIS
@@ -26,6 +27,7 @@ set(crystallographyextension_UIS
   ui/cematrixeditor.ui
   ui/ceparametereditor.ui
   ui/cetranslatewidget.ui
+  ui/ceviewoptionswidget.ui
 )
 
 avogadro_plugin(crystallographyextension
