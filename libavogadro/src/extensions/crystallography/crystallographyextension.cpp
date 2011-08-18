@@ -37,6 +37,7 @@
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
 #include "ui/cetranslatewidget.h"
+#include "ui/ceviewoptions.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
@@ -410,6 +411,7 @@ namespace Avogadro
       qDebug() << "Editors already initialized.";
       return;
     }
+    m_editors.append(new CEViewOptions(this, m_mainwindow));
     m_editors.append(new CEParameterEditor(this, m_mainwindow));
     m_editors.append(new CEMatrixEditor(this, m_mainwindow));
     m_editors.append(new CECoordinateEditor(this, m_mainwindow));

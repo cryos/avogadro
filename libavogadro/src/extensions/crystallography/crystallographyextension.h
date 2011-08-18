@@ -38,6 +38,7 @@ namespace OpenBabel {
 
 namespace Avogadro
 {
+  class CEAbstractDockWidget;
   class CEAbstractEditor;
   class CETranslateWidget;
 
