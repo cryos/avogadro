@@ -38,8 +38,10 @@ namespace OpenBabel {
 
 namespace Avogadro
 {
+  class CEAbstractDockWidget;
   class CEAbstractEditor;
   class CETranslateWidget;
+  class CEViewOptionsWidget;
 
   struct CEUnitCellParameters {
     double a, b, c, alpha, beta, gamma;
@@ -294,7 +296,9 @@ namespace Avogadro
       MatrixFracIndex,
       MatrixCoordDisplaySep1Index,
       MatrixRowVectorsIndex,
-      MatrixColumnVectorsIndex
+      MatrixColumnVectorsIndex,
+      // View
+      ViewOptionsIndex
     };
 
     QAction* getAction(ActionIndex a) {
@@ -304,6 +308,7 @@ namespace Avogadro
     QMainWindow *m_mainwindow;
     GLWidget *m_glwidget;
     CETranslateWidget *m_translateWidget;
+    CEViewOptionsWidget *m_viewOptionsWidget;
     QList<QAction*> m_actions;
     QList<CEAbstractEditor*> m_editors;
     Molecule *m_molecule;
@@ -344,6 +349,7 @@ namespace Avogadro
     void actionToggleProperties();
     void actionWrapAtoms();
     void actionTranslateAtoms();
+    void actionViewOptions();
     void actionOrientStandard();
     void actionScaleToVolume();
 
