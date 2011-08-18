@@ -37,6 +37,7 @@
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
 #include "ui/cetranslatewidget.h"
+#include "ui/ceviewoptionswidget.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
@@ -64,6 +65,7 @@ namespace Avogadro
       m_mainwindow(0),
       m_glwidget(0),
       m_translateWidget(0),
+      m_viewOptionsWidget(0),
       m_molecule(0),
       m_displayProperties(false),
       m_latticeProperty(0),
@@ -188,6 +190,8 @@ namespace Avogadro
     case MatrixRowVectorsIndex:
     case MatrixColumnVectorsIndex:
       return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Matrix Display");
+    case ViewOptionsIndex:
+      return tr("&View");
     default:
       qDebug() << "Unknown action...";
       return "";
@@ -338,6 +342,9 @@ namespace Avogadro
       break;
     case TranslateAtomsIndex:
       actionTranslateAtoms();
+      break;
+    case ViewOptionsIndex:
+      actionViewOptions();
       break;
     case OrientStandardIndex:
       actionOrientStandard();
@@ -2099,6 +2106,13 @@ namespace Avogadro
     ag->addAction(a);
     CE_CACTION_DEBUG(MatrixColumnVectorsIndex);
     CE_CACTION_ASSERT(MatrixColumnVectorsIndex);
+
+    // ViewOptionIndex
+    a = new QAction(tr("&Crystal View Options..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(ViewOptionsIndex);
+    CE_CACTION_ASSERT(ViewOptionsIndex);
   }
 
   void CrystallographyExtension::createDockWidgets()
@@ -2108,6 +2122,12 @@ namespace Avogadro
 
       m_translateWidget->hide();
       m_dockWidgets.append(m_translateWidget);
+    }
+    if (!m_viewOptionsWidget) {
+      m_viewOptionsWidget = new CEViewOptionsWidget(this);
+
+      m_viewOptionsWidget->hide();
+      m_dockWidgets.append(m_viewOptionsWidget);
     }
     if (!m_editors.size()) {
       m_editors.append(new CEParameterEditor(this));
@@ -2400,6 +2420,12 @@ namespace Avogadro
   {
     m_translateWidget->setGLWidget(m_glwidget);
     m_translateWidget->show();
+  }
+
+  void CrystallographyExtension::actionViewOptions()
+  {
+    m_viewOptionsWidget->setGLWidget(m_glwidget);
+    m_viewOptionsWidget->show();
   }
 
   void CrystallographyExtension::actionOrientStandard()
