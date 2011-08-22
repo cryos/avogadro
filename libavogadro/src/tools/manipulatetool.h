@@ -68,6 +68,7 @@ namespace Avogadro {
       virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *, QMouseEvent *) { return 0; }
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual int usefulness() const;
@@ -93,24 +94,6 @@ namespace Avogadro {
                   double deltaY) const;
       void tilt(GLWidget *widget, const Eigen::Vector3d *center,
                 double delta) const;
-  };
-
- class MoveAtomCommand : public QUndoCommand
-  {
-    public:
-      explicit MoveAtomCommand(Molecule *molecule, QUndoCommand *parent = 0);
-      MoveAtomCommand(Molecule *molecule, int type, QUndoCommand *parent = 0);
-
-      void redo();
-      void undo();
-      bool mergeWith ( const QUndoCommand * command );
-      int id() const;
-
-    private:
-      Molecule m_moleculeCopy;
-      Molecule *m_molecule;
-      int m_type;
-      bool undone;
   };
 
   class ManipulateToolFactory : public QObject, public PluginFactory

@@ -54,6 +54,8 @@ using namespace Eigen;
 
 namespace Avogadro {
 
+  ///@todo Add undo command for align options
+
   AlignTool::AlignTool(QObject *parent) : Tool(parent),  m_molecule(0),
     m_selectedAtoms(2), m_numSelectedAtoms(0), m_axis(2), m_alignType(0),
     m_settingsWidget(0)
@@ -64,8 +66,8 @@ namespace Avogadro {
           "Left Mouse: \tSelect up to two atoms.\n"
           "\tThe first atom is centered at the origin.\n"
           "\tThe second atom is aligned to the selected axis.\n"
-          "Right Mouse: \tReset alignment."));
-    action->setShortcut(Qt::Key_F12);
+          "Right Mouse: \tReset alignment.\n"
+          "Double-Click: \tCenter the atom at the origin."));
 
     // clear the selected atoms
     int size = m_selectedAtoms.size();
@@ -124,10 +126,44 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* AlignTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
+  QUndoCommand* AlignTool::mouseDoubleClickEvent(GLWidget *widget, QMouseEvent*event)
   {
-    Q_UNUSED(widget);
-    Q_UNUSED(event);
+    // Move the clicked atom to the origin immediately.
+    // Check if there's a molecule
+    m_molecule = widget->molecule();
+    if(!m_molecule)
+      return 0;
+
+    //! List of hits from initial click
+    QList<GLHit> m_hits = widget->hits(event->pos().x()-2, event->pos().y()-2, 5, 5);
+
+    if(m_hits.size())
+    {
+      if(m_hits[0].type() != Primitive::AtomType)
+        return 0;
+
+      // OK, the clicked atom should be the new origin
+      // For now, align everything
+      Atom *atom = m_molecule->atom(m_hits[0].name());
+      Eigen::Vector3d translation = *atom->pos();
+      QList<Atom*> neighborList = widget->molecule()->atoms();
+
+      foreach(Atom *a, neighborList) {
+        if (a) {
+          a->setPos(*a->pos() - translation);
+        }
+      }
+      m_molecule->update();
+      event->accept();
+
+      m_numSelectedAtoms = 0;
+      return 0;
+    }
+    return 0;
+  }
+
+  QUndoCommand* AlignTool::wheelEvent(GLWidget *, QWheelEvent *)
+  {
     return 0;
   }
 

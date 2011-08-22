@@ -77,17 +77,18 @@ namespace Avogadro {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/bondcentric/bondcentric.png")));
     action->setToolTip(tr("Bond Centric Manipulation Tool\n\n"
-          "Left Mouse:   Click and drag to rotate the view\n"
-          "Middle Mouse: Click and drag to zoom in or out\n"
-          "Right Mouse:  Click and drag to move the view\n\n"
-          "Left Click & drag on a Bond to set the Manipulation Plane:\n"
-          "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
-          "- Right Click & Drag one of the Atoms in the Bond to change the length"));
+          "Left Mouse: \tClick and drag to rotate the view.\n"
+          "Middle Mouse: Click and drag to zoom in or out.\n"
+          "Right Mouse: \tClick and drag to move the view.\n"
+          "Double-Click: \tReset the view.\n\n"
+          "Left Click & Drag on a Bond to set the Manipulation Plane:\n"
+          "Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+          "Right Click & Drag one of the Atoms in the Bond to change the length"));
     //action->setShortcut(Qt::Key_F9);
     connect(action,SIGNAL(toggled(bool)),this,SLOT(toolChanged(bool)));
   }
 
-  // ##########  Desctructor  ##########
+  // ##########  Destructor  ##########
 
   BondCentricTool::~BondCentricTool()
   {

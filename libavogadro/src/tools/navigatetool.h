@@ -76,6 +76,7 @@ namespace Avogadro {
     virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
     virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
     virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+    virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event);
     virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
     virtual QUndoCommand* keyPressEvent(GLWidget *widget, QKeyEvent *event);
     virtual QUndoCommand* keyReleaseEvent(GLWidget *widget, QKeyEvent *event);

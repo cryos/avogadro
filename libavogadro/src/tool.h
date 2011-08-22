@@ -131,6 +131,14 @@ namespace Avogadro {
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event) = 0;
 
       /**
+       * Response to a user double-click
+       * @param widget the %GLWidget where the event occurred
+       * @param event the mouse event information
+       * @since version 1.1
+       */
+      virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event) = 0;
+
+      /**
        * Response to mouse wheel movement
        * @param widget the %GLWidget where the event occurred
        * @param event the mouse wheel event information

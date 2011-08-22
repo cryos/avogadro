@@ -68,6 +68,7 @@ namespace Avogadro {
       virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual int usefulness() const;
@@ -95,6 +96,7 @@ namespace Avogadro {
       bool                m_leftButtonPressed;  // rotation
       bool                m_rightButtonPressed;
       bool                m_movedSinceButtonPressed;
+      bool                m_doubleClick;
 
       //! Temporary var for adding selection box
       bool                m_selectionBox;

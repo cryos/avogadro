@@ -58,9 +58,10 @@ namespace Avogadro {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
     action->setToolTip(tr("Navigation Tool (F9)\n\n"
-          "Left Mouse:   Click and drag to rotate the view\n"
-          "Middle Mouse: Click and drag to zoom in or out\n"
-          "Right Mouse:  Click and drag to move the view"));
+          "Left Mouse: \tClick and drag to rotate the view.\n"
+          "Middle Mouse: Click and drag to zoom in or out.\n"
+          "Right Mouse: \tClick and drag to move the view.\n"
+          "Double-Click: \tReset the view."));
     action->setShortcut(Qt::Key_F9);
   }
 
@@ -181,6 +182,26 @@ namespace Avogadro {
 
     // Set the cursor back to the default cursor
     widget->setCursor(Qt::ArrowCursor);
+
+    widget->update();
+    return 0;
+  }
+
+  QUndoCommand* NavigateTool::mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event)
+  {
+    event->accept();
+    m_leftButtonPressed = false;
+    m_midButtonPressed = false;
+    m_rightButtonPressed = false;
+    m_drawEyeCandy = false;
+    m_clickedAtom = 0;
+    m_draggingInitialized = false;
+
+    // Set the cursor back to the default cursor
+    widget->setCursor(Qt::ArrowCursor);
+
+    // reset the camera
+    widget->camera()->initializeViewPoint();
 
     widget->update();
     return 0;
