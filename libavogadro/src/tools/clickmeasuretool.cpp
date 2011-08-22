@@ -58,7 +58,8 @@ namespace Avogadro {
           "Left Mouse: \tSelect up to three Atoms.\n"
           "\tDistances are measured between 1-2 and 2-3\n"
           "\tAngle is measured between 1-3 using 2 as the common point\n"
-          "Right Mouse: Reset the measurements."));
+          "Right Mouse: \tReset the measurements."
+          "Double-Click: \tReset the view."));
     action->setShortcut(Qt::Key_F12);
     m_lastMeasurement.resize(5);
     for (int i = 0; i < m_lastMeasurement.size(); ++i)

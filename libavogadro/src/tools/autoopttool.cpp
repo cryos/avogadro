@@ -57,12 +57,13 @@ namespace Avogadro {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
     action->setToolTip(tr("Auto Optimization Tool\n\n"
-          "Navigation Functions when Clicking in empty space.\n"
-          "Left Mouse: Rotate Space\n"
+          "Navigation Functions when clicking in empty space.\n"
+          "Left Mouse: \tRotate Space\n"
           "Middle Mouse: Zoom Space\n"
-          "Right Mouse: Move Space\n\n"
-          "Extra Function when running\n"
-          "Left Mouse: Click and drag atoms to move them"));
+          "Right Mouse: \tMove Space\n"
+          "Double-Click: \t Reset View\n\n"
+          "When running:\n"
+          "Left Mouse: \tClick and drag atoms to move them."));
     // An OBConverison object must be instantiated before the
     // FindForceField call will work.
     OBConversion conv; Q_UNUSED(conv);
@@ -212,6 +213,11 @@ namespace Avogadro {
     m_lastDraggingPosition = event->pos();
     widget->update();
 
+    return 0;
+  }
+
+  QUndoCommand* AutoOptTool::mouseDoubleClickEvent(GLWidget*, QMouseEvent*)
+  {
     return 0;
   }
 
@@ -419,7 +425,7 @@ namespace Avogadro {
                     m_stepsSpinBox->value());
     m_thread->update();
   }
-  
+
   void AutoOptTool::finished(bool calculated)
   {
     if (m_running && calculated) {

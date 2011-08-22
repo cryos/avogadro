@@ -56,6 +56,7 @@ namespace Avogadro {
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      QUndoCommand* mouseDoubleClick(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
       bool paint(GLWidget *widget);
       QWidget *settingsWidget();
