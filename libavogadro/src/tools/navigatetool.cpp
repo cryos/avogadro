@@ -186,6 +186,26 @@ namespace Avogadro {
     return 0;
   }
 
+  QUndoCommand* NavigateTool::mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event)
+  {
+    event->accept();
+    m_leftButtonPressed = false;
+    m_midButtonPressed = false;
+    m_rightButtonPressed = false;
+    m_drawEyeCandy = false;
+    m_clickedAtom = 0;
+    m_draggingInitialized = false;
+
+    // Set the cursor back to the default cursor
+    widget->setCursor(Qt::ArrowCursor);
+
+    // reset the camera
+    widget->camera()->initializeViewPoint();
+
+    widget->update();
+    return 0;
+  }
+
   QUndoCommand* NavigateTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     if(!widget->molecule()) {

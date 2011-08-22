@@ -215,6 +215,11 @@ namespace Avogadro {
     return 0;
   }
 
+  QUndoCommand* AutoOptTool::mouseDoubleClickEvent(GLWidget*, QMouseEvent*)
+  {
+    return 0;
+  }
+
   QUndoCommand* AutoOptTool::wheelEvent(GLWidget*, QWheelEvent*)
   {
     return 0;
