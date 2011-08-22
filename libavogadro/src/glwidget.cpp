@@ -1835,6 +1835,36 @@ namespace Avogadro {
     emit wheel(event);
   }
 
+  void GLWidget::mouseDoubleClickEvent( QMouseEvent * event )
+  {
+    // Set the event to ignored, check whether any tools accept it
+    event->ignore();
+
+    if ( d->tool ) {
+      QUndoCommand *command;
+      command = d->tool->mouseDoubleClickEvent( this, event );
+      // If the mouse event is not accepted, pass it to the navigate tool
+      if (!event->isAccepted() && m_navigateTool) {
+        command = m_navigateTool->mouseDoubleClickEvent(this, event);
+      }
+
+      if ( command && d->undoStack ) {
+        d->undoStack->push( command );
+      }
+    }
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.lock();
+#endif
+    // Stop using quickRender
+    d->quickRender = false;
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.unlock();
+#endif
+    // Render the scene at full quality now the mouse button has been released
+    update();
+    emit mouseDoubleClick(event);
+  }
+
   void GLWidget::keyPressEvent(QKeyEvent *event)
   {
     event->ignore();
@@ -2205,7 +2235,7 @@ namespace Avogadro {
 
     // returning to normal rendering mode
     hit_count = glRenderMode( GL_RENDER );
-    
+
     glMatrixMode( GL_PROJECTION );
     glPopMatrix();
     glMatrixMode( GL_MODELVIEW );
@@ -2720,7 +2750,7 @@ namespace Avogadro {
     d->updateCache = true;
   }
 
-// Copied from current sources of Qt 4.7  
+// Copied from current sources of Qt 4.7
 #ifndef QT_OPENGL_ES
 
 static void save_gl_state()
@@ -2769,7 +2799,7 @@ static void restore_gl_state()
     col.setRgbF(color[0], color[1], color[2],color[3]);
     outline.setRgbF((1-color[0])/2,(1-color[1])/2,(1-color[2])/2); // use opposite color, but make it darker
     if(!p) return;  // prevent segfaults
-    
+
     QPen old_pen = p->pen();
     QFont old_font = p->font();
 
@@ -2844,7 +2874,7 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
   void GLWidget::renderText(double x, double y, double z, const QString &str, const QFont &font, int)
   {
     //QGLWidget::renderText(x,y,z,str,font, i);
-    
+
 #ifndef QT_OPENGL_ES
     if (str.isEmpty() || !isValid())
         return;
@@ -2911,7 +2941,7 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
     if (use_depth_testing)
         glEnable(GL_DEPTH_TEST);
     glTranslated(0, 0, -win_z);
-    
+
     gl_draw_text(p, qRound(win_x), qRound(win_y), str, font, 10.0/camera()->distance(Vector3d(0,0,0)));
 
     if (reuse_painter) {

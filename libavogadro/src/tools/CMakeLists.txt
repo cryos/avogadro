@@ -54,7 +54,7 @@ avogadro_plugin(navigatetool
 
 ### manipulatetool
 avogadro_plugin(manipulatetool
-  "manipulatetool.cpp;eyecandy.cpp" manipulatetool.qrc)
+  "manipulatetool.cpp;eyecandy.cpp;moveatomcommand.cpp" manipulatetool.qrc)
 
 ### autorotatetool
 avogadro_plugin(autorotatetool autorotatetool.cpp autorotatetool.qrc)

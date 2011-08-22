@@ -553,6 +553,12 @@ namespace Avogadro {
       virtual void wheelEvent(QWheelEvent * event);
 
       /**
+       * Virtual function reaction to a mouse double-click while in the GL rendering area.
+       * @since version 1.1
+       */
+      virtual void mouseDoubleClickEvent(QMouseEvent *event);
+
+      /**
        * Response to key press events.
        * @param event the key event information
        */
@@ -781,6 +787,11 @@ namespace Avogadro {
       void mouseMove( QMouseEvent * event );
 
       /**
+       * Signal for the mouse double-click event which is passed to the tools.
+       */
+      void mouseDoubleClick( QMouseEvent * event );
+
+      /**
        * Signal for the mouse wheel event which is passed to the tools.
        */
       void wheel( QWheelEvent * event);
@@ -821,7 +832,7 @@ namespace Avogadro {
        */
       void unitCellAxesRenderChanged(bool enabled);
 
-      
+
   };
 
 } // end namespace Avogadro
