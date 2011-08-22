@@ -103,6 +103,7 @@ namespace Avogadro {
   QUndoCommand* SelectRotateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
   {
     m_movedSinceButtonPressed = false;
+    m_doubleClick = false; // set true if we get a doubleClick event
     m_lastDraggingPosition = event->pos();
     m_initialDraggingPosition = event->pos();
 
@@ -142,6 +143,12 @@ namespace Avogadro {
 
     // Reset the cursor
     widget->setCursor(Qt::ArrowCursor);
+
+    // Double clicks are handled in that event, not here
+    if (m_doubleClick) {
+      m_doubleClick = false;
+      return 0;
+    }
 
     Molecule *molecule = widget->molecule();
     if(!molecule)
@@ -390,6 +397,101 @@ namespace Avogadro {
         event->accept();
     }
 
+    return 0;
+  }
+
+  QUndoCommand* SelectRotateTool::mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event)
+  {
+    m_doubleClick = true; // events are handled here, not in release event
+
+    // Intuitively, select this connected component
+    m_widget = widget; // save for defining centroids
+
+    Molecule *molecule = widget->molecule();
+    if(!molecule)
+      return 0;
+
+    // List of hits from a selection/pick
+    m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
+        event->pos().y()-SEL_BOX_HALF_SIZE,
+        SEL_BOX_SIZE, SEL_BOX_SIZE);
+
+    if (!m_hits.size()) {
+      event->ignore();
+      return 0; // ignore this
+    }
+
+    // OK, we have some hits
+    event->accept();
+    QList<Primitive *> hitList;
+    foreach (const GLHit& hit, m_hits) {
+      if(hit.type() == Primitive::AtomType) // Atom selection
+        {
+          Atom *atom = molecule->atom(hit.name());
+          hitList.append(atom);
+          break;
+        }
+      else if(hit.type() == Primitive::BondType) // Bond selection
+        {
+          Bond *bond = molecule->bond(hit.name());
+          hitList.append(bond);
+          break;
+        }
+    }
+
+
+    // OK, now process the hitList to select the connected component
+    foreach(Primitive *hit, hitList) {
+      if (hit->type() == Primitive::AtomType) {
+        Atom *atom = static_cast<Atom *>(hit);
+        QList<Primitive *> neighborList;
+
+        // We really want the "connected fragment" since a Molecule can contain
+        // multiple user-visible molecule fragments
+        // we can use either BFS or DFS interators -- look for the connected fragment
+        OpenBabel::OBMol mol = molecule->OBMol();
+        OpenBabel::OBMolAtomDFSIter iter(mol, atom->index() + 1);
+        Atom *tmpNeighbor;
+        do {
+          tmpNeighbor = molecule->atom(iter->GetIdx() - 1);
+          neighborList.append(tmpNeighbor);
+
+          // we want to find all bonds on this site
+          // (obviously all bonds will be in this fragment)
+
+          FOR_BONDS_OF_ATOM(b, *iter)
+            neighborList.append(molecule->bond(b->GetIdx()));
+
+        } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+
+        widget->setSelected(neighborList, select);
+      }
+      else if (hit->type() == Primitive::BondType) {
+        Bond *bond = static_cast<Bond *>(hit);
+        QList<Primitive *> neighborList;
+
+        // We really want the "connected fragment" since a Molecule can contain
+        // multiple user-visible molecule fragments
+        // we can use either BFS or DFS interators -- look for the connected fragment
+        OpenBabel::OBMol mol = molecule->OBMol();
+        OpenBabel::OBMolAtomDFSIter iter(mol, molecule->atomById(bond->beginAtomId())->index() + 1);
+        Atom *tmpNeighbor;
+        do {
+          tmpNeighbor = molecule->atom(iter->GetIdx() - 1);
+          neighborList.append(tmpNeighbor);
+
+          // we want to find all bonds on this site
+          // (obviously all bonds will be in this fragment)
+          FOR_BONDS_OF_ATOM(b, *iter)
+            neighborList.append(molecule->bond(b->GetIdx()));
+        } while ((iter++).next()); // this returns false when we've gone looped through the fragment
+
+        widget->setSelected(neighborList, select);
+      } // end of handling bond primitives
+    } // end of processing hits
+
+    // Reset the cursor
+    widget->setCursor(Qt::ArrowCursor);
     return 0;
   }
 
