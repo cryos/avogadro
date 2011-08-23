@@ -36,6 +36,8 @@
 #include <QAction>
 #include <QUndoCommand>
 
+class QAbstractButton;
+
 namespace Avogadro {
 
   /**
@@ -47,6 +49,7 @@ namespace Avogadro {
    * the selected atoms.
    */
   class Eyecandy;
+  class ManipulateSettingsWidget;
   class ManipulateTool : public Tool
   {
     Q_OBJECT
@@ -60,11 +63,6 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~ManipulateTool();
 
-      //! \name Tool Methods
-      //@{
-      //! \brief Callback methods for ui.actions on the canvas.
-      /*!
-      */
       virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
@@ -75,6 +73,11 @@ namespace Avogadro {
 
       virtual bool paint(GLWidget *widget);
 
+      virtual QWidget* settingsWidget();
+
+    private slots:
+      void buttonClicked(QAbstractButton *button);
+
     protected:
       Atom *              m_clickedAtom;
       bool                m_leftButtonPressed;  // rotation
@@ -84,7 +87,10 @@ namespace Avogadro {
 
       QPoint              m_lastDraggingPosition;
       Eyecandy            *m_eyecandy;
+      ManipulateSettingsWidget *m_settingsWidget;
       double              m_yAngleEyecandy, m_xAngleEyecandy;
+
+      void applyManualManipulation();
 
       void zoom(GLWidget *widget, const Eigen::Vector3d *goal,
                 double delta) const;
