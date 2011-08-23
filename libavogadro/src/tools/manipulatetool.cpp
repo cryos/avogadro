@@ -25,6 +25,8 @@
 #include "eyecandy.h"
 #include "moveatomcommand.h"
 
+#include "ui_manipulatesettingswidget.h"
+
 #include <avogadro/navigate.h>
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
@@ -35,16 +37,30 @@
 #include <avogadro/camera.h>
 
 #include <QtPlugin>
+#include <QDebug>
+#include <QAbstractButton>
 
 using Eigen::Vector3d;
+using Eigen::Matrix3d;
 using Eigen::Transform3d;
 using Eigen::AngleAxisd;
 
 namespace Avogadro {
 
+  class ManipulateSettingsWidget : public QWidget,
+                                   public Ui::ManipulateSettingsWidget
+  {
+  public:
+    ManipulateSettingsWidget(QWidget *parent=0) : QWidget(parent)
+    {
+      setupUi(this);
+    }
+  };
+
   ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent),
-    m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false),
-    m_rightButtonPressed(false), m_eyecandy(new Eyecandy)
+                                                    m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false),
+                                                    m_rightButtonPressed(false), m_eyecandy(new Eyecandy),
+                                                    m_settingsWidget(0)
   {
     m_eyecandy->setColor(1.0, 0.0, 0.0, 1.0);
     QAction *action = activateAction();
@@ -67,7 +83,78 @@ namespace Avogadro {
     return 600000;
   }
 
-  void ManipulateTool::zoom(GLWidget *widget, const Eigen::Vector3d *goal,
+  QWidget* ManipulateTool::settingsWidget()
+  {
+    if (!m_settingsWidget) {
+      m_settingsWidget = new ManipulateSettingsWidget(qobject_cast<QWidget*>(parent()));
+      // each time, we should reset to 0 values
+      connect(m_settingsWidget->buttonBox, SIGNAL(clicked(QAbstractButton*)),
+              this, SLOT(buttonClicked(QAbstractButton*)));
+    }
+    return m_settingsWidget;
+  }
+
+  void ManipulateTool::applyManualManipulation()
+  {
+    if (!m_settingsWidget)
+      return;
+
+    // Get translations and rotations
+    double x = m_settingsWidget->xTranslateSpinBox->value();
+    double y = m_settingsWidget->yTranslateSpinBox->value();
+    double z = m_settingsWidget->zTranslateSpinBox->value();
+    Eigen::Vector3d translate(x, y, z);
+
+    double xRotate = m_settingsWidget->xRotateSpinBox->value();
+    double yRotate = m_settingsWidget->yRotateSpinBox->value();
+    double zRotate = m_settingsWidget->zRotateSpinBox->value();
+
+    Eigen::Matrix3d rotation;
+    rotation = AngleAxisd(xRotate, Vector3d::UnitX())
+      * AngleAxisd(yRotate, Vector3d::UnitY())
+      * AngleAxisd(zRotate, Vector3d::UnitZ());
+
+    // Get the current GLWidget for the manipulation
+    GLWidget *widget = GLWidget::current();
+    Eigen::Vector3d tempPos; // from the translation
+    if (widget->selectedPrimitives().size()) {
+      foreach(Primitive *p, widget->selectedPrimitives())
+        if (p->type() == Primitive::AtomType) {
+          Atom *atom = static_cast<Atom*>(p);
+          tempPos = translate + *(atom->pos());
+          atom->setPos(rotation * tempPos);
+        }
+    } else {
+      foreach(Atom *atom, widget->molecule()->atoms()) {
+        tempPos = translate + *(atom->pos());
+        atom->setPos(rotation * tempPos);
+      }
+    }
+    widget->molecule()->update();
+  }
+
+  void ManipulateTool::buttonClicked(QAbstractButton *button)
+  {
+    if (!m_settingsWidget)
+      return;
+
+    qDebug() << "button clicked " << button->text();
+
+    if (m_settingsWidget->buttonBox->buttonRole(button) == QDialogButtonBox::ApplyRole) {
+      applyManualManipulation();
+    } else {
+      // reset values
+      m_settingsWidget->xTranslateSpinBox->setValue(0.0);
+      m_settingsWidget->yTranslateSpinBox->setValue(0.0);
+      m_settingsWidget->zTranslateSpinBox->setValue(0.0);
+
+      m_settingsWidget->xRotateSpinBox->setValue(0.0);
+      m_settingsWidget->yRotateSpinBox->setValue(0.0);
+      m_settingsWidget->zRotateSpinBox->setValue(0.0);
+    }
+  }
+
+  void ManipulateTool::zoom(GLWidget *widget, const Vector3d *goal,
                             double delta) const
   {
     // Set the cursor - this needs to be reset to Qt::ArrowCursor after

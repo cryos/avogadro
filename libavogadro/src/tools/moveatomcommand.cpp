@@ -43,7 +43,7 @@ namespace Avogadro {
     setText(QObject::tr("Manipulate Atom"));
     m_moleculeCopy = *molecule;
     m_molecule = molecule;
-    m_type =type;
+    m_type = type;
     undone = false;
   }
 
