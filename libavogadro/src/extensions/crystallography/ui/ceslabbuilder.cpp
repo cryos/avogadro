@@ -259,7 +259,7 @@ namespace Avogadro
         maxCutoffSize = yCutoff * 2;
 
       // OK, we'll ensure there are at least 3 times as many replicas to be safe
-      int numReplicas = (maxCutoffSize * 3.5) / minLatticeSize;
+      int numReplicas = (maxCutoffSize * 4.5) / minLatticeSize;
 #ifdef DEBUG
       std::cout << std::endl << " Replicas: " << numReplicas << std::endl;
 #endif
@@ -474,6 +474,8 @@ namespace Avogadro
           else // Fits within the criteria
             a->setPos(newPos);
         }
+        // The removeAtom calls can take a while, since it's renumbering the indices
+        QCoreApplication::processEvents();
       }
 
       // Finally, after moving the atoms...
