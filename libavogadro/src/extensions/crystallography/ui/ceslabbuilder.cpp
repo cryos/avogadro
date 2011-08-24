@@ -236,40 +236,9 @@ namespace Avogadro
     Eigen::Vector3d v3 (cellMatrix.col(2));
 
     if (build) {
-      // Before we do anything, generate the supercell
       // First, wrap all the atoms into the cell
       m_ext->wrapAtomsToCell();
       m_ext->fillUnitCell();
-
-      // Then generate a supercell
-      // We intentionally create something much larger than we need
-      //  So, let's work out how many replicas we need
-      //  What's the smallest lattice distance?
-      double minLatticeSize = v1.norm();
-      if (v2.norm() < minLatticeSize)
-        minLatticeSize = v2.norm();
-      if (v3.norm() < minLatticeSize)
-        minLatticeSize = v3.norm();
-
-      // What's the largest cutoff?
-      double maxCutoffSize = zCutoff;
-      if (xCutoff * 2 > maxCutoffSize)
-        maxCutoffSize = xCutoff * 2;
-      if (yCutoff * 2 > maxCutoffSize)
-        maxCutoffSize = yCutoff * 2;
-
-      // OK, we'll ensure there are at least 3 times as many replicas to be safe
-      int numReplicas = (maxCutoffSize * 4.5) / minLatticeSize;
-#ifdef DEBUG
-      std::cout << std::endl << " Replicas: " << numReplicas << std::endl;
-#endif
-      m_ext->buildSuperCell(numReplicas, numReplicas, numReplicas);
-
-      // update the cell vectors for the supercell
-      cellMatrix = m_ext->unconvertLength(m_ext->currentCellMatrix()).transpose();
-      v1 = cellMatrix.col(0);
-      v2 = cellMatrix.col(1);
-      v3 = cellMatrix.col(2);
     }
 
 
@@ -368,13 +337,7 @@ namespace Avogadro
               << std::endl << crossPoint.transpose() << std::endl;
 #endif
 
-    // Generate periodic unit cell
-    //
-    // First off, use the Miller plane normal (which will get rotated to the z-axis
-    // Normalize it's length. This is one slab vector.
-    const Eigen::Vector3d s1 (normalVec.normalized());
-
-    // Set up the other 2 slab vectors
+    // Generate new surface unit cell vectors
     /* Algorithm inspired by GDIS http://gdis.sf.net/
       Sean Fleming of GDIS said the code was based on MARVIN
       D.H. Gay and A.L. Rohl.
@@ -388,7 +351,7 @@ namespace Avogadro
     int mi_l = ui.spin_mi_l->value();
 
     // Set up the surface lattice vectors
-    Eigen::Vector3d s2, s3;
+    Eigen::Vector3d s1, s2, s3;
     // First, generate the basic Miller vectors -- linear combinations of v1,v2,v3
     Eigen ::Vector3d v;
     int common = gcdSmall(mi_h, mi_k);
@@ -425,6 +388,8 @@ namespace Avogadro
     // OK, now we sort all possible surfaceVectors by magnitude
     std::sort(surfaceVectors.begin(), surfaceVectors.end(), vectorCompare);
 
+    // Set s1 to the surface normal
+    s1 = normalVec.normalized();
     // Set s2 to the shortest vector
     s2 = surfaceVectors[0].normalized();
     // Now loop through to find the next-shortest orthogonal to s1
@@ -435,15 +400,22 @@ namespace Avogadro
           && s2.cross(surfaceVectors[i]).squaredNorm() > THRESH)
           break;
     }
-    s3 = surfaceVectors[i].normalized();
+    s3 = surfaceVectors[i];
 
-    // Now we set up the transformation matrix
+    // Now we set up the normalized transformation matrix
     // We want s1 on the z-axis, and s2 on the x-axis
     // So we need to take the cross for the y-axis
     Eigen::Matrix3d rotation;
     rotation.row(0) = s2;
     rotation.row(1) = s2.cross(s1);
     rotation.row(2) = s1;
+
+    // OK, now we un-normalize s1 and s2
+    // The correct length for s1 should be the depth
+    s1 *= d;
+    // And we still have s2's un-normalized version
+    s2 = surfaceVectors[0];
+    // S3 is already un-normalized
 
 #ifdef DEBUG
     std::cout << std::endl << s1.transpose()
@@ -452,17 +424,29 @@ namespace Avogadro
               << std::endl << (rotation * s2).transpose()
               << std::endl << (rotation * s3).transpose()
               << std::endl;
-#endif DEBUG
+#endif
 
     if (build) {
+      const int replicas = 5;
+      m_ext->buildSuperCell(replicas, replicas, replicas);
+
+      std::cout << std::endl << centerPoint.transpose()
+                << std::endl;
+
       // Now rotate, translate, and trim the supercell
+      QList<Atom*> atomsToRemove;
+      Eigen::Vector3d translation(replicas*centerPoint);
+      double zTranslation = translation.norm();
       foreach(Atom *a, mol->atoms()) {
         if (a) {
-          // Translate to new origin and rotate
-          Eigen::Vector3d translatedPos = (*a->pos() - centerPoint);
-          Eigen::Vector3d newPos = rotation * translatedPos;
-          // OK, before we update the atom, see if we should trim it...
+          // Center the cube to the centerPoint of the Miller Plane
+          Eigen::Vector3d translatedPos = (*a->pos() - translation);
+          // Rotate to the new frame of reference
+          Eigen::Vector3d newPos = rotation * (*a->pos());
+          // And now shift to approximately the middle of the surface
+          newPos.z() = newPos.z() - zTranslation;
 
+          // OK, before we update the atom, see if we should trim it...
           if (newPos.z() > 0.1) // We use a slight slop factor, although in principle every atom should be in xy plane
             mol->removeAtom(a);
           else if (newPos.z() < -zCutoff) // the z-thickness should all be negative
@@ -474,20 +458,24 @@ namespace Avogadro
           else // Fits within the criteria
             a->setPos(newPos);
         }
-        // The removeAtom calls can take a while, since it's renumbering the indices
-        QCoreApplication::processEvents();
       }
+      // Remove all the sliced atoms
+      //      mol->removeAtoms(atomsToRemove);
 
       // Finally, after moving the atoms...
       // Update the unit cell matrix to allow building a supercell of the surface
       Eigen::Matrix3d mat;
-      Eigen::Vector3d m1 = (rotation * s2); // Should be x-axis
-      Eigen::Vector3d m2 = (rotation * s3); // should by y-axis
-      double xScale = xCutoff * 2.0;
-      double yScale = yCutoff * 2.0;
-      mat << xScale * m1.x(), yScale * m1.y(), 0.0,
+      Eigen::Vector3d m1 = (rotation * (s2 - centerPoint)); // Should be x-axis
+      Eigen::Vector3d m2 = (rotation * (s3 - centerPoint)); // should by y-axis
+      double xScale = 1.0;
+      double yScale = 1.0;
+      /*      mat << xScale * m1.x(), yScale * m1.y(), 0.0,
         xScale * m2.x(), yScale * m2.y(), 0.0,
         0.0, 0.0, zCutoff * 10.0; // the last makes a 3D slab effectively 2D;
+      */
+      mat.row(0) = s2;
+      mat.row(1) = s3;
+      mat.row(2) << 0.0, 0.0, centerPoint.norm();
 
       // We build everything in cartesian, so we want to preserve them when modifying the matrix
       CartFrac existingPreserveCartFrac = m_ext->coordsPreserveCartFrac();

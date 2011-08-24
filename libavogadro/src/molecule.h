@@ -136,6 +136,12 @@ namespace Avogadro {
     void removeAtom(unsigned long id);
 
     /**
+     * Delete the list of Atom objects specified.
+     * @since version 1.1
+     */
+    void removeAtoms(QList<Atom*> atoms);
+
+    /**
      * @return The Atom at the supplied index.
      * @note Replaces GetAtom.
      */
@@ -210,6 +216,12 @@ namespace Avogadro {
     void removeBond(unsigned long id);
 
     /**
+     * Remove all Bond objects in the list specified.
+     * @since version 1.1
+     */
+    void removeBonds(QList<Bond *>bonds);
+
+    /**
      * @return The Bond at the supplied index.
      * @note Replaces GetBond.
      */
@@ -252,14 +264,19 @@ namespace Avogadro {
     Residue *addResidue(unsigned long id);
 
     /**
-     * Remove the supplied residue.
+     * Remove the supplied Residue.
      */
     void removeResidue(Residue *residue);
 
     /**
-     * Remove the residue with the unique id specified.
+     * Remove the Residue with the unique id specified.
      */
     void removeResidue(unsigned long id);
+
+    /**
+     * Remove all Residue objects in the list specified.
+     */
+    void removeResidues(QList<Residue*> residues);
 
     /**
      * @return The residue at the supplied index.

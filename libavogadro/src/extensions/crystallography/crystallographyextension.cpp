@@ -1368,7 +1368,6 @@ namespace Avogadro
         Bond *bond = m_molecule->addBond();
         bond->setAtoms(atom1->id(), atom2->id(), 1);
       }
-      QCoreApplication::processEvents();
     }
 
     m_molecule->blockSignals(false);
