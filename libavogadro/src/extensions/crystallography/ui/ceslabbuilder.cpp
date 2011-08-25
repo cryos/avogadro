@@ -224,9 +224,9 @@ namespace Avogadro
        static_cast<double>(ui.spin_mi_l->value()));
 
     // Get cutoff thresholds
-    const double xCutoff = ui.spin_slab_x->value() / 2.0;
-    const double yCutoff = ui.spin_slab_y->value() / 2.0;
-    const double zCutoff = ui.spin_slab_z->value();
+    double xCutoff = ui.spin_slab_x->value() / 2;
+    double yCutoff = ui.spin_slab_y->value() / 2;
+    double zCutoff = ui.spin_slab_z->value();
 
     // Get cell vectors
     Eigen::Matrix3d cellMatrix
@@ -427,14 +427,35 @@ namespace Avogadro
 #endif
 
     if (build) {
-      const int replicas = 5;
+      const int replicas = 10; // should depend on the size of the slab
       m_ext->buildSuperCell(replicas, replicas, replicas);
 
-      std::cout << std::endl << centerPoint.transpose()
-                << std::endl;
+      // Derive the unit cell matrix to allow building a supercell of the surface
+      // We will also adjust the x and y cutoffs based on the lattice parameters
+      Eigen::Vector3d m1 = (rotation * (s2)); // Should be x-axis
+      Eigen::Vector3d m2 = (rotation * (s3)); // should by y-axis
+      // Adjust the xCutoff
+      double xSpacing = std::max(fabs(m1.x()), fabs(m2.x()));
+      int xRepeats = int(xCutoff * 2 / xSpacing); // how many unit repeats requested
+      double ySpacing = std::max(fabs(m1.y()), fabs(m2.y()));
+      int yRepeats = int(yCutoff * 2 / ySpacing);
+
+      std::cout << xSpacing << " " << xRepeats << " "
+                << ySpacing << " " << yRepeats << std::endl;
+
+      // New cutoffs
+      xCutoff = xRepeats * xSpacing / 2.0;
+      yCutoff = yRepeats * ySpacing / 2.0;
+
+      // Here's the supercell matrix
+      Eigen::Matrix3d surfaceMatrix;
+      surfaceMatrix << m1.x(), m1.y(), 0.0,
+        m2.x(), m2.y(), 0.0,
+        0.0, 0.0, zCutoff*8;
+      // The large z-spacing allows for surface/molecule calculations
+
 
       // Now rotate, translate, and trim the supercell
-      QList<Atom*> atomsToRemove;
       Eigen::Vector3d translation(replicas*centerPoint);
       double zTranslation = translation.norm();
       foreach(Atom *a, mol->atoms()) {
@@ -459,28 +480,11 @@ namespace Avogadro
             a->setPos(newPos);
         }
       }
-      // Remove all the sliced atoms
-      //      mol->removeAtoms(atomsToRemove);
-
-      // Finally, after moving the atoms...
-      // Update the unit cell matrix to allow building a supercell of the surface
-      Eigen::Matrix3d mat;
-      Eigen::Vector3d m1 = (rotation * (s2 - centerPoint)); // Should be x-axis
-      Eigen::Vector3d m2 = (rotation * (s3 - centerPoint)); // should by y-axis
-      double xScale = 1.0;
-      double yScale = 1.0;
-      /*      mat << xScale * m1.x(), yScale * m1.y(), 0.0,
-        xScale * m2.x(), yScale * m2.y(), 0.0,
-        0.0, 0.0, zCutoff * 10.0; // the last makes a 3D slab effectively 2D;
-      */
-      mat.row(0) = s2;
-      mat.row(1) = s3;
-      mat.row(2) << 0.0, 0.0, centerPoint.norm();
 
       // We build everything in cartesian, so we want to preserve them when modifying the matrix
       CartFrac existingPreserveCartFrac = m_ext->coordsPreserveCartFrac();
       m_ext->setCoordsPreserveCartFrac(Cartesian);
-      m_ext->setCurrentCellMatrix(mat);
+      m_ext->setCurrentCellMatrix(surfaceMatrix);
       m_ext->setCoordsPreserveCartFrac(existingPreserveCartFrac);
 
       // Finish up
