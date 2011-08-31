@@ -24,6 +24,7 @@
 
 
 #include <openbabel/mol.h>
+#include <openbabel/math/vector3.h>
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
@@ -78,12 +79,87 @@ namespace Avogadro {
            int role = Qt::DisplayRole) const;
 
        void setMolecule (Molecule *molecule);
-       void cacheOBMol() const;
+
+       // determine whether we display multiple or just one conformer
+       void setDisplayConformers(bool display);
+
+       // Return what type of model this is
+       int type() const { return m_type; };
+
+       // Generate all data pertaining to atoms, bonds, angles etc
+       void updateCache() const;
+
+       // Empty all items in the cache
+       void clearCache() const;
+
+       // Return the number of conformers we are displaying
+       unsigned int numConformers() const;
+
+       // Given a model index, return the conformer it refers to
+       unsigned int conformerFromIndex(const QModelIndex &index) const;
+
+       // Returns the angle data for a given conformer
+       std::vector< std::vector<unsigned int> > conformerAngles( unsigned int conformer );
+
+       // Returns the torsion data for a given conformer
+       std::vector< std::vector<unsigned int> > conformerTorsions( unsigned int conformer );
+
 
      private:
        int m_type;
        mutable int m_rowCount;
        Molecule *m_molecule;
+
+       /*
+  * For each category (atom, bond etc), an enum specifies which columns hold
+  * which data.
+  * There are then two data structures (e.g. m_bondData) which holds the data
+  * that is shared by all conformers, and an additional structure (e.g. m_bondLengths)
+  * that holds the data that differs for each conformer
+  * For angles and torsions, there are additional data structures for the vectors defining
+  * the angles as these are needed when editing the structures.
+  */
+
+       // Controls whether we display the data for one or all conformers
+       bool m_displayConformers;
+
+       // Atom Data
+       enum AtomColumn { AtomDataElement=0,
+                         AtomDataType,
+                         AtomDataValence,
+                         AtomDataFormalCharge,
+                         AtomDataPartialCharge };
+       mutable std::vector< std::vector<QVariant> > m_atomData;
+       mutable std::vector< std::vector<OpenBabel::vector3> > m_atomCoords;
+
+       // Bond Data
+       enum BondColumn { BondDataType=0,
+                         BondDataAtom1,
+                         BondDataAtom2,
+                         BondDataOrder,
+                         BondDataRotatable};
+       mutable std::vector< std::vector<QVariant> > m_bondData;
+       mutable std::vector< std::vector<double> > m_bondLengths;
+
+       // Angle Data
+       enum AngleColumn { AngleDataType=0,
+        AngleDataStartAtom,
+        AngleDataVertex,
+        AngleDataEndAtom};
+       mutable std::vector< std::vector<QVariant> > m_angleData;
+       mutable std::vector< std::vector<double> > m_angleValues;
+       mutable std::vector< std::vector< std::vector<unsigned int> > > m_angles;
+
+       // Torsion Data
+       enum TorsionColumn { TorsionDataType=0,
+          TorsionDataAtom1,
+          TorsionDataAtom2,
+          TorsionDataAtom3,
+          TorsionDataAtom4};
+       mutable std::vector< std::vector<QVariant> > m_torsionData;
+       mutable std::vector< std::vector<double> > m_torsionValues;
+       mutable std::vector< std::vector< std::vector<unsigned int> > > m_torsions;
+
 
        mutable bool m_validCache;
        mutable OpenBabel::OBMol *m_cachedOBMol;
