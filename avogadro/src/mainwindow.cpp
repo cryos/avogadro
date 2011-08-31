@@ -635,7 +635,7 @@ protected:
 
       // read settings
       readSettings();
-      
+
       reloadTools();
       //if (d->toolSettingsDock)
       //  d->toolSettingsDock->hide();
@@ -1410,7 +1410,7 @@ protected:
   bool MainWindow::save()
   {
     // we can't safely save to a gzipped file
-    if ( !QFileInfo(d->fileName).isReadable() 
+    if ( !QFileInfo(d->fileName).isReadable()
         || isDefaultFileName(d->fileName)
         || d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
       return saveAs();
@@ -1967,16 +1967,18 @@ protected:
     if (!validMol) { // We failed as an authentic format, try annulen's heuristics
       validMol = parseText(&newMol, QString(text));
     }
-    
+
     if (validMol && newMol.NumAtoms() == 0)
       return false;
 
     // We've got something we can paste
+    /*
     vector3 offset; // small offset so that pasted mols don't fall on top
     offset.randomUnitVector();
     offset *= 0.1;
-    
     newMol.Translate(offset);
+    */
+
     Molecule newMolecule;
     newMolecule.setOBMol(&newMol);
     PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
@@ -1992,18 +1994,18 @@ protected:
       return 0;  // "D" ot "T"
     if (n != 0)
       return n;  // other element symbols
-    
+
     // not match => we've got IUPAC name
-    
+
     /*vector<OBElement*>::iterator i;
       for (i = _element.begin();i != _element.end();++i)
       if (name == (*i)->GetSymbol())
       return((*i)->GetAtomicNum());*/
-    
+
     for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
       if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))
 	      return i;
-	  
+
     if (!QString::compare(name.c_str(), "Deuterium", Qt::CaseInsensitive))
       {
         iso = 2;
@@ -2022,13 +2024,13 @@ protected:
   bool MainWindow::parseText(OBMol *mol, const QString coord)
   {
     QStringList coordStrings = coord.split(QRegExp("\n"));
-	
+
     double k = 1.0; // ANGSTROM -- set to 0.529 for Bohr
-	
+
     // Guess format
-    
+
     // split on any non-word symbol, except '.'
-    QStringList data = coordStrings.at(0).trimmed().split(QRegExp("\\s+|,|;")); 
+    QStringList data = coordStrings.at(0).trimmed().split(QRegExp("\\s+|,|;"));
     //QList<double>
     // Format definition, will be used for parsing
     int NameCol=-1, Xcol=-1, Ycol=-1, Zcol=-1;
@@ -2039,14 +2041,14 @@ protected:
     for (int i=0; i<data.size(); i++)
       {
         if (data.at(i) == "") continue;
-        
+
         a = data.at(i).toInt(&ok);
         if (ok)
           {
             format += "i";
             continue;
           }
-        
+
         b = data.at(i).toDouble(&ok);
         if (ok)
           {
@@ -2058,12 +2060,12 @@ protected:
         else
           format += "s";
       }
-    
+
     qDebug() << "Format is: " << format;
-    
+
     if (format.length() < 4)
       return false; // invalid format
-    
+
     if (format == "iddd") // special XYZ variant
       {
         NameCol=0;
@@ -2077,7 +2079,7 @@ protected:
           {
             //if (format.at(i) == 'i')
             //continue; // nothing valuable
-            
+
             if ((format.at(i)=='d') || (format.length()==4 && format.at(i)=='i'))
               {
                 // double
@@ -2104,7 +2106,7 @@ protected:
                 // string
                 if (NameCol != -1)  // just found
                   continue;
-        
+
                 // Try to find element name or symbol inside it
                 int n,iso;
                 QString s = data.at(i);
@@ -2114,7 +2116,7 @@ protected:
                     n = GetAtomicNum(s.toStdString(), iso);
                     if (iso != 0)
                       n = 1;
-            
+
                     if (n!=0)
                       {
                         NameCol=i;
@@ -2127,16 +2129,16 @@ protected:
             continue;
           }
       }
-    
+
     if((NameCol==-1) || (Xcol==-1) || (Ycol==-1) || (Zcol==-1))
       return false;
-	  
+
     // Read and apply coordinates
     mol->BeginModify();
     for (int N=0; N<coordStrings.size(); N++)
       {
         if (coordStrings.at(N) == "") continue;
-        
+
         OBAtom *atom  = mol->NewAtom();
         QStringList s_data = coordStrings.at(N).trimmed().split(QRegExp("\\s+|,|;"));
         if (s_data.size() != data.size())
@@ -2156,17 +2158,17 @@ protected:
               _n = s_data.at(i).toInt(&ok);
             else if (i == NameCol)
               {
-                
+
                 // Try to find element name or symbol inside it
-                
+
                 QString _s = s_data.at(i);
                 while (_s.length()!=0)  // recognize name with number
                   {
-                    _iso=0;  
+                    _iso=0;
                     _n = GetAtomicNum(_s.toStdString(), _iso);
                     if (_iso != 0)
                       _n = 1;
-                    
+
                     if (_n!=0)
                       break;
                     else
@@ -2176,7 +2178,7 @@ protected:
                   return false;
               }
             if (!ok) return false;
-            
+
             atom->SetAtomicNum(_n);
             atom->SetVector(x*k,y*k,z*k); //set coordinates
           }
@@ -3545,8 +3547,8 @@ protected:
     gl->setUndoStack( d->undoStack );
     gl->setToolGroup( d->toolGroup );
     d->glWidgets.append(gl);
-    
-    // Set the extensions (needed for Extension::paint) 
+
+    // Set the extensions (needed for Extension::paint)
     gl->setExtensions(d->pluginManager.extensions(this));
 
     // engine list wiget contains all the buttons too
