@@ -493,6 +493,11 @@ namespace Avogadro
 
   void CrystallographyExtension::refreshEditors_()
   {
+    // If the molecule has changed since the single-shot timer was started, we
+    // may need to abort the update
+    if (!m_molecule || !m_molecule->OBUnitCell()) {
+      return;
+    }
     // refresh all editors
     if (!m_editors.size()) {
       initializeEditors();
