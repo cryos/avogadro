@@ -33,7 +33,9 @@ namespace Avogadro {
     : QDialog(parent, f),
       m_quality(OrbitalWidget::OQ_Low),
       m_isoval(0.02),
-      m_HOMOFirst(false)
+      m_HOMOFirst(false),
+      m_limit_precalc(true),
+      m_precalc_range(10)
   {
     ui.setupUi(this);
 
@@ -44,7 +46,8 @@ namespace Avogadro {
             parent, SIGNAL(calculateAll()));
     connect(this, SIGNAL(defaultsUpdated(OrbitalWidget::OrbitalQuality, double, bool)),
             parent, SLOT(setDefaults(OrbitalWidget::OrbitalQuality, double, bool)));
-
+    connect(this, SIGNAL(precalcSettingsUpdated(bool,int)),
+            parent, SLOT(setPrecalcSettings(bool,int)));
   }
 
   OrbitalSettingsDialog::~OrbitalSettingsDialog()
@@ -69,6 +72,18 @@ namespace Avogadro {
     m_HOMOFirst = HOMOFirst;
   }
 
+  void OrbitalSettingsDialog::setLimitPrecalc(bool b)
+  {
+    ui.cb_limit_precalc->setChecked(b);
+    m_limit_precalc = b;
+  }
+
+  void OrbitalSettingsDialog::setPrecalcRange(int r)
+  {
+    ui.spin_precalc_range->setValue(r);
+    m_precalc_range = r;
+  }
+
   void OrbitalSettingsDialog::updateDefaults()
   {
     m_quality = OrbitalWidget::OrbitalQuality(ui.combo_quality->currentIndex());
@@ -77,9 +92,17 @@ namespace Avogadro {
     emit defaultsUpdated(m_quality, m_isoval, m_HOMOFirst);
   }
 
+  void OrbitalSettingsDialog::updatePrecalcSettings()
+  {
+    m_limit_precalc = ui.cb_limit_precalc->isChecked();
+    m_precalc_range = ui.spin_precalc_range->value();
+    emit precalcSettingsUpdated(m_limit_precalc, m_precalc_range);
+  }
+
   void OrbitalSettingsDialog::accept()
   {
     updateDefaults();
+    updatePrecalcSettings();
     hide();
   }
 

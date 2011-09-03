@@ -168,12 +168,12 @@ namespace Avogadro
 
         Orbital orb;
         // Get the energy from the molecule property list, if available
-        if (alphaEnergies.size() >= i)
+        if (alphaEnergies.size() > i)
           orb.energy = alphaEnergies[i].toDouble();
         else
           orb.energy = 0.0;
         // symmetries (if available)
-        if (alphaSymmetries.size() >= i)
+        if (alphaSymmetries.size() > i)
           orb.symmetry = alphaSymmetries[i];
         orb.index = i;
         orb.description = desc;
@@ -406,8 +406,21 @@ namespace Avogadro
       // .... HOMO-2 HOMO-1 HOMO LUMO LUMO+1 LUMO+2 ... << orbitals
       // ....   3      2     1    1     2      3    ... << priorities
 
-      // TODO: Add a "window" to only add, say 25/25 orbitals on each side of the HOMO/LUMO
-      for (unsigned int i = 0; i < m_basis->numMOs(); i++) {
+      // Determine range of precalculated orbitals
+      int startIndex = (m_widget->precalcLimit())
+          ? homo - (m_widget->precalcRange()/2)
+          : 0;
+      if (startIndex < 0) {
+        startIndex = 0;
+      }
+      int endIndex =  (m_widget->precalcLimit())
+          ? homo + (m_widget->precalcRange()/2) - 1
+          : m_basis->numMOs();
+      if (endIndex > m_basis->numMOs() - 1) {
+        endIndex = m_basis->numMOs() - 1;
+      }
+
+      for (unsigned int i = startIndex; i <= endIndex; i++) {
         addCalculationToQueue(i+1,  // orbital
                               OrbitalWidget::OrbitalQualityToDouble(m_widget->defaultQuality()),
                               m_widget->isovalue(),

@@ -45,13 +45,18 @@ namespace Avogadro
     void setDefaultQuality(OrbitalWidget::OrbitalQuality);
     void setIsoValue(double);
     void setHOMOFirst(bool);
+    void setLimitPrecalc(bool);
+    void setPrecalcRange(int);
     void updateDefaults();
+    void updatePrecalcSettings();
     void accept();
     void reject();
 
   signals:
     void calculateAll();
-    void defaultsUpdated(OrbitalWidget::OrbitalQuality quality, double isoval, bool HOMOFirst);
+    void defaultsUpdated(OrbitalWidget::OrbitalQuality quality, double isoval,
+                         bool HOMOFirst);
+    void precalcSettingsUpdated(bool limit, int range);
 
   private slots:
     void calculateAllClicked();
@@ -61,6 +66,8 @@ namespace Avogadro
     OrbitalWidget::OrbitalQuality m_quality;
     double m_isoval;
     bool m_HOMOFirst;
+    bool m_limit_precalc;
+    int m_precalc_range;
   };
 
 } // End namespace Avogadro
