@@ -1526,9 +1526,9 @@ namespace Avogadro
         continue;
       }
 
-      double xiEtaZeta = xi*eta*zeta;
       // Step 3:
-      if (StableComp::gt(xiEtaZeta, 0, tol)) {
+      // Use exact comparisons in steps 3 and 4.
+      if (xi*eta*zeta > 0) {
         // Update change of basis matrix:
         tmpMat <<
           StableComp::sign(xi),0,0,
@@ -1541,35 +1541,47 @@ namespace Avogadro
         eta  = fabs(eta);
         zeta = fabs(zeta);
         NIGGLI_DEBUG(3);
+        ++iter;
       }
 
       // Step 4:
-      if (StableComp::leq(xiEtaZeta, 0, tol)) {
+      // Use exact comparisons for steps 3 and 4
+      else { // either step 3 or 4 should run
         // Update change of basis matrix:
-        double *p = 0;
+        double *p = NULL;
         double i = 1;
         double j = 1;
         double k = 1;
-        if (StableComp::gt(xi, 0, tol)) {
+        if (xi > 0) {
           i = -1;
         }
-        else if (!StableComp::lt(xi, 0, tol)) {
+        else if (!(xi < 0)) {
           p = &i;
         }
-        if (StableComp::gt(eta, 0, tol)) {
+        if (eta > 0) {
           j = -1;
         }
-        else if (!StableComp::lt(eta, 0, tol)) {
+        else if (!(eta < 0)) {
           p = &j;
         }
-        if (StableComp::gt(zeta, 0, tol)) {
+        if (zeta > 0) {
           k = -1;
         }
-        else if (!StableComp::lt(zeta, 0, tol)) {
+        else if (!(zeta < 0)) {
           p = &k;
         }
-        if (StableComp::lt(i*j*k, 0, tol)) {
-          Q_ASSERT(p);
+        if (i*j*k < 0) {
+          if (!p) {
+            QMessageBox::warning
+                (m_mainwindow,
+                 CE_DIALOG_TITLE,
+                 tr("Niggli-reduction failed. The input structure's "
+                    "lattice that is confusing the Niggli-reduction "
+                    "algorithm. Try making a small perturbation (approx."
+                    " 2 orders of magnitude smaller than the tolerance) "
+                    "to the input lattices and try again."));
+            return false;
+          }
           *p = -1;
         }
         tmpMat << i,0,0, 0,j,0, 0,0,k;
@@ -1580,6 +1592,7 @@ namespace Avogadro
         eta  = -fabs(eta);
         zeta = -fabs(zeta);
         NIGGLI_DEBUG(4);
+        ++iter;
       }
 
       // Step 5:
