@@ -168,12 +168,12 @@ namespace Avogadro
 
         Orbital orb;
         // Get the energy from the molecule property list, if available
-        if (alphaEnergies.size() >= i)
+        if (alphaEnergies.size() > i)
           orb.energy = alphaEnergies[i].toDouble();
         else
           orb.energy = 0.0;
         // symmetries (if available)
-        if (alphaSymmetries.size() >= i)
+        if (alphaSymmetries.size() > i)
           orb.symmetry = alphaSymmetries[i];
         orb.index = i;
         orb.description = desc;
