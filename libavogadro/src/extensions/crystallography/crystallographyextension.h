@@ -225,6 +225,7 @@ namespace Avogadro
     inline OpenBabel::OBUnitCell* currentCell() const {
       return (m_molecule) ? m_molecule->OBUnitCell() : 0 ;}
     Eigen::Matrix3d currentCellMatrix() const;
+    Eigen::Matrix3d currentCellMatrixInStandardOrientation() const;
     Eigen::Matrix3d currentFractionalMatrix() const;
     CEUnitCellParameters currentCellParameters() const;
     QList<Eigen::Vector3d> currentFractionalCoords() const;
@@ -248,6 +249,8 @@ namespace Avogadro
     void fillUnitCell();
     void wrapAtomsToCell();
     void orientStandard();
+    Eigen::Matrix3d rotateCellMatrixToStandardOrientation(
+      const Eigen::Matrix3d &in) const;
     void showPasteDialog(const QString &text);
     bool niggliReduce();
 

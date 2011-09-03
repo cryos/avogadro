@@ -864,6 +864,12 @@ namespace Avogadro
     return OB2Eigen(currentCell()->GetFractionalMatrix());
   }
 
+  Eigen::Matrix3d
+  CrystallographyExtension::currentCellMatrixInStandardOrientation() const
+  {
+    return rotateCellMatrixToStandardOrientation(currentCellMatrix());
+  }
+
   CEUnitCellParameters CrystallographyExtension::currentCellParameters() const
   {
     CEUnitCellParameters params (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
@@ -1268,10 +1274,98 @@ namespace Avogadro
                                fcoords);
   }
 
+  // The old version of this function would just grab and reset the lattice
+  // parameters, but this would break if the angles were actually "negative"
+  // angles. This implementation constructs a new matrix without using trig or
+  // depending on lattice parameters.
+  //
+  // I derived this implementation in mathematica -- the algorithm is a bit
+  // obtuse, but I've tested it rather thoroughly. If anyone would like to see
+  // the derivation for themselves, feel free to contact me (David Lonie) at
+  // loniedavid@gmail.com.
+  Eigen::Matrix3d
+  CrystallographyExtension::rotateCellMatrixToStandardOrientation
+  (const Eigen::Matrix3d &origRowMat) const
+  {
+    // Extract vector components:
+    const double &x1 = origRowMat(0,0);
+    const double &y1 = origRowMat(0,1);
+    const double &z1 = origRowMat(0,2);
+
+    const double &x2 = origRowMat(1,0);
+    const double &y2 = origRowMat(1,1);
+    const double &z2 = origRowMat(1,2);
+
+    const double &x3 = origRowMat(2,0);
+    const double &y3 = origRowMat(2,1);
+    const double &z3 = origRowMat(2,2);
+
+    // Cache some frequently used values:
+    // Length of v1
+    const double L1 = sqrt(x1*x1 + y1*y1 + z1*z1);
+    // Squared norm of v1's yz projection
+    const double sqrdnorm1yz = y1*y1 + z1*z1;
+    // Squared norm of v2's yz projection
+    const double sqrdnorm2yz = y2*y2 + z2*z2;
+    // Determinant of v1 and v2's projections in yz plane
+    const double detv1v2yz = y2*z1 - y1*z2;
+    // Scalar product of v1 and v2's projections in yz plane
+    const double dotv1v2yz = y1*y2 + z1*z2;
+
+    // Used for denominators, since we want to check that they are
+    // sufficiently far from 0 to keep things reasonable:
+    double denom;
+    const double DENOM_TOL = 1e-5;
+
+    // Create target matrix, fill with zeros
+    Eigen::Matrix3d newMat (Eigen::Matrix3d::Zero());
+
+    // Set components of new v1:
+    newMat(0,0) = L1;
+
+    // Set components of new v2:
+    denom = L1;
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    newMat(1,0) = (x1*x2 + y1*y2 + z1*z2) / denom;
+
+    newMat(1,1) = sqrt(x2*x2 * sqrdnorm1yz +
+                       detv1v2yz*detv1v2yz -
+                       2*x1*x2*dotv1v2yz +
+                       x1*x1*sqrdnorm2yz) / denom;
+
+    // Set components of new v3
+    // denom is still L1
+    Q_ASSERT(denom == L1);
+    newMat(2,0) = (x1*x3 + y1*y3 + z1*z3) / denom;
+
+    denom = L1*L1 * newMat(1,1);
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    newMat(2,1) = (x1*x1*(y2*y3 + z2*z3) +
+                   x2*(x3*sqrdnorm1yz -
+                       x1*(y1*y3 + z1*z3)
+                       ) +
+                   detv1v2yz*(y3*z1 - y1*z3) -
+                   x1*x3*dotv1v2yz) / denom;
+
+    denom = L1 * newMat(1,1);
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    // Numerator is determinant of original cell:
+    newMat(2,2) = (x1*y2*z3 - x1*y3*z2 +
+                   x2*y3*z1 - x2*y1*z3 +
+                   x3*y1*z2 - x3*y2*z1) / denom;
+
+    return newMat;
+  }
+
   void CrystallographyExtension::orientStandard()
   {
-    // Let's be lazy here; Just pull out the parameters and reapply them.
-    setCurrentCellParameters(currentCellParameters());
+    setCurrentCellMatrix(currentCellMatrixInStandardOrientation());
   }
 
   void CrystallographyExtension::showPasteDialog(const QString &text)
