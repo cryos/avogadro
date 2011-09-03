@@ -1136,12 +1136,7 @@ namespace Avogadro
   {
     // Get scaling factor
     double factor = pow(volume/currentVolume(), 1.0/3.0);
-
-    CEUnitCellParameters p = currentCellParameters();
-    p.a *= factor;
-    p.b *= factor;
-    p.c *= factor;
-    setCurrentCellParameters(p);
+    setCurrentCellMatrix(currentCellMatrix() * factor);
   }
 
   // Adapted from unitcellextension:
