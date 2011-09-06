@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_cyclohexa-2_5-diene-1_4-dione">
+  <formula concise=" C 6 H 4 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C6H4O2/c7-5-1-2-6(8)4-3-5/h1-4H"/>
+  <name convention="IUPAC">Cyclohexa-2,5-diene-1,4-dione</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.896069" y3="1.131230" z3="-0.102068"/>
+    <atom id="a2" elementType="C" x3="1.407349" y3="-0.254761" z3="0.067292"/>
+    <atom id="a3" elementType="C" x3="0.580235" y3="-1.298949" z3="0.161476"/>
+    <atom id="a4" elementType="C" x3="-0.896027" y3="-1.131164" z3="0.102101"/>
+    <atom id="a5" elementType="C" x3="-1.407372" y3="0.254782" z3="-0.067161"/>
+    <atom id="a6" elementType="C" x3="-0.580197" y3="1.298996" z3="-0.161436"/>
+    <atom id="a7" elementType="O" x3="-1.649738" y3="-2.082783" z3="0.187842"/>
+    <atom id="a8" elementType="O" x3="1.649903" y3="2.082791" z3="-0.188083"/>
+    <atom id="a9" elementType="H" x3="2.496446" y3="-0.382832" z3="0.111595"/>
+    <atom id="a10" elementType="H" x3="0.961475" y3="-2.320523" z3="0.286300"/>
+    <atom id="a11" elementType="H" x3="-0.961659" y3="2.320434" z3="-0.286431"/>
+    <atom id="a12" elementType="H" x3="-2.496484" y3="0.382778" z3="-0.111429"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="2"/>
+    <bond atomRefs2="a6 a1" order="1"/>
+    <bond atomRefs2="a4 a7" order="2"/>
+    <bond atomRefs2="a1 a8" order="2"/>
+    <bond atomRefs2="a2 a9" order="1"/>
+    <bond atomRefs2="a3 a10" order="1"/>
+    <bond atomRefs2="a6 a11" order="1"/>
+    <bond atomRefs2="a5 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">108.0948</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">108.0211294</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">113</scalar>
+    </property>
+  </propertyList>
+</molecule>
