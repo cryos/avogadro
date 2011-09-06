@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_1_4-diazabicyclo_2_2_2_octane">
+  <formula concise=" C 6 H 12 N 2 "/>
+  <identifier convention="iupac:inchi" value="1/C6H12N2/c1-2-8-5-3-7(1)4-6-8/h1-6H2"/>
+  <name convention="IUPAC">1,4-Diazabicyclo[2.2.2]octane</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.040161" y3="0.925897" z3="0.801433"/>
+    <atom id="a2" elementType="C" x3="1.232253" y3="-0.603478" z3="0.835885"/>
+    <atom id="a3" elementType="N" x3="0.159550" y3="-1.269874" z3="0.028716"/>
+    <atom id="a4" elementType="C" x3="-1.178432" y3="-0.911575" z3="0.601348"/>
+    <atom id="a5" elementType="C" x3="-1.370456" y3="0.617798" z3="0.566951"/>
+    <atom id="a6" elementType="N" x3="-0.159452" y3="1.269924" z3="-0.028628"/>
+    <atom id="a7" elementType="C" x3="0.042360" y3="0.750424" z3="-1.419963"/>
+    <atom id="a8" elementType="C" x3="0.234253" y3="-0.778984" z3="-1.385477"/>
+    <atom id="a9" elementType="H" x3="1.919274" y3="1.442986" z3="0.372491"/>
+    <atom id="a10" elementType="H" x3="0.894092" y3="1.346754" z3="1.814229"/>
+    <atom id="a11" elementType="H" x3="1.189231" y3="-1.002080" z3="1.867112"/>
+    <atom id="a12" elementType="H" x3="2.214176" y3="-0.905738" z3="0.425259"/>
+    <atom id="a13" elementType="H" x3="-1.233998" y3="-1.311854" z3="1.631322"/>
+    <atom id="a14" elementType="H" x3="-1.957860" y3="-1.438758" z3="0.019387"/>
+    <atom id="a15" elementType="H" x3="-1.528731" y3="1.037058" z3="1.578576"/>
+    <atom id="a16" elementType="H" x3="-2.252888" y3="0.909725" z3="-0.033254"/>
+    <atom id="a17" elementType="H" x3="-0.832750" y3="1.043087" z3="-2.030438"/>
+    <atom id="a18" elementType="H" x3="0.916473" y3="1.266501" z3="-1.860213"/>
+    <atom id="a19" elementType="H" x3="-0.538247" y3="-1.305469" z3="-1.977226"/>
+    <atom id="a20" elementType="H" x3="1.210990" y3="-1.082342" z3="-1.807511"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a1" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a8 a3" order="1"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a1 a10" order="1"/>
+    <bond atomRefs2="a2 a11" order="1"/>
+    <bond atomRefs2="a2 a12" order="1"/>
+    <bond atomRefs2="a4 a13" order="1"/>
+    <bond atomRefs2="a4 a14" order="1"/>
+    <bond atomRefs2="a5 a15" order="1"/>
+    <bond atomRefs2="a5 a16" order="1"/>
+    <bond atomRefs2="a7 a17" order="1"/>
+    <bond atomRefs2="a7 a18" order="1"/>
+    <bond atomRefs2="a8 a19" order="1"/>
+    <bond atomRefs2="a8 a20" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">112.1729</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">112.1000484</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:mp" units="units:celsius">157</scalar>
+    </property>
+  </propertyList>
+</molecule>
