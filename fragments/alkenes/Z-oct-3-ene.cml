@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_Z-oct-3-ene">
+  <formula concise=" C 8 H 16 "/>
+  <identifier convention="iupac:inchi" value="1/C8H16/c1-3-5-7-8-6-4-2/h5,7H,3-4,6,8H2,1-2H3/b7-5-"/>
+  <name convention="IUPAC">(Z)-Oct-3-ene</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="-0.224194" y3="0.175906" z3="2.111075"/>
+    <atom id="a2" elementType="C" x3="-0.674580" y3="0.113299" z3="1.112837"/>
+    <atom id="a3" elementType="C" x3="0.262578" y3="-0.041255" z3="-0.029738"/>
+    <atom id="a4" elementType="C" x3="-2.002185" y3="0.176272" z3="0.981589"/>
+    <atom id="a5" elementType="H" x3="-2.632161" y3="0.290000" z3="1.872282"/>
+    <atom id="a6" elementType="C" x3="-2.710465" y3="0.101276" z3="-0.322783"/>
+    <atom id="a7" elementType="H" x3="0.027557" y3="-0.980207" z3="-0.574330"/>
+    <atom id="a8" elementType="C" x3="1.716269" y3="-0.045884" z3="0.417165"/>
+    <atom id="a9" elementType="H" x3="0.091652" y3="0.775504" z3="-0.762757"/>
+    <atom id="a10" elementType="H" x3="-2.439490" y3="-0.846251" z3="-0.833667"/>
+    <atom id="a11" elementType="H" x3="-2.342797" y3="0.910663" z3="-0.987706"/>
+    <atom id="a12" elementType="C" x3="-4.212127" y3="0.197999" z3="-0.167696"/>
+    <atom id="a13" elementType="H" x3="1.948069" y3="0.889966" z3="0.964173"/>
+    <atom id="a14" elementType="C" x3="2.657110" y3="-0.200503" z3="-0.767142"/>
+    <atom id="a15" elementType="H" x3="1.887420" y3="-0.864848" z3="1.144332"/>
+    <atom id="a16" elementType="C" x3="4.104059" y3="-0.199935" z3="-0.328574"/>
+    <atom id="a17" elementType="H" x3="2.482416" y3="0.615407" z3="-1.496586"/>
+    <atom id="a18" elementType="H" x3="2.426984" y3="-1.138472" z3="-1.310738"/>
+    <atom id="a19" elementType="H" x3="4.780184" y3="-0.309738" z3="-1.185975"/>
+    <atom id="a20" elementType="H" x3="4.317188" y3="-1.024085" z3="0.365207"/>
+    <atom id="a21" elementType="H" x3="4.372140" y3="0.733983" z3="0.183268"/>
+    <atom id="a22" elementType="H" x3="-4.715145" y3="0.143413" z3="-1.141524"/>
+    <atom id="a23" elementType="H" x3="-4.511252" y3="1.143263" z3="0.304057"/>
+    <atom id="a24" elementType="H" x3="-4.609234" y3="-0.615772" z3="0.453232"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a3 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="1"/>
+    <bond atomRefs2="a3 a9" order="1"/>
+    <bond atomRefs2="a6 a10" order="1"/>
+    <bond atomRefs2="a6 a11" order="1"/>
+    <bond atomRefs2="a6 a12" order="1"/>
+    <bond atomRefs2="a8 a13" order="1"/>
+    <bond atomRefs2="a8 a14" order="1"/>
+    <bond atomRefs2="a8 a15" order="1"/>
+    <bond atomRefs2="a14 a16" order="1"/>
+    <bond atomRefs2="a14 a17" order="1"/>
+    <bond atomRefs2="a14 a18" order="1"/>
+    <bond atomRefs2="a16 a19" order="1"/>
+    <bond atomRefs2="a16 a20" order="1"/>
+    <bond atomRefs2="a16 a21" order="1"/>
+    <bond atomRefs2="a12 a22" order="1"/>
+    <bond atomRefs2="a12 a23" order="1"/>
+    <bond atomRefs2="a12 a24" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">112.2126</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">112.1252005</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">123</scalar>
+    </property>
+  </propertyList>
+</molecule>

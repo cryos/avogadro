@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<molecule id="c28" xmlns="http://www.xml-cml.org/schema">
+ <atomArray>
+  <atom id="a1" elementType="C"  x3="0.229329" y3="-1.372469" z3="-1.921411"/>
+  <atom id="a2" elementType="C"  x3="2.062971" y3="1.431763" z3="0.283279"/>
+  <atom id="a3" elementType="C"  x3="-2.045829" y3="1.452807" z3="-0.286031"/>
+  <atom id="a4" elementType="C"  x3="-0.244421" y3="-1.365662" z3="1.924059"/>
+  <atom id="a5" elementType="C"  x3="-0.102915" y3="2.290139" z3="0.698359"/>
+  <atom id="a6" elementType="C"  x3="-0.776385" y3="-2.290325" z3="-0.091261"/>
+  <atom id="a7" elementType="C"  x3="0.750135" y3="-2.298026" z3="0.096029"/>
+  <atom id="a8" elementType="C"  x3="0.128185" y3="2.288110" z3="-0.702651"/>
+  <atom id="a9" elementType="C"  x3="-1.543563" y3="0.499510" z3="1.759229"/>
+  <atom id="a10" elementType="C"  x3="2.186474" y3="-0.570826" z3="-0.968101"/>
+  <atom id="a11" elementType="C"  x3="1.549187" y3="0.479300" z3="-1.760541"/>
+  <atom id="a12" elementType="C"  x3="-2.193647" y3="-0.545224" z3="0.969149"/>
+  <atom id="a13" elementType="C"  x3="0.934766" y3="0.566806" z3="2.092199"/>
+  <atom id="a14" elementType="C"  x3="-0.927844" y3="0.572864" z3="-2.093351"/>
+  <atom id="a15" elementType="C"  x3="-1.846627" y3="-0.530372" z3="-1.462541"/>
+  <atom id="a16" elementType="C"  x3="1.840793" y3="-0.547589" z3="1.463349"/>
+  <atom id="a17" elementType="C"  x3="-0.351400" y3="-0.019223" z3="2.375519"/>
+  <atom id="a18" elementType="C"  x3="-2.448650" y3="0.034124" z3="-0.335231"/>
+  <atom id="a19" elementType="C"  x3="2.448690" y3="0.008245" z3="0.334869"/>
+  <atom id="a20" elementType="C"  x3="0.351420" y3="-0.027498" z3="-2.375321"/>
+  <atom id="a21" elementType="C"  x3="1.080029" y3="1.723787" z3="1.338729"/>
+  <atom id="a22" elementType="C"  x3="1.039321" y3="-1.722854" z3="1.383529"/>
+  <atom id="a23" elementType="C"  x3="-1.060511" y3="1.733023" z3="-1.342101"/>
+  <atom id="a24" elementType="C"  x3="-1.058459" y3="-1.714197" z3="-1.380221"/>
+  <atom id="a25" elementType="C"  x3="-1.432431" y3="1.703980" z3="0.948339"/>
+  <atom id="a26" elementType="C"  x3="1.451159" y3="1.686429" z3="-0.950911"/>
+  <atom id="a27" elementType="C"  x3="-1.372739" y3="-1.724599" z3="1.046219"/>
+  <atom id="a28" elementType="C"  x3="1.352961" y3="-1.742022" z3="-1.043191"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a20 a14" order="2"/>
+  <bond atomRefs2="a20 a1" order="1"/>
+  <bond atomRefs2="a20 a11" order="1"/>
+  <bond atomRefs2="a14 a15" order="1"/>
+  <bond atomRefs2="a14 a23" order="1"/>
+  <bond atomRefs2="a1 a24" order="1"/>
+  <bond atomRefs2="a1 a28" order="1"/>
+  <bond atomRefs2="a11 a10" order="1"/>
+  <bond atomRefs2="a11 a26" order="2"/>
+  <bond atomRefs2="a15 a24" order="2"/>
+  <bond atomRefs2="a15 a18" order="1"/>
+  <bond atomRefs2="a24 a6" order="1"/>
+  <bond atomRefs2="a23 a8" order="2"/>
+  <bond atomRefs2="a23 a3" order="1"/>
+  <bond atomRefs2="a28 a10" order="1"/>
+  <bond atomRefs2="a28 a7" order="1"/>
+  <bond atomRefs2="a10 a19" order="1"/>
+  <bond atomRefs2="a26 a8" order="1"/>
+  <bond atomRefs2="a26 a2" order="1"/>
+  <bond atomRefs2="a8 a5" order="1"/>
+  <bond atomRefs2="a18 a3" order="1"/>
+  <bond atomRefs2="a18 a12" order="2"/>
+  <bond atomRefs2="a3 a25" order="1"/>
+  <bond atomRefs2="a6 a7" order="1"/>
+  <bond atomRefs2="a6 a27" order="2"/>
+  <bond atomRefs2="a7 a22" order="1"/>
+  <bond atomRefs2="a2 a19" order="1"/>
+  <bond atomRefs2="a2 a21" order="1"/>
+  <bond atomRefs2="a19 a16" order="1"/>
+  <bond atomRefs2="a5 a25" order="2"/>
+  <bond atomRefs2="a5 a21" order="1"/>
+  <bond atomRefs2="a25 a9" order="1"/>
+  <bond atomRefs2="a12 a27" order="1"/>
+  <bond atomRefs2="a12 a9" order="1"/>
+  <bond atomRefs2="a27 a4" order="1"/>
+  <bond atomRefs2="a21 a13" order="2"/>
+  <bond atomRefs2="a22 a16" order="1"/>
+  <bond atomRefs2="a22 a4" order="1"/>
+  <bond atomRefs2="a16 a13" order="1"/>
+  <bond atomRefs2="a9 a17" order="2"/>
+  <bond atomRefs2="a4 a17" order="1"/>
+  <bond atomRefs2="a13 a17" order="1"/>
+ </bondArray>
+</molecule>

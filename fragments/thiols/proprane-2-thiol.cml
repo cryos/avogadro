@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_proprane-2-thiol">
+  <formula concise=" C 3 H 8 S 1 "/>
+  <identifier convention="iupac:inchi" value="1/C3H8S/c1-3(2)4/h3-4H,1-2H3"/>
+  <name convention="IUPAC">Proprane-2-thiol</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.303817" y3="0.101270" z3="0.176830"/>
+    <atom id="a2" elementType="C" x3="-0.012204" y3="-0.217913" z3="-0.504132"/>
+    <atom id="a3" elementType="S" x3="-0.550344" y3="1.106146" z3="-1.654583"/>
+    <atom id="a4" elementType="H" x3="2.087765" y3="0.346466" z3="-0.551739"/>
+    <atom id="a5" elementType="H" x3="1.211229" y3="0.953341" z3="0.864458"/>
+    <atom id="a6" elementType="C" x3="-1.072535" y3="-0.564916" z3="0.521990"/>
+    <atom id="a7" elementType="H" x3="0.131847" y3="-1.087312" z3="-1.190359"/>
+    <atom id="a8" elementType="H" x3="-0.706249" y3="2.099202" z3="-0.817460"/>
+    <atom id="a9" elementType="H" x3="1.657599" y3="-0.755414" z3="0.766738"/>
+    <atom id="a10" elementType="H" x3="-2.031805" y3="-0.808885" z3="0.046966"/>
+    <atom id="a11" elementType="H" x3="-1.249825" y3="0.263595" z3="1.221706"/>
+    <atom id="a12" elementType="H" x3="-0.769295" y3="-1.435580" z3="1.119585"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a2 a6" order="1"/>
+    <bond atomRefs2="a2 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="1"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a6 a10" order="1"/>
+    <bond atomRefs2="a6 a11" order="1"/>
+    <bond atomRefs2="a6 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">76.1606</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">76.0346713</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-131</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:bp" units="units:celsius">57</scalar>
+    </property>
+  </propertyList>
+</molecule>

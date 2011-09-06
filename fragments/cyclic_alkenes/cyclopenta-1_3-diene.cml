@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_cyclopenta-1_3-diene">
+  <formula concise=" C 5 H 6 "/>
+  <identifier convention="iupac:inchi" value="1/C5H6/c1-2-4-5-3-1/h1-4H,5H2"/>
+  <name convention="IUPAC">Cyclopenta-1,3-diene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.643099" y3="1.141265" z3="-0.026076"/>
+    <atom id="a2" elementType="C" x3="1.186026" y3="-0.096993" z3="0.006798"/>
+    <atom id="a3" elementType="C" x3="-0.816548" y3="1.024258" z3="-0.028456"/>
+    <atom id="a4" elementType="C" x3="-1.155421" y3="-0.284650" z3="0.002982"/>
+    <atom id="a5" elementType="C" x3="0.090071" y3="-1.124149" z3="0.028348"/>
+    <atom id="a6" elementType="H" x3="1.167226" y3="2.094423" z3="-0.048003"/>
+    <atom id="a7" elementType="H" x3="2.240063" y3="-0.363931" z3="0.017296"/>
+    <atom id="a8" elementType="H" x3="-1.485903" y3="1.881600" z3="-0.052318"/>
+    <atom id="a9" elementType="H" x3="-2.153535" y3="-0.715987" z3="0.010129"/>
+    <atom id="a10" elementType="H" x3="0.145665" y3="-1.799813" z3="-0.844263"/>
+    <atom id="a11" elementType="H" x3="0.139257" y3="-1.756021" z3="0.933563"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a1 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a2 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a2 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="1"/>
+    <bond atomRefs2="a4 a9" order="1"/>
+    <bond atomRefs2="a5 a10" order="1"/>
+    <bond atomRefs2="a5 a11" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">66.1011</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">66.0469502</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-97</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">40</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_isoquinoline">
+  <formula concise=" C 9 H 7 N 1 "/>
+  <identifier convention="iupac:inchi" value="1/C9H7N/c1-2-4-9-7-10-6-5-8(9)3-1/h1-7H"/>
+  <name convention="IUPAC">Isoquinoline</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.278198" y3="0.602604" z3="0.022206"/>
+    <atom id="a2" elementType="C" x3="2.173582" y3="-0.807266" z3="0.031547"/>
+    <atom id="a3" elementType="C" x3="0.946003" y3="-1.415492" z3="0.021689"/>
+    <atom id="a4" elementType="C" x3="-0.235258" y3="-0.629582" z3="0.001945"/>
+    <atom id="a5" elementType="C" x3="1.151874" y3="1.382545" z3="0.003165"/>
+    <atom id="a6" elementType="C" x3="-0.128798" y3="0.775600" z3="-0.007322"/>
+    <atom id="a7" elementType="C" x3="-2.635594" y3="-0.401623" z3="-0.027907"/>
+    <atom id="a8" elementType="C" x3="-1.330702" y3="1.547618" z3="-0.027210"/>
+    <atom id="a9" elementType="C" x3="-1.532932" y3="-1.214289" z3="-0.008875"/>
+    <atom id="a10" elementType="H" x3="3.272034" y3="1.062351" z3="0.030451"/>
+    <atom id="a11" elementType="H" x3="3.089350" y3="-1.407728" z3="0.046781"/>
+    <atom id="a12" elementType="H" x3="0.856915" y3="-2.507617" z3="0.028819"/>
+    <atom id="a13" elementType="H" x3="1.221117" y3="2.476186" z3="-0.004218"/>
+    <atom id="a14" elementType="N" x3="-2.526034" y3="0.977505" z3="-0.036953"/>
+    <atom id="a15" elementType="H" x3="-3.663760" y3="-0.780145" z3="-0.037117"/>
+    <atom id="a16" elementType="H" x3="-1.631653" y3="-2.304900" z3="-0.001876"/>
+    <atom id="a17" elementType="H" x3="-1.304343" y3="2.644234" z3="-0.035123"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a1 a5" order="2"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a4" order="2"/>
+    <bond atomRefs2="a6 a8" order="1"/>
+    <bond atomRefs2="a4 a9" order="1"/>
+    <bond atomRefs2="a9 a7" order="2"/>
+    <bond atomRefs2="a1 a10" order="1"/>
+    <bond atomRefs2="a2 a11" order="1"/>
+    <bond atomRefs2="a3 a12" order="1"/>
+    <bond atomRefs2="a5 a13" order="1"/>
+    <bond atomRefs2="a14 a7" order="1"/>
+    <bond atomRefs2="a7 a15" order="1"/>
+    <bond atomRefs2="a9 a16" order="1"/>
+    <bond atomRefs2="a8 a14" order="2"/>
+    <bond atomRefs2="a8 a17" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">129.1586</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">129.0578492</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">26</scalar>
+    </property>
+  </propertyList>
+</molecule>

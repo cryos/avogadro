@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_pyridine-2-carboxamide">
+  <formula concise=" C 6 H 6 N 2 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C6H6N2O/c7-6(9)5-3-1-2-4-8-5/h1-4H,(H2,7,9)"/>
+  <name convention="IUPAC">Pyridine-2-carboxamide</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.493011" y3="1.311146" z3="0.673498"/>
+    <atom id="a2" elementType="C" x3="0.173423" y3="1.309887" z3="0.224841"/>
+    <atom id="a3" elementType="C" x3="-0.422155" y3="0.096533" z3="-0.131504"/>
+    <atom id="a4" elementType="N" x3="0.266817" y3="-1.075899" z3="-0.046056"/>
+    <atom id="a5" elementType="C" x3="2.187915" y3="0.111286" z3="0.757673"/>
+    <atom id="a6" elementType="C" x3="-1.838737" y3="0.059633" z3="-0.617168"/>
+    <atom id="a7" elementType="N" x3="-2.419210" y3="-1.152077" z3="-0.968623"/>
+    <atom id="a8" elementType="O" x3="-2.541846" y3="1.063438" z3="-0.727853"/>
+    <atom id="a9" elementType="H" x3="1.975258" y3="2.252689" z3="0.956909"/>
+    <atom id="a10" elementType="H" x3="-0.396216" y3="2.244971" z3="0.150075"/>
+    <atom id="a11" elementType="H" x3="3.224837" y3="0.086091" z3="1.107175"/>
+    <atom id="a12" elementType="C" x3="1.542881" y3="-1.072351" z3="0.388301"/>
+    <atom id="a13" elementType="H" x3="2.032730" y3="-2.051922" z3="0.430734"/>
+    <atom id="a14" elementType="H" x3="-1.922009" y3="-2.005700" z3="-0.908294"/>
+    <atom id="a15" elementType="H" x3="-3.356702" y3="-1.177723" z3="-1.289710"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a5 a1" order="1"/>
+    <bond atomRefs2="a3 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a6 a8" order="2"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a2 a10" order="1"/>
+    <bond atomRefs2="a5 a11" order="1"/>
+    <bond atomRefs2="a5 a12" order="2"/>
+    <bond atomRefs2="a12 a4" order="1"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+    <bond atomRefs2="a7 a14" order="1"/>
+    <bond atomRefs2="a7 a15" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">122.1246</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">122.0480128</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">109</scalar>
+    </property>
+  </propertyList>
+</molecule>
