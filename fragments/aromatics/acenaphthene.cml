@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acenaphthene">
+  <formula concise=" C 12 H 10 "/>
+  <identifier convention="iupac:inchi" value="1/C12H10/c1-3-9-4-2-6-11-8-7-10(5-1)12(9)11/h1-6H,7-8H2"/>
+  <name convention="IUPAC">Acenaphthene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.036393" y3="1.255795" z3="-0.102020"/>
+    <atom id="a2" elementType="C" x3="2.750296" y3="0.025754" z3="-0.076382"/>
+    <atom id="a3" elementType="C" x3="2.122117" y3="-1.194315" z3="-0.014569"/>
+    <atom id="a4" elementType="C" x3="0.702027" y3="-1.261519" z3="0.026785"/>
+    <atom id="a5" elementType="C" x3="0.025056" y3="-0.044832" z3="0.001110"/>
+    <atom id="a6" elementType="C" x3="0.670782" y3="1.217784" z3="-0.063121"/>
+    <atom id="a7" elementType="C" x3="-1.389192" y3="0.073618" z3="0.036125"/>
+    <atom id="a8" elementType="C" x3="-2.142344" y3="-1.064994" z3="0.098638"/>
+    <atom id="a9" elementType="C" x3="-1.473569" y3="-2.320200" z3="0.125328"/>
+    <atom id="a10" elementType="C" x3="-0.104896" y3="-2.431117" z3="0.091292"/>
+    <atom id="a11" elementType="C" x3="-0.381563" y3="2.284354" z3="-0.073699"/>
+    <atom id="a12" elementType="C" x3="-1.740576" y3="1.529483" z3="-0.007427"/>
+    <atom id="a13" elementType="H" x3="2.584603" y3="2.201108" z3="-0.151998"/>
+    <atom id="a14" elementType="H" x3="3.844507" y3="0.068178" z3="-0.107793"/>
+    <atom id="a15" elementType="H" x3="2.699127" y3="-2.124708" z3="0.003747"/>
+    <atom id="a16" elementType="H" x3="-3.235271" y3="-1.030975" z3="0.128199"/>
+    <atom id="a17" elementType="H" x3="-2.087282" y3="-3.226214" z3="0.174974"/>
+    <atom id="a18" elementType="H" x3="0.381222" y3="-3.412036" z3="0.112875"/>
+    <atom id="a19" elementType="H" x3="-0.306399" y3="2.904530" z3="-0.984970"/>
+    <atom id="a20" elementType="H" x3="-0.256855" y3="2.971297" z3="0.782591"/>
+    <atom id="a21" elementType="H" x3="-2.373992" y3="1.756929" z3="-0.883633"/>
+    <atom id="a22" elementType="H" x3="-2.324192" y3="1.822080" z3="0.883948"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="2"/>
+    <bond atomRefs2="a4 a5" order="2"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a1" order="2"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="2"/>
+    <bond atomRefs2="a10 a4" order="1"/>
+    <bond atomRefs2="a6 a11" order="1"/>
+    <bond atomRefs2="a11 a12" order="1"/>
+    <bond atomRefs2="a12 a7" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a1 a13" order="1"/>
+    <bond atomRefs2="a2 a14" order="1"/>
+    <bond atomRefs2="a3 a15" order="1"/>
+    <bond atomRefs2="a8 a16" order="1"/>
+    <bond atomRefs2="a9 a17" order="1"/>
+    <bond atomRefs2="a10 a18" order="1"/>
+    <bond atomRefs2="a11 a19" order="1"/>
+    <bond atomRefs2="a11 a20" order="1"/>
+    <bond atomRefs2="a12 a21" order="1"/>
+    <bond atomRefs2="a12 a22" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">154.2078</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">154.0782503</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="3.0" dictRef="cml:mp" units="units:celsius">93</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">279</scalar>
+    </property>
+  </propertyList>
+</molecule>

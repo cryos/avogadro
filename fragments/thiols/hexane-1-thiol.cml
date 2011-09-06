@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_hexane-1-thiol">
+  <formula concise=" C 6 H 14 S 1 "/>
+  <identifier convention="iupac:inchi" value="1/C6H14S/c1-2-3-4-5-6-7/h7H,2-6H2,1H3"/>
+  <name convention="IUPAC">Hexane-1-thiol</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="3.407217" y3="0.496390" z3="-0.051528"/>
+    <atom id="a2" elementType="C" x3="2.178596" y3="-0.384423" z3="-0.026618"/>
+    <atom id="a3" elementType="C" x3="0.902197" y3="0.441591" z3="-0.016821"/>
+    <atom id="a4" elementType="C" x3="-0.331417" y3="-0.446076" z3="0.007941"/>
+    <atom id="a5" elementType="C" x3="-1.605192" y3="0.385978" z3="0.019289"/>
+    <atom id="a6" elementType="C" x3="-2.832563" y3="-0.504274" z3="0.043096"/>
+    <atom id="a7" elementType="S" x3="-4.323018" y3="0.549458" z3="0.060831"/>
+    <atom id="a8" elementType="H" x3="3.427894" y3="1.137572" z3="-0.942856"/>
+    <atom id="a9" elementType="H" x3="3.450617" y3="1.156253" z3="0.825250"/>
+    <atom id="a10" elementType="H" x3="2.205729" y3="-1.046911" z3="0.861434"/>
+    <atom id="a11" elementType="H" x3="2.181652" y3="-1.062878" z3="-0.902927"/>
+    <atom id="a12" elementType="H" x3="0.874669" y3="1.104176" z3="-0.905389"/>
+    <atom id="a13" elementType="H" x3="0.898594" y3="1.120520" z3="0.859771"/>
+    <atom id="a14" elementType="H" x3="-0.302667" y3="-1.109560" z3="0.895863"/>
+    <atom id="a15" elementType="H" x3="-0.327772" y3="-1.123586" z3="-0.869763"/>
+    <atom id="a16" elementType="H" x3="-1.632967" y3="1.048837" z3="-0.869643"/>
+    <atom id="a17" elementType="H" x3="-1.608420" y3="1.062625" z3="0.898238"/>
+    <atom id="a18" elementType="H" x3="-2.812472" y3="-1.164896" z3="0.928974"/>
+    <atom id="a19" elementType="H" x3="-2.839843" y3="-1.173992" z3="-0.836087"/>
+    <atom id="a20" elementType="H" x3="-5.237420" y3="-0.383988" z3="0.077996"/>
+    <atom id="a21" elementType="H" x3="4.326583" y3="-0.102816" z3="-0.057050"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a1 a8" order="1"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a2 a10" order="1"/>
+    <bond atomRefs2="a2 a11" order="1"/>
+    <bond atomRefs2="a3 a12" order="1"/>
+    <bond atomRefs2="a3 a13" order="1"/>
+    <bond atomRefs2="a4 a14" order="1"/>
+    <bond atomRefs2="a4 a15" order="1"/>
+    <bond atomRefs2="a5 a16" order="1"/>
+    <bond atomRefs2="a5 a17" order="1"/>
+    <bond atomRefs2="a6 a18" order="1"/>
+    <bond atomRefs2="a6 a19" order="1"/>
+    <bond atomRefs2="a7 a20" order="1"/>
+    <bond atomRefs2="a1 a21" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">118.2404</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">118.0816214</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-80</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:bp" units="units:celsius">152</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_1_8-naphthyridine">
+  <formula concise=" C 8 H 6 N 2 "/>
+  <identifier convention="iupac:inchi" value="1/C8H6N2/c1-3-7-4-2-6-10-8(7)9-5-1/h1-6H"/>
+  <name convention="IUPAC">1,8-Naphthyridine</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.421529" y3="0.807194" z3="0.009118"/>
+    <atom id="a2" elementType="C" x3="2.357143" y3="-0.614916" z3="0.011506"/>
+    <atom id="a3" elementType="C" x3="1.139826" y3="-1.239046" z3="0.007334"/>
+    <atom id="a4" elementType="C" x3="-0.042385" y3="-0.450507" z3="0.000660"/>
+    <atom id="a5" elementType="C" x3="0.089941" y3="0.956674" z3="-0.001407"/>
+    <atom id="a6" elementType="C" x3="-2.430392" y3="-0.164869" z3="-0.010362"/>
+    <atom id="a7" elementType="N" x3="-1.021860" y3="1.791643" z3="-0.007859"/>
+    <atom id="a8" elementType="C" x3="-1.350796" y3="-1.005034" z3="-0.004042"/>
+    <atom id="a9" elementType="H" x3="3.383372" y3="1.334188" z3="0.012356"/>
+    <atom id="a10" elementType="H" x3="3.288698" y3="-1.189653" z3="0.016681"/>
+    <atom id="a11" elementType="H" x3="1.054757" y3="-2.331318" z3="0.009014"/>
+    <atom id="a12" elementType="H" x3="-1.470773" y3="-2.094013" z3="-0.002522"/>
+    <atom id="a13" elementType="C" x3="-2.228590" y3="1.244319" z3="-0.012128"/>
+    <atom id="a14" elementType="H" x3="-3.075495" y3="1.941143" z3="-0.017156"/>
+    <atom id="a15" elementType="N" x3="1.337883" y3="1.569803" z3="0.002924"/>
+    <atom id="a16" elementType="H" x3="-3.452856" y3="-0.555607" z3="-0.014116"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a5 a4" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a4 a8" order="1"/>
+    <bond atomRefs2="a8 a6" order="2"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a2 a10" order="1"/>
+    <bond atomRefs2="a3 a11" order="1"/>
+    <bond atomRefs2="a8 a12" order="1"/>
+    <bond atomRefs2="a7 a13" order="2"/>
+    <bond atomRefs2="a13 a6" order="1"/>
+    <bond atomRefs2="a13 a14" order="1"/>
+    <bond atomRefs2="a1 a15" order="1"/>
+    <bond atomRefs2="a15 a5" order="2"/>
+    <bond atomRefs2="a6 a16" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">130.1466</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">130.0530982</scalar>
+    </property>
+  </propertyList>
+</molecule>

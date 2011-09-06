@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_propene">
+  <formula concise=" C 3 H 6 "/>
+  <identifier convention="iupac:inchi" value="1/C3H6/c1-3-2/h3H,1H2,2H3"/>
+  <name convention="IUPAC">Propene</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.860524" y3="-0.134236" z3="1.435669"/>
+    <atom id="a2" elementType="C" x3="1.261630" y3="-0.025587" z3="0.536869"/>
+    <atom id="a3" elementType="H" x3="1.842569" y3="0.135005" z3="-0.367307"/>
+    <atom id="a4" elementType="C" x3="-0.064935" y3="-0.084727" z3="0.547745"/>
+    <atom id="a5" elementType="H" x3="-0.612613" y3="-0.248742" z3="1.483459"/>
+    <atom id="a6" elementType="C" x3="-0.896569" y3="0.061125" z3="-0.667797"/>
+    <atom id="a7" elementType="H" x3="-0.300719" y3="0.224507" z3="-1.575622"/>
+    <atom id="a8" elementType="H" x3="-1.505626" y3="-0.838571" z3="-0.828228"/>
+    <atom id="a9" elementType="H" x3="-1.584257" y3="0.911225" z3="-0.564789"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a6 a8" order="1"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">42.0797</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">42.0469502</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-185</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">-48</scalar>
+    </property>
+  </propertyList>
+</molecule>

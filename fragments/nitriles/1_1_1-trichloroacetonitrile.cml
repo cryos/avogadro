@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_1_1_1-trichloroacetonitrile">
+  <formula concise=" C 2 N 1 Cl 3 "/>
+  <identifier convention="iupac:inchi" value="1/C2Cl3N/c3-2(4,5)1-6"/>
+  <name convention="IUPAC">1,1,1-Trichloroacetonitrile</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.387727" y3="-0.029090" z3="0.003631"/>
+    <atom id="a2" elementType="C" x3="-1.057388" y3="0.079508" z3="-0.009859"/>
+    <atom id="a3" elementType="N" x3="-2.215509" y3="0.166408" z3="-0.020667"/>
+    <atom id="a4" elementType="Cl" x3="0.996393" y3="0.184718" z3="-1.636708"/>
+    <atom id="a5" elementType="Cl" x3="0.839590" y3="-1.622208" z3="0.607574"/>
+    <atom id="a6" elementType="Cl" x3="1.049186" y3="1.220664" z3="1.056029"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="3"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">144.3871</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">142.9096320</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-42</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">83</scalar>
+    </property>
+  </propertyList>
+</molecule>

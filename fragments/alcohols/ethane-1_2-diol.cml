@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_ethane-1_2-diol">
+  <formula concise=" C 2 H 6 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C2H6O2/c3-1-2-4/h3-4H,1-2H2"/>
+  <name convention="IUPAC">Ethane-1,2-diol</name>
+  <atomArray>
+    <atom id="a1" elementType="H" x3="1.408675" y3="-0.160093" z3="0.827057"/>
+    <atom id="a2" elementType="C" x3="0.773787" y3="-0.077623" z3="-0.072111"/>
+    <atom id="a3" elementType="H" x3="1.066642" y3="0.849125" z3="-0.605433"/>
+    <atom id="a4" elementType="O" x3="1.131128" y3="-1.207165" z3="-0.817493"/>
+    <atom id="a5" elementType="H" x3="0.617832" y3="-1.196739" z3="-1.616080"/>
+    <atom id="a6" elementType="C" x3="-0.725352" y3="-0.057057" z3="0.283874"/>
+    <atom id="a7" elementType="H" x3="-1.016016" y3="-0.932806" z3="0.889698"/>
+    <atom id="a8" elementType="H" x3="-1.349636" y3="-0.061309" z3="-0.632238"/>
+    <atom id="a9" elementType="O" x3="-1.065536" y3="1.024163" z3="1.105157"/>
+    <atom id="a10" elementType="H" x3="-0.841525" y3="1.819505" z3="0.637568"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="1"/>
+    <bond atomRefs2="a2 a6" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a6 a8" order="1"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">62.0678</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">62.0367794</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-13</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">197</scalar>
+    </property>
+  </propertyList>
+</molecule>
