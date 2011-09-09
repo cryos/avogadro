@@ -211,4 +211,18 @@ namespace Avogadro {
     QGraphicsScene::mouseReleaseEvent(event);
   }
 
+  void PeriodicTableScene::changeElement(int element)
+  {
+    // Find the item to select
+    foreach(QGraphicsItem *item, items()) {
+      if (item->data(0).toInt() == element)
+        item->setSelected(true);
+      else
+        item->setSelected(false);
+    }
+
+    // Also, update the detail
+    emit(elementChanged(element));
+  }
+
 } // End namespace

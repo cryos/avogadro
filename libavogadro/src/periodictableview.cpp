@@ -26,6 +26,12 @@
 #include "periodictableview.h"
 #include "periodictablescene_p.h"
 
+#include <QTimer>
+#include <QKeyEvent>
+
+// for OpenBabel::etab
+#include <openbabel/mol.h>
+
 namespace Avogadro {
 
   PeriodicTableView::PeriodicTableView(QWidget *parent) : QGraphicsView(parent)
@@ -65,6 +71,41 @@ namespace Avogadro {
   void PeriodicTableView::mouseDoubleClickEvent(QMouseEvent *)
   {
     close();
+  }
+
+  void PeriodicTableView::clearKeyPressBuffer()
+  {
+    m_keyPressBuffer.clear();
+  }
+
+  void PeriodicTableView::keyPressEvent(QKeyEvent *event)
+  {
+    if (m_keyPressBuffer.isEmpty()) // this is the first character typed
+      // wait for 2 seconds, then clear the buffer
+      // this ensures we can get multi-character elements
+      QTimer::singleShot(2000, this, SLOT(clearKeyPressBuffer()));
+
+    m_keyPressBuffer.append(event->text());
+    // try setting an element symbol from this string
+    int element = m_keyPressBuffer.toInt();
+    if (element <= 0 || element > 119) { // not a valid #
+      // Have we tried 2- and 3-character symbols?
+      if (m_keyPressBuffer.length() > 3) {
+        clearKeyPressBuffer();
+      } else {
+        // try parsing as a symbol
+        element  = OpenBabel::etab.GetAtomicNum(m_keyPressBuffer.toAscii().data());
+      }
+    }
+
+    if (element > 0 && element < 119) { // got a valid symbol
+      // Notify the scene
+      PeriodicTableScene *table = qobject_cast<PeriodicTableScene *>(scene());
+      if (table)
+        table->changeElement(element);
+    }
+
+    QGraphicsView::keyPressEvent(event);
   }
 
 } // End namespace
