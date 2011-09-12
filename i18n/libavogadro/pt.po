@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-08-29 00:00-0400\n"
+"POT-Creation-Date: 2011-09-12 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:42+0000\n"
 "Last-Translator: David Rodrigues <david.rodrigues@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -1027,88 +1027,88 @@ msgid "&Matrix Display"
 msgstr "Nova Apresentação"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:437
-#: src/extensions/crystallography/crystallographyextension.cpp:687
+#: src/extensions/crystallography/crystallographyextension.cpp:692
 msgid "Hide &Editors"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:451
-#: src/extensions/crystallography/crystallographyextension.cpp:691
+#: src/extensions/crystallography/crystallographyextension.cpp:696
 #: src/extensions/crystallography/crystallographyextension.cpp:1764
 msgid "Show &Editors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:528
-#: src/extensions/crystallography/crystallographyextension.cpp:696
+#: src/extensions/crystallography/crystallographyextension.cpp:533
+#: src/extensions/crystallography/crystallographyextension.cpp:701
 msgid "Hide &Property Display"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:560
-#: src/extensions/crystallography/crystallographyextension.cpp:700
+#: src/extensions/crystallography/crystallographyextension.cpp:565
+#: src/extensions/crystallography/crystallographyextension.cpp:705
 #: src/extensions/crystallography/crystallographyextension.cpp:1772
 msgid "Show &Property Display"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:629
+#: src/extensions/crystallography/crystallographyextension.cpp:634
 #, qt-format
 msgctxt "Unit cell lattice"
 msgid "Lattice Type: %1"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:633
+#: src/extensions/crystallography/crystallographyextension.cpp:638
 #, qt-format
 msgid "Spacegroup: %1"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:635
+#: src/extensions/crystallography/crystallographyextension.cpp:640
 #, qt-format
 msgid "Unit cell volume: %L1%2"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:651
+#: src/extensions/crystallography/crystallographyextension.cpp:656
 msgid "Remove &Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:655
+#: src/extensions/crystallography/crystallographyextension.cpp:660
 #: src/extensions/crystallography/crystallographyextension.cpp:1742
 msgid "Add &Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:961
-#: src/extensions/crystallography/crystallographyextension.cpp:967
+#: src/extensions/crystallography/crystallographyextension.cpp:966
+#: src/extensions/crystallography/crystallographyextension.cpp:972
 msgid "Undefined"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:969
+#: src/extensions/crystallography/crystallographyextension.cpp:974
 msgctxt "Lattice type"
 msgid "Triclinic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:971
+#: src/extensions/crystallography/crystallographyextension.cpp:976
 msgctxt "Lattice type"
 msgid "Monoclinic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:973
+#: src/extensions/crystallography/crystallographyextension.cpp:978
 msgctxt "Lattice type"
 msgid "Orthorhombic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:975
+#: src/extensions/crystallography/crystallographyextension.cpp:980
 msgctxt "Lattice type"
 msgid "Tetragonal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:977
+#: src/extensions/crystallography/crystallographyextension.cpp:982
 msgctxt "Lattice type"
 msgid "Rhombohedral"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:979
+#: src/extensions/crystallography/crystallographyextension.cpp:984
 msgctxt "Lattice type"
 msgid "Hexagonal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:981
+#: src/extensions/crystallography/crystallographyextension.cpp:986
 msgctxt "Lattice type"
 msgid "Cubic"
 msgstr ""
@@ -1898,92 +1898,82 @@ msgstr ""
 "Janelas para visualizar as propriedades do átomo, ligação, ângulo e torsão. "
 "Inclui ainda um editor de coordenadas cartesianas."
 
-#: src/extensions/propmodel.cpp:274
-msgid "Yes"
-msgstr "Sim"
-
-#: src/extensions/propmodel.cpp:276
-msgid "No"
-msgstr "Não"
-
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:432:448
+#: src/extensions/propmodel.cpp:391:448
 msgid "Element"
 msgstr "Elemento"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:434 src/extensions/propmodel.cpp:454
-#: src/extensions/propmodel.cpp:473 src/extensions/propmodel.cpp:489
+#: src/extensions/propmodel.cpp:393 src/extensions/propmodel.cpp:436
+#: src/extensions/propmodel.cpp:459 src/extensions/propmodel.cpp:479
 msgid "Type"
 msgstr "Tipo"
 
-#: src/extensions/propmodel.cpp:436
+#: src/extensions/propmodel.cpp:395
 msgid "Valence"
 msgstr "Valência"
 
-#: src/extensions/propmodel.cpp:438
+#: src/extensions/propmodel.cpp:397
 msgid "Formal Charge"
 msgstr "Carga Formal"
 
-#: src/extensions/propmodel.cpp:440
+#: src/extensions/propmodel.cpp:399
 msgid "Partial Charge"
 msgstr "Carga Parcial"
 
-#: src/extensions/propmodel.cpp:442
-#, qt-format
-msgctxt "in Angstrom"
-msgid "X %1"
-msgstr "X %1"
-
-#: src/extensions/propmodel.cpp:444
-#, qt-format
-msgctxt "in Angstrom"
-msgid "Y %1"
-msgstr "Y %1"
-
-#: src/extensions/propmodel.cpp:446
-#, qt-format
-msgctxt "in Angstrom"
-msgid "Z  %1"
-msgstr "Z %1"
-
-#: src/extensions/propmodel.cpp:449
+#: src/extensions/propmodel.cpp:430
 msgid "Atom"
 msgstr "Átomo"
 
-#: src/extensions/propmodel.cpp:456 src/extensions/propmodel.cpp:475
+#: src/extensions/propmodel.cpp:438 src/extensions/propmodel.cpp:461
 msgid "Start Atom"
 msgstr "Iniciar Átomo"
 
-#: src/extensions/propmodel.cpp:458 src/extensions/propmodel.cpp:479
+#: src/extensions/propmodel.cpp:440 src/extensions/propmodel.cpp:465
 msgid "End Atom"
 msgstr "Terminar Átomo"
 
-#: src/extensions/propmodel.cpp:460
+#: src/extensions/propmodel.cpp:442
 msgid "Bond Order"
 msgstr "Ordem de ligação"
 
-#: src/extensions/propmodel.cpp:462
+#: src/extensions/propmodel.cpp:444
 msgid "Rotatable"
 msgstr "Rotacional"
 
-#: src/extensions/propmodel.cpp:464
+#: src/extensions/propmodel.cpp:447
+#, fuzzy, qt-format
+msgctxt "in Angstrom"
+msgid ""
+"Conformer %1\n"
+"Length %2"
+msgstr "Conformação %1"
+
+#: src/extensions/propmodel.cpp:449
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
 msgstr "Comprimento %1"
 
-#: src/extensions/propmodel.cpp:468
+#: src/extensions/propmodel.cpp:453
 msgid "Bond"
 msgstr "Ligação"
 
-#: src/extensions/propmodel.cpp:477
+#: src/extensions/propmodel.cpp:463
 msgid "Vertex"
 msgstr "Vertex"
 
-#: src/extensions/propmodel.cpp:481
+#: src/extensions/propmodel.cpp:468
+#, fuzzy, qt-format
+msgctxt "Degree symbol"
+msgid ""
+"Conformer %1\n"
+"Angle %2"
+msgstr "Conformação %1"
+
+#: src/extensions/propmodel.cpp:470
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
@@ -1991,34 +1981,50 @@ msgstr "Ângulo %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:484:517
+#: src/extensions/propmodel.cpp:473:517
 msgid "Angle"
 msgstr "Ângulo"
 
-#: src/extensions/propmodel.cpp:494
+#: src/extensions/propmodel.cpp:484
 #, qt-format
 msgid "Atom %1"
 msgstr "Átomo %1"
 
-#: src/extensions/propmodel.cpp:496
+#: src/extensions/propmodel.cpp:487
+#, fuzzy, qt-format
+msgctxt "Degree symbol"
+msgid ""
+"Conformer %1\n"
+"Torsion %2"
+msgstr "Conformação %1"
+
+#: src/extensions/propmodel.cpp:489
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr "Torsão %1"
 
-#: src/extensions/propmodel.cpp:499
+#: src/extensions/propmodel.cpp:493
 msgid "Torsion"
 msgstr "Torção"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:516:2029
+#: src/extensions/propmodel.cpp:510:2029
 msgid "Energy"
 msgstr "Energia"
 
-#: src/extensions/propmodel.cpp:519
+#: src/extensions/propmodel.cpp:513
 msgid "Conformer"
 msgstr "Conformação"
+
+#: src/extensions/propmodel.cpp:974
+msgid "Yes"
+msgstr "Sim"
+
+#: src/extensions/propmodel.cpp:976
+msgid "No"
+msgstr "Não"
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -9507,6 +9513,18 @@ msgstr ""
 "devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
 "com,,,,,,,avogadro-devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,"
 "ivofernandes12@gmail.com,,"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "X %1"
+#~ msgstr "X %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Y %1"
+#~ msgstr "Y %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Z  %1"
+#~ msgstr "Z %1"
 
 #~ msgid "Cannot save file %1."
 #~ msgstr "Não foi possível salvar o arquivo %1."

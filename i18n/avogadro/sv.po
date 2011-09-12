@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-08-29 00:00-0400\n"
+"POT-Creation-Date: 2011-09-12 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:52+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -41,8 +41,8 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1073 src/mainwindow.cpp:1123
 #: src/mainwindow.cpp:1145 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
-#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
-#: src/mainwindow.cpp:3610:69
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3107
+#: src/mainwindow.cpp:3612:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -81,7 +81,7 @@ msgstr "Töm atomer"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3628 src/mainwindow.cpp:3645:381 rc.cpp:393
+#: src/mainwindow.cpp:3630 src/mainwindow.cpp:3647:381 rc.cpp:393
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -343,90 +343,90 @@ msgstr "Kan inte klistra in molekyl."
 msgid "Paste failed (format unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2406
+#: src/mainwindow.cpp:2408
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2577 src/mainwindow.cpp:2644
-#: src/mainwindow.cpp:3251
+#: src/mainwindow.cpp:2546 src/mainwindow.cpp:2579 src/mainwindow.cpp:2646
+#: src/mainwindow.cpp:3253
 #, qt-format
 msgid "View %1"
 msgstr "Vy %1"
 
-#: src/mainwindow.cpp:2604
+#: src/mainwindow.cpp:2606
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Vy %1"
 
-#: src/mainwindow.cpp:2613
+#: src/mainwindow.cpp:2615
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2844
+#: src/mainwindow.cpp:2846
 msgid "Normal Size"
 msgstr "Normal storlek"
 
-#: src/mainwindow.cpp:2861
+#: src/mainwindow.cpp:2863
 msgid "Full Screen"
 msgstr "Fullskärm"
 
-#: src/mainwindow.cpp:2962
+#: src/mainwindow.cpp:2964
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3098
+#: src/mainwindow.cpp:3100
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3104
+#: src/mainwindow.cpp:3106
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3564
+#: src/mainwindow.cpp:3566
 msgid "Add"
 msgstr "Lägg till"
 
-#: src/mainwindow.cpp:3569
+#: src/mainwindow.cpp:3571
 msgid "Duplicate"
 msgstr "Duplicera"
 
-#: src/mainwindow.cpp:3574
+#: src/mainwindow.cpp:3576
 msgid "Remove"
 msgstr "Ta bort"
 
-#: src/mainwindow.cpp:3602
+#: src/mainwindow.cpp:3604
 msgid "No tools or engines loaded."
 msgstr "Inga verktyg eller motorer inlästa."
 
-#: src/mainwindow.cpp:3604
+#: src/mainwindow.cpp:3606
 msgid "No engines loaded."
 msgstr "Inga motorer inlästa."
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3608
 msgid "No tools loaded."
 msgstr "Inga verktyg inlästa."
 
-#: src/mainwindow.cpp:3607
+#: src/mainwindow.cpp:3609
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3651
+#: src/mainwindow.cpp:3653
 msgid "Objects"
 msgstr "Objekt"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3657:321
+#: src/mainwindow.cpp:3659:321
 msgid "Colors"
 msgstr "Färger"
 
-#: src/mainwindow.cpp:3690
+#: src/mainwindow.cpp:3692
 msgid " copy"
 msgstr ""
 
