@@ -22,6 +22,9 @@ section.
 If you want to compile with a Wiimote, 
   - launch the script : $ bash scripts/install-wiiuse.sh
   - add an option in the cmake : cmake ../ -DENABLE_WMAVO=true
+  ( Maybe you need :
+    apt-get install glutg3 glutg3-dev libglew1.5 libglew1.5-dev"
+    apt-get install bluez libbluetooth-dev )
 
 
 1. Create a 'build' directory in the package source directory.
