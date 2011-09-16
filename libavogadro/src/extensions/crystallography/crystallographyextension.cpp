@@ -496,6 +496,7 @@ namespace Avogadro
     // If the molecule has changed since the single-shot timer was started, we
     // may need to abort the update
     if (!m_molecule || !m_molecule->OBUnitCell()) {
+      m_editorRefreshPending = false;
       return;
     }
     // refresh all editors
