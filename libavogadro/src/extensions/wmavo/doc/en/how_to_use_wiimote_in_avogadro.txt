@@ -1,0 +1,54 @@
+
+Before use, it is necessary to compile/install the plugins. See the INSTALL*.txt file.
+
+Once the compilation/install realized :
+
+  1. Open Avogadro
+  2. Go to Extension -> Wiimote -> Connect
+  3. Press the buttons 1 and 2 of the Wiimote 
+     (CAUTION, you have 5 s to connect the Wiimote.
+      If the Wiimote has no LED illuminated,
+      you need to restart Avogadro ... Sorry about that)
+  4. If one LED is illuminated, the Wiimote is ready to use.
+
+Once the Wiimote is connected and the sensor bar is ready :
+
+  - Move the mouse cursor (maintain B button)
+      Kept pressing the B button (trigger) of the Wiimote
+      and move the Wiimote in the direction of the sensor bar.
+
+  - Select/Unselect one atom (A button)
+      Place the mouse cursor on an atom, release all buttons
+      and press A button of the Wiimote
+
+  - Select atoms (A and B buttons)
+      To realize a selection rectangle, kept pressing the A & B buttons
+      of the Wiimote and move the Wiimote.
+      Finish the action by releasing the buttons.
+      
+  - Unselect all atoms (A and B buttons)
+      Same action that before, but there is no atom in the selection
+      rectangle.
+
+  - Move selected atoms (maintain A button)
+      Once the atoms are selected, kept pressing the A button 
+      and move the Wiimote.
+
+  - Rotate the camera (joystick)
+      Orient the joystick of the Nunchuk.
+
+  - Rotate the 90° camera (D-pad)
+      Quickly press up, down, left or right of the D-pad to 90° rotate.
+
+  - Translate the camera (C and Z buttons and joystick)
+      Kept pressing the C and Z buttons then orient the joystick 
+      of the Nunchuk.
+
+  - Zoom in/out (C or Z button)
+      Kept pressing the C or Z button of the Nunchuk.
+
+  - Other features with the context menu 
+      Maintain the right of the D-pad,
+      then navigate with the D-pad (up, down, left, right),
+      then validate with the A button.
+      

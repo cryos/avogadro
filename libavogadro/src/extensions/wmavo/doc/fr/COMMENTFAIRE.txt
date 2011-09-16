@@ -1,0 +1,61 @@
+
+Avant de pouvoir utiliser les plugins, il est nécessaire de les
+compiler/installer. Voir le fichier INSTALL.txt.
+
+Une fois l'installation réalisée :
+
+  1. Ouvrez Avogadro
+  2. Allez dans le menu Extension -> Wiimote -> Connect
+  3. Pressez les touches 1 et 2 de la Wiimote
+     (ATTENTION, vous avez 5s pour connecter la Wiimote,
+      si aucune LED de la Wiimote n'est allumé,
+      vous devez redémarrer Avogadro ... Désolé pour ça)
+  4. Si une LED est allumée, la Wiimote est prête à être utilisée.
+  
+
+Une fois la Wiimote connectée et la sensor bar (barre infrarouge) prête,
+voici une partie des actions que vous pouvez réaliser :
+(Pour rappel, la déplacement de la Wiimote se fera TOUJOURS en pointant 
+la sensor bar.)
+
+  - Déplacement du curseur de la souris (maintenir bouton B)
+      Gardez appuyé le bouton B (gachette) de la Wiimote
+      et déplacez la Wiimote en pointant la sensor bar.
+      
+  - Sélection/Désélection d'un atome (bouton A)
+      Placez le curseur de la souris sur un atome, relacher tous les boutons
+      et pressez le bouton A de la Wiimote.
+
+  - Sélection de plusieurs atomes (boutons A et B)
+      Pour réaliser une rectangle de sélection, gardez appuyé les
+      boutons A et B de la Wiimote, et déplacez la Wiimote.
+      Terminez l'action en relachant tous les boutons.
+      
+  - Désélection de tous les atomes (boutons A et B)
+      Même action que précédemment, sauf qu'il ne doit pas avoir d'atome
+      dans le rectangle de sélection.
+
+  - Déplacement des atomes sélectionnés (maintenir le bouton A)
+      Une fois que les atomes sont sélectionnés, gardez appuyé la bouton A
+      et déplacez la Wiimote.
+    
+  - Rotation de la caméra (joystick)
+      Orientez le joystick du Nunchuk dans la direction voulue.
+      
+  - Rotation à 90° de la caméra (croix directionnelle)
+      Appuyez rapidement sur haut, bas, gauche ou droite de la croix 
+      directionnelle de la Wiimote.
+
+  - Translation de la caméra (boutons C et Z, et joystick)
+      Gardez appuyé les touches C et Z du Nunchuk puis orientez le joystick 
+      vers une direction.
+      
+  - Zoom avant/arrière (bouton C ou Z)
+      Gardez appuyé la touche C ou Z du Nunchuk.
+    
+  - Autre fonctionnalités avec le menu contextuel
+      Maintenez la touche Droite de la croix directionnelle de la Wiimote
+      jusqu'à l'ouverture du menu contextuel,
+      ensuite naviguez avec la croix directionnelle,
+      enfin validez l'action sélectionnée avec la touche A.
+      

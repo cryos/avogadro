@@ -1,0 +1,89 @@
+
+LISEZ MOI
+=========
+
+  http://www.univ-reims.fr/wiichem (en français)
+  https://github.com/mickaelgadroy/wmavo (en anglais)
+
+  Les plugins ne sont disponibles que pour un environnement Linux (pour 
+  le moment).
+  (Tests realizés sur Ubuntu 10.04 et 10.10.)
+
+
+INSTALLATION
+============
+
+  Voir le fichier INSTALL_*.txt inclus dans le répertoire doc/.
+
+
+A PROPOS
+========
+
+  Les plugins WmAvo sont les premiers éléments du projet WiiChem. Ce projet
+  est né au sein de l'URCA (Université de Reims Champagne-Ardenne, FRANCE) 
+  <http://www.univ-reims.eu/>.
+  Le projet est supporté financièrement par la région Champagne-Ardenne 
+  (FRANCE). <http://www.cr-champagne-ardenne.fr/>.
+
+  Le projet WiiChem a pour but d'aider à l'apprentissage de la chimie, et 
+  faciliter la modélisation modéculaire par l'intégration de la Wiimote au 
+  sein d'un logiciel de chimie. Avogadro est le premier logiciel utilisé
+  pour construire le coeur du projet (l'architecture, phases de test ...).
+
+    Pour plus d'informations concernant le projet WiiChem :
+      voir <http://www.univ-reims.fr/wiichem> (en français).
+      
+  WmAvo est un groupe de plugins destiné à Avogadro. Leurs buts sont d'améliorer
+  Avogadro par l'ajout du support de la Wiimote, et de l'anaglyphe (rouge/cyan)
+  pour la visualisation 3D-stéréoscopique.
+  Les atomes sont manipulables par la Wiimote.
+  La caméra est manipulables par le Nunchuk.
+  
+    Pour les instructions d'installation :
+      voir le fichier doc/fr/INSTALL.txt .
+      
+    Pour plus d'informations sur l'utilisation de la Wiimote dans Avogadro :
+      voir le fichier doc/fr/comment_utiliser_la_wiimote_dans_avogadro.txt .
+
+    Pour plus d'informations sur le code :
+      voir le répertoire api/
+      (si le répertoire api/html/ n'existe pas, ouvrez un terminal dans le 
+      répertoitre du fichier Doxyfile, et tapez "doxygen").
+      
+    Pour plus d'informations sur les contributeurs :
+      voir le fichier doc/CONTRIBUTORS.txt .
+      
+     
+  Avogadro est un éditeur moléculaire avancé conçu pour une utilisation 
+  multi-plateforme dans le calcul chimique, la modélisation moléculaire, la
+  bioinformatique, la science des matériaux, et les domaines liés. Il offre 
+  un "rendu flexible" et une architecture de plugins puissante.
+
+    Pour plus d'informations concernant Avogadro :
+      voir <http://avogadro.openmolecules.net/>
+      
+
+LICENCE
+=======
+
+  WmAvo is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  WmAvo is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with WmAvo. If not, see <http://www.gnu.org/licenses/>.
+
+
+DEGAGEMENT DE RESPONSABILITE
+============================
+
+  Nous ne sommes en aucun cas responsable pour n'importe quels dommages ou 
+  effets non désirables causés par le logiciel.
+  Le logiciel est fourni tel quel.
+

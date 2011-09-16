@@ -1,0 +1,12 @@
+Chemtool Version 1.6.12
+geometry 460 327
+bonds 3
+365	202	365	266	4	0	0
+365	266	311	298	0	0	0
+365	266	419	298	0	0	0
+atoms 3
+365	202	O	0	0	0	3
+419	298	H	0	0	0	3
+311	298	H	0	0	0	3
+splines 0
+scalefactors 10.668000 2

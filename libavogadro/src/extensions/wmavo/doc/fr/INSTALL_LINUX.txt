@@ -1,0 +1,191 @@
+
+PRE-REQUIS
+==========
+
+apt-get install desired_package
+  => extra packages will be installed
+
+apt-get install gcc g++ make cmake (cmake : 2.6 au moins)
+apt-get install zlib1 zlib1-dev  (1.2.3 au moins)
+apt-get install python-dev libboost-python-dev (respectivement 2.6 et 1.40 au moins)
+apt-get install avogadro libavogadro-dev (1.0.0 au moins)
+  => avogadro-data libavogadro-dev libavogadro1 libopenbabel-dev libopenbabel3 python-avogadro
+ 
+apt-get install bluez libbluetooth-dev (4.60 au moins)
+  
+
+Les librairies, ci-dessous, sont nécessaires pour la compilation des 
+plugins WmAvo pour Avogadro. Si vous avez Synaptic (ou équivalent), ouvrez le
+et "rechercher et installer" les paquets.
+
+Tout d'abord, Avogadro doit être installé. Si ce n'est pas le cas, vous aurez 
+besoin de :
+  - python2.6-dev
+      ET libboost-python1.42-dev (1.40 au moins)
+        (certaines classes abstraites d'Avogadro les demandent pour générer les 
+         plugins)
+  - Avogadro 1.0.1 ou après (1.0.0 au moins)
+      ET libavogadro-dev 1.0.1 (1.0.0 au moins)
+        (cela installera en plus Qt4, OpenBabel, Eigen ...)
+
+Ensuite, vous devez vérifier/avoir les paquets suivants d'installer :
+  - gcc (4.4.3 au moins)
+  - g++ (4.4.3 au moins)
+  - make (3.8 au moins)
+  - cmake (2.8 au moins)
+  - libavogadro-dev (1.0.0 au moins)
+  - zlib (1.2.3 au moins, peut être écrit 1:1.2.3)
+      ET zlib1g-dev (1.2.3 au moins)
+  - python2.6-dev
+      ET libboost-python1.42-dev (1.40 au moins)
+  - BlueZ 4.69 (4.60 au moins)
+      ET libbluetooth-dev 4.69 (4.60 au moins)
+
+Enfin, dans un terminal, allez dans le répertoire racine de wmavo
+  cd [...]/wmavo/
+
+Si des problèmes de compilations apparaissent, allez en fin de fichier pour 
+installer des paquets supplémentaires.
+  
+
+MODE INSTALLATION SIMPLE
+========================
+
+Dans ce mode, il est nécessaire d'installer d'autre librairies avant.
+Si vous avez Synaptic, recherchez :
+
+  - freeglut3 (2.6 au moins)
+      ET freeglut3-dev (2.6 au moins)
+  - libglew1.5 (1.52 au moins)
+      ET libglew1.5-dev (1.52 au moins)
+
+Ensuite lancer le script compile_install.sh contenu dans le répertoire script.
+  cd ./script/
+  bash compile_install.sh
+
+Si vous devez relancer le script, appyuez sur Entrée si le script ne fait rien.
+
+  ATTENTION :
+    Si vous utilisez Avogadro avec la version 1.0.0 ou 1.0.1, soyez prudent où
+    les plugins sont copiés :
+      - dans /usr/lib/avogadro/1_0/[engines,extensions,tools] .
+    Sinon, ils seront dans :
+      - dans /usr/local/lib/avogadro/1_0/[engines,extensions,tools],
+    Vérifiez la version d'Avogadro avec la commande : 
+      avogadro --version
+
+
+MODE INSTALLATION AVANCE
+========================
+
+  INSTALLATION (partie 1/2)
+  -------------------------
+
+Pour utiliser la Wiimote, il est nécessaire d'avoir une librairie dédiée
+à la Wiimote. La librairie utilisée est, en faite sont, wiiuse et wiiusecpp.
+La librairie wiiuse est le coeur (gère la Wiimote sous un environnement
+Linux ou Windows). La librairie wiiusecpp ajoute le support du c++.
+
+Les librairies sont présentes dans le répertoire extra. La version fournie 
+est la 0.12.2, il s'agit d'une version améliorée de la version disponible sur
+Internet (0.12).
+
+Pour les compiler :
+
+  - wiiuse
+      cd ./extra/wiiuse
+      make wiiuse
+      sudo make install
+      cd ../../
+
+  - wiiusecpp
+      cd ./extra/wiiusecpp
+      (sudo) make wiiusecpp
+      sudo make install
+      cd ../../
+
+
+  INSTALLATION (partie 2/2)
+  -------------------------
+
+Il y a 3 plugins pour Avogadro :
+  - wmengine : pour obtenir un rendu anaglyphe (rouge/cyan) avec une
+      visualisation Balles et Batons.
+  - wmextension et wmtool : pour inclure la Wiimote dans Avogadro.
+  
+Pour la Wiimote (les plugins wmextension et wmtool sont requis)
+
+  a) Le plugin wmextension
+
+    cd ./src/ex/
+    mkdir build
+    cd build
+    cmake ../
+    (sudo) make
+    (avec la version 1.0.0 or 1.0.1 d'Avogadro)
+      sudo cp libwmextension.so /usr/lib/avogadro/1_0/extensions/
+    (avec une version supérieure à 1.0.1 d'Avogadro)
+      sudo cp libwmextension.so /usr/local/lib/avogadro/1_0/extensions/
+
+  b) Le plugin wmtool
+
+    cd ./src/tool/
+    mkdir build
+    cd build
+    cmake ../
+    make
+    (avec la version 1.0.0 or 1.0.1 d'Avogadro)
+      sudo cp libwmtool.so /usr/lib/avogadro/1_0/tools/
+    (avec une version supérieure à 1.0.1 d'Avogadro)
+      sudo cp libwmtool.so /usr/local/lib/avogadro/1_0/tools/
+      
+Pour l'anaglyphe (rouge/cyan), le plugin wmengine :
+
+  a) Pré-requis :
+
+  Le plugin wmengine nécessite d'autre librairies. Si vous avez Synaptic, 
+  recherchez :
+  
+    - freeglut3 2.6
+        et freeglut3-dev 2.6
+    - libglew1.5 1.52
+        et libglew1.5-dev 1.52
+
+  b) Compilation :
+
+    cd ./src/en
+    mkdir build
+    cd build
+    cmake ../
+    make
+    (avec la version 1.0.0 or 1.0.1 d'Avogadro)
+      sudo cp libwmEngine.so /usr/lib/avogadro/1_0/engines/
+    (avec une version supérieure à 1.0.1 d'Avogadro)
+      sudo cp libwmEngine.so /usr/local/lib/avogadro/1_0/engines/
+
+
+EN CAS DE PROBLEME
+==================
+
+Si la compilation pose problème, vérifiez/installez les paquets suivants :
+
+- python2.6-dev
+    ET libboost-python1.42-dev (1.40 au moins)
+    ET python-numpy (1.3.0 au moins)
+    ET python-sip (4.10 au moins)
+    ET pyqt4-dev (4.6 au moins)
+
+- OpenBabel (2.2.3 au moins)
+    ET libopenbabel-dev (2.2.3 au moins)
+
+- eigen2 (2.0.12 au moins)
+- Qt4 (4.6 au moins)
+- Docbook (4.5 au moins)
+    ET docbook-utils (0.6.14 au moins)
+
+- glutg3 (3.7 au moins)
+    ET glutg3-dev (3.7 au moins)
+- libglut3 (3.7 au moins)
+    ET libglut3-dev (3.7 au moins)
+- libglu1-mesa-dev
+    ET libglu1-mesa

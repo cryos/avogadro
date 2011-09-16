@@ -1,0 +1,177 @@
+
+REQUIREMENTS
+============
+
+These library are required to success at the compilation of the wmavo
+plugin for Avogadro. If you have Synaptic (or equivalent), you just need 
+to open it and "search and install package".
+
+At first, Avogadro must be installed. If it isn't do, you'll need :
+  - python2.6-dev
+      AND libboost-python1.42-dev (1.40 at least)
+      (some abstract class of Avogadro ask them to generate plugins)
+  - Avogadro 1.0.1 or later (1.0.0 at least)
+      AND libavogadro-dev 1.0.1 (1.0.0 at least)
+      (it will install Qt4, OpenBabel, Eigen 2.0.3 ...)
+
+Then, you must verify/have this packages :
+  - gcc (4.4.4 at least)
+  - g++ (4.4.4 at least)
+  - make (3.8 at least)
+  - cmake (2.8 at least)
+  - libavogadro-dev (1.0.0 at least)
+  - zlib (1.2.3 at least)
+      AND zlib1g-dev (1.2.3 at least)
+  - python2.6-dev
+      AND libboost-python1.42-dev (1.40 at least)
+  - BlueZ 4.69 (4.60 at least)
+      AND libbluetooth-dev 4.69 (4.60 at least)
+
+At last, in a terminal, go in the wmavo root directory :
+  cd [...]/wmavo/
+
+If you have compilation problems, see the end of this file to install more
+packages.
+
+
+BASIC INSTALL MODE
+==================
+
+In this mode, you need to install other libraries before. If you 
+have Synaptic (or equivalent), search :
+
+  - freeglut3 2.6
+      AND freeglut3-dev 2.6
+  - libglew1.5 1.52
+      AND libglew1.5-dev 1.52
+
+Then launch the script compile_install.sh in the script directory.
+  cd ./script/
+  bash compile_install.sh
+
+If you must launch again the script, press Enter if the script do nothing.
+
+  CAUTION !
+    If you use Avogadro with the 1.0.0 or 1.0.1 version, be careful where the 
+    plugins are copied : 
+      - in /usr/lib/avogadro/1_0/[engines,extensions,tools] .
+    Else, they will be :
+      - in /usr/local/lib/avogadro/1_0/[engines,extensions,tools] .
+    Verify the version of Avogadro with the command : 
+      avogadro --version
+
+
+ADVANCED INSTALL MODE
+=====================
+
+  INSTALLATION (part1/2)
+  ----------------------
+
+To use the Wiimote, it is necessary to have a library dedicated to
+the Wiimote. The used library is, in fact are, wiiuse and wiiusecpp.
+The wiiuse library is the heart (can manage the Wiimote under *nix and 
+Windows environment). The wiiusecpp library add the cpp support.
+
+This library are present in the extra directory. This version (0.12.2) 
+is improved compared with the version (0.12) get on Internet.
+
+To compile them :
+
+  - wiiuse
+      cd ./extra/wiiuse
+      make wiiuse
+      sudo make install
+      cd ../../
+
+  - wiiusecpp
+      cd ./extra/wiiusecpp
+      (sudo) make wiiusecpp
+      sudo make install
+      cd ../../
+
+
+  INSTALLATION (part2/2)
+  ----------------------
+
+There are 3 plugins for Avogadro :
+  - wmengine : to get the anaglyph (red/cyan) render with ball and stick 
+      visualisation ;
+  - wmextension and wmtool : to include the Wiimote in Avogadro.
+
+For the Wiimote (the wmextension and wmtool plugins are required)
+
+  a) The wmextension plugin
+
+    cd ./src/ex/
+    mkdir build
+    cd build
+    cmake ../
+    (sudo) make
+    (with Avogadro 1.0.0 or 1.0.1 version)
+      sudo cp libwmextension.so /usr/lib/avogadro/1_0/extensions/
+    (with a higher Avogadro version to 1.0.1)
+      sudo cp libwmextension.so /usr/local/lib/avogadro/1_0/extensions/
+
+  b) The wmtool plugin
+
+    cd ./src/tool/
+    mkdir build
+    cd build
+    cmake ../
+    make
+    (with Avogadro 1.0.0 or 1.0.1 version)
+      sudo cp libwmtool.so /usr/lib/avogadro/1_0/tools/
+    (with a higher Avogadro version to 1.0.1)
+      sudo cp libwmtool.so /usr/local/lib/avogadro/1_0/tools/
+      
+For the anaglyph (red/cyan), the wmengine plugin :
+
+  a) Requirements :
+
+  These library are required to compile the wmengine plugin. If you
+  have Synaptic (or equivalent), you just need to open it and 
+  "search and install package":
+
+    - freeglut3 2.6
+        and freeglut3-dev 2.6
+    - libglew1.5 1.52
+        and libglew1.5-dev 1.52
+
+  b) Compilation :
+
+    cd ./src/en
+    mkdir build
+    cd build
+    cmake ../
+    make
+    (with Avogadro 1.0.0 or 1.0.1 version)
+      sudo cp libwmEngine.so /usr/lib/avogadro/1_0/engines/
+    (with a higher Avogadro version to 1.0.1)
+      sudo cp libwmEngine.so /usr/local/lib/avogadro/1_0/engines/
+
+      
+IF COMPILATION PROBLEMS
+=======================
+
+If the compilation has some problems, verify/install this packages :
+
+- python2.6-dev
+    AND libboost-python1.42-dev (1.40 at least)
+    AND python-numpy (1.3.0 at least)
+    AND python-sip (4.10 at least)
+    AND pyqt4-dev (4.6 at least)
+
+- OpenBabel (2.2.3 at least)
+    AND libopenbabel-dev (2.2.3 at least)
+
+- eigen2 (2.0.12 at least)
+- Qt4 (4.6 at least)
+- Docbook (4.5 at least)
+    AND docbook-utils (0.6.14 at least)
+
+- glutg3 (3.7 at least)
+    AND glutg3-dev (3.7 at least)
+- libglut3 (3.7 at least)
+    AND libglut3-dev (3.7 at least)
+- libglu1-mesa-dev
+    AND libglu1-mesa

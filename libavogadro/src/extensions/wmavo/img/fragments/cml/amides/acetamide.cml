@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acetamide">
+  <formula concise=" C 2 H 5 N 1 O 1 "/>
+  <identifier convention="iupac:inchi" value="1/C2H5NO/c1-2(3)4/h1H3,(H2,3,4)"/>
+  <name convention="IUPAC">Acetamide</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="1.119876" y3="-0.113564" z3="-0.048934"/>
+    <atom id="a2" elementType="C" x3="-0.221489" y3="0.537421" z3="0.153904"/>
+    <atom id="a3" elementType="N" x3="-1.367026" y3="-0.236934" z3="-0.045703"/>
+    <atom id="a4" elementType="O" x3="-0.395826" y3="1.705369" z3="0.483916"/>
+    <atom id="a5" elementType="H" x3="1.938133" y3="0.594584" z3="0.137095"/>
+    <atom id="a6" elementType="H" x3="1.231877" y3="-0.484570" z3="-1.076445"/>
+    <atom id="a7" elementType="H" x3="1.257953" y3="-0.963725" z3="0.632390"/>
+    <atom id="a8" elementType="H" x3="-2.272053" y3="0.148085" z3="0.076222"/>
+    <atom id="a9" elementType="H" x3="-1.291446" y3="-1.186666" z3="-0.312445"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a4" order="2"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="1"/>
+    <bond atomRefs2="a3 a9" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">59.0672</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">59.0371138</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:mp" units="units:celsius">80</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">221</scalar>
+    </property>
+  </propertyList>
+</molecule>

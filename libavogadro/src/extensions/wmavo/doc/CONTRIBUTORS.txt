@@ -1,0 +1,27 @@
+
+Financial support :
+
+  - Region Champagne-Ardenne <http://www.cr-champagne-ardenne.fr/>
+  - University of Reims Champagne-Ardenne <http://www.univ-reims.eu/>
+
+
+All contributors :
+
+  - Mickael Gadroy <mickael.gadroy@gmail.com> (Author)
+  - Eric Henon <eric.henon@univ-reims.fr> (Project carrier)
+  - Michael Krajecki <michael.krajecki@univ-reims.fr> (CoProject carrier)
+
+
+Thanks for help (coding & support) :
+
+  - Matthieu Foulon
+  - And all contributors of Avogadro
+
+
+Thanks for Beta Testers and Ideas Generator, in alphabetical order :
+
+  - Chantal Barberot
+  - Claire Coiffier
+  - Manuel Dauchez
+
+
