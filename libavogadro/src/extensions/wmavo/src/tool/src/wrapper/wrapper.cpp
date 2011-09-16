@@ -1,6 +1,8 @@
 
 /*******************************************************************************
-  Copyright (C) 2011 Mickael Gadroy
+  Copyright (C) 2011 Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+                          Project managers: Eric Henon and Michael Krajecki
+                          Financial support: Region Champagne-Ardenne (Fr)
 
   This file is part of WmAvo (WiiChem project)
   WmAvo - Integrate the Wiimote and the Nunchuk in Avogadro software for the

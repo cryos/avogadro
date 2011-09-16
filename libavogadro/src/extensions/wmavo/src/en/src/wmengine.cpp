@@ -1,6 +1,8 @@
 
 /*******************************************************************************
-  Copyright (C) 2010,2011 Mickael Gadroy
+  Copyright (C) 2010,2011 Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+                          Project managers: Eric Henon and Michael Krajecki
+                          Financial support: Region Champagne-Ardenne (Fr)
 
   Some portions :
   Copyright (C) 2007 Donald Ephraim Curtis

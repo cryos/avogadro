@@ -1,6 +1,8 @@
 
 /*******************************************************************************
-  Copyright (C) 2010,2011 Mickael Gadroy
+  Copyright (C) 2010,2011 Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+                          Project managers: Eric Henon and Michael Krajecki
+                          Financial support: Region Champagne-Ardenne (Fr)
 
   This file is part of WmToChem (WiiChem project)
   WmToChem - Integrate the Wiimote and the Nunchuk in Avogadro software for the
@@ -252,6 +254,7 @@ bool WmToChem::convert( CWiimoteData *data )
       {
         if( WMAVO_IS(WMAVO_ATOM_MOVE)) // A last action must be realised.
           lastUpdate = true ;
+
 
         else
           lastUpdate = false ;
@@ -517,6 +520,7 @@ void WmToChem::operatingModeWm2()
     // action.
     transformWmAction1ToSelectOrTranslateAtom() ;
   }
+
 
   // "Create atom" action.
   transformWmAction1ToCreateAtom() ;
@@ -793,6 +797,7 @@ bool WmToChem::transformWmAction1ToSelectOrTranslateAtom()
       if( !WMAVO_IS(WMAVO_SELECT_MULTI) )
       {
         m_pressedButton = true ; // To avoid having another action.
+
         m_selectRelease = false ;
 
         // Activate selection.

@@ -4,6 +4,11 @@
 # Either :  $ bash 2_compile_install.sh
 
 
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
+
 # Information about dependency.
 echo "info: Verify the dependency with (1_dependency.sh) script"
 echo "info:   before to continue the plugin compilation."

@@ -1,4 +1,8 @@
 
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
 Compile/Install the WiiChem plugins for Avogadro on Linux.
 info: The project name is WiiChem, all sources/directories using "wmavo" for "Wiimote for Avogadro".
 

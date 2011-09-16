@@ -1,5 +1,7 @@
 /*
- *      Copyright (c) 2010, 2011 Mickael Gadroy
+ *      Copyright (c) 2010, 2011 Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+                          Project managers: Eric Henon and Michael Krajecki
+                          Financial support: Region Champagne-Ardenne (Fr)
  *
  *	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by

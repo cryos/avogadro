@@ -4,6 +4,12 @@
 # Either :  $ bash 1_dependency.sh
 
 
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
+
+
 # Information about dependency.
 echo "Verify if you have this dependency:"
 echo "apt-get install gcc g++ make cmake"

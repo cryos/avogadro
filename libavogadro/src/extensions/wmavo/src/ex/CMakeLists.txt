@@ -1,4 +1,8 @@
 
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
 set( PLUGIN_NAME wmextension )
 
 # wmextension plugin source files.

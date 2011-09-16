@@ -1,4 +1,8 @@
 
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
 Avant de pouvoir utiliser les plugins, il est nécessaire de les
 compiler/installer. Voir le fichier INSTALL.txt.
 
