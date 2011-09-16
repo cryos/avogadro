@@ -1,10 +1,16 @@
 Requirements
 ============
+ -- g++ 4.4.0
  -- CMake 2.6.0 or later (2.8.0 recommended)
- -- Qt 4.5.0 or later (4.5.3 recommended)
- -- OpenBabel 2.2.2 or later (development version from 
-  http://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk is recommended)
- -- Eigen 2.0.3 or later (2.0.9 recommended)
+ -- Qt 4.6.0 or later (4.7.0 recommended) 
+     - Install QtCreator (speeder to install all Qt lib)
+ -- OpenBabel 2.3.0 or later 
+     - development version is recommended :
+        http://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk
+     - Debian package(1) : http://packages.debian.org/wheezy/i386/openbabel/download
+     - Debian package(2) : http://packages.debian.org/wheezy/libopenbabel4
+ -- Eigen 2.0.3 or later (libeigen 2.0.9 recommended)
+ -- ZLib (zlib1g and zlib1g-dev)
 
 cmake
 Basic Installation
@@ -13,7 +19,9 @@ These instructions give a very basic overview of how to configure, compile and
 install Avogadro on most systems.  If you are using unique install locations
 and/or libraries are not automatically detected please consult the 'Advanced'
 section.
-If you want to manipulate with a Wiimote, you need to launch the script :
+If you want to compile with a Wiimote, 
+  - launch the script : $ bash scripts/install-wiiuse.sh
+  - add an option in the cmake : cmake ../ -DENABLE_WMAVO=true
 
 
 1. Create a 'build' directory in the package source directory.
