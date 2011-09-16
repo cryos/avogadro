@@ -13,6 +13,8 @@ These instructions give a very basic overview of how to configure, compile and
 install Avogadro on most systems.  If you are using unique install locations
 and/or libraries are not automatically detected please consult the 'Advanced'
 section.
+If you want to manipulate with a Wiimote, you need to launch the script :
+
 
 1. Create a 'build' directory in the package source directory.
 
@@ -54,6 +56,9 @@ installation locations.
 
    -DENABLE_UPDATE_CHECKER : Enable checking for new Avogadro versions over the
                              network - Linux distributions may want to disable.
+                             
+   -DENABLE_WMAVO : Enable the Wiimote in Avogadro (default = FALSE)
+                    
 
 For more information please consult the CMake documentation.
 

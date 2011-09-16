@@ -254,6 +254,7 @@ else()
   message(STATUS "Building released version.")
 endif()
 
+
 ###########################################################
 # Python Support: Detect and report all stuff here.       #
 # Subdirectories can use: ALL_PYTHON_FOUND                #
@@ -265,7 +266,7 @@ if(ENABLE_PYTHON)
     message(STATUS "All python dependencies found - Python support enabled")
   else()
     set(ENABLE_PYTHON FALSE)
-    message(WARNING "Not all python dependencies are found - Python support diabled")
+    message(WARNING "Not all python dependencies are found - Python support disabled")
   endif()
 else()
   message(STATUS "Python support disabled.")
@@ -302,6 +303,33 @@ else()
   set(THREADED_GL false)
   message(STATUS "Threaded OpenGL rendering not enabled")
 endif()
+
+
+# wiiuse/wiiusecpp librairies need to use the Wiimote in Avogadro.
+if( ENABLE_WMAVO )
+  option(ENABLE_WMAVO "Enable WmAvo plugins (to use the Wiimote, WiiChem project)" ON)
+else()
+  option(ENABLE_WMAVO "Enable WmAvo plugins (to use the Wiimote, WiiChem project)" OFF)
+endif()
+
+if( ENABLE_WMAVO AND NOT APPLE )
+  add_definitions(-DENABLE_WMAVO)
+  set(USED_WMAVO true)
+  message(STATUS "Wiimote plugins enabled")
+
+else()
+  set( USED_WMAVO false )
+  message( STATUS "Wiimote plugins not enabled" )
+endif()
+
+if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
+  message(STATUS "Run on an OS 64bits.")
+elseif( CMAKE_SIZEOF_VOID_P EQUAL 4 )
+  message(STATUS "Run on an OS 32bits.")
+else()
+  message(STATUS "SIZEOF_VOID_P unknown.")
+endif()
+
 
 # Should a self-contained package be created?
 option(ENABLE_AVO_PACKAGE "Enable creation of a self-contained package" OFF)

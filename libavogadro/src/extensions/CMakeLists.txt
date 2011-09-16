@@ -131,8 +131,10 @@ endif(NOT WIN32)
 add_subdirectory(quantuminput)
 
 ### Wiimote for Avogadro (wmavo, project WiiChem)
-add_subdirectory( wmavo/src/tool )
-add_subdirectory( wmavo/src/ex )
-add_subdirectory( wmavo/src/en )
+if( USED_WMAVO )
+  add_subdirectory( wmavo/src/tool )
+  add_subdirectory( wmavo/src/ex )
+  add_subdirectory( wmavo/src/en )
+endif()
 
 
