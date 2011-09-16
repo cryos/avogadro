@@ -5,6 +5,7 @@ Requirements
  -- OpenBabel 2.2.2 or later (development version from 
   http://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk is recommended)
  -- Eigen 2.0.3 or later (2.0.9 recommended)
+ -- zlib1g and zlib1g-dev 
 
 
 Basic Installation
