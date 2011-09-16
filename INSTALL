@@ -6,7 +6,7 @@ Requirements
   http://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk is recommended)
  -- Eigen 2.0.3 or later (2.0.9 recommended)
 
-
+cmake
 Basic Installation
 ==================
 These instructions give a very basic overview of how to configure, compile and
