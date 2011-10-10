@@ -73,6 +73,12 @@ namespace Avogadro {
       inline QString name() { return m_name; }
 
       /**
+       * @return the name of the fragment.
+       * @note Replaces GetName().
+       */
+      inline const QString & name() const { return m_name; }
+
+      /**
        * Set the name of the fragment.
        */
       inline void setName(QString name) { m_name = name; }
@@ -93,6 +99,11 @@ namespace Avogadro {
       QList<unsigned long> atoms();
 
       /**
+       * @return QList of the unique ids of the atoms in this Fragment.
+       */
+      const QList<unsigned long> & atoms() const;
+
+      /**
        * Add a Bond to the Fragment.
        */
       void addBond(unsigned long id);
@@ -106,6 +117,11 @@ namespace Avogadro {
        * @return QList of the unique ids of the bonds in this Fragment.
        */
       QList<unsigned long> bonds();
+
+      /**
+       * @return QList of the unique ids of the bonds in this Fragment.
+       */
+      const QList<unsigned long> & bonds() const;
 
       friend class Molecule;
 
