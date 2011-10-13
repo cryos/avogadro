@@ -27,6 +27,7 @@
 #include "glwidget.h"
 #include <avogadro/molecule.h>
 #include <Eigen/LU>
+#include <GL/glu.h>
 
 using namespace Eigen;
 

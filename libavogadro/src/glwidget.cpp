@@ -41,6 +41,8 @@
 #include <QtGui/QUndoStack>
 #include <QtGui/QLabel>
 
+#include <GL/glu.h>
+
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
   #include "pythonextension_p.h"
