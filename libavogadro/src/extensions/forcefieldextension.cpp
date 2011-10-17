@@ -218,6 +218,14 @@ namespace Avogadro
         m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
       }
 
+      // Set up some cutoffs for electrostatic and VDW interactions
+      // Only update them periodically
+      // For conformer search, exact geom not as important
+      m_forceField->EnableCutOff(true);
+      m_forceField->SetUpdateFrequency(10);
+      m_forceField->SetVDWCutOff(8.0);
+      m_forceField->SetElectrostaticCutOff(10.0);
+
       if (!m_conformerDialog)
         m_conformerDialog = new ConformerSearchDialog(static_cast<QWidget*>(parent()));
 
@@ -239,6 +247,14 @@ namespace Avogadro
         m_forceField->SetLogFile( &buff );
         m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
       }
+
+      // Set up some cutoffs for electrostatic and VDW interactions
+      // Only update them periodically
+      // For conformer search, exact geom not as important
+      m_forceField->EnableCutOff(true);
+      m_forceField->SetUpdateFrequency(5);
+      m_forceField->SetVDWCutOff(10.0);
+      m_forceField->SetElectrostaticCutOff(25.0);
 
       undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints,
                                     0, m_dialog->nSteps(), m_dialog->algorithm(),
@@ -378,7 +394,7 @@ namespace Avogadro
           if (atom->atomicNumber() < 1)
             m_constraints->addIgnore(atom->index() + 1);
         }
-      
+
       m_forceField->SetConstraints(m_constraints->constraints());
     }
 
