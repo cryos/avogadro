@@ -53,6 +53,14 @@ namespace Avogadro {
      */
     void elementChanged(int element);
 
+    public Q_SLOTS:
+    /**
+     * This slot is called when an element is changed.
+     * (e.g., by keyboard or code)
+     * @since version 1.1
+     */
+    void changeElement(int element);
+
   protected:
     /**
      * Generic event handler, currently defaults to calling parent class

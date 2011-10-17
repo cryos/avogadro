@@ -705,6 +705,7 @@ namespace Avogadro {
                 this, SLOT(customElementChanged(int)));
       }
       m_periodicTable->show();
+      m_periodicTable->setFocus(Qt::PopupFocusReason); // give it keyboard focus
     }
   }
 
