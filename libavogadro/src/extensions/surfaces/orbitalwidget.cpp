@@ -30,6 +30,8 @@ namespace Avogadro {
     m_settings(0),
     m_quality(OQ_Low),
     m_isovalue(0.02),
+    m_precalc_limit(true),
+    m_precalc_range(10),
     m_tableModel(new OrbitalTableModel (this)),
     m_sortedTableModel(new OrbitalSortingProxyModel (this))
   {
@@ -64,6 +66,8 @@ namespace Avogadro {
     m_isovalue =                       settings.value("isoValue", 0.02).toDouble();
     ui.combo_quality->setCurrentIndex( settings.value("selectedQuality", 0).toInt());
     m_sortedTableModel->HOMOFirst(     settings.value("HOMOFirst", false).toBool());
+    m_precalc_limit =                  settings.value("precalc/limit", true).toBool();
+    m_precalc_range =                  settings.value("precalc/range", 10).toInt();
     settings.endGroup();
   }
 
@@ -75,6 +79,8 @@ namespace Avogadro {
     settings.setValue("isoValue", m_isovalue);
     settings.setValue("selectedQuality", ui.combo_quality->currentIndex());
     settings.setValue("HOMOFirst", m_sortedTableModel->isHOMOFirst());
+    settings.setValue("precalc/limit", m_precalc_limit);
+    settings.setValue("precalc/range", m_precalc_range);
     settings.endGroup();
   }
 
@@ -91,6 +97,8 @@ namespace Avogadro {
     m_settings->setDefaultQuality(m_quality);
     m_settings->setIsoValue(m_isovalue);
     m_settings->setHOMOFirst(m_sortedTableModel->isHOMOFirst());
+    m_settings->setLimitPrecalc(m_precalc_limit);
+    m_settings->setPrecalcRange(m_precalc_range);
     m_settings->show();
   }
 
@@ -191,6 +199,12 @@ namespace Avogadro {
     m_isovalue = i;
     m_sortedTableModel->HOMOFirst(HOMOFirst);
     m_sortedTableModel->sort(0, Qt::AscendingOrder);
+  }
+
+  void OrbitalWidget::setPrecalcSettings(bool limit, int range)
+  {
+    m_precalc_limit = limit;
+    m_precalc_range = range;
   }
 
   void OrbitalWidget::initializeProgress(int orbital, int min, int max, int stage, int totalStages)
