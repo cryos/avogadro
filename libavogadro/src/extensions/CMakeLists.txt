@@ -125,6 +125,7 @@ avogadro_plugin(gl2psextension
 add_subdirectory(crystallography)
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
+add_subdirectory(swcntbuilder)
 if (NOT WIN32)
   add_subdirectory(qtaim)
 endif(NOT WIN32)
