@@ -24,6 +24,8 @@
 
 #include "extension.h"
 
+#include "dockwidget.h"
+
 namespace Avogadro {
 
   Extension::Extension(QObject *parent) : Plugin(parent)
@@ -56,7 +58,21 @@ namespace Avogadro {
 
   QDockWidget * Extension::dockWidget()
   {
-    return 0;
+    if (!m_dockWidgets.isEmpty()) {
+      return qobject_cast<QDockWidget*>(m_dockWidgets.first());
+    }
+
+    return NULL;
+  }
+
+  QList<DockWidget*> Extension::dockWidgets() const
+  {
+    return m_dockWidgets;
+  }
+
+  int Extension::numDockWidgets() const
+  {
+    return m_dockWidgets.size();
   }
 
   void Extension::setMolecule(Molecule *molecule)
