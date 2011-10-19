@@ -158,6 +158,7 @@ namespace Avogadro{
   Atom *Molecule::addAtom(unsigned long id)
   {
     Q_D(const Molecule);
+    d->invalidGeomInfo = true;
     Atom *atom = new Atom(this);
 
     if (!m_atomPos) {
@@ -183,10 +184,14 @@ namespace Avogadro{
     emit atomAdded(atom);
     return atom;
   }
+
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
-    if (id < m_atomPos->size())
+    Q_D(const Molecule);
+    if (id < m_atomPos->size()) {
       (*m_atomPos)[id] = vec;
+      d->invalidGeomInfo = true;
+    }
   }
 
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d *vec)
@@ -363,9 +368,6 @@ namespace Avogadro{
     emit primitiveAdded(cube);
     return(cube);
   }
-
-
-
 
   void Molecule::removeCube(Cube *cube)
   {
