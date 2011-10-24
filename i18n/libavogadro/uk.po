@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-17 00:00-0400\n"
+"POT-Creation-Date: 2011-10-24 00:00-0400\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -796,7 +796,7 @@ msgstr "відеофайли (*.avi)"
 #: src/extensions/forcefieldextension.cpp:189
 #: src/extensions/forcefieldextension.cpp:202
 #: src/extensions/forcefieldextension.cpp:214
-#: src/extensions/forcefieldextension.cpp:236
+#: src/extensions/forcefieldextension.cpp:244
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/quantuminput/inputfileextension.cpp:165
@@ -1037,7 +1037,7 @@ msgstr "Сховати пункти &редагування"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:451
 #: src/extensions/crystallography/crystallographyextension.cpp:697
-#: src/extensions/crystallography/crystallographyextension.cpp:1765
+#: src/extensions/crystallography/crystallographyextension.cpp:1867
 msgid "Show &Editors"
 msgstr "Показат пункти &редагування"
 
@@ -1048,7 +1048,7 @@ msgstr "Сховати панель &властивостей"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:566
 #: src/extensions/crystallography/crystallographyextension.cpp:706
-#: src/extensions/crystallography/crystallographyextension.cpp:1773
+#: src/extensions/crystallography/crystallographyextension.cpp:1875
 msgid "Show &Property Display"
 msgstr "Показати панель &властивостей"
 
@@ -1073,60 +1073,68 @@ msgid "Remove &Unit Cell"
 msgstr "Вилучити &одиничну комірку"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:661
-#: src/extensions/crystallography/crystallographyextension.cpp:1743
+#: src/extensions/crystallography/crystallographyextension.cpp:1845
 msgid "Add &Unit Cell"
 msgstr "Вилучити &одиничну комірку"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:967
 #: src/extensions/crystallography/crystallographyextension.cpp:973
+#: src/extensions/crystallography/crystallographyextension.cpp:979
 msgid "Undefined"
 msgstr "Не визначено"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:975
+#: src/extensions/crystallography/crystallographyextension.cpp:981
 msgctxt "Lattice type"
 msgid "Triclinic"
 msgstr "триклінна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:977
+#: src/extensions/crystallography/crystallographyextension.cpp:983
 msgctxt "Lattice type"
 msgid "Monoclinic"
 msgstr "моноклінна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:979
+#: src/extensions/crystallography/crystallographyextension.cpp:985
 msgctxt "Lattice type"
 msgid "Orthorhombic"
 msgstr "орторомбічна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:981
+#: src/extensions/crystallography/crystallographyextension.cpp:987
 msgctxt "Lattice type"
 msgid "Tetragonal"
 msgstr "тетрагональна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:983
+#: src/extensions/crystallography/crystallographyextension.cpp:989
 msgctxt "Lattice type"
 msgid "Rhombohedral"
 msgstr "ромбоедрична"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:985
+#: src/extensions/crystallography/crystallographyextension.cpp:991
 msgctxt "Lattice type"
 msgid "Hexagonal"
 msgstr "гексагональна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:987
+#: src/extensions/crystallography/crystallographyextension.cpp:993
 msgctxt "Lattice type"
 msgid "Cubic"
 msgstr "кубічна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1309
+#: src/extensions/crystallography/crystallographyextension.cpp:1398
 msgid "Paste Crystal"
 msgstr "Вставити кристал"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1680
+#: src/extensions/crystallography/crystallographyextension.cpp:1668
+msgid ""
+"Niggli-reduction failed. The input structure's lattice that is confusing the "
+"Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
+"orders of magnitude smaller than the tolerance) to the input lattices and "
+"try again."
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:1782
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr "Цю одиничну комірку вже зведено до канонічного представлення Нігглі."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1689
+#: src/extensions/crystallography/crystallographyextension.cpp:1791
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
@@ -1134,120 +1142,120 @@ msgstr ""
 "Не вдалося звести комірку за допомогою 1000 ітерацій алгоритму зведення. "
 "Спроби припинено."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1750
+#: src/extensions/crystallography/crystallographyextension.cpp:1852
 msgid "I&mport Crystal from Clipboard..."
 msgstr "&Імпортувати кристал з буфера…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1788
+#: src/extensions/crystallography/crystallographyextension.cpp:1890
 msgid "&Wrap Atoms to Cell"
 msgstr "З&горнути атоми до комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1795
+#: src/extensions/crystallography/crystallographyextension.cpp:1897
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Керування атомом"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1802
+#: src/extensions/crystallography/crystallographyextension.cpp:1904
 msgid "Rotate To Standard &Orientation"
 msgstr "Обернути до стандартної &орієнтації"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1809
+#: src/extensions/crystallography/crystallographyextension.cpp:1911
 msgid "Scale Cell To &Volume..."
 msgstr "Масштабувати комірку до о&б’єму…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1824
+#: src/extensions/crystallography/crystallographyextension.cpp:1926
 msgid "Perceive Space&group..."
 msgstr "Визначити п&росторову групу…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1831
+#: src/extensions/crystallography/crystallographyextension.cpp:1933
 msgid "Set &Spacegroup..."
 msgstr "Встановити просторову &групу…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1838
+#: src/extensions/crystallography/crystallographyextension.cpp:1940
 msgid "&Fill Unit Cell"
 msgstr "&Заповникти одиничну комірку"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1839
+#: src/extensions/crystallography/crystallographyextension.cpp:1941
 msgid "Fill the unit cell using current spacegroup."
 msgstr "Заповникти одиничну комірку на основі поточної просторової групи."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1846
+#: src/extensions/crystallography/crystallographyextension.cpp:1948
 msgid "Sy&mmetrize Crystal"
 msgstr "С&иметризувати кристал"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1853
+#: src/extensions/crystallography/crystallographyextension.cpp:1955
 msgid "Reduce Cell (&Primitive)"
 msgstr "Звести комірку (до &базової)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1860
+#: src/extensions/crystallography/crystallographyextension.cpp:1962
 msgid "Reduce Cell (&Niggli)"
 msgstr "Звести комірку (за &Нігглі)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1878
+#: src/extensions/crystallography/crystallographyextension.cpp:1980
 msgid "&Angstrom"
 msgstr "&ангстрем"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1888
+#: src/extensions/crystallography/crystallographyextension.cpp:1990
 msgid "&Bohr"
 msgstr "&бор"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1897
+#: src/extensions/crystallography/crystallographyextension.cpp:1999
 msgid "&Nanometer"
 msgstr "&нанометр"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1906
+#: src/extensions/crystallography/crystallographyextension.cpp:2008
 msgid "&Picometer"
 msgstr "&пікометр"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1918
+#: src/extensions/crystallography/crystallographyextension.cpp:2020
 msgid "&Degree"
 msgstr "&градус"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1928
+#: src/extensions/crystallography/crystallographyextension.cpp:2030
 msgid "&Radian"
 msgstr "&радіан"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1940
+#: src/extensions/crystallography/crystallographyextension.cpp:2042
 msgid "Display &cartesian coordinates"
 msgstr "Показувати вісі &декартової системи координат"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1949
+#: src/extensions/crystallography/crystallographyextension.cpp:2051
 msgid "Display &fractional coordinates"
 msgstr "Показувати вісі &місцевої системи координат"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1962
+#: src/extensions/crystallography/crystallographyextension.cpp:2064
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr "Зберігати &декартові вісі координат під час змін геометрії комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1972
+#: src/extensions/crystallography/crystallographyextension.cpp:2074
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr "Зберігати &місцеві вісі координат під час змін у геометрії комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1986
+#: src/extensions/crystallography/crystallographyextension.cpp:2088
 msgid "Display &cartesian matrix"
 msgstr "Показувати матрицю &декартової системи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1996
+#: src/extensions/crystallography/crystallographyextension.cpp:2098
 msgid "Display &fractional matrix"
 msgstr "Показувати матрицю &місцевої системи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2016
+#: src/extensions/crystallography/crystallographyextension.cpp:2118
 msgid "Display as &row vectors"
 msgstr "Показувати як вектори-&рядки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2026
+#: src/extensions/crystallography/crystallographyextension.cpp:2128
 msgid "Display as &column vectors"
 msgstr "Показувати як вектори-стовп&чики"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2047
-#: src/extensions/crystallography/crystallographyextension.cpp:2179
-#: src/extensions/crystallography/crystallographyextension.cpp:2341
+#: src/extensions/crystallography/crystallographyextension.cpp:2149
+#: src/extensions/crystallography/crystallographyextension.cpp:2281
+#: src/extensions/crystallography/crystallographyextension.cpp:2443
 msgid "Select tolerance in current cartesian units:"
 msgstr "Виберіть припустиме відхилення у поточних одиницях декартової системи:"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2069
-#: src/extensions/crystallography/crystallographyextension.cpp:2199
-#: src/extensions/crystallography/crystallographyextension.cpp:2361
+#: src/extensions/crystallography/crystallographyextension.cpp:2171
+#: src/extensions/crystallography/crystallographyextension.cpp:2301
+#: src/extensions/crystallography/crystallographyextension.cpp:2463
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
@@ -1257,19 +1265,19 @@ msgstr ""
 "\n"
 "Бажаєте повторити спробу з іншим припустимим відхиленням?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2085
+#: src/extensions/crystallography/crystallographyextension.cpp:2187
 msgid "Perceive Spacegroup"
 msgstr "Виявлення просторової групи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2119
+#: src/extensions/crystallography/crystallographyextension.cpp:2221
 msgid "Set Spacegroup:"
 msgstr "Встановити просторову групу:"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2133
+#: src/extensions/crystallography/crystallographyextension.cpp:2235
 msgid "Set Spacegroup"
 msgstr "Встановлення просторової групи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2146
+#: src/extensions/crystallography/crystallographyextension.cpp:2248
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
@@ -1281,11 +1289,11 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:93
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
-#: src/extensions/crystallography/crystallographyextension.cpp:2165
+#: src/extensions/crystallography/crystallographyextension.cpp:2267
 msgid "Fill Unit Cell"
 msgstr "Заповнити елементарну комірку"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2213
+#: src/extensions/crystallography/crystallographyextension.cpp:2315
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
@@ -1296,32 +1304,32 @@ msgstr ""
 "\n"
 "Бажаєте повторити спробу з іншим припустимим відхиленням?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2232
+#: src/extensions/crystallography/crystallographyextension.cpp:2334
 msgid "Symmetrize Crystal"
 msgstr "Симетризація кристала"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2307
+#: src/extensions/crystallography/crystallographyextension.cpp:2409
 msgid "Wrap Atoms To Cell"
 msgstr "Згорнути атоми до комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2327
+#: src/extensions/crystallography/crystallographyextension.cpp:2429
 msgid "Rotate to Standard Orientation"
 msgstr "Обернути до стандартної орієнтації"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2379
+#: src/extensions/crystallography/crystallographyextension.cpp:2481
 msgid "Reduce to Primitive Cell"
 msgstr "Звести до базової комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2392
+#: src/extensions/crystallography/crystallographyextension.cpp:2494
 msgid "Reduce to Niggli Cell"
 msgstr "Звести до комірки Нігглі"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2402
+#: src/extensions/crystallography/crystallographyextension.cpp:2504
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr "Вкажіт нови об’єм"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2416
+#: src/extensions/crystallography/crystallographyextension.cpp:2518
 msgid "Scale Unit Cell Volume"
 msgstr "Масштабування об’єму одиничної комірки"
 
@@ -1383,19 +1391,19 @@ msgstr "Встановлення місцевих координат"
 msgid "Set Cartesian Coordinates"
 msgstr "Встановлення декартових координат"
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:81
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:89
 #, fuzzy, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
 msgid "Cell Matrix (%1)"
 msgstr "&Матриця комірки (%1)"
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:98
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:106
 #, fuzzy, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
 msgid "Fractional Cell Matrix (%1)"
 msgstr "Місцева &матриця комірки (%1)"
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:251
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:187
 msgid "Set Unit Cell Matrix"
 msgstr "Встановлення матриці одиничної комірки"
 
@@ -1493,7 +1501,7 @@ msgstr "&Молекулярна механіка"
 
 #: src/extensions/forcefieldextension.cpp:190
 #: src/extensions/forcefieldextension.cpp:215
-#: src/extensions/forcefieldextension.cpp:237
+#: src/extensions/forcefieldextension.cpp:245
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
@@ -1506,31 +1514,31 @@ msgstr ""
 msgid "Energy = %L1 %2"
 msgstr "Енергія = %L1 %2"
 
-#: src/extensions/forcefieldextension.cpp:249
+#: src/extensions/forcefieldextension.cpp:265
 msgid "Geometric Optimization"
 msgstr "Оптимізація геометричних параметрів"
 
-#: src/extensions/forcefieldextension.cpp:576
+#: src/extensions/forcefieldextension.cpp:592
 msgid "Forcefield Optimization"
 msgstr "Оптимізація поля сил"
 
-#: src/extensions/forcefieldextension.cpp:577
-#: src/extensions/forcefieldextension.cpp:580
-#: src/extensions/forcefieldextension.cpp:583
-#: src/extensions/forcefieldextension.cpp:586
+#: src/extensions/forcefieldextension.cpp:593
+#: src/extensions/forcefieldextension.cpp:596
+#: src/extensions/forcefieldextension.cpp:599
+#: src/extensions/forcefieldextension.cpp:602
 #: src/extensions/trajvideomaker.cpp:67
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/extensions/forcefieldextension.cpp:579
+#: src/extensions/forcefieldextension.cpp:595
 msgid "Systematic Rotor Search"
 msgstr "Систематичний пошук обертань"
 
-#: src/extensions/forcefieldextension.cpp:582
+#: src/extensions/forcefieldextension.cpp:598
 msgid "Random Rotor Search"
 msgstr "Випадковий пошук обертань"
 
-#: src/extensions/forcefieldextension.cpp:585
+#: src/extensions/forcefieldextension.cpp:601
 msgid "Weighted Rotor Search"
 msgstr "Середньозважений пошук обертань"
 
@@ -3510,7 +3518,7 @@ msgstr "Спроба запису конформерів до файла «%1» 
 msgid "Molecule %1"
 msgstr "Молекула %1"
 
-#: src/periodictableview.cpp:43
+#: src/periodictableview.cpp:49
 msgid "Periodic Table"
 msgstr "Періодична таблиця"
 
@@ -3942,7 +3950,7 @@ msgstr "Параметри вимірювання"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3875
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3881
 msgid "Add Atom"
 msgstr "Додати атом"
 
@@ -3990,33 +3998,33 @@ msgstr "Намалювати зв’язок"
 msgid "Draw"
 msgstr "Малювати"
 
-#: src/tools/drawtool.cpp:784
+#: src/tools/drawtool.cpp:785
 msgid "Element:"
 msgstr "Елемент:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:811:2200
+#: src/tools/drawtool.cpp:812:2200
 msgid "Other..."
 msgstr "Інше…"
 
-#: src/tools/drawtool.cpp:815
+#: src/tools/drawtool.cpp:816
 msgid "Bond Order:"
 msgstr "Порядок зв’язку:"
 
-#: src/tools/drawtool.cpp:820
+#: src/tools/drawtool.cpp:821
 msgid "Single"
 msgstr "Одинарний"
 
-#: src/tools/drawtool.cpp:821
+#: src/tools/drawtool.cpp:822
 msgid "Double"
 msgstr "Подвійний"
 
-#: src/tools/drawtool.cpp:822
+#: src/tools/drawtool.cpp:823
 msgid "Triple"
 msgstr "Потрійний"
 
-#: src/tools/drawtool.cpp:837
+#: src/tools/drawtool.cpp:838
 msgid "Adjust Hydrogens"
 msgstr "Вирівняти атоми водню"
 
@@ -5086,7 +5094,7 @@ msgid "Cell Matrix"
 msgstr "&Матриця комірки"
 
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:62
-#. i18n: ectx: property (html), widget (QTextEdit, edit_matrix)
+#. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 #, fuzzy
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -5094,7 +5102,7 @@ msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Monospace'; font-size:13pt; font-"
+"</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
@@ -9440,6 +9448,16 @@ msgstr "Дуже висока"
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
 msgid "Show occupied orbitals first"
 msgstr "Показувати спочатку заповнені орбіталі"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:113
+#. i18n: ectx: property (text), widget (QCheckBox, cb_limit_precalc)
+msgid "Limit orbital precalculations to "
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:123
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "orbitals around HOMO/LUMO"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)

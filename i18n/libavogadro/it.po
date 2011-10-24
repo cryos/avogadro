@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-17 00:00-0400\n"
+"POT-Creation-Date: 2011-10-24 00:00-0400\n"
 "PO-Revision-Date: 2011-02-22 14:11+0000\n"
 "Last-Translator: fasix <vito.fasano@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
@@ -793,7 +793,7 @@ msgstr "File video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:189
 #: src/extensions/forcefieldextension.cpp:202
 #: src/extensions/forcefieldextension.cpp:214
-#: src/extensions/forcefieldextension.cpp:236
+#: src/extensions/forcefieldextension.cpp:244
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/quantuminput/inputfileextension.cpp:165
@@ -1035,7 +1035,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:451
 #: src/extensions/crystallography/crystallographyextension.cpp:697
-#: src/extensions/crystallography/crystallographyextension.cpp:1765
+#: src/extensions/crystallography/crystallographyextension.cpp:1867
 msgid "Show &Editors"
 msgstr ""
 
@@ -1046,7 +1046,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:566
 #: src/extensions/crystallography/crystallographyextension.cpp:706
-#: src/extensions/crystallography/crystallographyextension.cpp:1773
+#: src/extensions/crystallography/crystallographyextension.cpp:1875
 msgid "Show &Property Display"
 msgstr ""
 
@@ -1071,198 +1071,206 @@ msgid "Remove &Unit Cell"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:661
-#: src/extensions/crystallography/crystallographyextension.cpp:1743
+#: src/extensions/crystallography/crystallographyextension.cpp:1845
 msgid "Add &Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:967
 #: src/extensions/crystallography/crystallographyextension.cpp:973
+#: src/extensions/crystallography/crystallographyextension.cpp:979
 msgid "Undefined"
 msgstr "Non definito"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:975
+#: src/extensions/crystallography/crystallographyextension.cpp:981
 msgctxt "Lattice type"
 msgid "Triclinic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:977
+#: src/extensions/crystallography/crystallographyextension.cpp:983
 msgctxt "Lattice type"
 msgid "Monoclinic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:979
+#: src/extensions/crystallography/crystallographyextension.cpp:985
 msgctxt "Lattice type"
 msgid "Orthorhombic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:981
+#: src/extensions/crystallography/crystallographyextension.cpp:987
 msgctxt "Lattice type"
 msgid "Tetragonal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:983
+#: src/extensions/crystallography/crystallographyextension.cpp:989
 msgctxt "Lattice type"
 msgid "Rhombohedral"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:985
+#: src/extensions/crystallography/crystallographyextension.cpp:991
 msgctxt "Lattice type"
 msgid "Hexagonal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:987
+#: src/extensions/crystallography/crystallographyextension.cpp:993
 msgctxt "Lattice type"
 msgid "Cubic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1309
+#: src/extensions/crystallography/crystallographyextension.cpp:1398
 msgid "Paste Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1680
+#: src/extensions/crystallography/crystallographyextension.cpp:1668
+msgid ""
+"Niggli-reduction failed. The input structure's lattice that is confusing the "
+"Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
+"orders of magnitude smaller than the tolerance) to the input lattices and "
+"try again."
+msgstr ""
+
+#: src/extensions/crystallography/crystallographyextension.cpp:1782
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1689
+#: src/extensions/crystallography/crystallographyextension.cpp:1791
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1750
+#: src/extensions/crystallography/crystallographyextension.cpp:1852
 msgid "I&mport Crystal from Clipboard..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1788
+#: src/extensions/crystallography/crystallographyextension.cpp:1890
 msgid "&Wrap Atoms to Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1795
+#: src/extensions/crystallography/crystallographyextension.cpp:1897
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Manipola Atomo"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1802
+#: src/extensions/crystallography/crystallographyextension.cpp:1904
 msgid "Rotate To Standard &Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1809
+#: src/extensions/crystallography/crystallographyextension.cpp:1911
 msgid "Scale Cell To &Volume..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1824
+#: src/extensions/crystallography/crystallographyextension.cpp:1926
 msgid "Perceive Space&group..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1831
+#: src/extensions/crystallography/crystallographyextension.cpp:1933
 msgid "Set &Spacegroup..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1838
+#: src/extensions/crystallography/crystallographyextension.cpp:1940
 msgid "&Fill Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1839
+#: src/extensions/crystallography/crystallographyextension.cpp:1941
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1846
+#: src/extensions/crystallography/crystallographyextension.cpp:1948
 msgid "Sy&mmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1853
+#: src/extensions/crystallography/crystallographyextension.cpp:1955
 msgid "Reduce Cell (&Primitive)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1860
+#: src/extensions/crystallography/crystallographyextension.cpp:1962
 msgid "Reduce Cell (&Niggli)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1878
+#: src/extensions/crystallography/crystallographyextension.cpp:1980
 msgid "&Angstrom"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1888
+#: src/extensions/crystallography/crystallographyextension.cpp:1990
 msgid "&Bohr"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1897
+#: src/extensions/crystallography/crystallographyextension.cpp:1999
 msgid "&Nanometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1906
+#: src/extensions/crystallography/crystallographyextension.cpp:2008
 msgid "&Picometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1918
+#: src/extensions/crystallography/crystallographyextension.cpp:2020
 msgid "&Degree"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1928
+#: src/extensions/crystallography/crystallographyextension.cpp:2030
 msgid "&Radian"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1940
+#: src/extensions/crystallography/crystallographyextension.cpp:2042
 msgid "Display &cartesian coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1949
+#: src/extensions/crystallography/crystallographyextension.cpp:2051
 msgid "Display &fractional coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1962
+#: src/extensions/crystallography/crystallographyextension.cpp:2064
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1972
+#: src/extensions/crystallography/crystallographyextension.cpp:2074
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1986
+#: src/extensions/crystallography/crystallographyextension.cpp:2088
 msgid "Display &cartesian matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1996
+#: src/extensions/crystallography/crystallographyextension.cpp:2098
 msgid "Display &fractional matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2016
+#: src/extensions/crystallography/crystallographyextension.cpp:2118
 msgid "Display as &row vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2026
+#: src/extensions/crystallography/crystallographyextension.cpp:2128
 msgid "Display as &column vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2047
-#: src/extensions/crystallography/crystallographyextension.cpp:2179
-#: src/extensions/crystallography/crystallographyextension.cpp:2341
+#: src/extensions/crystallography/crystallographyextension.cpp:2149
+#: src/extensions/crystallography/crystallographyextension.cpp:2281
+#: src/extensions/crystallography/crystallographyextension.cpp:2443
 msgid "Select tolerance in current cartesian units:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2069
-#: src/extensions/crystallography/crystallographyextension.cpp:2199
-#: src/extensions/crystallography/crystallographyextension.cpp:2361
+#: src/extensions/crystallography/crystallographyextension.cpp:2171
+#: src/extensions/crystallography/crystallographyextension.cpp:2301
+#: src/extensions/crystallography/crystallographyextension.cpp:2463
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2085
+#: src/extensions/crystallography/crystallographyextension.cpp:2187
 msgid "Perceive Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2119
+#: src/extensions/crystallography/crystallographyextension.cpp:2221
 msgid "Set Spacegroup:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2133
+#: src/extensions/crystallography/crystallographyextension.cpp:2235
 msgid "Set Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2146
+#: src/extensions/crystallography/crystallographyextension.cpp:2248
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
@@ -1271,43 +1279,43 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:93
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
-#: src/extensions/crystallography/crystallographyextension.cpp:2165
+#: src/extensions/crystallography/crystallographyextension.cpp:2267
 msgid "Fill Unit Cell"
 msgstr "Riempi la Cella Unitaria"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2213
+#: src/extensions/crystallography/crystallographyextension.cpp:2315
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2232
+#: src/extensions/crystallography/crystallographyextension.cpp:2334
 msgid "Symmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2307
+#: src/extensions/crystallography/crystallographyextension.cpp:2409
 msgid "Wrap Atoms To Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2327
+#: src/extensions/crystallography/crystallographyextension.cpp:2429
 msgid "Rotate to Standard Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2379
+#: src/extensions/crystallography/crystallographyextension.cpp:2481
 msgid "Reduce to Primitive Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2392
+#: src/extensions/crystallography/crystallographyextension.cpp:2494
 msgid "Reduce to Niggli Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2402
+#: src/extensions/crystallography/crystallographyextension.cpp:2504
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2416
+#: src/extensions/crystallography/crystallographyextension.cpp:2518
 msgid "Scale Unit Cell Volume"
 msgstr ""
 
@@ -1364,19 +1372,19 @@ msgstr ""
 msgid "Set Cartesian Coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:81
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:89
 #, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
 msgid "Cell Matrix (%1)"
 msgstr ""
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:98
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:106
 #, qt-format
 msgctxt "Unit cell matrix, arg is vector style (row or column"
 msgid "Fractional Cell Matrix (%1)"
 msgstr ""
 
-#: src/extensions/crystallography/ui/cematrixeditor.cpp:251
+#: src/extensions/crystallography/ui/cematrixeditor.cpp:187
 msgid "Set Unit Cell Matrix"
 msgstr ""
 
@@ -1474,7 +1482,7 @@ msgstr "&Meccanica Molecolare"
 
 #: src/extensions/forcefieldextension.cpp:190
 #: src/extensions/forcefieldextension.cpp:215
-#: src/extensions/forcefieldextension.cpp:237
+#: src/extensions/forcefieldextension.cpp:245
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
@@ -1485,31 +1493,31 @@ msgstr ""
 msgid "Energy = %L1 %2"
 msgstr "Energia = %L1 %2"
 
-#: src/extensions/forcefieldextension.cpp:249
+#: src/extensions/forcefieldextension.cpp:265
 msgid "Geometric Optimization"
 msgstr "Ottimizzazione di Geometria"
 
-#: src/extensions/forcefieldextension.cpp:576
+#: src/extensions/forcefieldextension.cpp:592
 msgid "Forcefield Optimization"
 msgstr "Ottimizzazione del campo di forze"
 
-#: src/extensions/forcefieldextension.cpp:577
-#: src/extensions/forcefieldextension.cpp:580
-#: src/extensions/forcefieldextension.cpp:583
-#: src/extensions/forcefieldextension.cpp:586
+#: src/extensions/forcefieldextension.cpp:593
+#: src/extensions/forcefieldextension.cpp:596
+#: src/extensions/forcefieldextension.cpp:599
+#: src/extensions/forcefieldextension.cpp:602
 #: src/extensions/trajvideomaker.cpp:67
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/extensions/forcefieldextension.cpp:579
+#: src/extensions/forcefieldextension.cpp:595
 msgid "Systematic Rotor Search"
 msgstr "Ricerca sistematica dei rotori"
 
-#: src/extensions/forcefieldextension.cpp:582
+#: src/extensions/forcefieldextension.cpp:598
 msgid "Random Rotor Search"
 msgstr "Ricerca casuale dei rotori"
 
-#: src/extensions/forcefieldextension.cpp:585
+#: src/extensions/forcefieldextension.cpp:601
 msgid "Weighted Rotor Search"
 msgstr "Ricerca pesata dei rotori"
 
@@ -3461,7 +3469,7 @@ msgstr ""
 msgid "Molecule %1"
 msgstr "Molecola %1"
 
-#: src/periodictableview.cpp:43
+#: src/periodictableview.cpp:49
 msgid "Periodic Table"
 msgstr "Tavola periodica"
 
@@ -3893,7 +3901,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3875
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3881
 msgid "Add Atom"
 msgstr "Aggiungi Atomo"
 
@@ -3941,33 +3949,33 @@ msgstr "Disegna Legame"
 msgid "Draw"
 msgstr "Disegna"
 
-#: src/tools/drawtool.cpp:784
+#: src/tools/drawtool.cpp:785
 msgid "Element:"
 msgstr "Elemento:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:811:2200
+#: src/tools/drawtool.cpp:812:2200
 msgid "Other..."
 msgstr "Altro..."
 
-#: src/tools/drawtool.cpp:815
+#: src/tools/drawtool.cpp:816
 msgid "Bond Order:"
 msgstr "Ordine Legami:"
 
-#: src/tools/drawtool.cpp:820
+#: src/tools/drawtool.cpp:821
 msgid "Single"
 msgstr "Singolo"
 
-#: src/tools/drawtool.cpp:821
+#: src/tools/drawtool.cpp:822
 msgid "Double"
 msgstr "Doppio"
 
-#: src/tools/drawtool.cpp:822
+#: src/tools/drawtool.cpp:823
 msgid "Triple"
 msgstr "Triplo"
 
-#: src/tools/drawtool.cpp:837
+#: src/tools/drawtool.cpp:838
 msgid "Adjust Hydrogens"
 msgstr "Satura con Idrogeni"
 
@@ -5004,14 +5012,14 @@ msgid "Cell Matrix"
 msgstr "matrice-Z MOPAC"
 
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:62
-#. i18n: ectx: property (html), widget (QTextEdit, edit_matrix)
+#. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
 "\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Monospace'; font-size:13pt; font-"
+"</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
@@ -9312,6 +9320,16 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
 msgid "Show occupied orbitals first"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:113
+#. i18n: ectx: property (text), widget (QCheckBox, cb_limit_precalc)
+msgid "Limit orbital precalculations to "
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:123
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "orbitals around HOMO/LUMO"
 msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
