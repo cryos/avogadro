@@ -151,6 +151,29 @@ namespace Avogadro
                               double radius) = 0;
 
     /**
+     * Draws a cylinder that is clipped by the indicated plane.
+     * @param end1 the position of the first end of the cylinder.
+     * @param end2 the position of the second end of the cylinder.
+     * @param radius the radius of the cylinder.
+     * @param normal A vector normal to the clipping plane.
+     * @param point A point in the clipping plane.
+     * @note If the painter does not implement this function, an unclipped
+     * cylinder will be drawn with drawCylinder().
+     * @warning Due to more efficent caching in most cases (e.g. GL painters),
+     * use drawCylinder() unless the cylinder must be clipped.
+     */
+    virtual void drawClippedCylinder(const Eigen::Vector3d &end1,
+                                     const Eigen::Vector3d &end2,
+                                     double radius,
+                                     const Eigen::Vector3d &normal,
+                                     const Eigen::Vector3d &point)
+    {
+      Q_UNUSED(normal);
+      Q_UNUSED(point);
+      this->drawCylinder(end1, end2, radius);
+    }
+
+    /**
      * Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
      * detail level based on the apparent radius (ratio of radius over distance) and the
      * global quality setting.

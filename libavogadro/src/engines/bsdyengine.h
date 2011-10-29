@@ -28,12 +28,20 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
 #include "ui_bsdysettingswidget.h"
+
+namespace OpenBabel {
+  class OBUnitCell;
+}
 
 namespace Avogadro {
 
   //! Ball and Stick Engine class.
   class Atom;
+  class Bond;
   class BSDYSettingsWidget;
   class BSDYEngine : public Engine
   {
@@ -80,6 +88,32 @@ namespace Avogadro {
 
     private:
       double radius(const Atom *atom) const;
+
+      /**
+       * Find where @a bond intersects the @a planes in such a way that the
+       * bonds must be rendered differently. Returns the number of valid
+       * intersections.
+       */
+      int findCellIntersections(const Bond *bond,
+                                Eigen::Vector3d &imageVector,
+                                Eigen::Vector3d &shortestBondVector,
+                                OpenBabel::OBUnitCell *cell,
+                                Eigen::Hyperplane<double, 3> planes[6],
+                                double intParams[6],
+                                int validIntersections[3]);
+
+      bool renderIntracellBond(const Bond *bond, PainterDevice *pd,
+                               Color *map, double extraRadius = 0.0);
+      bool renderIntercellBond(const Bond *bond, PainterDevice *pd,
+                               Color *map,
+                               OpenBabel::OBUnitCell *cell,
+                               const Eigen::Vector3d &imageVector,
+                               const Eigen::Vector3d &shortestVector,
+                               Eigen::Hyperplane<double, 3> planes[6],
+                               double intParams[6],
+                               int validIntersections[3],
+                               int numValidIntersections,
+                               double extraRadius = 0.0);
 
       BSDYSettingsWidget *m_settingsWidget;
 

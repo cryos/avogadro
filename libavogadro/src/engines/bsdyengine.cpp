@@ -32,11 +32,19 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
+#include <avogadro/obeigenconv.h>
 
-#include <QGLWidget> // for OpenGL bits
-#include <QDebug>
+#include <QtCore/QDebug>
+
+#include <QtOpenGL/QGLWidget> // for OpenGL bits
 
 #include <openbabel/mol.h>
+#include <openbabel/math/vector3.h>
+
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
+#include <limits>
 
 using namespace std;
 using namespace Eigen;
@@ -130,8 +138,6 @@ namespace Avogadro
 
   bool BSDYEngine::renderOpaque( PainterDevice *pd )
   {
-//    glPushAttrib( GL_TRANSFORM_BIT );
-
     // Render the opaque balls & sticks if m_alpha is 1
     if (m_alpha < 0.999) {
       return true;
@@ -139,39 +145,59 @@ namespace Avogadro
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    // Render the bonds
-    foreach(const Bond *b, bonds()) {
-      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
-      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-      if (!atom1 || !atom2) {
-        qDebug() << "Invalid bond atom IDs" << b->beginAtomId() << atom1
-                 << b->endAtomId() << atom2 << "Bond" << b->id();
-        continue;
+    // Render the bonds. If there is no unit cell, render as intracell
+    OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
+    if (cell == NULL) {
+      foreach(const Bond *b, bonds()) {
+        this->renderIntracellBond(b, pd, map);
       }
+    }
+    // Otherwise, test to see if each bond crosses the unit cell bounds.
+    // If it does not, render intracell.
+    // If it does, find the planes it crosses and render it intercell.
+    else {
+      // First, cache some cell data
+      std::vector<OpenBabel::vector3> obvecs = cell->GetCellVectors();
+      const Eigen::Vector3d v1 (obvecs.at(0).AsArray());
+      const Eigen::Vector3d v2 (obvecs.at(1).AsArray());
+      const Eigen::Vector3d v3 (obvecs.at(2).AsArray());
+      const Eigen::Vector3d origin (cell->GetOffset().AsArray());
+      const Eigen::Vector3d diagonal (origin + v1 + v2 + v3);
+      const Eigen::Vector3d v1xv2 (v1.cross(v2).normalized());
+      const Eigen::Vector3d v2xv3 (v2.cross(v3).normalized());
+      const Eigen::Vector3d v3xv1 (v3.cross(v1).normalized());
 
-      Vector3d v1(*atom1->pos());
-      Vector3d v2(*atom2->pos());
-      Vector3d d = v2 - v1;
-      d.normalize();
-      Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) / 2);
+      // Calculate the planes:
+      Hyperplane<double, 3> planes[6];
+      planes[0] = Hyperplane<double, 3> (v1xv2, origin);
+      planes[1] = Hyperplane<double, 3> (v2xv3, origin);
+      planes[2] = Hyperplane<double, 3> (v3xv1, origin);
+      planes[3] = Hyperplane<double, 3> (v1xv2, diagonal);
+      planes[4] = Hyperplane<double, 3> (v2xv3, diagonal);
+      planes[5] = Hyperplane<double, 3> (v3xv1, diagonal);
 
-      double shift = 0.15;
-      int order = 1;
-      if (m_showMulti) order = b->order();
+      // data structures used in loop:
+      Vector3d imageVector;
+      Vector3d shortestBondVector;
+      int validIntersections[3];
+      double intParams[6];
 
-      map->setFromPrimitive(atom1);
-      if (atom1->customColorName().isEmpty())
-        pd->painter()->setColor( map );
-      else
-        pd->painter()->setColor(atom1->customColorName());
-      pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
+      // Check each bond for intersections with the unit cell planes.
+      foreach(const Bond *b, bonds()) {
+        int numInts = this->findCellIntersections(b, imageVector,
+                                                  shortestBondVector, cell,
+                                                  planes, intParams,
+                                                  validIntersections);
 
-      map->setFromPrimitive(atom2);
-      if (atom2->customColorName().isEmpty())
-        pd->painter()->setColor( map );
-      else
-        pd->painter()->setColor(atom2->customColorName());
-      pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
+        if (numInts > 0) {
+          this->renderIntercellBond(b, pd, map, cell, imageVector,
+                                    shortestBondVector, planes, intParams,
+                                    validIntersections, numInts);
+        }
+        else {
+          this->renderIntracellBond(b, pd, map);
+        }
+      }
     }
 
     glDisable( GL_NORMALIZE );
@@ -190,8 +216,6 @@ namespace Avogadro
     // normalize normal vectors of bonds
     glDisable( GL_RESCALE_NORMAL );
     glEnable( GL_NORMALIZE );
-
-//    glPopAttrib();
 
     return true;
   }
@@ -223,48 +247,77 @@ namespace Avogadro
 
     glDisable( GL_RESCALE_NORMAL );
     glEnable( GL_NORMALIZE );
-    foreach(const Bond *b, bonds()) {
-      // If the bond is not selected and balls and sticks are opaque do not render it
-      if (!pd->isSelected(b) && m_alpha > 0.999) continue;
-
-      Atom* atom1 = pd->molecule()->atomById(b->beginAtomId());
-      Atom* atom2 = pd->molecule()->atomById(b->endAtomId());
-      if (!atom1 || !atom2) {
-        qDebug() << "Invalid bond atom IDs" << b->beginAtomId() << atom1
-                 << b->endAtomId() << atom2 << "Bond" << b->id();
-        continue;
-      }
-
-      Vector3d v1(*atom1->pos());
-      Vector3d v2(*atom2->pos());
-      Vector3d d = v2 - v1;
-      d.normalize();
-      Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) / 2);
-
-      double shift = 0.15;
-      int order = 1;
-      if (m_showMulti) order = b->order();
-
-      // The "inner" bond has to be rendered first.
-      if (m_alpha < 0.999 && m_alpha > 0.001) {
-        map->setFromPrimitive(atom1);
-        map->setAlpha(m_alpha);
-        pd->painter()->setColor( map );
-        pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
-
-        map->setFromPrimitive(atom2);
-        map->setAlpha(m_alpha);
-        pd->painter()->setColor( map );
-        pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
-      }
-
-      // Render the selected bond.
-      if (pd->isSelected(b)) {
-        pd->painter()->setColor(&selectionMap);
-        pd->painter()->drawMultiCylinder( v1, v2,
-                           SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
+    // Render the bonds. If there is no unit cell, render as intracell
+    OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
+    if (cell == NULL) {
+      foreach(const Bond *b, bonds()) {
+        // If the bond is not selected and balls and sticks are opaque do not render it
+        if (!pd->isSelected(b) && m_alpha > 0.999)
+          continue;
+        this->renderIntracellBond(b, pd, map);
       }
     }
+    // Otherwise, test to see if each bond crosses the unit cell bounds.
+    // If it does not, render intracell.
+    // If it does, find the planes it crosses and render it intercell.
+    else {
+      // First, cache some cell data
+      std::vector<OpenBabel::vector3> obvecs = cell->GetCellVectors();
+      const Eigen::Vector3d v1 (obvecs.at(0).AsArray());
+      const Eigen::Vector3d v2 (obvecs.at(1).AsArray());
+      const Eigen::Vector3d v3 (obvecs.at(2).AsArray());
+      const Eigen::Vector3d origin (cell->GetOffset().AsArray());
+      const Eigen::Vector3d diagonal (origin + v1 + v2 + v3);
+      const Eigen::Vector3d v1xv2 (v1.cross(v2).normalized());
+      const Eigen::Vector3d v2xv3 (v2.cross(v3).normalized());
+      const Eigen::Vector3d v3xv1 (v3.cross(v1).normalized());
+
+      // Calculate the planes:
+      Hyperplane<double, 3> planes[6];
+      planes[0] = Hyperplane<double, 3> (v1xv2, origin);
+      planes[1] = Hyperplane<double, 3> (v2xv3, origin);
+      planes[2] = Hyperplane<double, 3> (v3xv1, origin);
+      planes[3] = Hyperplane<double, 3> (v1xv2, diagonal);
+      planes[4] = Hyperplane<double, 3> (v2xv3, diagonal);
+      planes[5] = Hyperplane<double, 3> (v3xv1, diagonal);
+
+      // data structures used in loop:
+      Vector3d imageVector;
+      Vector3d shortestBondVector;
+      int validIntersections[3];
+      double intParams[6];
+
+      // Check each bond for intersections with the unit cell planes.
+      foreach(const Bond *b, bonds()) {
+        // If the bond is not selected and balls and sticks are opaque do not render it
+        if (!pd->isSelected(b) && m_alpha > 0.999)
+          continue;
+        int numInts = this->findCellIntersections(b, imageVector,
+                                                  shortestBondVector, cell,
+                                                  planes, intParams,
+                                                  validIntersections);
+
+        if (numInts > 0) {
+          this->renderIntercellBond(b, pd, map, cell, imageVector,
+                                    shortestBondVector, planes, intParams,
+                                    validIntersections, numInts);
+          if (pd->isSelected(b)) {
+            this->renderIntercellBond(b, pd, &selectionMap, cell, imageVector,
+                                      shortestBondVector, planes, intParams,
+                                      validIntersections, numInts,
+                                      SEL_BOND_EXTRA_RADIUS);
+          }
+        }
+        else {
+          this->renderIntracellBond(b, pd, map);
+          if (pd->isSelected(b)) {
+            this->renderIntracellBond(b, pd, &selectionMap,
+                                      SEL_BOND_EXTRA_RADIUS);
+          }
+        }
+      }
+    }
+
     return true;
   }
 
@@ -329,12 +382,63 @@ namespace Avogadro
 
   bool BSDYEngine::renderPick(PainterDevice *pd)
   {
-    // Render the bonds
-    foreach(Bond *b, bonds()) {
-      pd->painter()->setName(b);
-      // Add a slight slop factor to make it easier to pick
-      // (e.g., for bond-centric tool)
-      pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), m_bondRadius+0.05);
+    // Render the bonds. If there is no unit cell, render as intracell
+    OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
+    const double bondPickPadding = 0.05;
+    if (cell == NULL) {
+      foreach(const Bond *b, bonds()) {
+        pd->painter()->setName(b);
+        this->renderIntracellBond(b, pd, NULL, bondPickPadding);
+      }
+    }
+    // Otherwise, test to see if each bond crosses the unit cell bounds.
+    // If it does not, render intracell.
+    // If it does, find the planes it crosses and render it intercell.
+    else {
+      // First, cache some cell data
+      std::vector<OpenBabel::vector3> obvecs = cell->GetCellVectors();
+      const Eigen::Vector3d v1 (obvecs.at(0).AsArray());
+      const Eigen::Vector3d v2 (obvecs.at(1).AsArray());
+      const Eigen::Vector3d v3 (obvecs.at(2).AsArray());
+      const Eigen::Vector3d origin (cell->GetOffset().AsArray());
+      const Eigen::Vector3d diagonal (origin + v1 + v2 + v3);
+      const Eigen::Vector3d v1xv2 (v1.cross(v2).normalized());
+      const Eigen::Vector3d v2xv3 (v2.cross(v3).normalized());
+      const Eigen::Vector3d v3xv1 (v3.cross(v1).normalized());
+
+      // Calculate the planes:
+      Hyperplane<double, 3> planes[6];
+      planes[0] = Hyperplane<double, 3> (v1xv2, origin);
+      planes[1] = Hyperplane<double, 3> (v2xv3, origin);
+      planes[2] = Hyperplane<double, 3> (v3xv1, origin);
+      planes[3] = Hyperplane<double, 3> (v1xv2, diagonal);
+      planes[4] = Hyperplane<double, 3> (v2xv3, diagonal);
+      planes[5] = Hyperplane<double, 3> (v3xv1, diagonal);
+
+      // data structures used in loop:
+      Vector3d imageVector;
+      Vector3d shortestBondVector;
+      int validIntersections[3];
+      double intParams[6];
+
+      // Check each bond for intersections with the unit cell planes.
+      foreach(const Bond *b, bonds()) {
+        pd->painter()->setName(b);
+        int numInts = this->findCellIntersections(b, imageVector,
+                                                  shortestBondVector, cell,
+                                                  planes, intParams,
+                                                  validIntersections);
+
+        if (numInts > 0) {
+          this->renderIntercellBond(b, pd, NULL, cell, imageVector,
+                                    shortestBondVector, planes, intParams,
+                                    validIntersections, numInts,
+                                    bondPickPadding);
+        }
+        else {
+          this->renderIntracellBond(b, pd, NULL, bondPickPadding);
+        }
+      }
     }
 
     // Render the atoms
@@ -351,6 +455,230 @@ namespace Avogadro
     return true;
   }
 
+  bool BSDYEngine::renderIntracellBond(const Bond *bond, PainterDevice *pd,
+                                       Color *map, double extraRadius)
+  {
+    Atom* atom1 = pd->molecule()->atomById(bond->beginAtomId());
+    Atom* atom2 = pd->molecule()->atomById(bond->endAtomId());
+    if (!atom1 || !atom2) {
+      qDebug() << "Invalid bond atom IDs" << bond->beginAtomId() << atom1
+               << bond->endAtomId() << atom2 << "Bond" << bond->id();
+      return true;
+    }
+
+    Vector3d v1(*atom1->pos());
+    Vector3d v2(*atom2->pos());
+    Vector3d d = v2 - v1;
+    d.normalize();
+    Vector3d v3((v1 + v2 + d*(radius(atom1) - radius(atom2))) * 0.5);
+
+    double shift = 0.15;
+    int order = 1;
+    if (m_showMulti) order = bond->order();
+
+    if (map != NULL) {
+      map->setFromPrimitive(atom1);
+      map->setAlpha(m_alpha);
+      if (atom1->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom1->customColorName());
+    }
+    pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius + extraRadius,
+                                      order, shift );
+
+    if (map != NULL) {
+      map->setFromPrimitive(atom2);
+      map->setAlpha(m_alpha);
+      if (atom2->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom2->customColorName());
+    }
+    pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius + extraRadius,
+                                      order, shift );
+    return true;
+  }
+
+  bool BSDYEngine::renderIntercellBond(const Bond *bond, PainterDevice *pd,
+                                       Color *map,
+                                       OpenBabel::OBUnitCell *cell,
+                                       const Eigen::Vector3d &imageVector,
+                                       const Eigen::Vector3d &shortestBondVector,
+                                       Eigen::Hyperplane<double, 3> planes[6],
+                                       double intParams[6],
+                                       int validIntersections[3],
+                                       int numValidIntersections,
+                                       double extraRadius)
+  {
+    // Render as intracell if no intersections detected
+    if (numValidIntersections == 0) {
+      return this->renderIntracellBond(bond, pd, map, extraRadius);
+    }
+
+    // Get atom positions.
+    Atom* atom1 = pd->molecule()->atomById(bond->beginAtomId());
+    Atom* atom2 = pd->molecule()->atomById(bond->endAtomId());
+    if (!atom1 || !atom2) {
+      qDebug() << "Invalid bond atom IDs" << bond->beginAtomId() << atom1
+               << bond->endAtomId() << atom2 << "Bond" << bond->id();
+      return true;
+    }
+
+    const Vector3d &begPos (*atom1->pos());
+    const Vector3d &endPos (*atom2->pos());
+
+    // Determine clipping planes
+    const Vector3d &normal1 (planes[validIntersections[0]].normal());
+    const Vector3d origin1 (planes[validIntersections[0]].offset()
+                            * -normal1);
+
+    const int endClipPlaneIndex = numValidIntersections - 1;
+    const Vector3d &normal2
+        (planes[validIntersections[endClipPlaneIndex]].normal());
+    const Vector3d origin2
+        (planes[validIntersections[endClipPlaneIndex]].offset()
+         * -normal2 - imageVector);
+
+    // Render clipped bonds (atoms->boundary)
+    if (map != NULL) {
+      map->setFromPrimitive(atom1);
+      map->setAlpha(m_alpha);
+      if (atom1->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom1->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(begPos, endPos + imageVector,
+                                       m_bondRadius + extraRadius,
+                                       normal1, origin1);
+
+    if (map != NULL) {
+      map->setFromPrimitive(atom2);
+      map->setAlpha(m_alpha);
+      if (atom2->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom2->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(endPos, begPos - imageVector,
+                                       m_bondRadius + extraRadius,
+                                       -normal2, origin2);
+
+    // We're done if there is only one valid intersection:
+    if (numValidIntersections == 1)
+      return true;
+
+    // If there is more more than one valid intersection, we'll need to
+    // stitch together a few more clipped cylinders to fill in gaps.
+    // Eg. in 2D, the left figure has multiple intersections with the cell,
+    // and the missing bits are quite obvious.
+    //                                                                      //
+    //  +---------+---------+     +--\------+-\-------+                     //
+    //  |   \   O |  \    O |     |   \   O |  \    O |                     //
+    //  |    O   \|   O    \|     |    O   \|   O    \|                     //
+    //  |         |         |     \         \         \                     //
+    //  |         |         |     |\        |\        |                     //
+    //  +---------+---------+ --> +-\-------+-\-------+                     //
+    //  |   \   O |  \    O |     |  \    O |  \    O |                     //
+    //  |    O   \|   O    \|     |   O    \|   O    \|                     //
+    //  |         |         |     \         \         \                     //
+    //  |         |         |     |\        |\        |                     //
+    //  +---------+---------+     +-\-------+-\-------+                     //
+    //                                                                      //
+    // First stitch together intersections at index 0 and 1
+    int beginIndex = validIntersections[0];
+    int endIndex = validIntersections[1];
+    const Vector3d &normal3 (planes[endIndex].normal());
+    const Vector3d origin3 (planes[endIndex].offset() * -normal3);
+
+    // Find the center of the segment image that lies within the unit cell
+    const Vector3d normalizedBondVector (shortestBondVector.normalized());
+    const Vector3d origSegment1Center
+        (begPos + 0.5 * (intParams[beginIndex] + intParams[endIndex])
+         * normalizedBondVector);
+    const Vector3d segment1Center =
+        OB2Eigen(cell->WrapCartesianCoordinate(Eigen2OB(origSegment1Center)));
+    const Vector3d segment1ImageVector (segment1Center - origSegment1Center);
+
+    // Render clipped bonds (boundary->boundary)
+    if (map != NULL) {
+      map->setFromPrimitive(atom1);
+      map->setAlpha(m_alpha);
+      if (atom1->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom1->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(segment1Center,
+                                       begPos + segment1ImageVector,
+                                       m_bondRadius + extraRadius,
+                                       -normal1,
+                                       origin1 + segment1ImageVector);
+
+    if (map != NULL) {
+      map->setFromPrimitive(atom2);
+      map->setAlpha(m_alpha);
+      if (atom2->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom2->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(segment1Center,
+                                       begPos + segment1ImageVector + shortestBondVector,
+                                       m_bondRadius + extraRadius,
+                                       -normal3,
+                                       origin3 + segment1ImageVector);
+
+    // We're done if there are only 2 intersections.
+    if (numValidIntersections == 2)
+      return true;
+
+    // Otherwise stitch together intersections at index 1 and 2
+    beginIndex = validIntersections[1];
+    endIndex = validIntersections[2];
+    const Vector3d &normal4 (planes[endIndex].normal());
+    const Vector3d origin4 (planes[endIndex].offset() * -normal4);
+
+    // Find the center of the segment image that lies within the unit cell
+    const Vector3d origSegment2Center
+        (begPos + 0.5 * (intParams[beginIndex] + intParams[endIndex])
+         * normalizedBondVector);
+    const Vector3d segment2Center =
+        OB2Eigen(cell->WrapCartesianCoordinate(Eigen2OB(origSegment2Center)));
+    const Vector3d segment2ImageVector (segment2Center - origSegment2Center);
+
+    // Render clipped bonds (boundary->boundary)
+    if (map != NULL) {
+      map->setFromPrimitive(atom1);
+      map->setAlpha(m_alpha);
+      if (atom1->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom1->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(segment2Center,
+                                       begPos + segment2ImageVector,
+                                       m_bondRadius + extraRadius,
+                                       -normal3,
+                                       origin3 + segment2ImageVector);
+
+    if (map != NULL) {
+      map->setFromPrimitive(atom2);
+      map->setAlpha(m_alpha);
+      if (atom2->customColorName().isEmpty())
+        pd->painter()->setColor( map );
+      else
+        pd->painter()->setColor(atom2->customColorName());
+    }
+    pd->painter()->drawClippedCylinder(segment2Center,
+                                       begPos + segment2ImageVector + shortestBondVector,
+                                       m_bondRadius + extraRadius,
+                                       -normal4,
+                                       origin4 + segment2ImageVector);
+    return true;
+  }
+
   inline double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->customRadius())
@@ -360,6 +688,88 @@ namespace Avogadro
         return pRadius(atom) * m_atomRadiusPercentage;
     }
     return m_atomRadiusPercentage;
+  }
+
+  int BSDYEngine::findCellIntersections(const Bond *bond,
+                                        Eigen::Vector3d &imageVector,
+                                        Eigen::Vector3d &shortestBondVector,
+                                        OpenBabel::OBUnitCell *cell,
+                                        Eigen::Hyperplane<double, 3> planes[6],
+                                        double intParams[6],
+                                        int validIntersections[3])
+  {
+    const Vector3d &begPos = *bond->beginPos();
+    const Vector3d &endPos = *bond->endPos();
+
+    // Find the shortest bond vector
+    const Vector3d origBondVector (endPos - begPos);
+
+    const Matrix3d cellMatrixT = OB2Eigen(cell->GetCellMatrix()).transpose();
+    Vector3d shift(0,0,0);
+    double minLengthSq = numeric_limits<double>::max();
+
+    // Loop through all neighboring unit cells
+    Vector3d aTrans;
+    Vector3d bTrans;
+    Vector3d curImage;
+    for (int aInd = -1; aInd <= 1; ++aInd) {
+      aTrans = cellMatrixT.col(0) * aInd;
+      for (int bInd = -1; bInd <= 1; ++bInd) {
+        bTrans = cellMatrixT.col(1) * bInd;
+        for (int cInd = -1; cInd <= 1; ++cInd) {
+          curImage = aTrans + bTrans + (cellMatrixT.col(2) * cInd);
+          double lengthSq = (origBondVector + curImage).squaredNorm();
+          if (lengthSq < minLengthSq) {
+            minLengthSq = lengthSq;
+            shift = curImage;
+          }
+        }
+      }
+    }
+
+    shortestBondVector = origBondVector + shift;
+
+    // If we're in the original cell, render intracell.
+    if (shortestBondVector.isApprox(origBondVector, 1e-4)) {
+      return 0;
+    }
+
+    const double shortestBondLength = shortestBondVector.norm();
+    const Vector3d normalizedShortestBondVector =
+        shortestBondVector / shortestBondLength;
+
+    // Find the image vector, which points from the image end atom to
+    // the original end atom
+    imageVector = (begPos + shortestBondVector) - endPos;
+    ParametrizedLine<double, 3> bondLine (begPos,
+                                          normalizedShortestBondVector);
+
+    // Find all intersections with param between 0 and shortestBondLength
+    int numValidIntersections = 0;
+    for (int i = 0; i < 6; ++i) {
+      Q_ASSERT_X(numValidIntersections <= 3, Q_FUNC_INFO,
+                 "Too many unit cell intersections for one bond!");
+      intParams[i] = bondLine.intersection(planes[i]);
+      if (intParams[i] >= 0.0 && intParams[i] <= shortestBondLength)
+        validIntersections[numValidIntersections++] = i;
+    }
+
+    // Sort valid intersections by intParam
+    for (int i = 0; i < numValidIntersections; ++i) {
+      int index1 = validIntersections[i];
+      double param1 = intParams[index1];
+      for (int j = i + 1; j < numValidIntersections; ++j) {
+        int index2 = validIntersections[j];
+        double param2 = intParams[index2];
+        if (param2 < param1) {
+          qSwap(validIntersections[i], validIntersections[j]);
+          qSwap(index1, index2);
+          qSwap(param1, param2);
+        }
+      }
+    }
+
+    return numValidIntersections;
   }
 
   void BSDYEngine::setAtomRadiusPercentage(int value)

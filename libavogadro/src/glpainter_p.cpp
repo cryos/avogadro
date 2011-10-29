@@ -30,6 +30,7 @@
 #include "glwidget.h"
 #include "camera.h"
 #include "sphere_p.h"
+#include "clippedcylinder_p.h"
 #include "cylinder_p.h"
 #include "textrenderer_p.h"
 
@@ -381,6 +382,17 @@ namespace Avogadro
     pushName();
     d->cylinders[detailLevel]->draw ( end1, end2, radius );
     popName();
+  }
+
+  void GLPainter::drawClippedCylinder(
+      const Eigen::Vector3d &end1, const Eigen::Vector3d &end2, double radius,
+      const Eigen::Vector3d &normal, const Eigen::Vector3d &point)
+  {
+    d->color.applyAsMaterials();
+    pushName();
+    ClippedCylinder::draw(end1, end2, radius, normal, point, 32);
+    popName();
+
   }
 
   void GLPainter::drawMultiCylinder ( const Eigen::Vector3d &end1, const Eigen::Vector3d &end2,

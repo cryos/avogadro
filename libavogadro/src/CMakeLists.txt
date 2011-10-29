@@ -69,6 +69,7 @@ set(libavogadro_SRCS
   atom.cpp
   bond.cpp
   camera.cpp
+  clippedcylinder_p.cpp
   color.cpp
   colorbutton.cpp
   cube.cpp
