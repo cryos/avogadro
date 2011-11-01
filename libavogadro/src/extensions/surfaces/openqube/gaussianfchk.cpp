@@ -166,6 +166,24 @@ void GaussianFchk::load(GaussianSet* basis)
       case -3:
         type = F7;
         break;
+      case 4:
+        type = G;
+        break;
+      case -4:
+        type = G9;
+        break;
+      case 5:
+        type = H;
+        break;
+      case -5:
+        type = H11;
+        break;
+      case 6:
+        type = I;
+        break;
+      case -6:
+        type = I13;
+        break;
       default:
         type = S;
       }
