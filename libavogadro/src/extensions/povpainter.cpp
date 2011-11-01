@@ -38,6 +38,8 @@
 #include <QApplication>
 #include <Eigen/Geometry>
 
+#include <GL/glu.h>
+
 namespace Avogadro
 {
   class POVPainterPrivate

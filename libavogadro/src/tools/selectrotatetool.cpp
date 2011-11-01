@@ -49,6 +49,8 @@
 #include <QInputDialog>
 #include <QPushButton>
 
+#include <GL/glu.h>
+
 using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
