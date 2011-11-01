@@ -33,7 +33,7 @@ struct GaussianShell;
 /**
  * Enumeration of the Gaussian type orbitals.
  */
-enum orbital { S, SP, P, D, D5, F, F7, UU };
+ enum orbital { S, SP, P, D, D5, F, F7, G, G9, H, H11, I, I13, UU };
 
 /**
  * @class GaussianSet gaussianset.h
