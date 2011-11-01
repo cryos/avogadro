@@ -87,10 +87,28 @@ unsigned int GaussianSet::addBasis(unsigned int atom, orbital type)
     m_numMOs += 5;
     break;
   case F:
-    m_numMOs += 8;
+    m_numMOs += 10;
     break;
   case F7:
     m_numMOs += 7;
+    break;
+  case G:
+    m_numMOs += 15;
+    break;
+  case G9:
+    m_numMOs += 9;
+    break;
+  case H:
+    m_numMOs += 21;
+    break;
+  case H11:
+    m_numMOs += 11;
+    break;
+  case I:
+    m_numMOs += 28;
+    break;
+  case I13:
+    m_numMOs += 13;
     break;
   default:
     // Should never hit here
@@ -236,6 +254,8 @@ void GaussianSet::initCalculation()
 
   // Initialise the new data structures that are hopefully more efficient
   unsigned int indexMO = 0;
+  unsigned int skip = 0; // for unimplemented shells
+
   m_moIndices.resize(m_symmetry.size());
   // Add a final entry to the gtoIndices
   m_gtoIndices.push_back(m_gtoA.size());
@@ -302,17 +322,28 @@ void GaussianSet::initCalculation()
       }
       break;
     case F:
-      m_moIndices[i] = indexMO;
-      indexMO += 8;
-      m_cIndices.push_back(m_gtoCN.size());
-      qDebug() << "F Basis set not handled - results may be incorrect.";
-      break;
+      skip = 10;
     case F7:
+      skip = 7;
+    case G:
+      skip = 15;
+    case G9:
+      skip = 9;
+    case H:
+      skip = 21;
+    case H11:
+      skip = 11;
+    case I:
+      skip = 28;
+    case I13:
+      skip = 13;
+
       m_moIndices[i] = indexMO;
-      indexMO += 7;
+      indexMO += skip;
       m_cIndices.push_back(m_gtoCN.size());
-      qDebug() << "F7 Basis set not handled - results may be incorrect.";
+      qDebug() << "Basis set not handled - results may be incorrect.";
       break;
+
     default:
       qDebug() << "Basis set not handled - results may be incorrect.";
     }
