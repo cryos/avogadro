@@ -1,0 +1,18 @@
+
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
+Avant de pouvoir utiliser les plugins, il est nécessaire de les installer. 
+Voir les fichiers INSTALL_*.txt.
+
+Une fois l'installation réalisée :
+
+  1. Ouvrez Avogadro
+  2. Allez dans le menu Extension -> Wiimote -> Connect
+  3. Pressez les touches 1 et 2 de la Wiimote
+     (ATTENTION, vous avez 5s pour connecter la Wiimote,
+      si aucune LED de la Wiimote n'est allumé,
+      vous devez repartir à l'étape 2)
+  4. Si une lumière bleue est allumée sur la Wiimote, elle est prête à être utilisée.
+  

@@ -1,0 +1,147 @@
+---------------------------
+-
+-  README - Wiiusecpp
+-
+---------------------------
+
+Available from:
+http://missioncognition.net/
+
+Wiiuse C library available from:
+http://wiiuse.net/
+http://wiiuse.sourceforge.net/
+http://sourceforge.net/projects/wiiuse/
+
+---------------------------
+
+ABOUT
+
+	Wiiusecpp is a C++ wrapper for the wiiuse C library for Nintendo Wii remotes.  The library
+	creates class wrappers around the wiiuse wiimote data structures and provides member functions
+	to peform access to those data structures.  Mangement of the wiimote pointers and passing them
+	to the wiiuse library is handled by the class libraries.  The library attempts to create a
+	useful set of classes and class heirarchy for the wiimote functionality including motion sensing,
+	IR tracking, and the expansion controllers supported by wiiuse (nunchuk, classic, Guitar Hero 3).
+
+	It is expected that the classic and GH3 controllers will work correctly but I don't own either
+	so I have not tested them. I have only tested wiiusecpp and wiiuse on a linux system so while
+	I expect this to work cross platform there may be some minor fixes required.  Please email me
+	if you can verify operation on windows.  If you want to use wiiusecpp on OS X and you are a
+	developer get in contact with para over at wiiuse.net -- wiiuse does not yet run on it.
+
+	The original motivation for the creation of this library was to facilitate a Python SWIG wrapper
+	for the wiiuse library pywii (also available from http://missioncognition.net/).  I consider this
+	a functioning alpha release so while it should operate fine, the API may change based on user
+	feedback on the usablility and consistency of the design of either the C++ or Python implementations.
+
+	Distributed under the GPL and LGPL.
+
+AUTHORS
+
+	Jim Thomas
+	Email: jt@missioncognition.net
+
+LICENSE
+
+	There are two licenses for wiiusecpp (same as wiiuse).  Please read them carefully before
+	developing using wiiusecpp under either license.  You may of course at any time switch the
+	license you are currently using to the other.
+
+	Briefly, the license options are:
+
+		a) GNU LGPL (modified for non-commercial usage only)
+		b) GNU GPL
+
+	PLEASE READ THE LICENSES!
+
+ACKNOWLEDGEMENTS
+
+	http://wiiuse.net/
+		Developer of a fine, cross platform, wiimote library without which this library
+		would not exist.
+
+
+DISCLAIMER AND WARNINGS
+
+	I am in no way responsible for any damages or effects, intended or not, caused by this program.
+
+	*** WARNING *** WARNING *** WARNING ***
+
+	Be aware that writing to memory may damage or destroy your wiimote or expansions.
+
+	*** WARNING *** WARNING *** WARNING ***
+
+	This program was written using reverse engineered specifications available from wiibrew.org.
+	Therefore the operation of this program may not be entirely correct.
+	Results obtained by using this program may vary.
+
+
+AUDIENCE
+
+	This project is intended for developers who wish to include support for the Nintendo Wii remote
+	with their third party application.  Please be aware that by using this software you are bound
+	to the terms of the GNU GPL.
+
+
+PLATFORMS AND DEPENDENCIES
+
+	Wiiusecpp should work on both Linux and Windows.
+	You will need:
+
+	For Linux:
+		- wiiuse library built and installed
+		- The kernel must support bluetooth
+		- The BlueZ bluetooth drivers must be installed
+
+	For Windows:
+		- A compiled wiiuse library which requires:
+			- Bluetooth driver (tested with Microsoft's stack with Windows XP SP2)
+			- If compiling, Microsoft Windows Driver Development Kit (DDK)
+
+
+COMPILING
+
+	Linux:
+		# make [target]
+
+		If 'target' is omitted then everything is compiled.
+
+		Where 'target' can be any of the following:
+
+			- wiiusecpp
+				Compiles libwiiusecpp.so
+
+			- ex
+				Compiles wiiusecpp-example
+
+		Become root.
+
+		# make install
+
+		The above command will only install the binaries that you
+		selected to compile.
+
+		wiiusecpp.so is installed to /usr/lib
+		wiiusecpp-example is installed to /usr/bin
+
+	Windows:
+		Should just compile wiiusecpp.cpp making sure that wiiuse.h is available for
+		for the include and link wiiuse.lib (in the project directory!).
+		
+		If somebody comes up with a make file or project file to make a dll under 
+		windows let me know and I'll add it to the distribution.
+
+
+USING THE LIBRARY IN A THIRD PARTY APPLICATION
+
+	To use the library in your own program you must first compile wiiusecpp as a module or add
+	wiiusecpp.cpp to your project.  Include wiiusecpp.h in any file that uses wiiusecpp.
+
+	For Linux you must link with wiiusecpp.so ( -lwiiusecpp ).
+	For Windows you must link wiiuse.lib.  When your program runs it will need wiiuse.dll.
+
+
+BUGS
+
+	From wiiuse:  On Windows using more than one wiimote (usually more than two wiimotes) may cause
+	significant latency.
