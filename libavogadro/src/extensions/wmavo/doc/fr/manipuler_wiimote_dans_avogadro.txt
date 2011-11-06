@@ -1,0 +1,160 @@
+
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
+(Mise à jour 7/10/2011)
+
+* Manipuler le curseur
+
+      o Déplacement du curseur de la souris (maintenir bouton B)
+            + Gardez appuyé le bouton B (gachette) de la Wiimote
+            + Déplacez la Wiimote en pointant la sensor bar
+      o Sélection/Désélection d'un atome (bouton A sur un atome)
+            + Placez le curseur sur un atome,
+            + Relachez tous les boutons
+            + Appyez brièvement sur le bouton A de la Wiimote.
+      o Sélection de plusieurs atomes (maintenir boutons A et B)
+            + Pour réaliser un rectangle de sélection, gardez appuyé les 
+              boutons A et B de la Wiimote,
+            + Déplacez la Wiimote
+            + Terminez l'action en relachant tous les boutons.
+      o Désélection de tous les atomes (soit A dans le vide, soit A et B sans sélection)
+            + Soit :
+                  # Positionnez le curseur au dessus d'un "vide"
+                  # Appuyez brièvement sur le bouton A
+            + Soit :
+                  # Réalisez un rectangle de sélection avec rien à l'intérieur
+      o Inverser la sélection (boutons A et B sans source IR)
+            + Pointez la Wiimote hors de toutes sources infrarouges
+            + Appuyez brièvement et simultanément sur les bouton A et B
+
+
+* Créations/suppression d'atomes ou/et de liaisons
+
+      o Ajoutez un atome (bouton "+")
+            + Positionnez le curseur où vous le désirez
+            + Appuyez brièvement sur le bouton "+"
+      o Ajoutez 2 atomes liés (maintenir bouton "+")
+            + Positionnez le curseur où vous le désirez pour la création du 1er atome
+            + Maintenez appuyé le bouton "+"
+            + Positionnez le curseur où vous le désirez pour la création du second atome
+            + Relachez le bouton quand vous visualisez des sphères en fil de sphère
+      o Ajouter un atome et/ou une liaison lié ou non à un atome existant (maintenir bouton "+")
+            + Faites comme précédemment, sauf que vous débutez et/ou terminez en 
+              positionnant le curseur sur l'atome qui vous intéresse
+      o Ajouter un fragment (menu contextuel)
+            + Se reporter aux sections :
+                  # "Insérez un fragment non lié"
+                  # "Insérez un fragment lié à un atome"
+      o Remplacer un élément chimique par un autre (bouton "+")
+            + Positionnez le curseur sur l'atome qui vous intéresse
+            + Appuyez brièvement sur le bouton "+"
+      o Changer l'ordre d'une liaison (bouton "+" ou "-" sur une liaison)
+            + Positionnez le curseur sur la liaison qui vous intéresse
+            + Appuyez brièvement sur le bouton "+" ou "-" pour respectivement 
+              augmenter l'ordre, ou le diminuer (voir la supprimer)
+      o Supprimer un atome (bouton "-" sur un atome)
+            + Positionnez le curseur sur l'atome qui vous intéresse
+            + Appuyez brièvement sur le bouton "-"
+      o Supprimer plusieurs atomes (bouton "-" sans atome en dessous)
+            + Sélectionnez les atomes qui vous intéresse
+            + Positionnez le curseur au dessus d'un "vide"
+            + Appuyez brièvement sur le bouton "-"
+      o Tous supprimer (maintenir bouton "-")
+            + Maintenez le bouton "-"
+
+
+* Manipulation des atomes 
+
+      o Déplacement des atomes sélectionnés (maintenir le bouton A)
+            + Une fois que les atomes sont sélectionnés, gardez appuyé la bouton A 
+            + Déplacez la Wiimote.
+      o Rotation des atomes sélectionnés autour de leur barycentre (croix directionnelle)
+            + Sélectionnez des atomes
+            + Appuyez brièvement sur l'une des touches de la croix directionnelle
+      o Rotation des atomes sélectionnés autour d'un axe de rotation
+            + Soit :
+                  # Sélectionnez des atomes
+                  # Sélectionnez une liaison
+                  # Appuyez brièvement sur l'une des touches de la croix directionnelle
+            + Soit :
+                  # Ajoutez un fragment lié à un atome
+                  # Par défaut, la liaison entre l'atome d'attache et le fragment 
+                    est utilisé comme axe de rotation
+                  # Appuyez brièvement sur l'une des touches de la croix directionnelle
+      o Supprimer l'axe de rotation (touche A sur la liaison)
+            + Positionnez le curseur sur la liaison utilisée comme axe de rotation
+            + Appuyez brièvement sur la touche A
+
+
+* Caméra
+
+      o Rotation de la caméra (joystick)
+            + Orientez le joystick du Nunchuk dans la direction voulue.
+      o Rotation à 90° de la caméra (croix directionnelle sans atome sélectionné)
+            + Désélectionnez tous les atomes
+            + Appuyez brièvement sur haut, bas, gauche ou droite de la croix 
+              directionnelle de la Wiimote.
+      o Translation de la caméra (boutons C et Z, et joystick)
+            + Gardez appuyé les touches C et Z du Nunchuk
+            + Orientez le joystick vers une direction.
+      o Zoom avant/arrière (bouton C ou Z)
+            + Gardez appuyé la touche C ou Z du Nunchuk.
+      o Centrage de la caméra (bouton Home de la Wiimote)
+            + Appuyez sur la touche Home
+
+
+* Autre fonctionnalités
+
+      o Ouvrir le menu contextuel
+            + Maintenez la touche Droite de la croix directionnelle de la Wiimote 
+              jusqu'à l'ouverture du menu contextuel,
+            + ensuite naviguez avec la croix directionnelle,
+            + enfin validez l'action sélectionnée avec la touche A.
+            + ATTENTION : l'ouverture du menu ne se fera seulement si 0 ou 1 seul 
+              atome est sélectionné.
+      o Changez la nature de l'atome à ajouter
+            + Ouvrez le menu contextuel
+            + Allez sur "Periodic Table"
+            + Appuyez brièvement sur le bouton A
+            + Positionnez le curseur sur l'élément chimique qui vous intéresse
+            + Appuyez brièvement sur le bouton A
+      o Sélectionner tous les atomes liés à un atome
+            + Sélectionnez un atome
+            + Ouvrez le menu contextuel
+            + Sélectionnez "Select all bonded atoms of selected atom"
+      o Insérer un fragment non lié
+            + Assurez vous de n'avoir aucun atome de sélectionner
+            + Ouvrez le menu contextuel
+            + Allez dans "Insert Fragment"
+            + Choississez le fragment qui vous intéresse
+            + Appuyez brièvement sur le bouton A
+      o Insérer un fragment lié à un atome
+            + Assurez vous de n'avoir qu'un seul atome d'Hydrogène de sélectionner
+            + Ouvrez le menu contextuel
+            + Allez dans "Substitute hydrogen by fragment"
+            + Choississez le fragment qui vous intéresse
+            + Appuyez brièvement sur le bouton A
+      o Réaliser des mesures de distance, d'angle, et d'angle dièdre
+            + Ouvrez le menu contextuel
+            + Allez dans "Measure"
+            + Choississez l'option qui vous intéresse
+                  # calculez une distance (2 atomes à sélectionner)
+                  # calculez un angle (3 atomes à sélectionner)
+                  # calculez un angle dièdre (4 atomes à sélectionner)
+            + Appuyez brièvement sur le bouton A
+            + Sélectionnez les atomes qui vous intéresse
+      o Activer ou non la saturation en hydrogène
+            + Soit :
+                  # Appuyez sur la touche 1 de la Wiimote, pour alterner entre les modes
+            + Soit :
+                  # Ouvrez le menu contextuel
+                  # Allez sur "Adjust Hydrogen …"
+                  # Appuyez brièvement sur le bouton A
+      o Ajouter ou retirer tous les atomes d'hydrogène
+            + Ouvrez le menu contextuel
+            + Allez dans "Hydrogen"
+            + Choississez l'option qui vous intéresse
+                  # Ajoutez les hydrogènes
+                  # Retirez les hydrogènes

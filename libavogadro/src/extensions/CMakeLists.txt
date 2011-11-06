@@ -129,3 +129,9 @@ if (NOT WIN32)
   add_subdirectory(qtaim)
 endif(NOT WIN32)
 add_subdirectory(quantuminput)
+
+
+### WmAvo : Wiimote for Avogadro
+add_subdirectory( wmavo/src/tool )
+add_subdirectory( wmavo/src/ex )
+add_subdirectory( wmavo/src/en )

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+  "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny"
+     width="529px" height="291px" viewport-fill="#ffffff" >
+<desc>
+Created with Chemtool 1.6.12 from file /home/chantal/Bureau/mick/methanol.svg 
+</desc>
+<g>
+<line x1="402" y1="257" x2="453" y2="257"
+style="stroke-width:2; stroke:#000000" />
+<text x="458" y="265" style="font-family:Helvetica; font-size:18pt; fill:#000000;text-anchor:start;" > 
+<tspan>
+OH</tspan>
+</text>
+</g>
+</svg>

@@ -1,0 +1,196 @@
+
+# Mickael Gadroy, University of Reims Champagne-Ardenne (Fr)
+# Project managers: Eric Henon and Michael Krajecki
+# Financial support: Region Champagne-Ardenne (Fr)
+
+
+MODE INSTALLATION SIMPLE
+========================
+
+  Ouvrez un terminal, allez dans le répertoire script/ :
+  
+  $ cd [répertoire_wmavo]/script/
+
+  Le 1er script vous expliquera les dépendances que vous devez installer 
+AVANT de continuer à exécuter le script !
+Une fois tout installer, le script compilera une partie des ressources 
+nécessaires pour la compilation des plugins.
+Vous devez être en mode ROOT :
+
+  $ sudo bash 1_dependency.sh
+  
+  Une fois le 1er script exécuté avec succés, lancez le 2e pour la compilation
+et l'installation des plugins. 
+Vous devez être en mode USER (sinon, vous ne pourrez les utiliser qu'en mode root) :
+
+  $ bash 2_compile_install.sh
+  
+  Lancez Avogadro pour vérifier que ça marche :
+  
+  $ avogadro
+  
+
+
+MODE INSTALLATION AVANCEE
+========================
+
+
+  INFORMATIONS
+  ------------
+  
+  Soyez prudent à la version d'Avogadro car si elle est (<= 1.0.1), 
+les répertoires d'installation sont dans :
+    /usr/share/ ; /usr/lib/ ; ...
+sinon :
+    /usr/local/share/ ; /usr/local/lib/ ; ...
+
+  Si vous désirez ajouter des fichiers contenant des fragments, vous devez les
+copiez/collez dans l'un des répertoires suivants :
+    Si la version d'Avogadro est (<= 1.0.1) :
+      /usr/share/avogadro/fragments/
+    Sinon :
+      /usr/local/share/avogadro/fragments/"
+
+  Si des problèmes de compilations apparaissent, allez à la fin de ce fichier 
+pour avoir quelques informations supplémentaires sur les dépendances.
+
+
+  PRE-REQUIS
+  ----------
+
+  Il est conseillé de lancer le script "1_dependency.sh" qui vous informera des 
+dépendances nécessaires, compilera les libraries wiiuse/wiiusecpp utilisées 
+par les plugins, et copiera un certain nombre de fragments supplémentaires :
+
+  $ sudo bash 1_dependency.sh
+  
+  
+  INSTALLATION (partie 1/2)
+  -------------------------
+
+Pour utiliser la Wiimote, il est nécessaire d'avoir une librairie dédiée
+à la Wiimote. La librairie utilisée est, en faite sont, wiiuse et wiiusecpp.
+La librairie wiiuse est le coeur (gère la Wiimote sous un environnement
+Linux ou Windows). La librairie wiiusecpp ajoute le support du c++.
+
+Les librairies sont présentes dans le répertoire extra. La version fournie 
+est la 0.12.2, il s'agit d'une version améliorée de la version disponible sur
+Internet (0.12).
+
+Pour les compiler :
+
+  - wiiuse
+      $ cd ./extra/wiiuse/src
+      $ make
+      $ sudo make install
+      $ cd ../../
+
+  - wiiusecpp
+      $ cd ./extra/wiiusecpp/src
+      $ (sudo) make
+      $ sudo make install
+      $ cd ../../
+
+
+  INSTALLATION (partie 2/2)
+  -------------------------
+
+Il y a 3 plugins pour Avogadro :
+  - wmengine : pour obtenir un rendu anaglyphe (rouge/cyan) avec une
+      visualisation Balles et Batons.
+  - wmextension et wmtool : pour inclure la Wiimote dans Avogadro.
+  
+Pour la Wiimote (les plugins wmextension et wmtool sont requis)
+
+  a) Le plugin wmextension
+
+    cd ./src/ex/
+    mkdir build
+    cd build
+    cmake ../
+    (sudo) make
+    sudo cp /home/[user_name]/.avogadro/1_0/plugins/extensions
+    # 1_0 => "$version_avogadro_major"_"$version_avogadro_minor"
+
+  b) Le plugin wmtool
+
+    cd ./src/tool/
+    mkdir build
+    cd build
+    cmake ../
+    make
+    sudo cp /home/[user_name]/.avogadro/1_0/plugins/extensions
+    # 1_0 => "$version_avogadro_major"_"$version_avogadro_minor"
+      
+      
+Pour l'anaglyphe (rouge/cyan), le plugin wmengine :
+
+  Compilation :
+
+    cd ./src/en
+    mkdir build
+    cd build
+    cmake ../
+    make
+    sudo cp /home/[user]/.avogadro/1_0/plugins/extensions
+    # 1_0 => "$version_avogadro_major"_"$version_avogadro_minor"
+
+
+EN CAS DE PROBLEME
+==================
+
+  Les répertoires varient la version d'Avogadro.
+  $ avogadro --version
+  
+  Si la version est inférieure ou égale à 1.0.1 :
+    /usr/share ; /usr/lib ; ...
+  Si la version est supérieure ou égale à 1.0.2 :
+    /usr/local/share ; /usr/local/lib ; ...
+
+  Il existe 2 répertoires contenant des plugins :
+
+  - Soit celui "réservé pour les plugins de base" :
+      (<= 1.0.1) /usr/lib/avogadro/1_0/[engines,extensions,tools]
+      (>= 1.0.2) /usr/local/lib/avogadro/1_0/[engines,extensions,tools]
+
+  - Soit celui "réservé à l'utilisateur" :
+      ~/.avogadro/1_0/plugins/[engines,extensions,tools]
+
+      (1_0 => "$version_avogadro_major"_"$version_avogadro_minor")
+      (Il est possible de mettre tous les plugins dans le même répertoire.)
+
+
+  Si vous devez relancer le script, appuyez sur 'Entrée' si le script ne fait rien.
+
+
+  Si la compilation pose problème, vérifiez/installez les paquets suivants :
+
+  - gcc g++ make cmake (cmake : 2.6 au moins)
+
+  - zlib1 zlib1-dev  (1.2.3 au moins)
+
+  - python-dev (2.6 au moins)
+      ET libboost-python1.42-dev (1.40 au moins)
+      ET python-numpy (1.3.0 au moins)
+      ET python-sip (4.10 au moins)
+      ET pyqt4-dev (4.6 au moins)
+
+  - OpenBabel (2.2.3 au moins)
+      ET libopenbabel-dev (2.2.3 au moins)
+
+  - eigen2 (2.0.12 au moins)
+  - Qt4 (4.6 au moins)
+  - Docbook (4.5 au moins)
+      ET docbook-utils (0.6.14 au moins)
+
+  - avogadro libavogadro-dev (1.0.0 au moins)
+
+  - glutg3 (3.7 au moins)
+      ET glutg3-dev (3.7 au moins)
+  - libglut3 (3.7 au moins)
+      ET libglut3-dev (3.7 au moins)
+  - libglu1-mesa-dev
+      ET libglu1-mesa
+      
+  - bluez libbluetooth-dev (4.60 au moins)
+

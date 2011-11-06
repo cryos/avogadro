@@ -1,0 +1,39 @@
+
+#include <QObject>
+#include <QContextMenuEvent>
+
+namespace Avogadro
+{
+
+  /**
+    * Intercept the context menu action to avoid ... Something.
+    * In resume, it is just a test.
+    * So Useless ...
+    */  
+  class ContextMenuEater : public QObject
+  {
+    Q_OBJECT
+
+  public :
+    ContextMenuEater( QObject *o, QWidget *w ) ;
+    ~ContextMenuEater() ;
+
+  protected:
+    bool eventFilter(QObject *obj, QEvent *event) ;
+
+  private :
+
+    QObject *m_o ;
+    QWidget *m_widget ;
+    QAction *cutAct;
+    QAction *copyAct;
+    QAction *pasteAct;
+
+
+  private slots :
+    void cut() ;
+    void copy() ;
+    void paste() ;
+
+  };
+}

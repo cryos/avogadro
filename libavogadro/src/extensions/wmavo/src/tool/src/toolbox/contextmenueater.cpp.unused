@@ -1,0 +1,73 @@
+
+#include "contextmenueater.h"
+
+namespace Avogadro
+{
+
+  ContextMenuEater::ContextMenuEater( QObject *o, QWidget *w ) : QObject(o)
+  {
+    m_o = o ;
+    m_widget = w ;
+
+    cutAct = new QAction(tr("Cu&t"), this);
+    cutAct->setShortcuts(QKeySequence::Cut);
+    cutAct->setStatusTip(tr("Cut the current selection's contents to the "
+                            "clipboard"));
+    connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
+
+    copyAct = new QAction(tr("&Copy"), this);
+    copyAct->setShortcuts(QKeySequence::Copy);
+    copyAct->setStatusTip(tr("Copy the current selection's contents to the "
+                             "clipboard"));
+    connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
+
+    pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct->setShortcuts(QKeySequence::Paste);
+    pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
+                              "selection"));
+    connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+  }
+
+
+  bool ContextMenuEater::eventFilter(QObject *obj, QEvent *event)
+  {
+    if (event->type() == QEvent::ContextMenu )
+    {
+      //QContextMenuEvent *contextMenuEvent = static_cast<QContextMenuEvent *>(event);
+      cout << "Ate ContextMenuEvent" << endl ;
+
+
+      //QMenu menu( m_widget );
+      //menu.addAction(cutAct);
+      //menu.addAction(copyAct);
+      //menu.addAction(pasteAct);
+      //menu.exec( contextMenuEvent->globalPos() ) ;
+
+      //menu.actions() => liste d'action
+      //menu.setActiveAction(); => activé l'action que l'on veuty
+
+      return true;
+    }
+    else
+    {
+      // standard event processing
+      return QObject::eventFilter(obj, event);
+    }
+  }
+
+  void ContextMenuEater::cut()
+  {
+    //infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+  }
+
+  void ContextMenuEater::copy()
+  {
+    //infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
+  }
+
+  void ContextMenuEater::paste()
+  {
+    //infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+  }
+
+}

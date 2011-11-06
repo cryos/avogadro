@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+  "http://www.w3.org/TR/SVG/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny"
+     width="460px" height="272px" viewport-fill="#ffffff" >
+<desc>
+Created with Chemtool 1.6.12 from file /home/chantal/Bureau/mick/methanethiol.svg 
+</desc>
+<g>
+<line x1="340" y1="240" x2="391" y2="240"
+style="stroke-width:2; stroke:#000000" />
+<text x="396" y="248" style="font-family:Helvetica; font-size:18pt; fill:#000000;text-anchor:start;" > 
+<tspan>
+SH</tspan>
+</text>
+</g>
+</svg>

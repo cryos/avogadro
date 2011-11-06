@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="cyclopentane.out">
+ <atomArray>
+  <atom id="a1" elementType="C" x3="-0.433900" y3="-1.908600" z3="-0.128800"/>
+  <atom id="a2" elementType="C" x3="-0.827100" y3="-0.428600" z3="0.043000"/>
+  <atom id="a3" elementType="C" x3="0.462900" y3="0.395200" z3="-0.120100"/>
+  <atom id="a4" elementType="H" x3="-1.591300" y3="-0.127200" z3="-0.690800"/>
+  <atom id="a5" elementType="H" x3="-1.269400" y3="-0.260000" z3="1.039900"/>
+  <atom id="a6" elementType="C" x3="1.624600" y3="-0.563100" z3="0.194200"/>
+  <atom id="a7" elementType="H" x3="0.546900" y3="0.777800" z3="-1.152200"/>
+  <atom id="a8" elementType="H" x3="0.470200" y3="1.274700" z3="0.542600"/>
+  <atom id="a9" elementType="C" x3="1.105700" y3="-1.983400" z3="-0.098000"/>
+  <atom id="a10" elementType="H" x3="2.518000" y3="-0.327100" z3="-0.404600"/>
+  <atom id="a11" elementType="H" x3="1.923100" y3="-0.472000" z3="1.253100"/>
+  <atom id="a12" elementType="H" x3="1.492800" y3="-2.346700" z3="-1.065000"/>
+  <atom id="a13" elementType="H" x3="1.453800" y3="-2.697200" z3="0.665700"/>
+  <atom id="a14" elementType="H" x3="-0.875200" y3="-2.525900" z3="0.670500"/>
+  <atom id="a15" elementType="H" x3="-0.822700" y3="-2.309600" z3="-1.079600"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2=" a7  a3" order=" 1"/>
+  <bond atomRefs2=" a15  a1" order=" 1"/>
+  <bond atomRefs2=" a12  a9" order=" 1"/>
+  <bond atomRefs2=" a4  a2" order=" 1"/>
+  <bond atomRefs2=" a10  a6" order=" 1"/>
+  <bond atomRefs2=" a1  a9" order=" 1"/>
+  <bond atomRefs2=" a1  a2" order=" 1"/>
+  <bond atomRefs2=" a1  a14" order=" 1"/>
+  <bond atomRefs2=" a3  a2" order=" 1"/>
+  <bond atomRefs2=" a3  a6" order=" 1"/>
+  <bond atomRefs2=" a3  a8" order=" 1"/>
+  <bond atomRefs2=" a9  a6" order=" 1"/>
+  <bond atomRefs2=" a9  a13" order=" 1"/>
+  <bond atomRefs2=" a2  a5" order=" 1"/>
+  <bond atomRefs2=" a6  a11" order=" 1"/>
+ </bondArray>
+</molecule>

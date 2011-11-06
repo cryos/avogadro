@@ -1,0 +1,19 @@
+---------------------------
+-
+-  CHANGE LOG - Wiiusecpp
+-
+---------------------------
+
+http://missioncognition.net/
+jt@missioncognition.net
+
+---------------------------
+v0.12 -- 15 Jun 2009
+---------------------------
+
+		- Initial release for use with wiiuse v0.12
+		- Be forwarned that I consider this an alpha release
+		  and may change the API slightly depending on feedback.
+		  Contact me with your suggestions.
+
+

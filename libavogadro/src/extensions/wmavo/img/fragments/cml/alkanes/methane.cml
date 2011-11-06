@@ -1,0 +1,15 @@
+<molecule>
+ <atomArray>
+  <atom id="a1" elementType="C" x3="0.010231" y3="0.010280" z3="0.000000"/>
+  <atom id="a2" elementType="H" x3="1.080231" y3="0.010280" z3="0.000000"/>
+  <atom id="a3" elementType="H" x3="-0.369729" y3="0.961304" z3="-0.309975"/>
+  <atom id="a4" elementType="H" x3="-0.356184" y3="-0.230215" z3="0.976116"/>
+  <atom id="a5" elementType="H" x3="-0.327167" y3="-0.730490" z3="-0.694494"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a1 a3" order="1"/>
+  <bond atomRefs2="a1 a4" order="1"/>
+  <bond atomRefs2="a1 a5" order="1"/>
+ </bondArray>
+</molecule>

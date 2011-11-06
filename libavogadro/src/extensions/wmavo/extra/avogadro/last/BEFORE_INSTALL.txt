@@ -1,0 +1,5 @@
+
+To have all features of Avogadro, you must install OpenBabel 2.3.0 (at least)
+
+Official website :         http://openbabel.org
+Download Windows package : http://openbabel.org/wiki/Get_Open_Babel
