@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-31 00:00-0400\n"
+"POT-Creation-Date: 2011-11-07 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:39+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -793,8 +793,8 @@ msgstr "file video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:202
 #: src/extensions/forcefieldextension.cpp:214
 #: src/extensions/forcefieldextension.cpp:244
-#: src/extensions/insertfragmentdialog.cpp:143
-#: src/extensions/insertfragmentdialog.cpp:151
+#: src/extensions/insertfragmentdialog.cpp:153
+#: src/extensions/insertfragmentdialog.cpp:161
 #: src/extensions/quantuminput/inputfileextension.cpp:165
 #: src/extensions/quantuminput/inputfileextension.cpp:175
 #: src/extensions/selectextension.cpp:276
@@ -831,7 +831,7 @@ msgid "E&xtensions"
 msgstr "&Phần mở rộng"
 
 #: src/extensions/animationextension.cpp:135
-#: src/extensions/insertfragmentdialog.cpp:144
+#: src/extensions/insertfragmentdialog.cpp:154
 #: src/extensions/quantuminput/inputfileextension.cpp:166
 #, qt-format
 msgid "Cannot read file format of file %1."
@@ -888,7 +888,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3651
+#: src/extensions/animationextension.h:39:3657
 msgid "Animation"
 msgstr "Hình động"
 
@@ -915,7 +915,7 @@ msgstr "Trình biên tập Đề-các..."
 #: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:82
+#: src/extensions/insertfragmentextension.cpp:79
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1609,15 +1609,11 @@ msgstr "hi-đrô"
 msgid "Add or remove hydrogens"
 msgstr "Thêm hoặc bỏ hi-đrô"
 
-#: src/extensions/insertfragmentdialog.cpp:152
+#: src/extensions/insertfragmentdialog.cpp:162
 #: src/extensions/quantuminput/inputfileextension.cpp:176
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Không thể đọc file %1."
-
-#: src/extensions/insertfragmentdialog.cpp:186
-msgid "Open Directory"
-msgstr "Mở thư mục"
 
 #: src/extensions/insertfragmentextension.cpp:54
 msgid "Fragment..."
@@ -1627,24 +1623,24 @@ msgstr "Đoạn..."
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:82
+#: src/extensions/insertfragmentextension.cpp:79
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "&Chèn"
 
-#: src/extensions/insertfragmentextension.cpp:106
-#: src/extensions/insertfragmentextension.cpp:138
+#: src/extensions/insertfragmentextension.cpp:103
+#: src/extensions/insertfragmentextension.cpp:135
 msgid "Insert SMILES"
 msgstr "Chèn SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:107
+#: src/extensions/insertfragmentextension.cpp:104
 msgid "Insert SMILES fragment:"
 msgstr "Chèn các đoạn SMILES:"
 
-#. i18n: file: src/extensions/insertfragmentdialog.ui:45
+#. i18n: file: src/extensions/insertfragmentdialog.ui:66
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
-#: src/extensions/insertfragmentextension.cpp:187
-#: src/extensions/insertfragmentextension.h:34:735
+#: src/extensions/insertfragmentextension.cpp:190
+#: src/extensions/insertfragmentextension.h:34:741
 msgid "Insert Fragment"
 msgstr "Chèn đoạn"
 
@@ -1661,7 +1657,7 @@ msgstr "Pep-tit..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:738 rc.cpp:957
+#: src/extensions/insertpeptideextension.h:43:744 rc.cpp:963
 msgid "Insert Peptide"
 msgstr "Chèn pep-tit"
 
@@ -1898,7 +1894,7 @@ msgstr "Thuộc tính đồng phân"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1216 rc.cpp:1717 rc.cpp:2059
+#: src/extensions/propextension.h:43:1222 rc.cpp:1723 rc.cpp:2065
 msgid "Properties"
 msgstr "Thuộc tính"
 
@@ -2022,7 +2018,7 @@ msgstr "Xoắn"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:510:2029
+#: src/extensions/propmodel.cpp:510:2035
 msgid "Energy"
 msgstr "Năng lượng"
 
@@ -2160,7 +2156,7 @@ msgstr "MOPAC không hoạt động bình thường. Có lẽ nó đã không đ
 #: src/extensions/quantuminput/molproinputdialog.cpp:172
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
-#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3098
+#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3104
 msgid "Show Preview"
 msgstr "Hiện khung xem thử"
 
@@ -2185,7 +2181,7 @@ msgstr "Hiện khung xem thử"
 #: src/extensions/quantuminput/molproinputdialog.cpp:176
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
-#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1182
+#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1188
 msgid "Hide Preview"
 msgstr "Ẩn khung xem thử"
 
@@ -2294,7 +2290,7 @@ msgstr "Tạo file đầu vào cho gói phần mềm hóa lượng tử GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1047
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1053
 msgid "Title"
 msgstr "Tựa đề"
 
@@ -2642,7 +2638,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:3329
+#: src/extensions/shaderextension.h:41:3335
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2723,13 +2719,13 @@ msgstr "Trục Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:3390
+#: src/extensions/spectra/spectradialog.cpp:188:3396
 msgid "&Appearance"
 msgstr "&Bề ngoài"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:3456
+#: src/extensions/spectra/spectradialog.cpp:189:3462
 msgid "E&xport Image"
 msgstr "&Xuất ảnh"
 
@@ -2984,7 +2980,7 @@ msgstr "&Thêm <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:3384
+#: src/extensions/spectra/spectradialog.cpp:998:3390
 msgid "&Advanced >>"
 msgstr "&Thêm >>"
 
@@ -3010,7 +3006,7 @@ msgstr "Rung động"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2569
+#: src/extensions/spectra/vibrationextension.cpp:202:2575
 msgid "Vibrational Analysis"
 msgstr "Tính toán rung động"
 
@@ -3034,7 +3030,7 @@ msgstr "Sắp xếp các rung động %1 theo tần số..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:280
-#: src/extensions/spectra/vibrationwidget.cpp:290:3663
+#: src/extensions/spectra/vibrationwidget.cpp:290:3669
 msgid "Start &Animation"
 msgstr "Bắt đầu &hình động"
 
@@ -3047,7 +3043,7 @@ msgstr "Dừng &hình động"
 #: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:304:3666
+#: src/extensions/spectra/vibrationwidget.cpp:304:3672
 msgid "Pause"
 msgstr "Tạm ngừng"
 
@@ -3307,41 +3303,41 @@ msgstr "Dò Wii"
 msgid "Track motion using Wii remotes"
 msgstr "Dò theo chuyển động bằng điều khiển từ xa của Wii"
 
-#: src/glwidget.cpp:471
+#: src/glwidget.cpp:473
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
 "OpenGL application?), or you found a bug."
 msgstr ""
 
-#: src/glwidget.cpp:476
+#: src/glwidget.cpp:478
 msgid "OpenGL error"
 msgstr "Lỗi OpenGL"
 
-#: src/glwidget.cpp:1670
+#: src/glwidget.cpp:1672
 msgid "Debug Information"
 msgstr "Thông tin gỡ lỗi"
 
-#: src/glwidget.cpp:1674
+#: src/glwidget.cpp:1676
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1678
+#: src/glwidget.cpp:1680
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Kích thước khung nhìn: %L1 x %L2"
 
-#: src/glwidget.cpp:1683
+#: src/glwidget.cpp:1685
 msgid "No molecule set"
 msgstr "Không có phân tử nào được đặt"
 
-#: src/glwidget.cpp:1688
+#: src/glwidget.cpp:1690
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Nguyên tử: %L1"
 
-#: src/glwidget.cpp:1692
+#: src/glwidget.cpp:1694
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Liên kết: %L1"
@@ -3550,7 +3546,7 @@ msgstr "Dóng:"
 msgid "Everything"
 msgstr "Mọi thứ"
 
-#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:533
+#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:535
 msgid "Molecule"
 msgstr "Phân tử"
 
@@ -3706,7 +3702,7 @@ msgstr "xoay quanh trục z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1176 rc.cpp:1735 rc.cpp:2786
+#: src/tools/autorotatetool.cpp:296:1182 rc.cpp:1741 rc.cpp:2792
 msgid "Reset"
 msgstr "Thiết lập lại"
 
@@ -3868,7 +3864,7 @@ msgstr "Cài đặt các yếu tố đo đạc"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3881
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3887
 msgid "Add Atom"
 msgstr "Thêm nguyên tử"
 
@@ -3922,7 +3918,7 @@ msgstr "Nguyên tố"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:812:2200
+#: src/tools/drawtool.cpp:812:2206
 msgid "Other..."
 msgstr "Khác..."
 
@@ -4010,7 +4006,7 @@ msgstr "Dịch chuyển, xoay và thu phóng quanh khung nhìn hiện thời"
 msgid "Navigate Settings"
 msgstr "Cài đặt cho việc di chuyển"
 
-#: src/tools/selectrotatetool.cpp:63
+#: src/tools/selectrotatetool.cpp:65
 msgid ""
 "Selection Tool (F11)\n"
 "Click to pick individual atoms, residues, or fragments\n"
@@ -4024,49 +4020,49 @@ msgstr ""
 "Nháy phải chuột bên ngoài phân tử để bỏ việc lựa chọn\n"
 "Dùng Ctrl để bật/tắt lựa chọn và Shift để bổ sung vào lựa chọn"
 
-#: src/tools/selectrotatetool.cpp:526
+#: src/tools/selectrotatetool.cpp:528
 msgid "Selection Mode:"
 msgstr "Chế độ lựa chọn:"
 
-#: src/tools/selectrotatetool.cpp:531
+#: src/tools/selectrotatetool.cpp:533
 msgid "Atom/Bond"
 msgstr "Nguyên tử/Liên kết"
 
-#: src/tools/selectrotatetool.cpp:532
+#: src/tools/selectrotatetool.cpp:534
 msgid "Residue"
 msgstr "Dư chất"
 
-#: src/tools/selectrotatetool.cpp:535
+#: src/tools/selectrotatetool.cpp:537
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Số nguyên tử:"
 
-#: src/tools/selectrotatetool.cpp:536
+#: src/tools/selectrotatetool.cpp:538
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Thêm ràng buộc"
 
-#: src/tools/selectrotatetool.cpp:591
+#: src/tools/selectrotatetool.cpp:593
 msgid "Change color of the atom"
 msgstr "Đổi màu nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:615
+#: src/tools/selectrotatetool.cpp:617
 msgid "Change label of the atom"
 msgstr "Đổi nhãn của nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:616 src/tools/selectrotatetool.cpp:625
+#: src/tools/selectrotatetool.cpp:618 src/tools/selectrotatetool.cpp:627
 msgid "New Label:"
 msgstr "Nhãn mới:"
 
-#: src/tools/selectrotatetool.cpp:624
+#: src/tools/selectrotatetool.cpp:626
 msgid "Change label of the bond"
 msgstr "Đổi nhãn của liên kết"
 
-#: src/tools/selectrotatetool.cpp:656
+#: src/tools/selectrotatetool.cpp:658
 msgid "Change radius of the atom"
 msgstr "Thay đổi bán kính nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:657
+#: src/tools/selectrotatetool.cpp:659
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
@@ -4106,7 +4102,7 @@ msgstr "Công cụ biên tập ma trận Z..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2287
+#: src/tools/zmatrixtool.h:39:2293
 msgid "Z-Matrix"
 msgstr "Ma trận Z"
 
@@ -4182,6 +4178,8 @@ msgstr "Trục 3:"
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/cartesianeditor.ui:291
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
+#. i18n: file: src/extensions/insertfragmentdialog.ui:32
+#. i18n: ectx: property (text), widget (QToolButton, clearToolButton)
 msgid "X"
 msgstr "X"
 
@@ -5270,6 +5268,11 @@ msgstr "10e-"
 #. i18n: ectx: property (windowTitle), widget (QDialog, InsertFragmentDialog)
 msgid "Insert Fragment..."
 msgstr "Thêm đoạn..."
+
+#. i18n: file: src/extensions/insertfragmentdialog.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Filter:"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:20
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -9535,6 +9538,9 @@ msgid "Your emails"
 msgstr ""
 ",,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
 "sourceforge.net,"
+
+#~ msgid "Open Directory"
+#~ msgstr "Mở thư mục"
 
 #~ msgctxt "in Angstrom"
 #~ msgid "X %1"
