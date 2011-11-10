@@ -1057,7 +1057,7 @@ namespace Avogadro{
     Q_D(const Molecule);
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
-    else if (index < static_cast<int>(d->energies.size()))
+    else if (index >= 0 && index < static_cast<int>(d->energies.size()))
       return d->energies[index];
     else
       return 0.0;
