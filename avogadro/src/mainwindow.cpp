@@ -22,6 +22,7 @@
  ***********************************************************************/
 
 #include <avogadro/dockextension.h>
+#include <avogadro/dockwidget.h>
 
 #include "mainwindow.h"
 
@@ -3390,16 +3391,33 @@ protected:
     foreach(Extension *extension, d->pluginManager.extensions(this)) {
       addActionsToMenu(extension);
 
-      QDockWidget *dockWidget = extension->dockWidget();
-      if(dockWidget) {
-        Qt::DockWidgetArea area = Qt::RightDockWidgetArea;
-        DockExtension *dock = qobject_cast<DockExtension *>(extension);
-        if (dock) {
-          area = dock->preferredDockArea();
+      // This is the preferred method for adding a dockwidget to the main
+      // window
+      if (extension->numDockWidgets() != 0) {
+        QList<DockWidget *> widgets = extension->dockWidgets();
+        for (QList<DockWidget*>::const_iterator it = widgets.constBegin(),
+             it_end = widgets.constEnd(); it != it_end; ++it) {
+          this->addDockWidget((*it)->preferredWidgetDockArea(), *it);
+          (*it)->hide();
+          ui.menuToolbars->addAction((*it)->toggleViewAction());
         }
-        addDockWidget(area, dockWidget);
-        dockWidget->hide();
-        ui.menuToolbars->addAction(dockWidget->toggleViewAction());
+      }
+      else {
+        // These are deprecated methods for adding dock widgets.
+        QDockWidget *dockWidget = extension->dockWidget();
+        if(dockWidget) {
+          Qt::DockWidgetArea area = Qt::RightDockWidgetArea;
+          DockExtension *dock = qobject_cast<DockExtension *>(extension);
+          if (dock) {
+            area = dock->preferredDockArea();
+          }
+          qDebug() << "dev warning: Extension" << extension->name()
+                   << "is using a deprecated DockWidget loading method. "
+                      "See Extension::dockWidgets() documentation.";
+          addDockWidget(area, dockWidget);
+          dockWidget->hide();
+          ui.menuToolbars->addAction(dockWidget->toggleViewAction());
+        }
       }
 
       connect(this, SIGNAL(moleculeChanged(Molecule*)),

@@ -55,6 +55,7 @@ class QAction;
 
 namespace Avogadro {
 
+  class DockWidget;
   class GLWidget;
   class Molecule;
 
@@ -76,6 +77,9 @@ namespace Avogadro {
    * functionality you should subclass QUndoCommand accordingly
    * based on the required functionality of the extension and return
    * the command based on the action being peformed.
+   *
+   * Append any dockwidgets the extension may use to the m_dockWidgets
+   * list and they will be put in place when the extension is loaded.
    */
   class A_EXPORT Extension : public Plugin
   {
@@ -139,9 +143,23 @@ namespace Avogadro {
     virtual bool usesNetwork(QAction *action) const;
 
     /**
-     * @return a list of dock widgets associated with this extensions
+     * @return A QDockWidget associated with this extension
+     *
+     * @deprecated Use dockWidgets() instead. This function will return the
+     * first dockWidget in the dockWidgets() list or NULL in its default
+     * implementation.
      */
     virtual QDockWidget * dockWidget();
+
+    /**
+     * @return A list of DockWidget instances associated with this extension
+     */
+    virtual QList<DockWidget*> dockWidgets() const;
+
+    /**
+     * @return The number of DockWidget instances.
+     */
+    virtual int numDockWidgets() const;
 
     /**
      * @param action the action that triggered the calls
@@ -204,6 +222,12 @@ namespace Avogadro {
      */
     void performCommand(QUndoCommand*);
 
+  protected:
+    /**
+     * The list of DockWidget instances used in dockWidgets(). Append
+     * instances of Avogadro::DockWidget to this list to have them used.
+     */
+    QList<DockWidget*> m_dockWidgets;
   };
 
 } // end namespace Avogadro

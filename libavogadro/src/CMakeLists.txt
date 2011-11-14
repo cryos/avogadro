@@ -29,6 +29,7 @@ set(libavogadro_HDRS
   color.h
   cube.h
   dockextension.h
+  dockwidget.h
   elementtranslator.h
   engine.h
   extension.h
@@ -73,6 +74,7 @@ set(libavogadro_SRCS
   cube.cpp
   cylinder_p.cpp
   dockextension.cpp
+  dockwidget.cpp
   elementdetail_p.cpp
   elementitem_p.cpp
   elementtranslator.cpp
@@ -121,6 +123,7 @@ set(libavogadro_MOC_HDRS
   colorbutton.h
   cube.h
   dockextension.h
+  dockwidget.h
   elementdetail_p.h
   elementtranslator.h
   engine.h
