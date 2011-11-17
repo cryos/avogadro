@@ -56,6 +56,7 @@ namespace Avogadro {
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+      QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
       bool paint(GLWidget *widget);
       QWidget *settingsWidget();
@@ -70,7 +71,7 @@ namespace Avogadro {
       boost::python::object  m_instance;
       QWidget               *m_settingsWidget;
       QString                m_identifier;
- 
+
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };
