@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-11-14 00:00-0500\n"
+"POT-Creation-Date: 2011-11-21 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:39+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -744,7 +744,7 @@ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
 "Vẽ liên kết như các sợi dây (đường thẳng), phù hợp với các (sinh) phân tử lớn"
 
-#: src/extension.cpp:44
+#: src/extension.cpp:46
 msgid "Extensions"
 msgstr "Phần mở rộng"
 
@@ -912,6 +912,8 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "Trình biên tập Đề-các..."
 
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
+#. i18n: ectx: property (text), widget (QPushButton, push_build)
 #: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -919,7 +921,9 @@ msgstr "Trình biên tập Đề-các..."
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108
+#: src/extensions/unitcellextension.cpp:70:3862
 msgid "&Build"
 msgstr "&Dựng"
 
@@ -3196,6 +3200,46 @@ msgstr "Mật độ electron"
 msgid "Calculate molecular orbitals and other surfaces"
 msgstr "Tính mật độ orbital phân tử và các mặt khác"
 
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:62
+msgid "&Nanotube Builder..."
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3821
+#, fuzzy
+msgid "Nanotube Builder"
+msgstr "Xây dựng chuỗi pep-tit"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:121
+msgid "Invalid Nanotube Specification"
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:122
+msgid ""
+"The requested nanotube cannot be built for the following reason:\n"
+"\n"
+"Either n or m must be greater than 1."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:167
+#, fuzzy
+msgid "Insert Nanotube"
+msgstr "Chèn đoạn"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:38
+msgid "SWCNT Builder"
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:39
+msgid "Construct single wall carbon nanotubes."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:97
+#, fuzzy
+msgid "Building..."
+msgstr "Đang tạo video "
+
 #: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
 msgstr "Khiển tố GL không được cài đặt đúng để có thể tạo ra đoạn phim video"
@@ -3482,7 +3526,7 @@ msgid "  - script has no 'Engine' class defined"
 msgstr "  - script không có lớp 'Engine' nào được định nghĩa"
 
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:358
-#: src/pythontool_p.cpp:342
+#: src/pythontool_p.cpp:347
 msgid "  - no module"
 msgstr "  - không có module"
 
@@ -3507,11 +3551,11 @@ msgstr ""
 msgid "Unknown Python Tool"
 msgstr "Không rõ công cụ Python"
 
-#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+#: src/pythontool_p.cpp:341 src/pythontool_p.cpp:346
 msgid "PythonTool: checking "
 msgstr "PythonTool: đang kiểm tra "
 
-#: src/pythontool_p.cpp:337
+#: src/pythontool_p.cpp:342
 msgid "  - script has no 'Tool' class defined"
 msgstr "  - mã lệnh không có lớp 'Tool' [công cụ] nào được định nghĩa"
 
@@ -3524,33 +3568,34 @@ msgstr "Đồng phân %1"
 msgid "Tools"
 msgstr "Công cụ"
 
-#: src/tools/aligntool.cpp:63
+#: src/tools/aligntool.cpp:65
 msgid ""
 "Align Molecules\n"
 "\n"
 "Left Mouse: \tSelect up to two atoms.\n"
 "\tThe first atom is centered at the origin.\n"
 "\tThe second atom is aligned to the selected axis.\n"
-"Right Mouse: \tReset alignment."
+"Right Mouse: \tReset alignment.\n"
+"Double-Click: \tCenter the atom at the origin."
 msgstr ""
 
-#: src/tools/aligntool.cpp:257
+#: src/tools/aligntool.cpp:293
 msgid "Axis:"
 msgstr "Trục:"
 
-#: src/tools/aligntool.cpp:268
+#: src/tools/aligntool.cpp:304
 msgid "Align:"
 msgstr "Dóng:"
 
-#: src/tools/aligntool.cpp:273
+#: src/tools/aligntool.cpp:309
 msgid "Everything"
 msgstr "Mọi thứ"
 
-#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:535
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
 msgid "Molecule"
 msgstr "Phân tử"
 
-#: src/tools/aligntool.cpp:278 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:314 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Dóng hàng"
 
@@ -3566,83 +3611,84 @@ msgstr "Cài đặt về dóng hàng"
 msgid ""
 "Auto Optimization Tool\n"
 "\n"
-"Navigation Functions when Clicking in empty space.\n"
-"Left Mouse: Rotate Space\n"
+"Navigation Functions when clicking in empty space.\n"
+"Left Mouse: \tRotate Space\n"
 "Middle Mouse: Zoom Space\n"
-"Right Mouse: Move Space\n"
+"Right Mouse: \tMove Space\n"
+"Double-Click: \t Reset View\n"
 "\n"
-"Extra Function when running\n"
-"Left Mouse: Click and drag atoms to move them"
+"When running:\n"
+"Left Mouse: \tClick and drag atoms to move them."
 msgstr ""
 
-#: src/tools/autoopttool.cpp:231
+#: src/tools/autoopttool.cpp:237
 msgid "AutoOpt: Could not setup force field...."
 msgstr ""
 
-#: src/tools/autoopttool.cpp:239
+#: src/tools/autoopttool.cpp:245
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Tự động tối ưu: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:243
+#: src/tools/autoopttool.cpp:249
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr "Ràng buộc số: %1"
 
-#: src/tools/autoopttool.cpp:268
+#: src/tools/autoopttool.cpp:274
 msgid "Force Field:"
 msgstr "Trường lực:"
 
-#: src/tools/autoopttool.cpp:283
+#: src/tools/autoopttool.cpp:289
 msgid "Steps per Update:"
 msgstr "Số bước trong mỗi lượt cập nhật:"
 
-#: src/tools/autoopttool.cpp:294
+#: src/tools/autoopttool.cpp:300
 msgid "Algorithm:"
 msgstr "Thuật toán:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:297:720
+#: src/tools/autoopttool.cpp:303:720
 msgid "Steepest Descent"
 msgstr "Dốc xuống nhất"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:298:723
+#: src/tools/autoopttool.cpp:304:723
 msgid "Conjugate Gradients"
 msgstr "Gra-đien liên hợp"
 
-#: src/tools/autoopttool.cpp:299
+#: src/tools/autoopttool.cpp:305
 msgid "Molecular Dynamics (300K)"
 msgstr "Động lực học phân tử (300K)"
 
-#: src/tools/autoopttool.cpp:300
+#: src/tools/autoopttool.cpp:306
 msgid "Molecular Dynamics (600K)"
 msgstr "Động lực học phân tử (600K)"
 
-#: src/tools/autoopttool.cpp:301
+#: src/tools/autoopttool.cpp:307
 msgid "Molecular Dynamics (900K)"
 msgstr "Động lực học phân tử (900K)"
 
-#: src/tools/autoopttool.cpp:303 src/tools/autoopttool.cpp:389
+#: src/tools/autoopttool.cpp:309 src/tools/autoopttool.cpp:395
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Bắt đầu"
 
-#: src/tools/autoopttool.cpp:305
+#: src/tools/autoopttool.cpp:311
 msgid "Fixed atoms are movable"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:307
+#: src/tools/autoopttool.cpp:313
 msgid "Ignored atoms are movable"
 msgstr "Các nguyên tử được bỏ qua đều di chuyển được"
 
-#: src/tools/autoopttool.cpp:362 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:368 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Dừng"
 
-#: src/tools/autoopttool.cpp:570
+#: src/tools/autoopttool.cpp:576
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -3719,16 +3765,18 @@ msgid "AutoRotate Settings"
 msgstr "Cài đặt cho xoay tự động"
 
 #: src/tools/bondcentrictool.cpp:79
+#, fuzzy
 msgid ""
 "Bond Centric Manipulation Tool\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view\n"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view.\n"
 "\n"
-"Left Click & drag on a Bond to set the Manipulation Plane:\n"
-"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
-"- Right Click & Drag one of the Atoms in the Bond to change the length"
+"Left Click & Drag on a Bond to set the Manipulation Plane:\n"
+"Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
 "Công cụ thao tác với liên kết\n"
 "\n"
@@ -3740,25 +3788,25 @@ msgstr ""
 "- Nhấn phím trái & kéo một phân tử dính với liên kết để thay đổi góc\n"
 "- Nhấn phím phải & kéo một phân tử dính với liên kết để thay đổi chiều dài"
 
-#: src/tools/bondcentrictool.cpp:791
+#: src/tools/bondcentrictool.cpp:792
 #, qt-format
 msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
 msgstr "Chiều dài liên kết: %L1"
 
-#: src/tools/bondcentrictool.cpp:1597
+#: src/tools/bondcentrictool.cpp:1598
 msgid " Show Angles"
 msgstr " Hiện các góc"
 
-#: src/tools/bondcentrictool.cpp:1600
+#: src/tools/bondcentrictool.cpp:1601
 msgid " Snap-to Bonds"
 msgstr " Bắt các điểm nút liên kết"
 
-#: src/tools/bondcentrictool.cpp:1603
+#: src/tools/bondcentrictool.cpp:1604
 msgid "Snap-to Threshold: "
 msgstr "Ngưỡng bắt điểm: "
 
-#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+#: src/tools/bondcentrictool.cpp:1658 src/tools/bondcentrictool.cpp:1673
 msgid "Bond Centric Manipulation"
 msgstr "Thao tác với liên kết"
 
@@ -3775,13 +3823,14 @@ msgid "Bond Centric Manipulate Settings"
 msgstr "Các cài đặt liên quan đến thao tác với liên kết"
 
 #: src/tools/clickmeasuretool.cpp:57
+#, fuzzy
 msgid ""
 "Click to Measure (F12)\n"
 "\n"
 "Left Mouse: \tSelect up to three Atoms.\n"
 "\tDistances are measured between 1-2 and 2-3\n"
 "\tAngle is measured between 1-3 using 2 as the common point\n"
-"Right Mouse: Reset the measurements."
+"Right Mouse: \tReset the measurements.Double-Click: \tReset the view."
 msgstr ""
 "Nháy chuột để đo (F12)\n"
 "\n"
@@ -3790,63 +3839,63 @@ msgstr ""
 "\tGóc được đo giữa 1-3 với 2 làm điểm chung\n"
 "Phím phải chuột: Thiết lập lại việc đo đạc."
 
-#: src/tools/clickmeasuretool.cpp:148
+#: src/tools/clickmeasuretool.cpp:149
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
 msgstr "Khoảng cách (1->2): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:166
+#: src/tools/clickmeasuretool.cpp:167
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
 msgstr "Khoảng cách (2->3): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:175
+#: src/tools/clickmeasuretool.cpp:176
 #, qt-format
 msgid "Angle: %L1 °"
 msgstr "Góc: %L1 °"
 
-#: src/tools/clickmeasuretool.cpp:195
+#: src/tools/clickmeasuretool.cpp:196
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
 msgstr "Khoảng cách (3->4): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:211
+#: src/tools/clickmeasuretool.cpp:212
 #, qt-format
 msgid "Dihedral Angle: %1 °"
 msgstr "Góc nhị diện: %1 °"
 
-#: src/tools/clickmeasuretool.cpp:251
+#: src/tools/clickmeasuretool.cpp:252
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
 msgstr "*1"
 
-#: src/tools/clickmeasuretool.cpp:259
+#: src/tools/clickmeasuretool.cpp:260
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
 msgstr "*2"
 
-#: src/tools/clickmeasuretool.cpp:268
+#: src/tools/clickmeasuretool.cpp:269
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
 msgstr "*3"
 
-#: src/tools/clickmeasuretool.cpp:277
+#: src/tools/clickmeasuretool.cpp:278
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
 msgstr "*4"
 
-#: src/tools/clickmeasuretool.cpp:281
+#: src/tools/clickmeasuretool.cpp:282
 msgid "Distance(s):"
 msgstr "Khoảng cách:"
 
-#: src/tools/clickmeasuretool.cpp:291
+#: src/tools/clickmeasuretool.cpp:292
 msgid "Angle:"
 msgstr "Angle:"
 
-#: src/tools/clickmeasuretool.cpp:303
+#: src/tools/clickmeasuretool.cpp:304
 msgid "Dihedral:"
 msgstr "Góc nhị diện:"
 
@@ -3864,7 +3913,7 @@ msgstr "Cài đặt các yếu tố đo đạc"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3887
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3937
 msgid "Add Atom"
 msgstr "Thêm nguyên tử"
 
@@ -3889,11 +3938,12 @@ msgid "Change Bond Order"
 msgstr "Thay đổi thứ tự liên kết"
 
 #: src/tools/drawtool.cpp:88
+#, fuzzy
 msgid ""
 "Draw Tool (F8)\n"
 "\n"
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-"Right Mouse: Delete Atom"
+"Right Mouse: \tDelete Atom"
 msgstr ""
 "Công cụ vẽ (F8)\n"
 "\n"
@@ -3950,23 +4000,21 @@ msgstr "Vẽ và chỉnh sủa nguyên tử và liên kết"
 msgid "Draw Settings"
 msgstr "Cài đặt cho thao tác vẽ"
 
-#: src/tools/manipulatetool.cpp:51
+#: src/tools/manipulatetool.cpp:52
+#, fuzzy
 msgid ""
 "Manipulation Tool (F10)\n"
 "\n"
-"Left Mouse:   Click and drag to move atoms\n"
+"Left Mouse: \tClick and drag to move atoms\n"
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
-"Right Mouse:  Click and drag to rotate selected atoms."
+"Right Mouse: \tClick and drag to rotate selected atoms.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "Công cụ thao tác (F10)\n"
 "\n"
 "Phím trái chuột:   Nhấn và kéo để di chuyển nguyên tử\n"
 "Phím giữa chuột:   Nhấn và kéo để di chuyển nguyên tử ra xa hoặc gần lại\n"
 "Phím phải chuột:   Nhấn và kéo để quay các nguyên tử đã chọn."
-
-#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
-msgid "Manipulate Atom"
-msgstr "Thao tác với nguyên tử"
 
 #: src/tools/manipulatetool.h:53
 msgid "Manipulate"
@@ -3980,13 +4028,19 @@ msgstr "Dịch chuyển, quay, chỉnh các nguyên tử và các đoạn"
 msgid "Manipulate Settings"
 msgstr "Cài đặt cho việc thao tác"
 
+#: src/tools/moveatomcommand.cpp:34 src/tools/moveatomcommand.cpp:43
+msgid "Manipulate Atom"
+msgstr "Thao tác với nguyên tử"
+
 #: src/tools/navigatetool.cpp:60
+#, fuzzy
 msgid ""
 "Navigation Tool (F9)\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "Công cụ di chuyển (F9)\n"
 "\n"
@@ -4007,12 +4061,15 @@ msgid "Navigate Settings"
 msgstr "Cài đặt cho việc di chuyển"
 
 #: src/tools/selectrotatetool.cpp:65
+#, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
-"Click to pick individual atoms, residues, or fragments\n"
-"Drag to select a range of atoms\n"
-"Right click outside the molecule to clear selection\n"
-"Use Ctrl to toggle the selection and shift to add to the selection"
+"\n"
+"Left Mouse: \tClick to pick individual atoms, residues, or fragments\n"
+"\tDrag to select a range of atoms\n"
+"Right Mouse: \tClick outside the molecule to clear selection\n"
+"Use Ctrl to toggle the selection and shift to add to the selection.\n"
+"Double-Click: \tSelect an entire fragment."
 msgstr ""
 "Công cụ lựa chọn (F11)\n"
 "Nháy chuột để chọn từng nguyên tử, dư chất, hoặc đoạn riêng lẻ\n"
@@ -4020,49 +4077,49 @@ msgstr ""
 "Nháy phải chuột bên ngoài phân tử để bỏ việc lựa chọn\n"
 "Dùng Ctrl để bật/tắt lựa chọn và Shift để bổ sung vào lựa chọn"
 
-#: src/tools/selectrotatetool.cpp:528
+#: src/tools/selectrotatetool.cpp:631
 msgid "Selection Mode:"
 msgstr "Chế độ lựa chọn:"
 
-#: src/tools/selectrotatetool.cpp:533
+#: src/tools/selectrotatetool.cpp:636
 msgid "Atom/Bond"
 msgstr "Nguyên tử/Liên kết"
 
-#: src/tools/selectrotatetool.cpp:534
+#: src/tools/selectrotatetool.cpp:637
 msgid "Residue"
 msgstr "Dư chất"
 
-#: src/tools/selectrotatetool.cpp:537
+#: src/tools/selectrotatetool.cpp:640
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Số nguyên tử:"
 
-#: src/tools/selectrotatetool.cpp:538
+#: src/tools/selectrotatetool.cpp:641
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Thêm ràng buộc"
 
-#: src/tools/selectrotatetool.cpp:593
+#: src/tools/selectrotatetool.cpp:696
 msgid "Change color of the atom"
 msgstr "Đổi màu nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:617
+#: src/tools/selectrotatetool.cpp:720
 msgid "Change label of the atom"
 msgstr "Đổi nhãn của nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:618 src/tools/selectrotatetool.cpp:627
+#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
 msgid "New Label:"
 msgstr "Nhãn mới:"
 
-#: src/tools/selectrotatetool.cpp:626
+#: src/tools/selectrotatetool.cpp:729
 msgid "Change label of the bond"
 msgstr "Đổi nhãn của liên kết"
 
-#: src/tools/selectrotatetool.cpp:658
+#: src/tools/selectrotatetool.cpp:761
 msgid "Change radius of the atom"
 msgstr "Thay đổi bán kính nguyên tử"
 
-#: src/tools/selectrotatetool.cpp:659
+#: src/tools/selectrotatetool.cpp:762
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
@@ -9453,6 +9510,84 @@ msgstr "Cửa sổ hiển thị mới"
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
 msgstr "Thêm..."
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:41
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "&n:"
+msgstr "Trong:"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:58
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&m:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "&Length:"
+msgstr "Chiều dài %1"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Uni&t:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "periodic units"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "angstrom"
+msgstr "Angstrom"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "bohr radii"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "nanometers"
+msgstr "Thông số:"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "picometers"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
+#. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
+msgid "&Cap with hydrogen"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:170
+#. i18n: ectx: property (toolTip), widget (QCheckBox, cb_dbonds)
+msgid ""
+"This may take a while. If only the atomic coordinates\n"
+"are needed (say, for a quantum mechanical calculation),\n"
+"a single-bond-only representation should suffice."
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
+#. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
+#, fuzzy
+msgid "Find &double bonds"
+msgstr "Vẽ các liên kết hi-đrô"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
+#. i18n: ectx: property (text), widget (QPushButton, push_hide)
+msgid "&Hide"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
+#. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
+msgid "&Hide when finished"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, UnitCellParamDialog)

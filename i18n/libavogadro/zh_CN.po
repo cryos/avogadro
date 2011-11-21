@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-11-14 00:00-0500\n"
+"POT-Creation-Date: 2011-11-21 00:00-0500\n"
 "PO-Revision-Date: 2011-03-25 12:56+0000\n"
 "Last-Translator: ZhangCheng <skyxxzc@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -740,7 +740,7 @@ msgstr "线框"
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr "将键渲染为线框（线），对于大的（生物）分子很理想"
 
-#: src/extension.cpp:44
+#: src/extension.cpp:46
 msgid "Extensions"
 msgstr "扩展"
 
@@ -902,6 +902,8 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "笛卡尔坐标编辑器..."
 
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
+#. i18n: ectx: property (text), widget (QPushButton, push_build)
 #: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -909,7 +911,9 @@ msgstr "笛卡尔坐标编辑器..."
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108
+#: src/extensions/unitcellextension.cpp:70:3862
 msgid "&Build"
 msgstr "构建(&B)"
 
@@ -3176,6 +3180,47 @@ msgstr "电子密度"
 msgid "Calculate molecular orbitals and other surfaces"
 msgstr "计算分子轨道和其它表面"
 
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:62
+#, fuzzy
+msgid "&Nanotube Builder..."
+msgstr "超晶胞构建器..."
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3821
+#, fuzzy
+msgid "Nanotube Builder"
+msgstr "多肽构建器"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:121
+msgid "Invalid Nanotube Specification"
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:122
+msgid ""
+"The requested nanotube cannot be built for the following reason:\n"
+"\n"
+"Either n or m must be greater than 1."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:167
+#, fuzzy
+msgid "Insert Nanotube"
+msgstr "插入片段"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:38
+msgid "SWCNT Builder"
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:39
+msgid "Construct single wall carbon nanotubes."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:97
+#, fuzzy
+msgid "Building..."
+msgstr "建构视频 "
+
 #: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
 msgstr "GL小工具未能正确启动以制作视频"
@@ -3463,7 +3508,7 @@ msgid "  - script has no 'Engine' class defined"
 msgstr "  - 脚本没有定义“引擎”种类"
 
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:358
-#: src/pythontool_p.cpp:342
+#: src/pythontool_p.cpp:347
 msgid "  - no module"
 msgstr "  - 没有模块"
 
@@ -3487,11 +3532,11 @@ msgstr "  - 脚本没有定义“扩展”类型"
 msgid "Unknown Python Tool"
 msgstr "未知Python工具"
 
-#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+#: src/pythontool_p.cpp:341 src/pythontool_p.cpp:346
 msgid "PythonTool: checking "
 msgstr "Python工具: 检查中 "
 
-#: src/pythontool_p.cpp:337
+#: src/pythontool_p.cpp:342
 msgid "  - script has no 'Tool' class defined"
 msgstr "  - 脚本没有定义“工具”类型"
 
@@ -3504,14 +3549,16 @@ msgstr "构象异构体%1"
 msgid "Tools"
 msgstr "工具"
 
-#: src/tools/aligntool.cpp:63
+#: src/tools/aligntool.cpp:65
+#, fuzzy
 msgid ""
 "Align Molecules\n"
 "\n"
 "Left Mouse: \tSelect up to two atoms.\n"
 "\tThe first atom is centered at the origin.\n"
 "\tThe second atom is aligned to the selected axis.\n"
-"Right Mouse: \tReset alignment."
+"Right Mouse: \tReset alignment.\n"
+"Double-Click: \tCenter the atom at the origin."
 msgstr ""
 "对齐分子\n"
 "\n"
@@ -3520,23 +3567,23 @@ msgstr ""
 "\t 第二个原子对齐到选中的轴上。\n"
 "鼠标右键：\t 重置对齐。"
 
-#: src/tools/aligntool.cpp:257
+#: src/tools/aligntool.cpp:293
 msgid "Axis:"
 msgstr "轴"
 
-#: src/tools/aligntool.cpp:268
+#: src/tools/aligntool.cpp:304
 msgid "Align:"
 msgstr "对齐："
 
-#: src/tools/aligntool.cpp:273
+#: src/tools/aligntool.cpp:309
 msgid "Everything"
 msgstr "所有内容"
 
-#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:535
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
 msgid "Molecule"
 msgstr "分子"
 
-#: src/tools/aligntool.cpp:278 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:314 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "对齐"
 
@@ -3549,16 +3596,18 @@ msgid "Align Settings"
 msgstr "对齐设置"
 
 #: src/tools/autoopttool.cpp:59
+#, fuzzy
 msgid ""
 "Auto Optimization Tool\n"
 "\n"
-"Navigation Functions when Clicking in empty space.\n"
-"Left Mouse: Rotate Space\n"
+"Navigation Functions when clicking in empty space.\n"
+"Left Mouse: \tRotate Space\n"
 "Middle Mouse: Zoom Space\n"
-"Right Mouse: Move Space\n"
+"Right Mouse: \tMove Space\n"
+"Double-Click: \t Reset View\n"
 "\n"
-"Extra Function when running\n"
-"Left Mouse: Click and drag atoms to move them"
+"When running:\n"
+"Left Mouse: \tClick and drag atoms to move them."
 msgstr ""
 "自动优化工具\n"
 "\n"
@@ -3570,74 +3619,74 @@ msgstr ""
 "运行时的附加功能\n"
 "鼠标左键: 点击并拖动原子以移动它们"
 
-#: src/tools/autoopttool.cpp:231
+#: src/tools/autoopttool.cpp:237
 msgid "AutoOpt: Could not setup force field...."
 msgstr "自动优化: 不能建立力场...."
 
-#: src/tools/autoopttool.cpp:239
+#: src/tools/autoopttool.cpp:245
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "自动优化: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:243
+#: src/tools/autoopttool.cpp:249
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:268
+#: src/tools/autoopttool.cpp:274
 msgid "Force Field:"
 msgstr "力场:"
 
-#: src/tools/autoopttool.cpp:283
+#: src/tools/autoopttool.cpp:289
 msgid "Steps per Update:"
 msgstr "每次更新步骤数:"
 
-#: src/tools/autoopttool.cpp:294
+#: src/tools/autoopttool.cpp:300
 msgid "Algorithm:"
 msgstr "算法："
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:297:720
+#: src/tools/autoopttool.cpp:303:720
 msgid "Steepest Descent"
 msgstr "最速下降法"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:298:723
+#: src/tools/autoopttool.cpp:304:723
 msgid "Conjugate Gradients"
 msgstr "共轭梯度法"
 
-#: src/tools/autoopttool.cpp:299
+#: src/tools/autoopttool.cpp:305
 msgid "Molecular Dynamics (300K)"
 msgstr "分子动力学 (300K)"
 
-#: src/tools/autoopttool.cpp:300
+#: src/tools/autoopttool.cpp:306
 msgid "Molecular Dynamics (600K)"
 msgstr "分子动力学 (600K)"
 
-#: src/tools/autoopttool.cpp:301
+#: src/tools/autoopttool.cpp:307
 msgid "Molecular Dynamics (900K)"
 msgstr "分子动力学 (900K)"
 
-#: src/tools/autoopttool.cpp:303 src/tools/autoopttool.cpp:389
+#: src/tools/autoopttool.cpp:309 src/tools/autoopttool.cpp:395
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "开始"
 
-#: src/tools/autoopttool.cpp:305
+#: src/tools/autoopttool.cpp:311
 msgid "Fixed atoms are movable"
 msgstr "设置固定的原子为可移动的"
 
-#: src/tools/autoopttool.cpp:307
+#: src/tools/autoopttool.cpp:313
 msgid "Ignored atoms are movable"
 msgstr "设置已忽略的原子为可移动的"
 
-#: src/tools/autoopttool.cpp:362 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:368 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "停止"
 
-#: src/tools/autoopttool.cpp:570
+#: src/tools/autoopttool.cpp:576
 msgid "AutoOpt Molecule"
 msgstr "自动优化分子"
 
@@ -3714,16 +3763,18 @@ msgid "AutoRotate Settings"
 msgstr "自动旋转设置"
 
 #: src/tools/bondcentrictool.cpp:79
+#, fuzzy
 msgid ""
 "Bond Centric Manipulation Tool\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view\n"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view.\n"
 "\n"
-"Left Click & drag on a Bond to set the Manipulation Plane:\n"
-"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
-"- Right Click & Drag one of the Atoms in the Bond to change the length"
+"Left Click & Drag on a Bond to set the Manipulation Plane:\n"
+"Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
 "化学键操纵工具\n"
 "\n"
@@ -3735,25 +3786,25 @@ msgstr ""
 "- 左击并拖动键上的一个原子以改变键角\n"
 "- 右击并拖动键上的一个原子以改变键长"
 
-#: src/tools/bondcentrictool.cpp:791
+#: src/tools/bondcentrictool.cpp:792
 #, qt-format
 msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
 msgstr "键长: %L1"
 
-#: src/tools/bondcentrictool.cpp:1597
+#: src/tools/bondcentrictool.cpp:1598
 msgid " Show Angles"
 msgstr " 显示键角"
 
-#: src/tools/bondcentrictool.cpp:1600
+#: src/tools/bondcentrictool.cpp:1601
 msgid " Snap-to Bonds"
 msgstr " 对齐至键"
 
-#: src/tools/bondcentrictool.cpp:1603
+#: src/tools/bondcentrictool.cpp:1604
 msgid "Snap-to Threshold: "
 msgstr "对齐至起点: "
 
-#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+#: src/tools/bondcentrictool.cpp:1658 src/tools/bondcentrictool.cpp:1673
 msgid "Bond Centric Manipulation"
 msgstr "化学键操纵"
 
@@ -3770,13 +3821,14 @@ msgid "Bond Centric Manipulate Settings"
 msgstr "化学键操纵设置"
 
 #: src/tools/clickmeasuretool.cpp:57
+#, fuzzy
 msgid ""
 "Click to Measure (F12)\n"
 "\n"
 "Left Mouse: \tSelect up to three Atoms.\n"
 "\tDistances are measured between 1-2 and 2-3\n"
 "\tAngle is measured between 1-3 using 2 as the common point\n"
-"Right Mouse: Reset the measurements."
+"Right Mouse: \tReset the measurements.Double-Click: \tReset the view."
 msgstr ""
 "点击以测量(F12)\n"
 "\n"
@@ -3785,63 +3837,63 @@ msgstr ""
 "\t 以2作为顶点，1-3之间的角度将被测量\n"
 "鼠标右键：重置测量。"
 
-#: src/tools/clickmeasuretool.cpp:148
+#: src/tools/clickmeasuretool.cpp:149
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
 msgstr "距离(1->2): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:166
+#: src/tools/clickmeasuretool.cpp:167
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
 msgstr "距离(2->3): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:175
+#: src/tools/clickmeasuretool.cpp:176
 #, qt-format
 msgid "Angle: %L1 °"
 msgstr "键角: %L1 °"
 
-#: src/tools/clickmeasuretool.cpp:195
+#: src/tools/clickmeasuretool.cpp:196
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
 msgstr "距离(3->4): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:211
+#: src/tools/clickmeasuretool.cpp:212
 #, qt-format
 msgid "Dihedral Angle: %1 °"
 msgstr "二面角: %1 °"
 
-#: src/tools/clickmeasuretool.cpp:251
+#: src/tools/clickmeasuretool.cpp:252
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
 msgstr "*1"
 
-#: src/tools/clickmeasuretool.cpp:259
+#: src/tools/clickmeasuretool.cpp:260
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
 msgstr "*2"
 
-#: src/tools/clickmeasuretool.cpp:268
+#: src/tools/clickmeasuretool.cpp:269
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
 msgstr "*3"
 
-#: src/tools/clickmeasuretool.cpp:277
+#: src/tools/clickmeasuretool.cpp:278
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
 msgstr "*4"
 
-#: src/tools/clickmeasuretool.cpp:281
+#: src/tools/clickmeasuretool.cpp:282
 msgid "Distance(s):"
 msgstr "距离(s):"
 
-#: src/tools/clickmeasuretool.cpp:291
+#: src/tools/clickmeasuretool.cpp:292
 msgid "Angle:"
 msgstr "角度："
 
-#: src/tools/clickmeasuretool.cpp:303
+#: src/tools/clickmeasuretool.cpp:304
 msgid "Dihedral:"
 msgstr "二面"
 
@@ -3859,7 +3911,7 @@ msgstr "测量设置"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3887
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3937
 msgid "Add Atom"
 msgstr "添加原子"
 
@@ -3884,11 +3936,12 @@ msgid "Change Bond Order"
 msgstr "更改键级"
 
 #: src/tools/drawtool.cpp:88
+#, fuzzy
 msgid ""
 "Draw Tool (F8)\n"
 "\n"
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-"Right Mouse: Delete Atom"
+"Right Mouse: \tDelete Atom"
 msgstr ""
 "绘制工具(F8)\n"
 "\n"
@@ -3945,23 +3998,21 @@ msgstr "绘制并编辑原子和键"
 msgid "Draw Settings"
 msgstr "绘制设置"
 
-#: src/tools/manipulatetool.cpp:51
+#: src/tools/manipulatetool.cpp:52
+#, fuzzy
 msgid ""
 "Manipulation Tool (F10)\n"
 "\n"
-"Left Mouse:   Click and drag to move atoms\n"
+"Left Mouse: \tClick and drag to move atoms\n"
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
-"Right Mouse:  Click and drag to rotate selected atoms."
+"Right Mouse: \tClick and drag to rotate selected atoms.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "操纵工具 (F10)\n"
 "\n"
 "鼠标左键: 点击并拖动以移动原子\n"
 "鼠标中键: 点击并拖动以将原子拉近或移远\n"
 "鼠标右键: 点击并拖动以旋转选定的原子。"
-
-#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
-msgid "Manipulate Atom"
-msgstr "操纵原子"
 
 #: src/tools/manipulatetool.h:53
 msgid "Manipulate"
@@ -3975,13 +4026,19 @@ msgstr "平移，旋转并调整原子和片段"
 msgid "Manipulate Settings"
 msgstr "操纵设置"
 
+#: src/tools/moveatomcommand.cpp:34 src/tools/moveatomcommand.cpp:43
+msgid "Manipulate Atom"
+msgstr "操纵原子"
+
 #: src/tools/navigatetool.cpp:60
+#, fuzzy
 msgid ""
 "Navigation Tool (F9)\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "导航工具 (F9)\n"
 "\n"
@@ -4002,57 +4059,64 @@ msgid "Navigate Settings"
 msgstr "导航设置"
 
 #: src/tools/selectrotatetool.cpp:65
+#, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
-"Click to pick individual atoms, residues, or fragments\n"
-"Drag to select a range of atoms\n"
-"Right click outside the molecule to clear selection\n"
-"Use Ctrl to toggle the selection and shift to add to the selection"
+"\n"
+"Left Mouse: \tClick to pick individual atoms, residues, or fragments\n"
+"\tDrag to select a range of atoms\n"
+"Right Mouse: \tClick outside the molecule to clear selection\n"
+"Use Ctrl to toggle the selection and shift to add to the selection.\n"
+"Double-Click: \tSelect an entire fragment."
 msgstr ""
+"选择工具 (F11)\n"
+"点击以选取单个原子、残基或者片段\n"
+"拖动以选择一定范围内的原子\n"
+"使用Ctrl以显示选择，使用Shift以添加到选择"
 
-#: src/tools/selectrotatetool.cpp:528
+#: src/tools/selectrotatetool.cpp:631
 msgid "Selection Mode:"
 msgstr "选择模式:"
 
-#: src/tools/selectrotatetool.cpp:533
+#: src/tools/selectrotatetool.cpp:636
 msgid "Atom/Bond"
 msgstr "原子/键"
 
-#: src/tools/selectrotatetool.cpp:534
+#: src/tools/selectrotatetool.cpp:637
 msgid "Residue"
 msgstr "残基"
 
-#: src/tools/selectrotatetool.cpp:537
+#: src/tools/selectrotatetool.cpp:640
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "原子的数量:"
 
-#: src/tools/selectrotatetool.cpp:538
+#: src/tools/selectrotatetool.cpp:641
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "添加限制"
 
-#: src/tools/selectrotatetool.cpp:593
+#: src/tools/selectrotatetool.cpp:696
 msgid "Change color of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:617
+#: src/tools/selectrotatetool.cpp:720
 msgid "Change label of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:618 src/tools/selectrotatetool.cpp:627
+#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
 msgid "New Label:"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:626
+#: src/tools/selectrotatetool.cpp:729
 msgid "Change label of the bond"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:658
+#: src/tools/selectrotatetool.cpp:761
 msgid "Change radius of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:659
+#: src/tools/selectrotatetool.cpp:762
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
@@ -9409,6 +9473,84 @@ msgstr "新建显示"
 msgid "Advanced..."
 msgstr "高级..."
 
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:41
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "&n:"
+msgstr "输入："
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:58
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&m:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "&Length:"
+msgstr "长度%1"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Uni&t:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "periodic units"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "angstrom"
+msgstr "埃"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "bohr radii"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "nanometers"
+msgstr "参数："
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "picometers"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
+#. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
+msgid "&Cap with hydrogen"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:170
+#. i18n: ectx: property (toolTip), widget (QCheckBox, cb_dbonds)
+msgid ""
+"This may take a while. If only the atomic coordinates\n"
+"are needed (say, for a quantum mechanical calculation),\n"
+"a single-bond-only representation should suffice."
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
+#. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
+#, fuzzy
+msgid "Find &double bonds"
+msgstr "渲染氢键"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
+#. i18n: ectx: property (text), widget (QPushButton, push_hide)
+msgid "&Hide"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
+#. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
+msgid "&Hide when finished"
+msgstr ""
+
 #. i18n: file: src/extensions/unitcellparamdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, UnitCellParamDialog)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:128
@@ -9769,17 +9911,6 @@ msgstr ""
 
 #~ msgid "Click to insert the fragment at that position."
 #~ msgstr "点击以在该位置插入片段"
-
-#~ msgid ""
-#~ "Selection Tool (F11)\n"
-#~ "Click to pick individual atoms, residues, or fragments\n"
-#~ "Drag to select a range of atoms\n"
-#~ "Use Ctrl to toggle the selection and shift to add to the selection"
-#~ msgstr ""
-#~ "选择工具 (F11)\n"
-#~ "点击以选取单个原子、残基或者片段\n"
-#~ "拖动以选择一定范围内的原子\n"
-#~ "使用Ctrl以显示选择，使用Shift以添加到选择"
 
 #~ msgid "Custom Value"
 #~ msgstr "自定义值"

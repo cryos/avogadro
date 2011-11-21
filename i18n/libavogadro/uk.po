@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-11-14 00:00-0500\n"
+"POT-Creation-Date: 2011-11-21 00:00-0500\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -748,7 +748,7 @@ msgstr ""
 "Показ зв’язків як лінійних стрижнів. Чудово працює для дуже великих (біо-)"
 "молекул."
 
-#: src/extension.cpp:44
+#: src/extension.cpp:46
 msgid "Extensions"
 msgstr "Розширення"
 
@@ -917,6 +917,8 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "Редактор декартових координат…"
 
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
+#. i18n: ectx: property (text), widget (QPushButton, push_build)
 #: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -924,7 +926,9 @@ msgstr "Редактор декартових координат…"
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108
+#: src/extensions/unitcellextension.cpp:70:3862
 msgid "&Build"
 msgstr "&Збирання"
 
@@ -3247,6 +3251,48 @@ msgstr "Електронна щільність"
 msgid "Calculate molecular orbitals and other surfaces"
 msgstr "Обчислення молекулярних орбіталей та інших поверхонь"
 
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:62
+#, fuzzy
+msgid "&Nanotube Builder..."
+msgstr "Побудова надкомірки…"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3821
+#, fuzzy
+msgid "Nanotube Builder"
+msgstr "Побудова пептидів"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:121
+#, fuzzy
+msgid "Invalid Nanotube Specification"
+msgstr "Специфікація сітки"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:122
+msgid ""
+"The requested nanotube cannot be built for the following reason:\n"
+"\n"
+"Either n or m must be greater than 1."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:167
+#, fuzzy
+msgid "Insert Nanotube"
+msgstr "Вставити фрагмент"
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:38
+msgid "SWCNT Builder"
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderextension.h:39
+msgid "Construct single wall carbon nanotubes."
+msgstr ""
+
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:97
+#, fuzzy
+msgid "Building..."
+msgstr "Побудова відео "
+
 #: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
 msgstr ""
@@ -3547,7 +3593,7 @@ msgid "  - script has no 'Engine' class defined"
 msgstr "  — у скрипті не визначено клас «Engine»"
 
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:358
-#: src/pythontool_p.cpp:342
+#: src/pythontool_p.cpp:347
 msgid "  - no module"
 msgstr "  — не вказано модуля"
 
@@ -3571,11 +3617,11 @@ msgstr "  — у скрипті не визначено клас «Extension»"
 msgid "Unknown Python Tool"
 msgstr "Невідомий інструмент Python"
 
-#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+#: src/pythontool_p.cpp:341 src/pythontool_p.cpp:346
 msgid "PythonTool: checking "
 msgstr "PythonTool: перевірка "
 
-#: src/pythontool_p.cpp:337
+#: src/pythontool_p.cpp:342
 msgid "  - script has no 'Tool' class defined"
 msgstr "  — у скрипті не визначено клас «Tool»"
 
@@ -3588,14 +3634,16 @@ msgstr "Конформер %1"
 msgid "Tools"
 msgstr "Інструменти"
 
-#: src/tools/aligntool.cpp:63
+#: src/tools/aligntool.cpp:65
+#, fuzzy
 msgid ""
 "Align Molecules\n"
 "\n"
 "Left Mouse: \tSelect up to two atoms.\n"
 "\tThe first atom is centered at the origin.\n"
 "\tThe second atom is aligned to the selected axis.\n"
-"Right Mouse: \tReset alignment."
+"Right Mouse: \tReset alignment.\n"
+"Double-Click: \tCenter the atom at the origin."
 msgstr ""
 "Вирівнювання молекул\n"
 "\n"
@@ -3604,23 +3652,23 @@ msgstr ""
 "\tДругий атом буде розташовано на вибрані осі.\n"
 "Права кнопка: \tСкинути вирівнювання."
 
-#: src/tools/aligntool.cpp:257
+#: src/tools/aligntool.cpp:293
 msgid "Axis:"
 msgstr "Вісь:"
 
-#: src/tools/aligntool.cpp:268
+#: src/tools/aligntool.cpp:304
 msgid "Align:"
 msgstr "Вирівнювати:"
 
-#: src/tools/aligntool.cpp:273
+#: src/tools/aligntool.cpp:309
 msgid "Everything"
 msgstr "Все"
 
-#: src/tools/aligntool.cpp:274 src/tools/selectrotatetool.cpp:535
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
 msgid "Molecule"
 msgstr "Молекула"
 
-#: src/tools/aligntool.cpp:278 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:314 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Вирівняти"
 
@@ -3633,16 +3681,18 @@ msgid "Align Settings"
 msgstr "Параметри вирівнювання"
 
 #: src/tools/autoopttool.cpp:59
+#, fuzzy
 msgid ""
 "Auto Optimization Tool\n"
 "\n"
-"Navigation Functions when Clicking in empty space.\n"
-"Left Mouse: Rotate Space\n"
+"Navigation Functions when clicking in empty space.\n"
+"Left Mouse: \tRotate Space\n"
 "Middle Mouse: Zoom Space\n"
-"Right Mouse: Move Space\n"
+"Right Mouse: \tMove Space\n"
+"Double-Click: \t Reset View\n"
 "\n"
-"Extra Function when running\n"
-"Left Mouse: Click and drag atoms to move them"
+"When running:\n"
+"Left Mouse: \tClick and drag atoms to move them."
 msgstr ""
 "Інструмент автоматичної оптимізації\n"
 "\n"
@@ -3654,74 +3704,74 @@ msgstr ""
 "Додаткові функції у процесі\n"
 "Ліва кнопка: Наведіть на атом і затисніть, щоб його пересунути"
 
-#: src/tools/autoopttool.cpp:231
+#: src/tools/autoopttool.cpp:237
 msgid "AutoOpt: Could not setup force field...."
 msgstr "AutoOpt: Не вдалося встановити поле сил…"
 
-#: src/tools/autoopttool.cpp:239
+#: src/tools/autoopttool.cpp:245
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:243
+#: src/tools/autoopttool.cpp:249
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr "К-ть обмежень: %1"
 
-#: src/tools/autoopttool.cpp:268
+#: src/tools/autoopttool.cpp:274
 msgid "Force Field:"
 msgstr "Поле сил:"
 
-#: src/tools/autoopttool.cpp:283
+#: src/tools/autoopttool.cpp:289
 msgid "Steps per Update:"
 msgstr "Кроків на оновлення:"
 
-#: src/tools/autoopttool.cpp:294
+#: src/tools/autoopttool.cpp:300
 msgid "Algorithm:"
 msgstr "Алгоритм:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:297:720
+#: src/tools/autoopttool.cpp:303:720
 msgid "Steepest Descent"
 msgstr "Найстрімкіший спуск"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:298:723
+#: src/tools/autoopttool.cpp:304:723
 msgid "Conjugate Gradients"
 msgstr "Спряжені градієнти"
 
-#: src/tools/autoopttool.cpp:299
+#: src/tools/autoopttool.cpp:305
 msgid "Molecular Dynamics (300K)"
 msgstr "Молекулярна динаміка (300K)"
 
-#: src/tools/autoopttool.cpp:300
+#: src/tools/autoopttool.cpp:306
 msgid "Molecular Dynamics (600K)"
 msgstr "Молекулярна динаміка (600K)"
 
-#: src/tools/autoopttool.cpp:301
+#: src/tools/autoopttool.cpp:307
 msgid "Molecular Dynamics (900K)"
 msgstr "Молекулярна динаміка (900K)"
 
-#: src/tools/autoopttool.cpp:303 src/tools/autoopttool.cpp:389
+#: src/tools/autoopttool.cpp:309 src/tools/autoopttool.cpp:395
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Почати"
 
-#: src/tools/autoopttool.cpp:305
+#: src/tools/autoopttool.cpp:311
 msgid "Fixed atoms are movable"
 msgstr "Можна рухати зафіксовані атоми"
 
-#: src/tools/autoopttool.cpp:307
+#: src/tools/autoopttool.cpp:313
 msgid "Ignored atoms are movable"
 msgstr "Можна рухати ігноровані атоми"
 
-#: src/tools/autoopttool.cpp:362 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:368 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Зупинити"
 
-#: src/tools/autoopttool.cpp:570
+#: src/tools/autoopttool.cpp:576
 msgid "AutoOpt Molecule"
 msgstr "Автооптимізація молекули"
 
@@ -3798,16 +3848,18 @@ msgid "AutoRotate Settings"
 msgstr "Параметри автоматичного обертання"
 
 #: src/tools/bondcentrictool.cpp:79
+#, fuzzy
 msgid ""
 "Bond Centric Manipulation Tool\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view\n"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view.\n"
 "\n"
-"Left Click & drag on a Bond to set the Manipulation Plane:\n"
-"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
-"- Right Click & Drag one of the Atoms in the Bond to change the length"
+"Left Click & Drag on a Bond to set the Manipulation Plane:\n"
+"Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
 "Інструмент керування зв’язками\n"
 "\n"
@@ -3822,25 +3874,25 @@ msgstr ""
 "- Затиснута права і перетягування одного з атомів у зв’язку змінює його "
 "довжину"
 
-#: src/tools/bondcentrictool.cpp:791
+#: src/tools/bondcentrictool.cpp:792
 #, qt-format
 msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
 msgstr "Довжина зв’язку: %L1"
 
-#: src/tools/bondcentrictool.cpp:1597
+#: src/tools/bondcentrictool.cpp:1598
 msgid " Show Angles"
 msgstr " Показувати кути"
 
-#: src/tools/bondcentrictool.cpp:1600
+#: src/tools/bondcentrictool.cpp:1601
 msgid " Snap-to Bonds"
 msgstr " Прилипання до зв’язків"
 
-#: src/tools/bondcentrictool.cpp:1603
+#: src/tools/bondcentrictool.cpp:1604
 msgid "Snap-to Threshold: "
 msgstr "Поріг прилипання: "
 
-#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+#: src/tools/bondcentrictool.cpp:1658 src/tools/bondcentrictool.cpp:1673
 msgid "Bond Centric Manipulation"
 msgstr "Керування центрами зв’язків"
 
@@ -3857,13 +3909,14 @@ msgid "Bond Centric Manipulate Settings"
 msgstr "Параметри пересування на основі зв’язків"
 
 #: src/tools/clickmeasuretool.cpp:57
+#, fuzzy
 msgid ""
 "Click to Measure (F12)\n"
 "\n"
 "Left Mouse: \tSelect up to three Atoms.\n"
 "\tDistances are measured between 1-2 and 2-3\n"
 "\tAngle is measured between 1-3 using 2 as the common point\n"
-"Right Mouse: Reset the measurements."
+"Right Mouse: \tReset the measurements.Double-Click: \tReset the view."
 msgstr ""
 "Дії під час вимірювання (F12)\n"
 "\n"
@@ -3872,63 +3925,63 @@ msgstr ""
 "\tКут вимірюється між парою 1-3 з 2 у його вершині\n"
 "Права кнопка: Скинути результати вимірів."
 
-#: src/tools/clickmeasuretool.cpp:148
+#: src/tools/clickmeasuretool.cpp:149
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
 msgstr "Відстань (1->2): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:166
+#: src/tools/clickmeasuretool.cpp:167
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
 msgstr "Відстань (2->3): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:175
+#: src/tools/clickmeasuretool.cpp:176
 #, qt-format
 msgid "Angle: %L1 °"
 msgstr "Кут: %L1°"
 
-#: src/tools/clickmeasuretool.cpp:195
+#: src/tools/clickmeasuretool.cpp:196
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
 msgstr "Відстань (3->4): %L1 %2"
 
-#: src/tools/clickmeasuretool.cpp:211
+#: src/tools/clickmeasuretool.cpp:212
 #, qt-format
 msgid "Dihedral Angle: %1 °"
 msgstr "Двограний кут: %1°"
 
-#: src/tools/clickmeasuretool.cpp:251
+#: src/tools/clickmeasuretool.cpp:252
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
 msgstr "*1"
 
-#: src/tools/clickmeasuretool.cpp:259
+#: src/tools/clickmeasuretool.cpp:260
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
 msgstr "*2"
 
-#: src/tools/clickmeasuretool.cpp:268
+#: src/tools/clickmeasuretool.cpp:269
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
 msgstr "*3"
 
-#: src/tools/clickmeasuretool.cpp:277
+#: src/tools/clickmeasuretool.cpp:278
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
 msgstr "*4"
 
-#: src/tools/clickmeasuretool.cpp:281
+#: src/tools/clickmeasuretool.cpp:282
 msgid "Distance(s):"
 msgstr "Відстані:"
 
-#: src/tools/clickmeasuretool.cpp:291
+#: src/tools/clickmeasuretool.cpp:292
 msgid "Angle:"
 msgstr "Кут:"
 
-#: src/tools/clickmeasuretool.cpp:303
+#: src/tools/clickmeasuretool.cpp:304
 msgid "Dihedral:"
 msgstr "Двограний кут:"
 
@@ -3946,7 +3999,7 @@ msgstr "Параметри вимірювання"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3887
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3937
 msgid "Add Atom"
 msgstr "Додати атом"
 
@@ -3971,11 +4024,12 @@ msgid "Change Bond Order"
 msgstr "Змінити порядок зв’язку"
 
 #: src/tools/drawtool.cpp:88
+#, fuzzy
 msgid ""
 "Draw Tool (F8)\n"
 "\n"
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-"Right Mouse: Delete Atom"
+"Right Mouse: \tDelete Atom"
 msgstr ""
 "Інструмент малювання (F8)\n"
 "\n"
@@ -4032,23 +4086,21 @@ msgstr "Малювання та редагування атомів та зв’
 msgid "Draw Settings"
 msgstr "Параметри малювання"
 
-#: src/tools/manipulatetool.cpp:51
+#: src/tools/manipulatetool.cpp:52
+#, fuzzy
 msgid ""
 "Manipulation Tool (F10)\n"
 "\n"
-"Left Mouse:   Click and drag to move atoms\n"
+"Left Mouse: \tClick and drag to move atoms\n"
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
-"Right Mouse:  Click and drag to rotate selected atoms."
+"Right Mouse: \tClick and drag to rotate selected atoms.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "Інструмент керування (F10)\n"
 "\n"
 "Ліва кнопка:    Затискання і перетягування атомів\n"
 "Середня кнопка: Наближення або віддалення атомів\n"
 "Права кнопка:   Обертання вибраних атомів."
-
-#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
-msgid "Manipulate Atom"
-msgstr "Керування атомом"
 
 #: src/tools/manipulatetool.h:53
 msgid "Manipulate"
@@ -4062,13 +4114,19 @@ msgstr "Пересування, обертання та коригування �
 msgid "Manipulate Settings"
 msgstr "Параметри пересування"
 
+#: src/tools/moveatomcommand.cpp:34 src/tools/moveatomcommand.cpp:43
+msgid "Manipulate Atom"
+msgstr "Керування атомом"
+
 #: src/tools/navigatetool.cpp:60
+#, fuzzy
 msgid ""
 "Navigation Tool (F9)\n"
 "\n"
-"Left Mouse:   Click and drag to rotate the view\n"
-"Middle Mouse: Click and drag to zoom in or out\n"
-"Right Mouse:  Click and drag to move the view"
+"Left Mouse: \tClick and drag to rotate the view.\n"
+"Middle Mouse: Click and drag to zoom in or out.\n"
+"Right Mouse: \tClick and drag to move the view.\n"
+"Double-Click: \tReset the view."
 msgstr ""
 "Інструмент навігації (F9)\n"
 "\n"
@@ -4089,12 +4147,15 @@ msgid "Navigate Settings"
 msgstr "Параметри навігації"
 
 #: src/tools/selectrotatetool.cpp:65
+#, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
-"Click to pick individual atoms, residues, or fragments\n"
-"Drag to select a range of atoms\n"
-"Right click outside the molecule to clear selection\n"
-"Use Ctrl to toggle the selection and shift to add to the selection"
+"\n"
+"Left Mouse: \tClick to pick individual atoms, residues, or fragments\n"
+"\tDrag to select a range of atoms\n"
+"Right Mouse: \tClick outside the molecule to clear selection\n"
+"Use Ctrl to toggle the selection and shift to add to the selection.\n"
+"Double-Click: \tSelect an entire fragment."
 msgstr ""
 "Інструмент вибору (F11)\n"
 "Клацніть, щоб позначити окремі атоми, залишки або фрагменти\n"
@@ -4103,49 +4164,49 @@ msgstr ""
 "Скористайтеся Ctrl, щоб перемкнути режим позначення, і Shift, щоб додати "
 "позначення"
 
-#: src/tools/selectrotatetool.cpp:528
+#: src/tools/selectrotatetool.cpp:631
 msgid "Selection Mode:"
 msgstr "Режим позначення:"
 
-#: src/tools/selectrotatetool.cpp:533
+#: src/tools/selectrotatetool.cpp:636
 msgid "Atom/Bond"
 msgstr "Атом/Зв’язок"
 
-#: src/tools/selectrotatetool.cpp:534
+#: src/tools/selectrotatetool.cpp:637
 msgid "Residue"
 msgstr "Залишок"
 
-#: src/tools/selectrotatetool.cpp:537
+#: src/tools/selectrotatetool.cpp:640
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Кількість атомів:"
 
-#: src/tools/selectrotatetool.cpp:538
+#: src/tools/selectrotatetool.cpp:641
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Додавання обмежень"
 
-#: src/tools/selectrotatetool.cpp:593
+#: src/tools/selectrotatetool.cpp:696
 msgid "Change color of the atom"
 msgstr "Змінити колір атома"
 
-#: src/tools/selectrotatetool.cpp:617
+#: src/tools/selectrotatetool.cpp:720
 msgid "Change label of the atom"
 msgstr "Змінити мітку атома"
 
-#: src/tools/selectrotatetool.cpp:618 src/tools/selectrotatetool.cpp:627
+#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
 msgid "New Label:"
 msgstr "Нова мітка:"
 
-#: src/tools/selectrotatetool.cpp:626
+#: src/tools/selectrotatetool.cpp:729
 msgid "Change label of the bond"
 msgstr "Змінити мітку зв’язку"
 
-#: src/tools/selectrotatetool.cpp:658
+#: src/tools/selectrotatetool.cpp:761
 msgid "Change radius of the atom"
 msgstr "Змінити радіус атома"
 
-#: src/tools/selectrotatetool.cpp:659
+#: src/tools/selectrotatetool.cpp:762
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
@@ -9570,6 +9631,86 @@ msgstr "Нове вікно показу"
 msgid "Advanced..."
 msgstr "Додатково…"
 
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:41
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "&n:"
+msgstr "У:"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:58
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&m:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "&Length:"
+msgstr "Довжина %1"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Uni&t:"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "periodic units"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "angstrom"
+msgstr "&ангстрем"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+msgid "bohr radii"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "nanometers"
+msgstr "&нанометр"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
+#, fuzzy
+msgid "picometers"
+msgstr "&пікометр"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
+#. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
+msgid "&Cap with hydrogen"
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:170
+#. i18n: ectx: property (toolTip), widget (QCheckBox, cb_dbonds)
+msgid ""
+"This may take a while. If only the atomic coordinates\n"
+"are needed (say, for a quantum mechanical calculation),\n"
+"a single-bond-only representation should suffice."
+msgstr ""
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
+#. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
+#, fuzzy
+msgid "Find &double bonds"
+msgstr "Показ водневих зв’язків"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
+#. i18n: ectx: property (text), widget (QPushButton, push_hide)
+#, fuzzy
+msgid "&Hide"
+msgstr "Приховати"
+
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
+#. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
+msgid "&Hide when finished"
+msgstr ""
+
 #. i18n: file: src/extensions/unitcellparamdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, UnitCellParamDialog)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:128
@@ -9681,9 +9822,6 @@ msgstr ""
 
 #~ msgid "Hello World!"
 #~ msgstr "Привіт, світе!"
-
-#~ msgid "Hide"
-#~ msgstr "Приховати"
 
 #~ msgid "Dynamic Display Extension"
 #~ msgstr "Розширення динамічного показу"
