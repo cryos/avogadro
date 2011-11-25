@@ -72,7 +72,7 @@ endforeach ()
 #add_test(primitivemodelTest ${CMAKE_BINARY_DIR}/bin/primitivemodeltest)
 
 set(benches
-#  molecule
+  molecule
 )
 
 foreach (bench ${benches})

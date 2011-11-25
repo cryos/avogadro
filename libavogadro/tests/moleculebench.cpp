@@ -2,6 +2,7 @@
   Molecule - MoleculeBench class provides benchmarking for the Molecule class
 
   Copyright (C) 2009 Marcus D. Hanwell
+  Copyright (C) 2011 David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -23,9 +24,11 @@
  **********************************************************************/
 
 #include <QtTest>
-#include <avogadro/molecule.h>
+
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/molecule.h>
+#include <avogadro/primitivelist.h>
 
 #include <Eigen/Core>
 
@@ -50,7 +53,7 @@ private:
   void prepareMolecule();
 
 private slots:
-    /**
+  /**
    * Called before the first test function is executed.
    */
   void initTestCase();
@@ -61,17 +64,27 @@ private slots:
   void cleanupTestCase();
 
   /**
+   * Called before each test function.
+   */
+  void init();
+
+  /**
+   * Called after each test function.
+   */
+  void cleanup();
+
+  /**
    * Constructor test
    */
   void constructor();
 
   /**
-   * Timing to add 10,000 atoms
+   * Timing to add 25,000 uninitialized atoms
    */
   void addAtoms();
 
   /**
-   * Timing to remove 10,000 atoms
+   * Timing to remove 25,000 uninitialized atoms
    */
   void removeAtoms();
 
@@ -81,9 +94,37 @@ private slots:
   void addAtoms2();
 
   /**
-   * Timing to clear the molecule
+   * Timing to clear the 25,000 initialized atom molecule
    */
   void clear();
+
+  /**
+   * Timing to add 25,000 atoms using the type and position convenience
+   * overload.
+   */
+  void addAtomOverload1();
+
+  /**
+   * Timing to add 25,000 more atoms using the copy overload.
+   */
+  void addAtomOverload2();
+
+  /**
+   * Timing to add 24,999 bonds using the convenience overloads.
+   */
+  void addBondOverload();
+
+  /**
+   * Copy 25,000 atoms and 24,999 bonds using the QList overload of
+   * Molecule::copyAtomsAndBonds()
+   */
+  void copyAtomsAndBondsQList();
+
+  /**
+   * Copy 25,000 atoms and 24,999 bonds using the PrimitiveList overload of
+   * Molecule::copyAtomsAndBonds()
+   */
+  void copyAtomsAndBondsPrimitiveList();
 
   /**
    * Destruct the molecule
@@ -140,34 +181,47 @@ void MoleculeBench::cleanupTestCase()
   m_molecule = 0;
 }
 
-void MoleculeBench::constructor()
+void MoleculeBench::init()
+{
+  m_molecule = new Avogadro::Molecule ();
+}
+
+void MoleculeBench::cleanup()
 {
   delete m_molecule;
   m_molecule = 0;
-  QBENCHMARK{
+}
+
+void MoleculeBench::constructor()
+{
+  delete m_molecule;
+  QBENCHMARK_ONCE {
     m_molecule = new Molecule;
   }
 }
 
 void MoleculeBench::addAtoms()
 {
-  QBENCHMARK{
-    for (int i = 0; i < 10000; ++i)
+  QBENCHMARK_ONCE {
+    for (int i = 0; i < 25000; ++i)
       m_molecule->addAtom();
   }
 }
 
 void MoleculeBench::removeAtoms()
 {
-  QBENCHMARK{
-    for (int i = 10000; i >= 0; --i)
+  for (int i = 0; i < 25000; ++i)
+    m_molecule->addAtom();
+
+  QBENCHMARK_ONCE{
+    for (int i = 25000; i >= 0; --i)
       m_molecule->removeAtom(i);
   }
 }
 
 void MoleculeBench::addAtoms2()
 {
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     for (int i = 0; i < 25000; ++i) {
       Atom *a = m_molecule->addAtom();
       a->setAtomicNumber(6);
@@ -178,14 +232,93 @@ void MoleculeBench::addAtoms2()
 
 void MoleculeBench::clear()
 {
-  QBENCHMARK{
+  for (int i = 0; i < 25000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setAtomicNumber(6);
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  QBENCHMARK_ONCE{
     m_molecule->clear();
+  }
+}
+
+void MoleculeBench::addAtomOverload1()
+{
+  QBENCHMARK_ONCE{
+    for (int i = 0; i < 25000; ++i) {
+      m_molecule->addAtom(6, Vector3d(1.0, 1.0, 1.0));
+    }
+  }
+}
+
+void MoleculeBench::addAtomOverload2()
+{
+  Atom *atom = m_molecule->addAtom(6, Vector3d(1.0, 1.0, 1.0));
+  QBENCHMARK_ONCE{
+    for (int i = 0; i < 25000; ++i) {
+      m_molecule->addAtom(*atom);
+    }
+  }
+}
+
+void MoleculeBench::addBondOverload()
+{
+  for (int i = 0; i < 25000; ++i) {
+    m_molecule->addAtom(6, Vector3d(1.0, 1.0, 1.0));
+  }
+  const unsigned long max = m_molecule->numAtoms() - 1;
+  QBENCHMARK_ONCE{
+    for (unsigned long i = 0; i < max; ++i) {
+      m_molecule->addBond(i, i+1, 1);
+    }
+  }
+}
+
+void MoleculeBench::copyAtomsAndBondsQList()
+{
+  Avogadro::Molecule mol;
+
+  for (int i = 0; i < 25000; ++i) {
+    m_molecule->addAtom(6, Vector3d(1.0, 1.0, 1.0));
+  }
+  for (unsigned long i = 0; i < 24999; ++i) {
+    m_molecule->addBond(i, i+1, 1);
+  }
+
+  QBENCHMARK_ONCE{
+    mol.copyAtomsAndBonds(m_molecule->atoms(), m_molecule->bonds());
+  }
+}
+
+
+void MoleculeBench::copyAtomsAndBondsPrimitiveList()
+{
+  Avogadro::Molecule mol;
+
+  for (int i = 0; i < 25000; ++i) {
+    m_molecule->addAtom(6, Vector3d(1.0, 1.0, 1.0));
+  }
+  for (unsigned long i = 0; i < 24999; ++i) {
+    m_molecule->addBond(i, i+1, 1);
+  }
+
+  const QList<Avogadro::Atom*> atoms (m_molecule->atoms());
+  const QList<Avogadro::Bond*> bonds (m_molecule->bonds());
+
+  Avogadro::PrimitiveList list;
+  foreach (Avogadro::Atom *atom, atoms)
+    list.append(atom);
+  foreach (Avogadro::Bond *bond, bonds)
+    list.append(bond);
+
+  QBENCHMARK_ONCE{
+    mol.copyAtomsAndBonds(list);
   }
 }
 
 void MoleculeBench::destructor()
 {
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -195,7 +328,7 @@ void MoleculeBench::constructor2()
 {
   delete m_molecule;
   m_molecule = 0;
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     m_molecule = new Molecule;
   }
 }
@@ -204,7 +337,7 @@ void MoleculeBench::destructor2()
 {
   for (int i = 0; i < 10000; ++i)
     m_molecule->addAtom();
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -212,12 +345,11 @@ void MoleculeBench::destructor2()
 
 void MoleculeBench::destructor3()
 {
-  m_molecule = new Molecule;
   for (int i = 0; i < 10000; ++i) {
     Atom *a = m_molecule->addAtom();
     a->setPos(Vector3d(1.0, 1.0, 1.0));
   }
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -225,7 +357,6 @@ void MoleculeBench::destructor3()
 
 void MoleculeBench::destructor4()
 {
-  m_molecule = new Molecule;
   for (int i = 0; i < 10000; ++i) {
     Atom *a = m_molecule->addAtom();
     a->setPos(Vector3d(1.0, 1.0, 1.0));
@@ -236,7 +367,7 @@ void MoleculeBench::destructor4()
     a->setPos(Vector3d(1.0, 1.0, 1.0));
   }
   qDebug() << "Before:" << m_molecule->children().size();
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -244,7 +375,6 @@ void MoleculeBench::destructor4()
 
 void MoleculeBench::destructor5()
 {
-  m_molecule = new Molecule;
   for (int i = 0; i < 10000; ++i) {
     Atom *a = m_molecule->addAtom();
     a->setPos(Vector3d(1.0, 1.0, 1.0));
@@ -260,7 +390,7 @@ void MoleculeBench::destructor5()
     a->setPos(Vector3d(1.0, 1.0, 1.0));
   }
   qDebug() << "Before:" << m_molecule->children().size();
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -268,7 +398,6 @@ void MoleculeBench::destructor5()
 
 void MoleculeBench::destructor6()
 {
-  m_molecule = new Molecule;
   for (int i = 0; i < 25000; ++i) {
     Atom *a = m_molecule->addAtom();
     a->setPos(Vector3d(1.0, 1.0, 1.0));
@@ -281,7 +410,7 @@ void MoleculeBench::destructor6()
   qDebug() << "Thread:" << m_molecule->thread();
   qDebug() << "Pending events:" << QCoreApplication::hasPendingEvents();
   qDebug() << "After:" << m_molecule->children().size();
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     delete m_molecule;
     m_molecule = 0;
   }
@@ -289,14 +418,13 @@ void MoleculeBench::destructor6()
 
 void MoleculeBench::deleteLater()
 {
-  m_molecule = new Molecule;
   for (int i = 0; i < 30000; ++i) {
     Atom *a = m_molecule->addAtom();
     a->setPos(Vector3d(1.0, 1.0, 1.0));
   }
   m_molecule->clear();
   qDebug() << m_molecule->children().size();
-  QBENCHMARK{
+  QBENCHMARK_ONCE{
     m_molecule->deleteLater();
     m_molecule = 0;
   }
