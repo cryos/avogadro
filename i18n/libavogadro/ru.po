@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-11-21 00:00-0500\n"
+"POT-Creation-Date: 2011-11-28 00:00-0500\n"
 "PO-Revision-Date: 2011-02-15 16:24+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2725,7 +2725,7 @@ msgstr ""
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Волновое число (см<sup>-1</sup>)"
 
-#: src/extensions/spectra/nmr.cpp:274
+#: src/extensions/spectra/nmr.cpp:276
 msgid "Shift (ppm)"
 msgstr "Химический сдвиг (м.д.)"
 
