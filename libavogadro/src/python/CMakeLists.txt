@@ -11,9 +11,9 @@ include_directories(
 # use all cpp files in this directory
 FILE(GLOB wrapper_SRCS "*.cpp")
 
-qt4_automoc(moleculelist.cpp)
+QT4_WRAP_CPP(MOC_SRCS moleculelist.h)
 
-ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
+ADD_LIBRARY(python-module MODULE ${wrapper_SRCS} ${MOC_SRCS})
 SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 if (WIN32)

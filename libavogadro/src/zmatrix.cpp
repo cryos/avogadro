@@ -149,5 +149,3 @@ namespace Avogadro{
 
 
 } // End namespace Avogadro
-
-#include "zmatrix.moc"

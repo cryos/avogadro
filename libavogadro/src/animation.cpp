@@ -224,5 +224,3 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
-
-#include "animation.moc"

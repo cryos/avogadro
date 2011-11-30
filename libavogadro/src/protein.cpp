@@ -978,5 +978,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "protein.moc"

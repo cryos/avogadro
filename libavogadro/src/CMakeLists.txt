@@ -75,6 +75,42 @@ set(libavogadro_HDRS
   zmatrix.h
 )
 
+SET(libavogadro_MOC_HDRS
+  animation.h
+  atom.h
+  bond.h
+  color.h
+  colorbutton.h
+  colors/elementcolor.h
+  cube.h
+  elementdetail_p.h
+  elementtranslator.h
+  engine.h
+  engines/bsdyengine.h
+  extension.h
+  fragment.h
+  glwidget.h
+  mesh.h
+  molecule.h
+  moleculefile.h
+  moleculefile_p.h
+  periodictablescene_p.h
+  periodictableview.h
+  plotwidget.h
+  plugin.h
+  pluginmanager.h
+  primitive.h
+  protein.h
+  pythonengine_p.h
+  pythonerror.h
+  pythonextension_p.h
+  pythontool_p.h
+  residue.h
+  tool.h
+  toolgroup.h
+  zmatrix.h
+)
+
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 # Also add in the qtiocompressor class
 #set(libavogadro_SRCS ${libavogadro_SRCS} ../qtiocompressor/qtiocompressor.cpp)
@@ -113,7 +149,7 @@ if(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
   endforeach(P_ITEM ${PYTHON_SRCS})
 endif(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
 
-qt4_automoc(${libavogadro_SRCS})
+QT4_WRAP_CPP(libavogadro_MOC_SRCS ${libavogadro_MOC_HDRS})
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
@@ -149,7 +185,7 @@ foreach(headerFile ${libavogadro_HDRS})
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${libavogadro_HDRS})
 
-add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
+add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_MOC_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_target_properties(avogadro
   PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 1 )
 target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
