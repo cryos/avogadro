@@ -82,5 +82,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "fragment.moc"

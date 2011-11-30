@@ -213,5 +213,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "periodictablescene_p.moc"

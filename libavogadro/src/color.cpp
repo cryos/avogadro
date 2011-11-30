@@ -152,5 +152,3 @@ namespace Avogadro {
     return "Generic Color";
   }
 }
-
-#include "color.moc"

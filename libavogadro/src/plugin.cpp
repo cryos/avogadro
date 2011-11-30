@@ -65,5 +65,3 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
-
-#include "plugin.moc"

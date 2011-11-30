@@ -132,5 +132,3 @@ namespace Avogadro{
   }
 
 } // End namespace Avogadro
-
-#include "elementdetail_p.moc"

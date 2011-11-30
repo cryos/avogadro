@@ -166,5 +166,3 @@
   }
 
 } // End namespace Avogadro
-
-#include "bond.moc"

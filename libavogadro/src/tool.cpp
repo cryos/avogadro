@@ -117,5 +117,3 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
-
-#include "tool.moc"

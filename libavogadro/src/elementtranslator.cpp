@@ -401,5 +401,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "elementtranslator.moc"

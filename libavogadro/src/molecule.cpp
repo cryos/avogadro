@@ -1575,5 +1575,3 @@ namespace Avogadro{
   }
 
 } // End namespace Avogadro
-
-#include "molecule.moc"
