@@ -151,6 +151,8 @@ namespace Avogadro {
             this, SLOT(unitCellDisplayChanged(int, int, int)));
     disconnect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
             this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+    disconnect(m_dialog, SIGNAL(onlyRenderOriginalUnitCellChanged(bool)),
+               this, SLOT(onlyRenderOriginalUnitCellChanged(bool)));
 
     m_dialog->aCells(widget->aCells());
     m_dialog->bCells(widget->bCells());
@@ -164,11 +166,15 @@ namespace Avogadro {
     m_dialog->beta(uc->GetBeta());
     m_dialog->gamma(uc->GetGamma());
 
+    m_dialog->onlyRenderOriginalUnitCell(widget->onlyRenderOriginalUnitCell());
+
     // OK, now we can handle signal/slots
     connect(m_dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
             this, SLOT(unitCellDisplayChanged(int, int, int)));
     connect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
             this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+    connect(m_dialog, SIGNAL(onlyRenderOriginalUnitCellChanged(bool)),
+            this, SLOT(onlyRenderOriginalUnitCellChanged(bool)));
 
     m_dialog->show();
 
@@ -201,6 +207,14 @@ namespace Avogadro {
 
     } // end if molecule
   } // end parameters changed
+
+  void UnitCellExtension::onlyRenderOriginalUnitCellChanged(bool val)
+  {
+    if (m_widget) {
+      m_widget->setOnlyRenderOriginalUnitCell(val);
+      m_widget->update();
+    }
+  }
 
   void UnitCellExtension::deleteUnitCell()
   {

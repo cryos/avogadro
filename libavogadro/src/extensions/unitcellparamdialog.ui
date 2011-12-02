@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>325</width>
+    <width>354</width>
     <height>365</height>
    </rect>
   </property>
@@ -59,6 +59,13 @@
        <widget class="QSpinBox" name="cCellSpinBox">
         <property name="minimum">
          <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QCheckBox" name="onlyRenderOriginalUnitCell">
+        <property name="text">
+         <string>&amp;Only draw a single unit cell lattice</string>
         </property>
        </widget>
       </item>

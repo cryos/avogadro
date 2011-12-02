@@ -47,7 +47,10 @@ namespace Avogadro {
     
     connect(ui.aCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
     connect(ui.bCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
-    connect(ui.cCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
+    connect(ui.cCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
+
+    connect(ui.onlyRenderOriginalUnitCell, SIGNAL(toggled(bool)),
+            this, SLOT(valueChanged(bool)));
 
   }
 
@@ -87,6 +90,13 @@ namespace Avogadro {
     emit(unitCellDisplayChanged(m_aCells, m_bCells, m_cCells));
   }
   
+  void UnitCellParamDialog::valueChanged(bool b)
+  {
+    m_onlyRenderOriginalUnitCell = ui.onlyRenderOriginalUnitCell->isChecked();
+
+    emit(onlyRenderOriginalUnitCellChanged(b));
+  }
+
   void UnitCellParamDialog::buttonClicked(QAbstractButton *button)
   {
     if (button == NULL)
@@ -220,6 +230,17 @@ namespace Avogadro {
     ui.gammaSpinBox->setValue(g);
   }
   
+  void UnitCellParamDialog::onlyRenderOriginalUnitCell(bool b)
+  {
+    m_onlyRenderOriginalUnitCell = b;
+    ui.onlyRenderOriginalUnitCell->setChecked(b);
+  }
+
+  bool UnitCellParamDialog::onlyRenderOriginalUnitCell()
+  {
+    return m_onlyRenderOriginalUnitCell;
+  }
+
   void UnitCellParamDialog::deleteCellClicked()
   {
     emit deleteUnitCell();

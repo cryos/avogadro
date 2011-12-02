@@ -64,11 +64,16 @@ namespace Avogadro
       double beta();
       double gamma();
 
+      void onlyRenderOriginalUnitCell(bool b);
+
+      bool onlyRenderOriginalUnitCell();
+
     public slots:
       void accept();
       void reject();
       void valueChanged(int value);
       void valueChanged(double value);
+      void valueChanged(bool b);
       
       void buttonClicked(QAbstractButton *button);
       void deleteCellClicked();
@@ -79,6 +84,7 @@ namespace Avogadro
       void unitCellDisplayChanged(int a, int b, int c);
       void unitCellParametersChanged(double a, double b, double c,
                                      double alpha, double beta, double gamma);
+      void onlyRenderOriginalUnitCellChanged(bool b);
 
       void deleteUnitCell();
       void fillUnitCell();
@@ -98,6 +104,8 @@ namespace Avogadro
       double m_alpha;
       double m_beta;
       double m_gamma;
+
+      bool m_onlyRenderOriginalUnitCell;
   };
 }
 

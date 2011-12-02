@@ -54,6 +54,7 @@ namespace Avogadro {
     void unitCellDisplayChanged(int a, int b, int c);
     void unitCellParametersChanged(double a, double b, double c,
                                    double alpha, double beta, double gamma);
+    void onlyRenderOriginalUnitCellChanged(bool);
 
     void deleteUnitCell();
     void fillUnitCell();
