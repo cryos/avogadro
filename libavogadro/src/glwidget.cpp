@@ -74,6 +74,8 @@
   #include <QtCore/QThread>
 #endif
 
+#include <Eigen/Geometry>
+
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
@@ -1679,6 +1681,33 @@ namespace Avogadro {
       y += d->pd->painter()->drawText
         (x, y, tr("View Size: %L1 x %L2")
          .arg(d->pd->width()).arg(d->pd->height()) );
+
+      // Model view matrix:
+      const Eigen::Transform3d &modelview = d->camera->modelview();
+      y += d->pd->painter()->drawText
+          (x, y, tr("ModelView row 1: %L1 %L2 %L3 %L4")
+           .arg(modelview(0, 0), 6, 'f', 2, ' ')
+           .arg(modelview(0, 1), 6, 'f', 2, ' ')
+           .arg(modelview(0, 2), 6, 'f', 2, ' ')
+           .arg(modelview(0, 3), 6, 'f', 2, ' '));
+      y += d->pd->painter()->drawText
+          (x, y, tr("ModelView row 2: %L1 %L2 %L3 %L4")
+           .arg(modelview(1, 0), 6, 'f', 2, ' ')
+           .arg(modelview(1, 1), 6, 'f', 2, ' ')
+           .arg(modelview(1, 2), 6, 'f', 2, ' ')
+           .arg(modelview(1, 3), 6, 'f', 2, ' '));
+      y += d->pd->painter()->drawText
+          (x, y, tr("ModelView row 3: %L1 %L2 %L3 %L4")
+           .arg(modelview(2, 0), 6, 'f', 2, ' ')
+           .arg(modelview(2, 1), 6, 'f', 2, ' ')
+           .arg(modelview(2, 2), 6, 'f', 2, ' ')
+           .arg(modelview(2, 3), 6, 'f', 2, ' '));
+      y += d->pd->painter()->drawText
+          (x, y, tr("ModelView row 4: %L1 %L2 %L3 %L4")
+           .arg(modelview(3, 0), 6, 'f', 2, ' ')
+           .arg(modelview(3, 1), 6, 'f', 2, ' ')
+           .arg(modelview(3, 2), 6, 'f', 2, ' ')
+           .arg(modelview(3, 3), 6, 'f', 2, ' '));
 
       // Molecule info
       if (!d->molecule) {
