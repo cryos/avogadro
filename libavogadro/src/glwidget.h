@@ -305,6 +305,17 @@ namespace Avogadro {
       bool renderDebug();
 
       /**
+       * Set to render the modelview matrix along with the debugging overlay
+       */
+      void setRenderModelViewDebug(bool renderModelViewDebug);
+
+      /**
+       * @return true if the modelview matrix is to printed on the debug
+       * overlay
+       */
+      bool renderModelViewDebug() const;
+
+      /**
        * Set the ToolGroup of the GLWidget.
        */
       void setToolGroup(ToolGroup *toolGroup);
