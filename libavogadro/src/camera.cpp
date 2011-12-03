@@ -24,9 +24,17 @@
  **********************************************************************/
 
 #include "camera.h"
+
 #include "glwidget.h"
+
 #include <avogadro/molecule.h>
+
+#include <openbabel/generic.h>
+#include <openbabel/math/vector3.h>
+
+#include <Eigen/Geometry>
 #include <Eigen/LU>
+
 #include <GL/glu.h>
 
 using namespace Eigen;
@@ -159,7 +167,59 @@ namespace Avogadro
       return;
     }
 
-    // if we're here, the molecule is not empty, i.e. has atoms.
+    // If we have a unit cell, initialize centered on the center of the unit
+    // cell, zoomed out enough so that the cell fits nicely in the window
+    // with the a-axis aligned with x, b in the x,y plane, and z pointing
+    // upwards.
+    OpenBabel::OBUnitCell *cell = d->parent->molecule()->OBUnitCell();
+    if (cell != NULL) {
+      std::vector<OpenBabel::vector3> obvecs = cell->GetCellVectors();
+
+      // Account for translational images (aCells, bCells, cCells)
+      const Eigen::Vector3d v1 ((obvecs[0] * d->parent->aCells()).AsArray());
+      const Eigen::Vector3d v2 ((obvecs[1] * d->parent->bCells()).AsArray());
+      const Eigen::Vector3d v3 ((obvecs[2] * d->parent->cCells()).AsArray());
+
+      Eigen::Matrix3d targetBasis;
+      targetBasis.row(0) = v1.normalized();
+      targetBasis.row(1) = v1.cross(v2).normalized();
+      targetBasis.row(2) = targetBasis.row(0).cross(targetBasis.row(1)).normalized();
+
+      // Translate to the center of the a-c face
+      translate((-(v1 + v3) * 0.5));
+
+      // Rotate into our target basis
+      Eigen::AngleAxisd rot (targetBasis);
+      prerotate(rot.angle(), rot.axis());
+
+      // Move back so that we get a nice, consistent view of the cell:
+      //
+      //   ^\        v = angleOfViewY / 2.0
+      //   | \       d = desired horizontal width of viewport
+      // d |  \
+      //   | v(\     z = distance to move backwards
+      //   +---->      = d / (2.0 * tan(v))
+      //      z
+      //
+      // The desired horizontal width of the viewport is:
+      //
+      // max(proj_v1(v1 + v3).norm(), proj_v1(v1-v3).norm()) * fudge factor
+      //
+      // Use the sign of the dot product to determine which is larger.
+      // (acute angles will use the addition, obtuse will use subtraction)
+      const double projectionNorm = (v1.dot(v3) > 0) ? v1.dot(v1 + v3)/v1.norm()
+                                                     : v1.dot(v1 - v3)/v1.norm();
+      const Eigen::Vector3d zTrans (0.0, 0.0,
+                                    -(projectionNorm * 0.5) /
+                                    tan(d->angleOfViewY * DEG_TO_RAD * 0.5)
+                                    * 1.25); // Fudge factor
+
+      pretranslate(zTrans);
+
+      return;
+    }
+
+    // if we're here, we have a non-empty isolated molecule.
     // we want a top-down view on it, i.e. the molecule should fit as well as
     // possible in the (X,Y)-plane. Equivalently, we want the Z axis to be parallel
     // to the normal vector of the molecule's fitting plane.
