@@ -449,17 +449,17 @@ namespace Avogadro {
       /**
        * @return The number of unit cells to display along the a axis.
        */
-      int aCells();
+      int aCells() const;
 
       /**
        * @return The number of unit cells to display along the b axis.
        */
-      int bCells();
+      int bCells() const;
 
       /**
        * @return The number of unit cells to display along the c axis.
        */
-      int cCells();
+      int cCells() const;
 
       /**
        * Static pointer to the current GLWidget.
