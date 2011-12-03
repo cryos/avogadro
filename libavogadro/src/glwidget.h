@@ -448,18 +448,45 @@ namespace Avogadro {
 
       /**
        * @return The number of unit cells to display along the a axis.
+       * @todo Remove this to favor the const-overload on the next ABI break.
        */
-      int aCells();
+      int aCells()
+      {
+        return const_cast<const GLWidget*>(this)->aCells();
+      }
+
+      /**
+       * @return The number of unit cells to display along the b axis.
+       * @todo Remove this to favor the const-overload on the next ABI break.
+       */
+      int bCells()
+      {
+        return const_cast<const GLWidget*>(this)->bCells();
+      }
+
+      /**
+       * @return The number of unit cells to display along the c axis.
+       * @todo Remove this to favor the const-overload on the next ABI break.
+       */
+      int cCells()
+      {
+        return const_cast<const GLWidget*>(this)->cCells();
+      }
+
+      /**
+       * @return The number of unit cells to display along the a axis.
+       */
+      int aCells() const;
 
       /**
        * @return The number of unit cells to display along the b axis.
        */
-      int bCells();
+      int bCells() const;
 
       /**
        * @return The number of unit cells to display along the c axis.
        */
-      int cCells();
+      int cCells() const;
 
       /**
        * Static pointer to the current GLWidget.
