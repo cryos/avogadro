@@ -24,9 +24,17 @@
  **********************************************************************/
 
 #include "camera.h"
+
 #include "glwidget.h"
+
 #include <avogadro/molecule.h>
+
+#include <openbabel/generic.h>
+#include <openbabel/math/vector3.h>
+
+#include <Eigen/Geometry>
 #include <Eigen/LU>
+
 #include <GL/glu.h>
 
 using namespace Eigen;
@@ -159,7 +167,92 @@ namespace Avogadro
       return;
     }
 
-    // if we're here, the molecule is not empty, i.e. has atoms.
+    // If we have a unit cell, initialize centered on the center of the unit
+    // cell, zoomed out enough so that the cell fits nicely in the window
+    // with the a-axis aligned with x, b in the x,y plane, and z pointing
+    // upwards.
+    OpenBabel::OBUnitCell *cell = d->parent->molecule()->OBUnitCell();
+    if (cell != NULL) {
+      std::vector<OpenBabel::vector3> obvecs = cell->GetCellVectors();
+
+      // Account for translational images (aCells, bCells, cCells)
+      const Eigen::Vector3d v1 ((obvecs[0] * d->parent->aCells()).AsArray());
+      const Eigen::Vector3d v2 ((obvecs[1] * d->parent->bCells()).AsArray());
+      const Eigen::Vector3d v3 ((obvecs[2] * d->parent->cCells()).AsArray());
+
+      Eigen::Matrix3d targetBasis;
+      targetBasis.row(0) = v1.normalized();
+      targetBasis.row(1) = v1.cross(v2).normalized();
+      targetBasis.row(2) = targetBasis.row(0).cross(targetBasis.row(1)).normalized();
+
+      // Translate to the center of the a-c face
+      translate((-(v1 + v3) * 0.5));
+
+      // Rotate into our target basis
+      Eigen::AngleAxisd rot (targetBasis);
+      prerotate(rot.angle(), rot.axis());
+
+      // Move back so that we get a nice, consistent view of the cell:
+      //
+      //     ^\        v = angleOfView(X/Y) / 2.0
+      //     | \       d = desired (width/height) of viewport
+      // d/2 |  \        . . .
+      //     | v(\     z = distance to move backwards
+      //     +---->      = d / (2.0 * tan(v))
+      //       z         = d * 0.5 / tan(v)
+      //
+      // Think of the "desired" width/height defining an 2D orthogonal bounding
+      // box around the unit cell's projection onto the x,y plane at z=0.
+      //
+      // We will determine which is most appropriate based on the ratios
+      // cellHeight/viewHeight   and   cellWidth/viewWidth.
+      //
+      // If the height ratio larger than the width ratio, use the height to
+      // determine the distance to move back, and vice-versa.
+      //
+      // The cellWidth is:
+      //
+      // max(proj_v1(v1 + v3).norm(), proj_v1(v1 - v3).norm()) * fudge factor
+      //
+      // Use the sign of the dot product to determine which is larger.
+      // (acute angles will use the addition, obtuse will use subtraction)
+      const double cellWidth = (v1.dot(v3) > 0) ?
+            targetBasis.row(0).dot(v1 + v3) : // targetBasis.row(0) = v1.normalized().
+            targetBasis.row(0).dot(v1 - v3) ; // this saves a norm and a division
+
+      // The same logic holds for the cell height, but we only need
+      // to project v3 onto v1.cross(v2), a.k.a. targetBasis.row(1) (which is
+      // handily already normalized):
+      const double cellHeight = fabs(targetBasis.row(1).dot(v3));
+
+      // Grab the viewport dimensions
+      const double viewWidth  = static_cast<double>(d->parent->width());
+      const double viewHeight = static_cast<double>(d->parent->height());
+
+      // Determine which direction to use for scaling, width or height
+      const double fudgeFactor = 1.25; // Fractional multiplier for cellDims
+      if ( cellWidth / viewWidth > cellHeight / viewHeight ) {
+        // Scale by width
+        const double zTrans = -fudgeFactor * cellWidth * 0.5 /
+            tan(d->angleOfViewY * DEG_TO_RAD * 0.5);
+
+        pretranslate(Eigen::Vector3d(0.0, 0.0, zTrans));
+        const_cast<GLWidget*>(d->parent)->setRenderModelViewDebug(true);
+      }
+      else {
+        // Scale by height
+        const double angleOfViewX = d->angleOfViewY * viewHeight / viewWidth;
+        const double zTrans = -fudgeFactor * cellHeight * 0.5 /
+            tan(angleOfViewX * DEG_TO_RAD * 0.5);
+
+        pretranslate(Eigen::Vector3d(0.0, 0.0, zTrans));
+        const_cast<GLWidget*>(d->parent)->setRenderModelViewDebug(false);
+      }
+
+      return;
+    }
+
+    // if we're here, we have a non-empty isolated molecule.
     // we want a top-down view on it, i.e. the molecule should fit as well as
     // possible in the (X,Y)-plane. Equivalently, we want the Z axis to be parallel
     // to the normal vector of the molecule's fitting plane.
