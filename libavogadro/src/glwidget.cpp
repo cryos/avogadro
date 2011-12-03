@@ -78,6 +78,8 @@
   #include <QtCore/QThread>
 #endif
 
+#include <Eigen/Geometry>
+
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
@@ -179,6 +181,7 @@ namespace Avogadro {
                         fogLevel(0),
                         renderAxes(false),
                         renderDebug(false),
+                        renderModelViewDebug(false),
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
                         pd(0)
     {
@@ -253,6 +256,7 @@ namespace Avogadro {
     int                    fogLevel;    // The level of fog to use (0=none, 9=max)
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
     bool                   renderDebug; // Should the debug information be shown?
+    bool                   renderModelViewDebug; // Should the modelview matrix be shown?
 
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
@@ -719,6 +723,17 @@ namespace Avogadro {
   bool GLWidget::renderDebug()
   {
     return d->renderDebug;
+  }
+
+  void GLWidget::setRenderModelViewDebug(bool renderModelViewDebug)
+  {
+    d->renderModelViewDebug = renderModelViewDebug;
+    update();
+  }
+
+  bool GLWidget::renderModelViewDebug() const
+  {
+    return d->renderModelViewDebug;
   }
 
   void GLWidget::render()
@@ -1686,6 +1701,35 @@ namespace Avogadro {
         (x, y, tr("View Size: %L1 x %L2")
          .arg(d->pd->width()).arg(d->pd->height()) );
 
+      if (d->renderModelViewDebug) {
+        // Model view matrix:
+        const Eigen::Transform3d &modelview = d->camera->modelview();
+        y += d->pd->painter()->drawText
+            (x, y, tr("ModelView row 1: %L1 %L2 %L3 %L4")
+             .arg(modelview(0, 0), 6, 'f', 2, ' ')
+             .arg(modelview(0, 1), 6, 'f', 2, ' ')
+             .arg(modelview(0, 2), 6, 'f', 2, ' ')
+             .arg(modelview(0, 3), 6, 'f', 2, ' '));
+        y += d->pd->painter()->drawText
+            (x, y, tr("ModelView row 2: %L1 %L2 %L3 %L4")
+             .arg(modelview(1, 0), 6, 'f', 2, ' ')
+             .arg(modelview(1, 1), 6, 'f', 2, ' ')
+             .arg(modelview(1, 2), 6, 'f', 2, ' ')
+             .arg(modelview(1, 3), 6, 'f', 2, ' '));
+        y += d->pd->painter()->drawText
+            (x, y, tr("ModelView row 3: %L1 %L2 %L3 %L4")
+             .arg(modelview(2, 0), 6, 'f', 2, ' ')
+             .arg(modelview(2, 1), 6, 'f', 2, ' ')
+             .arg(modelview(2, 2), 6, 'f', 2, ' ')
+             .arg(modelview(2, 3), 6, 'f', 2, ' '));
+        y += d->pd->painter()->drawText
+            (x, y, tr("ModelView row 4: %L1 %L2 %L3 %L4")
+             .arg(modelview(3, 0), 6, 'f', 2, ' ')
+             .arg(modelview(3, 1), 6, 'f', 2, ' ')
+             .arg(modelview(3, 2), 6, 'f', 2, ' ')
+             .arg(modelview(3, 3), 6, 'f', 2, ' '));
+      }
+
       // Molecule info
       if (!d->molecule) {
         y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
@@ -2625,6 +2669,7 @@ namespace Avogadro {
     settings.setValue("fogLevel", d->fogLevel);
     settings.setValue("renderAxes", d->renderAxes);
     settings.setValue("renderDebug", d->renderDebug);
+    settings.setValue("renderModelViewDebug", d->renderModelViewDebug);
     settings.setValue("allowQuickRender", d->allowQuickRender);
     settings.setValue("renderUnitCellAxes", d->renderUnitCellAxes);
     settings.setValue("projection", d->projection);
@@ -2648,6 +2693,8 @@ namespace Avogadro {
     d->background = settings.value("background", QColor(0,0,0,0)).value<QColor>();
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
+    d->renderModelViewDebug =
+        settings.value("renderModelViewDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
     d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
     int pr = settings.value("projection", GLWidget::Perspective).toInt();
