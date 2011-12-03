@@ -2558,17 +2558,17 @@ namespace Avogadro {
     update();
   }
 
-  int GLWidget::aCells()
+  int GLWidget::aCells() const
   {
     return d->aCells;
   }
 
-  int GLWidget::bCells()
+  int GLWidget::bCells() const
   {
     return d->bCells;
   }
 
-  int GLWidget::cCells()
+  int GLWidget::cCells() const
   {
     return d->cCells;
   }
