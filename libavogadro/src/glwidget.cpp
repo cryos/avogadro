@@ -1966,5 +1966,3 @@ namespace Avogadro {
     d->updateCache = true;
   }
 }
-
-#include "glwidget.moc"

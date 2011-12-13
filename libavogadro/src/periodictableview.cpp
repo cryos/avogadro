@@ -69,4 +69,3 @@ namespace Avogadro {
 
 } // End namespace Avogadro
 
-#include "periodictableview.moc"

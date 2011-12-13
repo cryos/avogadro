@@ -231,5 +231,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
-#include "mesh.moc"

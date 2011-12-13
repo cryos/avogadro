@@ -160,6 +160,3 @@ namespace Avogadro {
   }
 
 } // End namespace Avogadro
-
- #include "residue.moc"
-

@@ -70,4 +70,3 @@ void export_MoleculeList()
 
 }
 
-#include "moleculelist.moc"

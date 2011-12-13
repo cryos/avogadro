@@ -63,7 +63,5 @@ namespace Avogadro {
 
 }
 
-#include "elementcolor.moc"
 //this is a static color plugin...
 //Q_EXPORT_PLUGIN2(elementcolor, Avogadro::ElementColorFactory)
-

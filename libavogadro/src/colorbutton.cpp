@@ -94,5 +94,3 @@ namespace Avogadro {
   }
 
 } // end namespace
-
-#include "colorbutton.moc"
