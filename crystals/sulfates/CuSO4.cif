@@ -1,0 +1,85 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910168
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 40 from the Structure of Crystals, vol. 3 by Wyckoff R W G. 
+published by Interscience Publishers, Inc. in 1951 
+;
+_journal_name_full               'The Structure of Crystals'
+_journal_page_first              40
+_journal_page_last               40
+_journal_volume                  3
+_journal_year                    1951
+_chemical_formula_structural     CuSO4
+_chemical_formula_sum            'Cu O4 S'
+_space_group_IT_number           62
+_symmetry_cell_setting           orthorhombic
+_symmetry_Int_Tables_number      62
+_symmetry_space_group_name_Hall  '-P 2ac 2n'
+_symmetry_space_group_name_H-M   'P n m a'
+_audit_creation_date             2006-02-07
+_audit_creation_method
+;
+Page 40 from the Structure of Crystals, vol. 3 by Wyckoff R W G. 
+published by Interscience Publishers, Inc. in 1951 
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   8.3956
+_cell_length_b                   6.6982
+_cell_length_c                   4.8291
+_cell_volume                     271.566
+_[local]_cod_chemical_formula_sum_orig 'Cu S O4'
+_cod_database_code               5910168
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x+1/2,-y+1/2,-z+1/2
+-x,y+1/2,-z
+-x+1/2,-y,z+1/2
+-x,-y,-z
+-x+1/2,y+1/2,z+1/2
+x,-y+1/2,z
+x+1/2,y,-z+1/2
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 Cu1
+0.00000 0.50000 0.00000 Cu2
+0.50000 0.00000 0.50000 Cu3
+0.50000 0.50000 0.50000 Cu4
+0.18600 0.25000 0.44400 S1
+0.68600 0.25000 0.05600 S2
+-0.18600 -0.25000 -0.44400 S3
+-0.68600 -0.25000 -0.05600 S4
+0.14100 0.25000 0.75500 O1
+0.64100 0.25000 -0.25500 O2
+-0.14100 -0.25000 -0.75500 O3
+-0.64100 -0.25000 0.25500 O4
+0.37500 0.25000 0.43900 O5
+0.87500 0.25000 0.06100 O6
+-0.37500 -0.25000 -0.43900 O7
+-0.87500 -0.25000 -0.06100 O8
+0.12900 0.06900 0.30700 O9
+0.62900 0.43100 0.19300 O10
+0.12900 0.43100 0.30700 O11
+0.62900 0.06900 0.19300 O12
+-0.12900 -0.06900 -0.30700 O13
+-0.62900 -0.43100 -0.19300 O14
+-0.12900 -0.43100 -0.30700 O15
+-0.62900 -0.06900 -0.19300 O16

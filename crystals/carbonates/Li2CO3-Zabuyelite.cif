@@ -1,0 +1,79 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9008283.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9008283
+loop_
+_publ_author_name
+'Effenberger, H.'
+'Zemann, J.'
+_publ_section_title
+;
+ Verfeinerung der kristallstruktur des lithiumkarbonates, Li2CO3
+;
+_journal_name_full               'Zeitschrift fur Kristallographie'
+_journal_page_first              133
+_journal_page_last               138
+_journal_volume                  150
+_journal_year                    1979
+_chemical_formula_sum            'C Li2 O3'
+_chemical_name_mineral           Zabuyelite
+_space_group_IT_number           15
+_symmetry_space_group_name_Hall  '-C 2yc'
+_symmetry_space_group_name_H-M   'C 1 2/c 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 114.83
+_cell_angle_gamma                90
+_cell_length_a                   8.3593
+_cell_length_b                   4.9725
+_cell_length_c                   6.1975
+_cell_volume                     233.795
+_exptl_crystal_density_diffrn    2.099
+_[local]_cod_chemical_formula_sum_orig 'Li2 C O3'
+_cod_database_code               9008283
+_amcsd_database_code             AMCSD#0010487
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2+y,z
+x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+-x,y,1/2-z
+1/2-x,1/2+y,1/2-z
+-x,-y,-z
+1/2-x,1/2-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Li 0.01545 0.01741 0.01779 0.00134 0.00735 0.00156
+C 0.01021 0.01177 0.00817 0.00000 0.00411 0.00000
+O1 0.01370 0.00752 0.03109 0.00000 0.00800 0.00000
+O2 0.01079 0.01215 0.01635 0.00306 0.00519 0.00142
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Li 0.19650 0.44840 0.83440
+C 0.00000 0.06570 0.25000
+O1 0.00000 0.32130 0.25000
+O2 0.14590 -0.06350 0.31270

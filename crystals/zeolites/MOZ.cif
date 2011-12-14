@@ -1,0 +1,82 @@
+data_MOZ
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                  31.2020(0)
+_cell_length_b                  31.2020(0)
+_cell_length_c                   7.5510(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma              120.0000(0)
+
+_symmetry_space_group_name_H-M     'P 6/m m m'
+_symmetry_Int_Tables_number         191
+_symmetry_cell_setting             hexagonal
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'-y,+x-y,+z'
+'-x+y,-x,+z'
+'-x,-y,+z'
+'+y,-x+y,+z'
+'+x-y,+x,+z'
+'-y,-x,+z'
+'-x+y,+y,+z'
+'+x,+x-y,+z'
+'+y,+x,+z'
+'+x-y,-y,+z'
+'-x,-x+y,+z'
+'-x,-y,-z'
+'+y,-x+y,-z'
+'+x-y,+x,-z'
+'+x,+y,-z'
+'-y,+x-y,-z'
+'-x+y,-x,-z'
+'+y,+x,-z'
+'+x-y,-y,-z'
+'-x,-x+y,-z'
+'-y,-x,-z'
+'-x+y,+y,-z'
+'+x,+x-y,-z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+    O7    O     0.1631    0.1631    0.5000
+    O8    O     0.1896    0.0948    0.5000
+    O9    O     0.2421    0.1783    0.3259
+   O10    O     0.3075    0.1538    0.2241
+   O11    O     0.2761    0.1965    0.0000
+   O12    O     0.3341    0.2476    0.2639
+   O13    O     0.3854    0.3055    0.0000
+   O14    O     0.4037    0.3395    0.3259
+   O15    O     0.4278    0.2737    0.2244
+   O16    O     0.4183    0.4183    0.5000
+   O17    O     0.4871    0.3926    0.5000
+   O18    O     0.5816    0.4184    0.5000
+   O19    O     0.5176    0.3396    0.3260
+   O20    O     0.4954    0.2477    0.2627
+   O21    O     0.5019    0.3059    0.0000
+    T1    Si    0.2900    0.1940    0.2037
+    T2    Si    0.3877    0.2916    0.2038
+    T3    Si    0.4857    0.2917    0.2037
+    T4    Si    0.2092    0.1533    0.5000
+    T5    Si    0.4285    0.3725    0.5000
+    T6    Si    0.5258    0.3727    0.5000
+

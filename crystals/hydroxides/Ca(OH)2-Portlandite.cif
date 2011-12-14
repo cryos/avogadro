@@ -1,0 +1,69 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9009098.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9009098
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+ Second edition. Interscience Publishers, New York, New York
+ Note: cadmium iodide structure
+;
+_journal_name_full               'Crystal Structures'
+_journal_page_first              239
+_journal_page_last               444
+_journal_volume                  1
+_journal_year                    1963
+_chemical_formula_sum            'Ca H2 O2'
+_chemical_name_mineral           Portlandite
+_space_group_IT_number           164
+_symmetry_space_group_name_Hall  '-P 3 2"'
+_symmetry_space_group_name_H-M   'P -3 m 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_length_a                   3.5844
+_cell_length_b                   3.5844
+_cell_length_c                   4.8962
+_cell_volume                     54.478
+_exptl_crystal_density_diffrn    2.258
+_[local]_cod_chemical_formula_sum_orig 'Ca (O2 H2)'
+_cod_database_code               9009098
+_amcsd_database_code             AMCSD#0011430
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-y,-x,z
+y,-x+y,-z
+-x,-x+y,-z
+-x+y,-x,z
+-x+y,y,z
+-x,-y,-z
+y,x,-z
+-y,x-y,z
+x,x-y,z
+x-y,x,-z
+x-y,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ca 0.00000 0.00000 0.00000
+O-H 0.33333 0.66667 0.23300

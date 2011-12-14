@@ -1,0 +1,108 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2011-06-11 06:04:15 +0000 (Sat, 11 Jun 2011) $
+#$Revision: 20519 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/9011362.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9011362
+loop_
+_publ_author_name
+'Rettig, S. J.'
+'Trotter, J.'
+_publ_section_title
+;
+ Refinement of the structure of orthorhombic sulfur, alpha-S8
+ Locality: synthetic
+ Sample: at T = 298 K
+ Note: alpha phase
+;
+_journal_name_full               'Acta Crystallographica, Section C'
+_journal_page_first              2260
+_journal_page_last               2262
+_journal_volume                  43
+_journal_year                    1987
+_chemical_formula_sum            S8
+_chemical_name_mineral           Sulfur
+_space_group_IT_number           70
+_symmetry_space_group_name_Hall  '-F 2uv 2vw'
+_symmetry_space_group_name_H-M   'F d d d :2'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   10.4646
+_cell_length_b                   12.8660
+_cell_length_c                   24.4860
+_cell_volume                     3296.735
+_diffrn_ambient_temperature      298
+_exptl_crystal_density_diffrn    2.067
+_[local]_cod_cif_authors_sg_H-M  'F d d d'
+_cod_database_code               9011362
+_amcsd_database_code             AMCSD#0009802
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2+y,1/2+z
+1/2+x,y,1/2+z
+1/2+x,1/2+y,z
+3/4+x,-y,3/4+z
+3/4+x,1/2-y,1/4+z
+1/4+x,-y,1/4+z
+1/4+x,1/2-y,3/4+z
+3/4-x,y,3/4-z
+3/4-x,1/2+y,1/4-z
+1/4-x,y,1/4-z
+1/4-x,1/2+y,3/4-z
+-x,3/4+y,3/4+z
+-x,1/4+y,1/4+z
+1/2-x,3/4+y,1/4+z
+1/2-x,1/4+y,3/4+z
+x,3/4-y,3/4-z
+x,1/4-y,1/4-z
+1/2+x,3/4-y,1/4-z
+1/2+x,1/4-y,3/4-z
+3/4+x,3/4+y,-z
+3/4+x,1/4+y,1/2-z
+1/4+x,3/4+y,1/2-z
+1/4+x,1/4+y,-z
+3/4-x,3/4-y,z
+3/4-x,1/4-y,1/2+z
+1/4-x,3/4-y,1/2+z
+1/4-x,1/4-y,z
+-x,-y,-z
+-x,1/2-y,1/2-z
+1/2-x,-y,1/2-z
+1/2-x,1/2-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+S1 0.06080 0.03960 0.03330 0.00320 0.00520 0.00800
+S2 0.04410 0.04860 0.04140 0.00990 -0.00530 0.00170
+S3 0.05800 0.03700 0.04260 0.00100 0.00410 -0.00900
+S4 0.03360 0.06230 0.03380 -0.00180 0.00610 0.00290
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+S1 0.85584 -0.04733 -0.04854 0.04500
+S2 0.70733 -0.02023 0.00409 0.04500
+S3 0.78415 0.03022 0.07623 0.04600
+S4 0.78596 -0.09232 0.12947 0.04300

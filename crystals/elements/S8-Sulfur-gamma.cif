@@ -1,0 +1,190 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2002079.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2002079
+loop_
+_publ_author_name
+'Gallacher, A. C.'
+'Pinkerton, A. A.'
+_publ_section_title
+;
+ A redetermination of monclinic \g-sulfur
+;
+_journal_issue                   1
+_journal_name_full               'Acta Crystallographica Section C'
+_journal_page_first              125
+_journal_page_last               126
+_journal_volume                  49
+_journal_year                    1993
+_chemical_formula_sum            S8
+_chemical_formula_weight         256.51
+_chemical_name_systematic        ' gamma sulfur'
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_H-M   'P 1 2/c 1'
+_atom_type_scat_source
+;
+International Tables for X-ray Crystallography (1974, Vol. IV)
+;
+_cell_angle_alpha                90.00
+_cell_angle_beta                 124.89(3)
+_cell_angle_gamma                90.00
+_cell_formula_units_Z            4.00
+_cell_length_a                   8.455(3)
+_cell_length_b                   13.052(2)
+_cell_length_c                   9.267(3)
+_cell_measurement_reflns_used    25
+_cell_measurement_temperature    294
+_cell_measurement_theta_max      14
+_cell_measurement_theta_min      12
+_cell_volume                     838.8(9)
+_computing_cell_refinement       CAD4_(Enraf-Nonius,_1977)
+_computing_data_collection       CAD4_(Enraf-Nonius,_1977)
+_computing_data_reduction        process_MolEN_(Fair,_1990)
+_computing_molecular_graphics    ORTEPII_(Johnson,_1976)
+_computing_publication_material  CIF_MolEN_(Fair,_1990)
+_computing_structure_refinement  LSFM_MolEN_(Fair,_1990)
+_diffrn_measurement_device       Enraf_Nonius_CAD4
+_diffrn_measurement_method
+;
+3\q/1\q (\w/\q motor coupling ration 1:0.33)
+;
+_diffrn_radiation_type           Mo_K\a
+_diffrn_radiation_wavelength     0.71073
+_diffrn_reflns_av_R_equivalents  0.046
+_diffrn_reflns_limit_h_max       10
+_diffrn_reflns_limit_h_min       0
+_diffrn_reflns_limit_k_max       16
+_diffrn_reflns_limit_k_min       0
+_diffrn_reflns_limit_l_max       9
+_diffrn_reflns_limit_l_min       -10
+_diffrn_reflns_number            1845
+_diffrn_reflns_theta_max         25.99
+_diffrn_standards_decay_%        -1.12
+_diffrn_standards_interval_time  50
+_diffrn_standards_number         3
+_exptl_absorpt_coefficient_mu    1.955
+_exptl_absorpt_correction_T_max  1.0998
+_exptl_absorpt_correction_T_min  0.7652
+_exptl_absorpt_correction_type   refined_empirical_(Walker_&_Stuart,_1983)
+_exptl_crystal_colour            pale_yellow
+_exptl_crystal_density_diffrn    2.03
+_exptl_crystal_description       needle
+_exptl_crystal_F_000             512
+_exptl_crystal_size_max          0.32
+_exptl_crystal_size_mid          0.14
+_exptl_crystal_size_min          0.12
+_refine_diff_density_max         0.3117
+_refine_diff_density_min         -0.3842
+_refine_ls_abs_structure_details
+;
+?
+;
+_refine_ls_extinction_coef       0.56E-6
+_refine_ls_extinction_method     isotropic_(Zachariasen,_1963)
+_refine_ls_goodness_of_fit_obs   1.222
+_refine_ls_hydrogen_treatment    not_included
+_refine_ls_number_parameters     74
+_refine_ls_number_reflns         939
+_refine_ls_R_factor_obs          0.036
+_refine_ls_shift/esd_max         0.004
+_refine_ls_structure_factor_coef F
+_refine_ls_weighting_scheme      '4F~o~^2^/ [\s^2^(F~o~^2^) + 0.0011F~o~^4^]'
+_refine_ls_wR_factor_obs         0.041
+_reflns_number_observed          939
+_reflns_number_total             1727
+_reflns_observed_criterion       I>3.0\s(I)
+_[local]_cod_data_source_file    ab1021.cif
+_[local]_cod_data_source_block   ab1021_structure_1_of_1
+_[local]_cod_cif_authors_sg_H-M  'P 1 2/c 1                       '
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+_atom_site_thermal_displace_type
+S1 0.6485(2) 0.34570(10) 0.3247(2) 0.0671(7) Uani
+S2 0.81100(10) 0.57920(10) 0.47080(10) 0.0522(6) Uani
+S3 0.7446(2) 0.44300(10) 0.53190(10) 0.0534(6) Uani
+S4 0.5836(2) 0.67680(10) 0.38400(10) 0.0511(5) Uani
+S5 0.0799(2) 0.79790(10) 0.1993(2) 0.0614(6) Uani
+S6 0.2427(2) 1.03100(10) 0.2201(2) 0.0787(7) Uani
+S7 0.3074(2) 0.89380(10) 0.3501(2) 0.0640(7) Uani
+S8 0.1483(2) 1.12710(10) 0.3294(2) 0.0744(7) Uani
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+S1 0.0797(6) 0.0562(8) 0.0675(6) 0.0211(6) 0.0413(4) 0.0063(6)
+S2 0.0365(4) 0.0697(8) 0.0559(5) -0.0037(5) 0.0239(3) 0.0058(6)
+S3 0.0530(5) 0.0669(9) 0.0430(4) 0.0066(6) 0.0249(3) 0.0133(5)
+S4 0.0536(4) 0.0487(7) 0.0511(5) -0.0067(5) 0.0317(3) -0.0092(5)
+S5 0.0754(6) 0.0472(7) 0.0651(5) 0.0031(6) 0.0438(4) -0.0095(5)
+S6 0.0760(5) 0.0880(10) 0.0731(5) -0.0369(6) 0.0533(3) -0.0208(6)
+S7 0.0421(5) 0.0930(10) 0.0674(7) 0.0069(7) 0.0246(4) -0.0128(7)
+S8 0.1215(8) 0.0496(8) 0.0682(6) -0.0331(7) 0.0571(5) -0.0219(6)
+loop_
+_geom_bond_atom_site_label_1
+_geom_bond_atom_site_label_2
+_geom_bond_distance
+_geom_bond_publ_flag
+S1 S1 2.060(2) yes
+S1 S3 2.043(2) yes
+S2 S3 2.040(2) yes
+S2 S4 2.049(2) yes
+S4 S4 2.0370(10) yes
+S5 S5 2.039(3) yes
+S5 S7 2.035(2) yes
+S6 S7 2.051(2) yes
+S6 S8 2.040(3) yes
+S8 S8 2.058(2) yes
+loop_
+_geom_angle_atom_site_label_1
+_geom_angle_atom_site_label_2
+_geom_angle_atom_site_label_3
+_geom_angle
+_geom_angle_publ_flag
+S1 S1 S3 107.90(10) yes
+S3 S2 S4 107.78(9) yes
+S1 S3 S2 107.75(9) yes
+S2 S4 S4 108.62(9) yes
+S5 S5 S7 107.38(9) yes
+S7 S6 S8 107.10(10) yes
+S5 S7 S6 107.71(7) yes
+S6 S8 S8 107.95(8) yes
+loop_
+_geom_torsion_atom_site_label_1
+_geom_torsion_atom_site_label_2
+_geom_torsion_atom_site_label_3
+_geom_torsion_atom_site_label_4
+_geom_torsion
+_geom_torsion_publ_flag
+S1' S1 S3 S2 -99.10(10) yes
+S3 S1 S1' S3' 98.50(10) yes
+S4 S2 S3 S1 99.20(10) yes
+S3 S2 S4 S4' -98.40(10) yes
+S2 S4 S4' S2' 98.00(10) yes
+S5' S5 S7 S6 -99.90(10) yes
+S7 S5 S5' S7' 99.80(10) yes
+S8 S6 S7 S5 99.20(10) yes
+S7 S6 S8 S8' -98.60(10) yes
+S6 S8 S8' S6' 99.50(10) yes
+_cod_database_code 2002079

@@ -1,0 +1,248 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/.
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910083
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 260 from the second edition of Structure of Crystals by Wyckoff  
+published by The Chemical Catalog Company, INC, New York in 1931 
+& http://cimesg1.epfl.ch/CIOLS/crystal2.pl
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              260
+_journal_page_last               260
+_journal_year                    1931
+_chemical_formula_structural     AlCu2Mn
+_chemical_formula_sum            'Al Cu2 Mn'
+_space_group_IT_number           225
+_symmetry_cell_setting           cubic
+_symmetry_Int_Tables_number      225
+_symmetry_space_group_name_Hall  '-F 4 2 3'
+_symmetry_space_group_name_H-M   'F m -3 m'
+_audit_creation_date             2005-28-12
+_audit_creation_method
+;
+Page 260 from the second edition of Structure of Crystals by Wyckoff  
+published by The Chemical Catalog Company, INC, New York in 1931 
+& http://cimesg1.epfl.ch/CIOLS/crystal2.pl
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   5.95
+_cell_length_b                   5.95
+_cell_length_c                   5.95
+_cell_volume                     210.645
+_cod_database_code               5910083
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,-z,y
+x,z,-y
+z,y,-x
+-z,y,x
+-y,x,z
+y,-x,z
+z,x,y
+y,z,x
+-y,-z,x
+z,-x,-y
+-y,z,-x
+-z,-x,y
+-z,x,-y
+y,-z,-x
+x,-y,-z
+-x,y,-z
+-x,-y,z
+y,x,-z
+-y,-x,-z
+z,-y,x
+-z,-y,-x
+-x,z,y
+-x,-z,-y
+-x,-y,-z
+-x,z,-y
+-x,-z,y
+-z,-y,x
+z,-y,-x
+y,-x,-z
+-y,x,-z
+-z,-x,-y
+-y,-z,-x
+y,z,-x
+-z,x,y
+y,-z,x
+z,x,-y
+z,-x,y
+-y,z,x
+-x,y,z
+x,-y,z
+x,y,-z
+-y,-x,z
+y,x,z
+-z,y,-x
+z,y,x
+x,-z,-y
+x,z,y
+x,y+1/2,z+1/2
+x,-z+1/2,y+1/2
+x,z+1/2,-y+1/2
+z,y+1/2,-x+1/2
+-z,y+1/2,x+1/2
+-y,x+1/2,z+1/2
+y,-x+1/2,z+1/2
+z,x+1/2,y+1/2
+y,z+1/2,x+1/2
+-y,-z+1/2,x+1/2
+z,-x+1/2,-y+1/2
+-y,z+1/2,-x+1/2
+-z,-x+1/2,y+1/2
+-z,x+1/2,-y+1/2
+y,-z+1/2,-x+1/2
+x,-y+1/2,-z+1/2
+-x,y+1/2,-z+1/2
+-x,-y+1/2,z+1/2
+y,x+1/2,-z+1/2
+-y,-x+1/2,-z+1/2
+z,-y+1/2,x+1/2
+-z,-y+1/2,-x+1/2
+-x,z+1/2,y+1/2
+-x,-z+1/2,-y+1/2
+-x,-y+1/2,-z+1/2
+-x,z+1/2,-y+1/2
+-x,-z+1/2,y+1/2
+-z,-y+1/2,x+1/2
+z,-y+1/2,-x+1/2
+y,-x+1/2,-z+1/2
+-y,x+1/2,-z+1/2
+-z,-x+1/2,-y+1/2
+-y,-z+1/2,-x+1/2
+y,z+1/2,-x+1/2
+-z,x+1/2,y+1/2
+y,-z+1/2,x+1/2
+z,x+1/2,-y+1/2
+z,-x+1/2,y+1/2
+-y,z+1/2,x+1/2
+-x,y+1/2,z+1/2
+x,-y+1/2,z+1/2
+x,y+1/2,-z+1/2
+-y,-x+1/2,z+1/2
+y,x+1/2,z+1/2
+-z,y+1/2,-x+1/2
+z,y+1/2,x+1/2
+x,-z+1/2,-y+1/2
+x,z+1/2,y+1/2
+x+1/2,y,z+1/2
+x+1/2,-z,y+1/2
+x+1/2,z,-y+1/2
+z+1/2,y,-x+1/2
+-z+1/2,y,x+1/2
+-y+1/2,x,z+1/2
+y+1/2,-x,z+1/2
+z+1/2,x,y+1/2
+y+1/2,z,x+1/2
+-y+1/2,-z,x+1/2
+z+1/2,-x,-y+1/2
+-y+1/2,z,-x+1/2
+-z+1/2,-x,y+1/2
+-z+1/2,x,-y+1/2
+y+1/2,-z,-x+1/2
+x+1/2,-y,-z+1/2
+-x+1/2,y,-z+1/2
+-x+1/2,-y,z+1/2
+y+1/2,x,-z+1/2
+-y+1/2,-x,-z+1/2
+z+1/2,-y,x+1/2
+-z+1/2,-y,-x+1/2
+-x+1/2,z,y+1/2
+-x+1/2,-z,-y+1/2
+-x+1/2,-y,-z+1/2
+-x+1/2,z,-y+1/2
+-x+1/2,-z,y+1/2
+-z+1/2,-y,x+1/2
+z+1/2,-y,-x+1/2
+y+1/2,-x,-z+1/2
+-y+1/2,x,-z+1/2
+-z+1/2,-x,-y+1/2
+-y+1/2,-z,-x+1/2
+y+1/2,z,-x+1/2
+-z+1/2,x,y+1/2
+y+1/2,-z,x+1/2
+z+1/2,x,-y+1/2
+z+1/2,-x,y+1/2
+-y+1/2,z,x+1/2
+-x+1/2,y,z+1/2
+x+1/2,-y,z+1/2
+x+1/2,y,-z+1/2
+-y+1/2,-x,z+1/2
+y+1/2,x,z+1/2
+-z+1/2,y,-x+1/2
+z+1/2,y,x+1/2
+x+1/2,-z,-y+1/2
+x+1/2,z,y+1/2
+x+1/2,y+1/2,z
+x+1/2,-z+1/2,y
+x+1/2,z+1/2,-y
+z+1/2,y+1/2,-x
+-z+1/2,y+1/2,x
+-y+1/2,x+1/2,z
+y+1/2,-x+1/2,z
+z+1/2,x+1/2,y
+y+1/2,z+1/2,x
+-y+1/2,-z+1/2,x
+z+1/2,-x+1/2,-y
+-y+1/2,z+1/2,-x
+-z+1/2,-x+1/2,y
+-z+1/2,x+1/2,-y
+y+1/2,-z+1/2,-x
+x+1/2,-y+1/2,-z
+-x+1/2,y+1/2,-z
+-x+1/2,-y+1/2,z
+y+1/2,x+1/2,-z
+-y+1/2,-x+1/2,-z
+z+1/2,-y+1/2,x
+-z+1/2,-y+1/2,-x
+-x+1/2,z+1/2,y
+-x+1/2,-z+1/2,-y
+-x+1/2,-y+1/2,-z
+-x+1/2,z+1/2,-y
+-x+1/2,-z+1/2,y
+-z+1/2,-y+1/2,x
+z+1/2,-y+1/2,-x
+y+1/2,-x+1/2,-z
+-y+1/2,x+1/2,-z
+-z+1/2,-x+1/2,-y
+-y+1/2,-z+1/2,-x
+y+1/2,z+1/2,-x
+-z+1/2,x+1/2,y
+y+1/2,-z+1/2,x
+z+1/2,x+1/2,-y
+z+1/2,-x+1/2,y
+-y+1/2,z+1/2,x
+-x+1/2,y+1/2,z
+x+1/2,-y+1/2,z
+x+1/2,y+1/2,-z
+-y+1/2,-x+1/2,z
+y+1/2,x+1/2,z
+-z+1/2,y+1/2,-x
+z+1/2,y+1/2,x
+x+1/2,-z+1/2,-y
+x+1/2,z+1/2,y
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 Al
+0.25000 0.25000 0.25000 Cu
+0.50000 0.50000 0.50000 Mn

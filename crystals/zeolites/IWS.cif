@@ -1,0 +1,91 @@
+data_IWS
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                  26.6890(0)
+_cell_length_b                  26.6890(0)
+_cell_length_c                  12.9080(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma               90.0000(0)
+
+_symmetry_space_group_name_H-M     'I 4/m m m'
+_symmetry_Int_Tables_number         139
+_symmetry_cell_setting             tetragonal
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'1/2+x,1/2+y,1/2+z'
+'-x,-y,+z'
+'1/2-x,1/2-y,1/2+z'
+'-y,+x,+z'
+'1/2-y,1/2+x,1/2+z'
+'+y,-x,+z'
+'1/2+y,1/2-x,1/2+z'
+'-x,+y,-z'
+'1/2-x,1/2+y,1/2-z'
+'+x,-y,-z'
+'1/2+x,1/2-y,1/2-z'
+'+y,+x,-z'
+'1/2+y,1/2+x,1/2-z'
+'-y,-x,-z'
+'1/2-y,1/2-x,1/2-z'
+'-x,-y,-z'
+'1/2-x,1/2-y,1/2-z'
+'+x,+y,-z'
+'1/2+x,1/2+y,1/2-z'
+'+y,-x,-z'
+'1/2+y,1/2-x,1/2-z'
+'-y,+x,-z'
+'1/2-y,1/2+x,1/2-z'
+'+x,-y,+z'
+'1/2+x,1/2-y,1/2+z'
+'-x,+y,+z'
+'1/2-x,1/2+y,1/2+z'
+'-y,-x,+z'
+'1/2-y,1/2-x,1/2+z'
+'+y,+x,+z'
+'1/2+y,1/2+x,1/2+z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+   O11    O     0.0789    0.3234    0.0000
+   O12    O     0.0000    0.3341    0.1186
+   O13    O     0.0632    0.2603    0.1533
+   O14    O     0.0886    0.3536    0.1942
+   O15    O     0.0987    0.1701    0.1824
+   O16    O     0.0654    0.1958    0.0000
+   O17    O     0.0000    0.1852    0.1501
+   O18    O     0.0704    0.0704    0.5000
+   O19    O     0.0000    0.0697    0.3571
+   O20    O     0.0923    0.0923    0.3067
+   O21    O     0.0830    0.0830    0.1030
+   O22    O     0.0864    0.4509    0.1646
+   O23    O     0.0000    0.0700    0.0000
+   O24    O     0.0000    0.5000    0.3354
+   O25    O     0.0000    0.4424    0.5000
+    T1    Si    0.0580    0.3177    0.1165
+    T2    Si    0.0565    0.2022    0.1226
+    T3    Si    0.0000    0.4428    0.3755
+    T4    Si    0.0580    0.0580    0.3807
+    T5    Si    0.1115    0.1115    0.1954
+    T6    Si    0.0926    0.4074    0.2500
+    T7    Si    0.0591    0.0591    0.0000
+
