@@ -25,12 +25,10 @@
 
 namespace Avogadro
 {
-  CETranslateWidget::CETranslateWidget(CrystallographyExtension *ext,
-                                       QMainWindow *w,
-                                       GLWidget *gl)
-    : CEAbstractDockWidget(ext, w),
+  CETranslateWidget::CETranslateWidget(CrystallographyExtension *ext)
+    : CEAbstractDockWidget(ext),
       m_vector(0,0,0),
-      m_gl(gl)
+      m_gl(NULL)
   {
     ui.setupUi(this);
 
@@ -181,9 +179,20 @@ namespace Avogadro
 
   void CETranslateWidget::checkSelection()
   {
+    // User closed the dialog:
+    if (this->isHidden()) {
+      m_selectionTimer.stop();
+      return;
+    }
+
+    // Improper initialization
+    if (m_gl == NULL)
+      return setError(tr("No GLWidget?"));
+
     QList<Primitive*> atoms = m_gl->selectedPrimitives().subList
       (Primitive::AtomType);
 
+    // No selection
     if (!atoms.size())
       return setError(tr("Please select one or more atoms."));
 
@@ -237,6 +246,14 @@ namespace Avogadro
   void CETranslateWidget::writeSettings()
   {
     // Just a placeholder for now
+  }
+
+  void CETranslateWidget::showEvent(QShowEvent *e)
+  {
+    // Start selection timer if needed:
+    this->updateVector();
+
+    this->CEAbstractDockWidget::showEvent(e);
   }
 
 }

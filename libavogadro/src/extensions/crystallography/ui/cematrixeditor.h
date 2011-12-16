@@ -33,8 +33,7 @@ namespace Avogadro
     Q_OBJECT
 
   public:
-    CEMatrixEditor(CrystallographyExtension *ext,
-                   QMainWindow *w);
+    CEMatrixEditor(CrystallographyExtension *ext);
     virtual ~CEMatrixEditor();
 
   signals:

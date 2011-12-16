@@ -22,9 +22,8 @@
 
 namespace Avogadro
 {
-  CEMatrixEditor::CEMatrixEditor(CrystallographyExtension *ext,
-                                 QMainWindow *w)
-    : CEAbstractEditor(ext, w)
+  CEMatrixEditor::CEMatrixEditor(CrystallographyExtension *ext)
+    : CEAbstractEditor(ext)
   {
     ui.setupUi(this);
 

@@ -32,8 +32,7 @@ namespace Avogadro
     Q_OBJECT
 
   public:
-    CEParameterEditor(CrystallographyExtension *ext,
-                      QMainWindow *w);
+    CEParameterEditor(CrystallographyExtension *ext);
     virtual ~CEParameterEditor();
 
   signals:

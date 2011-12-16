@@ -26,9 +26,8 @@
 namespace Avogadro
 {
 
-  CEAbstractEditor::CEAbstractEditor(CrystallographyExtension *ext,
-                                     QMainWindow *w)
-    : CEAbstractDockWidget(ext, w),
+  CEAbstractEditor::CEAbstractEditor(CrystallographyExtension *ext)
+    : CEAbstractDockWidget(ext),
       m_isLocked(false)
   {
     connect(this, SIGNAL(invalidInput()),

@@ -156,7 +156,6 @@ namespace Avogadro
     void pushUndo(QUndoCommand*);
 
     // editor functions
-    void initializeEditors();
     void showEditors();
     void hideEditors();
     void lockEditors();
@@ -256,6 +255,7 @@ namespace Avogadro
 
   private:
     void createActions();
+    void createDockWidgets();
 
     enum ActionIndex {
       // Loose
@@ -302,6 +302,7 @@ namespace Avogadro
     }
 
     QMainWindow *m_mainwindow;
+    GLWidget *m_glwidget;
     CETranslateWidget *m_translateWidget;
     QList<QAction*> m_actions;
     QList<CEAbstractEditor*> m_editors;
@@ -342,7 +343,7 @@ namespace Avogadro
     void actionToggleEditors();
     void actionToggleProperties();
     void actionWrapAtoms();
-    void actionTranslateAtoms(GLWidget *gl);
+    void actionTranslateAtoms();
     void actionOrientStandard();
     void actionScaleToVolume();
 

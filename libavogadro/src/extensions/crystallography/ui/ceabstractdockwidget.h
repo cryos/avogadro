@@ -18,7 +18,7 @@
 #ifndef CEABSTRACTDOCKWIDGET_H
 #define CEABSTRACTDOCKWIDGET_H
 
-#include <QtGui/QDockWidget>
+#include <avogadro/dockwidget.h>
 
 class QMainWindow;
 
@@ -26,15 +26,15 @@ namespace Avogadro
 {
   class CrystallographyExtension;
 
-  class CEAbstractDockWidget : public QDockWidget
+  class CEAbstractDockWidget : public DockWidget
   {
     Q_OBJECT
 
   public:
-    CEAbstractDockWidget(CrystallographyExtension *ext, QMainWindow *w);
+    CEAbstractDockWidget(CrystallographyExtension *ext);
     virtual ~CEAbstractDockWidget();
 
-    Qt::DockWidgetArea preferredDockWidgetArea();
+    Qt::DockWidgetArea preferredWidgetDockArea();
 
   signals:
     void visibilityChanged();

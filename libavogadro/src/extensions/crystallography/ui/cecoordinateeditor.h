@@ -31,8 +31,7 @@ namespace Avogadro
     Q_OBJECT
 
   public:
-    CECoordinateEditor(CrystallographyExtension *ext,
-                       QMainWindow *w);
+    CECoordinateEditor(CrystallographyExtension *ext);
     virtual ~CECoordinateEditor();
 
   signals:

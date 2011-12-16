@@ -32,7 +32,7 @@ namespace Avogadro
     Q_OBJECT
 
   public:
-    CEAbstractEditor(CrystallographyExtension *ext, QMainWindow *w);
+    CEAbstractEditor(CrystallographyExtension *ext);
     virtual ~CEAbstractEditor();
 
     bool isLocked() {return m_isLocked;}
