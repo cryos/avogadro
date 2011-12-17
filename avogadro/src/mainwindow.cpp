@@ -3397,7 +3397,11 @@ protected:
         QList<DockWidget *> widgets = extension->dockWidgets();
         for (QList<DockWidget*>::const_iterator it = widgets.constBegin(),
              it_end = widgets.constEnd(); it != it_end; ++it) {
-          this->addDockWidget((*it)->preferredWidgetDockArea(), *it);
+          if (!this->restoreDockWidget(*it)) {
+            // No restore state -- use the preferred area
+            this->removeDockWidget((*it));
+            this->addDockWidget((*it)->preferredWidgetDockArea(), *it);
+          }
           (*it)->hide();
           ui.menuToolbars->addAction((*it)->toggleViewAction());
         }
@@ -3414,7 +3418,11 @@ protected:
           qDebug() << "dev warning: Extension" << extension->name()
                    << "is using a deprecated DockWidget loading method. "
                       "See Extension::dockWidgets() documentation.";
-          addDockWidget(area, dockWidget);
+          if (!restoreDockWidget(dockWidget)) {
+            // No restore state -- use the preferred area
+            removeDockWidget(dockWidget);
+            addDockWidget(area, dockWidget);
+          }
           dockWidget->hide();
           ui.menuToolbars->addAction(dockWidget->toggleViewAction());
         }
