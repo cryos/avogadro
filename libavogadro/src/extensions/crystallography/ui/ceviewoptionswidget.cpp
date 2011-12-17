@@ -24,10 +24,14 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/primitivelist.h>
 
+#include <QtCore/QDebug>
+
 namespace Avogadro
 {
   CEViewOptionsWidget::CEViewOptionsWidget(CrystallographyExtension *ext)
-    : CEAbstractDockWidget(ext)
+    : CEAbstractDockWidget(ext),
+      m_glWidget(NULL),
+      m_ncc(NCC_Invalid)
   {
     this->setPreferredDockWidgetArea(Qt::BottomDockWidgetArea);
 
@@ -52,6 +56,9 @@ namespace Avogadro
     connect(ui.spin_mi_l, SIGNAL(valueChanged(int)),
             this, SLOT(selectMillerRadio()));
 
+    connect(ui.combo_numCells, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(updateCellRenderOptions()));
+
     /*
     connect(ui.aButton, SIGNAL(clicked()),
             this, SLOT(updateViewAxis()));
@@ -72,6 +79,11 @@ namespace Avogadro
 
     // Check if we have a hexagonal unit cell for mi_i box
     cellChanged();
+
+    QSettings settings;
+    int ncc = settings.value("crystallography/viewWidget/numCellChoice",
+                             static_cast<int>(NCC_All)).toInt();
+    ui.combo_numCells->setCurrentIndex(ncc);
   }
 
   void CEViewOptionsWidget::updateRepeatCells()
@@ -140,6 +152,44 @@ namespace Avogadro
 
     // Call for a redraw
     m_glWidget->update();
+  }
+
+  void CEViewOptionsWidget::updateCellRenderOptions()
+  {
+    if (m_glWidget == NULL) {
+      return;
+    }
+
+    NumCellChoice ncc = static_cast<NumCellChoice>
+        (ui.combo_numCells->currentIndex());
+
+    if (m_ncc != ncc) {
+      switch (ncc)
+      {
+      case Avogadro::CEViewOptionsWidget::NCC_Invalid:
+        // Should happen, probably not initialized.
+        qWarning() << "NumCellChoice is invalid.";
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_None:
+        m_glWidget->setRenderUnitCellAxes(false);
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_One:
+        m_glWidget->setRenderUnitCellAxes(true);
+        m_glWidget->setOnlyRenderOriginalUnitCell(true);
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_All:
+        m_glWidget->setRenderUnitCellAxes(true);
+        m_glWidget->setOnlyRenderOriginalUnitCell(false);
+        break;
+      default:
+        qWarning() << "Unknown numCellChoice:" << ncc;
+        break;
+      }
+      m_ncc = ncc;
+
+      m_glWidget->update();
+    }
+
   }
 
   void CEViewOptionsWidget::selectMillerRadio()
