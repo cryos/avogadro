@@ -152,6 +152,7 @@ namespace Avogadro {
   public:
     GLWidgetPrivate() : background( 0,0,0,0 ),
                         aCells( 1 ), bCells( 1 ), cCells( 1 ),
+                        onlyRenderOriginalUnitCell(false),
                         cellColor( 255,255,255 ),
                         molecule( 0 ),
                         camera( new Camera ),
@@ -209,6 +210,8 @@ namespace Avogadro {
     unsigned char          aCells;
     unsigned char          bCells;
     unsigned char          cCells;
+
+    bool onlyRenderOriginalUnitCell;
 
     QColor                 cellColor;
 
@@ -890,19 +893,24 @@ namespace Avogadro {
 
     d->painter->setColor(d->cellColor.redF(), d->cellColor.greenF(), d->cellColor.blueF(), 0.7);
 
-    for (int a = 0; a < d->aCells; a++) {
-      for (int b = 0; b < d->bCells; b++)  {
-        for (int c = 0; c < d->cCells; c++)  {
-          // Calculate offset for this cell
-          offset = (a * v1 + b * v2 + c * v3);
+    if (d->onlyRenderOriginalUnitCell) {
+      offset << 0.0, 0.0, 0.0;
+      renderClippedBox(offset, v1, v2, v3, 2.0);
+    }
+    else {
+      for (int a = 0; a < d->aCells; a++) {
+        for (int b = 0; b < d->bCells; b++)  {
+          for (int c = 0; c < d->cCells; c++)  {
+            // Calculate offset for this cell
+            offset = (a * v1 + b * v2 + c * v3);
 
-          // Draw the clipped box with a linewidth of 2.0
-          renderClippedBox(offset, v1, v2, v3, 2.0);
+            // Draw the clipped box with a linewidth of 2.0
+            renderClippedBox(offset, v1, v2, v3, 2.0);
+          }
         }
       }
     }
   }
-
 }
 
 // Use anonymous namespace for renderClippedBox helper functions
@@ -2545,6 +2553,12 @@ namespace Avogadro {
 #endif
   }
 
+  void GLWidget::setOnlyRenderOriginalUnitCell(bool b)
+  {
+    d->onlyRenderOriginalUnitCell = b;
+    update();
+  }
+
   void GLWidget::clearUnitCell()
   {
     updateGeometry();
@@ -2565,6 +2579,11 @@ namespace Avogadro {
   int GLWidget::cCells()
   {
     return d->cCells;
+  }
+
+  bool GLWidget::onlyRenderOriginalUnitCell()
+  {
+    return d->onlyRenderOriginalUnitCell;
   }
 
   inline double GLWidget::computeFramesPerSecond()

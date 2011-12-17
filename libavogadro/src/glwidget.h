@@ -442,6 +442,12 @@ namespace Avogadro {
        void setUnitCellColor(const QColor c);
 
       /**
+       * @param b Whether to draw lattice edges for all repeated unit cells
+       * (false) or only the original one (true).
+       */
+      void setOnlyRenderOriginalUnitCell(bool b);
+
+      /**
        * Clear the unit cell data.
        */
       void clearUnitCell();
@@ -460,6 +466,12 @@ namespace Avogadro {
        * @return The number of unit cells to display along the c axis.
        */
       int cCells();
+
+     /**
+      * @return Whether to draw lattice edges for all repeated unit cells
+      * (false) or only the original one (true).
+      */
+      bool onlyRenderOriginalUnitCell();
 
       /**
        * Static pointer to the current GLWidget.
