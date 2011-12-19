@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-12 00:00-0500\n"
+"POT-Creation-Date: 2011-12-19 00:00-0500\n"
 "PO-Revision-Date: 2011-03-17 19:30+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -795,8 +795,7 @@ msgstr "ficheiros de vídeo (*.avi)"
 #: src/extensions/forcefieldextension.cpp:202
 #: src/extensions/forcefieldextension.cpp:214
 #: src/extensions/forcefieldextension.cpp:244
-#: src/extensions/insertfragmentdialog.cpp:153
-#: src/extensions/insertfragmentdialog.cpp:161
+#: src/extensions/insertfragmentdialog.cpp:183
 #: src/extensions/quantuminput/inputfileextension.cpp:165
 #: src/extensions/quantuminput/inputfileextension.cpp:175
 #: src/extensions/selectextension.cpp:276
@@ -833,7 +832,6 @@ msgid "E&xtensions"
 msgstr "E&xtensións"
 
 #: src/extensions/animationextension.cpp:135
-#: src/extensions/insertfragmentdialog.cpp:154
 #: src/extensions/quantuminput/inputfileextension.cpp:166
 #, qt-format
 msgid "Cannot read file format of file %1."
@@ -891,7 +889,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3657
+#: src/extensions/animationextension.h:39:3660
 msgid "Animation"
 msgstr "Animación"
 
@@ -920,13 +918,13 @@ msgstr "Editor cartesiano..."
 #: src/extensions/cartesianextension.cpp:574
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:79
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
 #: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108
-#: src/extensions/unitcellextension.cpp:70:3862
+#: src/extensions/unitcellextension.cpp:70:3865
 msgid "&Build"
 msgstr "&Construír"
 
@@ -1414,12 +1412,14 @@ msgstr "Traxectoria..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
+#: src/extensions/insertfragmentextension.cpp:93
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Ficheiro"
 
 #: src/extensions/fileimportextension.cpp:73
+#: src/extensions/insertfragmentextension.cpp:93
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr "Importar"
@@ -1619,42 +1619,49 @@ msgstr "Hidróxenos"
 msgid "Add or remove hydrogens"
 msgstr "Engade ou elimina hidróxenos"
 
-#: src/extensions/insertfragmentdialog.cpp:162
-#: src/extensions/quantuminput/inputfileextension.cpp:176
-#, qt-format
-msgid "Cannot read file %1."
+#: src/extensions/insertfragmentdialog.cpp:184
+#, fuzzy, qt-format
+msgid "Cannot read molecular file %1."
 msgstr "Non foi posíbel ler o ficheiro %1."
 
-#: src/extensions/insertfragmentextension.cpp:54
+#: src/extensions/insertfragmentextension.cpp:57
+msgid "Crystal..."
+msgstr ""
+
+#: src/extensions/insertfragmentextension.cpp:62
 msgid "Fragment..."
 msgstr "Fragmento..."
 
-#: src/extensions/insertfragmentextension.cpp:59
+#: src/extensions/insertfragmentextension.cpp:67
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:79
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "&Inserir"
 
-#: src/extensions/insertfragmentextension.cpp:103
-#: src/extensions/insertfragmentextension.cpp:135
+#: src/extensions/insertfragmentextension.cpp:119
+#: src/extensions/insertfragmentextension.cpp:164
 msgid "Insert SMILES"
 msgstr "Inserir SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:120
 msgid "Insert SMILES fragment:"
 msgstr "Inserir un fragmento SMILES:"
 
-#. i18n: file: src/extensions/insertfragmentdialog.ui:66
-#. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
-#: src/extensions/insertfragmentextension.cpp:190
-#: src/extensions/insertfragmentextension.h:34:741
+#: src/extensions/insertfragmentextension.cpp:169
+#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr "Inserir un fragmento"
 
-#: src/extensions/insertfragmentextension.h:35
+#: src/extensions/insertfragmentextension.cpp:177
+#, fuzzy
+msgid "Insert Crystal"
+msgstr "Inverter a quiralidade"
+
+#: src/extensions/insertfragmentextension.h:37
 msgid "Insert molecular fragments for building larger molecules"
 msgstr "Insire fragmentos de moléculas para construír outras máis grandes"
 
@@ -1667,7 +1674,7 @@ msgstr "Péptido..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:744 rc.cpp:963
+#: src/extensions/insertpeptideextension.h:43:747 rc.cpp:966
 msgid "Insert Peptide"
 msgstr "Inserir in péptido"
 
@@ -1906,7 +1913,7 @@ msgstr "Propiedades do confórmero"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1222 rc.cpp:1723 rc.cpp:2065
+#: src/extensions/propextension.h:43:1225 rc.cpp:1726 rc.cpp:2068
 msgid "Properties"
 msgstr "Propiedades"
 
@@ -2030,7 +2037,7 @@ msgstr "Torsión"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:510:2035
+#: src/extensions/propmodel.cpp:510:2038
 msgid "Energy"
 msgstr "Enerxía"
 
@@ -2175,7 +2182,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:172
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
-#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3104
+#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3107
 msgid "Show Preview"
 msgstr "Mostrar a vista previa"
 
@@ -2200,7 +2207,7 @@ msgstr "Mostrar a vista previa"
 #: src/extensions/quantuminput/molproinputdialog.cpp:176
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
-#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1188
+#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1191
 msgid "Hide Preview"
 msgstr "Acochar a vista previa"
 
@@ -2312,7 +2319,7 @@ msgstr "Crear ficheiros de entrada para o paquete de química cuántica GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1053
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1056
 msgid "Title"
 msgstr "Título"
 
@@ -2462,6 +2469,11 @@ msgstr "&NWChem..."
 #: src/extensions/quantuminput/inputfileextension.cpp:92
 msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
+
+#: src/extensions/quantuminput/inputfileextension.cpp:176
+#, qt-format
+msgid "Cannot read file %1."
+msgstr "Non foi posíbel ler o ficheiro %1."
 
 #: src/extensions/quantuminput/inputfileextension.h:40
 msgid "Input File Generators"
@@ -2684,7 +2696,7 @@ msgstr "Ficheiros de parámetros do sombreador (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:3335
+#: src/extensions/shaderextension.h:41:3338
 msgid "GLSL Shaders"
 msgstr "Sombreadores GLSL"
 
@@ -2765,13 +2777,13 @@ msgstr "Eixo Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:3396
+#: src/extensions/spectra/spectradialog.cpp:188:3399
 msgid "&Appearance"
 msgstr "&Aparencia"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:3462
+#: src/extensions/spectra/spectradialog.cpp:189:3465
 msgid "E&xport Image"
 msgstr "Exportar a imaxe"
 
@@ -3027,7 +3039,7 @@ msgstr "&Avanzado <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:3390
+#: src/extensions/spectra/spectradialog.cpp:998:3393
 msgid "&Advanced >>"
 msgstr "&Avanzado >>"
 
@@ -3053,7 +3065,7 @@ msgstr "Vibracións"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2575
+#: src/extensions/spectra/vibrationextension.cpp:202:2578
 msgid "Vibrational Analysis"
 msgstr "Análise vibracional"
 
@@ -3077,7 +3089,7 @@ msgstr "Ordenando %1 vibracións segundo a frecuencia..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:280
-#: src/extensions/spectra/vibrationwidget.cpp:290:3669
+#: src/extensions/spectra/vibrationwidget.cpp:290:3672
 msgid "Start &Animation"
 msgstr "Iniciar a &animación"
 
@@ -3090,7 +3102,7 @@ msgstr "Deter a &animación"
 #: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:304:3672
+#: src/extensions/spectra/vibrationwidget.cpp:304:3675
 msgid "Pause"
 msgstr "Pausar"
 
@@ -3252,7 +3264,7 @@ msgstr "Construtor de super celas..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3821
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3824
 #, fuzzy
 msgid "Nanotube Builder"
 msgstr "Construtor de péptidos"
@@ -3823,7 +3835,7 @@ msgstr "rotación en Z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1182 rc.cpp:1741 rc.cpp:2792
+#: src/tools/autorotatetool.cpp:296:1185 rc.cpp:1744 rc.cpp:2795
 msgid "Reset"
 msgstr "Reiniciar"
 
@@ -3989,7 +4001,7 @@ msgstr "Configuración de medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3937
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3940
 msgid "Add Atom"
 msgstr "Engadir un átomo"
 
@@ -4044,7 +4056,7 @@ msgstr "Elemento:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:812:2206
+#: src/tools/drawtool.cpp:812:2209
 msgid "Other..."
 msgstr "Outro..."
 
@@ -4235,7 +4247,7 @@ msgstr "Editor da matriz Z..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2293
+#: src/tools/zmatrixtool.h:39:2296
 msgid "Z-Matrix"
 msgstr "Matriz Z"
 
@@ -4311,7 +4323,7 @@ msgstr "Eixe %1"
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/cartesianeditor.ui:291
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#. i18n: file: src/extensions/insertfragmentdialog.ui:32
+#. i18n: file: src/extensions/insertfragmentdialog.ui:36
 #. i18n: ectx: property (text), widget (QToolButton, clearToolButton)
 msgid "X"
 msgstr "X"
@@ -5409,6 +5421,17 @@ msgstr "Inserir un fragmento..."
 #, fuzzy
 msgid "Filter:"
 msgstr "Filtro: "
+
+#. i18n: file: src/extensions/insertfragmentdialog.ui:29
+#. i18n: ectx: property (toolTip), widget (QLineEdit, filterLineEdit)
+msgid "Type a name or part of a name to show only matching files."
+msgstr ""
+
+#. i18n: file: src/extensions/insertfragmentdialog.ui:70
+#. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
+#, fuzzy
+msgid "Insert"
+msgstr "&Inserir"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:20
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
