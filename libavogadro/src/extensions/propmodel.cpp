@@ -507,7 +507,7 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Energy");
+          return tr("Energy (kJ/mol)");
         }
       } else
         return tr("Conformer") + QString(" %1").arg(section + 1);
