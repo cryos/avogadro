@@ -28,8 +28,9 @@
 #include "atom.h"
 #include "bond.h"
 #include "cube.h"
-#include "mesh.h"
 #include "fragment.h"
+#include "mesh.h"
+#include "primitivelist.h"
 #include "residue.h"
 #include "zmatrix.h"
 
@@ -46,9 +47,10 @@
 #include <openbabel/forcefield.h>
 #include <openbabel/obiter.h>
 
-#include <QDir>
-#include <QDebug>
-#include <QVariant>
+#include <QtCore/QDir>
+#include <QtCore/QDebug>
+#include <QtCore/QVariant>
+#include <QtCore/QVector>
 
 namespace Avogadro{
 
@@ -185,6 +187,27 @@ namespace Avogadro{
     return atom;
   }
 
+  Atom *Molecule::addAtom(int atomicNum, const Eigen::Vector3d &pos)
+  {
+    // Add a new atom with the next unique id
+    const unsigned long newId = m_atoms.size();
+    Atom *newAtom = this->addAtom(newId);
+
+    newAtom->m_atomicNumber = atomicNum;
+    (*m_atomPos)[newId] = pos;
+
+    return newAtom;
+  }
+
+  Atom *Molecule::addAtom(const Atom &other)
+  {
+    // Add a new atom with the next unique id
+    Atom *newAtom = this->addAtom(m_atoms.size());
+    *newAtom = other;
+
+    return newAtom;
+  }
+
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
     Q_D(const Molecule);
@@ -252,6 +275,23 @@ namespace Avogadro{
     connect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
     emit bondAdded(bond);
     return(bond);
+  }
+
+  Bond *Molecule::addBond(unsigned long beginAtomId, unsigned long endAtomId,
+                          short order)
+  {
+    // Add a new bond with the next unique id
+    Bond *newBond = this->addBond(m_bonds.size());
+    newBond->setAtoms(beginAtomId, endAtomId, order);
+    return newBond;
+  }
+
+  Bond *Molecule::addBond(Atom *beginAtom, Atom *endAtom, short order)
+  {
+    // Add a new bond with the next unique id
+    Bond *newBond = this->addBond(m_bonds.size());
+    newBond->setAtoms(beginAtom->m_id, endAtom->m_id, order);
+    return newBond;
   }
 
   void Molecule::removeBond(Bond *bond)
@@ -1691,6 +1731,110 @@ namespace Avogadro{
     }
 
     return *this;
+  }
+
+  PrimitiveList Molecule::copyAtomsAndBonds(const QList<Atom *> &atoms,
+                                            const QList<Bond *> &bonds)
+  {
+    PrimitiveList newPrimitives;
+
+    // Only need to check atoms: if bonds is not empty and atoms is, then
+    // those bonds are invalid anyway
+    if (atoms.isEmpty()) {
+      return newPrimitives;
+    }
+
+    // Build lookup table to map the old atom ids to the new atom ids so that
+    // we can get the bonding correct.
+    //
+    // The atomIdLUT vector is (maxId-minId) indices long, such that:
+    //
+    //   atomIdLUT.value(oldId - minId) = newId
+    //
+    // We've checked that atoms is not empty already, so use the first()
+    unsigned long minId = atoms.first()->id();
+    unsigned long maxId = minId;
+    unsigned long maxInd = 0;
+    QVector<unsigned long> atomIdLUT;
+    atomIdLUT.reserve(atoms.size());
+    // Initialize with an invalid value. This will be fixed in the first
+    // iteration of the loop below.
+    const unsigned long invalidId = std::numeric_limits<unsigned long>::max();
+    atomIdLUT.push_back(invalidId);
+
+    // Copy atomic information over, build LUT
+    for (QList<Atom*>::const_iterator it = atoms.constBegin(),
+         it_end = atoms.constEnd(); it != it_end; ++it) {
+      // Add atom
+      Atom *newAtom = this->addAtom(**it);
+      newPrimitives.append(newAtom);
+      const unsigned long oldId = (*it)->id();
+      const unsigned long newId = newAtom->id();
+
+      // Resize LUT if needed
+      if (oldId < minId) {
+        const unsigned long newIds = minId - oldId;
+        atomIdLUT.insert(0, newIds, invalidId);
+        maxInd += newIds;
+        minId = oldId;
+      }
+      else if (oldId > maxId) {
+        const unsigned long newIds = oldId - maxId;
+        atomIdLUT.insert(maxInd+1, newIds, invalidId);
+        maxInd += newIds;
+        maxId = oldId;
+      }
+
+      atomIdLUT[oldId - minId] = newId;
+    }
+
+    // Copy bond info
+    for (QList<Bond*>::const_iterator it = bonds.constBegin(),
+         it_end = bonds.constEnd(); it != it_end; ++it) {
+      // Fetch old ids
+      const unsigned long oldBeginId = (*it)->m_beginAtomId;
+      const unsigned long oldEndId   = (*it)->m_endAtomId;
+
+      // Lookup new ids
+      const unsigned long newBeginId = atomIdLUT[oldBeginId - minId];
+      const unsigned long newEndId   = atomIdLUT[oldEndId - minId];
+
+      // Verify ids
+      Q_ASSERT_X(newBeginId != invalidId && newEndId != invalidId, Q_FUNC_INFO,
+                 "An invalid ID was returned from the lookup table.");
+
+      // Create new bond. Don't use operator=, it will overwrite ids.
+      Bond *newBond = this->addBond(newBeginId,
+                                    newEndId,
+                                    (*it)->m_order);
+      newPrimitives.append(newBond);
+    }
+
+    return newPrimitives;
+  }
+
+  PrimitiveList Molecule::copyAtomsAndBonds(const PrimitiveList &atomsAndBonds)
+  {
+    QList<Atom*> atoms;
+    QList<Bond*> bonds;
+    QList<Primitive*> atomPrims = atomsAndBonds.subList(AtomType);
+    QList<Primitive*> bondPrims = atomsAndBonds.subList(BondType);
+#if QT_VERSION >= QT_VERSION_CHECK(4,7,0)
+    atoms.reserve(atomPrims.size());
+    atoms.reserve(atomPrims.size());
+#endif
+
+    for (QList<Primitive*>::const_iterator it = atomPrims.constBegin(),
+         it_end = atomPrims.constEnd(); it != it_end; ++it) {
+      atoms.append(static_cast<Atom*>(*it));
+    }
+
+    for (QList<Primitive*>::const_iterator it = bondPrims.constBegin(),
+         it_end = bondPrims.constEnd(); it != it_end; ++it) {
+      bonds.append(static_cast<Bond*>(*it));
+    }
+
+    return this->copyAtomsAndBonds(atoms, bonds);
   }
 
   void Molecule::computeGeomInfo() const
