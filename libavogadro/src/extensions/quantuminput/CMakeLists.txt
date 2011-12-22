@@ -16,7 +16,8 @@ set(inputfileextension_SRCS
     mopacinputdialog.cpp
     nwcheminputdialog.cpp
     qcheminputdialog.cpp
-    teracheminputdialog.cpp)
+    teracheminputdialog.cpp
+    lammpsinputdialog.cpp)
 set(inputfileextension_UIS
   abinitinputdialog.ui
   gaussianinputdialog.ui
@@ -26,7 +27,8 @@ set(inputfileextension_UIS
   mopacinputdialog.ui
   nwcheminputdialog.ui
   qcheminputdialog.ui
-  teracheminputdialog.ui)
+  teracheminputdialog.ui
+  lammpsinputdialog.ui)
 avogadro_plugin_nogl(inputfileextension 
   "${inputfileextension_SRCS}"
   "${inputfileextension_UIS}"

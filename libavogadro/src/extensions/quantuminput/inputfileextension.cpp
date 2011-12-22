@@ -33,6 +33,7 @@
 #include "nwcheminputdialog.h"
 #include "qcheminputdialog.h"
 #include "teracheminputdialog.h"
+#include "lammpsinputdialog.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
@@ -99,6 +100,10 @@ namespace Avogadro
     action->setData("TeraChem");
     m_actions.append(action);
 
+    action->setText(tr("&LAMMPS..."));
+    action->setData("Lammps");
+    m_actions.append(action);
+
     action = new QAction(this);
     action->setSeparator(true);
     m_actions.append(action);
@@ -112,6 +117,7 @@ namespace Avogadro
     m_hasDialog["NWChem"] = false;
     m_hasDialog["QChem"] = false;
     m_hasDialog["TeraChem"] = false;
+    m_hasDialog["Lammps"] = false;
 
     //connect(m_dialog["MOPAC"], SIGNAL(readOutput(QString)),
       //  this, SLOT(readOutputFile(QString)));
@@ -227,6 +233,8 @@ namespace Avogadro
       return new QChemInputDialog(static_cast<QWidget*>(parent()));
     else if (name == "TeraChem")
       return new TeraChemInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "Lammps")
+      return new LammpsInputDialog(static_cast<QWidget*>(parent()));
     return 0;
   }
 
