@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-19 00:00-0500\n"
+"POT-Creation-Date: 2011-12-26 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:39+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -3398,7 +3398,7 @@ msgstr "Nguyên tử: %L1"
 msgid "Bonds: %L1"
 msgstr "Liên kết: %L1"
 
-#: src/molecule.cpp:118
+#: src/molecule.cpp:120
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "không tên"

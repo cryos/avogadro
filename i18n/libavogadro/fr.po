@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-19 00:00-0500\n"
+"POT-Creation-Date: 2011-12-26 00:00-0500\n"
 "PO-Revision-Date: 2011-04-11 15:12+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3484,7 +3484,7 @@ msgstr "Atomes : %L1"
 msgid "Bonds: %L1"
 msgstr "Liaisons : %L1"
 
-#: src/molecule.cpp:118
+#: src/molecule.cpp:120
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "sans titre"

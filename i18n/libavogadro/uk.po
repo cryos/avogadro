@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-19 00:00-0500\n"
+"POT-Creation-Date: 2011-12-26 00:00-0500\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -3460,7 +3460,7 @@ msgstr "Атоми: %L1"
 msgid "Bonds: %L1"
 msgstr "Зв’язки: %L1"
 
-#: src/molecule.cpp:118
+#: src/molecule.cpp:120
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "без назви"

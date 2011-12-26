@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-19 00:00-0500\n"
+"POT-Creation-Date: 2011-12-26 00:00-0500\n"
 "PO-Revision-Date: 2011-03-17 19:30+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -3451,7 +3451,7 @@ msgstr "Átomos: %L1"
 msgid "Bonds: %L1"
 msgstr "Enlaces: %L1"
 
-#: src/molecule.cpp:118
+#: src/molecule.cpp:120
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "sen título"
