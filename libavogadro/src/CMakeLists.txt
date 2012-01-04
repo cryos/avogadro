@@ -29,6 +29,7 @@ set(libavogadro_HDRS
   color.h
   cube.h
   dockextension.h
+  dockwidget.h
   elementtranslator.h
   engine.h
   extension.h
@@ -56,6 +57,7 @@ set(libavogadro_HDRS
   primitivelist.h
   protein.h
   residue.h
+  textmatrixeditor.h
   toolgroup.h
   tool.h
   undosequence.h
@@ -72,6 +74,7 @@ set(libavogadro_SRCS
   cube.cpp
   cylinder_p.cpp
   dockextension.cpp
+  dockwidget.cpp
   elementdetail_p.cpp
   elementitem_p.cpp
   elementtranslator.cpp
@@ -105,6 +108,7 @@ set(libavogadro_SRCS
   residue.cpp
   sphere_p.cpp
   textrenderer_p.cpp
+  textmatrixeditor.cpp
   tool.cpp
   toolgroup.cpp
   undosequence.cpp
@@ -116,14 +120,13 @@ set(libavogadro_MOC_HDRS
   atom.h
   bond.h
   color.h
-  colors/elementcolor.h
   colorbutton.h
   cube.h
   dockextension.h
+  dockwidget.h
   elementdetail_p.h
   elementtranslator.h
   engine.h
-  engines/bsdyengine.h
   extension.h
   fragment.h
   glwidget.h
@@ -140,6 +143,7 @@ set(libavogadro_MOC_HDRS
   protein.h
   readfilethread_p.h
   residue.h
+  textmatrixeditor.h
   tool.h
   toolgroup.h
   zmatrix.h
@@ -171,14 +175,6 @@ else()
   file(GLOB_RECURSE libavogadro_QM
     "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
 endif()
-
-# Statically link the core engines and tools so that users have a working
-# system even if no plugins can be found.
-set(bsdyengine_SRCS engines/bsdyengine.cpp)
-qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
-list(APPEND libavogadro_SRCS ${bsdyengine_SRCS} ${bsdyengine_UIS})
-set(elementcolor_SRCS colors/elementcolor.cpp)
-list(APPEND libavogadro_SRCS ${elementcolor_SRCS})
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
@@ -232,7 +228,6 @@ set_target_properties(avogadro PROPERTIES
   LINK_INTERFACE_LIBRARIES ""
   SOVERSION ${AVO_SOVERSION}
   LABELS avogadro)
-target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 install(FILES ${libavogadro_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
 install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
@@ -243,6 +238,29 @@ add_subdirectory(tools)
 add_subdirectory(extensions)
 add_subdirectory(colors)
 
+set(static_plugin_instantiation "#include <QtCore/QCoreApplication>\n")
+foreach(plugin ${plugins_built_static})
+  set(static_plugin_instantiation "${static_plugin_instantiation}
+Q_IMPORT_PLUGIN(${plugin})")
+endforeach()
+set(static_plugin_instantiation "${static_plugin_instantiation}
+void initAvogadroResources()
+{
+")
+foreach(plugin ${plugins_rcc_static})
+  set(static_plugin_instantiation "${static_plugin_instantiation}
+Q_INIT_RESOURCE(${plugin});")
+endforeach()
+set(static_plugin_instantiation "${static_plugin_instantiation}
+}
+")
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
+  "${static_plugin_instantiation}\n")
+configure_file(${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
+  ${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp)
+
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES} ${plugins_built_static})
+message(STATUS "Linking in static plugins: ${plugins_built_static}")
 # Add the boost python module if the boost::python was found
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   add_subdirectory(python)

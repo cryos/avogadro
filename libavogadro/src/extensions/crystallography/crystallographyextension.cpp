@@ -36,6 +36,7 @@
 #include "ui/cecoordinateeditor.h"
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
+#include "ui/cetranslatewidget.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
@@ -61,6 +62,7 @@ namespace Avogadro
   CrystallographyExtension::CrystallographyExtension(QObject *parent)
     : Extension( parent ),
       m_mainwindow(0),
+      m_translateWidget(0),
       m_molecule(0),
       m_displayProperties(false),
       m_latticeProperty(0),
@@ -92,7 +94,8 @@ namespace Avogadro
     }
 
     createActions();
-    readSettings();
+    QSettings settings;
+    readSettings(settings);
     refreshActions();
 
     connect(this, SIGNAL(cellChanged()),
@@ -130,7 +133,8 @@ namespace Avogadro
 
   CrystallographyExtension::~CrystallographyExtension()
   {
-    writeSettings();
+    QSettings settings;
+    writeSettings(settings);
   }
 
   QList<QAction *> CrystallographyExtension::actions() const
@@ -156,6 +160,7 @@ namespace Avogadro
     case TogglePropertiesIndex:
     case ToggleGUISepIndex:
     case WrapAtomsIndex:
+    case TranslateAtomsIndex:
     case OrientStandardIndex:
     case ScaleToVolumeIndex:
     case LooseSepIndex:
@@ -216,15 +221,18 @@ namespace Avogadro
             this, SLOT(refreshEditors()));
 
     refreshEditors();
-    showEditors();
     refreshProperties();
+
+    // If it's a PDB file, we won't show these by default
+    if (m_molecule->numResidues() != 0)
+      return;
+
+    showEditors();
     showProperties();
   }
 
-  void CrystallographyExtension::writeSettings()
+  void CrystallographyExtension::writeSettings(QSettings &settings) const
   {
-    QSettings settings;
-
     settings.beginGroup("crystallographyextension");
 
     settings.beginGroup("settings");
@@ -250,10 +258,8 @@ namespace Avogadro
     settings.endGroup(); // "crystallographyextension"
   }
 
-  void CrystallographyExtension::readSettings()
+  void CrystallographyExtension::readSettings(QSettings &settings)
   {
-    QSettings settings;
-
     settings.beginGroup("crystallographyextension");
 
     settings.beginGroup("settings");
@@ -295,7 +301,7 @@ namespace Avogadro
   }
 
   QUndoCommand* CrystallographyExtension::performAction(QAction *action,
-                                                       GLWidget */*widget*/)
+                                                       GLWidget *widget)
   {
     switch (static_cast<ActionIndex>(action->data().toInt())) {
     case PerceiveSpacegroupIndex:
@@ -324,6 +330,9 @@ namespace Avogadro
       break;
     case WrapAtomsIndex:
       actionWrapAtoms();
+      break;
+    case TranslateAtomsIndex:
+      actionTranslateAtoms(widget);
       break;
     case OrientStandardIndex:
       actionOrientStandard();
@@ -484,6 +493,12 @@ namespace Avogadro
 
   void CrystallographyExtension::refreshEditors_()
   {
+    // If the molecule has changed since the single-shot timer was started, we
+    // may need to abort the update
+    if (!m_molecule || !m_molecule->OBUnitCell()) {
+      m_editorRefreshPending = false;
+      return;
+    }
     // refresh all editors
     if (!m_editors.size()) {
       initializeEditors();
@@ -792,50 +807,52 @@ namespace Avogadro
 
   }
 
-  double CrystallographyExtension::convertLength(double length)
+  double CrystallographyExtension::convertLength(double length) const
   {
     return length * lengthConversionFactor();
   }
 
   Eigen::Vector3d  CrystallographyExtension::convertLength
-  (const Eigen::Vector3d& length)
+  (const Eigen::Vector3d& length) const
   {
     return length * lengthConversionFactor();
   }
 
   Eigen::Matrix3d CrystallographyExtension::convertLength
-  (const Eigen::Matrix3d& length)
+  (const Eigen::Matrix3d& length) const
   {
     return length * lengthConversionFactor();
   }
 
-  double CrystallographyExtension::convertAngle(double angle)
+  double CrystallographyExtension::convertAngle(double angle) const
   {
     return angle * angleConversionFactor();
   }
 
   //  display -> storage
-  double CrystallographyExtension::unconvertLength(double length)
+  double CrystallographyExtension::unconvertLength(double length) const
   {
     return length * (1.0 / lengthConversionFactor());
   }
 
-  Eigen::Vector3d CrystallographyExtension::unconvertLength(const Eigen::Vector3d& length)
+  Eigen::Vector3d CrystallographyExtension::unconvertLength
+  (const Eigen::Vector3d& length) const
   {
     return length * (1.0 / lengthConversionFactor());
   }
 
-  Eigen::Matrix3d CrystallographyExtension::unconvertLength(const Eigen::Matrix3d& length)
+  Eigen::Matrix3d CrystallographyExtension::unconvertLength
+  (const Eigen::Matrix3d& length) const
   {
     return length * (1.0 / lengthConversionFactor());
   }
 
-  double CrystallographyExtension::unconvertAngle(double angle)
+  double CrystallographyExtension::unconvertAngle(double angle) const
   {
     return angle * (1.0 / angleConversionFactor());
   }
 
-  Eigen::Matrix3d CrystallographyExtension::currentCellMatrix()
+  Eigen::Matrix3d CrystallographyExtension::currentCellMatrix() const
   {
     if (!currentCell()) {
       return Eigen::Matrix3d::Zero();
@@ -844,7 +861,7 @@ namespace Avogadro
     return convertLength(OB2Eigen(currentCell()->GetCellMatrix()));
   }
 
-  Eigen::Matrix3d CrystallographyExtension::currentFractionalMatrix()
+  Eigen::Matrix3d CrystallographyExtension::currentFractionalMatrix() const
   {
     if (!currentCell()) {
       return Eigen::Matrix3d::Zero();
@@ -853,7 +870,13 @@ namespace Avogadro
     return OB2Eigen(currentCell()->GetFractionalMatrix());
   }
 
-  CEUnitCellParameters CrystallographyExtension::currentCellParameters()
+  Eigen::Matrix3d
+  CrystallographyExtension::currentCellMatrixInStandardOrientation() const
+  {
+    return rotateCellMatrixToStandardOrientation(currentCellMatrix());
+  }
+
+  CEUnitCellParameters CrystallographyExtension::currentCellParameters() const
   {
     CEUnitCellParameters params (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
     OpenBabel::OBUnitCell *cell = currentCell();
@@ -872,7 +895,7 @@ namespace Avogadro
   }
 
   QList<Eigen::Vector3d>
-  CrystallographyExtension::currentCartesianCoords()
+  CrystallographyExtension::currentCartesianCoords() const
   {
     QList<Eigen::Vector3d> result;
     QList<Avogadro::Atom*> atoms = m_molecule->atoms();
@@ -888,7 +911,7 @@ namespace Avogadro
   }
 
   QList<Eigen::Vector3d>
-  CrystallographyExtension::currentFractionalCoords()
+  CrystallographyExtension::currentFractionalCoords() const
   {
     OpenBabel::OBUnitCell *cell = currentCell();
     if (!cell) {
@@ -910,7 +933,7 @@ namespace Avogadro
     return result;
   }
 
-  QList<int> CrystallographyExtension::currentAtomicNumbers()
+  QList<int> CrystallographyExtension::currentAtomicNumbers() const
   {
     QList<int> result;
     QList<Avogadro::Atom*> atoms = m_molecule->atoms();
@@ -926,7 +949,7 @@ namespace Avogadro
     return result;
   }
 
-  QList<QString> CrystallographyExtension::currentAtomicSymbols()
+  QList<QString> CrystallographyExtension::currentAtomicSymbols() const
   {
     QList<QString> result;
     QList<Avogadro::Atom*> atoms = m_molecule->atoms();
@@ -942,7 +965,7 @@ namespace Avogadro
     return result;
   }
 
-  QString CrystallographyExtension::currentLatticeType()
+  QString CrystallographyExtension::currentLatticeType() const
   {
     OpenBabel::OBUnitCell *cell = currentCell();
 
@@ -951,6 +974,7 @@ namespace Avogadro
     }
 
     switch (cell->GetLatticeType()) {
+    default:
     case OpenBabel::OBUnitCell::Undefined:
       return tr("Undefined");
     case OpenBabel::OBUnitCell::Triclinic:
@@ -970,7 +994,7 @@ namespace Avogadro
     }
   }
 
-  double CrystallographyExtension::currentVolume()
+  double CrystallographyExtension::currentVolume() const
   {
     OpenBabel::OBUnitCell *cell = currentCell();
 
@@ -1124,12 +1148,7 @@ namespace Avogadro
   {
     // Get scaling factor
     double factor = pow(volume/currentVolume(), 1.0/3.0);
-
-    CEUnitCellParameters p = currentCellParameters();
-    p.a *= factor;
-    p.b *= factor;
-    p.c *= factor;
-    setCurrentCellParameters(p);
+    setCurrentCellMatrix(currentCellMatrix() * factor);
   }
 
   // Adapted from unitcellextension:
@@ -1256,10 +1275,93 @@ namespace Avogadro
                                fcoords);
   }
 
+  // This function will rotate the input cell matrix so that v1 is along the
+  // x-axis, and v2 is in the xy-plane. It does not use trig functions or
+  // the cell parameters, since such implementations are fragile and cannot
+  // distinguish when a "negative" cell angles. The derivation of this
+  // algorithm can be found at
+  // http://xtalopt.openmolecules.net/misc/rotateToStdOrientation.pdf
+  Eigen::Matrix3d
+  CrystallographyExtension::rotateCellMatrixToStandardOrientation
+  (const Eigen::Matrix3d &origRowMat) const
+  {
+    // Extract vector components:
+    const double &x1 = origRowMat(0,0);
+    const double &y1 = origRowMat(0,1);
+    const double &z1 = origRowMat(0,2);
+
+    const double &x2 = origRowMat(1,0);
+    const double &y2 = origRowMat(1,1);
+    const double &z2 = origRowMat(1,2);
+
+    const double &x3 = origRowMat(2,0);
+    const double &y3 = origRowMat(2,1);
+    const double &z3 = origRowMat(2,2);
+
+    // Cache some frequently used values:
+    // Length of v1
+    const double L1 = sqrt(x1*x1 + y1*y1 + z1*z1);
+    // Squared norm of v1's yz projection
+    const double sqrdnorm1yz = y1*y1 + z1*z1;
+    // Squared norm of v2's yz projection
+    const double sqrdnorm2yz = y2*y2 + z2*z2;
+    // Determinant of v1 and v2's projections in yz plane
+    const double detv1v2yz = y2*z1 - y1*z2;
+    // Scalar product of v1 and v2's projections in yz plane
+    const double dotv1v2yz = y1*y2 + z1*z2;
+
+    // Used for denominators, since we want to check that they are
+    // sufficiently far from 0 to keep things reasonable:
+    double denom;
+    const double DENOM_TOL = 1e-5;
+
+    // Create target matrix, fill with zeros
+    Eigen::Matrix3d newMat (Eigen::Matrix3d::Zero());
+
+    // Set components of new v1:
+    newMat(0,0) = L1;
+
+    // Set components of new v2:
+    denom = L1;
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    newMat(1,0) = (x1*x2 + y1*y2 + z1*z2) / denom;
+
+    newMat(1,1) = sqrt(x2*x2 * sqrdnorm1yz +
+                       detv1v2yz*detv1v2yz -
+                       2*x1*x2*dotv1v2yz +
+                       x1*x1*sqrdnorm2yz) / denom;
+
+    // Set components of new v3
+    // denom is still L1
+    Q_ASSERT(denom == L1);
+    newMat(2,0) = (x1*x3 + y1*y3 + z1*z3) / denom;
+
+    denom = L1*L1 * newMat(1,1);
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    newMat(2,1) = (x1*x1*(y2*y3 + z2*z3) +
+                   x2*(x3*sqrdnorm1yz -
+                       x1*(y1*y3 + z1*z3)
+                       ) +
+                   detv1v2yz*(y3*z1 - y1*z3) -
+                   x1*x3*dotv1v2yz) / denom;
+
+    denom = L1 * newMat(1,1);
+    if (fabs(denom) < DENOM_TOL) {
+      return Eigen::Matrix3d::Zero();
+    };
+    // Numerator is determinant of original cell:
+    newMat(2,2) = origRowMat.determinant() / denom;
+
+    return newMat;
+  }
+
   void CrystallographyExtension::orientStandard()
   {
-    // Let's be lazy here; Just pull out the parameters and reapply them.
-    setCurrentCellParameters(currentCellParameters());
+    setCurrentCellMatrix(currentCellMatrixInStandardOrientation());
   }
 
   void CrystallographyExtension::showPasteDialog(const QString &text)
@@ -1514,9 +1616,9 @@ namespace Avogadro
         continue;
       }
 
-      double xiEtaZeta = xi*eta*zeta;
       // Step 3:
-      if (StableComp::gt(xiEtaZeta, 0, tol)) {
+      // Use exact comparisons in steps 3 and 4.
+      if (xi*eta*zeta > 0) {
         // Update change of basis matrix:
         tmpMat <<
           StableComp::sign(xi),0,0,
@@ -1529,35 +1631,47 @@ namespace Avogadro
         eta  = fabs(eta);
         zeta = fabs(zeta);
         NIGGLI_DEBUG(3);
+        ++iter;
       }
 
       // Step 4:
-      if (StableComp::leq(xiEtaZeta, 0, tol)) {
+      // Use exact comparisons for steps 3 and 4
+      else { // either step 3 or 4 should run
         // Update change of basis matrix:
-        double *p = 0;
+        double *p = NULL;
         double i = 1;
         double j = 1;
         double k = 1;
-        if (StableComp::gt(xi, 0, tol)) {
+        if (xi > 0) {
           i = -1;
         }
-        else if (!StableComp::lt(xi, 0, tol)) {
+        else if (!(xi < 0)) {
           p = &i;
         }
-        if (StableComp::gt(eta, 0, tol)) {
+        if (eta > 0) {
           j = -1;
         }
-        else if (!StableComp::lt(eta, 0, tol)) {
+        else if (!(eta < 0)) {
           p = &j;
         }
-        if (StableComp::gt(zeta, 0, tol)) {
+        if (zeta > 0) {
           k = -1;
         }
-        else if (!StableComp::lt(zeta, 0, tol)) {
+        else if (!(zeta < 0)) {
           p = &k;
         }
-        if (StableComp::lt(i*j*k, 0, tol)) {
-          Q_ASSERT(p);
+        if (i*j*k < 0) {
+          if (!p) {
+            QMessageBox::warning
+                (m_mainwindow,
+                 CE_DIALOG_TITLE,
+                 tr("Niggli-reduction failed. The input structure's "
+                    "lattice that is confusing the Niggli-reduction "
+                    "algorithm. Try making a small perturbation (approx."
+                    " 2 orders of magnitude smaller than the tolerance) "
+                    "to the input lattices and try again."));
+            return false;
+          }
           *p = -1;
         }
         tmpMat << i,0,0, 0,j,0, 0,0,k;
@@ -1568,6 +1682,7 @@ namespace Avogadro
         eta  = -fabs(eta);
         zeta = -fabs(zeta);
         NIGGLI_DEBUG(4);
+        ++iter;
       }
 
       // Step 5:
@@ -1777,6 +1892,13 @@ namespace Avogadro
     m_actions.append(a);
     CE_CACTION_DEBUG(WrapAtomsIndex);
     CE_CACTION_ASSERT(WrapAtomsIndex);
+
+    // TranslateAtomsIndex
+    a = new QAction(tr("&Translate Atoms..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(TranslateAtomsIndex);
+    CE_CACTION_ASSERT(TranslateAtomsIndex);
 
     // OrientStandardIndex
     a = new QAction(tr("Rotate To Standard &Orientation"), this);
@@ -2285,6 +2407,17 @@ namespace Avogadro
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Wrap Atoms To Cell")));
+  }
+
+  void CrystallographyExtension::actionTranslateAtoms(GLWidget *gl)
+  {
+    if (!m_translateWidget) {
+      m_translateWidget = new CETranslateWidget (this, m_mainwindow, gl);
+      m_mainwindow->addDockWidget
+        (m_translateWidget->preferredDockWidgetArea(),
+         m_translateWidget);
+    }
+    m_translateWidget->show();
   }
 
   void CrystallographyExtension::actionOrientStandard()

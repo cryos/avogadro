@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+	  xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_E-butenedioic_acid">
+  <formula concise=" C 4 H 4 O 4 "/>
+  <identifier convention="iupac:inchi" value="1/C4H4O4/c5-3(6)1-2-4(7)8/h1-2H,(H,5,6)(H,7,8)/b2-1+"/>
+  <name convention="IUPAC">(E)-Butenedioic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="0.584814" y3="0.323648" z3="0.021406"/>
+    <atom id="a2" elementType="C" x3="-0.584343" y3="-0.321766" z3="-0.022155"/>
+    <atom id="a3" elementType="C" x3="-1.866823" y3="0.418795" z3="-0.018751"/>
+    <atom id="a4" elementType="C" x3="1.866541" y3="-0.418277" z3="0.018634"/>
+    <atom id="a5" elementType="O" x3="2.061814" y3="-1.620756" z3="-0.020537"/>
+    <atom id="a6" elementType="O" x3="2.967488" y3="0.367289" z3="0.067025"/>
+    <atom id="a7" elementType="O" x3="-2.966450" y3="-0.368515" z3="-0.066800"/>
+    <atom id="a8" elementType="O" x3="-2.063857" y3="1.620933" z3="0.020940"/>
+    <atom id="a9" elementType="H" x3="3.752829" y3="-0.170996" z3="0.062639"/>
+    <atom id="a10" elementType="H" x3="-3.753097" y3="0.167832" z3="-0.061504"/>
+    <atom id="a11" elementType="H" x3="0.644489" y3="1.421745" z3="0.060952"/>
+    <atom id="a12" elementType="H" x3="-0.643405" y3="-1.419932" z3="-0.061848"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="2"/>
+    <bond atomRefs2="a4 a6" order="1"/>
+    <bond atomRefs2="a3 a7" order="1"/>
+    <bond atomRefs2="a3 a8" order="2"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+    <bond atomRefs2="a7 a10" order="1"/>
+    <bond atomRefs2="a1 a11" order="1"/>
+    <bond atomRefs2="a2 a12" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">116.0722</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">116.0109586</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="2.0" dictRef="cml:mp" units="units:celsius">300</scalar>
+    </property>
+  </propertyList>
+</molecule>

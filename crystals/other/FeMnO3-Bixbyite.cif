@@ -1,0 +1,121 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1011266.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1011266
+_chemical_name_systematic          'Iron manganese(IV) oxide'
+_chemical_name_mineral             'Bixbyite'
+_chemical_compound_source          'from Simpson, Utah'
+_chemical_formula_structural       'Fe Mn O3'
+_chemical_formula_sum              'Fe Mn O3'
+_publ_section_title
+;
+The Crystal Structure of Bixbyite and the C-Modification of the
+Sesquioxides
+;
+loop_
+_publ_author_name
+  'Pauling, L'
+  'Shappell, M D'
+_journal_name_full
+;
+Zeitschrift fuer Kristallographie, Kristallgeometrie, Kristallphysik,
+Kristallchemie (-144,1977)
+;
+_journal_coden_ASTM                ZEKGAX
+_journal_volume                    75
+_journal_year                      1930
+_journal_page_first                128
+_journal_page_last                 142
+_cell_length_a                     9.365(20)
+_cell_length_b                     9.365(20)
+_cell_length_c                     9.365(20)
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  90
+_cell_volume                       821.3
+_cell_formula_units_Z              16
+_symmetry_space_group_name_H-M     'I a -3'
+_symmetry_Int_Tables_number        206
+_symmetry_cell_setting             cubic
+loop_
+_symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  'x,-y,1/2-z'
+  '1/2-x,y,-z'
+  '-x,1/2-y,z'
+  'y,z,x'
+  '-y,1/2-z,x'
+  'y,-z,1/2-x'
+  '1/2-y,z,-x'
+  'z,x,y'
+  '1/2-z,x,-y'
+  '-z,1/2-x,y'
+  'z,-x,1/2-y'
+  '-x,-y,-z'
+  '-x,y,1/2+z'
+  '1/2+x,-y,z'
+  'x,1/2+y,-z'
+  '-y,-z,-x'
+  'y,1/2+z,-x'
+  '-y,z,1/2+x'
+  '1/2+y,-z,x'
+  '-z,-x,-y'
+  '1/2+z,-x,y'
+  'z,1/2+x,-y'
+  '-z,x,1/2+y'
+  '1/2+x,1/2+y,1/2+z'
+  '1/2+x,1/2-y,-z'
+  '-x,1/2+y,1/2-z'
+  '1/2-x,-y,1/2+z'
+  '1/2+y,1/2+z,1/2+x'
+  '1/2-y,-z,1/2+x'
+  '1/2+y,1/2-z,-x'
+  '-y,1/2+z,1/2-x'
+  '1/2+z,1/2+x,1/2+y'
+  '-z,1/2+x,1/2-y'
+  '1/2-z,-x,1/2+y'
+  '1/2+z,1/2-x,-y'
+  '1/2-x,1/2-y,1/2-z'
+  '1/2-x,1/2+y,z'
+  'x,1/2-y,1/2+z'
+  '1/2+x,y,1/2-z'
+  '1/2-y,1/2-z,1/2-x'
+  '1/2+y,z,1/2-x'
+  '1/2-y,1/2+z,x'
+  'y,1/2-z,1/2+x'
+  '1/2-z,1/2-x,1/2-y'
+  'z,1/2-x,1/2+y'
+  '1/2+z,x,1/2-y'
+  '1/2-z,1/2+x,y'
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+  Fe2+   2.000
+  Mn4+   4.000
+  O2-   -2.000
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+  Fe1   Fe2+   8 b 0.25 0.25 0.25 0.5  0 d
+  Mn1   Mn4+   8 b 0.25 0.25 0.25 0.5  0 d
+  Fe2   Fe2+  24 d -0.030(5) 0. 0.25 0.5  0 d
+  Mn2   Mn4+  24 d -0.030(5) 0. 0.25 0.5  0 d
+  O1    O2-   48 e 0.385(5) 0.145(5) 0.380(5) 1.  0 d
+_cod_database_code 1011266

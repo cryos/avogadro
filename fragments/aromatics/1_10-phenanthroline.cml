@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_1_10-phenanthroline">
+  <formula concise=" C 12 H 8 N 2 "/>
+  <identifier convention="iupac:inchi" value="1/C12H8N2/c1-3-9-5-6-10-4-2-8-14-12(10)11(9)13-7-1/h1-8H"/>
+  <name convention="IUPAC">1,10-Phenanthroline</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="3.097840" y3="0.906525" z3="0.366403"/>
+    <atom id="a2" elementType="C" x3="3.511418" y3="-0.400531" z3="0.024730"/>
+    <atom id="a3" elementType="C" x3="2.561005" y3="-1.348012" z3="-0.270845"/>
+    <atom id="a4" elementType="C" x3="1.191522" y3="-0.996960" z3="-0.227354"/>
+    <atom id="a5" elementType="C" x3="0.838577" y3="0.322461" z3="0.120088"/>
+    <atom id="a6" elementType="N" x3="1.812174" y3="1.253401" z3="0.412067"/>
+    <atom id="a7" elementType="C" x3="-0.564429" y3="0.689363" z3="0.166808"/>
+    <atom id="a8" elementType="C" x3="-1.538288" y3="-0.283037" z3="-0.136451"/>
+    <atom id="a9" elementType="C" x3="-1.139425" y3="-1.615467" z3="-0.485583"/>
+    <atom id="a10" elementType="C" x3="0.171179" y3="-1.958251" z3="-0.529239"/>
+    <atom id="a11" elementType="C" x3="-2.229213" y3="2.299412" z3="0.543891"/>
+    <atom id="a12" elementType="C" x3="-3.249453" y3="1.367375" z3="0.249759"/>
+    <atom id="a13" elementType="C" x3="-2.904255" y3="0.081051" z3="-0.088919"/>
+    <atom id="a14" elementType="H" x3="3.817378" y3="1.696952" z3="0.610320"/>
+    <atom id="a15" elementType="H" x3="4.578626" y3="-0.641712" z3="-0.000254"/>
+    <atom id="a16" elementType="H" x3="2.846682" y3="-2.371191" z3="-0.539679"/>
+    <atom id="a17" elementType="H" x3="-1.922705" y3="-2.347055" z3="-0.715557"/>
+    <atom id="a18" elementType="H" x3="0.480461" y3="-2.975664" z3="-0.795544"/>
+    <atom id="a19" elementType="H" x3="-2.453565" y3="3.336591" z3="0.819302"/>
+    <atom id="a20" elementType="H" x3="-4.297495" y3="1.679320" z3="0.295136"/>
+    <atom id="a21" elementType="H" x3="-3.669888" y3="-0.667120" z3="-0.322837"/>
+    <atom id="a22" elementType="N" x3="-0.938145" y3="1.972548" z3="0.503756"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a6 a5" order="2"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a4 a10" order="1"/>
+    <bond atomRefs2="a10 a9" order="2"/>
+    <bond atomRefs2="a11 a12" order="1"/>
+    <bond atomRefs2="a8 a13" order="1"/>
+    <bond atomRefs2="a13 a12" order="2"/>
+    <bond atomRefs2="a1 a14" order="1"/>
+    <bond atomRefs2="a2 a15" order="1"/>
+    <bond atomRefs2="a3 a16" order="1"/>
+    <bond atomRefs2="a9 a17" order="1"/>
+    <bond atomRefs2="a10 a18" order="1"/>
+    <bond atomRefs2="a11 a19" order="1"/>
+    <bond atomRefs2="a12 a20" order="1"/>
+    <bond atomRefs2="a13 a21" order="1"/>
+    <bond atomRefs2="a7 a22" order="1"/>
+    <bond atomRefs2="a22 a11" order="2"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">180.2053</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">180.0687483</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">117</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">&gt; 300</scalar>
+    </property>
+  </propertyList>
+</molecule>

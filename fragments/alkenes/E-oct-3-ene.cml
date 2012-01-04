@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_E-oct-3-ene">
+  <formula concise=" C 8 H 16 "/>
+  <identifier convention="iupac:inchi" value="1/C8H16/c1-3-5-7-8-6-4-2/h5,7H,3-4,6,8H2,1-2H3/b7-5+"/>
+  <name convention="IUPAC">(E)-Oct-3-ene</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="4.119180" y3="0.044284" z3="1.358298"/>
+    <atom id="a2" elementType="C" x3="2.693002" y3="-0.289323" z3="1.740594"/>
+    <atom id="a3" elementType="C" x3="1.810242" y3="-0.333389" z3="0.543590"/>
+    <atom id="a4" elementType="C" x3="0.659125" y3="0.335521" z3="0.466538"/>
+    <atom id="a5" elementType="C" x3="-0.218834" y3="0.295030" z3="-0.733685"/>
+    <atom id="a6" elementType="C" x3="-1.672539" y3="0.069540" z3="-0.344405"/>
+    <atom id="a7" elementType="C" x3="-2.576464" y3="0.060923" z3="-1.566869"/>
+    <atom id="a8" elementType="C" x3="-4.023867" y3="-0.149053" z3="-1.183557"/>
+    <atom id="a9" elementType="H" x3="4.529350" y3="-0.682922" z3="0.645022"/>
+    <atom id="a10" elementType="H" x3="4.775228" y3="0.048162" z3="2.238054"/>
+    <atom id="a11" elementType="H" x3="4.190241" y3="1.034728" z3="0.890556"/>
+    <atom id="a12" elementType="H" x3="2.320143" y3="0.439790" z3="2.487679"/>
+    <atom id="a13" elementType="H" x3="2.652122" y3="-1.278034" z3="2.240588"/>
+    <atom id="a14" elementType="H" x3="2.161402" y3="-0.958206" z3="-0.287726"/>
+    <atom id="a15" elementType="H" x3="0.309427" y3="0.961488" z3="1.297771"/>
+    <atom id="a16" elementType="H" x3="0.109043" y3="-0.489240" z3="-1.445896"/>
+    <atom id="a17" elementType="H" x3="-0.113502" y3="1.256211" z3="-1.277392"/>
+    <atom id="a18" elementType="H" x3="-2.003432" y3="0.855545" z3="0.364128"/>
+    <atom id="a19" elementType="H" x3="-1.771668" y3="-0.886916" z3="0.206232"/>
+    <atom id="a20" elementType="H" x3="-2.252305" y3="-0.732307" z3="-2.269665"/>
+    <atom id="a21" elementType="H" x3="-2.466662" y3="1.013040" z3="-2.123453"/>
+    <atom id="a22" elementType="H" x3="-4.384827" y3="0.643274" z3="-0.514226"/>
+    <atom id="a23" elementType="H" x3="-4.170607" y3="-1.105541" z3="-0.664388"/>
+    <atom id="a24" elementType="H" x3="-4.673796" y3="-0.152606" z3="-2.067791"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a6 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a1 a9" order="1"/>
+    <bond atomRefs2="a1 a10" order="1"/>
+    <bond atomRefs2="a1 a11" order="1"/>
+    <bond atomRefs2="a2 a12" order="1"/>
+    <bond atomRefs2="a2 a13" order="1"/>
+    <bond atomRefs2="a3 a14" order="1"/>
+    <bond atomRefs2="a4 a15" order="1"/>
+    <bond atomRefs2="a5 a16" order="1"/>
+    <bond atomRefs2="a5 a17" order="1"/>
+    <bond atomRefs2="a6 a18" order="1"/>
+    <bond atomRefs2="a6 a19" order="1"/>
+    <bond atomRefs2="a7 a20" order="1"/>
+    <bond atomRefs2="a7 a21" order="1"/>
+    <bond atomRefs2="a8 a22" order="1"/>
+    <bond atomRefs2="a8 a23" order="1"/>
+    <bond atomRefs2="a8 a24" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">112.2126</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">112.1252005</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">122</scalar>
+    </property>
+  </propertyList>
+</molecule>

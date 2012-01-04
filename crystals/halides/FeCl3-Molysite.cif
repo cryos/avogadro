@@ -1,0 +1,49 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+data_5910097
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 38 from the second edition supplement of The Structure of Crystals by 
+Wyckoff R W G. published by Reinhold PublishingCorporation, INC, Camden,N. J.
+in 1935 & http://database.iem.ac.ru/mincryst/
+;
+_journal_name_full
+'The second edition supplement of The Structure of Crystals'
+_journal_page_first              38
+_journal_page_last               38
+_journal_year                    1935
+_chemical_formula_structural     FeCl3
+_chemical_formula_sum            'Cl3 Fe'
+_chemical_name_systematic        molysite
+_symmetry_cell_setting           trigonal
+_symmetry_Int_Tables_number      148
+_symmetry_space_group_name_H-M   'R -3'
+_audit_creation_date             2005-10-12
+_audit_creation_method
+;
+Page 38 from the second edition supplement of The Structure of Crystals by 
+Wyckoff R W G. published by Reinhold PublishingCorporation, INC, Camden,N. J.
+in 1935 & http://database.iem.ac.ru/mincryst/
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                52.30
+_cell_angle_beta                 52.30
+_cell_angle_gamma                52.30
+_cell_length_a                   6.69
+_cell_length_b                   6.69
+_cell_length_c                   6.69
+_cell_volume                     173.426
+_[local]_cod_chemical_formula_sum_orig 'Fe Cl3'
+_cod_database_code               5910097
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.33330 0.33330 0.33330 Fe
+-0.25600 0.41000 0.07700 Cl

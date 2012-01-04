@@ -2,7 +2,7 @@
   ManipulateTool - Manipulation Tool for Avogadro
 
   Copyright (C) 2007 by Marcus D. Hanwell
-  Copyright (C) 2007 by Geoffrey R. Hutchison
+  Copyright (C) 2007,2011 by Geoffrey R. Hutchison
   Copyright (C) 2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -23,6 +23,7 @@
 
 #include "manipulatetool.h"
 #include "eyecandy.h"
+#include "moveatomcommand.h"
 
 #include <avogadro/navigate.h>
 #include <avogadro/atom.h>
@@ -49,9 +50,10 @@ namespace Avogadro {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/manipulate/manipulate.png")));
     action->setToolTip(tr("Manipulation Tool (F10)\n\n"
-          "Left Mouse:   Click and drag to move atoms\n"
+          "Left Mouse: \tClick and drag to move atoms\n"
           "Middle Mouse: Click and drag to move atoms further away or closer\n"
-          "Right Mouse:  Click and drag to rotate selected atoms."));
+          "Right Mouse: \tClick and drag to rotate selected atoms.\n"
+          "Double-Click: \tReset the view."));
     action->setShortcut(Qt::Key_F10);
   }
 
@@ -356,56 +358,6 @@ namespace Avogadro {
     return true;
   }
 
-  MoveAtomCommand::MoveAtomCommand(Molecule *molecule, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
-  {
-    // Store the molecule - this call won't actually move an atom
-    setText(QObject::tr("Manipulate Atom"));
-    m_moleculeCopy = *molecule;
-    m_molecule = molecule;
-    undone = false;
-  }
-
-  MoveAtomCommand::MoveAtomCommand(Molecule *molecule, int type, QUndoCommand *parent) : QUndoCommand(parent), m_molecule(0)
-  {
-    // Store the original molecule before any modifications are made
-    setText(QObject::tr("Manipulate Atom"));
-    m_moleculeCopy = *molecule;
-    m_molecule = molecule;
-    m_type =type;
-    undone = false;
-  }
-
-  void MoveAtomCommand::redo()
-  {
-    // Move the specified atom to the location given
-    if (undone)
-    {
-      Molecule newMolecule = *m_molecule;
-      *m_molecule = m_moleculeCopy;
-      m_moleculeCopy = newMolecule;
-    }
-    QUndoCommand::redo();
-  }
-
-  void MoveAtomCommand::undo()
-  {
-    // Restore our original molecule
-    Molecule newMolecule = *m_molecule;
-    *m_molecule = m_moleculeCopy;
-    m_moleculeCopy = newMolecule;
-    undone = true;
-  }
-
-  bool MoveAtomCommand::mergeWith (const QUndoCommand *)
-  {
-    // Just return true to repeated calls - we have stored the original molecule
-    return true;
-  }
-
-  int MoveAtomCommand::id() const
-  {
-    return 26011980;
-  }
-}
+} // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(manipulatetool, Avogadro::ManipulateToolFactory)

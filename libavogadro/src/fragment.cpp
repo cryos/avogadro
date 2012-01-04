@@ -61,6 +61,11 @@ namespace Avogadro {
     return m_atoms;
   }
 
+  const QList<unsigned long> & Fragment::atoms() const
+  {
+    return m_atoms;
+  }
+
   void Fragment::addBond(unsigned long id)
   {
     if (!m_bonds.contains(id)) {
@@ -77,6 +82,11 @@ namespace Avogadro {
   }
 
   QList<unsigned long> Fragment::bonds()
+  {
+    return m_bonds;
+  }
+
+  const QList<unsigned long> & Fragment::bonds() const
   {
     return m_bonds;
   }

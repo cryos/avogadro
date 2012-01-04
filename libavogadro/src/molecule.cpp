@@ -158,6 +158,7 @@ namespace Avogadro{
   Atom *Molecule::addAtom(unsigned long id)
   {
     Q_D(const Molecule);
+    d->invalidGeomInfo = true;
     Atom *atom = new Atom(this);
 
     if (!m_atomPos) {
@@ -183,10 +184,14 @@ namespace Avogadro{
     emit atomAdded(atom);
     return atom;
   }
+
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
-    if (id < m_atomPos->size())
+    Q_D(const Molecule);
+    if (id < m_atomPos->size()) {
       (*m_atomPos)[id] = vec;
+      d->invalidGeomInfo = true;
+    }
   }
 
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d *vec)
@@ -363,9 +368,6 @@ namespace Avogadro{
     emit primitiveAdded(cube);
     return(cube);
   }
-
-
-
 
   void Molecule::removeCube(Cube *cube)
   {
@@ -1055,7 +1057,7 @@ namespace Avogadro{
     Q_D(const Molecule);
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
-    else if (index < static_cast<int>(d->energies.size()))
+    else if (index >= 0 && index < static_cast<int>(d->energies.size()))
       return d->energies[index];
     else
       return 0.0;
@@ -1400,6 +1402,43 @@ namespace Avogadro{
       d->obelectronictransitiondata = etd;
     }
 
+    // Copy orbital energies, symbols, and occupations to dynamic properties (as QList<>)
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicData)) {
+      OpenBabel::OBOrbitalData *od =
+        static_cast<OpenBabel::OBOrbitalData*>(obmol->GetData(OpenBabel::OBGenericDataType::ElectronicData));
+
+      // Source (from OBMol)
+      std::vector<OpenBabel::OBOrbital> alphaOrbitals, betaOrbitals;
+      std::vector<OpenBabel::OBOrbital>::iterator orbitalIter;
+      alphaOrbitals = od->GetAlphaOrbitals();
+
+      // Destinations
+      QList<QVariant> alphaEnergies, alphaOcc;
+      QStringList alphaSymmetries;
+      for (orbitalIter = alphaOrbitals.begin(); orbitalIter != alphaOrbitals.end(); ++orbitalIter) {
+        alphaEnergies.append(QVariant(orbitalIter->GetEnergy() * 27.21138)); // convert to eV
+        alphaSymmetries.append(orbitalIter->GetSymbol().c_str());
+        alphaOcc.append(QVariant(orbitalIter->GetOccupation()));
+      }
+      setProperty("alphaOrbitalEnergies", alphaEnergies);
+      setProperty("alphaOrbitalSymmetries", alphaSymmetries);
+      setProperty("alphaOrbitalOccupations", alphaOcc);
+
+      if (od->IsOpenShell()) { // Find and set the beta orbitals
+        betaOrbitals = od->GetBetaOrbitals(); // shouldn't be empty
+        QList<QVariant> betaEnergies, betaOcc;
+        QStringList betaSymmetries;
+        for (orbitalIter = betaOrbitals.begin(); orbitalIter != betaOrbitals.end(); ++orbitalIter) {
+          betaEnergies.append(QVariant(orbitalIter->GetEnergy() * 27.21138)); // convert to eV
+          betaSymmetries.append(orbitalIter->GetSymbol().c_str());
+          betaOcc.append(QVariant(orbitalIter->GetOccupation()));
+        }
+        setProperty("betaOrbitalEnergies", betaEnergies);
+        setProperty("betaOrbitalSymmetries", betaSymmetries);
+        setProperty("betaOrbitalOccupations", betaOcc);
+      }
+    }
+
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
     OpenBabel::OBPairData *property;
@@ -1551,7 +1590,6 @@ namespace Avogadro{
   Molecule &Molecule::operator=(const Molecule& other)
   {
     // FIXME: Copy all the other stuff in the molecule!
-    //Q_D(Molecule);
     clear();
     //const MoleculePrivate *e = other.d_func();
     m_atoms.resize(other.m_atoms.size(), 0);
@@ -1608,6 +1646,13 @@ namespace Avogadro{
         residue->addAtom(atomId);
       }
       residue->setAtomIds(r->atomIds());
+    }
+
+    // Copy unit cells
+    Q_D(Molecule);
+    if (other.OBUnitCell() != NULL) {
+      d->obunitcell = new OpenBabel::OBUnitCell;
+      *d->obunitcell = *(other.OBUnitCell()); // Copy the object not the pointer
     }
 
     return *this;

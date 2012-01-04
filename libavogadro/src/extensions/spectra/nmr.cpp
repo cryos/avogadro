@@ -102,7 +102,9 @@ namespace Avogadro {
 
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
       for (int i = 0; i < m_xList.size(); i++) {
-        double shift = m_xList.at(i) - m_ref;
+        // For NMR shifts, subtract computed isotropic shift FROM value for TMS
+        // otherwise you get negative shifts! -GRH 2011-11-09
+        double shift = m_ref - m_xList.at(i);
         //      double intensity = m_NMRintensities.at(i);
         plotObject->addPoint ( shift, 0);
         if (ui.cb_labelPeaks->isChecked()) {

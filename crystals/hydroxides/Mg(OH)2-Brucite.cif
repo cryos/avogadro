@@ -1,0 +1,104 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2101439.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2101439
+loop_
+_publ_author_name
+'Desgranges, L.'
+'Calvarin, G.'
+'Chevrier, G.'
+_publ_section_title
+;
+ Interlayer interactions in <i>M</i>(OH)~2~: a neutron diffraction
+ study of Mg(OH)~2~
+;
+_journal_issue                   1
+_journal_name_full               'Acta Crystallographica Section B'
+_journal_page_first              82
+_journal_page_last               86
+_journal_volume                  52
+_journal_year                    1996
+_chemical_formula_sum            'H2 Mg O2'
+_[local]_cod_chemical_formula_sum_orig 'H2 Mg1 O2'
+_chemical_formula_weight         58.3
+_symmetry_cell_setting           trigonal
+_symmetry_space_group_name_Hall  '-P 3 2"'
+_symmetry_space_group_name_H-M   'P -3 m 1'
+_atom_type_scat_source           'Delapalme (1985)'
+_cell_angle_alpha                90.0
+_cell_angle_beta                 90.0
+_cell_angle_gamma                120.0
+_cell_formula_units_Z            1
+_cell_length_a                   3.1450(10)
+_cell_length_b                   3.1450(10)
+_cell_length_c                   4.740(2)
+_cell_measurement_reflns_used    20
+_cell_measurement_temperature    70
+_cell_measurement_theta_max      30
+_cell_measurement_theta_min      12
+_cell_volume                     40.602
+_diffrn_measurement_device       'P110 Canal 5C2'
+_diffrn_measurement_method       \w-2\q
+_diffrn_radiation_type           neutron
+_diffrn_radiation_wavelength     0.8330(5)
+_diffrn_reflns_av_R_equivalents  0.046
+_diffrn_reflns_limit_h_max       4
+_diffrn_reflns_limit_h_min       0
+_diffrn_reflns_limit_k_max       4
+_diffrn_reflns_limit_k_min       0
+_diffrn_reflns_limit_l_max       7
+_diffrn_reflns_limit_l_min       0
+_diffrn_reflns_number            202
+_diffrn_reflns_theta_max         36.61
+_diffrn_standards_decay_%        1
+_diffrn_standards_interval_time  120
+_diffrn_standards_number         2
+_exptl_absorpt_coefficient_mu    0.178
+_exptl_absorpt_correction_T_max  0.8979
+_exptl_absorpt_correction_T_min  0.5414
+_exptl_absorpt_correction_type   empirical
+_exptl_crystal_colour            colorless
+_exptl_crystal_density_diffrn    2.39
+_exptl_crystal_description       platelet
+_exptl_crystal_size_max          5.6
+_exptl_crystal_size_mid          5.4
+_exptl_crystal_size_min          0.6
+_refine_diff_density_max         0.447
+_refine_diff_density_min         -0.423
+_refine_ls_extinction_method     none
+_refine_ls_goodness_of_fit_all   2.54
+_refine_ls_hydrogen_treatment    'see text'
+_refine_ls_number_parameters     12
+_refine_ls_number_reflns         81
+_refine_ls_R_factor_obs          0.0184
+_refine_ls_shift/esd_max         0.0
+_refine_ls_structure_factor_coef F
+_refine_ls_weighting_scheme      'w = 1/\s^2^(F)'
+_refine_ls_wR_factor_obs         0.0182
+_reflns_number_observed          57
+_reflns_number_total             81
+_reflns_observed_criterion       F^2^>2.5\s(F^2^)
+_[local]_cod_data_source_file    du0401.cif
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Mg .0 .0 .0
+O .3333 .6667 -.2194(2)
+H .3569(9) .6431(9) -.4195(6)
+_cod_database_code 2101439

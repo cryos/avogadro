@@ -268,6 +268,6 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-Q_EXPORT_PLUGIN2(molecularpropertiesextension,
+Q_EXPORT_PLUGIN2(molecularpropextension,
                  Avogadro::MolecularPropertiesExtensionFactory)
 

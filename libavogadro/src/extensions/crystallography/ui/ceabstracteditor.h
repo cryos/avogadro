@@ -19,6 +19,7 @@
 #define CEABSTRACTEDITOR_H
 
 #include <QtGui/QDockWidget>
+#include "ceabstractdockwidget.h"
 
 class QMainWindow;
 
@@ -26,7 +27,7 @@ namespace Avogadro
 {
   class CrystallographyExtension;
 
-  class CEAbstractEditor : public QDockWidget
+  class CEAbstractEditor : public CEAbstractDockWidget
   {
     Q_OBJECT
 
@@ -35,8 +36,6 @@ namespace Avogadro
     virtual ~CEAbstractEditor();
 
     bool isLocked() {return m_isLocked;}
-
-    Qt::DockWidgetArea preferredDockWidgetArea();
 
   signals:
     void editStarted();
@@ -56,14 +55,7 @@ namespace Avogadro
     virtual void markAsInvalid() = 0;
     virtual void markAsValid() = 0;
 
-    void storeDockWidgetArea(Qt::DockWidgetArea a);
-
   protected:
-    virtual void closeEvent(QCloseEvent *);
-    virtual void showEvent(QShowEvent *);
-    virtual void hideEvent(QHideEvent *);
-
-    CrystallographyExtension *m_ext;
     bool m_isLocked;
   };
 

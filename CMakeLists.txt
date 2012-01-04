@@ -265,7 +265,7 @@ if(ENABLE_PYTHON)
     message(STATUS "All python dependencies found - Python support enabled")
   else()
     set(ENABLE_PYTHON FALSE)
-    message("Not all python dependencies found - Python support disabled")
+    message(WARNING "Not all python dependencies are found - Python support diabled")
   endif()
 else()
   message(STATUS "Python support disabled.")
@@ -496,6 +496,8 @@ set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
+        DESTINATION ${avogadro_FRAGMENTS})
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/crystals"
         DESTINATION ${avogadro_FRAGMENTS})
 
 # Prefix to use in avopkg, pkg-config and QMake integration

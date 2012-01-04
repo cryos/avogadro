@@ -95,8 +95,7 @@ add_executable(avogadro-app WIN32 MACOSX_BUNDLE
 
 set_target_properties(avogadro-app PROPERTIES
   OUTPUT_NAME avogadro
-  LABELS avogadro-app
-  COMPILE_FLAGS "${NO_RTTI_FLAG}")
+  LABELS avogadro-app)
 set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 

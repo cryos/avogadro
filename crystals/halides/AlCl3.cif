@@ -1,0 +1,44 @@
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/1/1010563.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1010563
+_chemical_name_systematic          'Aluminium chloride'
+_chemical_formula_structural       'Al Cl3'
+_chemical_formula_sum              'Al Cl3'
+_publ_section_title                'Zur Struktur Al Cl~3~'
+loop_
+_publ_author_name                  'Laschkarew, W E'
+_journal_name_full
+;
+Zeitschrift fuer Anorganische und Allgemeine Chemie
+;
+_journal_coden_ASTM                ZAACAB
+_journal_volume                    193
+_journal_year                      1930
+_journal_page_first                270
+_journal_page_last                 276
+_cell_length_a                     3.475(1)
+_cell_length_b                     3.475(1)
+_cell_length_c                     8.51
+_cell_angle_alpha                  90
+_cell_angle_beta                   90
+_cell_angle_gamma                  120
+_cell_volume                       89.0
+_cell_formula_units_Z              1
+_exptl_crystal_density_meas        2.4
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+? ? ? ?
+_cod_database_code 1010563

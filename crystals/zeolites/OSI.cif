@@ -1,0 +1,77 @@
+data_OSI
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                  18.5060(0)
+_cell_length_b                  18.5060(0)
+_cell_length_c                   5.2680(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma               90.0000(0)
+
+_symmetry_space_group_name_H-M     'I 4/m m m'
+_symmetry_Int_Tables_number         139
+_symmetry_cell_setting             tetragonal
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'1/2+x,1/2+y,1/2+z'
+'-y,+x,+z'
+'1/2-y,1/2+x,1/2+z'
+'-x,-y,+z'
+'1/2-x,1/2-y,1/2+z'
+'+y,-x,+z'
+'1/2+y,1/2-x,1/2+z'
+'-x,+y,+z'
+'1/2-x,1/2+y,1/2+z'
+'+y,+x,+z'
+'1/2+y,1/2+x,1/2+z'
+'+x,-y,+z'
+'1/2+x,1/2-y,1/2+z'
+'-y,-x,+z'
+'1/2-y,1/2-x,1/2+z'
+'-x,-y,-z'
+'1/2-x,1/2-y,1/2-z'
+'+y,-x,-z'
+'1/2+y,1/2-x,1/2-z'
+'+x,+y,-z'
+'1/2+x,1/2+y,1/2-z'
+'-y,+x,-z'
+'1/2-y,1/2+x,1/2-z'
+'+x,-y,-z'
+'1/2+x,1/2-y,1/2-z'
+'-y,-x,-z'
+'1/2-y,1/2-x,1/2-z'
+'-x,+y,-z'
+'1/2-x,1/2+y,1/2-z'
+'+y,+x,-z'
+'1/2+y,1/2+x,1/2-z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+    O1    O     0.1923    0.1923    0.5000
+    O2    O     0.3148    0.1852    0.7500
+    O3    O     0.2698    0.0715    0.5000
+    O4    O     0.1706    0.0000    0.2500
+    O5    O     0.0711    0.0711    0.0000
+    T1    Si    0.2726    0.1585    0.5000
+    T2    Si    0.1209    0.0000    0.0000
+    T3    Si    0.2204    0.0000    0.5000
+

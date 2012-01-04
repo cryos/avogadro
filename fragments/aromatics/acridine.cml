@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_acridine">
+  <formula concise=" C 13 H 9 N 1 "/>
+  <identifier convention="iupac:inchi" value="1/C13H9N/c1-3-7-12-10(5-1)9-11-6-2-4-8-13(11)14-12/h1-9H"/>
+  <name convention="IUPAC">Acridine</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="3.621503" y3="0.721694" z3="-0.000000"/>
+    <atom id="a2" elementType="C" x3="3.605303" y3="-0.704304" z3="0.000000"/>
+    <atom id="a3" elementType="C" x3="2.429019" y3="-1.386952" z3="-0.000000"/>
+    <atom id="a4" elementType="C" x3="1.183810" y3="-0.681028" z3="-0.000000"/>
+    <atom id="a5" elementType="C" x3="2.463236" y3="1.434624" z3="-0.000000"/>
+    <atom id="a6" elementType="C" x3="1.202115" y3="0.744554" z3="-0.000000"/>
+    <atom id="a7" elementType="C" x3="-0.046398" y3="-1.342501" z3="-0.000000"/>
+    <atom id="a8" elementType="C" x3="-1.228034" y3="-0.597604" z3="-0.000000"/>
+    <atom id="a9" elementType="N" x3="0.050767" y3="1.468399" z3="-0.000000"/>
+    <atom id="a10" elementType="C" x3="-1.147811" y3="0.825838" z3="-0.000000"/>
+    <atom id="a11" elementType="C" x3="-2.518954" y3="-1.215860" z3="-0.000000"/>
+    <atom id="a12" elementType="C" x3="-3.645336" y3="-0.453618" z3="-0.000000"/>
+    <atom id="a13" elementType="C" x3="-3.562971" y3="0.970082" z3="-0.000000"/>
+    <atom id="a14" elementType="C" x3="-2.358273" y3="1.601423" z3="0.000000"/>
+    <atom id="a15" elementType="H" x3="4.590359" y3="1.232470" z3="-0.000000"/>
+    <atom id="a16" elementType="H" x3="4.561131" y3="-1.238649" z3="-0.000000"/>
+    <atom id="a17" elementType="H" x3="2.407363" y3="-2.482541" z3="-0.000000"/>
+    <atom id="a18" elementType="H" x3="2.469406" y3="2.531108" z3="-0.000000"/>
+    <atom id="a19" elementType="H" x3="-0.084330" y3="-2.438565" z3="0.000000"/>
+    <atom id="a20" elementType="H" x3="-2.573047" y3="-2.310318" z3="-0.000000"/>
+    <atom id="a21" elementType="H" x3="-4.635896" y3="-0.920392" z3="-0.000000"/>
+    <atom id="a22" elementType="H" x3="-4.494304" y3="1.546424" z3="-0.000000"/>
+    <atom id="a23" elementType="H" x3="-2.288656" y3="2.695715" z3="-0.000000"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a5 a6" order="2"/>
+    <bond atomRefs2="a6 a4" order="1"/>
+    <bond atomRefs2="a4 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a6 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="2"/>
+    <bond atomRefs2="a10 a8" order="1"/>
+    <bond atomRefs2="a8 a11" order="1"/>
+    <bond atomRefs2="a11 a12" order="2"/>
+    <bond atomRefs2="a12 a13" order="1"/>
+    <bond atomRefs2="a10 a14" order="1"/>
+    <bond atomRefs2="a14 a13" order="2"/>
+    <bond atomRefs2="a1 a5" order="1"/>
+    <bond atomRefs2="a1 a15" order="1"/>
+    <bond atomRefs2="a2 a16" order="1"/>
+    <bond atomRefs2="a3 a17" order="1"/>
+    <bond atomRefs2="a5 a18" order="1"/>
+    <bond atomRefs2="a7 a19" order="1"/>
+    <bond atomRefs2="a11 a20" order="1"/>
+    <bond atomRefs2="a12 a21" order="1"/>
+    <bond atomRefs2="a13 a22" order="1"/>
+    <bond atomRefs2="a14 a23" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">179.2173</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">179.0734993</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">111</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">345</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -20,8 +20,6 @@ set(drawtool_SRCS
 avogadro_plugin(drawtool
   "${drawtool_SRCS}"
   drawtool.qrc)
-set_target_properties(drawtool PROPERTIES
-                        COMPILE_FLAGS "${RTTI_FLAG}")
 
 option(ENABLE_ZMATRIX_TOOL "Enable the z-matrix tool (experimental)" OFF)
 if(ENABLE_ZMATRIX_TOOL)
@@ -56,7 +54,7 @@ avogadro_plugin(navigatetool
 
 ### manipulatetool
 avogadro_plugin(manipulatetool
-  "manipulatetool.cpp;eyecandy.cpp" manipulatetool.qrc)
+  "manipulatetool.cpp;eyecandy.cpp;moveatomcommand.cpp" manipulatetool.qrc)
 
 ### autorotatetool
 avogadro_plugin(autorotatetool autorotatetool.cpp autorotatetool.qrc)

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_9H-carbazole">
+  <formula concise=" C 12 H 9 N 1 "/>
+  <identifier convention="iupac:inchi" value="1/C12H9N/c1-3-7-11-9(5-1)10-6-2-4-8-12(10)13-11/h1-8,13H"/>
+  <name convention="IUPAC">9H-Carbazole</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="3.425680" y3="-0.092662" z3="-0.004431"/>
+    <atom id="a2" elementType="C" x3="2.895736" y3="-1.385555" z3="0.018179"/>
+    <atom id="a3" elementType="C" x3="1.522299" y3="-1.601792" z3="0.038720"/>
+    <atom id="a4" elementType="C" x3="2.603809" y3="1.028656" z3="-0.001491"/>
+    <atom id="a5" elementType="C" x3="1.228159" y3="0.816577" z3="0.021659"/>
+    <atom id="a6" elementType="C" x3="0.683293" y3="-0.494989" z3="0.035038"/>
+    <atom id="a7" elementType="C" x3="-1.056556" y3="1.029078" z3="0.020577"/>
+    <atom id="a8" elementType="C" x3="-0.762898" y3="-0.360487" z3="0.034381"/>
+    <atom id="a9" elementType="C" x3="-1.791550" y3="-1.293624" z3="0.037281"/>
+    <atom id="a10" elementType="C" x3="-3.101529" y3="-0.827786" z3="0.015544"/>
+    <atom id="a11" elementType="C" x3="-2.369508" y3="1.491233" z3="-0.003795"/>
+    <atom id="a12" elementType="C" x3="-3.383977" y3="0.540674" z3="-0.007488"/>
+    <atom id="a13" elementType="H" x3="4.512642" y3="0.039503" z3="-0.023484"/>
+    <atom id="a14" elementType="H" x3="3.576428" y3="-2.243169" z3="0.019356"/>
+    <atom id="a15" elementType="H" x3="1.105266" y3="-2.613623" z3="0.056695"/>
+    <atom id="a16" elementType="H" x3="3.025673" y3="2.038234" z3="-0.017094"/>
+    <atom id="a17" elementType="H" x3="-1.568334" y3="-2.365027" z3="0.055591"/>
+    <atom id="a18" elementType="H" x3="-3.928879" y3="-1.544910" z3="0.016133"/>
+    <atom id="a19" elementType="H" x3="-2.597888" y3="2.561282" z3="-0.019720"/>
+    <atom id="a20" elementType="H" x3="-4.427937" y3="0.870934" z3="-0.027466"/>
+    <atom id="a21" elementType="N" x3="0.165312" y3="1.778177" z3="0.118155"/>
+    <atom id="a22" elementType="H" x3="0.244760" y3="2.629277" z3="-0.382339"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a1 a4" order="1"/>
+    <bond atomRefs2="a4 a5" order="2"/>
+    <bond atomRefs2="a6 a3" order="2"/>
+    <bond atomRefs2="a6 a8" order="1"/>
+    <bond atomRefs2="a7 a8" order="2"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="2"/>
+    <bond atomRefs2="a7 a11" order="1"/>
+    <bond atomRefs2="a11 a12" order="2"/>
+    <bond atomRefs2="a12 a10" order="1"/>
+    <bond atomRefs2="a5 a6" order="1"/>
+    <bond atomRefs2="a1 a13" order="1"/>
+    <bond atomRefs2="a2 a14" order="1"/>
+    <bond atomRefs2="a3 a15" order="1"/>
+    <bond atomRefs2="a4 a16" order="1"/>
+    <bond atomRefs2="a9 a17" order="1"/>
+    <bond atomRefs2="a10 a18" order="1"/>
+    <bond atomRefs2="a11 a19" order="1"/>
+    <bond atomRefs2="a12 a20" order="1"/>
+    <bond atomRefs2="a5 a21" order="1"/>
+    <bond atomRefs2="a21 a7" order="1"/>
+    <bond atomRefs2="a21 a22" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">167.2066</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">167.0734993</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">247</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">355</scalar>
+    </property>
+  </propertyList>
+</molecule>

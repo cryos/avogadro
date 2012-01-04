@@ -1,0 +1,67 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9008582.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9008582
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+ Second edition. Interscience Publishers, New York, New York
+ Sample is the beta form of the monoclinic phase
+;
+_journal_name_full               'Crystal Structures'
+_journal_page_first              7
+_journal_page_last               83
+_journal_volume                  1
+_journal_year                    1963
+_chemical_formula_sum            Se
+_chemical_name_mineral           Selenium
+_space_group_IT_number           14
+_symmetry_space_group_name_Hall  '-P 2yab'
+_symmetry_space_group_name_H-M   'P 1 21/a 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 93.133
+_cell_angle_gamma                90
+_cell_length_a                   12.85
+_cell_length_b                   8.07
+_cell_length_c                   9.31
+_cell_volume                     963.999
+_exptl_crystal_density_diffrn    4.352
+_cod_database_code               9008582
+_amcsd_database_code             AMCSD#0010913
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2-y,z
+1/2-x,1/2+y,-z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Se1 0.58400 0.31500 0.43700
+Se2 0.47700 0.22700 0.24600
+Se3 0.32800 0.39800 0.24000
+Se4 0.35200 0.58000 0.05000
+Se5 0.41000 0.83100 0.15700
+Se6 0.59000 0.84000 0.14200
+Se7 0.66000 0.75400 0.36800
+Se8 0.71000 0.47900 0.33400
+0 0.13400

@@ -12,10 +12,12 @@ set(crystallographyextension_SRCS
   ceundo.cpp
   crystallographyextension.cpp
   crystalpastedialog.cpp
+  ui/ceabstractdockwidget.cpp
   ui/ceabstracteditor.cpp
   ui/cecoordinateeditor.cpp
   ui/cematrixeditor.cpp
   ui/ceparametereditor.cpp
+  ui/cetranslatewidget.cpp
 )
 
 set(crystallographyextension_UIS
@@ -23,6 +25,7 @@ set(crystallographyextension_UIS
   ui/cecoordinateeditor.ui
   ui/cematrixeditor.ui
   ui/ceparametereditor.ui
+  ui/cetranslatewidget.ui
 )
 
 avogadro_plugin(crystallographyextension

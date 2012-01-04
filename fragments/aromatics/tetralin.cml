@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_tetralin">
+  <formula concise=" C 10 H 12 "/>
+  <identifier convention="iupac:inchi" value="1/C10H12/c1-2-6-10-8-4-3-7-9(10)5-1/h1-2,5-6H,3-4,7-8H2"/>
+  <name convention="IUPAC">Tetralin</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.771355" y3="0.737128" z3="0.137096"/>
+    <atom id="a2" elementType="C" x3="2.798308" y3="-0.627046" z3="-0.137111"/>
+    <atom id="a3" elementType="C" x3="1.609105" y3="-1.328870" z3="-0.275667"/>
+    <atom id="a4" elementType="C" x3="0.379478" y3="-0.677843" z3="-0.141217"/>
+    <atom id="a5" elementType="C" x3="0.352365" y3="0.692182" z3="0.140679"/>
+    <atom id="a6" elementType="C" x3="1.555252" y3="1.391333" z3="0.275526"/>
+    <atom id="a7" elementType="C" x3="-0.932287" y3="1.430719" z3="0.331980"/>
+    <atom id="a8" elementType="C" x3="-2.134945" y3="0.683922" z3="-0.219491"/>
+    <atom id="a9" elementType="C" x3="-2.105668" y3="-0.768031" z3="0.220768"/>
+    <atom id="a10" elementType="C" x3="-0.875117" y3="-1.466251" z3="-0.332863"/>
+    <atom id="a11" elementType="H" x3="3.707962" y3="1.293451" z3="0.244511"/>
+    <atom id="a12" elementType="H" x3="3.756093" y3="-1.146059" z3="-0.244333"/>
+    <atom id="a13" elementType="H" x3="1.630563" y3="-2.402728" z3="-0.493283"/>
+    <atom id="a14" elementType="H" x3="1.534190" y3="2.465172" z3="0.493436"/>
+    <atom id="a15" elementType="H" x3="-0.863843" y3="2.433134" z3="-0.135606"/>
+    <atom id="a16" elementType="H" x3="-3.068680" y3="1.171951" z3="0.119944"/>
+    <atom id="a17" elementType="H" x3="-3.019708" y3="-1.292859" z3="-0.117245"/>
+    <atom id="a18" elementType="H" x3="-0.767018" y3="-2.466100" z3="0.132717"/>
+    <atom id="a19" elementType="H" x3="-1.063368" y3="1.611755" z3="1.418661"/>
+    <atom id="a20" elementType="H" x3="-2.148831" y3="0.742211" z3="-1.325770"/>
+    <atom id="a21" elementType="H" x3="-2.115391" y3="-0.826892" z3="1.327049"/>
+    <atom id="a22" elementType="H" x3="-0.999814" y3="-1.650278" z3="-1.419781"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="2"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a3 a4" order="2"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a5 a7" order="1"/>
+    <bond atomRefs2="a7 a8" order="1"/>
+    <bond atomRefs2="a8 a9" order="1"/>
+    <bond atomRefs2="a9 a10" order="1"/>
+    <bond atomRefs2="a4 a10" order="1"/>
+    <bond atomRefs2="a6 a5" order="2"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a1 a11" order="1"/>
+    <bond atomRefs2="a2 a12" order="1"/>
+    <bond atomRefs2="a3 a13" order="1"/>
+    <bond atomRefs2="a6 a14" order="1"/>
+    <bond atomRefs2="a7 a15" order="1"/>
+    <bond atomRefs2="a8 a16" order="1"/>
+    <bond atomRefs2="a9 a17" order="1"/>
+    <bond atomRefs2="a10 a18" order="1"/>
+    <bond atomRefs2="a7 a19" order="1"/>
+    <bond atomRefs2="a8 a20" order="1"/>
+    <bond atomRefs2="a9 a21" order="1"/>
+    <bond atomRefs2="a10 a22" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">132.2023</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">132.0939004</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-36</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">208</scalar>
+    </property>
+  </propertyList>
+</molecule>

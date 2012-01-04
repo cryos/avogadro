@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule xmlns="http://www.xml-cml.org/schema"
+          xmlns:cml="http://www.xml-cml.org/dict/cml"
+          xmlns:units="http://www.xml-cml.org/units/units"
+          xmlns:xsd="http://www.w3c.org/2001/XMLSchema"
+          xmlns:iupac="http://www.iupac.org"
+          id="CS_pentanoic_acid">
+  <formula concise=" C 5 H 10 O 2 "/>
+  <identifier convention="iupac:inchi" value="1/C5H10O2/c1-2-3-4-5(6)7/h2-4H2,1H3,(H,6,7)"/>
+  <name convention="IUPAC">Pentanoic acid</name>
+  <atomArray>
+    <atom id="a1" elementType="C" x3="2.653482" y3="-0.129510" z3="0.036171"/>
+    <atom id="a2" elementType="C" x3="1.340303" y3="0.609057" z3="0.162281"/>
+    <atom id="a3" elementType="C" x3="0.159063" y3="-0.321524" z3="-0.065057"/>
+    <atom id="a4" elementType="C" x3="-1.155143" y3="0.430579" z3="0.063760"/>
+    <atom id="a5" elementType="C" x3="-2.353126" y3="-0.454794" z3="-0.152946"/>
+    <atom id="a6" elementType="H" x3="2.731713" y3="-0.945204" z3="0.767232"/>
+    <atom id="a7" elementType="H" x3="3.505083" y3="0.542500" z3="0.201811"/>
+    <atom id="a8" elementType="H" x3="2.774591" y3="-0.573434" z3="-0.960902"/>
+    <atom id="a9" elementType="H" x3="1.306627" y3="1.446907" z3="-0.562460"/>
+    <atom id="a10" elementType="H" x3="1.264926" y3="1.078531" z3="1.163437"/>
+    <atom id="a11" elementType="H" x3="0.191555" y3="-1.160479" z3="0.658636"/>
+    <atom id="a12" elementType="H" x3="0.233250" y3="-0.791706" z3="-1.066068"/>
+    <atom id="a13" elementType="H" x3="-1.194232" y3="1.267112" z3="-0.663885"/>
+    <atom id="a14" elementType="H" x3="-1.235378" y3="0.899359" z3="1.066074"/>
+    <atom id="a15" elementType="O" x3="-2.420485" y3="-1.643760" z3="-0.406510"/>
+    <atom id="a16" elementType="O" x3="-3.546362" y3="0.181949" z3="-0.046844"/>
+    <atom id="a17" elementType="H" x3="-4.255868" y3="-0.435582" z3="-0.194732"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="a1 a2" order="1"/>
+    <bond atomRefs2="a1 a6" order="1"/>
+    <bond atomRefs2="a1 a7" order="1"/>
+    <bond atomRefs2="a1 a8" order="1"/>
+    <bond atomRefs2="a2 a3" order="1"/>
+    <bond atomRefs2="a2 a9" order="1"/>
+    <bond atomRefs2="a2 a10" order="1"/>
+    <bond atomRefs2="a3 a4" order="1"/>
+    <bond atomRefs2="a3 a11" order="1"/>
+    <bond atomRefs2="a3 a12" order="1"/>
+    <bond atomRefs2="a4 a5" order="1"/>
+    <bond atomRefs2="a4 a13" order="1"/>
+    <bond atomRefs2="a4 a14" order="1"/>
+    <bond atomRefs2="a5 a15" order="2"/>
+    <bond atomRefs2="a5 a16" order="1"/>
+    <bond atomRefs2="a16 a17" order="1"/>
+  </bondArray>
+  <propertyList>
+    <property dictRef="cml:molwt" title="Molecular weight">
+      <scalar dataType="xsd:double" dictRef="cml:molwt" units="units:g">102.1317</scalar>
+    </property>
+    <property dictRef="cml:monoisotopicwt" title="Monoisotopic weight">
+      <scalar dataType="xsd:double" dictRef="cml:monoisotopicwt" units="units:g">102.0680796</scalar>
+    </property>
+    <property dictRef="cml:mp" title="Melting point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:mp" units="units:celsius">-19</scalar>
+    </property>
+    <property dictRef="cml:bp" title="Boiling point">
+      <scalar dataType="xsd:double" errorValue="1.0" dictRef="cml:bp" units="units:celsius">185</scalar>
+    </property>
+  </propertyList>
+</molecule>

@@ -1,0 +1,64 @@
+data_LIO
+#**************************************************************************
+#
+# CIF taken from the IZA-SC Database of Zeolite Structures
+# Ch. Baerlocher and L.B. McCusker
+# Database of Zeolite Structures: http://www.iza-structure.org/databases/ 
+#
+# All data on this site have been placed in the public domain.
+# If you use this work in a scientific publication, you are obligated to
+# cite its origin.
+#
+# The atom coordinates and the cell parameters were optimized with DLS76
+# assuming a pure SiO2 composition.
+#
+#**************************************************************************
+
+_cell_length_a                  12.2810(0)
+_cell_length_b                  12.2810(0)
+_cell_length_c                  15.6320(0)
+_cell_angle_alpha               90.0000(0)
+_cell_angle_beta                90.0000(0)
+_cell_angle_gamma              120.0000(0)
+
+_symmetry_space_group_name_H-M     'P -6 m 2'
+_symmetry_Int_Tables_number         187
+_symmetry_cell_setting             hexagonal
+
+loop_
+_symmetry_equiv_pos_as_xyz
+'+x,+y,+z'
+'-y,+x-y,+z'
+'-x+y,-x,+z'
+'+x,+y,-z'
+'-y,+x-y,-z'
+'-x+y,-x,-z'
+'-y,-x,+z'
+'-x+y,+y,+z'
+'+x,+x-y,+z'
+'-y,-x,-z'
+'-x+y,+y,-z'
+'+x,+x-y,-z'
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+    O1    O     0.3166    0.9770    0.0840
+    O2    O     0.2314    0.7686    0.1732
+    O3    O     0.3004    0.9830    0.2512
+    O4    O     0.4708    0.9416    0.1813
+    O5    O     0.2588    0.1294    0.3521
+    O6    O     0.1158    0.8842    0.3632
+    O7    O     0.3503    0.9941    0.4159
+    O8    O     0.3929    0.1964    0.5000
+    O9    O     0.5627    0.1255    0.5000
+   O10    O     0.2736    0.1368    0.0000
+   O11    O     0.1043    0.8957    0.0000
+    T1    Si    0.3299    0.9174    0.1724
+    T2    Si    0.2563    0.9975    0.3453
+    T3    Si    0.4145    0.0777    0.5000
+    T4    Si    0.2525    0.9966    0.0000
+

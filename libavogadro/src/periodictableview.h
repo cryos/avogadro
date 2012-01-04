@@ -85,6 +85,22 @@ namespace Avogadro {
      * Double click event - select an element and hide the PeriodicTableView.
      */
     void mouseDoubleClickEvent(QMouseEvent *event);
+    /**
+     * Handles the keyboard events to change the active element.
+     * @since version 1.1
+     */
+    void keyPressEvent(QKeyEvent *event);
+
+  public Q_SLOTS:
+    /**
+     * This slot is called to clear the key buffer
+     * (e.g. after a delay in typing)
+     * @since version 1.1
+     */
+    void clearKeyPressBuffer();
+
+  private:
+    QString   m_keyPressBuffer;
   };
 
 } // End of Avogadro namespace

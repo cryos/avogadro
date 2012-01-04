@@ -139,7 +139,19 @@ namespace Avogadro
       unsigned int lumo = homo + 1;
       unsigned int count = homo - 1;
       bool leqHOMO = true; // orbital <= homo
-      for (unsigned int i = 0; i < m_basis->numMOs(); i++) {
+
+      // energies and symmetries
+      //TODO: Alpha / Beta orbitals
+      QList<QVariant> alphaEnergies;
+      QVariant property = molecule->property("alphaOrbitalEnergies");
+      if (property.isValid())
+        alphaEnergies = property.toList();
+      QStringList alphaSymmetries;
+      property = molecule->property("alphaOrbitalSymmetries");
+      if (property.isValid())
+        alphaSymmetries = property.toStringList();
+
+      for (int i = 0; i < m_basis->numMOs(); i++) {
         QString num = "";
         if (i+1 != homo && i+1 != lumo) {
           num = (leqHOMO) ? "-" : "+";
@@ -155,7 +167,14 @@ namespace Avogadro
         qDebug() << desc;
 
         Orbital orb;
-        orb.energy = 0; // TODO
+        // Get the energy from the molecule property list, if available
+        if (alphaEnergies.size() > i)
+          orb.energy = alphaEnergies[i].toDouble();
+        else
+          orb.energy = 0.0;
+        // symmetries (if available)
+        if (alphaSymmetries.size() > i)
+          orb.symmetry = alphaSymmetries[i];
         orb.index = i;
         orb.description = desc;
         orb.queueEntry = 0;
@@ -386,7 +405,22 @@ namespace Avogadro
       // E.g,
       // .... HOMO-2 HOMO-1 HOMO LUMO LUMO+1 LUMO+2 ... << orbitals
       // ....   3      2     1    1     2      3    ... << priorities
-      for (unsigned int i = 0; i < m_basis->numMOs(); i++) {
+
+      // Determine range of precalculated orbitals
+      int startIndex = (m_widget->precalcLimit())
+          ? homo - (m_widget->precalcRange()/2)
+          : 0;
+      if (startIndex < 0) {
+        startIndex = 0;
+      }
+      int endIndex =  (m_widget->precalcLimit())
+          ? homo + (m_widget->precalcRange()/2) - 1
+          : m_basis->numMOs();
+      if (endIndex > m_basis->numMOs() - 1) {
+        endIndex = m_basis->numMOs() - 1;
+      }
+
+      for (unsigned int i = startIndex; i <= endIndex; i++) {
         addCalculationToQueue(i+1,  // orbital
                               OrbitalWidget::OrbitalQualityToDouble(m_widget->defaultQuality()),
                               m_widget->isovalue(),

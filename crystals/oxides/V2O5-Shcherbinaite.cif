@@ -1,0 +1,74 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-06-10 15:11:07 +0000 (Thu, 10 Jun 2010) $
+#$Revision: 1210 $
+#$URL: svn://cod.ibt.lt/cod/cif/9/9012221.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9012221
+loop_
+_publ_author_name
+'Shklover, V.'
+'Haibach, T.'
+'Ried, F.'
+'Nesper, R.'
+'Novak, P.'
+_publ_section_title
+;
+ Crystal structure of the product of Mg2+ insertion into V2O5 single crystals
+ Locality: synthetic
+ Sample: IIb
+;
+_journal_name_full               'Journal of Solid State Chemistry'
+_journal_page_first              317
+_journal_page_last               323
+_journal_volume                  123
+_journal_year                    1996
+_chemical_formula_sum            'O5 V2'
+_chemical_name_mineral           Shcherbinaite
+_space_group_IT_number           59
+_symmetry_space_group_name_Hall  '-P 2ab 2a'
+_symmetry_space_group_name_H-M   'P m m n :2'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   11.544
+_cell_length_b                   3.571
+_cell_length_c                   4.383
+_cell_volume                     180.683
+_exptl_crystal_density_diffrn    3.343
+_[local]_cod_cif_authors_sg_H-M  'P m m n'
+_[local]_cod_chemical_formula_sum_orig 'V2 O5'
+_cod_database_code               9012221
+_amcsd_database_code             AMCSD#0012838
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,z
+-x,1/2+y,-z
+1/2-x,y,z
+1/2+x,-y,-z
+1/2+x,1/2+y,-z
+1/2-x,1/2-y,z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+V 0.60123 0.25000 0.10860 0.00750
+O1 0.43090 0.25000 -0.00280 0.00990
+O2 0.60450 0.25000 0.46970 0.01740
+O3 0.75000 0.25000 0.00080 0.01270

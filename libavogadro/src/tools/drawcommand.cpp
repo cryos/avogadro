@@ -1029,42 +1029,4 @@ namespace Avogadro {
     }
   }
 
-  /////////////////////////////////////////////////////////////////////////////
-  // Insert Fragment
-  /////////////////////////////////////////////////////////////////////////////
-
-  class InsertFragmentCommandPrivate {
-    public:
-      InsertFragmentCommandPrivate() : molecule(0), generatedMolecule(0) {};
-
-      Molecule *molecule;
-      Molecule moleculeCopy, generatedMolecule;
-  };
-
-  InsertFragmentCommand::InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule)
-      : d(new InsertFragmentCommandPrivate)
-  {
-    setText(QObject::tr("Insert Fragment"));
-    d->molecule = molecule;
-    d->moleculeCopy = *molecule;
-    d->generatedMolecule = generatedMolecule;
-  }
-
-  InsertFragmentCommand::~InsertFragmentCommand()
-  {
-    delete d;
-  }
-
-  void InsertFragmentCommand::undo()
-  {
-    *(d->molecule) = d->moleculeCopy;
-    d->molecule->update();
-  }
-
-  void InsertFragmentCommand::redo()
-  {
-    *(d->molecule) += d->generatedMolecule;
-    d->molecule->update();
-  }
-
 } // end namespace Avogadro

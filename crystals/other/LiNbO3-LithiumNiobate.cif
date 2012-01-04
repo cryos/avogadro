@@ -1,0 +1,53 @@
+# Part of the Crystallography Open Database
+# All data on this site have been placed in the public domain by the
+# contributors.
+#------------------------------------------------------------------------------
+#$Date: 2010-01-30 13:59:17 +0000 (Sat, 30 Jan 2010) $
+#$Revision: 966 $
+#$URL: svn://cod.ibt.lt/cod/cif/2/2101182.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2101182
+loop_
+_publ_author_name
+'Boysen, H.'
+'Altorfer, F.'
+_publ_section_title
+;
+ A neutron powder investigation of the high-temperature structure and
+ phase transition in LiNbO~3~
+;
+_journal_issue                   4
+_journal_name_full               'Acta Crystallographica Section B'
+_journal_page_first              405
+_journal_page_last               414
+_journal_volume                  50
+_journal_year                    1994
+_chemical_formula_sum            'Li Nb O3'
+_symmetry_cell_setting           trigonal
+_symmetry_space_group_name_H-M   'R 3 c {rhombohedral axes}'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_formula_units_Z            6
+_cell_length_a                   5.2719(8)
+_cell_length_b                   5.2719(8)
+_cell_length_c                   13.8601(8)
+_[local]_cod_data_source_file    se0126.cif
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Li .0000 .0000 .2762(13)
+Nb .0000 .0000 .0093(7)
+O(1) .0569(9) .3297(15) .0833
+_cod_database_code 2101182

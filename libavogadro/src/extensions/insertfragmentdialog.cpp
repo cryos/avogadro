@@ -23,7 +23,8 @@
  **********************************************************************/
 
 #include "insertfragmentdialog.h"
-//#include "directorytreemodel.h"
+#include "sortfiltertreeproxymodel.h"
+
 // Defines INSTALL_PREFIX among other things
 #include "config.h" // krazy:exclude=includes
 
@@ -31,6 +32,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
+#include <avogadro/moleculefile.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -41,6 +43,7 @@
 #include <QDir>
 #include <QCloseEvent>
 #include <QDebug>
+#include <QSortFilterProxyModel>
 #include <QFileSystemModel>
 
 using namespace OpenBabel;
@@ -52,9 +55,12 @@ namespace Avogadro {
     Molecule     fragment;
     OBConversion conv;
     OBBuilder    builder;
+    SortFilterTreeProxyModel *proxy;
     QFileSystemModel *model;
-    
+    QModelIndex  proxyRoot;
+
     QString      currentFileName;
+    bool         crystalFiles; // are we inserting crystals (i.e., don't center)
 
     ~InsertFragmentPrivate()
     {
@@ -64,58 +70,68 @@ namespace Avogadro {
 
   };
 
-  QStringList DefaultDirectoryList()
-  {
-    QStringList directoryList;
-#ifdef Q_WS_X11
-    directoryList << QString( INSTALL_PREFIX ) + "/share/avogadro/fragments";
-    directoryList << QDir::homePath() + "/.avogadro/fragments";
-#endif
-#ifdef Q_WS_WIN
-    directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
-#endif
-#ifdef Q_WS_MAC
-    directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
-    directoryList << "/Library/Application Support/Avogadro/Fragments";
-    directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
-#endif
-
-    return directoryList;
-  }
-
-  InsertFragmentDialog::InsertFragmentDialog(QWidget *parent, Qt::WindowFlags) : QDialog(parent)
+  InsertFragmentDialog::InsertFragmentDialog(QWidget *parent, QString directory, Qt::WindowFlags) : QDialog(parent)
   {
     // Use a small title bar (Qt::Tool) with no minimize or maximize buttons
     // much like the Periodic Table widget
     setWindowFlags(Qt::Dialog | Qt::Tool);
+    ui.setupUi(this);
 
     d = new InsertFragmentPrivate;
 
     d->currentFileName.clear();
 
-    // There has to be a better way to set this based on the installation prefix
-    m_directoryList = DefaultDirectoryList();
+    //@todo: it would be great to allow multiple directories, but that needs our own directory model
+    QString m_directory;
+#ifdef Q_WS_X11
+    m_directory = QString( INSTALL_PREFIX ) + "/share/avogadro/";
+#else
+    // Mac and Windows use relative path from application location
+    m_directory = QCoreApplication::applicationDirPath() + "/../share/avogadro/";
+#endif
+    m_directory += directory; // fragments or crystals
+    if ( directory.contains(QLatin1String("crystals")) )
+      d->crystalFiles = true;
+    else
+      d->crystalFiles = false;
+
     d->model = new QFileSystemModel(this);
     d->model->setReadOnly(true);
-    QModelIndex rootIndex = d->model->setRootPath(m_directoryList.first());
+    QModelIndex rootIndex = d->model->setRootPath(m_directory);
 
-    ui.setupUi(this);
-    ui.directoryTreeView->setModel(d->model);
-    ui.directoryTreeView->setRootIndex(rootIndex);
+    d->proxy = new SortFilterTreeProxyModel(this);
+    d->proxy->setSourceModel(d->model);
+    d->proxy->setSortLocaleAware(true); // important for files
+    // map from the root path to the proxy index
+    d->proxyRoot = d->proxy->mapFromSource(rootIndex);
+    // Our custom class needs this to prevent becoming rootless
+    d->proxy->setSourceRoot(rootIndex);
+
+    ui.directoryTreeView->setModel(d->proxy);
+    // remember to map from the source to the proxy index
+    ui.directoryTreeView->setRootIndex(d->proxyRoot);
+    // hide everything but the filename
     for (int i = 1; i < d->model->columnCount(); ++i)
       ui.directoryTreeView->hideColumn(i);
 
     ui.directoryTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui.directoryTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui.directoryTreeView->setUniformRowHeights(true);
-    ui.directoryTreeView->expandToDepth(1);
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
-            this, SLOT(insertButtonClicked(bool)));
-    //    connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
-    //            this, SLOT(addDirectory(bool)));
-    //    connect(ui.clearListButton, SIGNAL(clicked(bool)),
-    //            this, SLOT(clearDirectoryList(bool)));
+            this, SLOT(activated()));
+
+    connect(ui.directoryTreeView, SIGNAL(doubleClicked(const QModelIndex)),
+            this, SLOT(activated()));
+
+    connect(ui.directoryTreeView, SIGNAL(activated(const QModelIndex)),
+            this, SLOT(activated()));
+
+    connect(ui.filterLineEdit, SIGNAL(textChanged(const QString &)),
+            this, SLOT(filterTextChanged(const QString &)));
+
+    connect(ui.clearToolButton, SIGNAL(clicked(bool)),
+            this, SLOT(clearFilterText()));
   }
 
   InsertFragmentDialog::~InsertFragmentDialog()
@@ -127,82 +143,99 @@ namespace Avogadro {
   {
     OBMol obfragment;
 
+    // The selected model index is in the proxy
     QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
-    QString fileName = d->model->filePath(selected.first());
 
-    if (!fileName.isEmpty()) {
-      if (fileName == d->currentFileName)
-        return d->fragment; // don't re-read the file
-      
+    if (selected.isEmpty()) {
       d->fragment.clear();
-      
-      // TODO: Needs porting to MolecularFile
-      OBConversion conv;
-      OBFormat *inFormat = conv.FormatFromExt(fileName.toAscii());
-      if (!inFormat || !conv.SetInFormat(inFormat)) {
-        QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                              tr( "Cannot read file format of file %1." )
-                              .arg( fileName ) );
-        return d->fragment;
-      }
-      std::ifstream ifs;
-      ifs.open(QFile::encodeName(fileName));
-      if (!ifs) {
-        QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                              tr( "Cannot read file %1." )
-                              .arg( fileName ) );
-        return d->fragment;
-      }
-      
-      conv.Read(&obfragment, &ifs);
-      d->fragment.setOBMol(&obfragment);
-      d->fragment.center();
-      ifs.close();
+      return d->fragment;
     }
+
+    // So remember to map to the source model
+    QString fileName = d->model->filePath(d->proxy->mapToSource(selected.first()));
+
+    if (fileName.isEmpty())
+      return d->fragment; // shouldn't happen -- return existing fragment
+
+    if (fileName == d->currentFileName)
+      return d->fragment; // don't re-read the file
+
+    d->fragment.clear();
+    // Check if it's a directory
+    QFileInfo fileInfo(fileName);
+    if (fileInfo.isDir())
+      return d->fragment; // return an empty fragment and do nothing
+
+    Molecule *mol;
+    if (d->crystalFiles) {
+      // No bonding, at first
+      mol = MoleculeFile::readMolecule(fileName, QString(), QString("b"));
+      // fill the unit cell
+      fillUnitCell(mol);
+    }
+    else
+      mol = MoleculeFile::readMolecule(fileName);
+
+    // After reading, check if it worked
+    if (mol) {
+      d->fragment = *mol;
+    } else {
+      QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
+                            tr( "Cannot read molecular file %1." )
+                            .arg( fileName ) );
+      // we'll return an empty fragment, since we just called .clear()
+    }
+
+    if (!d->crystalFiles)
+      d->fragment.center();
 
     return d->fragment;
   }
 
-  const QStringList InsertFragmentDialog::directoryList() const
-  {
-    return m_directoryList;
-  }
-
-  void InsertFragmentDialog::setDirectoryList(const QStringList dirList)
-  {
-    if (dirList.size() != 0)
-      m_directoryList = dirList;
-    refresh();
-  }
-
   void InsertFragmentDialog::refresh()
   {
-    //    d->model->setDirectoryList(m_directoryList);
     ui.directoryTreeView->update();
   }
 
-  void InsertFragmentDialog::addDirectory(bool)
+  void InsertFragmentDialog::clearFilterText()
   {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                    "/home");
+    ui.filterLineEdit->setText("");
+  }
 
-    // If this is a new directory, add it in
-    if (!m_directoryList.contains(dir)) {
-      m_directoryList << dir;
-      refresh();
+  void InsertFragmentDialog::filterTextChanged(const QString &newFilter)
+  {
+    if (!d || !d->proxy)
+      return; // no dialog or proxy model to set
+
+    // Allow things like "ti" to match "Ti" etc.
+    QRegExp reg(newFilter, Qt::CaseInsensitive, QRegExp::WildcardUnix);
+    d->proxy->setFilterRegExp(reg);
+
+    if (!newFilter.isEmpty()) {
+      // user interface niceness -- show any file match
+      ui.directoryTreeView->expandToDepth(2);
     }
   }
 
-  void InsertFragmentDialog::clearDirectoryList(bool)
+  void InsertFragmentDialog::activated()
   {
-    m_directoryList.clear();
-    m_directoryList = DefaultDirectoryList();
-    refresh();
+    emit performInsert();
   }
 
-  void InsertFragmentDialog::insertButtonClicked(bool)
+  void InsertFragmentDialog::fillUnitCell(Molecule *mol)
   {
-    emit insertClicked();
+    OpenBabel::OBUnitCell *cell = mol->OBUnitCell();
+    if (!cell)
+      return; // no cell?!
+
+    const OpenBabel::SpaceGroup *sg = cell->GetSpaceGroup();
+    if (!sg)
+      return; // assume it's P1
+
+    // Use the Open Babel code for now
+    OpenBabel::OBMol obmol = mol->OBMol();
+    cell->FillUnitCell(&obmol);
+    mol->setOBMol(&obmol);
   }
-  
+
 }

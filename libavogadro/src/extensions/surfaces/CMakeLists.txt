@@ -1,11 +1,16 @@
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+# Also, add the openqube library unless we are using the system openqube
+option(Avogadro_USE_SYSTEM_OPENQUBE "Use the system OpenQube?" OFF)
+if(Avogadro_USE_SYSTEM_OPENQUBE)
+  find_package(OpenQube REQUIRED)
 
-# Also, add the openqube library.
-add_subdirectory(openqube)
+else()
+  add_subdirectory(openqube)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+endif()
 
-set(LINK_LIBS avogadro openqube)
+set(LINK_LIBS openqube avogadro ${ZLIB_LIBRARIES})
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
@@ -25,6 +30,7 @@ set(orbitalextension_SRCS
   orbitalwidget.cpp
   vdwsurface.cpp
   qtiocompressor/qtiocompressor.cpp
+  htmldelegate.cpp
 )
 
 set(orbitalextension_UIS
@@ -37,17 +43,8 @@ avogadro_plugin_nogl(surfaceextension
   surfacedialog.ui
 )
 
-target_link_libraries(surfaceextension
-   ${LINK_LIBS}
-   ${ZLIB_LIBRARIES}
-)
-
 avogadro_plugin_nogl(orbitalextension
   "${orbitalextension_SRCS}"
   "${orbitalextension_UIS}"
 )
 
-target_link_libraries(orbitalextension
-  ${LINK_LIBS}
-  ${ZLIB_LIBRARIES}
-)

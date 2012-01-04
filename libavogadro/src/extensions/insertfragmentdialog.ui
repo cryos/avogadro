@@ -15,6 +15,31 @@
   </property>
   <layout class="QVBoxLayout">
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Filter:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="filterLineEdit">
+       <property name="toolTip">
+        <string>Type a name or part of a name to show only matching files.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="clearToolButton">
+       <property name="text">
+        <string>X</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QTreeView" name="directoryTreeView"/>
    </item>
    <item>
@@ -42,10 +67,13 @@
      <item>
       <widget class="QPushButton" name="insertFragmentButton">
        <property name="text">
-        <string>Insert Fragment</string>
+        <string>Insert</string>
        </property>
        <property name="default">
         <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>

@@ -87,7 +87,7 @@ namespace Avogadro {
     action->setIcon(QIcon(QString::fromUtf8(":/draw/draw.png")));
     action->setToolTip(tr("Draw Tool (F8)\n\n"
                           "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-                          "Right Mouse: Delete Atom"));
+                          "Right Mouse: \tDelete Atom"));
     action->setShortcut(Qt::Key_F8);
 
     m_forceField = OBForceField::FindForceField("MMFF94");
@@ -705,6 +705,7 @@ namespace Avogadro {
                 this, SLOT(customElementChanged(int)));
       }
       m_periodicTable->show();
+      m_periodicTable->setFocus(Qt::PopupFocusReason); // give it keyboard focus
     }
   }
 

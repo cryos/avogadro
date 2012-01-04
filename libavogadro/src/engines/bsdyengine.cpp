@@ -497,5 +497,4 @@ namespace Avogadro
 
 }
 
-// This is a static engine...
-// Q_EXPORT_PLUGIN2( bsdyengine, Avogadro::BSDYEngineFactory )
+ Q_EXPORT_PLUGIN2( bsdyengine, Avogadro::BSDYEngineFactory )
