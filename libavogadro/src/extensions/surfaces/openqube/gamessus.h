@@ -39,16 +39,14 @@ public:
 
 private:
   QIODevice *m_in;
-  void processLine();
-  void load(GaussianSet* basis);
+  void processLine(GaussianSet *basis);
+  void load(GaussianSet *basis);
 
   double m_coordFactor;
   mode m_currentMode;
   int m_electrons;
   int m_currentAtom;
   unsigned int m_numBasisFunctions;
-  std::vector<int> m_aNums;
-  std::vector<double> m_aPos;
   std::vector<orbital> m_shellTypes;
   std::vector<int> m_shellNums;
   std::vector<int> m_shelltoAtom;

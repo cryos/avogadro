@@ -130,6 +130,11 @@ public:
 
   QFutureWatcher<void> & watcher() { return m_watcher; }
 
+  /**
+   * Create a deep copy of @a this and return a pointer to it.
+   */
+  virtual BasisSet * clone();
+
 private Q_SLOTS:
   /**
    * Slot to set the cube data once Qt Concurrent is done

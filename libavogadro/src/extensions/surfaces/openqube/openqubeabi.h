@@ -20,7 +20,7 @@
 
 // This macro should be used to export parts of the API
 #ifndef OPENQUBE_EXPORT
-  #ifdef openqube_EXPORTS
+  #ifdef OpenQube_EXPORTS
     #define OPENQUBE_EXPORT OQ_ABI_EXPORT
   #else
     #define OPENQUBE_EXPORT OQ_ABI_IMPORT

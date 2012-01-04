@@ -16,6 +16,8 @@
 
 #include "cube.h"
 
+#include "molecule.h"
+
 #include <QtCore/QReadWriteLock>
 #include <QtCore/QDebug>
 
@@ -85,6 +87,32 @@ bool Cube::setLimits(const Cube &cube)
   m_spacing = cube.m_spacing;
   m_data.resize(m_points.x() * m_points.y() * m_points.z());
   return true;
+}
+
+bool Cube::setLimits(const Molecule &mol, double spacing, double padding)
+{
+  size_t numAtoms = mol.numAtoms();
+  Vector3d min, max;
+  if (numAtoms) {
+    Vector3d curPos = min = max = mol.atomPos(0);
+    for (size_t i = 1; i < numAtoms; ++i) {
+      curPos = mol.atomPos(i);
+      if (curPos.x() < min.x()) min.x() = curPos.x();
+      if (curPos.x() > max.x()) max.x() = curPos.x();
+      if (curPos.y() < min.y()) min.y() = curPos.y();
+      if (curPos.y() > max.y()) max.y() = curPos.y();
+      if (curPos.z() < min.z()) min.z() = curPos.z();
+      if (curPos.z() > max.z()) max.z() = curPos.z();
+    }
+  } else {
+    min = max = Eigen::Vector3d::Zero();
+  }
+
+  // Now to take care of the padding term
+  min += Vector3d(-padding, -padding, -padding);
+  max += Vector3d(padding, padding, padding);
+
+  return setLimits(min, max, spacing);
 }
 
 std::vector<double> * Cube::data()
@@ -261,6 +289,16 @@ bool Cube::setValue(int i, int j, int k, double value)
   }
   else
     return false;
+}
+
+void Cube::setName(const char *name)
+{
+  this->setName(QString(name));
+}
+
+const char * Cube::name_c_str() const
+{
+  return this->name().toStdString().c_str();
 }
 
 QReadWriteLock * Cube::lock() const

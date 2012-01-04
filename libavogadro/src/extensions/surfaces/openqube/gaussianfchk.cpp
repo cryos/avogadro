@@ -125,7 +125,8 @@ void GaussianFchk::load(GaussianSet* basis)
     basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                    m_aNums.at(nAtom++));
 
-  qDebug() << "loading basis: " << m_shellTypes.size() << m_shellNums.size() << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
+  qDebug() << "loading basis: " << m_shellTypes.size() << m_shellNums.size()
+           << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
 
   // Set up the GTO primitive counter, go through the shells and add them
   int nGTO = 0;
@@ -166,21 +167,47 @@ void GaussianFchk::load(GaussianSet* basis)
       case -3:
         type = F7;
         break;
+      case 4:
+        type = G;
+        break;
+      case -4:
+        type = G9;
+        break;
+      case 5:
+        type = H;
+        break;
+      case -5:
+        type = H11;
+        break;
+      case 6:
+        type = I;
+        break;
+      case -6:
+        type = I13;
+        break;
       default:
-        type = S;
+        // If we encounter GTOs we do not understand, the basis is likely invalid
+        type = UU;
+        basis->setIsValid(false);
       }
-      int b = basis->addBasis(m_shelltoAtom.at(i) - 1, type);
-      for (int j = 0; j < m_shellNums.at(i); ++j) {
-        basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO));
-        ++nGTO;
+      if (type != UU) {
+        int b = basis->addBasis(m_shelltoAtom.at(i) - 1, type);
+        for (int j = 0; j < m_shellNums.at(i); ++j) {
+          basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO));
+          ++nGTO;
+        }
       }
     }
   }
   // Now to load in the MO coefficients
-  if (m_MOcoeffs.size())
-    basis->addMOs(m_MOcoeffs);
-  if (m_density.rows())
-    basis->setDensityMatrix(m_density);
+  if (basis->isValid()) {
+    if (m_MOcoeffs.size())
+      basis->addMOs(m_MOcoeffs);
+    else
+      qDebug() << "Error - no MO coefficients read in.";
+    if (m_density.rows())
+      basis->setDensityMatrix(m_density);
+  }
 }
 
 vector<int> GaussianFchk::readArrayI(unsigned int n)

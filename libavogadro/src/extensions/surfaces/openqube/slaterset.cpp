@@ -214,6 +214,26 @@ bool SlaterSet::calculateCubeDensity(Cube *cube)
   return true;
 }
 
+BasisSet * SlaterSet::clone()
+{
+  SlaterSet *result = new SlaterSet();
+  result->m_atomPos = this->m_atomPos;
+  result->m_slaterIndices = this->m_slaterIndices;
+  result->m_zetas = this->m_zetas;
+  result->m_pqns = this->m_pqns;
+  result->m_PQNs = this->m_PQNs;
+
+  result->m_factors = this->m_factors;
+  result->m_overlap = this->m_overlap;
+  result->m_eigenVectors = this->m_eigenVectors;
+  result->m_density = this->m_density;
+  result->m_normalized = this->m_normalized;
+  result->m_initialized = this->m_initialized;
+
+  // Skip tmp variables
+  return result;
+}
+
 void SlaterSet::calculationComplete()
 {
   disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
