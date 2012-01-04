@@ -28,6 +28,8 @@ class QReadWriteLock;
 
 namespace OpenQube {
 
+class Molecule;
+
 class OPENQUBE_EXPORT Cube
 {
 public:
@@ -98,6 +100,14 @@ public:
    * @param cube Existing Cube to copy the limits from.
    */
   bool setLimits(const Cube &cube);
+
+  /**
+   * Set the limits of the cube.
+   * @param mol Molecule to take limits from
+   * @param spacing The spacing of the regular grid
+   * @param padding Padding around the molecule
+   */
+  bool setLimits(const Molecule &mol, double spacing, double padding);
 
   /**
    * @return Vector containing all the data in a one-dimensional array.
@@ -189,6 +199,9 @@ public:
 
   void setName(const QString &name) { m_name = name; }
   QString name() const { return m_name; }
+
+  void setName(const char *name);
+  const char * name_c_str() const;
 
   void setCubeType(Type type) { m_cubeType = type; }
   Type cubeType() const { return m_cubeType; }

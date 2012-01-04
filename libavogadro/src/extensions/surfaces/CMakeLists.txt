@@ -10,7 +10,8 @@ else()
   include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-set(LINK_LIBS openqube avogadro ${ZLIB_LIBRARIES})
+set(LINK_LIBS OpenQube avogadro ${ZLIB_LIBRARIES})
+
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 

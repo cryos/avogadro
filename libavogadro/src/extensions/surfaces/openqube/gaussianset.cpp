@@ -50,7 +50,8 @@ struct GaussianShell
 static const double BOHR_TO_ANGSTROM = 0.529177249;
 static const double ANGSTROM_TO_BOHR = 1.0 / BOHR_TO_ANGSTROM;
 
-GaussianSet::GaussianSet() : m_numMOs(0), m_init(false)
+GaussianSet::GaussianSet() : m_numMOs(0), m_numAtoms(0), m_init(false),
+  m_cube(0), m_gaussianShells(0)
 {
 }
 
@@ -58,13 +59,13 @@ GaussianSet::~GaussianSet()
 {
 }
 
-unsigned int GaussianSet::addAtom(const Vector3d& pos, int)
+unsigned int GaussianSet::addAtom(const Vector3d& pos, int atomicNumber)
 {
   m_init = false;
   // Add to the new data structure, delete the old soon
-  m_atomPos.push_back(pos);
+  m_molecule.addAtom(pos, atomicNumber);
 
-  return m_atomPos.size() - 1;
+  return m_molecule.numAtoms() - 1;
 }
 
 unsigned int GaussianSet::addBasis(unsigned int atom, orbital type)
@@ -181,6 +182,11 @@ bool GaussianSet::calculateCubeMO(Cube *cube, unsigned int state)
 
 bool GaussianSet::calculateCubeDensity(Cube *cube)
 {
+  if (m_density.size() == 0) {
+    qDebug() << "Cannot calculate density -- density matrix not set.";
+    return false;
+  }
+
   // FIXME Still not working, committed so others could see current state.
 
   // Must be called before calculations begin
@@ -209,6 +215,29 @@ bool GaussianSet::calculateCubeDensity(Cube *cube)
   return true;
 }
 
+BasisSet * GaussianSet::clone()
+{
+  GaussianSet *result = new GaussianSet();
+
+  result->m_symmetry = this->m_symmetry;
+  result->m_atomIndices = this->m_atomIndices;
+  result->m_moIndices = this->m_moIndices;
+  result->m_gtoIndices = this->m_gtoIndices;
+  result->m_cIndices = this->m_cIndices;
+  result->m_gtoA = this->m_gtoA;
+  result->m_gtoC = this->m_gtoC;
+  result->m_gtoCN = this->m_gtoCN;
+  result->m_moMatrix = this->m_moMatrix;
+  result->m_density = this->m_density;
+
+  result->m_numMOs = this->m_numMOs;
+  result->m_numAtoms = this->m_numAtoms;
+  result->m_init = this->m_init;
+
+  // Skip tmp vars
+  return result;
+}
+
 void GaussianSet::calculationComplete()
 {
   disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
@@ -231,11 +260,13 @@ void GaussianSet::initCalculation()
   if (m_init)
     return;
   // This currently just involves normalising all contraction coefficients
-  m_numAtoms = m_atomPos.size();
+  m_numAtoms = m_molecule.numAtoms();
   m_gtoCN.clear();
 
   // Initialise the new data structures that are hopefully more efficient
   unsigned int indexMO = 0;
+  unsigned int skip = 0; // for unimplemented shells
+
   m_moIndices.resize(m_symmetry.size());
   // Add a final entry to the gtoIndices
   m_gtoIndices.push_back(m_gtoA.size());
@@ -302,23 +333,33 @@ void GaussianSet::initCalculation()
       }
       break;
     case F:
-      m_moIndices[i] = indexMO;
-      indexMO += 8;
-      m_cIndices.push_back(m_gtoCN.size());
-      qDebug() << "F Basis set not handled - results may be incorrect.";
-      break;
+      skip = 10;
     case F7:
+      skip = 7;
+    case G:
+      skip = 15;
+    case G9:
+      skip = 9;
+    case H:
+      skip = 21;
+    case H11:
+      skip = 11;
+    case I:
+      skip = 28;
+    case I13:
+      skip = 13;
+
       m_moIndices[i] = indexMO;
-      indexMO += 7;
+      indexMO += skip;
       m_cIndices.push_back(m_gtoCN.size());
-      qDebug() << "F7 Basis set not handled - results may be incorrect.";
+      qDebug() << "Basis set not handled - results may be incorrect.";
       break;
+
     default:
       qDebug() << "Basis set not handled - results may be incorrect.";
     }
   }
   m_init = true;
-  outputAll();
 }
 
 /// This is the stuff we actually use right now - porting to new data structure
@@ -340,7 +381,7 @@ void GaussianSet::processPoint(GaussianShell &shell)
 
   // Calculate the deltas for the position
   for (unsigned int i = 0; i < atomsSize; ++i) {
-    deltas.push_back(pos - set->m_atomPos[i]);
+    deltas.push_back(pos - set->m_molecule.atomPos(i));
     dr2.push_back(deltas[i].squaredNorm());
   }
 
@@ -389,7 +430,7 @@ void GaussianSet::processDensity(GaussianShell &shell)
   Vector3d pos = shell.tCube->position(shell.pos) * ANGSTROM_TO_BOHR;
   // Calculate the deltas for the position
   for (unsigned int i = 0; i < atomsSize; ++i) {
-    deltas.push_back(pos - set->m_atomPos[i]);
+    deltas.push_back(pos - set->m_molecule.atomPos(i));
     dr2.push_back(deltas[i].squaredNorm());
   }
 
@@ -673,6 +714,14 @@ void GaussianSet::outputAll()
 {
   // Can be called to print out a summary of the basis set as read in
   qDebug() << "\nGaussian Basis Set\nNumber of atoms:" << m_numAtoms;
+
+  initCalculation();
+
+  if (!isValid()) {
+    qDebug() << "Basis set is marked as invalid.";
+    return;
+  }
+
   for (uint i = 0; i < m_symmetry.size(); ++i) {
     qDebug() << i
              << "\tAtom Index:" << m_atomIndices[i]
@@ -680,8 +729,10 @@ void GaussianSet::outputAll()
              << "\tMO Index:" << m_moIndices[i]
              << "\tGTO Index:" << m_gtoIndices[i];
   }
-  qDebug() << m_symmetry.size() << m_gtoIndices.size()
-           << m_gtoIndices[m_symmetry.size()];
+  qDebug() << "Symmetry:" << m_symmetry.size()
+           << "\tgtoIndices:" << m_gtoIndices.size()
+           << "\tLast gtoIndex:" << m_gtoIndices[m_symmetry.size()]
+           << "\ngto size:" << m_gtoA.size() << m_gtoC.size() << m_gtoCN.size();
   for (uint i = 0; i < m_symmetry.size(); ++i) {
     switch(m_symmetry[i]) {
     case S:
@@ -705,25 +756,41 @@ void GaussianSet::outputAll()
                << "\t" << m_moMatrix(0, m_moIndices[i] + 5);
       break;
     case D5:
-      qDebug() << "Shell" << i << "\tD\n  MO 1\t"
+      qDebug() << "Shell" << i << "\tD5\n  MO 1\t"
                << m_moMatrix(0, m_moIndices[i])
                << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
                << "\t" << m_moMatrix(0, m_moIndices[i] + 2)
                << "\t" << m_moMatrix(0, m_moIndices[i] + 3)
                << "\t" << m_moMatrix(0, m_moIndices[i] + 4);
       break;
+    case F:
+      std::cout << "Shell " << i << "\tF\n  MO 1";
+      for (short j = 0; j < 10; ++j)
+        std::cout << "\t" << m_moMatrix(0, m_moIndices[i] + j);
+      std::cout << std::endl;
+      break;
+    case F7:
+      std::cout << "Shell " << i << "\tF7\n  MO 1";
+      for (short j = 0; j < 7; ++j)
+        std::cout << "\t" << m_moMatrix(0, m_moIndices[i] + j);
+      std::cout << std::endl;
+      break;
     default:
       qDebug() << "Error: unhandled type...";
     }
     unsigned int cIndex = m_gtoIndices[i];
     for (uint j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+      if (j >= m_gtoA.size()) {
+        qDebug() << "Error, j is too large!" << j << m_gtoA.size();
+        continue;
+      }
       qDebug() << cIndex
                << "\tc:" << m_gtoC[cIndex]
                << "\ta:" << m_gtoA[cIndex];
       ++cIndex;
     }
   }
-  qDebug() << '\n';
+  qDebug() << "\nEnd of orbital data...\n";
 }
 
 }

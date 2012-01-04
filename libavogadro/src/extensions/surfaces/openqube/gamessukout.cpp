@@ -295,7 +295,7 @@ void GamessukOut::readInitialCoordinates(std::ifstream &ifs)
 
   // string to mark end of the coordinates
   char coordEnd[86]="         ****************************************************************************";
-  double x=NULL,y=NULL,z=NULL;
+  double x=0.0,y=0.0,z=0.0;
   bool ok;
 
   // skip five lines

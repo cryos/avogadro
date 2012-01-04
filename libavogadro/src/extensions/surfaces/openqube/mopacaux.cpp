@@ -16,6 +16,7 @@
 
 #include "mopacaux.h"
 
+#include "molecule.h"
 #include "slaterset.h"
 
 #include <QtCore/QFile>
@@ -61,9 +62,10 @@ void MopacAux::processLine()
   //    QStringList list = tmp.split("=", QString::SkipEmptyParts);
 
   // Big switch statement checking for various things we are interested in
-  if (key.contains("ATOM_EL")) {
+  if (key.contains("ATOM_CORE")) {
     QString tmp = key.mid(key.indexOf('[')+1, 4);
     qDebug() << "Number of atoms =" << tmp.toInt();
+    m_atomNums = readArrayI(tmp.toInt());
   }
   else if (key.contains("AO_ATOMINDEX")) {
     QString tmp = key.mid(key.indexOf('[')+1, 4);
@@ -130,6 +132,18 @@ void MopacAux::load(SlaterSet* basis)
   basis->addOverlapMatrix(m_overlap);
   basis->addEigenVectors(m_eigenVectors);
   basis->addDensityMatrix(m_density);
+
+  Molecule &mol = basis->moleculeRef();
+  mol.clearAtoms();
+  if (m_atomPos.size() == m_atomNums.size()) {
+    for (int i = 0; i < m_atomPos.size(); ++i) {
+      mol.addAtom(m_atomPos[i], m_atomNums[i]);
+    }
+  }
+  else
+    qWarning() << "Number of atomic numbers (" << m_atomNums.size()
+               << ") does not equal the number of atomic positions ("
+               << m_atomPos.size() << "). Not populating molecule.";
 }
 
 vector<int> MopacAux::readArrayI(unsigned int n)

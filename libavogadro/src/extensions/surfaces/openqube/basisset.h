@@ -20,6 +20,8 @@
 
 #include "openqubeabi.h"
 
+#include "molecule.h"
+
 #include <QtCore/QObject>
 #include <QtCore/QFutureWatcher>
 
@@ -46,7 +48,7 @@ public:
   /**
    * Constructor.
    */
-  BasisSet() : m_electrons(0) {}
+  BasisSet() : m_electrons(0), m_valid(true) {}
 
   /**
    * Destructor.
@@ -63,6 +65,22 @@ public:
    * @return The number of electrons in the molecule.
    */
   unsigned int numElectrons() { return m_electrons; }
+
+  /**
+   * Set the molecule for the basis set.
+   */
+  void setMolecule(const Molecule &molecule) { m_molecule = molecule; }
+
+  /**
+   * Get the molecule for the basis set.
+   */
+  Molecule molecule() const { return m_molecule; }
+
+  /**
+   * Get a reference to the molecule.
+   */
+  Molecule & moleculeRef() { return m_molecule; }
+  const Molecule & moleculeRef() const { return m_molecule; }
 
   /**
    * @return The number of MOs in the BasisSet.
@@ -96,19 +114,54 @@ public:
   }
 
   /**
+   * Set the number of electrons in the BasisSet.
+   * @param valid True if the basis set is valid, false otherwise.
+   */
+  void setIsValid(bool valid) { m_valid = valid; }
+
+  /**
+   * @return True of the basis set is valid, false otherwise.
+   * Default is true, if false then the basis set is likely unusable.
+   */
+  bool isValid() { return m_valid; }
+
+  /**
    * Calculate the MO over the entire range of the supplied Cube.
    * @param cube The cube to write the values of the MO into.
    * @param mo The molecular orbital number to calculate.
+   * @note This function starts a threaded calculation. Use watcher() to
+   * monitor progress.
+   * @sa blockingCalculateCubeMO
    * @return True if the calculation was successful.
    */
   virtual bool calculateCubeMO(Cube *cube, unsigned int mo = 1) = 0;
 
   /**
+   * Calculate the MO over the entire range of the supplied Cube.
+   * @param cube The cube to write the values of the MO into.
+   * @param mo The molecular orbital number to calculate.
+   * @sa calculateCubeMO
+   * @return True if the calculation was successful.
+   */
+  virtual bool blockingCalculateCubeMO(Cube *cube, unsigned int mo = 1);
+
+  /**
    * Calculate the electron density over the entire range of the supplied Cube.
    * @param cube The cube to write the values of the MO into.
+   * @note This function starts a threaded calculation. Use watcher() to
+   * monitor progress.
+   * @sa blockingCalculateCubeDensity
    * @return True if the calculation was successful.
    */
   virtual bool calculateCubeDensity(Cube *cube) = 0;
+
+  /**
+   * Calculate the electron density over the entire range of the supplied Cube.
+   * @param cube The cube to write the values of the MO into.
+   * @sa calculateCubeDensity
+   * @return True if the calculation was successful.
+   */
+  virtual bool blockingCalculateCubeDensity(Cube *cube);
 
   /**
    * When performing a calculation the QFutureWatcher is useful if you want
@@ -116,9 +169,25 @@ public:
    */
   virtual QFutureWatcher<void> & watcher()=0;
 
+  /**
+   * Create a deep copy of @a this and return a pointer to it.
+   */
+  virtual BasisSet * clone() = 0;
+
 protected:
   /// Total number of electrons
   unsigned int m_electrons;
+
+  /** Is the loaded basis set valid? Allows us to mark a basis set invalid if we
+   * were not able to interpret part of it.
+   */
+  bool m_valid;
+
+  /** The Molecule holds the atoms (and possibly bonds) read in from the output
+   * file. Most basis sets have orbitals around these atoms, but this is not
+   * necessarily the case.
+   */
+  Molecule m_molecule;
 
 };
 
