@@ -88,6 +88,7 @@ namespace Avogadro{
           b->setAtoms(m_items[size-1].atomIndex, m_items[size-4].atomIndex);
       }
     }
+    m_molecule->update();
   }
 
   void ZMatrix::setBond(int atom1, int atom2)
@@ -96,6 +97,7 @@ namespace Avogadro{
                                m_items[m_items[atom1].indices[0]].atomIndex);
     b->setAtoms(m_items[atom1].atomIndex, m_items[atom2].atomIndex);
     m_items[atom1].indices[0] = atom2;
+    m_molecule->update();
   }
 
   void ZMatrix::update()
@@ -145,6 +147,7 @@ namespace Avogadro{
         a->setPos(v2);
       }
     }
+    m_molecule->update();
   }
 
 
