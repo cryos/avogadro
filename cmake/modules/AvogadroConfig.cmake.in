@@ -18,12 +18,6 @@ set(Avogadro_LIB_SUFFIX      "@LIB_SUFFIX@")
 set(Avogadro_PLUGIN_DIR      "@CMAKE_INSTALL_PREFIX@/@Avogadro_PLUGIN_INSTALL_DIR@")
 set(Avogadro_BIN_DIRS        "@CMAKE_INSTALL_PREFIX@/@BIN_INSTALL_DIR@")
 
-# Tell the user where to find our build settings and library deps
-set(Avogadro_BUILD_SETTINGS_FILE
-    "${Avogadro_PLUGIN_DIR}/AvogadroBuildSettings.cmake")
-
-include("${Avogadro_PLUGIN_DIR}/AvogadroLibraryDeps.cmake")
-
 # Now for the use file, which contains useful functions, sets up the project
 set(Avogadro_USE_FILE
     "${Avogadro_PLUGIN_DIR}/AvogadroUse.cmake")
