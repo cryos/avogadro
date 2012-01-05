@@ -1219,6 +1219,9 @@ namespace Avogadro{
 
     obmol.EndModify();
 
+    // Copy energy
+    obmol.SetEnergy(this->energy() / KCAL_TO_KJ);
+
     // Copy unit cells
     if (d->obunitcell != NULL) {
       OpenBabel::OBUnitCell *obunitcell = new OpenBabel::OBUnitCell;
@@ -1257,7 +1260,6 @@ namespace Avogadro{
   {
     // Take an OBMol, copy everything we need and store this object
     Q_D(Molecule);
-    qDebug() << "setOBMol called.";
     clear();
     // Copy all the parts of the OBMol to our Molecule
     blockSignals(true);
