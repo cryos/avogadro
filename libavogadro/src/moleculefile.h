@@ -176,7 +176,8 @@ namespace Avogadro {
      * @param fileName The full path to the file to be opened.
      * @param fileType Optional file type parameter - override default file
      * extension parsing.
-     * @param fileOptions Options for reading the molecule file, such as bonding.
+     * @param fileOptions Newline separated list of options for reading the
+     * molecule file, such as bonding.
      * @return The Molecule object loaded, 0 if the file could not be loaded.
      */
     static Molecule * readMolecule(const QString &fileName,
@@ -191,11 +192,14 @@ namespace Avogadro {
      * @param fileName The full path to the file to be saved.
      * @param fileType Optional file type parameter - override default file
      * extension parsing.
+     * @param fileOptions Newline separated list of options for writing the
+     * molecule file.
      * @return True on success, false on failure.
      */
     static bool writeMolecule(const Molecule *molecule,
                               const QString &fileName,
                               const QString &fileType = QString(),
+                              const QString &fileOptions = QString(),
                               QString *error = 0);
 
     /**
