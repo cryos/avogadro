@@ -403,7 +403,9 @@ namespace Avogadro {
   }
 
   bool MoleculeFile::writeMolecule(const Molecule *molecule,
-      const QString &fileName, const QString &fileType, QString *error)
+                                   const QString &fileName,
+                                   const QString &fileType,
+                                   const QString &fileOptions, QString *error)
   {
     // Check is we are replacing an existing file
     QFile file(fileName);
@@ -451,6 +453,14 @@ namespace Avogadro {
         if (error)
           error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
         return false;
+      }
+    }
+
+    // set any options
+    if (!fileOptions.isEmpty()) {
+      foreach(const QString &option,
+              fileOptions.split('\n', QString::SkipEmptyParts)) {
+        conv.AddOption(option.toAscii().data(), OBConversion::OUTOPTIONS);
       }
     }
 
