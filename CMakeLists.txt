@@ -392,11 +392,6 @@ configure_file(
   "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
   IMMEDIATE @ONLY)
 
-# Export our build settings and library dependencies - deprecated - should be replaced
-include(CMakeExportBuildSettings)
-cmake_export_build_settings("${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake")
-export_library_dependencies("${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake")
-
 if(APPLE)
   install(FILES
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"

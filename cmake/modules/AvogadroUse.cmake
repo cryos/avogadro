@@ -1,7 +1,3 @@
-# The use file for Avogadro, distributed along with Avogadro
-include(CMakeImportBuildSettings)
-cmake_import_build_settings(${Avogadro_BUILD_SETTINGS_FILE})
-
 # Set up the include directories and link directories
 include_directories(${Avogadro_INCLUDE_DIRS})
 link_directories(${Avogadro_LIBRARY_DIRS})
