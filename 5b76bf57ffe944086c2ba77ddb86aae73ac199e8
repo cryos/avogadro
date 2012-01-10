@@ -1,0 +1,8 @@
+Change-Id: I5b76bf57ffe944086c2ba77ddb86aae73ac199e8
+Code-Review+2: David C. Lonie <loniedavid@gmail.com>
+Verified+1: David C. Lonie <loniedavid@gmail.com>
+Submitted-by: Marcus D. Hanwell <marcus.hanwell@kitware.com>
+Submitted-at: Tue, 10 Jan 2012 07:04:37 -0500
+Reviewed-on: http://review.source.kitware.com/3621
+Project: avogadro
+Branch: refs/heads/master
