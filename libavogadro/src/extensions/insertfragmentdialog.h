@@ -49,6 +49,7 @@ namespace Avogadro {
     ~InsertFragmentDialog();
 
     const Molecule &fragment();
+    const QString fileName();
 
   public Q_SLOTS:
     void refresh();

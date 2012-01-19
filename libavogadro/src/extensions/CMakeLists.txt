@@ -59,6 +59,12 @@ avogadro_plugin_nogl(insertpeptideextension
   "insertpeptideextension.cpp;insertcommand.cpp"
   insertpeptidedialog.ui)
 
+### insert polymer (builder)
+avogadro_plugin_nogl(insertpolymerextension
+  "insertpolymerextension.cpp;insertcommand.cpp"
+  insertpolymerdialog.ui)
+  target_link_libraries(insertpolymerextension ${QT_QTWEBKIT_LIBRARY})
+
 ### h->methyl
 avogadro_plugin_nogl(h2methylextension h2methylextension.cpp)
 
