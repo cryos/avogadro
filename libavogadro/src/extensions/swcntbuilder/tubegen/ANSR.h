@@ -15,10 +15,21 @@
 //
 // Replaced with:
 #include <iostream>
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _MSC_VER
+typedef __int8 int8_t;
+typedef unsigned __int8 uint8_t;
+typedef __int16 int16_t;
+typedef unsigned __int16 uint16_t;
+typedef __int32 int32_t;
+typedef unsigned __int32 uint32_t;
+typedef __int64 int64_t;
+typedef unsigned __int64 uint64_t;
+#else
+#include <stdint.h>
+#endif
 
 using namespace std;
 
@@ -58,7 +69,10 @@ using namespace std;
       
       static ANSRDB* DefaultANSRDB()
         {
-          extern char* defaultANSRDBPath;
+// Avogadro edit: This is hardcoded to a non-existant path, and is causing linker issues.
+// Replaced with another nonexistent path.
+//        extern char* defaultANSRDBPath;
+		  char* defaultANSRDBPath = "";
           static ANSRDB* defaultANSRDBInstance = NULL;
           
           if (!defaultANSRDBInstance) {
