@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/polymer">
+        <file>polymer.png</file>
+    </qresource>
+</RCC>

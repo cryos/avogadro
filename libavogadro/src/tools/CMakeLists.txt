@@ -42,6 +42,9 @@ avogadro_plugin(clickmeasuretool clickmeasuretool.cpp clickmeasuretool.qrc)
 ### selectrotatetool
 avogadro_plugin(selectrotatetool selectrotatetool.cpp selectrotatetool.qrc)
 
+### polymertool
+avogadro_plugin(polymertool "polymertool.cpp;../extensions/insertcommand.cpp" "polymersettingswidget.ui;polymertool.qrc")
+
 ### autoopttool
 avogadro_plugin(autoopttool autoopttool.cpp autoopttool.qrc)
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
