@@ -49,12 +49,30 @@ public:
   static QString MatchBasisSet(const QString& filename);
 
   /**
+   * Try to match the basis set to the supplied file path. This function will
+   * search for a matching basis set file in the same directory.
+   *
+   * @param basisName char array that is overwritten with the corresponding
+   * basis set file for @a filename. Ensure that this array is long enough to
+   * contain the basis set name and path. Zero if no match found.
+   */
+  static void MatchBasisSet(const char *filename, char *basisName );
+
+  /**
    * Load the supplied output file. The filename should be a valid quantum
    * output file.
    *
    * @return A BasisSet object populated with data file the file. Null on error.
    */
   static BasisSet * LoadBasisSet(const QString& filename);
+
+  /**
+   * Load the supplied output file. The filename should be a valid quantum
+   * output file.
+   *
+   * @return A BasisSet object populated with data file the file. Null on error.
+   */
+  static BasisSet * LoadBasisSet(const char *filename);
 };
 
 } // End namespace

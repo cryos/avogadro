@@ -123,6 +123,9 @@ public:
   /**
    * Calculate the MO over the entire range of the supplied Cube.
    * @param cube The cube to write the values of the MO into.
+   * @note This function starts a threaded calculation. Use watcher()
+   * to monitor progress.
+   * @sa BasisSet::blockingCalculateCubeMO
    * @return True if the calculation was successful.
    */
   bool calculateCubeMO(Cube *cube, unsigned int state = 1);
@@ -130,6 +133,9 @@ public:
   /**
    * Calculate the electron density over the entire range of the supplied Cube.
    * @param cube The cube to write the values of the MO into.
+   * @note This function starts a threaded calculation. Use watcher()
+   * to monitor progress.
+   * @sa blockingCalculateCubeDensity
    * @return True if the calculation was successful.
    */
   bool calculateCubeDensity(Cube *cube);
@@ -139,6 +145,11 @@ public:
    * to update a progress bar.
    */
   QFutureWatcher<void> & watcher() { return m_watcher; }
+
+  /**
+   * Create a deep copy of @a this and return a pointer to it.
+   */
+  virtual BasisSet * clone();
 
 signals:
   /**
@@ -154,7 +165,6 @@ private slots:
 
 private:
   // New storage of the data
-  std::vector<Eigen::Vector3d> m_atomPos;  //! Atom position vectors
   std::vector<int> m_symmetry;             //! Symmetry of the basis, S, P...
   std::vector<unsigned int> m_atomIndices; //! Indices into the atomPos vector
   std::vector<unsigned int> m_moIndices;   //! Indices into the MO/density matrix

@@ -42,7 +42,7 @@ GAMESSUSOutput::GAMESSUSOutput(const QString &filename, GaussianSet* basis):
 
   // Process the formatted checkpoint and extract all the information we need
   while (!m_in->atEnd()) {
-    processLine();
+    processLine(basis);
   }
 
   // Now it should all be loaded load it into the basis set
@@ -55,7 +55,7 @@ GAMESSUSOutput::~GAMESSUSOutput()
 {
 }
 
-void GAMESSUSOutput::processLine()
+void GAMESSUSOutput::processLine(GaussianSet *basis)
 {
   // First truncate the line, remove trailing white space and check for blank lines
   QString key = m_in->readLine().trimmed();
@@ -73,15 +73,14 @@ void GAMESSUSOutput::processLine()
   // Make sure to switch mode:
   //      enum mode { NotParsing, Atoms, GTO, STO, MO, SCF }
   if (key.contains("COORDINATES (BOHR)", Qt::CaseInsensitive)) {
-    m_aNums.clear();
-    m_aPos.clear();
+    basis->moleculeRef().clearAtoms();
 
     m_coordFactor = 1.0; // coordinates are supposed to be in bohr?!
     m_currentMode = Atoms;
     key = m_in->readLine().trimmed(); // skip the column titles
-  } else if (key.contains("COORDINATES OF ALL ATOMS ARE (ANGS)", Qt::CaseInsensitive)) {
-    m_aNums.clear();
-    m_aPos.clear();
+  }
+  else if (key.contains("COORDINATES OF ALL ATOMS ARE (ANGS)", Qt::CaseInsensitive)) {
+    basis->moleculeRef().clearAtoms();
 
     m_coordFactor = 1.0/BOHR_TO_ANGSTROM; // in Angstroms now
     m_currentMode = Atoms;
@@ -117,16 +116,16 @@ void GAMESSUSOutput::processLine()
 
     // parsing a line -- what mode are we in?
     switch (m_currentMode) {
-    case Atoms:
+    case Atoms: {
       // element_name atomic_number x y z
       if (list.size() < 5)
         return;
-      m_aNums.push_back((int)list[1].toDouble());
-      m_aPos.push_back(list[2].toDouble() * m_coordFactor);
-      m_aPos.push_back(list[3].toDouble() * m_coordFactor);
-      m_aPos.push_back(list[4].toDouble() * m_coordFactor);
-
+      Vector3d pos(list[2].toDouble() * m_coordFactor,
+                   list[3].toDouble() * m_coordFactor,
+                   list[4].toDouble() * m_coordFactor);
+      basis->moleculeRef().addAtom(pos, list[1].toInt());
       break;
+    }
     case GTO:
       // should start at the first line of shell functions
       if (key.isEmpty())
@@ -170,7 +169,7 @@ void GAMESSUSOutput::processLine()
       key = m_in->readLine(); // start reading the next atom
       m_currentAtom++;
       break;
-      
+
     case MO:
       m_MOcoeffs.clear(); // if the orbitals were punched multiple times
       while(!key.contains("END OF") && !key.contains("-----")) {
@@ -185,13 +184,13 @@ void GAMESSUSOutput::processLine()
           for (unsigned int i = 0; i < numColumns; ++i) {
             columns[i].push_back(list[i + 4].toDouble());
           }
-          
+
           key = m_in->readLine();
           if (key.contains(QLatin1String("END OF RHF")))
             break;
-          list = key.split(' ', QString::SkipEmptyParts);          
+          list = key.split(' ', QString::SkipEmptyParts);
         } // ok, we've finished one batch of MO coeffs
-        
+
         // Now we need to re-order the MO coeffs, so we insert one MO at a time
         for (unsigned int i = 0; i < numColumns; ++i) {
           numRows = columns[i].size();
@@ -218,11 +217,6 @@ void GAMESSUSOutput::load(GaussianSet* basis)
 {
   // Now load up our basis set
   basis->setNumElectrons(m_electrons);
-
-  int nAtom = 0;
-  for (unsigned int i = 0; i < m_aPos.size(); i += 3)
-    basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
-                   m_aNums.at(nAtom++));
 
   //    qDebug() << m_shellTypes.size() << m_shellNums.size() << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
 

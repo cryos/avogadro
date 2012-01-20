@@ -59,6 +59,7 @@ private:
 
   std::vector<int> m_atomIndex;
   std::vector<int> m_atomSym;
+  std::vector<int> m_atomNums;
   std::vector<double> m_zeta;
   std::vector<int> m_pqn;
   std::vector<Eigen::Vector3d> m_atomPos;
