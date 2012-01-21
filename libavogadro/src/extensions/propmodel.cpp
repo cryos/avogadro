@@ -91,7 +91,7 @@ namespace Avogadro {
 
   PropertiesModel::PropertiesModel(Type type, QObject *parent)
     : QAbstractTableModel(parent), m_type(type), m_rowCount(0), m_molecule(0),
-      m_displayConformers(false), m_validCache(false)
+      m_displayConformers((type == ConformerType)), m_validCache(false)
   {
   }
 
@@ -507,7 +507,7 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Energy");
+          return tr("Energy (kJ/mol)");
         }
       } else
         return tr("Conformer") + QString(" %1").arg(section + 1);
