@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-16 00:00-0500\n"
+"POT-Creation-Date: 2012-01-23 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 14:04+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -1999,11 +1999,9 @@ msgstr ""
 msgid "Torsion"
 msgstr ""
 
-#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
-#. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:510:2038
-msgid "Energy"
-msgstr "Energia"
+#: src/extensions/propmodel.cpp:510
+msgid "Energy (kJ/mol)"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:513
 msgid "Conformer"
@@ -7504,6 +7502,11 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_30)
 msgid "Max SCF Iterations:"
 msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
+#. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
+msgid "Energy"
+msgstr "Energia"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:854
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)

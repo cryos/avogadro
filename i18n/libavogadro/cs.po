@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-16 00:00-0500\n"
+"POT-Creation-Date: 2012-01-23 00:00-0500\n"
 "PO-Revision-Date: 2011-02-20 15:24+0000\n"
 "Last-Translator: Zbyněk Schwarz <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2033,11 +2033,10 @@ msgstr "Zkroucení %1"
 msgid "Torsion"
 msgstr "Zkroucení"
 
-#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
-#. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:510:2038
-msgid "Energy"
-msgstr "Energie"
+#: src/extensions/propmodel.cpp:510
+#, fuzzy
+msgid "Energy (kJ/mol)"
+msgstr "Energie (kJ/mol):"
 
 #: src/extensions/propmodel.cpp:513
 msgid "Conformer"
@@ -7669,6 +7668,11 @@ msgstr "Polární"
 #. i18n: ectx: property (text), widget (QLabel, label_30)
 msgid "Max SCF Iterations:"
 msgstr "Největší možné SCF opakování (iterace):"
+
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:849
+#. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
+msgid "Energy"
+msgstr "Energie"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:854
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
