@@ -570,6 +570,9 @@ namespace Avogadro {
     if (!m_widget)
       return;
 
+    // Reset the center
+    m_selectedPrimitivesCenter.setZero();
+
     // loop through selected atoms
     QList<Primitive*> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
     if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
@@ -580,14 +583,22 @@ namespace Avogadro {
         // Atom::pos() returns a pointer to the position
         m_selectedPrimitivesCenter += *(static_cast<Atom*>(item)->pos());
       }
-      m_selectedPrimitivesCenter /= double(selectedAtoms.size());
+      m_selectedPrimitivesCenter /= static_cast<double>(selectedAtoms.size());
     }
 
-    // OK, now create a dummy atom at that point
-    Atom *atom = m_widget->molecule()->addAtom();
-    atom->setAtomicNumber(0);
-    atom->setPos(m_selectedPrimitivesCenter);
-    m_widget->update();
+    // OK, now create a dummy atom at that point if there isn't already one there.
+    bool got=false;
+    foreach(Atom* atom, m_widget->molecule()->atoms()) {
+      if ( atom->atomicNumber() == 0 && m_selectedPrimitivesCenter.isApprox(*atom->pos(), 1.0E-08))
+        got=true;
+    }
+
+    if ( ! got ) {
+      Atom *atom = m_widget->molecule()->addAtom();
+      atom->setAtomicNumber(0);
+      atom->setPos(m_selectedPrimitivesCenter);
+      m_widget->update();
+    }
   }
 
   void SelectRotateTool::defineCenterOfMass(bool)
@@ -616,11 +627,20 @@ namespace Avogadro {
     }
     selectedCenter /= totalMass;
 
-    // OK, now create a dummy atom at that point
-    atom = m_widget->molecule()->addAtom();
-    atom->setAtomicNumber(0);
-    atom->setPos(selectedCenter);
-    m_widget->update();
+    // Create a dummy atom, but first check there isn't already one there
+    bool got=false;
+    foreach(Atom* atom, m_widget->molecule()->atoms()) {
+      if ( atom->atomicNumber() == 0 && selectedCenter.isApprox(*atom->pos(), 1.0E-08))
+        got=true;
+    }
+
+    if (!got) {
+      // OK, now create a dummy atom at that point
+      atom = m_widget->molecule()->addAtom();
+      atom->setAtomicNumber(0);
+      atom->setPos(selectedCenter);
+      m_widget->update();
+    }
   }
 
   QWidget *SelectRotateTool::settingsWidget()
