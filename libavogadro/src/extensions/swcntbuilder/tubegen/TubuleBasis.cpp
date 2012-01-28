@@ -26,6 +26,11 @@
 // Added for Avogadro
 #include <iostream>
 #include <iomanip>
+#ifdef _MSC_VER
+#define _USE_MATH_DEFINES
+#include <math.h>
+#define strcasecmp _stricmp
+#endif
 
 //
 

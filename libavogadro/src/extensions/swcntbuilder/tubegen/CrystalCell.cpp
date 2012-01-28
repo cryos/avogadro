@@ -20,6 +20,10 @@
 
 // Added for Avogadro
 #include <iomanip>
+#ifdef _MSC_VER
+// Inefficient for cases with complex x, but ok for uses here
+#define trunc(x) (((x) < 0) ? ceil(x) : floor(x))
+#endif
 
 //
 

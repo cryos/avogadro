@@ -8,6 +8,9 @@
 
 #include "ANSR.h"
 
+// Added for Avogadro
+
+
 //
 
   int __ANSRSymbolCmpBE(
@@ -32,7 +35,9 @@
 # define PKGDATADIR "/usr/local/share/tubegen"
 #endif
 
-  const char*       defaultANSRDBPath = PKGDATADIR "/periodic.table";
+// Edit for avogadro on MSVC2008: This is causing linker errors, and is hardcoded
+// to a non-existant path.
+//  const char*       defaultANSRDBPath = PKGDATADIR "/periodic.table";
 
 
 	unsigned					defaultTableSize = 36;

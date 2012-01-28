@@ -34,6 +34,9 @@
 
 // Added for Avogadro
 #include <fstream>
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
 
 //
 
