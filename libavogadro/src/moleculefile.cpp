@@ -389,10 +389,10 @@ namespace Avogadro {
     ifs.open(fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
-    OpenBabel::OBMol *obMol = new OpenBabel::OBMol;
-    if (conv.Read(obMol, &ifs)) {
+    OpenBabel::OBMol obMol;
+    if (conv.Read(&obMol, &ifs)) {
       Molecule *mol = new Molecule;
-      mol->setOBMol(obMol);
+      mol->setOBMol(&obMol);
       mol->setFileName(fileName);
       return mol;
     } else {
