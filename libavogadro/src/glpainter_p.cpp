@@ -44,7 +44,12 @@
 #include <QColor>
 #include <QVarLengthArray>
 #include <Eigen/Geometry>
-#include <GL/glu.h>
+
+#ifdef Q_WS_MAC
+# include <OpenGL/glu.h>
+#else
+# include <GL/glu.h>
+#endif
 
 namespace Avogadro
 {
