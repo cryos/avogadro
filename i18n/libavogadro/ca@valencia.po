@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-23 00:00-0500\n"
+"POT-Creation-Date: 2012-01-30 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 14:06+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -3658,7 +3658,7 @@ msgstr "Alinea:"
 msgid "Everything"
 msgstr "Tot"
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:658
 msgid "Molecule"
 msgstr "Molècula"
 
@@ -4165,49 +4165,49 @@ msgstr ""
 "selecció\n"
 "Utilitza Ctrl per commutar la selecció i Majúscules per afegir la selecció"
 
-#: src/tools/selectrotatetool.cpp:631
+#: src/tools/selectrotatetool.cpp:651
 msgid "Selection Mode:"
 msgstr "Mode selecció:"
 
-#: src/tools/selectrotatetool.cpp:636
+#: src/tools/selectrotatetool.cpp:656
 msgid "Atom/Bond"
 msgstr "Àtom/Enllaç"
 
-#: src/tools/selectrotatetool.cpp:637
+#: src/tools/selectrotatetool.cpp:657
 msgid "Residue"
 msgstr "Residu"
 
-#: src/tools/selectrotatetool.cpp:640
+#: src/tools/selectrotatetool.cpp:660
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Número d'àtoms:"
 
-#: src/tools/selectrotatetool.cpp:641
+#: src/tools/selectrotatetool.cpp:661
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Afig restriccions"
 
-#: src/tools/selectrotatetool.cpp:696
+#: src/tools/selectrotatetool.cpp:716
 msgid "Change color of the atom"
 msgstr "Canvia el color de l'àtom"
 
-#: src/tools/selectrotatetool.cpp:720
+#: src/tools/selectrotatetool.cpp:740
 msgid "Change label of the atom"
 msgstr "Canvia l'etiqueta de l'àtom"
 
-#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
+#: src/tools/selectrotatetool.cpp:741 src/tools/selectrotatetool.cpp:750
 msgid "New Label:"
 msgstr "Etiqueta nova"
 
-#: src/tools/selectrotatetool.cpp:729
+#: src/tools/selectrotatetool.cpp:749
 msgid "Change label of the bond"
 msgstr "Canvia l'etiqueta de l'enllaç"
 
-#: src/tools/selectrotatetool.cpp:761
+#: src/tools/selectrotatetool.cpp:781
 msgid "Change radius of the atom"
 msgstr "Canvia el radi de l'àtom"
 
-#: src/tools/selectrotatetool.cpp:762
+#: src/tools/selectrotatetool.cpp:782
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"

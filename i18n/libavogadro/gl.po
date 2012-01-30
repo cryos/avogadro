@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-23 00:00-0500\n"
+"POT-Creation-Date: 2012-01-30 00:00-0500\n"
 "PO-Revision-Date: 2011-03-17 19:30+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -3667,7 +3667,7 @@ msgstr "Aliñar:"
 msgid "Everything"
 msgstr "Todo"
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:658
 msgid "Molecule"
 msgstr "Molécula"
 
@@ -4164,49 +4164,49 @@ msgstr ""
 "Faga clic fora da molécula para limpar a selección\n"
 "Empregue Ctrl para conmutar a selección e maiúsculas para engadir a selección"
 
-#: src/tools/selectrotatetool.cpp:631
+#: src/tools/selectrotatetool.cpp:651
 msgid "Selection Mode:"
 msgstr "Modo de selección:"
 
-#: src/tools/selectrotatetool.cpp:636
+#: src/tools/selectrotatetool.cpp:656
 msgid "Atom/Bond"
 msgstr "Átomo/Enlace"
 
-#: src/tools/selectrotatetool.cpp:637
+#: src/tools/selectrotatetool.cpp:657
 msgid "Residue"
 msgstr "Residuo"
 
-#: src/tools/selectrotatetool.cpp:640
+#: src/tools/selectrotatetool.cpp:660
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Número de átomos:"
 
-#: src/tools/selectrotatetool.cpp:641
+#: src/tools/selectrotatetool.cpp:661
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Engadir restricións"
 
-#: src/tools/selectrotatetool.cpp:696
+#: src/tools/selectrotatetool.cpp:716
 msgid "Change color of the atom"
 msgstr "Mudar a cor do átomo"
 
-#: src/tools/selectrotatetool.cpp:720
+#: src/tools/selectrotatetool.cpp:740
 msgid "Change label of the atom"
 msgstr "Mudar a lenda do átomo"
 
-#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
+#: src/tools/selectrotatetool.cpp:741 src/tools/selectrotatetool.cpp:750
 msgid "New Label:"
 msgstr "Nova lenda:"
 
-#: src/tools/selectrotatetool.cpp:729
+#: src/tools/selectrotatetool.cpp:749
 msgid "Change label of the bond"
 msgstr "Mudar a lenda do enlace"
 
-#: src/tools/selectrotatetool.cpp:761
+#: src/tools/selectrotatetool.cpp:781
 msgid "Change radius of the atom"
 msgstr "Mudar o raio do átomo"
 
-#: src/tools/selectrotatetool.cpp:762
+#: src/tools/selectrotatetool.cpp:782
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"

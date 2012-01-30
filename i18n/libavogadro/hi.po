@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-23 00:00-0500\n"
+"POT-Creation-Date: 2012-01-30 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:44+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Hindi <hi@li.org>\n"
@@ -3531,7 +3531,7 @@ msgstr ""
 msgid "Everything"
 msgstr ""
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:638
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:658
 msgid "Molecule"
 msgstr ""
 
@@ -3977,47 +3977,47 @@ msgid ""
 "Double-Click: \tSelect an entire fragment."
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:631
+#: src/tools/selectrotatetool.cpp:651
 msgid "Selection Mode:"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:636
+#: src/tools/selectrotatetool.cpp:656
 msgid "Atom/Bond"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:637
+#: src/tools/selectrotatetool.cpp:657
 msgid "Residue"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:640
+#: src/tools/selectrotatetool.cpp:660
 msgid "Add Center of Atoms"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:641
+#: src/tools/selectrotatetool.cpp:661
 msgid "Add Center of Mass"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:696
+#: src/tools/selectrotatetool.cpp:716
 msgid "Change color of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:720
+#: src/tools/selectrotatetool.cpp:740
 msgid "Change label of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:721 src/tools/selectrotatetool.cpp:730
+#: src/tools/selectrotatetool.cpp:741 src/tools/selectrotatetool.cpp:750
 msgid "New Label:"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:729
+#: src/tools/selectrotatetool.cpp:749
 msgid "Change label of the bond"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:761
+#: src/tools/selectrotatetool.cpp:781
 msgid "Change radius of the atom"
 msgstr ""
 
-#: src/tools/selectrotatetool.cpp:762
+#: src/tools/selectrotatetool.cpp:782
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
