@@ -202,7 +202,8 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythonextension_p.cpp)
 endif()
 
-qt4_wrap_cpp(libavogadro_MOC ${libavogadro_MOC_HDRS})
+qt4_wrap_cpp(libavogadro_MOC ${libavogadro_MOC_HDRS}
+  OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
