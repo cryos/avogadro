@@ -27,7 +27,12 @@
 #include "glwidget.h"
 #include <avogadro/molecule.h>
 #include <Eigen/LU>
-#include <GL/glu.h>
+
+#ifdef Q_WS_MAC
+# include <OpenGL/glu.h>
+#else
+# include <GL/glu.h>
+#endif
 
 using namespace Eigen;
 

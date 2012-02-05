@@ -41,7 +41,11 @@
 #include <QtGui/QUndoStack>
 #include <QtGui/QLabel>
 
-#include <GL/glu.h>
+#ifdef Q_WS_MAC
+# include <OpenGL/glu.h>
+#else
+# include <GL/glu.h>
+#endif
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
