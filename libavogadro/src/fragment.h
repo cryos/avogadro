@@ -70,13 +70,7 @@ namespace Avogadro {
        * @return the name of the fragment.
        * @note Replaces GetName().
        */
-      inline QString name() { return m_name; }
-
-      /**
-       * @return the name of the fragment.
-       * @note Replaces GetName().
-       */
-      inline const QString & name() const { return m_name; }
+      inline QString name() const { return m_name; }
 
       /**
        * Set the name of the fragment.
