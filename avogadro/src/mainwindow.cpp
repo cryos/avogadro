@@ -1509,7 +1509,7 @@ protected:
       // just save this one molecule
       QString error;
       bool result = MoleculeFile::writeMolecule(d->molecule, fileName,
-                                                formatType.trimmed(),
+                                                formatType.trimmed(), "",
                                                 &error);
       if (!result) { // There was an error saving the file - inform the user
         QApplication::restoreOverrideCursor();

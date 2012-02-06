@@ -176,7 +176,8 @@ namespace Avogadro {
      * @param fileName The full path to the file to be opened.
      * @param fileType Optional file type parameter - override default file
      * extension parsing.
-     * @param fileOptions Options for reading the molecule file, such as bonding.
+     * @param fileOptions Newline separated list of options for reading the
+     * molecule file, such as bonding.
      * @return The Molecule object loaded, 0 if the file could not be loaded.
      */
     static Molecule * readMolecule(const QString &fileName,
@@ -185,17 +186,38 @@ namespace Avogadro {
                                    QString *error = 0);
 
     /**
+     * Static function to save a single molecule to a file. If writing was
+     * unsuccessful, a previously existing file will not be overwritten.
+     * @param molecule The Molecule object to be saved.
+     * @param fileName The full path to the file to be saved.
+     * @param fileType Optional file type parameter - override default file
+     * extension parsing.
+     * @deprecated Use the overload with the options argument instead.
+     * @return True on success, false on failure.
+     */
+    static bool writeMolecule(const Molecule *molecule,
+                              const QString &fileName,
+                              const QString &fileType = QString(),
+                              QString *error = 0)
+    {
+      return writeMolecule(molecule, fileName, fileType, QString(), error);
+    }
+
+    /**
      * Static function to save a single molecule to a file. If writing was 
      * unsuccessful, a previously existing file will not be overwritten. 
      * @param molecule The Molecule object to be saved.
      * @param fileName The full path to the file to be saved.
      * @param fileType Optional file type parameter - override default file
      * extension parsing.
+     * @param fileOptions Newline separated list of options for writing the
+     * molecule file.
      * @return True on success, false on failure.
      */
     static bool writeMolecule(const Molecule *molecule,
                               const QString &fileName,
-                              const QString &fileType = QString(),
+                              const QString &fileType,
+                              const QString &fileOptions,
                               QString *error = 0);
 
     /**

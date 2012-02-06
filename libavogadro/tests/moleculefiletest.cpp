@@ -115,7 +115,7 @@ void MoleculeFileTest::readWriteMolecule()
   QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename) );
   QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "sdf") );
   QString error;
-  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "sdf", &error) );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "sdf", "", &error) );
   QVERIFY( error.isEmpty() );
 
   // readMolecule
@@ -125,7 +125,7 @@ void MoleculeFileTest::readWriteMolecule()
   delete newMolecule;
 
   // test forced format
-  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "xyz", &error) );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "xyz", "", &error) );
   QVERIFY( error.isEmpty() );
   newMolecule = MoleculeFile::readMolecule(filename, "xyz", "", &error);
   QVERIFY( error.isEmpty() );
@@ -134,7 +134,7 @@ void MoleculeFileTest::readWriteMolecule()
   delete newMolecule;
 
   // test invalid format
-  QVERIFY( !MoleculeFile::writeMolecule(m_molecule, filename, "invalid_format", &error) );
+  QVERIFY( !MoleculeFile::writeMolecule(m_molecule, filename, "invalid_format", "", &error) );
   QVERIFY( !error.isEmpty() );
   error.clear();
   QVERIFY( !MoleculeFile::readMolecule(filename, "invalid_format", "", &error) );
