@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-30 00:00-0500\n"
+"POT-Creation-Date: 2012-02-06 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:34+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -793,8 +793,8 @@ msgstr "berkas video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:214
 #: src/extensions/forcefieldextension.cpp:244
 #: src/extensions/insertfragmentdialog.cpp:183
-#: src/extensions/quantuminput/inputfileextension.cpp:165
-#: src/extensions/quantuminput/inputfileextension.cpp:175
+#: src/extensions/quantuminput/inputfileextension.cpp:172
+#: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
 #: src/extensions/selectextension.cpp:288
 #: src/extensions/selectextension.cpp:294 src/extensions/trajvideomaker.cpp:51
@@ -829,7 +829,7 @@ msgid "E&xtensions"
 msgstr "E&kstensi"
 
 #: src/extensions/animationextension.cpp:135
-#: src/extensions/quantuminput/inputfileextension.cpp:166
+#: src/extensions/quantuminput/inputfileextension.cpp:173
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "Tidak bisa membaca format dari berkas %1."
@@ -887,7 +887,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3660
+#: src/extensions/animationextension.h:39:3777
 msgid "Animation"
 msgstr "Animasi"
 
@@ -922,7 +922,7 @@ msgstr "Pneyunting Kartesian..."
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
 #: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108
-#: src/extensions/unitcellextension.cpp:70:3865
+#: src/extensions/unitcellextension.cpp:70:3982
 msgid "&Build"
 msgstr "Mem&bangun"
 
@@ -2178,7 +2178,8 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:172
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
-#: src/extensions/quantuminput/qcheminputdialog.cpp:169:3107
+#: src/extensions/quantuminput/qcheminputdialog.cpp:169
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3107
 msgid "Show Preview"
 msgstr "Mengeluarkan Pratampilan"
 
@@ -2196,6 +2197,8 @@ msgstr "Mengeluarkan Pratampilan"
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:420
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:354
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #: src/extensions/quantuminput/abinitinputdialog.cpp:595
 #: src/extensions/quantuminput/daltoninputdialog.cpp:360
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:191
@@ -2203,7 +2206,8 @@ msgstr "Mengeluarkan Pratampilan"
 #: src/extensions/quantuminput/molproinputdialog.cpp:176
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
-#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1191
+#: src/extensions/quantuminput/qcheminputdialog.cpp:173
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1191
 msgid "Hide Preview"
 msgstr "Menyembunyikan Pratampilan"
 
@@ -2313,6 +2317,8 @@ msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
+#. i18n: ectx: property (text), widget (QLineEdit, titleLine)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #: src/extensions/quantuminput/gamessinputdialog.cpp:632:1056
 msgid "Title"
@@ -2431,39 +2437,44 @@ msgstr ""
 "Gaussian tidak bisa dijalankan dengan semestinya. Mungkin tidak di instal "
 "dengan benar."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:57
+#: src/extensions/quantuminput/inputfileextension.cpp:58
 msgid "&Abinit..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:62
+#: src/extensions/quantuminput/inputfileextension.cpp:63
 msgid "&Dalton..."
 msgstr "&Dalton..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:67
+#: src/extensions/quantuminput/inputfileextension.cpp:68
 msgid "&GAMESS-UK..."
 msgstr "&GAMESS-UK..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:72
+#: src/extensions/quantuminput/inputfileextension.cpp:73
 msgid "&Gaussian..."
 msgstr "&Gaussian..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:77
+#: src/extensions/quantuminput/inputfileextension.cpp:78
 msgid "&MOLPRO..."
 msgstr "&MOLPRO..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:82
+#: src/extensions/quantuminput/inputfileextension.cpp:83
 msgid "M&OPAC..."
 msgstr "M&OPAC..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:87
+#: src/extensions/quantuminput/inputfileextension.cpp:88
 msgid "&NWChem..."
 msgstr "&NWChem..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:92
+#: src/extensions/quantuminput/inputfileextension.cpp:93
 msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
 
-#: src/extensions/quantuminput/inputfileextension.cpp:176
+#: src/extensions/quantuminput/inputfileextension.cpp:98
+#, fuzzy
+msgid "&TeraChem..."
+msgstr "&NWChem..."
+
+#: src/extensions/quantuminput/inputfileextension.cpp:183
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Tidak bisa membaca berkas %1."
@@ -2579,6 +2590,25 @@ msgstr ""
 msgid "QChem Input Deck"
 msgstr "Berkas Masukan QChem"
 
+#: src/extensions/quantuminput/teracheminputdialog.cpp:132
+#, fuzzy
+msgid "TeraChem Input Deck Generator Warning"
+msgstr "Pembuat Peringatan Masukan Program NWChem"
+
+#: src/extensions/quantuminput/teracheminputdialog.cpp:133
+#, fuzzy
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"TeraChem input deck preview pane?"
+msgstr ""
+"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
+"progam NWChem di jendela pratampilan akan terhapus?"
+
+#: src/extensions/quantuminput/teracheminputdialog.cpp:175
+#, fuzzy
+msgid "TeraChem Input Deck"
+msgstr "Berkas Masukan QChem"
+
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
 msgstr "&Membalikan Pilihan"
@@ -2683,7 +2713,7 @@ msgstr "berkas parameter shader (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:3338
+#: src/extensions/shaderextension.h:41:3455
 msgid "GLSL Shaders"
 msgstr "GLSL Shader"
 
@@ -2763,13 +2793,13 @@ msgstr "Sumbu Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:3399
+#: src/extensions/spectra/spectradialog.cpp:188:3516
 msgid "&Appearance"
 msgstr "Pen&ampilan"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:3465
+#: src/extensions/spectra/spectradialog.cpp:189:3582
 msgid "E&xport Image"
 msgstr "Ek&spor Gambar"
 
@@ -3024,7 +3054,7 @@ msgstr "&Lanjut <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:3393
+#: src/extensions/spectra/spectradialog.cpp:998:3510
 msgid "&Advanced >>"
 msgstr "&Lanjut >>"
 
@@ -3074,7 +3104,7 @@ msgstr "Mengurutkan getaran %1 berdasarkan frekuensi..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:280
-#: src/extensions/spectra/vibrationwidget.cpp:290:3672
+#: src/extensions/spectra/vibrationwidget.cpp:290:3789
 msgid "Start &Animation"
 msgstr "Memulai &Animasi"
 
@@ -3087,7 +3117,7 @@ msgstr "Menghentikan &Animasi"
 #: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:304:3675
+#: src/extensions/spectra/vibrationwidget.cpp:304:3792
 msgid "Pause"
 msgstr "Jeda"
 
@@ -3249,7 +3279,7 @@ msgstr "Pembangun Super Sel..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3824
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:3941
 #, fuzzy
 msgid "Nanotube Builder"
 msgstr "Pembuat Peptide"
@@ -3395,7 +3425,7 @@ msgstr "Wii Tracking"
 msgid "Track motion using Wii remotes"
 msgstr "Track motion menggunakan Wii remote"
 
-#: src/glwidget.cpp:473
+#: src/glwidget.cpp:479
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
@@ -3405,34 +3435,34 @@ msgstr ""
 "Kemungkingan ada kesalahan dalam pengaturan OpenGL (apakah anda bisa "
 "menjalankan aplikasi OpenGL lainnya?), atau mungkin anda menemukan kutu."
 
-#: src/glwidget.cpp:478
+#: src/glwidget.cpp:484
 msgid "OpenGL error"
 msgstr "Kesalahan OpenGL"
 
-#: src/glwidget.cpp:1672
+#: src/glwidget.cpp:1678
 msgid "Debug Information"
 msgstr "Informasi Awakutu"
 
-#: src/glwidget.cpp:1676
+#: src/glwidget.cpp:1682
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1680
+#: src/glwidget.cpp:1686
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Ukuran Tampilan: %L1 x %L2"
 
-#: src/glwidget.cpp:1685
+#: src/glwidget.cpp:1691
 msgid "No molecule set"
 msgstr "Tidak ada atur molekul"
 
-#: src/glwidget.cpp:1690
+#: src/glwidget.cpp:1696
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Atom: %L1"
 
-#: src/glwidget.cpp:1694
+#: src/glwidget.cpp:1700
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Ikatan: %L1"
@@ -3447,7 +3477,7 @@ msgstr "tanpa judul"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: indeks %1 diluar jangkauan."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:606
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3469,12 +3499,12 @@ msgstr "Gagal membaca molekul dengan indeks %1 dari berkas '%2'."
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "mengganti Molekul: indeks %1 diluar jangkauan."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:443 src/moleculefile.cpp:538
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:452 src/moleculefile.cpp:545
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
@@ -3494,51 +3524,51 @@ msgstr "Tidak bisa membuka berkas '%1' untuk dibaca."
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Gagal mengganti molekul dengan indeks %1 pada berkas '%2'"
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:595
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Berkas %1 tidak bisa dibuka untuk dibaca."
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:621
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Gagal membaca molekul pada berkas '%1'."
 
-#: src/moleculefile.cpp:415 src/moleculefile.cpp:429
+#: src/moleculefile.cpp:417 src/moleculefile.cpp:431
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "Berkas %1 tidak bisa dibuka untuk ditulis."
 
-#: src/moleculefile.cpp:483
+#: src/moleculefile.cpp:493
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "Gagal menyimpan berkas molekul - tidak bisa menamai ulang."
 
-#: src/moleculefile.cpp:490
+#: src/moleculefile.cpp:500
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "Gagal menyimpan berkas molekul - tidak bisa memberikan nama baru."
 
-#: src/moleculefile.cpp:499
+#: src/moleculefile.cpp:509
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Gagal menyimpan berkas molekul - tidak bisa menghapus nama berkas lama."
 
-#: src/moleculefile.cpp:508
+#: src/moleculefile.cpp:518
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "Gagal menulis molekul ke berkas'%1'. Fungsi OpenBabel gagal."
 
-#: src/moleculefile.cpp:525
+#: src/moleculefile.cpp:535
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Berkas %1 tidak bisa dibuka untuk ditulis."
 
-#: src/moleculefile.cpp:577
+#: src/moleculefile.cpp:587
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Gagal menulis conformer ke berkas '%1'."
 
-#: src/moleculefile.cpp:615 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molekul %1"
@@ -3647,7 +3677,7 @@ msgstr "Pelurusan:"
 msgid "Everything"
 msgstr "Semuanya"
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:658
+#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:662
 msgid "Molecule"
 msgstr "Molekul"
 
@@ -3814,6 +3844,8 @@ msgstr "rotasi z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
+#. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #: src/tools/autorotatetool.cpp:296:1185 rc.cpp:1744 rc.cpp:2795
 msgid "Reset"
 msgstr "Tata Ulang"
@@ -3979,7 +4011,7 @@ msgstr "Pengaturan Pengukuran"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3940
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:4057
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
@@ -4126,7 +4158,7 @@ msgstr "Menggeser, memutar dan mengatur besar kecil tampilan"
 msgid "Navigate Settings"
 msgstr "Pengaturan Navigasi"
 
-#: src/tools/selectrotatetool.cpp:65
+#: src/tools/selectrotatetool.cpp:69
 #, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
@@ -4143,49 +4175,49 @@ msgstr ""
 "Klik kanan diluar molekul untuk menghapus pilihan\n"
 "Gunakan Ctrl untuk merubah pilihan dan shift untuk menambah pilihan"
 
-#: src/tools/selectrotatetool.cpp:651
+#: src/tools/selectrotatetool.cpp:655
 msgid "Selection Mode:"
 msgstr "Mode Pemilihan:"
 
-#: src/tools/selectrotatetool.cpp:656
+#: src/tools/selectrotatetool.cpp:660
 msgid "Atom/Bond"
 msgstr "Atom/Ikatan"
 
-#: src/tools/selectrotatetool.cpp:657
+#: src/tools/selectrotatetool.cpp:661
 msgid "Residue"
 msgstr "Residu"
 
-#: src/tools/selectrotatetool.cpp:660
+#: src/tools/selectrotatetool.cpp:664
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Nomor dari Atom:"
 
-#: src/tools/selectrotatetool.cpp:661
+#: src/tools/selectrotatetool.cpp:665
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Tambah kendala"
 
-#: src/tools/selectrotatetool.cpp:716
+#: src/tools/selectrotatetool.cpp:720
 msgid "Change color of the atom"
 msgstr "Ubah warna atom"
 
-#: src/tools/selectrotatetool.cpp:740
+#: src/tools/selectrotatetool.cpp:744
 msgid "Change label of the atom"
 msgstr "Ubah label atom"
 
-#: src/tools/selectrotatetool.cpp:741 src/tools/selectrotatetool.cpp:750
+#: src/tools/selectrotatetool.cpp:745 src/tools/selectrotatetool.cpp:754
 msgid "New Label:"
 msgstr "Label Baru:"
 
-#: src/tools/selectrotatetool.cpp:749
+#: src/tools/selectrotatetool.cpp:753
 msgid "Change label of the bond"
 msgstr "Ubah label ikatan"
 
-#: src/tools/selectrotatetool.cpp:781
+#: src/tools/selectrotatetool.cpp:785
 msgid "Change radius of the atom"
 msgstr "Ubah jejari atom"
 
-#: src/tools/selectrotatetool.cpp:782
+#: src/tools/selectrotatetool.cpp:786
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
@@ -4816,6 +4848,8 @@ msgstr "Pecahan"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:228
+#. i18n: ectx: property (text), item, widget (QComboBox, comboCoord)
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -5366,6 +5400,8 @@ msgstr "Kimia"
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:74
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Geometry Optimization"
 msgstr "Optimisasi Geometri"
 
@@ -5840,6 +5876,8 @@ msgstr "Menggambar"
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:493
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:501
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
 msgid "Close"
 msgstr "Tutup"
 
@@ -5923,6 +5961,8 @@ msgstr "Masukan Gaussian"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:31
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/spectra/spectradialog.ui:366
 #. i18n: ectx: property (text), widget (QLabel, label_7)
@@ -6165,6 +6205,8 @@ msgstr "0.0"
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:459
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:474
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 msgid "Use Form"
 msgstr "Gunakan Bentuk"
 
@@ -6198,6 +6240,8 @@ msgstr "Menghitung..."
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:486
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:494
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 msgid "Generate..."
 msgstr "Membuat..."
@@ -6243,6 +6287,8 @@ msgstr "Hitung:"
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:64
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Single Point Energy"
 msgstr "Energi Satu Titik"
 
@@ -6258,6 +6304,8 @@ msgstr "Energi Satu Titik"
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:97
+#. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Theory:"
 msgstr "Teori:"
 
@@ -6270,6 +6318,8 @@ msgstr "Teori:"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:133
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:116
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "HF"
 msgstr "HF"
@@ -6316,6 +6366,8 @@ msgstr "Aturan Dasar:"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:235
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:310
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "cc-pVDZ"
 msgstr "cc-pVDZ"
@@ -6466,6 +6518,8 @@ msgstr "STO-2G"
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:205
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:280
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "STO-3G"
 msgstr "STO-3G"
 
@@ -6491,6 +6545,8 @@ msgstr "STO-6G"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:195
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:210
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:285
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "3-21G"
 msgstr "3-21G"
@@ -6756,6 +6812,8 @@ msgstr "B2PLYP"
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:126
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP"
 msgstr "B3LYP"
 
@@ -6828,6 +6886,8 @@ msgstr "BVWN"
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:261
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:121
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "BLYP"
 msgstr "BLYP"
 
@@ -7025,6 +7085,8 @@ msgstr "PBE1PBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1097
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:141
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PBE"
 msgstr "PBE"
 
@@ -7284,6 +7346,8 @@ msgstr "MINI"
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:215
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:290
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d)"
 msgstr "6-31G(d)"
 
@@ -7298,6 +7362,8 @@ msgstr "6-31G(d)"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:205
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:220
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:295
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d,p)"
 msgstr "6-31G(d,p)"
@@ -7358,6 +7424,8 @@ msgstr "Kembar tiga"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:293
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:310
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:251
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Multiplicity:"
 msgstr "Pengalian:"
@@ -7431,6 +7499,8 @@ msgstr "Dalam:"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:253
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:273
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Charge:"
 msgstr "Muatan:"
@@ -7678,6 +7748,8 @@ msgstr "Energi"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:854
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:69
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Gradient"
 msgstr "Gradient"
 
@@ -8669,6 +8741,8 @@ msgstr "Masukan GAMESS-UK yang dihasilkan Avogadro"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:48
+#. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Calculation:"
 msgstr "Perhitungan:"
 
@@ -8684,6 +8758,8 @@ msgstr "Pencarian Transition State"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:171
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:186
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:261
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Basis:"
 msgstr "Basis:"
@@ -8827,6 +8903,8 @@ msgstr "Masukan MOLPRO"
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:225
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:300
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31+G(d)"
 msgstr "6-31+G(d)"
 
@@ -8835,6 +8913,8 @@ msgstr "6-31+G(d)"
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:215
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:230
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:305
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-311G(d)"
 msgstr "6-311G(d)"
@@ -8906,6 +8986,8 @@ msgstr "Masukan Q-Chem"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:136
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP5"
 msgstr "B3LYP5"
 
@@ -8918,6 +9000,69 @@ msgstr "M06-2X"
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LACVP"
 msgstr "LACVP"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, TeraChemInputDialog)
+#, fuzzy
+msgid "TeraChem Input"
+msgstr "Masukan NWChem"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:131
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#, fuzzy
+msgid "B3LYP1"
+msgstr "B3LYP"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:146
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+msgid "REVPBE"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:154
+#. i18n: ectx: property (text), widget (QCheckBox, checkUnrestricted)
+msgid "Unrestricted"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:213
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#, fuzzy
+msgid "Coordiantes"
+msgstr "Tipe Koordinat:"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:223
+#. i18n: ectx: property (text), item, widget (QComboBox, comboCoord)
+#, fuzzy
+msgid "PBD"
+msgstr "PDF"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:393
+#. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
+msgid "no"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:398
+#. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
+#, fuzzy
+msgid "yes"
+msgstr "Bytes"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:403
+#. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
+#, fuzzy
+msgid "D2"
+msgstr "D"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:408
+#. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
+#, fuzzy
+msgid "D3"
+msgstr "D"
+
+#. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:429
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#, fuzzy
+msgid "Dispersion:"
+msgstr "Versi Molpro:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:29
 #. i18n: ectx: attribute (title), widget (QWidget, loadTab)
@@ -10207,9 +10352,6 @@ msgstr ""
 
 #~ msgid "Seconds"
 #~ msgstr "Detik"
-
-#~ msgid "Bytes"
-#~ msgstr "Bytes"
 
 #~ msgid "Words"
 #~ msgstr "Kata"
