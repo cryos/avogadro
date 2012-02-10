@@ -81,7 +81,8 @@ namespace Avogadro {
     if(!widget->molecule())
       m_referencePoint = Vector3d(0., 0., 0.);
     else if(!widget->molecule()->numAtoms())
-      m_referencePoint = Vector3d(0., 0., 0.);
+      // center will account for the unit cell as well as atoms
+      m_referencePoint = widget->molecule()->center();
     else if(m_clickedAtom)
       m_referencePoint = *m_clickedAtom->pos();
     else {
