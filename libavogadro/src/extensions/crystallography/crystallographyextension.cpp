@@ -30,7 +30,6 @@
 #include "avospglib.h"
 #include "crystalpastedialog.h"
 #include "ceundo.h"
-#include "obeigenconv.h"
 #include "stablecomparison.h"
 #include "ui/ceabstracteditor.h"
 #include "ui/cecoordinateeditor.h"
@@ -40,6 +39,7 @@
 
 #include <avogadro/atom.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/obeigenconv.h>
 
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
