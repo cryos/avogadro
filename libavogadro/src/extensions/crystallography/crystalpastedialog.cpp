@@ -100,11 +100,8 @@ namespace Avogadro {
   {
     QStringList lines = text.split("\n");
 
+    // Title + scale + 3 vectors + composition + direct/cartesian + (no atoms)
     if (lines.size() < 7) {
-      return false;
-    }
-    if (lines.at(7).at(0).toLower() == QChar('s') &&
-        lines.size() < 8) {
       return false;
     }
 
@@ -142,6 +139,22 @@ namespace Avogadro {
     // Next line is a list of unsigned integers (composition)
     line = &lines[lineIndex++];
     lineList = line->simplified().split(QRegExp("\\s+|,|;"));
+    int numSpecies = lineList.size();
+    if (numSpecies == 0) {
+      return false;
+    }
+    // Check if the first field is an unsigned int (VASP 4.x) or a char (5.x)
+    bool vaspVersionLessThan5;
+    lineList.first().toUInt(&vaspVersionLessThan5);
+    // If vasp >= 5.x, skip the line containing the atomic symbols.
+    if (!vaspVersionLessThan5) {
+      line = &lines[lineIndex++];
+      lineList = line->simplified().split(QRegExp("\\s+|,|;"));
+      if (lineList.size() != numSpecies) {
+        return false;
+      }
+    }
+    // Read in the total number of atoms
     for (QStringList::const_iterator
            it = lineList.constBegin(),
            it_end = lineList.constEnd();
@@ -192,61 +205,79 @@ namespace Avogadro {
 
   void CEPasteDialog::refreshVaspFormat()
   {
-    QStringList lines = m_text.split("\n");
+    const QStringList lines = m_text.split("\n");
 
     Q_ASSERT(lines.size() >= 7);
     Q_ASSERT_X(lines.at(7).at(0).toLower() != QChar('s') ||
                lines.size() >= 8, Q_FUNC_INFO,
                "'lines' is too short to be a proper POSCAR.");
 
-    // Determine number of atom types
-    const QString *typesStr = &lines[5];
-    m_numAtomTypes = typesStr->simplified().split(QRegExp("\\s+|,|;")).size();
+    // Count the number of atom types
+    QString line = lines[5];
+    QStringList lineList = line.simplified().split(QRegExp("\\s+|,|;"));
+    m_numAtomTypes = lineList.size();
+    // no atoms?
+    if (m_numAtomTypes == 0) {
+      ui.edit_identities->clear();
+      ui.edit_text->setText(m_text);
+      return;
+    }
+    // Check if the first field is an unsigned int (VASP 4.x) or a char (5.x)
+    bool vaspVersionLessThan5;
+    lineList.first().toUInt(&vaspVersionLessThan5);
 
-    // Try to determine the atom types from the comment line
-    const QString *comment = &lines[0];
+    // List of atom identifiers, either atomic numbers or symbols
+    QString idents = "";
 
-    /// @todo Support more style formats
-    // Assume alternating numbers / letters for composition, e.g. Sr1Ti3O4, etc.
-    // Parse sets of numbers between letters
-    QStringList symbolList = comment->split(QRegExp("[0-9|\\s|,|;]+"),
+    // If vasp >= 5.x, just extract the composition that is explicitly
+    // specified
+    if (!vaspVersionLessThan5) {
+      idents = line.simplified();
+    }
+    // For vasp < 5.x, try to guess the composition from the title
+    else {
+      // Try to determine the atom types from the comment line
+      const QString *title = &lines[0];
+
+      // Attempt to parse a set of atomic symbols from the title
+      QStringList symbolList = title->split(QRegExp("[0-9|\\s|,|;]+"),
                                             QString::SkipEmptyParts);
 
-    // Look for the first list of m_numAtomTypes consecutive strings
-    // that converts cleanly into atomic numbers:
-    QList<unsigned int> atomicNums;
-    for (int i = 0; i < symbolList.size(); ++i) {
-      atomicNums.append(OpenBabel::etab.GetAtomicNum
-                        (symbolList.at(i).toStdString().c_str()));
-    }
-    int startInd = -1;
-    for (int i = 0; i < atomicNums.size(); ++i) {
-      bool found = true;
-      for (unsigned int j = 0; j < m_numAtomTypes; ++j) {
-        if (atomicNums.at(i + j) == 0) {
-          found = false;
+      // Look for the first list of m_numAtomTypes consecutive strings
+      // that converts cleanly into atomic numbers:
+      QList<unsigned int> atomicNums;
+      for (int i = 0; i < symbolList.size(); ++i) {
+        atomicNums.append(OpenBabel::etab.GetAtomicNum
+                          (symbolList.at(i).toStdString().c_str()));
+      }
+      int startInd = -1;
+      for (int i = 0; i < atomicNums.size(); ++i) {
+        bool found = true;
+        for (unsigned int j = 0; j < m_numAtomTypes; ++j) {
+          if (atomicNums.at(i + j) == 0) {
+            found = false;
+            break;
+          }
+        }
+        if (found) {
+          startInd = i;
           break;
         }
       }
-      if (found) {
-        startInd = i;
-        break;
-      }
-    }
 
-    QString idents = "";
-    if (startInd >= 0) {
-      // Found list of consecutive identifiers.
-      Q_ASSERT(startInd + m_numAtomTypes <=
-               static_cast<unsigned int>((symbolList.size())));
-      for (unsigned int i = 0; i < m_numAtomTypes; ++i) {
-        idents += symbolList.at(startInd + i) + " ";
+      if (startInd >= 0) {
+        // Found list of consecutive identifiers.
+        Q_ASSERT(startInd + m_numAtomTypes <=
+                 static_cast<unsigned int>((symbolList.size())));
+        for (unsigned int i = 0; i < m_numAtomTypes; ++i) {
+          idents += symbolList.at(startInd + i) + " ";
+        }
       }
-    }
-    else {
-      // Did not find. Fill with consecutive integers.
-      for (unsigned int i = 1; i <= m_numAtomTypes; ++i) {
-        idents += QString::number(i) + " ";
+      else {
+        // Did not find. Fill with consecutive integers.
+        for (unsigned int i = 1; i <= m_numAtomTypes; ++i) {
+          idents += QString::number(i) + " ";
+        }
       }
     }
 
@@ -325,10 +356,20 @@ namespace Avogadro {
     // Next line is a list of unsigned integers (composition)
     line = &lines[lineIndex++];
     lineList = line->simplified().split(QRegExp("\\s+|,|;"));
-    for (QStringList::const_iterator
-           it = lineList.constBegin(),
-           it_end = lineList.constEnd();
-         it != it_end; ++it) {
+    // If vasp >= 5.x, this may be a list of atomic symbols. Skip it if so,
+    // since the user should have already specified/verified the composition
+    // in the GUI by this point.
+    if (lineList.isEmpty()) {
+      return false;
+    }
+    bool vaspVersionLessThan5;
+    lineList.first().toUInt(&vaspVersionLessThan5);
+    if (!vaspVersionLessThan5) {
+      line = &lines[lineIndex++];
+      lineList = line->simplified().split(QRegExp("\\s+|,|;"));
+    }
+    for (QStringList::const_iterator it = lineList.constBegin(),
+         it_end = lineList.constEnd(); it != it_end; ++it) {
       unsigned int v = it->toUInt(&ok);
       if (!ok) {
         return false;
