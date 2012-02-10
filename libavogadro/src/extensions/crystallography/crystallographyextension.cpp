@@ -38,6 +38,7 @@
 #include "ui/cetranslatewidget.h"
 
 #include <avogadro/atom.h>
+#include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/obeigenconv.h>
 
@@ -229,6 +230,8 @@ namespace Avogadro
 
     showEditors();
     showProperties();
+    // Reset camera since GLWidget geometry may have changed.
+    GLWidget::current()->camera()->initializeViewPoint();
   }
 
   void CrystallographyExtension::writeSettings(QSettings &settings) const
@@ -2351,6 +2354,10 @@ namespace Avogadro
       emit cellChanged();
       showEditors();
       GLWidget::current()->setRenderUnitCellAxes(true);
+      // Reset the camera if there are no atoms present
+      if (m_molecule->numAtoms() == 0) {
+        GLWidget::current()->camera()->initializeViewPoint();
+      }
       refreshActions();
     }
     else {

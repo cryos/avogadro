@@ -195,9 +195,11 @@ namespace Avogadro
     // if the molecule is empty, we want to look at its center
     // (which is probably at the origin, but who knows) from some distance
     // (here 20.0) -- this gives us some room to work PR#1964674
-    if( d->parent->molecule()->numAtoms() < 2 )
+    if( d->parent->molecule()->numAtoms() < 2 &&
+        d->parent->molecule()->OBUnitCell() == NULL)
     {
-      d->modelview.translate( d->parent->center() - Vector3d( 0.0, 0.0, 20.0 ) );
+      d->modelview.translate(-d->parent->center() +
+                              d->parent->normalVector() * 20.0);
       return;
     }
 
@@ -218,8 +220,8 @@ namespace Avogadro
     // to view the molecule from a distance, not from inside it.
     // This translation must be applied after the above rotation, so we
     // want a left-multiplication here. Whence pretranslate().
-    const Vector3d Zaxis(0,0,1);
-    pretranslate( - 3.0 * ( d->parent->radius() + CAMERA_NEAR_DISTANCE ) * Zaxis );
+    pretranslate( - 3.0 * ( d->parent->radius() + CAMERA_NEAR_DISTANCE ) *
+                  Vector3d::UnitZ() );
 
     // the above rotation is meant to be a rotation around the molecule's
     // center. So before this rotation is applied, the molecule's center

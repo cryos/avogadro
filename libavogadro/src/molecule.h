@@ -861,6 +861,13 @@ namespace Avogadro {
      */
     void computeGeomInfo() const;
 
+  private:
+    /**
+     * Helper function for setting cached geometry information from the unit
+     * unit cell. This is called as needed by Molecule::computeGeomInfo.
+     */
+    void computeGeomInfoFromUnitCell() const;
+
   public Q_SLOTS:
     /**
      * Signal that the molecule has been changed in some large way, emits the
