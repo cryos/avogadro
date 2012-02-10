@@ -341,7 +341,8 @@ namespace Avogadro
     // Default to the minimum detail level for this quality
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
-    if (m_dynamicScaling) {
+    if (d->widget->projection() != GLWidget::Orthographic &&
+        m_dynamicScaling) {
       double apparentRadius = radius / d->widget->camera()->distance(center);
       detailLevel = 1 + static_cast<int>(floor (PAINTER_SPHERES_DETAIL_COEFF
                         * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)));
@@ -365,7 +366,8 @@ namespace Avogadro
     // Default to the minimum detail level for this quality
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
-    if (m_dynamicScaling) {
+    if (d->widget->projection() != GLWidget::Orthographic &&
+        m_dynamicScaling) {
       double apparentRadius = radius / d->widget->camera()->distance(end1);
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
@@ -391,7 +393,8 @@ namespace Avogadro
     // Default to the minimum detail level for this quality
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
-    if (m_dynamicScaling) {
+    if (d->widget->projection() != GLWidget::Orthographic &&
+        m_dynamicScaling) {
       double apparentRadius = radius / d->widget->camera()->distance(end1);
       detailLevel = 1 + static_cast<int> ( floor (
                                                     PAINTER_CYLINDERS_DETAIL_COEFF
