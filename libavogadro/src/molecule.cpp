@@ -30,6 +30,7 @@
 #include "cube.h"
 #include "fragment.h"
 #include "mesh.h"
+#include "obeigenconv.h"
 #include "primitivelist.h"
 #include "residue.h"
 #include "zmatrix.h"
@@ -1845,7 +1846,7 @@ namespace Avogadro{
     d->invalidGeomInfo = true;
     d->farthestAtom = 0;
     d->center.setZero();
-    d->normalVector.setZero();
+    d->normalVector = Vector3d::UnitZ();
     d->radius = 1.0;
 
     /// FIXME This leads to the dipole moment always getting invalidated
@@ -1858,33 +1859,105 @@ namespace Avogadro{
     }
 
     unsigned int nAtoms = numAtoms();
-    // In order to calculate many parameters we need at least two atoms
-    if(nAtoms > 1) {
-      // Compute the normal vector to the molecule's best-fitting plane
-      int i = 0;
-      Vector3d ** atomPositions = new Vector3d*[nAtoms];
-      // Calculate the center of the molecule too
-      foreach (Atom *atom, m_atomList) {
-        Vector3d *pos = &(*m_atomPos)[atom->id()];
-        d->center += *pos;
-        atomPositions[i++] = pos;
-      }
-      d->center /= static_cast<double>(nAtoms);
-      Eigen::Hyperplane<double, 3> planeCoeffs;
-      Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
-      delete[] atomPositions;
-      d->normalVector = planeCoeffs.normal();
 
-      // compute radius and the farthest atom
-      d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
-      foreach (Atom *atom, m_atomList) {
-        double distanceToCenter = (*atom->pos() - d->center).norm();
-        if(distanceToCenter > d->radius) {
-          d->radius = distanceToCenter;
-          d->farthestAtom = atom;
+    // If a unit cell is present, combine it's center and radius with
+    // that of the molecule's atomic center/radius
+    if (d->obunitcell) {
+      const Eigen::Matrix3d ucRowMatrix =
+          OB2Eigen(d->obunitcell->GetCellMatrix());
+      const Eigen::Vector3d ucCenter = 0.5 * (ucRowMatrix.row(0) +
+                                              ucRowMatrix.row(1) +
+                                              ucRowMatrix.row(2));
+      // Exploit symmetry and only calculate distance to four of the corners
+      double ucSqRadii[4];
+      ucSqRadii[0] = ((Eigen::Vector3d::Zero()) - ucCenter).squaredNorm();
+      ucSqRadii[1] = (ucRowMatrix.row(0).transpose() - ucCenter).squaredNorm();
+      ucSqRadii[2] = (ucRowMatrix.row(1).transpose() - ucCenter).squaredNorm();
+      ucSqRadii[3] = (ucRowMatrix.row(2).transpose() - ucCenter).squaredNorm();
+
+      // Select the largest radius
+      double ucRadius = ucSqRadii[0];
+      if (ucRadius > ucSqRadii[1])
+        ucRadius = ucSqRadii[1];
+      if (ucRadius > ucSqRadii[2])
+        ucRadius = ucSqRadii[2];
+      if (ucRadius > ucSqRadii[3])
+        ucRadius = ucSqRadii[3];
+      ucRadius = sqrt(ucRadius);
+
+      // The normal will lie in the direction of the shortest cell vector
+      const double aSqNorm = ucRowMatrix.row(0).squaredNorm();
+      const double bSqNorm = ucRowMatrix.row(1).squaredNorm();
+      const double cSqNorm = ucRowMatrix.row(2).squaredNorm();
+      if (aSqNorm < bSqNorm) {
+        if (aSqNorm < cSqNorm) // a < (b ? c)
+          d->normalVector = -ucRowMatrix.row(0).normalized();
+        else                   // c < a < b
+          d->normalVector = -ucRowMatrix.row(2).normalized();
+      }
+      else { // b < a
+        if (bSqNorm < cSqNorm) // b < (a ? c)
+          d->normalVector = -ucRowMatrix.row(1).normalized();
+        else                   // c < b < a
+          d->normalVector = -ucRowMatrix.row(2).normalized();
+      }
+
+      // If there are no atoms, just use the cell geometry:
+      if (this->numAtoms() == 0) {
+        d->radius = ucRadius;
+        d->center = ucCenter;
+      }
+      // Otherwise set the center only and calculate the radius and farthest
+      // atom
+      else {
+        // Calculate the center between the molecule and uc centers:
+        d->center = ucCenter;
+
+        // Discover the farthestAtom info and radius
+        double farthestAtomSqDistance = std::numeric_limits<double>::min();
+        d->farthestAtom = NULL;
+        foreach (Atom *atom, m_atomList) {
+          double distanceToCenter = (*atom->pos() - d->center).squaredNorm();
+          if(distanceToCenter > farthestAtomSqDistance) {
+            farthestAtomSqDistance = distanceToCenter;
+            d->farthestAtom = atom;
+          }
         }
+        const double moleculeRadius = sqrt(farthestAtomSqDistance);
+        d->radius = (moleculeRadius > ucRadius) ? moleculeRadius : ucRadius;
+      }
+    } // end if unit cell
+    // If no unit cell, just compute the radius and farthest atom as normal.
+    else {
+      if (nAtoms > 1) {
+        // compute radius and the farthest atom
+        d->radius = std::numeric_limits<double>::min();
+        foreach (Atom *atom, m_atomList) {
+          double distanceToCenter = (*atom->pos() - d->center).squaredNorm();
+          if(distanceToCenter > d->radius) {
+            d->radius = distanceToCenter;
+            d->farthestAtom = atom;
+          }
+        }
+        d->radius = sqrt(d->radius);
+
+        // Compute the normal vector to the molecule's best-fitting plane
+        int i = 0;
+        Vector3d ** atomPositions = new Vector3d*[nAtoms];
+        // Calculate the center of the molecule too
+        foreach (Atom *atom, m_atomList) {
+          Vector3d *pos = &(*m_atomPos)[atom->id()];
+          d->center += *pos;
+          atomPositions[i++] = pos;
+        }
+        d->center /= static_cast<double>(nAtoms);
+        Eigen::Hyperplane<double, 3> planeCoeffs;
+        Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
+        delete[] atomPositions;
+        d->normalVector = planeCoeffs.normal();
       }
     }
+
     d->invalidGeomInfo = false;
   }
 
