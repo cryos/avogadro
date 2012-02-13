@@ -22,9 +22,8 @@
 
 namespace Avogadro
 {
-  CECoordinateEditor::CECoordinateEditor(CrystallographyExtension *ext,
-                                         QMainWindow *w)
-    : CEAbstractEditor(ext, w)
+  CECoordinateEditor::CECoordinateEditor(CrystallographyExtension *ext)
+    : CEAbstractEditor(ext)
   {
     ui.setupUi(this);
 

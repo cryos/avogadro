@@ -24,9 +24,8 @@
 namespace Avogadro
 {
 
-  CEAbstractDockWidget::CEAbstractDockWidget(CrystallographyExtension *ext,
-                                             QMainWindow *w)
-    : QDockWidget(w),
+  CEAbstractDockWidget::CEAbstractDockWidget(CrystallographyExtension *ext)
+    : DockWidget(),
       m_ext(ext)
   {
     connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
@@ -64,7 +63,7 @@ namespace Avogadro
                       + "/area", a);
   }
 
-  Qt::DockWidgetArea CEAbstractDockWidget::preferredDockWidgetArea()
+  Qt::DockWidgetArea CEAbstractDockWidget::preferredWidgetDockArea()
   {
     QSettings settings;
     return static_cast<Qt::DockWidgetArea>
