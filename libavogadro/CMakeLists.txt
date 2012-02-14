@@ -34,7 +34,8 @@ function(avogadro_plugin_nogl plugin_name src_list)
       list(APPEND moc_list "${file}")
     endif()
   endforeach()
-  qt4_wrap_cpp(moc_files ${moc_list})
+  qt4_wrap_cpp(moc_files ${moc_list}
+    OPTIONS -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
   # Now sort out the ui and qrc files, process them as appropriate
   set(ui_plugin_files)
   set(qrc_plugin_files)
