@@ -201,6 +201,8 @@ namespace Avogadro
     // Render selections when not renderquick
     Color *map = colorMap();
     if (!map) map = pd->colorMap();
+    Color selectionMap;
+    selectionMap.setToSelectionColor();
 
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
@@ -214,8 +216,7 @@ namespace Avogadro
       }
       // If the atom is selected render the selection
       if (pd->isSelected(a)) {
-        map->setToSelectionColor();
-        pd->painter()->setColor(map);
+        pd->painter()->setColor(&selectionMap);
         pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
       }
     }
@@ -259,8 +260,7 @@ namespace Avogadro
 
       // Render the selected bond.
       if (pd->isSelected(b)) {
-        map->setToSelectionColor();
-        pd->painter()->setColor(map);
+        pd->painter()->setColor(&selectionMap);
         pd->painter()->drawMultiCylinder( v1, v2,
                            SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
       }
