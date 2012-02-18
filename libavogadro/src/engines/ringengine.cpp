@@ -86,8 +86,6 @@ namespace Avogadro{
   {
     if (m_alpha > 0.999) return true;
 
-    Color *map = colorMap();
-    map->setAlpha(m_alpha);
     // Special case for everything up to 7 membered rings.
     QList<Fragment *> rings = const_cast<Molecule *>(pd->molecule())->rings();
     // Now actually draw the ring structures
@@ -117,7 +115,8 @@ namespace Avogadro{
     switch (ring.size()) {
       case 3:
         // Single triangle - easy
-        pd->painter()->setColor(ringColors[0][0], ringColors[0][1], ringColors[0][2]);
+        pd->painter()->setColor(ringColors[0][0], ringColors[0][1],
+                                ringColors[0][2], m_alpha);
         pd->painter()->drawTriangle(*mol->atomById(ring[0])->pos(),
                                     *mol->atomById(ring[1])->pos(),
                                     *mol->atomById(ring[2])->pos(),
@@ -125,7 +124,8 @@ namespace Avogadro{
         break;
       case 4:
         // Two triangles
-        pd->painter()->setColor(ringColors[1][0], ringColors[1][1], ringColors[1][2]);
+        pd->painter()->setColor(ringColors[1][0], ringColors[1][1],
+                                ringColors[1][2], m_alpha);
         pd->painter()->drawTriangle(*mol->atomById(ring[0])->pos(),
                                     *mol->atomById(ring[1])->pos(),
                                     *mol->atomById(ring[2])->pos(),
@@ -137,7 +137,8 @@ namespace Avogadro{
         break;
       case 5:
         // Three triangles
-        pd->painter()->setColor(ringColors[2][0], ringColors[2][1], ringColors[2][2]);
+        pd->painter()->setColor(ringColors[2][0], ringColors[2][1],
+                                ringColors[2][2], m_alpha);
         pd->painter()->drawTriangle(*mol->atomById(ring[0])->pos(),
                                     *mol->atomById(ring[1])->pos(),
                                     *mol->atomById(ring[2])->pos(),
@@ -153,7 +154,8 @@ namespace Avogadro{
         break;
       case 6:
         // Four triangles
-        pd->painter()->setColor(ringColors[3][0], ringColors[3][1], ringColors[3][2]);
+        pd->painter()->setColor(ringColors[3][0], ringColors[3][1],
+                                ringColors[3][2], m_alpha);
         pd->painter()->drawTriangle(*mol->atomById(ring[0])->pos(),
                                     *mol->atomById(ring[1])->pos(),
                                     *mol->atomById(ring[2])->pos(),
@@ -173,7 +175,8 @@ namespace Avogadro{
         break;
       default:
         // The generic case - find the centre of the ring and draw a triangle fan
-        pd->painter()->setColor(ringColors[4][0], ringColors[4][1], ringColors[4][2]);
+        pd->painter()->setColor(ringColors[4][0], ringColors[4][1],
+                                ringColors[4][2], m_alpha);
         Vector3d center;
         for (int i = 0; i < ring.size(); i++)
           center += *mol->atomById(ring[i])->pos();
