@@ -164,6 +164,36 @@
            </item>
           </layout>
          </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Draw Unit Cell(s)?</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="combo_numCells">
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>One</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>All</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
         </layout>
        </widget>
       </item>

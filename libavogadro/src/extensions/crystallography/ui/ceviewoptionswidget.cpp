@@ -31,7 +31,9 @@ namespace Avogadro
 {
   CEViewOptionsWidget::CEViewOptionsWidget(CrystallographyExtension *ext)
     : CEAbstractDockWidget(ext),
-      m_currentArea(Qt::NoDockWidgetArea)
+      m_glWidget(NULL),
+      m_currentArea(Qt::NoDockWidgetArea),
+      m_ncc(NCC_Invalid)
   {
     this->setPreferredDockWidgetArea(Qt::BottomDockWidgetArea);
 
@@ -55,6 +57,9 @@ namespace Avogadro
             this, SLOT(millerIndexChanged()));
     connect(ui.buttonGroup_camera, SIGNAL(buttonClicked(int)),
             this, SLOT(updateCamera()));
+
+    connect(ui.combo_numCells, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(updateCellRenderOptions()));
 
     /*
     connect(ui.aButton, SIGNAL(clicked()),
@@ -86,6 +91,11 @@ namespace Avogadro
 
     // Check if we have a hexagonal unit cell for mi_i box
     cellChanged();
+
+    QSettings settings;
+    int ncc = settings.value("crystallography/viewWidget/numCellChoice",
+                             static_cast<int>(NCC_All)).toInt();
+    ui.combo_numCells->setCurrentIndex(ncc);
   }
 
   void CEViewOptionsWidget::updateRepeatCells()
@@ -162,6 +172,43 @@ namespace Avogadro
       ui.rad_axis_miller->click();
     else
       this->updateCamera();
+  }
+
+  void CEViewOptionsWidget::updateCellRenderOptions()
+  {
+    if (m_glWidget == NULL) {
+      return;
+    }
+
+    NumCellChoice ncc = static_cast<NumCellChoice>
+        (ui.combo_numCells->currentIndex());
+
+    if (m_ncc != ncc) {
+      switch (ncc)
+      {
+      case Avogadro::CEViewOptionsWidget::NCC_Invalid:
+        // Should happen, probably not initialized.
+        qWarning() << "NumCellChoice is invalid.";
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_None:
+        m_glWidget->setRenderUnitCellAxes(false);
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_One:
+        m_glWidget->setRenderUnitCellAxes(true);
+        m_glWidget->setOnlyRenderOriginalUnitCell(true);
+        break;
+      case Avogadro::CEViewOptionsWidget::NCC_All:
+        m_glWidget->setRenderUnitCellAxes(true);
+        m_glWidget->setOnlyRenderOriginalUnitCell(false);
+        break;
+      default:
+        qWarning() << "Unknown numCellChoice:" << ncc;
+        break;
+      }
+      m_ncc = ncc;
+
+      m_glWidget->update();
+    }
   }
 
   void CEViewOptionsWidget::cellChanged()
