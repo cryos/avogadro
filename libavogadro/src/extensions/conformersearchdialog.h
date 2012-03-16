@@ -58,6 +58,7 @@ namespace Avogadro
       void systematicToggled(bool checked);
       void randomToggled(bool checked);
       void weightedToggled(bool checked);
+      void geneticToggled(bool checked);
 
     private:
       Ui::ConformerSearchDialog ui;
