@@ -37,7 +37,6 @@ namespace Avogadro {
     extern "C" {
 #include "spglib/spglib.h"
     }
-
     /**
      * Return the spacegroup number of the crystal described by the
      * arguments.
@@ -199,6 +198,32 @@ namespace Avogadro {
     unsigned int refineCrystal(Molecule *mol,
                                OpenBabel::OBUnitCell *cell = 0,
                                const double cartTol = AVOSPGLIB_TOL);
+
+    //AAD my copied primitive routine that does not change the display
+    /**
+     * Retrun the primitive lattice vectors for input
+     * cell matrix and atomic coordintes
+     *
+     * @param fcoords Fractional coordinates of atoms.
+     * @param atomicNums Atomic numbers of atoms
+     * @param cellMatrix Unit cell matrix as row vectors.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     * @param doRefine will perform cell refinement if true
+     *
+     * @return Spacegroup number if found, 0 otherwise.
+     */
+    unsigned int getPrimitive(QList<Eigen::Vector3d> *fcoords,
+                               QList<unsigned int> *atomicNums,
+                               Eigen::Matrix3d *cellMatrix,
+                               const double cartTol = AVOSPGLIB_TOL,
+			       const bool doRefine=false);
+
+  // Fill fcoords, atomicNums, and cellMatrix from mol and cell
+  void prepareMolecule(const Avogadro::Molecule *mol,
+                       const OpenBabel::OBUnitCell *cell,
+                       QList<Eigen::Vector3d> *fcoords,
+                       QList<unsigned int> *atomicNums,
+                       Eigen::Matrix3d *cellMatrix);
 
   }
 }
