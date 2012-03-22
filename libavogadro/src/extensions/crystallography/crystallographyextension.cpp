@@ -29,7 +29,6 @@
 
 #include "crystallographyextension.h"
 
-#include "avospglib.h"
 #include "crystalpastedialog.h"
 #include "ceundo.h"
 #include "stablecomparison.h"
@@ -44,6 +43,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/avospglib.h>
 #include <avogadro/obeigenconv.h>
 #include <avogadro/neighborlist.h>
 #include <avogadro/bond.h>
@@ -1609,9 +1609,6 @@ namespace Avogadro
 
     // Get current unit cell
     OpenBabel::OBUnitCell *cell = currentCell();
-
-    // For sanity checks:
-    double origVolume = currentVolume();
 
     // Cache the current fractional coordinates for later.
     QList<Eigen::Vector3d> fcoords = currentFractionalCoords();

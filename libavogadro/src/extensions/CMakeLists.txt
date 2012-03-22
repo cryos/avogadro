@@ -117,6 +117,7 @@ avogadro_plugin(gl2psextension
   "gl2psextension.cpp;gl2ps/gl2ps.c")
 
 # Subdirs
+add_subdirectory(avospg)
 add_subdirectory(crystallography)
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
