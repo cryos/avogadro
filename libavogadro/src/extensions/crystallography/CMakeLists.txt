@@ -2,13 +2,12 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_subdirectory(spglib)
+set(LINK_LIBS AvoSpg avogadro)
 
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
 set(crystallographyextension_SRCS
-  avospglib.cpp
   ceundo.cpp
   crystallographyextension.cpp
   crystalpastedialog.cpp
@@ -36,6 +35,3 @@ avogadro_plugin(crystallographyextension
   "${crystallographyextension_SRCS}"
   "${crystallographyextension_UIS}"
 )
-
-target_link_libraries(crystallographyextension spglib)
-add_dependencies(crystallographyextension spglib)
