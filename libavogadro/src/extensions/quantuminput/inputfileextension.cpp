@@ -25,6 +25,7 @@
 #include "inputfileextension.h"
 
 #include "abinitinputdialog.h"
+#include "espressoinputdialog.h"
 #include "daltoninputdialog.h"
 #include "gamessukinputdialog.h"
 #include "gaussianinputdialog.h"
@@ -95,6 +96,11 @@ namespace Avogadro
     m_actions.append(action);
 
     action = new QAction(this);
+    action->setText(tr("&Quantum Espresso..."));
+    action->setData("Espresso");
+    m_actions.append(action);
+
+    action = new QAction(this);
     action->setText(tr("&TeraChem..."));
     action->setData("TeraChem");
     m_actions.append(action);
@@ -111,6 +117,7 @@ namespace Avogadro
     m_hasDialog["MOPAC"] = false;
     m_hasDialog["NWChem"] = false;
     m_hasDialog["QChem"] = false;
+    m_hasDialog["Espresso"] = false;
     m_hasDialog["TeraChem"] = false;
 
     //connect(m_dialog["MOPAC"], SIGNAL(readOutput(QString)),
@@ -225,6 +232,8 @@ namespace Avogadro
       return new NWChemInputDialog(static_cast<QWidget*>(parent()));
     else if (name == "QChem")
       return new QChemInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "Espresso")
+      return new EspressoInputDialog(static_cast<QWidget*>(parent()));
     else if (name == "TeraChem")
       return new TeraChemInputDialog(static_cast<QWidget*>(parent()));
     return 0;

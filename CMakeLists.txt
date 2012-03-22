@@ -232,6 +232,15 @@ endif()
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
+option(Avogadro_USE_SYSTEM_SPGLIB "Use the system SPGLIB?" NO)
+if(Avogadro_USE_SYSTEM_SPGLIB)
+  #find_library(spglib symspg
+  #PATHS ${SPGLIB_LIBRARY_DIR} )
+  find_package(Spglib REQUIRED)
+  include_directories(${SPGLIB_INCLUDE_DIR})
+  add_definitions(-DSYSTEM_SPGLIB)
+  #target_link_libraries(AvoSpg ${SPGLIB_LIBRARY})
+endif()
 
 # Check if we are building from a Git clone or a released version
 function(git_version dir version_var)
