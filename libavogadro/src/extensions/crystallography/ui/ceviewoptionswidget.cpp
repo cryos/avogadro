@@ -22,8 +22,11 @@
 
 #include <avogadro/atom.h>
 #include <avogadro/camera.h>
+#include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/primitivelist.h>
+
+#include <QtGui/QColorDialog>
 
 #include <QtCore/QDebug>
 
@@ -33,7 +36,9 @@ namespace Avogadro
     : CEAbstractDockWidget(ext),
       m_glWidget(NULL),
       m_currentArea(Qt::NoDockWidgetArea),
-      m_ncc(NCC_Invalid)
+      m_ncc(NCC_Invalid),
+      m_colorDialog(0),
+      m_origColor(new QColor())
   {
     this->setPreferredDockWidgetArea(Qt::BottomDockWidgetArea);
 
@@ -60,6 +65,9 @@ namespace Avogadro
 
     connect(ui.combo_numCells, SIGNAL(currentIndexChanged(int)),
             this, SLOT(updateCellRenderOptions()));
+
+    connect(ui.push_changeColor, SIGNAL(clicked()),
+            this, SLOT(selectCellColor()));
 
     /*
     connect(ui.aButton, SIGNAL(clicked()),
@@ -96,6 +104,16 @@ namespace Avogadro
     int ncc = settings.value("crystallography/viewWidget/numCellChoice",
                              static_cast<int>(NCC_All)).toInt();
     ui.combo_numCells->setCurrentIndex(ncc);
+  }
+
+  CEViewOptionsWidget::~CEViewOptionsWidget()
+  {
+    if (m_colorDialog) {
+      this->rejectColor(); // This will delete the dialog, too
+    }
+
+    delete m_origColor;
+    m_origColor = NULL;
   }
 
   void CEViewOptionsWidget::updateRepeatCells()
@@ -209,6 +227,88 @@ namespace Avogadro
 
       m_glWidget->update();
     }
+  }
+
+  void CEViewOptionsWidget::selectCellColor()
+  {
+    if (m_colorDialog == NULL) {
+
+      if (!m_glWidget)
+        return;
+
+      // Get current color from GLWidget
+      *m_origColor = m_glWidget->unitCellColor().color();
+
+      m_colorDialog = new QColorDialog (this);
+      m_colorDialog->setWindowTitle(tr("Set Unit Cell Color"));
+      m_colorDialog->setOption(QColorDialog::ShowAlphaChannel);
+      m_colorDialog->setCurrentColor(*m_origColor);
+
+      // Interactive preview
+      connect(m_colorDialog, SIGNAL(currentColorChanged(QColor)),
+              this, SLOT(previewColor(QColor)));
+
+      // Keep or revert colors
+      connect(m_colorDialog, SIGNAL(accepted()),
+              this, SLOT(acceptColor()));
+      connect(m_colorDialog, SIGNAL(rejected()),
+              this, SLOT(rejectColor()));
+    }
+
+    m_colorDialog->show();
+  }
+
+  void CEViewOptionsWidget::previewColor(const QColor &color)
+  {
+    if (m_glWidget == NULL ||
+        m_colorDialog == NULL)
+      return;
+
+    m_glWidget->setUnitCellColor(color);
+    m_glWidget->update();
+  }
+
+  void CEViewOptionsWidget::acceptColor()
+  {
+    if (m_glWidget == NULL ||
+        m_colorDialog == NULL)
+      return;
+
+    // Store color for later
+    Color c = m_glWidget->unitCellColor();
+    QSettings settings;
+    settings.beginGroup("crystallographyextension/settings/cellColor");
+    settings.setValue("r", c.red());
+    settings.setValue("g", c.green());
+    settings.setValue("b", c.blue());
+    settings.setValue("a", c.alpha());
+    settings.endGroup();
+
+    m_glWidget->setUnitCellColor(m_colorDialog->currentColor());
+    m_glWidget->update();
+    this->cleanupColorDialog();
+  }
+
+  void CEViewOptionsWidget::rejectColor()
+  {
+    if (m_glWidget == NULL ||
+        m_colorDialog == NULL)
+      return;
+
+    m_glWidget->setUnitCellColor(*m_origColor);
+    m_glWidget->update();
+    this->cleanupColorDialog();
+  }
+
+  void CEViewOptionsWidget::cleanupColorDialog()
+  {
+    if (m_colorDialog == NULL)
+      return;
+
+    m_colorDialog->hide();
+    disconnect(m_colorDialog, NULL, this, NULL);
+    m_colorDialog->deleteLater();
+    m_colorDialog = NULL;
   }
 
   void CEViewOptionsWidget::cellChanged()

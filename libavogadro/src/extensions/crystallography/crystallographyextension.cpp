@@ -211,10 +211,12 @@ namespace Avogadro
     if (!m_molecule || !m_molecule->OBUnitCell()) {
       hideEditors();
       hideProperties();
+      hideUnitCellAxes();
       return;
     }
 
-    GLWidget::current()->setRenderUnitCellAxes(true);
+    // Show axes
+    this->showUnitCellAxes();
 
     // Connect molecule
     connect(m_molecule, SIGNAL(moleculeChanged()),
@@ -1794,6 +1796,38 @@ namespace Avogadro
     return true;
   }
 
+  void CrystallographyExtension::showUnitCellAxes()
+  {
+    GLWidget *currentGL = (m_glwidget != NULL) ? m_glwidget
+                                               : GLWidget::current();
+
+    if (currentGL == NULL)
+      return;
+
+    QSettings settings;
+    QColor cellColor;
+    settings.beginGroup("crystallographyextension/settings/cellColor");
+    cellColor.setRedF(  settings.value("r", 1.0).toFloat());
+    cellColor.setGreenF(settings.value("g", 1.0).toFloat());
+    cellColor.setBlueF( settings.value("b", 1.0).toFloat());
+    cellColor.setAlphaF(settings.value("a", 0.7).toFloat());
+    settings.endGroup();
+
+    currentGL->setUnitCellColor(cellColor);
+
+    currentGL->setRenderUnitCellAxes(true);
+  }
+
+  void CrystallographyExtension::hideUnitCellAxes()
+  {
+    GLWidget *currentGL = (m_glwidget != NULL) ? m_glwidget
+                                               : GLWidget::current();
+    if (currentGL == NULL)
+      return;
+
+    currentGL->setRenderUnitCellAxes(false);
+  }
+
   void CrystallographyExtension::createActions()
   {
 
@@ -2356,16 +2390,10 @@ namespace Avogadro
       pushUndo(new CEAddCellUndoCommand(m_molecule, cell, this));
       cell = 0; // Undo constructor takes ownership of cell.
       emit cellChanged();
-      showEditors();
-      GLWidget::current()->setRenderUnitCellAxes(true);
-      refreshActions();
     }
     else {
       pushUndo(new CERemoveCellUndoCommand(m_molecule, this));
       emit cellChanged();
-      hideEditors();
-      GLWidget::current()->setRenderUnitCellAxes(false);
-      refreshActions();
     }
   }
 

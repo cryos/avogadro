@@ -254,6 +254,8 @@ namespace Avogadro
       const Eigen::Matrix3d &in) const;
     void showPasteDialog(const QString &text);
     bool niggliReduce();
+    void showUnitCellAxes();
+    void hideUnitCellAxes();
 
   private:
     void createActions();
