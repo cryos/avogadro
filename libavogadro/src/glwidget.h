@@ -468,6 +468,11 @@ namespace Avogadro {
       int cCells();
 
       /**
+       * @return The color of the rendered unit cell.
+       */
+      Color unitCellColor() const;
+
+      /**
        * @return Whether to draw lattice edges for all repeated unit cells
        * (false) or only the original one (true).
        */
