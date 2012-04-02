@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-03-26 00:00-0400\n"
+"POT-Creation-Date: 2012-04-02 00:00-0400\n"
 "PO-Revision-Date: 2011-04-11 15:12+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1360,11 +1360,11 @@ msgstr "Cristallographie"
 msgid "Construct and analyze periodic structures."
 msgstr "Construire et analyser des structures périodiques."
 
-#: src/extensions/crystallography/crystalpastedialog.cpp:185
+#: src/extensions/crystallography/crystalpastedialog.cpp:198
 msgid "Cannot Parse Text"
 msgstr "Impossible d'analyser le texte"
 
-#: src/extensions/crystallography/crystalpastedialog.cpp:186
+#: src/extensions/crystallography/crystalpastedialog.cpp:199
 msgid ""
 "The input is not formatted as one of\n"
 "the following supported formats:\n"
@@ -1374,15 +1374,15 @@ msgstr ""
 "des formats supportés suivant :\n"
 "\n"
 
-#: src/extensions/crystallography/crystalpastedialog.cpp:188
+#: src/extensions/crystallography/crystalpastedialog.cpp:201
 msgid "VASP Format\n"
 msgstr "Format VASP\n"
 
-#: src/extensions/crystallography/crystalpastedialog.cpp:266
+#: src/extensions/crystallography/crystalpastedialog.cpp:297
 msgid "Bad Compostion"
 msgstr "Mauvaise composition"
 
-#: src/extensions/crystallography/crystalpastedialog.cpp:267
+#: src/extensions/crystallography/crystalpastedialog.cpp:298
 msgid ""
 "The identities field must contain the same number of space delimited entries "
 "as line 6 of the POSCAR."
