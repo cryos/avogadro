@@ -5,6 +5,7 @@ include_directories(
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
   ${NUMPY_INCLUDE_DIR}
+  ${SIP_INCLUDE_DIR}
 )
 
 # use all cpp files in this directory
@@ -34,6 +35,6 @@ option(INSTALL_PYTHON_MODULE
   "Install the avogadro python module for the system wide python installation."
   ON)
 if (INSTALL_PYTHON_MODULE)
-  install(TARGETS python-module DESTINATION ${PYTHON_LIB_PATH})
+  install(TARGETS python-module DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
