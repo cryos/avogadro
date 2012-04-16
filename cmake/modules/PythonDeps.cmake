@@ -56,11 +56,11 @@ else()
 
   # SIP
   message(STATUS "[5/5] SIP Module")
-  if (EXISTS ${PYTHON_INCLUDE_PATH}/sip.h)
+  find_package(SIP)
+  if (SIP_FOUND)
     message(STATUS "Found sip.h header...")
   else ()
     message(STATUS "sip.h header NOT found - Python support disabled")
-  #  message(STATUS "debian/ubuntu: install the python-sip4-dev package.")
     set(ALL_PYTHON_FOUND FALSE)
     return()
   endif()
