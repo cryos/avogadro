@@ -17,10 +17,9 @@
 
 #include "avospglib.h"
 
-#include "obeigenconv.h"
-
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
+#include <avogadro/obeigenconv.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>

@@ -305,6 +305,17 @@ namespace Avogadro {
       bool renderDebug();
 
       /**
+       * Set to render the modelview matrix along with the debugging overlay
+       */
+      void setRenderModelViewDebug(bool renderModelViewDebug);
+
+      /**
+       * @return true if the modelview matrix is to printed on the debug
+       * overlay
+       */
+      bool renderModelViewDebug() const;
+
+      /**
        * Set the ToolGroup of the GLWidget.
        */
       void setToolGroup(ToolGroup *toolGroup);
@@ -455,17 +466,17 @@ namespace Avogadro {
       /**
        * @return The number of unit cells to display along the a axis.
        */
-      int aCells();
+      int aCells() const;
 
       /**
        * @return The number of unit cells to display along the b axis.
        */
-      int bCells();
+      int bCells() const;
 
       /**
        * @return The number of unit cells to display along the c axis.
        */
-      int cCells();
+      int cCells() const;
 
       /**
        * @return The color of the rendered unit cell.

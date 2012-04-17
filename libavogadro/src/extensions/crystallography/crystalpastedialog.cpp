@@ -24,9 +24,8 @@
 
 #include "crystalpastedialog.h"
 
-#include "obeigenconv.h"
-
 #include <avogadro/atom.h>
+#include <avogadro/obeigenconv.h>
 
 #include <QtGui/QMessageBox>
 

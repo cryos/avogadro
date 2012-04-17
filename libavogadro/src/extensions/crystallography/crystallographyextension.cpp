@@ -30,7 +30,6 @@
 #include "avospglib.h"
 #include "crystalpastedialog.h"
 #include "ceundo.h"
-#include "obeigenconv.h"
 #include "stablecomparison.h"
 #include "ui/ceabstracteditor.h"
 #include "ui/cecoordinateeditor.h"
@@ -40,7 +39,9 @@
 #include "ui/ceviewoptionswidget.h"
 
 #include <avogadro/atom.h>
+#include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/obeigenconv.h>
 
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
@@ -237,6 +238,8 @@ namespace Avogadro
 
     showEditors();
     showProperties();
+    // Reset camera since GLWidget geometry may have changed.
+    GLWidget::current()->camera()->initializeViewPoint();
   }
 
   void CrystallographyExtension::writeSettings(QSettings &settings) const
@@ -2390,6 +2393,13 @@ namespace Avogadro
       pushUndo(new CEAddCellUndoCommand(m_molecule, cell, this));
       cell = 0; // Undo constructor takes ownership of cell.
       emit cellChanged();
+      showEditors();
+      GLWidget::current()->setRenderUnitCellAxes(true);
+      // Reset the camera if there are no atoms present
+      if (m_molecule->numAtoms() == 0) {
+        GLWidget::current()->camera()->initializeViewPoint();
+      }
+      refreshActions();
     }
     else {
       pushUndo(new CERemoveCellUndoCommand(m_molecule, this));

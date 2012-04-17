@@ -105,7 +105,7 @@ namespace Avogadro
   const double   ROTATION_SPEED                    = 0.005;
   const double   ZOOM_SPEED                        = 0.02;
   const double   MOUSE_WHEEL_SPEED                 = 0.1;
-  const double   CAMERA_MOL_RADIUS_MARGIN          = 10.0;
+  const double   CAMERA_MOL_RADIUS_MARGIN          = 3.0;
   const double   CAMERA_NEAR_DISTANCE              = 2.0;
   const int      SEL_BUF_MAX_SIZE                  = 262144;
   const int      SEL_BUF_MARGIN                    = 128;
