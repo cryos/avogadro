@@ -897,7 +897,7 @@ namespace Avogadro {
     const Vector3d v3 (obmat(2,0), obmat(2,1), obmat(2,2));
     Vector3d offset;
 
-    d->painter->setColor(d->cellColor.redF(), d->cellColor.greenF(), d->cellColor.blueF(), 0.7);
+    d->painter->setColor(&d->cellColor);
 
     if (d->onlyRenderOriginalUnitCell) {
       offset << 0.0, 0.0, 0.0;
@@ -2584,6 +2584,11 @@ namespace Avogadro {
   int GLWidget::cCells()
   {
     return d->cCells;
+  }
+
+  Color GLWidget::unitCellColor() const
+  {
+    return Color(d->cellColor);
   }
 
   bool GLWidget::onlyRenderOriginalUnitCell()

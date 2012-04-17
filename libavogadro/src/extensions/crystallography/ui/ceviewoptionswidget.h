@@ -21,6 +21,9 @@
 #include "ceabstractdockwidget.h"
 #include "ui_ceviewoptionswidget.h"
 
+class QColor;
+class QColorDialog;
+
 namespace Avogadro
 {
   class CrystallographyExtension;
@@ -32,7 +35,7 @@ namespace Avogadro
 
   public:
     CEViewOptionsWidget(CrystallographyExtension *ext);
-    ~CEViewOptionsWidget() {}
+    ~CEViewOptionsWidget();
 
     GLWidget * glWidget() const {return m_glWidget;}
 
@@ -53,6 +56,13 @@ namespace Avogadro
     void millerIndexChanged();
     void updateCellRenderOptions();
 
+    // Color selection
+    void selectCellColor();
+    void previewColor(const QColor &);
+    void acceptColor();
+    void rejectColor();
+    void cleanupColorDialog();
+
     void cellChanged();
 
     // used for floating state changes
@@ -61,11 +71,13 @@ namespace Avogadro
     // used for docking area changes
     void updateLayout(Qt::DockWidgetArea area);
 
-  private:
+  protected:
     Ui::CEViewOptionsWidget ui;
     GLWidget *m_glWidget;
     Qt::DockWidgetArea m_currentArea;
     NumCellChoice m_ncc;
+    QColorDialog *m_colorDialog;
+    QColor *m_origColor;
   };
 
 }
