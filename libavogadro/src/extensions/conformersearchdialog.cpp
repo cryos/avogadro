@@ -44,6 +44,7 @@ namespace Avogadro {
     connect(ui.systematicRadio, SIGNAL( toggled(bool) ), this, SLOT( systematicToggled(bool) ));
     connect(ui.randomRadio, SIGNAL( toggled(bool) ), this, SLOT( randomToggled(bool) ));
     connect(ui.weightedRadio, SIGNAL( toggled(bool) ), this, SLOT( weightedToggled(bool) ));
+    connect(ui.geneticRadio, SIGNAL( toggled(bool) ), this, SLOT( geneticToggled(bool) ));
 
     m_method = 1; // systematic
     m_numConformers = 100;
@@ -53,6 +54,11 @@ namespace Avogadro {
     ui.systematicRadio->setChecked(true);
     ui.randomRadio->setChecked(false);
     ui.weightedRadio->setChecked(false);
+    ui.geneticRadio->setChecked(false);
+    ui.childrenSpinBox->setEnabled(false);
+    ui.mutabilitySpinBox->setEnabled(false);
+    ui.convergenceSpinBox->setEnabled(false);
+    ui.scoringComboBox->setEnabled(false);
   }
 
   ConformerSearchDialog::~ConformerSearchDialog()
@@ -70,6 +76,12 @@ namespace Avogadro {
       ui.systematicRadio->setChecked(true);
       ui.randomRadio->setChecked(false);
       ui.weightedRadio->setChecked(false);
+      ui.geneticRadio->setChecked(false);
+      ui.childrenSpinBox->setEnabled(false);
+      ui.mutabilitySpinBox->setEnabled(false);
+      ui.convergenceSpinBox->setEnabled(false);
+      ui.scoringComboBox->setEnabled(false);
+
       OpenBabel::OBRotorList rl;
       OpenBabel::OBMol obmol = m_molecule->OBMol();
       rl.Setup(obmol);
@@ -100,6 +112,11 @@ namespace Avogadro {
       ui.systematicRadio->setChecked(false);
       ui.randomRadio->setChecked(true);
       ui.weightedRadio->setChecked(false);
+      ui.geneticRadio->setChecked(false);
+      ui.childrenSpinBox->setEnabled(false);
+      ui.mutabilitySpinBox->setEnabled(false);
+      ui.convergenceSpinBox->setEnabled(false);
+      ui.scoringComboBox->setEnabled(false);
       ui.numSpin->setEnabled(true);
       ui.numSpin->setValue(100);
     }
@@ -112,8 +129,30 @@ namespace Avogadro {
       ui.systematicRadio->setChecked(false);
       ui.randomRadio->setChecked(false);
       ui.weightedRadio->setChecked(true);
+      ui.geneticRadio->setChecked(false);
+      ui.childrenSpinBox->setEnabled(false);
+      ui.mutabilitySpinBox->setEnabled(false);
+      ui.convergenceSpinBox->setEnabled(false);
+      ui.scoringComboBox->setEnabled(false);
       ui.numSpin->setEnabled(true);
       ui.numSpin->setValue(100);
+    }
+  }
+
+  void ConformerSearchDialog::geneticToggled(bool checked)
+  {
+    if (checked) {
+      m_method = 4;
+      ui.systematicRadio->setChecked(false);
+      ui.randomRadio->setChecked(false);
+      ui.weightedRadio->setChecked(false);
+      ui.geneticRadio->setChecked(true);
+      ui.childrenSpinBox->setEnabled(true);
+      ui.mutabilitySpinBox->setEnabled(true);
+      ui.convergenceSpinBox->setEnabled(true);
+      ui.scoringComboBox->setEnabled(true);
+      ui.numSpin->setEnabled(true);
+      ui.numSpin->setValue(50);
     }
   }
  
@@ -149,8 +188,17 @@ namespace Avogadro {
     //  qDebug() << "ConformerSearchDialog::accept()";
     m_numConformers = ui.numSpin->value();
 
-    ((ForceFieldCommand*)m_forceFieldCommand)->setTask(m_method);
-    ((ForceFieldCommand*)m_forceFieldCommand)->setNumConformers(m_numConformers);
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)->setTask(m_method);
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setNumConformers(m_numConformers);
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setNumChildren(ui.childrenSpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setMutability(ui.mutabilitySpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setConvergence(ui.convergenceSpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setMethod(ui.scoringComboBox->currentIndex());
     m_forceFieldCommand->redo();
     
 
