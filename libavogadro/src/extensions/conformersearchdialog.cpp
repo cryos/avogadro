@@ -138,7 +138,7 @@ namespace Avogadro {
       ui.numSpin->setValue(100);
     }
   }
-  
+
   void ConformerSearchDialog::geneticToggled(bool checked)
   {
     if (checked) {
@@ -188,12 +188,17 @@ namespace Avogadro {
     //  qDebug() << "ConformerSearchDialog::accept()";
     m_numConformers = ui.numSpin->value();
 
-    ((ForceFieldCommand*)m_forceFieldCommand)->setTask(m_method);
-    ((ForceFieldCommand*)m_forceFieldCommand)->setNumConformers(m_numConformers);
-    ((ForceFieldCommand*)m_forceFieldCommand)->setNumChildren(ui.childrenSpinBox->value());
-    ((ForceFieldCommand*)m_forceFieldCommand)->setMutability(ui.mutabilitySpinBox->value());
-    ((ForceFieldCommand*)m_forceFieldCommand)->setConvergence(ui.convergenceSpinBox->value());
-    ((ForceFieldCommand*)m_forceFieldCommand)->setMethod(ui.scoringComboBox->currentIndex());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)->setTask(m_method);
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setNumConformers(m_numConformers);
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setNumChildren(ui.childrenSpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setMutability(ui.mutabilitySpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setConvergence(ui.convergenceSpinBox->value());
+    static_cast<ForceFieldCommand*>(m_forceFieldCommand)
+      ->setMethod(ui.scoringComboBox->currentIndex());
     m_forceFieldCommand->redo();
     
 

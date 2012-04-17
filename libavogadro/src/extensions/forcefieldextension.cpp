@@ -678,7 +678,7 @@ namespace Avogadro
         m_dialog = new QProgressDialog( QObject::tr( "Genetic Algorithm Search" ),
                                         QObject::tr( "Cancel" ), 0,  0 );
         m_dialog->show();
-      } 
+      }
 
       QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
       QObject::connect( m_dialog, SIGNAL( canceled() ), m_thread, SLOT( stop() ) );
