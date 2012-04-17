@@ -45,7 +45,8 @@ namespace Avogadro
 
     enum TranslateMode {
       TM_VECTOR = 0,
-      TM_ATOM
+      TM_ATOM_TO_ORIGIN,
+      TM_ATOM_TO_CELL_CENTER
     };
 
   public slots:

@@ -561,6 +561,13 @@ namespace Avogadro
   void SurfaceExtension::calculate()
   {
     qDebug() << "Calculate called!";
+    // ESP cubes are not supported -- show an error and bail
+    if (m_surfaceDialog->cubeType() == Cube::ESP) {
+      QMessageBox::critical(m_surfaceDialog, tr("Error"),
+                            tr("Electrostatic potential surfaces are not yet "
+                               "supported."));
+      return;
+    }
     m_calculationPhase = 0;
     m_cube = 0;
     m_qube = 0;
