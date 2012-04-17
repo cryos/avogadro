@@ -36,6 +36,13 @@ namespace Avogadro
 
     GLWidget * glWidget() const {return m_glWidget;}
 
+    enum NumCellChoice {
+      NCC_Invalid = -1,
+      NCC_None = 0,
+      NCC_One,
+      NCC_All
+    };
+
   public slots:
     void setGLWidget(GLWidget *g) {m_glWidget = g;}
 
@@ -43,8 +50,8 @@ namespace Avogadro
     void updateRepeatCells();
     void updateCamera();
     void updateMillerPlane();
-
     void millerIndexChanged();
+    void updateCellRenderOptions();
 
     void cellChanged();
 
@@ -58,6 +65,7 @@ namespace Avogadro
     Ui::CEViewOptionsWidget ui;
     GLWidget *m_glWidget;
     Qt::DockWidgetArea m_currentArea;
+    NumCellChoice m_ncc;
   };
 
 }
