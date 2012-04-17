@@ -201,21 +201,29 @@ namespace Avogadro
     // Render selections when not renderquick
     Color *map = colorMap();
     if (!map) map = pd->colorMap();
+    Color selectionMap;
+    selectionMap.setToSelectionColor();
 
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
     foreach(const Atom *a, atoms()) {
       // First render the atom if it is transparent.
       if (m_alpha < 0.999 && m_alpha > 0.001) {
-        map->setFromPrimitive(a);
-        map->setAlpha(m_alpha);
-        pd->painter()->setColor(map);
+        if (a->customColorName().isEmpty()) {
+          map->setFromPrimitive(a);
+          map->setAlpha(m_alpha);
+          pd->painter()->setColor( map );
+        }
+        else {
+          QColor customColor (a->customColorName());
+          customColor.setAlphaF(m_alpha);
+          pd->painter()->setColor(&customColor);
+        }
         pd->painter()->drawSphere(a->pos(), radius(a));
       }
       // If the atom is selected render the selection
       if (pd->isSelected(a)) {
-        map->setToSelectionColor();
-        pd->painter()->setColor(map);
+        pd->painter()->setColor(&selectionMap);
         pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
       }
     }
@@ -246,21 +254,34 @@ namespace Avogadro
 
       // The "inner" bond has to be rendered first.
       if (m_alpha < 0.999 && m_alpha > 0.001) {
-        map->setFromPrimitive(atom1);
-        map->setAlpha(m_alpha);
-        pd->painter()->setColor( map );
+        if (atom1->customColorName().isEmpty()) {
+          map->setFromPrimitive(atom1);
+          map->setAlpha(m_alpha);
+          pd->painter()->setColor( map );
+        }
+        else {
+          QColor customColor (atom1->customColorName());
+          customColor.setAlphaF(m_alpha);
+          pd->painter()->setColor(&customColor);
+        }
         pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
-        map->setFromPrimitive(atom2);
-        map->setAlpha(m_alpha);
-        pd->painter()->setColor( map );
+        if (atom2->customColorName().isEmpty()) {
+          map->setFromPrimitive(atom2);
+          map->setAlpha(m_alpha);
+          pd->painter()->setColor( map );
+        }
+        else {
+          QColor customColor (atom2->customColorName());
+          customColor.setAlphaF(m_alpha);
+          pd->painter()->setColor(&customColor);
+        }
         pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
       }
 
       // Render the selected bond.
       if (pd->isSelected(b)) {
-        map->setToSelectionColor();
-        pd->painter()->setColor(map);
+        pd->painter()->setColor(&selectionMap);
         pd->painter()->drawMultiCylinder( v1, v2,
                            SEL_BOND_EXTRA_RADIUS + m_bondRadius, order, shift );
       }

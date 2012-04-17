@@ -61,7 +61,25 @@ namespace Avogadro {
     m_channels[3] = alpha;
   }
 
-  Color::Color( const Primitive *p ): d(0)
+  Color::Color(const QColor &qcolor) : d(0)
+  {
+    m_channels[0] = static_cast<float>(qcolor.redF());
+    m_channels[1] = static_cast<float>(qcolor.greenF());
+    m_channels[2] = static_cast<float>(qcolor.blueF());
+    m_channels[3] = static_cast<float>(qcolor.alphaF());
+  }
+
+  Color::Color(const Color &c) : Plugin(NULL), d(0)
+  {
+    this->m_channels[0] = c.m_channels[0];
+    this->m_channels[1] = c.m_channels[1];
+    this->m_channels[2] = c.m_channels[2];
+    this->m_channels[3] = c.m_channels[3];
+
+    this->m_name = c.m_name;
+  }
+
+  Color::Color( const Primitive *p ) : d(0)
   {
     setFromPrimitive(p);
   }

@@ -400,6 +400,8 @@ namespace Avogadro
         return "d2";
       case D3:
         return "d3";
+      default:
+	return "no";
     }
   }
 

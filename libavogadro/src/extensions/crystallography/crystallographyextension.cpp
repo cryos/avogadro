@@ -36,6 +36,7 @@
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
 #include "ui/cetranslatewidget.h"
+#include "ui/ceviewoptionswidget.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/camera.h>
@@ -63,7 +64,9 @@ namespace Avogadro
   CrystallographyExtension::CrystallographyExtension(QObject *parent)
     : Extension( parent ),
       m_mainwindow(0),
+      m_glwidget(0),
       m_translateWidget(0),
+      m_viewOptionsWidget(0),
       m_molecule(0),
       m_displayProperties(false),
       m_latticeProperty(0),
@@ -94,6 +97,7 @@ namespace Avogadro
       return;
     }
 
+    createDockWidgets();
     createActions();
     QSettings settings;
     readSettings(settings);
@@ -187,6 +191,8 @@ namespace Avogadro
     case MatrixRowVectorsIndex:
     case MatrixColumnVectorsIndex:
       return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Matrix Display");
+    case ViewOptionsIndex:
+      return tr("&View");
     default:
       qDebug() << "Unknown action...";
       return "";
@@ -206,10 +212,12 @@ namespace Avogadro
     if (!m_molecule || !m_molecule->OBUnitCell()) {
       hideEditors();
       hideProperties();
+      hideUnitCellAxes();
       return;
     }
 
-    GLWidget::current()->setRenderUnitCellAxes(true);
+    // Show axes
+    this->showUnitCellAxes();
 
     // Connect molecule
     connect(m_molecule, SIGNAL(moleculeChanged()),
@@ -304,8 +312,11 @@ namespace Avogadro
   }
 
   QUndoCommand* CrystallographyExtension::performAction(QAction *action,
-                                                       GLWidget *widget)
+                                                        GLWidget *widget)
   {
+    if (m_glwidget != widget) {
+      m_glwidget = widget;
+    }
     switch (static_cast<ActionIndex>(action->data().toInt())) {
     case PerceiveSpacegroupIndex:
       actionPerceiveSpacegroup();
@@ -335,7 +346,10 @@ namespace Avogadro
       actionWrapAtoms();
       break;
     case TranslateAtomsIndex:
-      actionTranslateAtoms(widget);
+      actionTranslateAtoms();
+      break;
+    case ViewOptionsIndex:
+      actionViewOptions();
       break;
     case OrientStandardIndex:
       actionOrientStandard();
@@ -407,30 +421,9 @@ namespace Avogadro
     GLWidget::current()->undoStack()->push(comm);
   }
 
-  void CrystallographyExtension::initializeEditors()
-  {
-    if (m_editors.size()) {
-      qDebug() << "Editors already initialized.";
-      return;
-    }
-    m_editors.append(new CEParameterEditor(this, m_mainwindow));
-    m_editors.append(new CEMatrixEditor(this, m_mainwindow));
-    m_editors.append(new CECoordinateEditor(this, m_mainwindow));
-    refreshEditors();
-    for (QList<CEAbstractEditor*>::const_iterator
-           it = m_editors.constBegin(),
-           it_end = m_editors.constEnd();
-         it != it_end; ++it) {
-      m_mainwindow->addDockWidget((*it)->preferredDockWidgetArea(), *it);
-      (*it)->setVisible(false);
-    }
-  }
-
   void CrystallographyExtension::showEditors()
   {
-    if (!m_editors.size()) {
-      initializeEditors();
-    }
+    refreshEditors();
     for (QList<CEAbstractEditor*>::const_iterator
            it = m_editors.constBegin(),
            it_end = m_editors.constEnd();
@@ -442,9 +435,6 @@ namespace Avogadro
 
   void CrystallographyExtension::hideEditors()
   {
-    if (!m_editors.size()) {
-      initializeEditors();
-    }
     for (QList<CEAbstractEditor*>::const_iterator
            it = m_editors.constBegin(),
            it_end = m_editors.constEnd();
@@ -454,13 +444,9 @@ namespace Avogadro
     getAction(ToggleEditorsIndex)->setText(tr("Show &Editors"));
   }
 
-
   void CrystallographyExtension::lockEditors()
   {
     // Lock all editors other than the sender
-    if (!m_editors.size()) {
-      initializeEditors();
-    }
     for (QList<CEAbstractEditor*>::iterator
            it = m_editors.begin(),
            it_end = m_editors.end();
@@ -474,9 +460,6 @@ namespace Avogadro
   void CrystallographyExtension::unlockEditors()
   {
     // Unlock all editors
-    if (!m_editors.size()) {
-      initializeEditors();
-    }
     for (QList<CEAbstractEditor*>::iterator
            it = m_editors.begin(),
            it_end = m_editors.end();
@@ -503,9 +486,6 @@ namespace Avogadro
       return;
     }
     // refresh all editors
-    if (!m_editors.size()) {
-      initializeEditors();
-    }
     m_editorRefreshPending = false;
     for (QList<CEAbstractEditor*>::iterator
            it = m_editors.begin(),
@@ -538,7 +518,6 @@ namespace Avogadro
 
     // Set text
     refreshProperties();
-
     // Create list to ensure that labels are added consecutively
     QList<QLabel*> list;
     list.append(m_latticeProperty);
@@ -677,9 +656,6 @@ namespace Avogadro
 
     // Editors toggle:
     bool editorsVisible = false;
-    if (hasCell && !m_editors.size()) {
-      initializeEditors();
-    }
 
     for (QList<CEAbstractEditor*>::const_iterator
            it = m_editors.constBegin(),
@@ -1823,6 +1799,38 @@ namespace Avogadro
     return true;
   }
 
+  void CrystallographyExtension::showUnitCellAxes()
+  {
+    GLWidget *currentGL = (m_glwidget != NULL) ? m_glwidget
+                                               : GLWidget::current();
+
+    if (currentGL == NULL)
+      return;
+
+    QSettings settings;
+    QColor cellColor;
+    settings.beginGroup("crystallographyextension/settings/cellColor");
+    cellColor.setRedF(  settings.value("r", 1.0).toFloat());
+    cellColor.setGreenF(settings.value("g", 1.0).toFloat());
+    cellColor.setBlueF( settings.value("b", 1.0).toFloat());
+    cellColor.setAlphaF(settings.value("a", 0.7).toFloat());
+    settings.endGroup();
+
+    currentGL->setUnitCellColor(cellColor);
+
+    currentGL->setRenderUnitCellAxes(true);
+  }
+
+  void CrystallographyExtension::hideUnitCellAxes()
+  {
+    GLWidget *currentGL = (m_glwidget != NULL) ? m_glwidget
+                                               : GLWidget::current();
+    if (currentGL == NULL)
+      return;
+
+    currentGL->setRenderUnitCellAxes(false);
+  }
+
   void CrystallographyExtension::createActions()
   {
 
@@ -2135,6 +2143,39 @@ namespace Avogadro
     ag->addAction(a);
     CE_CACTION_DEBUG(MatrixColumnVectorsIndex);
     CE_CACTION_ASSERT(MatrixColumnVectorsIndex);
+
+    // ViewOptionIndex
+    a = new QAction(tr("&Crystal View Options..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(ViewOptionsIndex);
+    CE_CACTION_ASSERT(ViewOptionsIndex);
+  }
+
+  void CrystallographyExtension::createDockWidgets()
+  {
+    if (!m_translateWidget) {
+      m_translateWidget = new CETranslateWidget (this);
+
+      m_translateWidget->hide();
+      m_dockWidgets.append(m_translateWidget);
+    }
+    if (!m_viewOptionsWidget) {
+      m_viewOptionsWidget = new CEViewOptionsWidget(this);
+
+      m_viewOptionsWidget->hide();
+      m_dockWidgets.append(m_viewOptionsWidget);
+    }
+    if (!m_editors.size()) {
+      m_editors.append(new CEParameterEditor(this));
+      m_editors.append(new CEMatrixEditor(this));
+      m_editors.append(new CECoordinateEditor(this));
+
+      foreach (DockWidget *widget, m_editors) {
+        widget->hide();
+        m_dockWidgets.append(widget);
+      }
+    }
   }
 
   void CrystallographyExtension::actionPerceiveSpacegroup()
@@ -2363,9 +2404,6 @@ namespace Avogadro
     else {
       pushUndo(new CERemoveCellUndoCommand(m_molecule, this));
       emit cellChanged();
-      hideEditors();
-      GLWidget::current()->setRenderUnitCellAxes(false);
-      refreshActions();
     }
   }
 
@@ -2416,15 +2454,16 @@ namespace Avogadro
                                 tr("Wrap Atoms To Cell")));
   }
 
-  void CrystallographyExtension::actionTranslateAtoms(GLWidget *gl)
+  void CrystallographyExtension::actionTranslateAtoms()
   {
-    if (!m_translateWidget) {
-      m_translateWidget = new CETranslateWidget (this, m_mainwindow, gl);
-      m_mainwindow->addDockWidget
-        (m_translateWidget->preferredDockWidgetArea(),
-         m_translateWidget);
-    }
+    m_translateWidget->setGLWidget(m_glwidget);
     m_translateWidget->show();
+  }
+
+  void CrystallographyExtension::actionViewOptions()
+  {
+    m_viewOptionsWidget->setGLWidget(m_glwidget);
+    m_viewOptionsWidget->show();
   }
 
   void CrystallographyExtension::actionOrientStandard()

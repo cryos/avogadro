@@ -772,19 +772,6 @@ protected:
       d->glWidget->setQuickRender(quick);
   }
 
-  bool MainWindow::renderUnitCellAxes() const
-  {
-    // Is the current widget showing a unit cell frame?
-    return d->glWidget->renderUnitCellAxes();
-  }
-
-  void MainWindow::setRenderUnitCellAxes(bool render)
-  {
-    ui.actionDisplayUnitCellAxes->setChecked(render);
-    if (d->glWidget && d->glWidget->renderUnitCellAxes() != render)
-      d->glWidget->setRenderUnitCellAxes(render);
-  }
-
   void MainWindow::showAllMolecules(bool)
   {
     if (!d->allMoleculesDialog)
@@ -1317,17 +1304,6 @@ protected:
       */
 
       QApplication::restoreOverrideCursor();
-
-      // If there's a unit cell, by default, draw the cell axes
-      if (d->molecule->OBUnitCell() != NULL) {
-        setRenderUnitCellAxes(true);
-      }
-      // Check if this is a PDB file -- by default we do not show the unit cell
-      QFileInfo info(d->moleculeFile->fileName());
-      if (d->moleculeFile->fileType().contains("PDB", Qt::CaseInsensitive)
-          || info.completeSuffix().contains("PDB", Qt::CaseInsensitive)) {
-        setRenderUnitCellAxes(false);
-      }
 
       QString status;
       QTextStream( &status ) << tr("Atoms: ") << d->molecule->numAtoms() <<
@@ -1907,7 +1883,6 @@ protected:
         int idx =d->glWidgets.indexOf(glWidget);
         d->enginesStacked->setCurrentIndex(idx);
         ui.actionDisplayAxes->setChecked(renderAxes());
-        ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
         ui.actionDebugInformation->setChecked(renderDebug());
         ui.actionQuickRender->setChecked(quickRender());
         break;
@@ -1925,7 +1900,6 @@ protected:
     int index = d->glWidgets.indexOf(glWidget);
     d->enginesStacked->setCurrentIndex(index);
     ui.actionDisplayAxes->setChecked(renderAxes());
-    ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
   }
@@ -2574,7 +2548,6 @@ protected:
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
-    ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
     ui.actionQuickRender->setChecked(gl->quickRender());
     writeSettings();
@@ -2607,7 +2580,6 @@ protected:
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
-    ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
     ui.actionQuickRender->setChecked(gl->quickRender());
 
@@ -3017,8 +2989,6 @@ protected:
              this, SLOT( setOrthographic() ) );
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
             this, SLOT(setRenderAxes(bool)));
-    connect(ui.actionDisplayUnitCellAxes, SIGNAL(triggered(bool)),
-            this, SLOT(setRenderUnitCellAxes(bool)));
     connect(ui.actionDebugInformation, SIGNAL(triggered(bool)),
             this, SLOT(setRenderDebug(bool)));
     connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
@@ -3287,7 +3257,6 @@ protected:
 
     // Set the view conditions for the initial view
     ui.actionDisplayAxes->setChecked(renderAxes());
-    ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
 
@@ -3434,7 +3403,11 @@ protected:
         QList<DockWidget *> widgets = extension->dockWidgets();
         for (QList<DockWidget*>::const_iterator it = widgets.constBegin(),
              it_end = widgets.constEnd(); it != it_end; ++it) {
-          this->addDockWidget((*it)->preferredWidgetDockArea(), *it);
+          if (!this->restoreDockWidget(*it)) {
+            // No restore state -- use the preferred area
+            this->removeDockWidget((*it));
+            this->addDockWidget((*it)->preferredWidgetDockArea(), *it);
+          }
           (*it)->hide();
           ui.menuToolbars->addAction((*it)->toggleViewAction());
         }
@@ -3451,7 +3424,11 @@ protected:
           qDebug() << "dev warning: Extension" << extension->name()
                    << "is using a deprecated DockWidget loading method. "
                       "See Extension::dockWidgets() documentation.";
-          addDockWidget(area, dockWidget);
+          if (!restoreDockWidget(dockWidget)) {
+            // No restore state -- use the preferred area
+            removeDockWidget(dockWidget);
+            addDockWidget(area, dockWidget);
+          }
           dockWidget->hide();
           ui.menuToolbars->addAction(dockWidget->toggleViewAction());
         }
@@ -3594,8 +3571,6 @@ protected:
              gl, SLOT( setMolecule( Molecule * ) ) );
     connect(gl, SIGNAL(activated(GLWidget *)),
             this, SLOT(glWidgetActivated(GLWidget *)));
-    connect(gl, SIGNAL(unitCellAxesRenderChanged(bool)),
-            this, SLOT(setRenderUnitCellAxes(bool)));
 
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));

@@ -76,7 +76,6 @@ namespace Avogadro {
       bool renderAxes() const;
       bool renderDebug() const;
       bool quickRender() const;
-      bool renderUnitCellAxes() const;
 
       /**
        * Return projection type in GLWiget
@@ -169,7 +168,6 @@ namespace Avogadro {
       void setRenderAxes(bool render);
       void setRenderDebug(bool render);
       void setQuickRender(bool quick);
-      void setRenderUnitCellAxes(bool render);
       void showAllMolecules(bool show);
 
       void undoStackClean(bool clean);

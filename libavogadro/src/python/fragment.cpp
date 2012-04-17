@@ -10,7 +10,7 @@ using namespace Avogadro;
 
 void export_Fragment()
 { 
- 
+
   class_<Avogadro::Fragment, bases<Avogadro::Primitive>, boost::noncopyable>("Fragment", no_init)
     //
     // read/write properties
@@ -23,12 +23,12 @@ void export_Fragment()
     //
     // read-only properties
     //
-    .add_property("atoms", 
-        &Fragment::atoms, 
+    .add_property("atoms",
+        &Fragment::atoms,
         "List of the unique ids of the atoms in this Fragment.")
 
-    .add_property("bonds", 
-        &Fragment::bonds, 
+    .add_property("bonds",
+        &Fragment::bonds,
         "List of the unique ids of the bonds in this Fragment.")
 
     // 

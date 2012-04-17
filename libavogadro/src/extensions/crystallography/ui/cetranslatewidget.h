@@ -38,14 +38,19 @@ namespace Avogadro
     Q_OBJECT
 
   public:
-    CETranslateWidget(CrystallographyExtension *ext, QMainWindow *w,
-                      GLWidget *gl);
+    CETranslateWidget(CrystallographyExtension *ext);
     virtual ~CETranslateWidget();
+
+    GLWidget *glWidget() const {return m_gl;}
 
     enum TranslateMode {
       TM_VECTOR = 0,
-      TM_ATOM
+      TM_ATOM_TO_ORIGIN,
+      TM_ATOM_TO_CELL_CENTER
     };
+
+  public slots:
+    void setGLWidget(GLWidget *gl) {m_gl = gl;}
 
   signals:
     // Too many/few atoms selected
@@ -68,6 +73,8 @@ namespace Avogadro
   protected:
     void readSettings();
     void writeSettings();
+
+    void showEvent(QShowEvent *);
 
     Eigen::Vector3d m_vector;
     QTimer m_selectionTimer;

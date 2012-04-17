@@ -49,11 +49,6 @@ avogadro_plugin_nogl(invertchiralextension invertchiralextension.cpp)
 ### Selections
 avogadro_plugin_nogl(selectextension selectextension.cpp)
 
-### unit cells
-avogadro_plugin_nogl(unitcellextension
-  "unitcellextension.cpp;unitcellparamdialog.cpp"
-  unitcellparamdialog.ui)
-
 ### insert fragment
 avogadro_plugin_nogl(insertfragmentextension
   "insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp;sortfiltertreeproxymodel.cpp"

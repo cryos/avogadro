@@ -453,6 +453,12 @@ namespace Avogadro {
        void setUnitCellColor(const QColor c);
 
       /**
+         * @param b Whether to draw lattice edges for all repeated unit cells
+         * (false) or only the original one (true).
+         */
+       void setOnlyRenderOriginalUnitCell(bool b);
+
+       /**
        * Clear the unit cell data.
        */
       void clearUnitCell();
@@ -471,6 +477,17 @@ namespace Avogadro {
        * @return The number of unit cells to display along the c axis.
        */
       int cCells() const;
+
+      /**
+       * @return The color of the rendered unit cell.
+       */
+      Color unitCellColor() const;
+
+      /**
+       * @return Whether to draw lattice edges for all repeated unit cells
+       * (false) or only the original one (true).
+       */
+      bool onlyRenderOriginalUnitCell();
 
       /**
        * The type of projection

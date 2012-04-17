@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-02-06 00:00-0500\n"
+"POT-Creation-Date: 2012-04-16 00:00-0400\n"
 "PO-Revision-Date: 2011-03-22 14:53+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1097 src/mainwindow.cpp:1147
 #: src/mainwindow.cpp:1169 src/mainwindow.cpp:1340 src/mainwindow.cpp:1362
 #: src/mainwindow.cpp:1516 src/mainwindow.cpp:1749 src/mainwindow.cpp:3135
-#: src/mainwindow.cpp:3667:69
+#: src/mainwindow.cpp:3675:69
 msgid "Avogadro"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3685 src/mainwindow.cpp:3702:390 rc.cpp:402
+#: src/mainwindow.cpp:3693 src/mainwindow.cpp:3710:390 rc.cpp:402
 msgid "Settings"
 msgstr ""
 
@@ -382,47 +382,47 @@ msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
-#: src/mainwindow.cpp:3621
+#: src/mainwindow.cpp:3629
 msgid "Add"
 msgstr ""
 
-#: src/mainwindow.cpp:3626
+#: src/mainwindow.cpp:3634
 msgid "Duplicate"
 msgstr ""
 
-#: src/mainwindow.cpp:3631
+#: src/mainwindow.cpp:3639
 msgid "Remove"
 msgstr ""
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3667
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3661
+#: src/mainwindow.cpp:3669
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3663
+#: src/mainwindow.cpp:3671
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3664
+#: src/mainwindow.cpp:3672
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3708
+#: src/mainwindow.cpp:3716
 msgid "Objects"
 msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3714:330
+#: src/mainwindow.cpp:3722:330
 msgid "Colors"
 msgstr ""
 
-#: src/mainwindow.cpp:3747
+#: src/mainwindow.cpp:3755
 msgid " copy"
 msgstr ""
 
