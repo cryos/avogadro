@@ -110,6 +110,7 @@ namespace Avogadro
             (ui.combo_translateMode->currentIndex())) {
 
     // Translating by an arbitrary vector
+    default:
     case TM_VECTOR:
       // Disable selection monitor
       m_selectionTimer.stop();
@@ -126,8 +127,9 @@ namespace Avogadro
       m_vector.z() = ui.spin_z->value();
       break;
 
-    // If moving an atom the origin, check for a single selected atom
-    case TM_ATOM:
+    // If we need an atom, check for selections.
+    case TM_ATOM_TO_ORIGIN:
+    case TM_ATOM_TO_CELL_CENTER:
       // Start selection monitor
       m_selectionTimer.start(500);
 
@@ -206,23 +208,45 @@ namespace Avogadro
          it != it_end; ++it) {
       m_vector += (*qobject_cast<Atom* const>(*it)->pos());
     }
-    m_vector /= -static_cast<double>(atoms.size());
+    m_vector /= static_cast<double>(atoms.size());
+
+    switch (static_cast<TranslateMode>
+            (ui.combo_translateMode->currentIndex())) {
+    default:
+    case Avogadro::CETranslateWidget::TM_VECTOR:
+      // Shouldn't happen, but just in case...
+      m_selectionTimer.stop();
+      this->enableVectorEditor();
+      break;
+    case Avogadro::CETranslateWidget::TM_ATOM_TO_ORIGIN:
+      m_vector = -m_vector;
+      break;
+    case Avogadro::CETranslateWidget::TM_ATOM_TO_CELL_CENTER:
+      // Calculate center of unit cell
+      const Eigen::Matrix3d cellRowMatrix = m_ext->currentCellMatrix();
+      const Eigen::Vector3d center = 0.5 *
+          (cellRowMatrix.row(0) + cellRowMatrix.row(1) + cellRowMatrix.row(2));
+
+      // Calculate necessary translation
+      m_vector = center - m_vector;
+      break;
+    }
 
     updateGui();
   }
 
   void CETranslateWidget::disableVectorEditor()
   {
-    ui.spin_x->setReadOnly(true);
-    ui.spin_y->setReadOnly(true);
-    ui.spin_z->setReadOnly(true);
+    ui.spin_x->setDisabled(true);
+    ui.spin_y->setDisabled(true);
+    ui.spin_z->setDisabled(true);
   }
 
   void CETranslateWidget::enableVectorEditor()
   {
-    ui.spin_x->setReadOnly(false);
-    ui.spin_y->setReadOnly(false);
-    ui.spin_z->setReadOnly(false);
+    ui.spin_x->setDisabled(false);
+    ui.spin_y->setDisabled(false);
+    ui.spin_z->setDisabled(false);
   }
 
   void CETranslateWidget::setError(const QString &err)
