@@ -5,6 +5,7 @@ include_directories(
   ${BOOST_PYTHON_INCLUDES}
   ${PYTHON_INCLUDE_PATH}
   ${NUMPY_INCLUDE_DIR}
+  ${SIP_INCLUDE_DIR}
 )
 
 # use all cpp files in this directory
