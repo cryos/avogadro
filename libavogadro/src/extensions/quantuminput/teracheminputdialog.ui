@@ -210,7 +210,7 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>Coordiantes</string>
+        <string>Coordinates</string>
        </property>
       </widget>
      </item>
