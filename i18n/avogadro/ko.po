@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-04-16 00:00-0400\n"
+"POT-Creation-Date: 2012-04-23 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 14:01+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -39,10 +39,10 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1097 src/mainwindow.cpp:1147
-#: src/mainwindow.cpp:1169 src/mainwindow.cpp:1340 src/mainwindow.cpp:1362
-#: src/mainwindow.cpp:1516 src/mainwindow.cpp:1749 src/mainwindow.cpp:3135
-#: src/mainwindow.cpp:3675:69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
+#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
+#: src/mainwindow.cpp:3642:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -81,11 +81,11 @@ msgstr "원자 제거"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3693 src/mainwindow.cpp:3710:390 rc.cpp:402
+#: src/mainwindow.cpp:3660 src/mainwindow.cpp:3677:390 rc.cpp:402
 msgid "Settings"
 msgstr "설정"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:983
+#: src/importdialog.cpp:175 src/mainwindow.cpp:970
 msgid "Open File"
 msgstr "파일 열기"
 
@@ -109,7 +109,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "확대/축소(&Z)"
 
-#: src/mainwindow.cpp:562 src/mainwindow.cpp:1815
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1791
 msgid "Bring All to Front"
 msgstr "모두 앞으로 보내기"
 
@@ -121,312 +121,312 @@ msgstr ""
 msgid "Play Test..."
 msgstr ""
 
-#: src/mainwindow.cpp:909
+#: src/mainwindow.cpp:896
 msgid "&Tool Settings..."
 msgstr "&도구 설정"
 
-#: src/mainwindow.cpp:912
+#: src/mainwindow.cpp:899
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:917
+#: src/mainwindow.cpp:904
 msgid "&Display Settings..."
 msgstr "&디스플레이 설정"
 
-#: src/mainwindow.cpp:920
+#: src/mainwindow.cpp:907
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:963 src/mainwindow.cpp:1455
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1431
 msgid "Common molecule formats"
 msgstr "표준 분자 형식"
 
-#: src/mainwindow.cpp:968 src/mainwindow.cpp:1452 src/mainwindow.cpp:1689
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
 msgid "All files"
 msgstr "모든 파일들"
 
-#: src/mainwindow.cpp:969 src/mainwindow.cpp:1449 src/mainwindow.cpp:1461
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:970
+#: src/mainwindow.cpp:957
 msgid "Computational Chemistry Output"
 msgstr "계산 화학 결과"
 
-#: src/mainwindow.cpp:971
+#: src/mainwindow.cpp:958
 msgid "Crystallographic Interchange CIF"
 msgstr "Crystallographic Interchange CIF"
 
-#: src/mainwindow.cpp:972
+#: src/mainwindow.cpp:959
 msgid "GAMESS-US Output"
 msgstr "GAMESS-US 출력"
 
-#: src/mainwindow.cpp:973
+#: src/mainwindow.cpp:960
 msgid "Gaussian 98/03 Output"
 msgstr "Gaussian 98/03 출력"
 
-#: src/mainwindow.cpp:974
+#: src/mainwindow.cpp:961
 msgid "Gaussian Formatted Checkpoint"
 msgstr "가우스 서식있는 체크포인트"
 
-#: src/mainwindow.cpp:975
+#: src/mainwindow.cpp:962
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:976
+#: src/mainwindow.cpp:963
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:977
+#: src/mainwindow.cpp:964
 msgid "NWChem Output"
 msgstr "NWChem 출력"
 
-#: src/mainwindow.cpp:978 src/mainwindow.cpp:1466
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1442
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:979 src/mainwindow.cpp:1468
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1444
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:980 src/mainwindow.cpp:1469
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1445
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:1053 src/mainwindow.cpp:1058 src/savedialog.cpp:83
+#: src/mainwindow.cpp:1040 src/mainwindow.cpp:1045 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "제목없음"
 
-#: src/mainwindow.cpp:1074
+#: src/mainwindow.cpp:1061
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "%1 불러오는 중"
 
-#: src/mainwindow.cpp:1078
+#: src/mainwindow.cpp:1065
 #, qt-format
 msgid "Loading %1..."
 msgstr "%1 불러오는 중"
 
-#: src/mainwindow.cpp:1098 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1317
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "%1 분자모형 파일을 읽는 데 실패함"
 
-#: src/mainwindow.cpp:1121
+#: src/mainwindow.cpp:1108
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 "Multi-분자 파일을 읽고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다..."
 
-#: src/mainwindow.cpp:1148
+#: src/mainwindow.cpp:1135
 msgid "This file does not contain 3D coordinates."
 msgstr "이 파일은 3차원 좌표가 포함되어 있지 않습니다."
 
-#: src/mainwindow.cpp:1152
+#: src/mainwindow.cpp:1139
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Avogadro에서 대강의 구조를 만들까요?"
 
-#: src/mainwindow.cpp:1170
+#: src/mainwindow.cpp:1157
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr "이 파일에는 3D 좌표 정보가 없습니다."
 
-#: src/mainwindow.cpp:1224
+#: src/mainwindow.cpp:1211
 msgid "Select Molecule to View"
 msgstr "보고자 하는 분자 선택"
 
-#: src/mainwindow.cpp:1249
+#: src/mainwindow.cpp:1236
 msgid "Molecule Title"
 msgstr "분자 명칭"
 
-#: src/mainwindow.cpp:1333
+#: src/mainwindow.cpp:1309
 msgid "Atoms: "
 msgstr "원자: "
 
-#: src/mainwindow.cpp:1334
+#: src/mainwindow.cpp:1310
 msgid " Bonds: "
 msgstr " 결합: "
 
-#: src/mainwindow.cpp:1350
+#: src/mainwindow.cpp:1326
 msgid "File Loaded..."
 msgstr "파일 불러옴..."
 
-#: src/mainwindow.cpp:1363
+#: src/mainwindow.cpp:1339
 msgid "Do you want to save the changes you made in the document?"
 msgstr "문서의 변경된 사항을 저장하시겠습니까?"
 
-#: src/mainwindow.cpp:1372
+#: src/mainwindow.cpp:1348
 msgid "Your changes will be lost if you don't save them."
 msgstr "저장하지 않으면 변경 사항을 잃어버리게 됩니다."
 
-#: src/mainwindow.cpp:1376
+#: src/mainwindow.cpp:1352
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1377
+#: src/mainwindow.cpp:1353
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1379
+#: src/mainwindow.cpp:1355
 msgid "Save..."
 msgstr "저장..."
 
-#: src/mainwindow.cpp:1379 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
 msgid "Save"
 msgstr "저장"
 
-#: src/mainwindow.cpp:1462
+#: src/mainwindow.cpp:1438
 msgid "GAMESS Input"
 msgstr "GAMESS 입력"
 
-#: src/mainwindow.cpp:1463
+#: src/mainwindow.cpp:1439
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Cartesian 입력"
 
-#: src/mainwindow.cpp:1464
+#: src/mainwindow.cpp:1440
 msgid "Gaussian Z-matrix Input"
 msgstr "가우스 Z-matrix 입력"
 
-#: src/mainwindow.cpp:1465
+#: src/mainwindow.cpp:1441
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1467
+#: src/mainwindow.cpp:1443
 msgid "NWChem Input"
 msgstr "NWChem 입력"
 
-#: src/mainwindow.cpp:1472
+#: src/mainwindow.cpp:1448
 msgid "Save Molecule As"
 msgstr "다른 이름으로 분자 저장"
 
-#: src/mainwindow.cpp:1679 src/mainwindow.cpp:1691
+#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1686
+#: src/mainwindow.cpp:1662
 msgid "Common image formats"
 msgstr "일반적인 이미지 포맷"
 
-#: src/mainwindow.cpp:1690
+#: src/mainwindow.cpp:1666
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1668
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1698
+#: src/mainwindow.cpp:1674
 msgid "Export Bitmap Graphics"
 msgstr "비트맵 그래픽으로 내보내기"
 
-#: src/mainwindow.cpp:1750
+#: src/mainwindow.cpp:1726
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "%1 파일을 저장할 수 없습니다"
 
-#: src/mainwindow.cpp:1847
+#: src/mainwindow.cpp:1823
 #, qt-format
 msgid "Untitled %1"
 msgstr "제목없음 %1"
 
-#: src/mainwindow.cpp:1952
+#: src/mainwindow.cpp:1926
 msgid "Unable to paste molecule."
 msgstr "분자를 붙여넣을 수 없습니다"
 
-#: src/mainwindow.cpp:1981
+#: src/mainwindow.cpp:1955
 msgid "Paste failed (format unavailable)."
 msgstr "붙여넣기 실패 (사용불가능한 포맷)"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2406
 msgid "Copy failed (mdl unavailable)."
 msgstr "복사 실패 (mdl 사용불가능)"
 
-#: src/mainwindow.cpp:2570 src/mainwindow.cpp:2603 src/mainwindow.cpp:2670
-#: src/mainwindow.cpp:3281
+#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2576 src/mainwindow.cpp:2642
+#: src/mainwindow.cpp:3251
 #, qt-format
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2630
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2639
+#: src/mainwindow.cpp:2611
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 분리된 보기"
 
-#: src/mainwindow.cpp:2870
+#: src/mainwindow.cpp:2842
 msgid "Normal Size"
 msgstr "보통 크기"
 
-#: src/mainwindow.cpp:2887
+#: src/mainwindow.cpp:2859
 msgid "Full Screen"
 msgstr "전체 화면"
 
-#: src/mainwindow.cpp:2988
+#: src/mainwindow.cpp:2960
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3128
+#: src/mainwindow.cpp:3098
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3134
+#: src/mainwindow.cpp:3104
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3629
+#: src/mainwindow.cpp:3596
 msgid "Add"
 msgstr "추가"
 
-#: src/mainwindow.cpp:3634
+#: src/mainwindow.cpp:3601
 msgid "Duplicate"
 msgstr "복사"
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3606
 msgid "Remove"
 msgstr "삭제"
 
-#: src/mainwindow.cpp:3667
+#: src/mainwindow.cpp:3634
 msgid "No tools or engines loaded."
 msgstr "도구나 엔진을 불러올 수 없습니다:"
 
-#: src/mainwindow.cpp:3669
+#: src/mainwindow.cpp:3636
 msgid "No engines loaded."
 msgstr "엔진을 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3671
+#: src/mainwindow.cpp:3638
 msgid "No tools loaded."
 msgstr "도구를 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3672
+#: src/mainwindow.cpp:3639
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
 
-#: src/mainwindow.cpp:3716
+#: src/mainwindow.cpp:3683
 msgid "Objects"
 msgstr "개체"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3722:330
+#: src/mainwindow.cpp:3689:330
 msgid "Colors"
 msgstr "색상"
 
-#: src/mainwindow.cpp:3755
+#: src/mainwindow.cpp:3722
 msgid " copy"
 msgstr " 복사"
 
@@ -721,353 +721,353 @@ msgstr "보기(&V)"
 msgid "Projection"
 msgstr "프로젝트 트리"
 
-#. i18n: file: src/mainwindow.ui:129
+#. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
 msgstr "편집(&E)"
 
-#. i18n: file: src/mainwindow.ui:142
+#. i18n: file: src/mainwindow.ui:141
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
 msgstr "확장기능"
 
-#. i18n: file: src/mainwindow.ui:147
+#. i18n: file: src/mainwindow.ui:146
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
 msgstr "선택(&S)"
 
-#. i18n: file: src/mainwindow.ui:164
+#. i18n: file: src/mainwindow.ui:163
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
 msgstr "주 도구 모음"
 
-#. i18n: file: src/mainwindow.ui:201
+#. i18n: file: src/mainwindow.ui:200
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
 msgstr "프로젝트 트리"
 
-#. i18n: file: src/mainwindow.ui:234
+#. i18n: file: src/mainwindow.ui:233
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "표시 형식"
 
-#. i18n: file: src/mainwindow.ui:243
+#. i18n: file: src/mainwindow.ui:242
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "도구"
 
-#. i18n: file: src/mainwindow.ui:260
+#. i18n: file: src/mainwindow.ui:259
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:268
+#. i18n: file: src/mainwindow.ui:267
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
 msgstr "열기(&O)"
 
-#. i18n: file: src/mainwindow.ui:263
+#. i18n: file: src/mainwindow.ui:262
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#. i18n: file: src/mainwindow.ui:273
+#. i18n: file: src/mainwindow.ui:272
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:284
+#. i18n: file: src/mainwindow.ui:283
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
 msgstr "끝내기(&Q)"
 
-#. i18n: file: src/mainwindow.ui:276
+#. i18n: file: src/mainwindow.ui:275
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#. i18n: file: src/mainwindow.ui:289
+#. i18n: file: src/mainwindow.ui:288
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
 msgstr "최근 목록"
 
-#. i18n: file: src/mainwindow.ui:294
+#. i18n: file: src/mainwindow.ui:293
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
 msgstr "최근 목록 지우기(&C)"
 
-#. i18n: file: src/mainwindow.ui:299
+#. i18n: file: src/mainwindow.ui:298
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:307
+#. i18n: file: src/mainwindow.ui:306
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
 msgstr "새로 만들기(&N)"
 
-#. i18n: file: src/mainwindow.ui:302
+#. i18n: file: src/mainwindow.ui:301
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#. i18n: file: src/mainwindow.ui:312
+#. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:320
+#. i18n: file: src/mainwindow.ui:319
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
 msgstr "닫기(&C)"
 
-#. i18n: file: src/mainwindow.ui:315
+#. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#. i18n: file: src/mainwindow.ui:325
+#. i18n: file: src/mainwindow.ui:324
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:333
+#. i18n: file: src/mainwindow.ui:332
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
 msgstr "저장(&S)"
 
-#. i18n: file: src/mainwindow.ui:328
+#. i18n: file: src/mainwindow.ui:327
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#. i18n: file: src/mainwindow.ui:338
+#. i18n: file: src/mainwindow.ui:337
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
 msgstr "다른 이름으로 저장(&A)..."
 
-#. i18n: file: src/mainwindow.ui:341
+#. i18n: file: src/mainwindow.ui:340
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#. i18n: file: src/mainwindow.ui:346
+#. i18n: file: src/mainwindow.ui:345
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
 msgstr "저장된 상태로 복귀"
 
-#. i18n: file: src/mainwindow.ui:351
+#. i18n: file: src/mainwindow.ui:350
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
 msgstr "그래픽...(&G)"
 
-#. i18n: file: src/mainwindow.ui:360
+#. i18n: file: src/mainwindow.ui:359
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
 msgstr "전체 화면(&F)"
 
-#. i18n: file: src/mainwindow.ui:363
+#. i18n: file: src/mainwindow.ui:362
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
 msgstr "Esc"
 
-#. i18n: file: src/mainwindow.ui:372
+#. i18n: file: src/mainwindow.ui:371
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
 msgstr "바탕색 설정(&B)..."
 
-#. i18n: file: src/mainwindow.ui:377
+#. i18n: file: src/mainwindow.ui:376
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
 msgstr "정보(&A)"
 
-#. i18n: file: src/mainwindow.ui:389
+#. i18n: file: src/mainwindow.ui:388
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
 msgstr "실행 취소(&U)"
 
-#. i18n: file: src/mainwindow.ui:392
+#. i18n: file: src/mainwindow.ui:391
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#. i18n: file: src/mainwindow.ui:401
+#. i18n: file: src/mainwindow.ui:400
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
 msgstr "다시 실행(&R)"
 
-#. i18n: file: src/mainwindow.ui:404
+#. i18n: file: src/mainwindow.ui:403
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#. i18n: file: src/mainwindow.ui:413
+#. i18n: file: src/mainwindow.ui:412
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
 msgstr "새로 보기"
 
-#. i18n: file: src/mainwindow.ui:425
+#. i18n: file: src/mainwindow.ui:424
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
 msgstr "보기 닫기"
 
-#. i18n: file: src/mainwindow.ui:434
+#. i18n: file: src/mainwindow.ui:433
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
 msgstr "중앙"
 
-#. i18n: file: src/mainwindow.ui:443
+#. i18n: file: src/mainwindow.ui:442
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:448
+#. i18n: file: src/mainwindow.ui:447
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
 msgstr "붙이기(&P)"
 
-#. i18n: file: src/mainwindow.ui:451
+#. i18n: file: src/mainwindow.ui:450
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#. i18n: file: src/mainwindow.ui:456
+#. i18n: file: src/mainwindow.ui:455
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
 msgstr "복사"
 
-#. i18n: file: src/mainwindow.ui:459
+#. i18n: file: src/mainwindow.ui:458
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
 msgstr "복사(Ctrl+C)"
 
-#. i18n: file: src/mainwindow.ui:464
+#. i18n: file: src/mainwindow.ui:463
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
 msgstr "잘라내기"
 
-#. i18n: file: src/mainwindow.ui:467
+#. i18n: file: src/mainwindow.ui:466
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#. i18n: file: src/mainwindow.ui:472
+#. i18n: file: src/mainwindow.ui:471
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
 msgstr "지우기"
 
-#. i18n: file: src/mainwindow.ui:477
+#. i18n: file: src/mainwindow.ui:476
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
 msgstr "모두 선택"
 
-#. i18n: file: src/mainwindow.ui:480
+#. i18n: file: src/mainwindow.ui:479
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#. i18n: file: src/mainwindow.ui:485
+#. i18n: file: src/mainwindow.ui:484
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
 msgstr "선택 안 함"
 
-#. i18n: file: src/mainwindow.ui:488
+#. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#. i18n: file: src/mainwindow.ui:497
+#. i18n: file: src/mainwindow.ui:496
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
 msgstr "Avogadro 설정..."
 
-#. i18n: file: src/mainwindow.ui:508
+#. i18n: file: src/mainwindow.ui:507
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
 msgstr "지침서"
 
-#. i18n: file: src/mainwindow.ui:517
+#. i18n: file: src/mainwindow.ui:516
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
 msgstr "복사본 보기"
 
-#. i18n: file: src/mainwindow.ui:525
+#. i18n: file: src/mainwindow.ui:524
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
 msgstr "축 표시"
 
-#. i18n: file: src/mainwindow.ui:533
+#. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
 msgstr "디버그 정보"
 
-#. i18n: file: src/mainwindow.ui:541
+#. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
 msgstr "Avogadro 도움말"
 
-#. i18n: file: src/mainwindow.ui:546
+#. i18n: file: src/mainwindow.ui:545
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
 msgstr "릴리즈 노트"
 
-#. i18n: file: src/mainwindow.ui:551
+#. i18n: file: src/mainwindow.ui:550
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
 msgstr "버그 보고"
 
-#. i18n: file: src/mainwindow.ui:556
+#. i18n: file: src/mainwindow.ui:555
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
 msgstr "자주 묻는 질문"
 
-#. i18n: file: src/mainwindow.ui:561
+#. i18n: file: src/mainwindow.ui:560
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
 msgstr "Avogadro 웹사이트"
 
-#. i18n: file: src/mainwindow.ui:570
+#. i18n: file: src/mainwindow.ui:569
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
 msgstr "플러그인 관리자..."
 
-#. i18n: file: src/mainwindow.ui:579
+#. i18n: file: src/mainwindow.ui:578
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
 msgstr "프로젝트 트리 편집기..."
 
-#. i18n: file: src/mainwindow.ui:588
+#. i18n: file: src/mainwindow.ui:587
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
 msgstr "분리해서 보기"
 
-#. i18n: file: src/mainwindow.ui:593
+#. i18n: file: src/mainwindow.ui:592
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
 msgstr "분자모형 파일..."
 
-#. i18n: file: src/mainwindow.ui:604
+#. i18n: file: src/mainwindow.ui:603
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
 msgstr "빠른 렌더링 사용"
 
-#. i18n: file: src/mainwindow.ui:609
+#. i18n: file: src/mainwindow.ui:608
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
 msgstr "벡터 그래픽..."
 
-#. i18n: file: src/mainwindow.ui:617
+#. i18n: file: src/mainwindow.ui:616
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
 msgstr "단위 세포 축 표시"
 
-#. i18n: file: src/mainwindow.ui:625
+#. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
 msgstr "파일에 있는 모든 분자..."
 
-#. i18n: file: src/mainwindow.ui:630
+#. i18n: file: src/mainwindow.ui:629
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
 msgstr "표시 형식 재설정"
 
-#. i18n: file: src/mainwindow.ui:641
+#. i18n: file: src/mainwindow.ui:640
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Perspective"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:649
+#. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
 msgstr ""
