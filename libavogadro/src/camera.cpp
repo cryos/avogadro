@@ -189,8 +189,10 @@ namespace Avogadro
   {
     d->modelview.setIdentity();
     d->orthoScale = 1.0;
-    if( d->parent == 0 ) return;
-    if( d->parent->molecule() == 0 ) return;
+    if( d->parent == 0 )
+        return;
+    if( d->parent->molecule() == 0 )
+        return;
 
     // if the molecule is empty, we want to look at its center
     // (which is probably at the origin, but who knows) from some distance
@@ -198,8 +200,7 @@ namespace Avogadro
     if( d->parent->molecule()->numAtoms() < 2 &&
         d->parent->molecule()->OBUnitCell() == NULL)
     {
-      d->modelview.translate(-d->parent->center() +
-                              d->parent->normalVector() * 20.0);
+      d->modelview.translate(-d->parent->center() - Vector3d(0.0, 0.0, 20.0));
       return;
     }
 
