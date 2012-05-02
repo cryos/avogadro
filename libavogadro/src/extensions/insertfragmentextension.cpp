@@ -73,11 +73,11 @@ namespace Avogadro {
   InsertFragmentExtension::~InsertFragmentExtension()
   {
     if (m_fragmentDialog) {
-      delete m_fragmentDialog;
+      m_fragmentDialog->deleteLater();
       m_fragmentDialog = 0;
     }
     if (m_crystalDialog) {
-      delete m_crystalDialog;
+      m_crystalDialog->deleteLater();
       m_crystalDialog = 0;
     }
   }
