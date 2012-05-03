@@ -298,12 +298,12 @@ namespace Avogadro {
     Residue *addResidue(unsigned long id);
 
     /**
-     * Remove the supplied residue.
+     * Remove the supplied Residue.
      */
     void removeResidue(Residue *residue);
 
     /**
-     * Remove the residue with the unique id specified.
+     * Remove the Residue with the unique id specified.
      */
     void removeResidue(unsigned long id);
 

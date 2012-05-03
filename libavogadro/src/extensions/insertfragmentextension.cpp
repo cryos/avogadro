@@ -73,11 +73,11 @@ namespace Avogadro {
   InsertFragmentExtension::~InsertFragmentExtension()
   {
     if (m_fragmentDialog) {
-      delete m_fragmentDialog;
+      m_fragmentDialog->deleteLater();
       m_fragmentDialog = 0;
     }
     if (m_crystalDialog) {
-      delete m_crystalDialog;
+      m_crystalDialog->deleteLater();
       m_crystalDialog = 0;
     }
   }
@@ -165,7 +165,7 @@ namespace Avogadro {
       }
     } else if (action->data() == FragmentFromFileIndex) { // molecular fragments
         if (m_fragmentDialog == NULL) {
-          m_fragmentDialog = new InsertFragmentDialog(widget, "fragments");
+          m_fragmentDialog = new InsertFragmentDialog(NULL, "fragments");
           m_fragmentDialog->setWindowTitle(tr("Insert Fragment"));
           connect(m_fragmentDialog, SIGNAL(performInsert()), this, SLOT(insertFragment()));
         }
@@ -173,7 +173,7 @@ namespace Avogadro {
 
     } else { // crystals
       if (m_crystalDialog == NULL) {
-        m_crystalDialog = new InsertFragmentDialog(widget, "crystals");
+        m_crystalDialog = new InsertFragmentDialog(NULL, "crystals");
         m_crystalDialog->setWindowTitle(tr("Insert Crystal"));
         connect(m_crystalDialog, SIGNAL(performInsert()), this, SLOT(insertCrystal()));
       }
