@@ -707,6 +707,7 @@ namespace Avogadro
     //Crystal means x_{frac} = L^-1*x_{cart},
     //which I think corresponds to other people's definition
     //of fractional coordinates.
+    numAtoms = atomicNums.size();
     buffer.append("ATOMIC_POSITIONS crystal\n");
     for(int iatom = 0;iatom<atomicNums.size();iatom++)
     {
@@ -782,6 +783,7 @@ namespace Avogadro
       //Crystal means x_{frac} = L^-1*x_{cart},
       //which I think corresponds to other people's definition
       //of fractional coordinates.
+      numAtoms = atomicNums.size();
       buffer.append("ATOMIC_POSITIONS crystal\n");
       for(int iatom = 0;iatom<atomicNums.size();iatom++)
       {
@@ -960,6 +962,7 @@ namespace Avogadro
     }
     buffer.append("ATOMIC_POSITIONS "+getUnits(m_unitType)+"\n");
     QList<Atom *> atoms = m_molecule->atoms();
+    numAtoms = atoms.size();
     foreach (Atom *atom, atoms)
     {
       //Cartesian coordiantes
@@ -1162,6 +1165,10 @@ namespace Avogadro
         << " !alpha = " << m_latticeAlpha << "\n";
     }
     tmp << " /\n";
+    //The next two name lists are required even
+    //if no keywords are specified.
+    tmp << " &electrons\n /\n &ions\n /\n";
+
 
     return buffer;
   }
@@ -1173,7 +1180,7 @@ namespace Avogadro
     QTextStream tmp(&buffer);
     QString buffer2,buffer3;
 
-    tmp << " $control\n";
+    tmp << " &control\n";
     tmp << "    calculation = " << getCalcType(m_calcType) << "\n";
     tmp << "          title = " << "'" << m_title << "'" << "\n";
     tmp << "      verbosity = " << getVerboseType(m_verboseType) << "\n";
@@ -1190,12 +1197,6 @@ namespace Avogadro
     if(!m_pseudoEnv)
       tmp << "      pseudodir = " << "'" << m_pseudodir << "'" << "\n";
     tmp << " /\n";
-
-    //The next two name lists are required even
-    //if no keywords are specified.
-    if(m_calcType == relax || m_calcType == md ||
-        m_calcType == vcrelax || m_calcType == vcmd)
-      tmp << " &electrons\n /\n &ions\n /\n";
 
     return buffer;
 

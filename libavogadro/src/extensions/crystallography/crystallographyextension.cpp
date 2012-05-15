@@ -1610,6 +1610,7 @@ namespace Avogadro
     OpenBabel::OBUnitCell *cell = currentCell();
 
     // For sanity checks:
+    // AAD: someone forgot to write the sanity check
     //double origVolume = currentVolume();
 
     // Cache the current fractional coordinates for later.

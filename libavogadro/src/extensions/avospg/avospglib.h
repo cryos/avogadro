@@ -20,6 +20,8 @@
 
 #include <Eigen/Core>
 
+#include <avogadro/global.h>
+
 #include <QtCore/QList>
 #include <QtCore/QString>
 
@@ -35,8 +37,10 @@ namespace Avogadro {
   namespace Spglib {
 
     extern "C" {
-#include "spglib/spglib.h"
+//include "spglib/spglib.h"
+#include <spglib/spglib.h>
     }
+
     /**
      * Return the spacegroup number of the crystal described by the
      * arguments.
@@ -48,7 +52,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
+    A_EXPORT unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
                                const QList<unsigned int> &atomicNums,
                                const Eigen::Matrix3d &cellMatrix,
                                const double cartTol = AVOSPGLIB_TOL);
@@ -66,7 +70,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
+    A_EXPORT unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
                                const QStringList &ids,
                                const Eigen::Matrix3d &cellMatrix,
                                const double cartTol = AVOSPGLIB_TOL);
@@ -84,7 +88,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int getSpacegroup(const Molecule * const mol,
+    A_EXPORT unsigned int getSpacegroup(const Molecule * const mol,
                                OpenBabel::OBUnitCell *cell = 0,
                                const double cartTol = AVOSPGLIB_TOL);
 
@@ -99,7 +103,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int reduceToPrimitive(QList<Eigen::Vector3d> *fcoords,
+    A_EXPORT unsigned int reduceToPrimitive(QList<Eigen::Vector3d> *fcoords,
                                    QList<unsigned int> *atomicNums,
                                    Eigen::Matrix3d *cellMatrix,
                                    const double cartTol = AVOSPGLIB_TOL);
@@ -117,7 +121,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int reduceToPrimitive(QList<Eigen::Vector3d> *fcoords,
+    A_EXPORT unsigned int reduceToPrimitive(QList<Eigen::Vector3d> *fcoords,
                                    QStringList *ids,
                                    Eigen::Matrix3d *cellMatrix,
                                    const double cartTol = AVOSPGLIB_TOL);
@@ -135,7 +139,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int reduceToPrimitive(Molecule *mol,
+    A_EXPORT unsigned int reduceToPrimitive(Molecule *mol,
                                    OpenBabel::OBUnitCell *cell = 0,
                                    const double cartTol = AVOSPGLIB_TOL);
 
@@ -153,7 +157,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int refineCrystal(QList<Eigen::Vector3d> *fcoords,
+    A_EXPORT unsigned int refineCrystal(QList<Eigen::Vector3d> *fcoords,
                                QList<unsigned int> *atomicNums,
                                Eigen::Matrix3d *cellMatrix,
                                const double cartTol = AVOSPGLIB_TOL);
@@ -174,7 +178,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int refineCrystal(QList<Eigen::Vector3d> *fcoords,
+    A_EXPORT unsigned int refineCrystal(QList<Eigen::Vector3d> *fcoords,
                                QStringList *ids,
                                Eigen::Matrix3d *cellMatrix,
                                const double cartTol = AVOSPGLIB_TOL);
@@ -195,7 +199,7 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int refineCrystal(Molecule *mol,
+    A_EXPORT unsigned int refineCrystal(Molecule *mol,
                                OpenBabel::OBUnitCell *cell = 0,
                                const double cartTol = AVOSPGLIB_TOL);
 
@@ -212,14 +216,14 @@ namespace Avogadro {
      *
      * @return Spacegroup number if found, 0 otherwise.
      */
-    unsigned int getPrimitive(QList<Eigen::Vector3d> *fcoords,
+    A_EXPORT unsigned int getPrimitive(QList<Eigen::Vector3d> *fcoords,
                                QList<unsigned int> *atomicNums,
                                Eigen::Matrix3d *cellMatrix,
                                const double cartTol = AVOSPGLIB_TOL,
 			       const bool doRefine=false);
 
   // Fill fcoords, atomicNums, and cellMatrix from mol and cell
-  void prepareMolecule(const Avogadro::Molecule *mol,
+  A_EXPORT void prepareMolecule(const Avogadro::Molecule *mol,
                        const OpenBabel::OBUnitCell *cell,
                        QList<Eigen::Vector3d> *fcoords,
                        QList<unsigned int> *atomicNums,

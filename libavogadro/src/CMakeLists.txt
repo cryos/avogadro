@@ -22,7 +22,6 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS})
 set(libavogadro_HDRS
   animation.h
   atom.h
-  avospglib.h
   bond.h
   camera.h
   color3f.h
@@ -69,7 +68,6 @@ set(libavogadro_HDRS
 set(libavogadro_SRCS
   animation.cpp
   atom.cpp
-  avospglib.cpp
   bond.cpp
   camera.cpp
   color.cpp
@@ -221,11 +219,6 @@ foreach(headerFile ${libavogadro_HDRS})
   set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
   execute_process(COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach()
-#spglib because I'm lazy
-make_directory("${libavogadro_BINARY_DIR}/include/avogadro/spglib")
-set(from "${CMAKE_CURRENT_SOURCE_DIR}/spglib/spglib.h")
-set(to   "${libavogadro_BINARY_DIR}/include/avogadro/spglib/spglib.h")
-execute_process(COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 
 add_library(avogadro SHARED
   ${libavogadro_SRCS}
@@ -246,7 +239,6 @@ add_subdirectory(engines)
 add_subdirectory(tools)
 add_subdirectory(extensions)
 add_subdirectory(colors)
-add_subdirectory(spglib)
 
 set(static_plugin_instantiation "#include <QtCore/QCoreApplication>\n")
 foreach(plugin ${plugins_built_static})
@@ -269,7 +261,7 @@ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
 configure_file(${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp.in
   ${CMAKE_CURRENT_BINARY_DIR}/staticplugins.cpp)
 
-target_link_libraries(avogadro ${AVO_LINK_LIBRARIES} ${plugins_built_static} spglib)
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES} ${plugins_built_static})
 message(STATUS "Linking in static plugins: ${plugins_built_static}")
 # Add the boost python module if the boost::python was found
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)

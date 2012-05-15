@@ -1,6 +1,6 @@
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-set(LINK_LIBS avogadro)
+set(LINK_LIBS AvoSpg avogadro)
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
@@ -33,8 +33,6 @@ avogadro_plugin_nogl(inputfileextension
   "${inputfileextension_SRCS}"
   "${inputfileextension_UIS}"
  )
-
-target_link_libraries(inputfileextension spglib)
 
 ### gamess
 set(gamessextension_SRCS
