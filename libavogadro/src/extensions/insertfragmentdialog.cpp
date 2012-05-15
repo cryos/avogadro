@@ -224,6 +224,9 @@ namespace Avogadro {
 
   void InsertFragmentDialog::fillUnitCell(Molecule *mol)
   {
+    if (!mol)
+      return;
+
     OpenBabel::OBUnitCell *cell = mol->OBUnitCell();
     if (!cell)
       return; // no cell?!
