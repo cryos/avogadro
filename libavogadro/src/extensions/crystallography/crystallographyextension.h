@@ -18,8 +18,6 @@
 #ifndef CRYSTALLOGRAPHYEXTENSION_H
 #define CRYSTALLOGRAPHYEXTENSION_H
 
-#include "ui/ceslabbuilder.h"
-
 #include <avogadro/extension.h>
 #include <avogadro/molecule.h>
 
@@ -44,6 +42,8 @@ namespace Avogadro
   class CEAbstractEditor;
   class CETranslateWidget;
   class CEViewOptionsWidget;
+  class CESlabBuilder;
+  class CESuperCellBuilder;
 
   struct CEUnitCellParameters {
     double a, b, c, alpha, beta, gamma;
@@ -281,6 +281,8 @@ namespace Avogadro
       ScaleToVolumeIndex,
       // Builders
       BuildSlabIndex,
+      BuildSuperCellIndex,
+      BuildNanoparticleIndex,
       LooseSepIndex,
       // Spacegroup
       PerceiveSpacegroupIndex,
@@ -313,6 +315,13 @@ namespace Avogadro
       ViewOptionsIndex
     };
 
+    enum SuperCellType {
+      Rectangular,
+      Sphere,
+      Ellipsoid,
+      Cylinder
+    };
+
     QAction* getAction(ActionIndex a) {
       return m_actions.at(static_cast<int>(a));
     }
@@ -320,6 +329,7 @@ namespace Avogadro
     QMainWindow *m_mainwindow;
     GLWidget *m_glwidget;
     CESlabBuilder     *m_slabBuilder;
+    CESuperCellBuilder*m_supercellBuilder;
     CETranslateWidget *m_translateWidget;
     CEViewOptionsWidget *m_viewOptionsWidget;
     QList<QAction*> m_actions;
@@ -360,6 +370,7 @@ namespace Avogadro
     void actionNiggliReduce();
     void actionToggleUnitCell();
     void actionBuildSlab();
+    void actionBuildSuperCell(SuperCellType type = Rectangular);
     void actionPasteCrystal();
     void actionToggleEditors();
     void actionToggleProperties();
@@ -401,4 +412,3 @@ namespace Avogadro
 } // end namespace Avogadro
 
 #endif
-

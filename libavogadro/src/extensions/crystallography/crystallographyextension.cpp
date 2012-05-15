@@ -38,6 +38,7 @@
 #include "ui/cematrixeditor.h"
 #include "ui/ceparametereditor.h"
 #include "ui/ceslabbuilder.h"
+#include "ui/cesupercellbuilder.h"
 #include "ui/cetranslatewidget.h"
 #include "ui/ceviewoptionswidget.h"
 
@@ -74,6 +75,7 @@ namespace Avogadro
       m_mainwindow(0),
       m_glwidget(0),
       m_slabBuilder(0),
+      m_supercellBuilder(0),
       m_translateWidget(0),
       m_viewOptionsWidget(0),
       m_molecule(0),
@@ -170,6 +172,8 @@ namespace Avogadro
     case NiggliReduceIndex:
       return tr("&Crystallography") + '>' + tr("&Reduce");
     case BuildSlabIndex:
+    case BuildSuperCellIndex:
+    case BuildNanoparticleIndex:
       return tr("&Crystallography") + '>' + tr("&Build");
     case ToggleUnitCellIndex:
     case PasteCrystalIndex:
@@ -384,6 +388,12 @@ namespace Avogadro
       break;
     case BuildSlabIndex:
       actionBuildSlab();
+      break;
+    case BuildSuperCellIndex:
+      actionBuildSuperCell(Rectangular);
+      break;
+    case BuildNanoparticleIndex:
+      actionBuildSuperCell(Sphere);
       break;
     case ScaleToVolumeIndex:
       actionScaleToVolume();
@@ -2137,6 +2147,18 @@ namespace Avogadro
     CE_CACTION_DEBUG(BuildSlabIndex);
     CE_CACTION_ASSERT(BuildSlabIndex);
 
+    a = new QAction(tr("Super &Cell..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(BuildSuperCellIndex);
+    CE_CACTION_ASSERT(BuildSuperCellIndex);
+
+    a = new QAction(tr("&Nanoparticle..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(BuildNanoparticleIndex);
+    CE_CACTION_ASSERT(BuildNanoparticleIndex);
+
     // LooseSepIndex
     a = new QAction(this);
     a->setSeparator(true);
@@ -2398,6 +2420,11 @@ namespace Avogadro
       m_slabBuilder = new CESlabBuilder(this);
       m_slabBuilder->hide();
       m_dockWidgets.append(m_slabBuilder);
+    }
+    if (!m_supercellBuilder) {
+      m_supercellBuilder = new CESuperCellBuilder(this);
+      m_supercellBuilder->hide();
+      m_dockWidgets.append(m_supercellBuilder);
     }
     if (!m_editors.size()) {
       m_editors.append(new CEParameterEditor(this));
@@ -2789,6 +2816,20 @@ namespace Avogadro
             this, SLOT(showEditors()));
   }
 
+  void CrystallographyExtension::actionBuildSuperCell(SuperCellType type)
+  {
+    // hide the editors -- we're going to need some dock space and
+    // the cell shouldn't be modified during this process
+    hideEditors();
+
+    m_supercellBuilder->setGLWidget(m_glwidget);
+    m_supercellBuilder->updateGeometryType(type);
+    m_supercellBuilder->show();
+
+    connect(m_supercellBuilder, SIGNAL(finished()),
+            this, SLOT(showEditors()));
+  }
+
   void CrystallographyExtension::actionScaleToVolume()
   {
     double curvol = currentVolume();
@@ -2921,4 +2962,3 @@ namespace Avogadro
 
 Q_EXPORT_PLUGIN2(crystallographyextension,
                  Avogadro::CrystallographyExtensionFactory)
-

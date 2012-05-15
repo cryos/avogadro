@@ -108,11 +108,6 @@ if(GLEW_FOUND)
     DESTINATION share/libavogadro/shaders)
 endif()
 
-### super cells
-avogadro_plugin_nogl(supercellextension
-  "supercellextension.cpp;supercelldialog.cpp"
-  supercelldialog.ui)
-
 # Network fetch
 avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
 target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
