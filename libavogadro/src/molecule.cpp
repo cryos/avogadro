@@ -1305,9 +1305,40 @@ namespace Avogadro{
     // Copy all the parts of the OBMol to our Molecule
     blockSignals(true);
 
-    // Begin by copying all of the atoms
     std::vector<OpenBabel::OBAtom*>::iterator i;
 
+    // If available, copy the unit cell
+    // We actually do this first, since the obmol will have more atoms afterwards
+    OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>
+      (obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
+    if (obunitcell) {
+      d->obunitcell = new OpenBabel::OBUnitCell;
+      *d->obunitcell = *obunitcell;
+
+      // Check if there's a space group set
+      // If so, chances are good that we should fill the unit cell
+      const OpenBabel::SpaceGroup *sg = d->obunitcell->GetSpaceGroup();
+      if (sg) {
+        // Check if it's likely an organic system
+        int numCarbons = 0;
+        int numHydrogens = 0;
+        for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
+          if (obatom->IsCarbon())
+            numCarbons++;
+          if (obatom->IsHydrogen())
+            numHydrogens++;
+        }
+        // Here's the heuristic. If there are >4 carbons and/or carbon + hydrogen (e.g. methane),
+        // then we assume it's organic or other molecular solid and leave it alone
+        // If there wasn't an assigned space group, it's likely from a comp package (e.g., VASP)
+        // and we don't need to bother
+        if (numCarbons < 4 && !(numCarbons && numHydrogens)){
+          d->obunitcell->FillUnitCell(obmol);
+        }
+      }
+    }
+
+    // Begin by copying all of the atoms
     for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
       Atom *atom = addAtom();
       atom->setOBAtom(obatom);
@@ -1372,14 +1403,6 @@ namespace Avogadro{
         residue->addBond(bond(obbond->GetIdx())->id());
       }
     }
-
-    // If available, copy the unit cell
-    OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
-    if (obunitcell) {
-      d->obunitcell = new OpenBabel::OBUnitCell;
-      *d->obunitcell = *obunitcell;
-    }
-    // (that could return NULL, but other methods know they could get NULL)
 
     // Copy conformers, if present
     if (obmol->NumConformers() > 1) {

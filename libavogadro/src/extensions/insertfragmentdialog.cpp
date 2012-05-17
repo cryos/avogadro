@@ -170,8 +170,6 @@ namespace Avogadro {
     if (d->crystalFiles) {
       // No bonding, at first
       mol = MoleculeFile::readMolecule(fileName, QString(), QString("b"));
-      // fill the unit cell
-      fillUnitCell(mol);
     }
     else
       mol = MoleculeFile::readMolecule(fileName);
@@ -220,25 +218,6 @@ namespace Avogadro {
   void InsertFragmentDialog::activated()
   {
     emit performInsert();
-  }
-
-  void InsertFragmentDialog::fillUnitCell(Molecule *mol)
-  {
-    if (!mol)
-      return;
-
-    OpenBabel::OBUnitCell *cell = mol->OBUnitCell();
-    if (!cell)
-      return; // no cell?!
-
-    const OpenBabel::SpaceGroup *sg = cell->GetSpaceGroup();
-    if (!sg)
-      return; // assume it's P1
-
-    // Use the Open Babel code for now
-    OpenBabel::OBMol obmol = mol->OBMol();
-    cell->FillUnitCell(&obmol);
-    mol->setOBMol(&obmol);
   }
 
 }
