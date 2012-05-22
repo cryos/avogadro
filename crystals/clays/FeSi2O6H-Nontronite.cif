@@ -1,0 +1,51 @@
+data_global
+_chemical_name_mineral 'Nontronite'
+loop_
+_publ_author_name
+'Dainyak L G'
+'Zviagina B B'
+'Rusakov V S'
+'Drits V A'
+_journal_name_full 'European Journal of Mineralogy'
+_journal_volume 18 
+_journal_year 2006
+_journal_page_first 753
+_journal_page_last 764
+_publ_section_title
+;
+ Interpretation of the nontonite-dehydroxylate Mossbauer spectrum using EFG calculations
+ Sample: tv structure
+;
+_database_code_amcsd 0007180
+_chemical_compound_source 'Garfield, Washington, USA'
+_chemical_formula_sum 'Fe Si2 O6 H'
+_cell_length_a 5.277
+_cell_length_b 9.140
+_cell_length_c 9.780
+_cell_angle_alpha 90
+_cell_angle_beta 101.0
+_cell_angle_gamma 90
+_cell_volume 463.040
+_exptl_crystal_density_diffrn      2.998
+_symmetry_space_group_name_H-M 'C 1 2/m 1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+  'x,-y,z'
+  '1/2+x,1/2-y,z'
+  '-x,y,-z'
+  '1/2-x,1/2+y,-z'
+  '-x,-y,-z'
+  '1/2-x,1/2-y,-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+FeM   0.50000   0.16670   0.00000
+SiT   0.31010   0.32910   0.28410
+O1   0.30940   0.31220   0.11480
+O2   0.30940   0.50000   0.32930
+O3   0.05930   0.75000   0.34800
+O-H   0.37410   0.00000   0.10750

@@ -1,0 +1,52 @@
+data_global
+_chemical_name_mineral 'Illite'
+loop_
+_publ_author_name
+'Gualtieri A F'
+_journal_name_full 'Journal of Applied Crystallography'
+_journal_volume 33 
+_journal_year 2000
+_journal_page_first 267
+_journal_page_last 278
+_publ_section_title
+;
+ Accuracy of XRPD QPA using the combined Rietveld-RIR method
+;
+_database_code_amcsd 0012865
+_chemical_compound_source 'Napoli, Italy'
+_chemical_formula_sum 'K Al4 Si2 O12'
+_cell_length_a 5.2226
+_cell_length_b 9.0183
+_cell_length_c 20.143
+_cell_angle_alpha 90
+_cell_angle_beta 95.665
+_cell_angle_gamma 90
+_cell_volume 944.081
+_exptl_crystal_density_diffrn      2.780
+_symmetry_space_group_name_H-M 'C 1 2/c 1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+  'x,-y,1/2+z'
+  '1/2+x,1/2-y,1/2+z'
+  '-x,y,1/2-z'
+  '1/2-x,1/2+y,1/2-z'
+  '-x,-y,-z'
+  '1/2-x,1/2-y,-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+K   0.00000   0.09010   0.25000   0.07500
+Al1   0.44320   0.26350   0.13650   0.01100
+Al2   0.25860   0.08280   0.00680   0.02700
+Si   0.48250   0.92970   0.13700   0.02200
+O1   0.46230   0.91940   0.05050   0.01500
+O2   0.38350   0.26650   0.06630   0.04700
+O3   0.42590   0.10390   0.15300   0.01200
+O4   0.22260   0.83680   0.16850   0.04100
+O5   0.27350   0.37220   0.16780   0.08000
+O6   0.40800   0.56710   0.04540   0.05300

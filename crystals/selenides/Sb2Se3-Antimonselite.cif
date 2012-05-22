@@ -1,0 +1,67 @@
+#------------------------------------------------------------------------------
+#$Date: 2012-02-28 15:44:07 +0000 (Tue, 28 Feb 2012) $
+#$Revision: 35913 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/00/74/9007437.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9007437
+loop_
+_publ_author_name
+'Tideswell, N. W.'
+'Kruse, F. H.'
+'McCullough, J. D.'
+_publ_section_title
+;
+ The crystal structure of antimony selenide, Sb2Se3
+ Locality: synthetic
+;
+_journal_name_full               'Acta Crystallographica'
+_journal_page_first              99
+_journal_page_last               102
+_journal_volume                  10
+_journal_year                    1957
+_chemical_formula_sum            'Sb2 Se3'
+_chemical_name_mineral           Antimonselite
+_space_group_IT_number           62
+_symmetry_space_group_name_Hall  '-P 2c 2ab'
+_symmetry_space_group_name_H-M   'P b n m'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   11.62
+_cell_length_b                   11.77
+_cell_length_c                   3.962
+_cell_volume                     541.872
+_exptl_crystal_density_diffrn    5.888
+_cod_database_code               9007437
+_amcsd_database_code             AMCSD#0009133
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,y,1/2-z
+-x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+1/2-x,1/2+y,1/2-z
+1/2-x,1/2+y,z
+1/2+x,1/2-y,-z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Sb1 0.32800 0.03050 0.25000 0.01393
+Sb2 0.03970 0.14780 0.75000 0.01393
+Se1 0.87320 0.05340 0.25000 0.01393
+Se2 0.44340 0.13020 0.75000 0.01393
+Se3 0.19350 0.21320 0.25000 0.01393
