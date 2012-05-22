@@ -1,0 +1,98 @@
+data_5910090
+loop_
+_publ_author_name
+'Wyckoff, R. W. G.'
+_publ_section_title
+;
+Page 274 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931
+http://jcrystal.com/steffenweber/gallery/StructureTypes/st4.html
+;
+_journal_name_full               'The second edition of Structure of Crystals'
+_journal_page_first              274
+_journal_page_last               274
+_journal_year                    1931
+_chemical_formula_structural     LaAlO3
+_chemical_formula_sum            'Al La O3'
+_chemical_name_systematic        LaAlO3
+_space_group_IT_number           221
+_symmetry_cell_setting           cubic
+_symmetry_Int_Tables_number      221
+_symmetry_space_group_name_Hall  '-P 4 2 3'
+_symmetry_space_group_name_H-M   'P m -3 m'
+_audit_creation_date             2005-04-11
+_audit_creation_method
+;
+Page 274 from the second edition of Structure of Crystals by Wyckoff
+R W G. Published by The Chemical Catalog Company, INC, New York in 1931
+http://jcrystal.com/steffenweber/gallery/StructureTypes/st4.html
+;
+_audit_update_record
+'created by Girish Upreti, Portland State University'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   3.78
+_cell_length_b                   3.78
+_cell_length_c                   3.78
+_cell_volume                     54.010
+_[local]_cod_chemical_formula_sum_orig 'La Al O3'
+_cod_database_code               5910090
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,-z,y
+x,z,-y
+z,y,-x
+-z,y,x
+-y,x,z
+y,-x,z
+z,x,y
+y,z,x
+-y,-z,x
+z,-x,-y
+-y,z,-x
+-z,-x,y
+-z,x,-y
+y,-z,-x
+x,-y,-z
+-x,y,-z
+-x,-y,z
+y,x,-z
+-y,-x,-z
+z,-y,x
+-z,-y,-x
+-x,z,y
+-x,-z,-y
+-x,-y,-z
+-x,z,-y
+-x,-z,y
+-z,-y,x
+z,-y,-x
+y,-x,-z
+-y,x,-z
+-z,-x,-y
+-y,-z,-x
+y,z,-x
+-z,x,y
+y,-z,x
+z,x,-y
+z,-x,y
+-y,z,x
+-x,y,z
+x,-y,z
+x,y,-z
+-y,-x,z
+y,x,z
+-z,y,-x
+z,y,x
+x,-z,-y
+x,z,y
+loop_
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_label
+0.00000 0.00000 0.00000 La
+0.50000 0.50000 0.50000 Al
+0.50000 0.50000 0.00000 O
