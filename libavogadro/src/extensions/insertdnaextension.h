@@ -1,13 +1,10 @@
 /**********************************************************************
-  InsertPeptide - Insert oligopeptide sequences
+  InsertDNA - Insert DNA/RNA chains
 
-  Copyright (C) 2008-2009 by Geoffrey R. Hutchison
+  Copyright (C) 2012 by Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
-
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,35 +16,25 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef INSERTPEPTIDEEXTENSION_H
-#define INSERTPEPTIDEEXTENSION_H
+#ifndef INSERTDNAEXTENSION_H
+#define INSERTDNAEXTENSION_H
 
 #include <avogadro/extension.h>
 
-#include "ui_insertpeptidedialog.h"
-
 namespace Avogadro {
 
-  class InsertPeptideDialog : public QDialog, public Ui::InsertPeptideDialog
-    {
-    public:
-    InsertPeptideDialog(QWidget *parent=0) : QDialog(parent) {
-        setWindowFlags(Qt::Dialog | Qt::Tool);
-        setupUi(this);
-      }
-    };
-
-  class InsertPeptideExtension : public Extension
+  class InsertDNADialog;
+  class InsertDNAExtension : public Extension
   {
     Q_OBJECT
-    AVOGADRO_EXTENSION("InsertPeptide", tr("Insert Peptide"),
-                       tr("Insert oligopeptide sequences"))
+    AVOGADRO_EXTENSION("InsertDNA", tr("Insert DNA/RNA"),
+                       tr("Insert DNA/RNA chains"))
 
   public:
     //! Constructor
-    InsertPeptideExtension(QObject *parent=0);
+    InsertDNAExtension(QObject *parent=0);
     //! Destructor
-    ~InsertPeptideExtension();
+    ~InsertDNAExtension();
 
     //! Perform Action
     QList<QAction *> actions() const;
@@ -62,12 +49,8 @@ namespace Avogadro {
     void performInsert();
 
     void updateText();
-
-    void setStructureType(int);
-    void setPhi(double);
-    void setPsi(double);
-
-    void setStereo(int);
+    void updateBPTurns(int type);
+    void changeNucleicType(int type);
 
     void dialogDestroyed();
 
@@ -76,20 +59,16 @@ namespace Avogadro {
     GLWidget* m_widget;
     Molecule *m_molecule;
 
-    double phi, psi, omega;
-    bool lStereo;
-    int structureType;
+    InsertDNADialog *m_dialog;
 
-    InsertPeptideDialog *m_dialog;
     void constructDialog();
-    void updateDialog();
   };
 
-  class InsertPeptideExtensionFactory : public QObject, public PluginFactory
+  class InsertDNAExtensionFactory : public QObject, public PluginFactory
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_EXTENSION_FACTORY(InsertPeptideExtension)
+      AVOGADRO_EXTENSION_FACTORY(InsertDNAExtension)
   };
 
 } // end namespace Avogadro

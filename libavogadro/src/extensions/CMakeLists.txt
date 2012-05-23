@@ -59,6 +59,11 @@ avogadro_plugin_nogl(insertpeptideextension
   "insertpeptideextension.cpp;insertcommand.cpp"
   insertpeptidedialog.ui)
 
+### insert dna (builder)
+avogadro_plugin_nogl(insertdnaextension
+  "insertdnaextension.cpp;insertcommand.cpp"
+  insertdnadialog.ui)
+
 ### h->methyl
 avogadro_plugin_nogl(h2methylextension h2methylextension.cpp)
 
