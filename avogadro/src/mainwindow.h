@@ -133,6 +133,8 @@ namespace Avogadro {
 
       void cut();
       void copy();
+      void copyAsSMILES();
+      void copyAsInChI();
       void paste();
       void clear();
       void selectAll();
@@ -287,7 +289,7 @@ namespace Avogadro {
       void loadExtensions();
 
       //! Helper function for cut or copy -- prepare a clipboard
-      QMimeData* prepareClipboardData(PrimitiveList selectedItems);
+      QMimeData* prepareClipboardData(PrimitiveList selectedItems, const char* format = NULL);
 
       //! Helper function to paste data from mime data
       bool pasteMimeData(const QMimeData *mimeData);
