@@ -820,6 +820,7 @@ namespace Avogadro {
 
 #ifdef ENABLE_PYTHON
       // Render the extensions (for now: python only)
+      qRegisterMetaType<GLWidget*>("GLWidget*");
       foreach (Extension *extension, d->extensions) {
         PythonExtension *pyext = qobject_cast<PythonExtension*>(extension);
         if (pyext) {
@@ -827,7 +828,7 @@ namespace Avogadro {
           // needs to acquire GIL, but it's already acquired by the GLWidget
           // constructor. That's why we use an indirect queued call to
           // PythonExtension::paint() here
-          QMetaObject::invokeMethod(pyext, SLOT(paint), Qt::QueuedConnection,
+          QMetaObject::invokeMethod(pyext, "paint", Qt::QueuedConnection,
                                     Q_ARG(GLWidget*, this));
         }
       }
