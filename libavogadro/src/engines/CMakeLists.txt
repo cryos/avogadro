@@ -21,9 +21,6 @@ avogadro_plugin(bsdyengine bsdyengine.cpp bsdysettingswidget.ui)
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
 
-# overlay engine
-avogadro_plugin(overlayengine overlayengine.cpp)
-
 # wireframe
 avogadro_plugin(wireengine wireengine.cpp wiresettingswidget.ui)
 
