@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-03-26 18:30+0000\n"
 "Last-Translator: Florian Selent <Unknown>\n"
 "Language-Team: <de@li.org>\n"
@@ -633,14 +633,6 @@ msgstr "Beschriftung"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Zeigt Atom- und Bindungsbeschriftungen an"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Überlagerung"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Zeigt Farbskala für Gradienten an"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10046,6 +10038,12 @@ msgstr ""
 "simon@ochsenreither.de,,,,,,alexander-hausmann@web.de,,avogadro-devel@lists."
 "sourceforge.net,eduardgotwig@gmail.com,,,,armin_mohring@web.de,,"
 "matthias@mailaender.name,,,cniehaus@gmx.de,,,simon@ochsenreither.de,,"
+
+#~ msgid "Overlay"
+#~ msgstr "Überlagerung"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Zeigt Farbskala für Gradienten an"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Elementarzellen-Parameter..."

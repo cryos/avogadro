@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-03-17 19:30+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -639,14 +639,6 @@ msgstr "Lenda"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Debuxa lendas nos átomos e enlaces"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Sobreposición"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Debuxa escalas de cores nos gradientes"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10078,6 +10070,12 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,mbouzada@gmail.com,,,,mbouzada@gmail.com,"
+
+#~ msgid "Overlay"
+#~ msgstr "Sobreposición"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Debuxa escalas de cores nos gradientes"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Parámetros da cela unidade..."

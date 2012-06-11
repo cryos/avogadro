@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-04-03 18:50+0000\n"
 "Last-Translator: Lu <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -637,14 +637,6 @@ msgstr "Etiqueta"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Dibuja etiquetes en átomos y enlaces"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Superponer"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Dibuja escala de colores para gradientes"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10105,6 +10097,12 @@ msgstr ""
 "fitoschido@gmail.com,fjavilesn@gmail.com,,,,mauro.dec@gmail.com,"
 "meilan@adinet.com.uy,catastro1@tutopia.com,monkey.libre@gmail.com,"
 "nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,"
+
+#~ msgid "Overlay"
+#~ msgstr "Superponer"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Dibuja escala de colores para gradientes"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Parámetros de Celda Unitaria"

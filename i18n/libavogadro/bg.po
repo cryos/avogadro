@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:22+0000\n"
 "Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -638,14 +638,6 @@ msgstr "Етикет"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Рендерира етикети на атоми и връзки"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr ""
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr ""
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"

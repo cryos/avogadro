@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:27+0000\n"
 "Last-Translator: Sander Deryckere <sanderd17@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -643,14 +643,6 @@ msgstr "Label"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Geef atoom en binding labels weer."
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Overlay"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Geef kleurschalen weer voor gradiënten"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10031,6 +10023,12 @@ msgstr ""
 "cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
 "sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
 "cumulus0007@gmail.com,"
+
+#~ msgid "Overlay"
+#~ msgstr "Overlay"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Geef kleurschalen weer voor gradiënten"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Cel-eenheid Parameters"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:51+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -637,14 +637,6 @@ msgstr "Etiket"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Atom ve bağ etiketlerini kaplar"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Örtü"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Gradyanlar için renk ölçekleme kaplaması"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -9888,6 +9880,12 @@ msgstr ""
 "net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,,"
 "apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@ceviri.ubuntu-tr.net,,"
 "hayros@gmail.com,huseyinkozan@gmail.com"
+
+#~ msgid "Overlay"
+#~ msgstr "Örtü"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Gradyanlar için renk ölçekleme kaplaması"
 
 #~ msgid "Open Directory"
 #~ msgstr "Dizin Aç"

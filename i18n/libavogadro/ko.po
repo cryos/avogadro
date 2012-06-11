@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 14:03+0000\n"
 "Last-Translator: Kim Hanjo <lordmiss@lordmiss.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -637,14 +637,6 @@ msgstr "라벨"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "원자 및 결합 이름 표시"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "덧씌우기"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "변화도에 대한 색상 스케일을 표시"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -9904,6 +9896,12 @@ msgstr ""
 "com,,,avogadro-devel@lists.sourceforge.net,lordmiss@lordmiss.com,,"
 "loniedavid@gmail.com,,,avogadro-devel@lists.sourceforge.net,"
 "lordmiss@lordmiss.com,,loniedavid@gmail.com"
+
+#~ msgid "Overlay"
+#~ msgstr "덧씌우기"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "변화도에 대한 색상 스케일을 표시"
 
 #~ msgid "Unit Cell Parameters"
 #~ msgstr "단위 세포 매개 변수"

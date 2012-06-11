@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-15 16:24+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -643,14 +643,6 @@ msgstr "Метка"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Отображает подписи атомов и связей"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Перекрывание"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Отображает цветовую шкалу для градиентов"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10090,6 +10082,12 @@ msgstr ""
 "annulen@yandex.ru,parukhin@gmail.com,,hippi90ub@gmail.com,madcad@yandex.ru,,"
 "dn2010@km.ru,,,avogadro-devel@lists.sourceforge.net,annulen@yandex.ru,"
 "parukhin@gmail.com,,hippi90ub@gmail.com,madcad@yandex.ru,,dn2010@km.ru"
+
+#~ msgid "Overlay"
+#~ msgstr "Перекрывание"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Отображает цветовую шкалу для градиентов"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Параметры ячейки..."

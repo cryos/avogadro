@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-04-11 15:12+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -636,14 +636,6 @@ msgstr "Etiquettes"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Afficher les étiquettes des atomes et des liaisons"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Superposition"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Afficher la palette de couleur des gradients"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -10162,6 +10154,12 @@ msgstr ""
 "jacob.benoit.1@gmail.com,louis.ricard@polytechnique.edu,alfred002@gmail.com,"
 "simbelbeoch@hotmail.fr,,,,jacob.benoit.1@gmail.com,louis."
 "ricard@polytechnique.edu,alfred002@gmail.com,simbelbeoch@hotmail.fr,"
+
+#~ msgid "Overlay"
+#~ msgstr "Superposition"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Afficher la palette de couleur des gradients"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Paramètres de maille conventionnelle..."

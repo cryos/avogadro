@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-04 00:00-0400\n"
+"POT-Creation-Date: 2012-06-11 00:00-0400\n"
 "PO-Revision-Date: 2011-02-09 13:56+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -637,14 +637,6 @@ msgstr "標記"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "呈現原子及鍵的標示"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "覆蓋"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "呈現顏色的等級以表達梯度"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -9986,6 +9978,12 @@ msgstr ""
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com"
+
+#~ msgid "Overlay"
+#~ msgstr "覆蓋"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "呈現顏色的等級以表達梯度"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "單位晶胞參數..."
