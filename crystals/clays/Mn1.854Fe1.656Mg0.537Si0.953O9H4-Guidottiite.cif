@@ -1,0 +1,76 @@
+data_global
+_chemical_name_mineral 'Guidottiite'
+loop_
+_publ_author_name
+'Wahle M W'
+'Bujnowski T J'
+'Guggenheim S'
+'Kogure T'
+_journal_name_full 'Clays and Clay Minerals'
+_journal_volume 58 
+_journal_year 2010
+_journal_page_first 364
+_journal_page_last 376
+_publ_section_title
+;
+ Guidottiite, the Mn-analogue of cronstedtite: A new serpentine-group
+ mineral from South Africa
+;
+_database_code_amcsd 0018323
+_chemical_compound_source 'N'chwaning 2 mine, Kalahari manganese field, South Africa'
+_chemical_formula_sum 'Mn1.854 Fe1.656 Mg.537 Si.953 O9 H4'
+_cell_length_a 5.5472
+_cell_length_b 5.5472
+_cell_length_c 14.296
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 120
+_cell_volume 380.972
+_exptl_crystal_density_diffrn      3.332
+_symmetry_space_group_name_H-M 'P 63'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  'x-y,x,1/2+z'
+  '-y,x-y,z'
+  '-x,-y,1/2+z'
+  '-x+y,-x,z'
+  'y,-x+y,1/2+z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_U_iso_or_equiv
+MnM1   0.66700  -0.00080   0.23750   0.61800   0.01390
+Fe3+M1   0.66700  -0.00080   0.23750   0.20300   0.01390
+MgM1   0.66700  -0.00080   0.23750   0.17900   0.01390
+SiT1   0.00000   0.00000   0.03820   0.32200   0.00900
+Fe3+T1   0.00000   0.00000   0.03820   0.67800   0.00900
+SiT2   0.33333   0.66667   0.03660   0.63100   0.00950
+Fe3+T2   0.33333   0.66667   0.03660   0.36900   0.00950
+O1   0.19100   0.33200   0.00000   1.00000   0.01900
+O4   0.00000   0.00000   0.15700   1.00000   0.00670
+O5   0.33333   0.66667   0.15770   1.00000   0.00730
+O-H1   0.66667   0.33333   0.15920   1.00000   0.00520
+O-H2   0.33500   0.00100   0.30810   1.00000   0.00870
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+MnM1 0.01380 0.01380 0.01410 0.00700 0.00010 0.00030
+Fe3+M1 0.01380 0.01380 0.01410 0.00700 0.00010 0.00030
+MgM1 0.01380 0.01380 0.01410 0.00700 0.00010 0.00030
+SiT1 0.00860 0.00860 0.00970 0.00430 0.00000 0.00000
+Fe3+T1 0.00860 0.00860 0.00970 0.00430 0.00000 0.00000
+SiT2 0.00880 0.00880 0.01100 0.00440 0.00000 0.00000
+Fe3+T2 0.00880 0.00880 0.01100 0.00440 0.00000 0.00000
+O4 0.00960 0.00960 0.00100 0.00480 0.00000 0.00000
+O5 0.00740 0.00740 0.00700 0.00370 0.00000 0.00000
+O-H1 0.00680 0.00680 0.00200 0.00340 0.00000 0.00000
+O-H2 0.01000 0.01300 0.00200 0.00500 0.00200 0.00100

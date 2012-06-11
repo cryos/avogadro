@@ -1,0 +1,50 @@
+data_global
+_chemical_name_mineral 'Kaolinite'
+loop_
+_publ_author_name
+'Bish D L'
+'Von Dreele R B'
+_journal_name_full 'Clays and Clay Minerals'
+_journal_volume 37 
+_journal_year 1989
+_journal_page_first 289
+_journal_page_last 296
+_publ_section_title
+;
+ Rietveld refinement of non-hydrogen atomic positions in kaolinite
+ Note: clay
+;
+_database_code_amcsd 0012232
+_chemical_compound_source 'Keokuk, Iowa, USA'
+_chemical_formula_sum 'Al2 Si2 O9 H4'
+_cell_length_a 5.1554
+_cell_length_b 8.9448
+_cell_length_c 7.4048
+_cell_angle_alpha 91.700
+_cell_angle_beta 104.862
+_cell_angle_gamma 89.822
+_cell_volume 329.893
+_exptl_crystal_density_diffrn      2.599
+_symmetry_space_group_name_H-M 'C 1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Al1   0.29710   0.49570   0.47210
+Al2   0.79260   0.33000   0.46990
+Si1   0.99420   0.33930   0.09090
+Si2   0.50640   0.16650   0.09130
+O1   0.05010   0.35390   0.31700
+O2   0.12140   0.66040   0.31750
+O3   0.00000   0.50000   0.00000
+O4   0.20850   0.23050   0.02470
+O5   0.20120   0.76570   0.00320
+O-H1   0.05100   0.96980   0.32200
+O-H2   0.96490   0.16650   0.60510
+O-H3   0.03480   0.47690   0.60800
+O-H4   0.03340   0.85700   0.60940
