@@ -1309,7 +1309,10 @@ namespace Avogadro{
     std::vector<OpenBabel::OBAtom*>::iterator i;
 
     for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
-      Atom *atom = addAtom();
+      // First try to get the atom with the same unique ID
+      Atom *atom = atomById(obatom->GetId());
+      if (!atom) // no match, create a new atom
+        atom = addAtom();
       atom->setOBAtom(obatom);
     }
 

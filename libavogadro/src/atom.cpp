@@ -192,7 +192,7 @@ namespace Avogadro {
        valenceE = atomicNum - 86;
      else
        return 0; // I don't quite know what to do for TM or other elements
-	
+
      int formalcharge = 0;
      int totalBonds = 0;
      foreach(unsigned long id, m_bonds) {
@@ -228,9 +228,9 @@ namespace Avogadro {
        if (totalBonds < valenceE)
          loneE = fullShell - (2*totalBonds);
      }
-		
+
      formalcharge = valenceE - (totalBonds + loneE);
-	
+
      return formalcharge;
    }
 
@@ -323,13 +323,16 @@ namespace Avogadro {
    {
      Q_D(Atom);
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;     
-     OpenBabel::OBPairData *obproperty;     
+     OpenBabel::OBAtom obatom;
+
+     OpenBabel::OBPairData *obproperty;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
      obatom.SetPartialCharge(d->partialCharge);
      obatom.SetFormalCharge(d->formalCharge);
+     // Save Unique ID
+     obatom.SetId(id());
 
      // Save custom label
      if (!d->customLabel.isEmpty()) {
@@ -354,7 +357,7 @@ namespace Avogadro {
        obproperty->SetValue(QString::number(d->customRadius).toAscii().data());
        obatom.SetData(obproperty);
      }
-            
+
      // Add dynamic properties as OBPairData
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
@@ -369,7 +372,7 @@ namespace Avogadro {
 /*   const OpenBabel::OBAtom Atom::OBAtom() const
    {
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBAtom obatom;
      OpenBabel::OBPairData *obproperty;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
@@ -391,7 +394,7 @@ namespace Avogadro {
        obproperty->SetValue(m_customColorName.toAscii().data());
        obatom.SetData(obproperty);
      }
-     
+
      // Add dynamic properties as OBPairData
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
@@ -407,15 +410,11 @@ namespace Avogadro {
    {
      Q_D(Atom);
      // Copy all needed OBAtom data to our atom
+     m_id = obatom->GetId();
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
      d->partialCharge = obatom->GetPartialCharge();
-
-     // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-     // m_customLabel = obatom->GetCustomLabel();
-     // #endif
-     if (obatom->GetFormalCharge() != 0)
-       d->formalCharge = obatom->GetFormalCharge();
+     d->formalCharge = obatom->GetFormalCharge();
 
      // And add any generic data as QObject properties
      std::vector<OpenBabel::OBGenericData*> data;
