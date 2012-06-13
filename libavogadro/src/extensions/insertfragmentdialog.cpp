@@ -89,11 +89,24 @@ namespace Avogadro {
     // Mac and Windows use relative path from application location
     m_directory = QCoreApplication::applicationDirPath() + "/../share/avogadro/";
 #endif
-    m_directory += directory; // fragments or crystals
+    m_directory += directory; // fragments or crystals or whatever
     if ( directory.contains(QLatin1String("crystals")) )
       d->crystalFiles = true;
     else
       d->crystalFiles = false;
+
+    QDir dir(m_directory);
+    if (!dir.exists() || !dir.isReadable() ) {
+      qWarning() << "Cannot find the directory: " << m_directory;
+
+     // Can't really do anything!
+     ui.directoryTreeView->setEnabled(false);
+     ui.insertFragmentButton->setEnabled(false);
+     ui.filterLineEdit->setEnabled(false);
+     ui.clearToolButton->setEnabled(false);
+
+     return;
+    }
 
     d->model = new QFileSystemModel(this);
     d->model->setReadOnly(true);
@@ -141,8 +154,6 @@ namespace Avogadro {
 
   const Molecule &InsertFragmentDialog::fragment()
   {
-    OBMol obfragment;
-
     // The selected model index is in the proxy
     QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
 
@@ -166,6 +177,7 @@ namespace Avogadro {
     if (fileInfo.isDir())
       return d->fragment; // return an empty fragment and do nothing
 
+    OBMol obfragment;
     Molecule *mol;
     if (d->crystalFiles) {
       // No bonding, at first
