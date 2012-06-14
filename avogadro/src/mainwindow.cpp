@@ -1168,13 +1168,16 @@ protected:
         builder.Build(*obMolecule);
         obMolecule->AddHydrogens(); // Add some hydrogens before running force field
 
-        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
-        if (!pFF || !pFF->Setup(*obMolecule)) {
-          pFF = OBForceField::FindForceField("UFF");
+        OBForceField* pFF =  OBForceField::FindForceField("MMFF94")->MakeNewInstance();
+        if (pFF && !pFF->Setup(*obMolecule)) {
+          pFF = OBForceField::FindForceField("UFF")->MakeNewInstance();
           if (!pFF || !pFF->Setup(*obMolecule)) return; // can't do anything more
         }
-        pFF->ConjugateGradients(250, 1.0e-4);
-        pFF->UpdateCoordinates(*obMolecule);
+        if (pFF) {
+          pFF->ConjugateGradients(250, 1.0e-4);
+          pFF->UpdateCoordinates(*obMolecule);
+          delete pFF;
+        }
       } // building geometry
 
     } // check 3D coordinates
