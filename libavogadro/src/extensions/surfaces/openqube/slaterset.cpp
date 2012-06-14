@@ -56,7 +56,7 @@ using std::vector;
 static const double BOHR_TO_ANGSTROM = 0.529177249;
 static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-SlaterSet::SlaterSet() : m_initialized(false)
+SlaterSet::SlaterSet() : BasisSet(), m_initialized(false)
 {
 }
 

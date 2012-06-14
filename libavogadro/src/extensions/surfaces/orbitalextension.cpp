@@ -122,6 +122,9 @@ namespace Avogadro
 
     loadBasis();
 
+    if (!m_basis || m_basis->numElectrons() == 0)
+      return; // no electrons, no orbitals
+
     // Show dock
     if (m_dock &&
         molecule &&
@@ -395,6 +398,8 @@ namespace Avogadro
     if (m_basis) {
       // Determine HOMO
       unsigned int homo = ceil( m_basis->numElectrons() / 2.0 );
+
+      qDebug() << " num electrons " << m_basis->numElectrons();
 
       // Initialize prioritizer at HOMO's index
       int priority = homo;

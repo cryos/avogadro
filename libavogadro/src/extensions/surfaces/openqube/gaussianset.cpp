@@ -50,7 +50,8 @@ struct GaussianShell
 static const double BOHR_TO_ANGSTROM = 0.529177249;
 static const double ANGSTROM_TO_BOHR = 1.0 / BOHR_TO_ANGSTROM;
 
-GaussianSet::GaussianSet() : m_numMOs(0), m_numAtoms(0), m_init(false),
+GaussianSet::GaussianSet() : BasisSet(),
+  m_numMOs(0), m_numAtoms(0), m_init(false),
   m_cube(0), m_gaussianShells(0)
 {
 }
