@@ -61,24 +61,24 @@ namespace Avogadro {
       bool ready;
 
       // special cases call OBConversion::ReadFile and save the the resulting
-      // OBMol in specialCaseOBMol. MoleculeFile::molecule will return this 
+      // OBMol in specialCaseOBMol. MoleculeFile::molecule will return this
       // OBMol object (if non 0) regardless of the index.
       OBMol *specialCaseOBMol;
   };
 
-  MoleculeFile::MoleculeFile(const QString &fileName, const QString &fileType, 
-      const QString &fileOptions) : QObject(), d(new MoleculeFilePrivate), 
+  MoleculeFile::MoleculeFile(const QString &fileName, const QString &fileType,
+      const QString &fileOptions) : QObject(), d(new MoleculeFilePrivate),
       m_fileName(fileName), m_fileType(fileType), m_fileOptions(fileOptions)
   {
   }
 
-  MoleculeFile::~MoleculeFile() 
+  MoleculeFile::~MoleculeFile()
   {
     if (d->specialCaseOBMol)
       delete d->specialCaseOBMol;
     delete d;
   }
-    
+
   bool MoleculeFile::isReady() const
   {
     return d->ready;
@@ -88,19 +88,19 @@ namespace Avogadro {
   {
     return d->isConformerFile;
   }
- 
+
   unsigned int MoleculeFile::numMolecules() const
   {
-    if (!d->ready) 
+    if (!d->ready)
       return 0;
     if (d->isConformerFile)
       return 1;
     return d->titles.size();
   }
-      
+
   QStringList MoleculeFile::titles() const
   {
-    if (!d->ready) 
+    if (!d->ready)
       return QStringList();
     return d->titles;
   }
@@ -113,9 +113,9 @@ namespace Avogadro {
 
     Molecule *mol = new Molecule;
     mol->setOBMol(obmol);
-    
+
     delete obmol;
-    return mol;  
+    return mol;
   }
 
   OpenBabel::OBMol* MoleculeFile::OBMol(unsigned int i)
@@ -160,7 +160,7 @@ namespace Avogadro {
     ifstream ifs;
     ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     ifs.seekg(d->streampos.at(i));
- 
+
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
 
@@ -180,7 +180,7 @@ namespace Avogadro {
   bool MoleculeFile::replaceMolecule(unsigned int i, Molecule *molecule,
                                      QString)
   {
-    if (!d->ready) 
+    if (!d->ready)
       return false;
     if (i >= d->streampos.size()) {
       m_error.append(tr("replaceMolecule: index %1 out of reach.").arg(i));
@@ -230,7 +230,7 @@ namespace Avogadro {
 
     std::streampos newSize = ofs.tellp() - d->streampos[i];
     if (i+1 < d->streampos.size()) {
-      // copy remaining molecules 
+      // copy remaining molecules
       ifs.seekg(0, std::ios::end);
       std::streampos endpos = ifs.tellg();
       ifs.seekg(d->streampos.at(i+1));
@@ -254,7 +254,7 @@ namespace Avogadro {
     if (i+1 < d->streampos.size()) {
       // size of the molecule to be replaced (in chars)
       std::streampos oldSize = d->streampos[i+1] - d->streampos[i];
-      std::streampos delta = newSize - oldSize; 
+      std::streampos delta = newSize - oldSize;
 
       for (unsigned int j = i+1; j < d->streampos.size(); ++j) {
         d->streampos[j] += delta;
@@ -263,12 +263,12 @@ namespace Avogadro {
 
     return true;
   }
-  
+
   bool MoleculeFile::insertMolecule(unsigned int, Molecule *, QString)
   {
     return false;
   }
-  
+
   bool MoleculeFile::appendMolecule(Molecule *, QString)
   {
     return false;
@@ -304,12 +304,12 @@ namespace Avogadro {
   {
     d->isConformerFile = value;
   }
-  
+
   void MoleculeFile::setReady(bool value)
   {
     d->ready = value;
   }
- 
+
   void MoleculeFile::setFirstReady(bool value)
   {
     if (value && !d->ready)
@@ -325,7 +325,7 @@ namespace Avogadro {
   {
     m_error.clear();
   }
-    
+
   bool MoleculeFile::canOpen(const QString &fileName, QIODevice::OpenMode mode)
   {
     // Check that the file can be opened in mode
@@ -335,7 +335,7 @@ namespace Avogadro {
       return false;
     file.close();
 
-    // WriteOnly, ReadWrite: also check to make sure we can open fileName.new 
+    // WriteOnly, ReadWrite: also check to make sure we can open fileName.new
     if (mode & QIODevice::WriteOnly) {
       QString newFileName(fileName + ".new");
       QFile newFile(newFileName);
@@ -344,7 +344,7 @@ namespace Avogadro {
         return false;
       newFile.close();
     }
-    
+
     return true;
   }
 
@@ -472,11 +472,13 @@ namespace Avogadro {
       return false;
     }
     OpenBabel::OBMol obmol = molecule->OBMol();
-      
-    OpenBabel::OBChainsParser chainparser;
-    obmol.UnsetFlag(OB_CHAINS_MOL);
-    chainparser.PerceiveChains(obmol);
- 
+
+    if (obmol.NumResidues() == 0) {
+      OpenBabel::OBChainsParser chainparser;
+      obmol.UnsetFlag(OB_CHAINS_MOL);
+      chainparser.PerceiveChains(obmol);
+    }
+
     if (conv.Write(&obmol, &ofs)) {
       ofs.close();
       if (replaceExistingFile) {
@@ -535,7 +537,7 @@ namespace Avogadro {
         error->append(QObject::tr("File %1 cannot be opened for writing.").arg(fileName));
       return false;
     }
-    
+
     QString newFileName(fileName + ".new");
     QFile newFile(newFileName);
 
@@ -562,7 +564,7 @@ namespace Avogadro {
     ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) // Should not happen, already checked file could be opened
       return false;
-    
+
     bool success = false;
     const std::vector<std::vector<Eigen::Vector3d>*> &conformers = molecule->conformers();
     OpenBabel::OBMol obMol = molecule->OBMol();
@@ -581,11 +583,11 @@ namespace Avogadro {
       QFile(fileName).remove();
       newFile.rename(fileName);
       return true;
-    } 
- 
+    }
+
     if (error)
       error->append(QObject::tr("Writing conformers to file '%1' failed.").arg(fileName));
-      
+
     newFile.remove();
     return false;
   }
@@ -616,8 +618,8 @@ namespace Avogadro {
             QObject::tr("File type '%1' is not supported for reading.").arg(qfile.baseName()));
         moleculeFile->setReady(true);
         moleculeFile->threadFinished(); // set & emit ready
-      } 
-      
+      }
+
       moleculeFile->setConformerFile(false);
       // Now attempt to read the molecule in
       moleculeFile->d->specialCaseOBMol = new OpenBabel::OBMol;
@@ -630,7 +632,7 @@ namespace Avogadro {
         moleculeFile->m_error.append(
             QObject::tr("Reading a molecule from file '%1' failed.").arg(fileName));
       }
-      
+
       moleculeFile->threadFinished(); // set & emit ready
       return moleculeFile;
     } // handle VASP files

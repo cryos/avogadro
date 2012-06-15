@@ -192,7 +192,7 @@ namespace Avogadro {
        valenceE = atomicNum - 86;
      else
        return 0; // I don't quite know what to do for TM or other elements
-	
+
      int formalcharge = 0;
      int totalBonds = 0;
      foreach(unsigned long id, m_bonds) {
@@ -228,9 +228,9 @@ namespace Avogadro {
        if (totalBonds < valenceE)
          loneE = fullShell - (2*totalBonds);
      }
-		
+
      formalcharge = valenceE - (totalBonds + loneE);
-	
+
      return formalcharge;
    }
 
@@ -323,8 +323,8 @@ namespace Avogadro {
    {
      Q_D(Atom);
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;     
-     OpenBabel::OBPairData *obproperty;     
+     OpenBabel::OBAtom obatom;
+     OpenBabel::OBPairData *obproperty;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
@@ -354,7 +354,7 @@ namespace Avogadro {
        obproperty->SetValue(QString::number(d->customRadius).toAscii().data());
        obatom.SetData(obproperty);
      }
-            
+
      // Add dynamic properties as OBPairData
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
@@ -369,7 +369,7 @@ namespace Avogadro {
 /*   const OpenBabel::OBAtom Atom::OBAtom() const
    {
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBAtom obatom;
      OpenBabel::OBPairData *obproperty;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
@@ -391,7 +391,7 @@ namespace Avogadro {
        obproperty->SetValue(m_customColorName.toAscii().data());
        obatom.SetData(obproperty);
      }
-     
+
      // Add dynamic properties as OBPairData
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
@@ -451,7 +451,10 @@ namespace Avogadro {
        m_molecule->setAtomPos(m_id, *other.pos());
      else
        qDebug() << "Atom position returned null.";
-     m_atomicNumber = other.m_atomicNumber;
+
+     // Check first, because this will invalidate residue info
+     if (m_atomicNumber != other.m_atomicNumber)
+       m_atomicNumber = other.m_atomicNumber;
      d->formalCharge = other.formalCharge();
      d->customLabel = other.customLabel();
      d->customColorName = other.customColorName();

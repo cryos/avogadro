@@ -2426,7 +2426,7 @@ namespace Avogadro {
         d->selectedPrimitives.removeAll( item );
       // The engine caches must be invalidated
       d->updateCache = true;
-      item->update();
+      //      item->update();
     }
   }
 
