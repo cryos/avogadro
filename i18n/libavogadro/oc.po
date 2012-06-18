@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-11 00:00-0400\n"
+"POT-Creation-Date: 2012-06-18 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:38+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -3334,50 +3334,50 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "Error OpenGL"
 
-#: src/glwidget.cpp:1700
+#: src/glwidget.cpp:1701
 msgid "Debug Information"
 msgstr "Informacions de desbugatge"
 
-#: src/glwidget.cpp:1704
+#: src/glwidget.cpp:1705
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS : %L1"
 
-#: src/glwidget.cpp:1708
+#: src/glwidget.cpp:1709
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr ""
 
-#: src/glwidget.cpp:1715
+#: src/glwidget.cpp:1716
 #, qt-format
 msgid "ModelView row 1: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1721
+#: src/glwidget.cpp:1722
 #, qt-format
 msgid "ModelView row 2: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1727
+#: src/glwidget.cpp:1728
 #, qt-format
 msgid "ModelView row 3: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1733
+#: src/glwidget.cpp:1734
 #, qt-format
 msgid "ModelView row 4: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1742
+#: src/glwidget.cpp:1743
 msgid "No molecule set"
 msgstr ""
 
-#: src/glwidget.cpp:1747
+#: src/glwidget.cpp:1748
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Atòms : %L1"
 
-#: src/glwidget.cpp:1751
+#: src/glwidget.cpp:1752
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Ligasons : %L1"
