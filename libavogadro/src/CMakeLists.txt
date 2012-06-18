@@ -164,13 +164,39 @@ endif()
 # Library translations
 if(NOT WIN32)
   if(Linguist_FOUND)
+  option(DOWNLOAD_TRANSLATIONS
+    "Download latest translations from website" OFF)
+  if(DOWNLOAD_TRANSLATIONS)
+   # TODO -- check if files exist and/or are older than a week
+   set(base_URL "http://avogadro.openmolecules.net/translations/${Avogadro_VERSION}")
+   message(STATUS "Downloading libavogadro translations")
+   file(DOWNLOAD
+     "${base_URL}/libavogadro-po.txt"
+     "${CMAKE_CURRENT_BINARY_DIR}/libavogadro-po.txt"
+     TIMEOUT 5
+     INACTIVITY_TIMEOUT 5)
+   file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/po")
+   # should check if the previous step, or this one worked
+   # (e.g., net or website is down)
+   file(READ "${CMAKE_CURRENT_BINARY_DIR}/libavogadro-po.txt" lib_PO_List)
+   string(REGEX REPLACE "\n" ";" lib_PO_List "${lib_PO_List}")
+   foreach(lib_po ${lib_PO_List})
+     message(STATUS "    translation: ${lib_po}")
+     file(DOWNLOAD "${base_URL}/libavogadro/${lib_po}"
+         "${CMAKE_CURRENT_BINARY_DIR}/po/${lib_po}"
+         TIMEOUT 5 INACTIVITY_TIMEOUT 5)
+     list(APPEND libavogadro_PO "${CMAKE_CURRENT_BINARY_DIR}/po/libavogadro-${lib_po}")
+   endforeach()
+   else()
+    # dont download, use in the source directory
     file(GLOB_RECURSE lang_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/*.po")
     foreach(po ${lang_PO})
       string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/libavogadro-\\2.po" po ${po})
       list(APPEND libavogadro_PO ${po})
     endforeach()
+    endif() # download or not
     QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
-  endif()
+  endif() # linguist found
 else()
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE libavogadro_QM
