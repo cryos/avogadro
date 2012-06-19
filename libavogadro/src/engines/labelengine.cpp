@@ -53,9 +53,9 @@ namespace Avogadro {
   {
     setupUi(this);
   }
-  
 
- 
+
+
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
                     m_atomType(3), m_bondType(0), m_textRendering(0),
                     m_lengthPrecision(3),
@@ -202,7 +202,7 @@ namespace Avogadro {
     }
     return str;
   }
-  
+
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Bond *b)
   {
     // Render bond labels
@@ -284,7 +284,7 @@ namespace Avogadro {
     if (m_settingsWidget)
       emit changed();
   }
-  
+
   void LabelEngine::updateDisplacement(double)
   {
     m_displacement = Vector3d(m_settingsWidget->xDisplSpinBox->value(),
@@ -300,7 +300,7 @@ namespace Avogadro {
                                   m_settingsWidget->zBondDisplSpinBox->value());
     emit changed();
   }
-  
+
   QWidget *LabelEngine::settingsWidget()
   {
     if(!m_settingsWidget) {
@@ -313,7 +313,13 @@ namespace Avogadro {
       m_settingsWidget->atomColor->setDialogTitle(tr("Select Atom Labels Color"));
       m_settingsWidget->bondColor->setColor(m_bondColor);
       m_settingsWidget->bondColor->setDialogTitle(tr("Select Bond Labels Color"));
-        
+
+      // Hide the text rendering engine choice and label for release builds
+#ifndef(DEBUG)
+      m_settingsWidget->textRendering->hide();
+      m_settingsWidget->label_3->hide();
+#endif
+
       connect(m_settingsWidget->atomType, SIGNAL(activated(int)),
               this, SLOT(setAtomType(int)));
       connect(m_settingsWidget->textRendering, SIGNAL(activated(int)),
@@ -381,7 +387,7 @@ namespace Avogadro {
       emit changed();
     }
   }
-  
+
   void LabelEngine::settingsWidgetDestroyed()
   {
     qDebug() << "Destroyed Settings Widget";
