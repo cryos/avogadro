@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-18 00:00-0400\n"
+"POT-Creation-Date: 2012-06-25 00:00-0400\n"
 "PO-Revision-Date: 2011-02-22 14:11+0000\n"
 "Last-Translator: fasix <vito.fasano@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
@@ -88,479 +88,480 @@ msgid "Highlight particular features which match a SMARTS pattern."
 msgstr ""
 "Evidenzia caratteristiche particolari che corrispondono a uno schema SMARTS"
 
-#: src/elementtranslator.cpp:42
+#: src/elementtranslator.cpp:40
 msgid "Hydrogen"
 msgstr "Idrogeno"
 
-#: src/elementtranslator.cpp:45
+#: src/elementtranslator.cpp:43
 msgid "Helium"
 msgstr "Elio"
 
-#: src/elementtranslator.cpp:48
+#: src/elementtranslator.cpp:46
 msgid "Lithium"
 msgstr "Litio"
 
-#: src/elementtranslator.cpp:51
+#: src/elementtranslator.cpp:49
 msgid "Beryllium"
 msgstr "Berillio"
 
-#: src/elementtranslator.cpp:54
+#: src/elementtranslator.cpp:52
 msgid "Boron"
 msgstr "Boro"
 
-#: src/elementtranslator.cpp:57
+#: src/elementtranslator.cpp:55
 msgid "Carbon"
 msgstr "Carbonio"
 
-#: src/elementtranslator.cpp:60
+#: src/elementtranslator.cpp:58
 msgid "Nitrogen"
 msgstr "Azoto"
 
-#: src/elementtranslator.cpp:63
+#: src/elementtranslator.cpp:61
 msgid "Oxygen"
 msgstr "Ossigeno"
 
-#: src/elementtranslator.cpp:66
+#: src/elementtranslator.cpp:64
 msgid "Fluorine"
 msgstr "Fluoro"
 
-#: src/elementtranslator.cpp:69
+#: src/elementtranslator.cpp:67
 msgid "Neon"
 msgstr "Neon"
 
-#: src/elementtranslator.cpp:72
+#: src/elementtranslator.cpp:70
 msgid "Sodium"
 msgstr "Sodio"
 
-#: src/elementtranslator.cpp:75
+#: src/elementtranslator.cpp:73
 msgid "Magnesium"
 msgstr "Magnesio"
 
-#: src/elementtranslator.cpp:78
+#: src/elementtranslator.cpp:76
 msgid "Aluminum"
 msgstr "Alluminio"
 
-#: src/elementtranslator.cpp:81
+#: src/elementtranslator.cpp:79
 msgid "Silicon"
 msgstr "Silicio"
 
-#: src/elementtranslator.cpp:84
+#: src/elementtranslator.cpp:82
 msgid "Phosphorus"
 msgstr "Fosforo"
 
-#: src/elementtranslator.cpp:87
+#: src/elementtranslator.cpp:85
 msgid "Sulfur"
 msgstr "Zolfo"
 
-#: src/elementtranslator.cpp:90
+#: src/elementtranslator.cpp:88
 msgid "Chlorine"
 msgstr "Cloro"
 
-#: src/elementtranslator.cpp:93
+#: src/elementtranslator.cpp:91
 msgid "Argon"
 msgstr "Argon"
 
-#: src/elementtranslator.cpp:96
+#: src/elementtranslator.cpp:94
 msgid "Potassium"
 msgstr "Potassio"
 
-#: src/elementtranslator.cpp:99
+#: src/elementtranslator.cpp:97
 msgid "Calcium"
 msgstr "Calcio"
 
-#: src/elementtranslator.cpp:102
+#: src/elementtranslator.cpp:100
 msgid "Scandium"
 msgstr "Scandio"
 
-#: src/elementtranslator.cpp:105
+#: src/elementtranslator.cpp:103
 msgid "Titanium"
 msgstr "Titanio"
 
-#: src/elementtranslator.cpp:108
+#: src/elementtranslator.cpp:106
 msgid "Vanadium"
 msgstr "Vanadio"
 
-#: src/elementtranslator.cpp:111
+#: src/elementtranslator.cpp:109
 msgid "Chromium"
 msgstr "Chromium"
 
-#: src/elementtranslator.cpp:114
+#: src/elementtranslator.cpp:112
 msgid "Manganese"
 msgstr "Manganese"
 
-#: src/elementtranslator.cpp:117
+#: src/elementtranslator.cpp:115
 msgid "Iron"
 msgstr "Ferro"
 
-#: src/elementtranslator.cpp:120
+#: src/elementtranslator.cpp:118
 msgid "Cobalt"
 msgstr "Cobalto"
 
-#: src/elementtranslator.cpp:123
+#: src/elementtranslator.cpp:121
 msgid "Nickel"
 msgstr "Nichel"
 
-#: src/elementtranslator.cpp:126
+#: src/elementtranslator.cpp:124
 msgid "Copper"
 msgstr "Rame"
 
-#: src/elementtranslator.cpp:129
+#: src/elementtranslator.cpp:127
 msgid "Zinc"
 msgstr "Zinco"
 
-#: src/elementtranslator.cpp:132
+#: src/elementtranslator.cpp:130
 msgid "Gallium"
 msgstr "Gallio"
 
-#: src/elementtranslator.cpp:135
+#: src/elementtranslator.cpp:133
 msgid "Germanium"
 msgstr "Germanio"
 
-#: src/elementtranslator.cpp:138
+#: src/elementtranslator.cpp:136
 msgid "Arsenic"
 msgstr "Arsenico"
 
-#: src/elementtranslator.cpp:141
+#: src/elementtranslator.cpp:139
 msgid "Selenium"
 msgstr "Selenio"
 
-#: src/elementtranslator.cpp:144
+#: src/elementtranslator.cpp:142
 msgid "Bromine"
 msgstr "Bromo"
 
-#: src/elementtranslator.cpp:147
+#: src/elementtranslator.cpp:145
 msgid "Krypton"
 msgstr "Cripton"
 
-#: src/elementtranslator.cpp:150
+#: src/elementtranslator.cpp:148
 msgid "Rubidium"
 msgstr "Rubidio"
 
-#: src/elementtranslator.cpp:153
+#: src/elementtranslator.cpp:151
 msgid "Strontium"
 msgstr "Stronzio"
 
-#: src/elementtranslator.cpp:156
+#: src/elementtranslator.cpp:154
 msgid "Yttrium"
 msgstr "Ittrio"
 
-#: src/elementtranslator.cpp:159
+#: src/elementtranslator.cpp:157
 msgid "Zirconium"
 msgstr "Zirconio"
 
-#: src/elementtranslator.cpp:162
+#: src/elementtranslator.cpp:160
 msgid "Niobium"
 msgstr "Niobio"
 
-#: src/elementtranslator.cpp:165
+#: src/elementtranslator.cpp:163
 msgid "Molybdenum"
 msgstr "Molibdeno"
 
-#: src/elementtranslator.cpp:168
+#: src/elementtranslator.cpp:166
 msgid "Technetium"
 msgstr "Tecnezio"
 
-#: src/elementtranslator.cpp:171
+#: src/elementtranslator.cpp:169
 msgid "Ruthenium"
 msgstr "Rutenio"
 
-#: src/elementtranslator.cpp:174
+#: src/elementtranslator.cpp:172
 msgid "Rhodium"
 msgstr "Rodio"
 
-#: src/elementtranslator.cpp:177
+#: src/elementtranslator.cpp:175
 msgid "Palladium"
 msgstr "Palladio"
 
-#: src/elementtranslator.cpp:180
+#: src/elementtranslator.cpp:178
 msgid "Silver"
 msgstr "Argento"
 
-#: src/elementtranslator.cpp:183
+#: src/elementtranslator.cpp:181
 msgid "Cadmium"
 msgstr "Cadmio"
 
-#: src/elementtranslator.cpp:186
+#: src/elementtranslator.cpp:184
 msgid "Indium"
 msgstr "Indio"
 
-#: src/elementtranslator.cpp:189
+#: src/elementtranslator.cpp:187
 msgid "Tin"
 msgstr "Stagno"
 
-#: src/elementtranslator.cpp:192
+#: src/elementtranslator.cpp:190
 msgid "Antimony"
 msgstr "Antimonio"
 
-#: src/elementtranslator.cpp:195
+#: src/elementtranslator.cpp:193
 msgid "Tellurium"
 msgstr "Tellurio"
 
-#: src/elementtranslator.cpp:198
+#: src/elementtranslator.cpp:196
 msgid "Iodine"
 msgstr "Iodio"
 
-#: src/elementtranslator.cpp:201
+#: src/elementtranslator.cpp:199
 msgid "Xenon"
 msgstr "Xenon"
 
-#: src/elementtranslator.cpp:204
+#: src/elementtranslator.cpp:202
 msgid "Cesium"
 msgstr "Cesio"
 
-#: src/elementtranslator.cpp:207
+#: src/elementtranslator.cpp:205
 msgid "Barium"
 msgstr "Bario"
 
-#: src/elementtranslator.cpp:210
+#: src/elementtranslator.cpp:208
 msgid "Lanthanum"
 msgstr "Lantanio"
 
-#: src/elementtranslator.cpp:213
+#: src/elementtranslator.cpp:211
 msgid "Cerium"
 msgstr "Cerio"
 
-#: src/elementtranslator.cpp:216
+#: src/elementtranslator.cpp:214
 msgid "Praseodymium"
 msgstr "Praseodimio"
 
-#: src/elementtranslator.cpp:219
+#: src/elementtranslator.cpp:217
 msgid "Neodymium"
 msgstr "Neodimio"
 
-#: src/elementtranslator.cpp:222
+#: src/elementtranslator.cpp:220
 msgid "Promethium"
 msgstr "Promezio"
 
-#: src/elementtranslator.cpp:225
+#: src/elementtranslator.cpp:223
 msgid "Samarium"
 msgstr "Samario"
 
-#: src/elementtranslator.cpp:228
+#: src/elementtranslator.cpp:226
 msgid "Europium"
 msgstr "Europio"
 
-#: src/elementtranslator.cpp:231
+#: src/elementtranslator.cpp:229
 msgid "Gadolinium"
 msgstr "Gadolinio"
 
-#: src/elementtranslator.cpp:234
+#: src/elementtranslator.cpp:232
 msgid "Terbium"
 msgstr "Terbio"
 
-#: src/elementtranslator.cpp:237
+#: src/elementtranslator.cpp:235
 msgid "Dysprosium"
 msgstr "Disprosio"
 
-#: src/elementtranslator.cpp:240
+#: src/elementtranslator.cpp:238
 msgid "Holmium"
 msgstr "Olmio"
 
-#: src/elementtranslator.cpp:243
+#: src/elementtranslator.cpp:241
 msgid "Erbium"
 msgstr "Erbio"
 
-#: src/elementtranslator.cpp:246
+#: src/elementtranslator.cpp:244
 msgid "Thulium"
 msgstr "Tulio"
 
-#: src/elementtranslator.cpp:249
+#: src/elementtranslator.cpp:247
 msgid "Ytterbium"
 msgstr "Itterbio"
 
-#: src/elementtranslator.cpp:252
+#: src/elementtranslator.cpp:250
 msgid "Lutetium"
 msgstr "Lutezio"
 
-#: src/elementtranslator.cpp:255
+#: src/elementtranslator.cpp:253
 msgid "Hafnium"
 msgstr "Afnio"
 
-#: src/elementtranslator.cpp:258
+#: src/elementtranslator.cpp:256
 msgid "Tantalum"
 msgstr "Tantalio"
 
-#: src/elementtranslator.cpp:261
+#: src/elementtranslator.cpp:259
 msgid "Tungsten"
 msgstr "Tungsteno"
 
-#: src/elementtranslator.cpp:264
+#: src/elementtranslator.cpp:262
 msgid "Rhenium"
 msgstr "Renio"
 
-#: src/elementtranslator.cpp:267
+#: src/elementtranslator.cpp:265
 msgid "Osmium"
 msgstr "Osmio"
 
-#: src/elementtranslator.cpp:270
+#: src/elementtranslator.cpp:268
 msgid "Iridium"
 msgstr "Iridio"
 
-#: src/elementtranslator.cpp:273
+#: src/elementtranslator.cpp:271
 msgid "Platinum"
 msgstr "Platino"
 
-#: src/elementtranslator.cpp:276
+#: src/elementtranslator.cpp:274
 msgid "Gold"
 msgstr "Oro"
 
-#: src/elementtranslator.cpp:279
+#: src/elementtranslator.cpp:277
 msgid "Mercury"
 msgstr "Mercurio"
 
-#: src/elementtranslator.cpp:282
+#: src/elementtranslator.cpp:280
 msgid "Thallium"
 msgstr "Tallio"
 
-#: src/elementtranslator.cpp:285
+#: src/elementtranslator.cpp:283
 msgid "Lead"
 msgstr "Piombo"
 
-#: src/elementtranslator.cpp:288
+#: src/elementtranslator.cpp:286
 msgid "Bismuth"
 msgstr "Bismuto"
 
-#: src/elementtranslator.cpp:291
+#: src/elementtranslator.cpp:289
 msgid "Polonium"
 msgstr "Polonio"
 
-#: src/elementtranslator.cpp:294
+#: src/elementtranslator.cpp:292
 msgid "Astatine"
 msgstr "Astato"
 
-#: src/elementtranslator.cpp:297
+#: src/elementtranslator.cpp:295
 msgid "Radon"
 msgstr "Radon"
 
-#: src/elementtranslator.cpp:300
+#: src/elementtranslator.cpp:298
 msgid "Francium"
 msgstr "Francio"
 
-#: src/elementtranslator.cpp:303
+#: src/elementtranslator.cpp:301
 msgid "Radium"
 msgstr "Radio"
 
-#: src/elementtranslator.cpp:306
+#: src/elementtranslator.cpp:304
 msgid "Actinium"
 msgstr "Attinio"
 
-#: src/elementtranslator.cpp:309
+#: src/elementtranslator.cpp:307
 msgid "Thorium"
 msgstr "Torio"
 
-#: src/elementtranslator.cpp:312
+#: src/elementtranslator.cpp:310
 msgid "Protactinium"
 msgstr "Protoattinio"
 
-#: src/elementtranslator.cpp:315
+#: src/elementtranslator.cpp:313
 msgid "Uranium"
 msgstr "Uranio"
 
-#: src/elementtranslator.cpp:318
+#: src/elementtranslator.cpp:316
 msgid "Neptunium"
 msgstr "Nettunio"
 
-#: src/elementtranslator.cpp:321
+#: src/elementtranslator.cpp:319
 msgid "Plutonium"
 msgstr "Plutonio"
 
-#: src/elementtranslator.cpp:324
+#: src/elementtranslator.cpp:322
 msgid "Americium"
 msgstr "Americio"
 
-#: src/elementtranslator.cpp:327
+#: src/elementtranslator.cpp:325
 msgid "Curium"
 msgstr "Curio"
 
-#: src/elementtranslator.cpp:330
+#: src/elementtranslator.cpp:328
 msgid "Berkelium"
 msgstr "Berchelio"
 
-#: src/elementtranslator.cpp:333
+#: src/elementtranslator.cpp:331
 msgid "Californium"
 msgstr "Californio"
 
-#: src/elementtranslator.cpp:336
+#: src/elementtranslator.cpp:334
 msgid "Einsteinium"
 msgstr "Einstenio"
 
-#: src/elementtranslator.cpp:339
+#: src/elementtranslator.cpp:337
 msgid "Fermium"
 msgstr "Fermio"
 
-#: src/elementtranslator.cpp:342
+#: src/elementtranslator.cpp:340
 msgid "Mendelevium"
 msgstr "Mendelevio"
 
-#: src/elementtranslator.cpp:345
+#: src/elementtranslator.cpp:343
 msgid "Nobelium"
 msgstr "Nobelio"
 
-#: src/elementtranslator.cpp:348
+#: src/elementtranslator.cpp:346
 msgid "Lawrencium"
 msgstr "Laurenzio"
 
-#: src/elementtranslator.cpp:351
+#: src/elementtranslator.cpp:349
 msgid "Rutherfordium"
 msgstr "Rutherfordio"
 
-#: src/elementtranslator.cpp:354
+#: src/elementtranslator.cpp:352
 msgid "Dubnium"
 msgstr "Dubnio"
 
-#: src/elementtranslator.cpp:357
+#: src/elementtranslator.cpp:355
 msgid "Seaborgium"
 msgstr "Seaborgio"
 
-#: src/elementtranslator.cpp:360
+#: src/elementtranslator.cpp:358
 msgid "Bohrium"
 msgstr "Borio"
 
-#: src/elementtranslator.cpp:363
+#: src/elementtranslator.cpp:361
 msgid "Hassium"
 msgstr "Hassio"
 
-#: src/elementtranslator.cpp:366
+#: src/elementtranslator.cpp:364
 msgid "Meitnerium"
 msgstr "Meitnerio"
 
-#: src/elementtranslator.cpp:369
+#: src/elementtranslator.cpp:367
 msgid "Darmstadtium"
 msgstr "Darmstadtio"
 
-#: src/elementtranslator.cpp:372
+#: src/elementtranslator.cpp:370
 msgid "Roentgenium"
 msgstr "Roentgenio"
 
-#: src/elementtranslator.cpp:375
+#: src/elementtranslator.cpp:373
 msgid "Copernicium"
 msgstr "Copernicio"
 
-#: src/elementtranslator.cpp:378
+#: src/elementtranslator.cpp:376
 msgid "Ununtrium"
 msgstr "Ununtrio"
 
-#: src/elementtranslator.cpp:381
-msgid "Ununquadium"
-msgstr "Ununqudrio"
+#: src/elementtranslator.cpp:379
+#, fuzzy
+msgid "Flerovium"
+msgstr "Mendelevio"
 
-#: src/elementtranslator.cpp:384
+#: src/elementtranslator.cpp:382
 msgid "Ununpentium"
 msgstr "Ununpentio"
 
-#: src/elementtranslator.cpp:387
-msgid "Ununhexium"
-msgstr "Ununhexium"
+#: src/elementtranslator.cpp:385
+msgid "Livermorium"
+msgstr ""
 
-#: src/elementtranslator.cpp:390
+#: src/elementtranslator.cpp:388
 msgid "Ununseptium"
 msgstr "Ununseptium"
 
-#: src/elementtranslator.cpp:393
+#: src/elementtranslator.cpp:391
 msgid "Ununoctium"
 msgstr "Ununoctium"
 
-#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+#: src/elementtranslator.cpp:395 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
 msgstr "Sconosciuto"
 
@@ -10006,6 +10007,12 @@ msgstr ""
 "lanaro@gmail.com,,,,,,Thomas.Bellotti@liceotosi.org,avogadro-devel@lists."
 "sourceforge.net,,,,michel_gatti@yahoo.it,,vikkio88@yahoo.it,,vito."
 "fasano@gmail.com,gabriele.lanaro@gmail.com,,,"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununqudrio"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
 
 #~ msgid "Overlay"
 #~ msgstr "Sovrapposizione"
