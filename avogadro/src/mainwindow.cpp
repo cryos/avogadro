@@ -2392,9 +2392,11 @@ protected:
         }
       } // end looping over bonds
 
-      // Copy unit cell
-      moleculeCopy->setOBUnitCell
-        (new OBUnitCell(*(d->molecule->OBUnitCell())));
+      // Copy unit cell, if available
+      if (d->molecule->OBUnitCell()) {
+        moleculeCopy->setOBUnitCell
+          (new OBUnitCell(*(d->molecule->OBUnitCell())));
+      }
     } // should now have a copy of our selected fragment
 
     OBConversion conv;
