@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:46+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -39,9 +39,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
-#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
-#: src/mainwindow.cpp:3642:69
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
+#: src/mainwindow.cpp:3647:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -85,7 +85,7 @@ msgstr "Стерти атоми"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3660 src/mainwindow.cpp:3677:390 rc.cpp:402
+#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
 msgid "Settings"
 msgstr "Параметри"
 
@@ -113,7 +113,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Масштаб"
 
-#: src/mainwindow.cpp:562 src/mainwindow.cpp:1791
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
 msgstr "Пересунути все на передній план"
 
@@ -143,15 +143,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:950 src/mainwindow.cpp:1431
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
 msgid "Common molecule formats"
 msgstr "Звичайні формати молекул"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
 msgid "All files"
 msgstr "Усі файли"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
 msgid "CML"
 msgstr "CML"
 
@@ -187,15 +187,15 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Формат NWChem"
 
-#: src/mainwindow.cpp:965 src/mainwindow.cpp:1442
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:966 src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:967 src/mainwindow.cpp:1445
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -214,7 +214,7 @@ msgstr "Завантаження %1..."
 msgid "Loading %1..."
 msgstr "Завантаження %1..."
 
-#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1317
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Спроба читання файла молекул зазнала невдачі, файл %1."
@@ -239,199 +239,199 @@ msgstr ""
 "У цьому файлі не міститься просторових координат.\n"
 "Ймовірно, належне редагування або перегляд цього файла неможливі."
 
-#: src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:1214
 msgid "Select Molecule to View"
 msgstr "Виберіть молекулу для перегляду"
 
-#: src/mainwindow.cpp:1236
+#: src/mainwindow.cpp:1239
 msgid "Molecule Title"
 msgstr "Назва молекули"
 
-#: src/mainwindow.cpp:1309
+#: src/mainwindow.cpp:1312
 msgid "Atoms: "
 msgstr "Атоми: "
 
-#: src/mainwindow.cpp:1310
+#: src/mainwindow.cpp:1313
 msgid " Bonds: "
 msgstr " Зв'язки: "
 
-#: src/mainwindow.cpp:1326
+#: src/mainwindow.cpp:1329
 msgid "File Loaded..."
 msgstr "Файл завантажено…"
 
-#: src/mainwindow.cpp:1339
+#: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Бажаєте зберегти внесені вами у документ зміни?"
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
 msgstr "Внесені вами зміни буде втрачено, якщо ви не збережете їх."
 
-#: src/mainwindow.cpp:1352
+#: src/mainwindow.cpp:1355
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1353
+#: src/mainwindow.cpp:1356
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1355
+#: src/mainwindow.cpp:1358
 msgid "Save..."
 msgstr "Зберегти..."
 
-#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1358 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Зберегти"
 
-#: src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:1441
 msgid "GAMESS Input"
 msgstr "Імпорт з GAMESS"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
 msgstr "Імпорт з Gaussian (декартові координати)"
 
-#: src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
 msgstr "Імпорт з Gaussian (Z-матриця)"
 
-#: src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
 msgstr "SDfile MDL"
 
-#: src/mainwindow.cpp:1443
+#: src/mainwindow.cpp:1446
 msgid "NWChem Input"
 msgstr "Імпорт з NWChem"
 
-#: src/mainwindow.cpp:1448
+#: src/mainwindow.cpp:1451
 msgid "Save Molecule As"
 msgstr "Зберегти молекулу як"
 
-#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
+#: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1665
 msgid "Common image formats"
 msgstr "Поширені формати зображень"
 
-#: src/mainwindow.cpp:1666
+#: src/mainwindow.cpp:1669
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1668
+#: src/mainwindow.cpp:1671
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1674
+#: src/mainwindow.cpp:1677
 msgid "Export Bitmap Graphics"
 msgstr "Експорт до растрового зображення"
 
-#: src/mainwindow.cpp:1726
+#: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Не вдалося зберегти файл %1."
 
-#: src/mainwindow.cpp:1823
+#: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
 msgstr "Без назви %1"
 
-#: src/mainwindow.cpp:1926
+#: src/mainwindow.cpp:1929
 msgid "Unable to paste molecule."
 msgstr "Не вдалося вставити молекулу."
 
-#: src/mainwindow.cpp:1955
+#: src/mainwindow.cpp:1958
 msgid "Paste failed (format unavailable)."
 msgstr "Невдала спроба вставлення (недоступний формат)."
 
-#: src/mainwindow.cpp:2406
+#: src/mainwindow.cpp:2411
 msgid "Copy failed (mdl unavailable)."
 msgstr "Спроба копіювання зазнала невдачі (недоступна mdl)."
 
-#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2576 src/mainwindow.cpp:2642
-#: src/mainwindow.cpp:3251
+#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
+#: src/mainwindow.cpp:3256
 #, qt-format
 msgid "View %1"
 msgstr "Перегляд %1"
 
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2607
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Перегляд %1"
 
-#: src/mainwindow.cpp:2611
+#: src/mainwindow.cpp:2616
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Окреме вікно перегляду"
 
-#: src/mainwindow.cpp:2842
+#: src/mainwindow.cpp:2847
 msgid "Normal Size"
 msgstr "Звичайний розмір"
 
-#: src/mainwindow.cpp:2859
+#: src/mainwindow.cpp:2864
 msgid "Full Screen"
 msgstr "На весь екран"
 
-#: src/mainwindow.cpp:2960
+#: src/mainwindow.cpp:2965
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3098
+#: src/mainwindow.cpp:3103
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3104
+#: src/mainwindow.cpp:3109
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] — %2"
 
-#: src/mainwindow.cpp:3596
+#: src/mainwindow.cpp:3601
 msgid "Add"
 msgstr "Додати"
 
-#: src/mainwindow.cpp:3601
+#: src/mainwindow.cpp:3606
 msgid "Duplicate"
 msgstr "Здублювати"
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3611
 msgid "Remove"
 msgstr "Вилучити"
 
-#: src/mainwindow.cpp:3634
+#: src/mainwindow.cpp:3639
 msgid "No tools or engines loaded."
 msgstr "Не завантажено інструментів або рушіїв."
 
-#: src/mainwindow.cpp:3636
+#: src/mainwindow.cpp:3641
 msgid "No engines loaded."
 msgstr "Не завантажено жодного рушія."
 
-#: src/mainwindow.cpp:3638
+#: src/mainwindow.cpp:3643
 msgid "No tools loaded."
 msgstr "Не завантажено жодного інструменту."
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3644
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Здається, додаток не працюватиме коректно. Будь ласка, виправте цю помилку."
 
-#: src/mainwindow.cpp:3683
+#: src/mainwindow.cpp:3688
 msgid "Objects"
 msgstr "Об'єкти"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3689:330
+#: src/mainwindow.cpp:3694:330
 msgid "Colors"
 msgstr "Кольори"
 
-#: src/mainwindow.cpp:3722
+#: src/mainwindow.cpp:3727
 msgid " copy"
 msgstr " копія"
 

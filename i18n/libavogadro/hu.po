@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:48+0000\n"
 "Last-Translator: Balázs Attila <battila9@freemail.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -623,11 +623,11 @@ msgstr ""
 msgid "Select Bond Labels Color"
 msgstr ""
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr ""
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr ""
 
@@ -3437,7 +3437,7 @@ msgstr "névtelen"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: %1 index nem elérhető."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3459,12 +3459,12 @@ msgstr "%1 indexű molekula beolvasása '%2' fájlból nem sikerült."
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "Molekula csere: %1 index nem elérhető"
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "'%1' fájltípus írása nem támogatott."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "'%1' fájl típusának írása nem támogatott."
@@ -3484,13 +3484,13 @@ msgstr "Nem sikerült megnyitni '%1' fájlt olvasáshoz."
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "%1 indexű molekula cseréje '%2' fájlban nem sikerült."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "%1 fájlt nem sikerült olvasásra megnyitni"
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Molekula beolvasása '%1' fájlból sikertelen."
@@ -3500,36 +3500,36 @@ msgstr "Molekula beolvasása '%1' fájlból sikertelen."
 msgid "File %1 can not be opened for writing."
 msgstr "Nem lehet megnyitni %1 fájlt íráshoz."
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Molekulafájl mentése sikertelen - nem lehet átnevezni az eredeti fájlt."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "Molekulafájl mentése sikertelen - nem lehet átnevezni az új fájlt."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "Molekulafájl mentése sikertelen - nem lehet törölni az eredeti fájlt."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Molekula írása '%1' fájlba nem sikerült. OpenBabel függvény nem működik"
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Nem sikerült megnyitni %1 fájlt olvasáshoz."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Nem sikerült a konformereket '%1' fájlba menteni."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molekula %1"

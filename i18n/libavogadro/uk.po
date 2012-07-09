@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -628,11 +628,11 @@ msgstr "Вибір кольору міток атомів"
 msgid "Select Bond Labels Color"
 msgstr "Вибір кольору міток зв’язків"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "Вибір шрифту міток атомів"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "Вибір шрифту міток зв’язків"
 
@@ -3508,7 +3508,7 @@ msgstr "без назви"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: номер %1 перевищує межі нумерації."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3530,12 +3530,12 @@ msgstr "Спроба читання молекули з номером %1 з ф�
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "replaceMolecule: номер %1 перевищує межі нумерації."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Запис файлів типу «%1» не підтримується."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Запис типу файлів «%1» не підтримується."
@@ -3555,13 +3555,13 @@ msgstr "Не вдалося відкрити файл «%1» для читанн
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Спроба заміни молекули з номером %1 у файлі «%2» зазнала невдачі."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Не вдалося відкрити файл %1 для читання."
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Спроба читання даних молекули з файла «%1» зазнала невдачі."
@@ -3571,42 +3571,42 @@ msgstr "Спроба читання даних молекули з файла «
 msgid "File %1 can not be opened for writing."
 msgstr "Не вдалося відкрити файл %1 для запису."
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося перейменувати "
 "початковий файл."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося перейменувати "
 "новий файл."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося вилучити "
 "старий файл."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Спроба запису молекули до файла «%1» завершилася невдало. Помилка у функції "
 "OpenBabel."
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Не вдалося відкрити файл %1 для запису."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Спроба запису конформерів до файла «%1» завершилася невдало."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Молекула %1"

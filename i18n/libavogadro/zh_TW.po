@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-09 13:56+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -623,11 +623,11 @@ msgstr "選擇原子標示之顏色"
 msgid "Select Bond Labels Color"
 msgstr "選擇鍵標示之顏色"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "選擇原子標示之字型"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "選擇鍵標示之字型"
 
@@ -3426,7 +3426,7 @@ msgstr "未命名"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: index %1 超出範圍."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3448,12 +3448,12 @@ msgstr "從檔案 '%2'使用 index %1 讀取分子失敗."
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "取代分子: index %1 超出範圍."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "不支援檔案 '%1'寫入功能"
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "不支援寫數 '%1' 這種檔案格式"
@@ -3473,13 +3473,13 @@ msgstr "無法開啟檔案 '%1' 以讀取"
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "在檔案 '%2' 使用 index %1 置換分子失敗."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "無法開啟檔案 '%1' 以讀取"
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "從檔案 '%1' 讀取分子失敗"
@@ -3489,34 +3489,34 @@ msgstr "從檔案 '%1' 讀取分子失敗"
 msgid "File %1 can not be opened for writing."
 msgstr "無法開啟檔案 '%1' 以進行寫入"
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "儲存分子檔失敗--無法寫入原始檔."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "儲存分子檔失敗--無法重新命名新檔."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "儲存分子檔失敗--無法移除舊檔."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "寫入分子檔 '%1' 失敗. OpenBabel 功能失效"
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "無法開啟檔案 %1 以寫入."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "寫入構形異構物到檔案 '%1' 失敗."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "分子 %1"

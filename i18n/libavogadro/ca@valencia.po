@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 14:06+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -628,11 +628,11 @@ msgstr "Selecciona les etiquetes de color dels àtoms"
 msgid "Select Bond Labels Color"
 msgstr "Selecciona les etiquetes de color dels enllaços"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "Selecciona les etiquetes de la font dels àtoms"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "Selecciona les etiquetes de la font dels enllaços"
 
@@ -3489,7 +3489,7 @@ msgstr "sense nom"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: índex %1 fora de rang."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3512,12 +3512,12 @@ msgstr ""
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "Substitució de la molècula: índex %1 fora de rang."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "El tipus de fitxer «%1» no suporta l'escriptura."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "El tipus de fitxer per al fitxer «%1» no té suportada l'escriptura."
@@ -3539,13 +3539,13 @@ msgstr ""
 "La substitució de la molècula amb índex %1 al fitxer «%2» ha tingut "
 "problemes."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "No es pot obrir el fitxer %1 per lectura."
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "La lectura de la molècula des del fitxer «%1» ha fallat."
@@ -3555,41 +3555,41 @@ msgstr "La lectura de la molècula des del fitxer «%1» ha fallat."
 msgid "File %1 can not be opened for writing."
 msgstr "El fitxer %1 no és pot obrir per escriure-hi."
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
 "original."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer nou."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "L'alçat del fitxer molecular ha fallat - no és pot reanomenar el fitxer "
 "antic."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Ha fallat escriure una molècula al fitxer «%1». La funció OpenBabel ha "
 "fallat."
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "El fitxer %1 no és pot obrir per escriure-hi."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Ha fallat l'escriptura dels estereoisòmers al fitxer «%1»."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molècula %1"

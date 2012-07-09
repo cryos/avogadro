@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-03-26 18:30+0000\n"
 "Last-Translator: Florian Selent <Unknown>\n"
 "Language-Team: <de@li.org>\n"
@@ -619,11 +619,11 @@ msgstr "Atombeschriftungs-Farbe auswählen"
 msgid "Select Bond Labels Color"
 msgstr "Bindungsbeschriftungs-Farbe auswählen"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "Atombeschriftungs-Schriftart auswählen"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "Bindungsbeschriftung-Schriftart auswählen"
 
@@ -3484,7 +3484,7 @@ msgstr "unbenannt"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: Index %1 außerhalb des Bereichs"
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3506,12 +3506,12 @@ msgstr "Lesen des Moleküls mit Index %1 von der Datei '%2' fehlgeschlagen"
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "Molekül ersetzten: Index %1 außerhalb des Bereichs"
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Dateityp '%1' wird für das Schreiben nicht unterstützt"
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Dateityp für Datei '%1' wird fürs Schreiben nicht unterstützt"
@@ -3531,13 +3531,13 @@ msgstr "Kann Datei '%1' zum Lesen nicht öffnen"
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Ersetzen des Moleküls mit Index %1 in Datei '%2' ist fehlgeschlagen"
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Datei %1 kann fürs Schreiben nicht geöffnet werden"
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Lesen eines Molküls aus Datei '%1' ist fehlgeschlagen"
@@ -3547,41 +3547,41 @@ msgstr "Lesen eines Molküls aus Datei '%1' ist fehlgeschlagen"
 msgid "File %1 can not be opened for writing."
 msgstr "Datei %1 kann fürs Schreiben nicht geöffnet werden."
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Speichern der Molkulardatei ist fehlgeschlagen - konnte die originale Datei "
 "nicht umbennen."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "Speichern der MolekülDatei fehlgeschlagen - konnte Datei nicht umbennen"
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Speichern der Molkulardatei ist fehlgeschlagen - konnte die alte Datei nicht "
 "entfernen"
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Das Speichern eines Moleküls in Datei '%1' ist fehlgeschlagen. Eine Funktion "
 "von OpenBabel war fehlerhaft."
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Datei %1 kann fürs Lesen nicht geöffnet werden"
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Schreiben der Konformere in Datei '%1' fehlgeschlagen."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molekül %1"

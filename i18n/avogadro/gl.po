@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-03-18 10:45+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -40,9 +40,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
-#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
-#: src/mainwindow.cpp:3642:69
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
+#: src/mainwindow.cpp:3647:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -85,7 +85,7 @@ msgstr "Limpar os átomos"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3660 src/mainwindow.cpp:3677:390 rc.cpp:402
+#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
 msgid "Settings"
 msgstr "Configuración"
 
@@ -113,7 +113,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Ampliar"
 
-#: src/mainwindow.cpp:562 src/mainwindow.cpp:1791
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
 msgstr "Traer todo cara adiante"
 
@@ -143,15 +143,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+A"
 
-#: src/mainwindow.cpp:950 src/mainwindow.cpp:1431
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
 msgid "Common molecule formats"
 msgstr "Formatos frecuentes de molécula"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
 msgid "CML"
 msgstr "CML"
 
@@ -187,15 +187,15 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Saída de NWChem"
 
-#: src/mainwindow.cpp:965 src/mainwindow.cpp:1442
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:966 src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:967 src/mainwindow.cpp:1445
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -214,7 +214,7 @@ msgstr "Estase a cargar %1..."
 msgid "Loading %1..."
 msgstr "Estase a cargar %1..."
 
-#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1317
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Fallou a lectura do ficheiro de molécula, o ficheiro %1."
@@ -239,199 +239,199 @@ msgstr ""
 "Este ficheiro non contén coordenadas 3D.\n"
 "Talvez non poida editalo nin velo correctamente."
 
-#: src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:1214
 msgid "Select Molecule to View"
 msgstr "Escolla a molécula que queira ver"
 
-#: src/mainwindow.cpp:1236
+#: src/mainwindow.cpp:1239
 msgid "Molecule Title"
 msgstr "Título da molécula"
 
-#: src/mainwindow.cpp:1309
+#: src/mainwindow.cpp:1312
 msgid "Atoms: "
 msgstr "Átomos: "
 
-#: src/mainwindow.cpp:1310
+#: src/mainwindow.cpp:1313
 msgid " Bonds: "
 msgstr " Enlaces: "
 
-#: src/mainwindow.cpp:1326
+#: src/mainwindow.cpp:1329
 msgid "File Loaded..."
 msgstr "Cargouse o ficheiro..."
 
-#: src/mainwindow.cpp:1339
+#: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Desexa gardar as modificacións que fixo no documento?"
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
 msgstr "As súas modificacións perderanse se non as garda."
 
-#: src/mainwindow.cpp:1352
+#: src/mainwindow.cpp:1355
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+G"
 
-#: src/mainwindow.cpp:1353
+#: src/mainwindow.cpp:1356
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1355
+#: src/mainwindow.cpp:1358
 msgid "Save..."
 msgstr "Gardar..."
 
-#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1358 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Gardar"
 
-#: src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:1441
 msgid "GAMESS Input"
 msgstr "Entrada de GAMESS"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
 msgstr "Entrada cartesiana do Gaussian"
 
-#: src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
 msgstr "Entrada de matriz Z do Gaussian"
 
-#: src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
 msgstr "SDfile do MDL"
 
-#: src/mainwindow.cpp:1443
+#: src/mainwindow.cpp:1446
 msgid "NWChem Input"
 msgstr "Entrada de NWChem"
 
-#: src/mainwindow.cpp:1448
+#: src/mainwindow.cpp:1451
 msgid "Save Molecule As"
 msgstr "Gardar a molécula como"
 
-#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
+#: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1665
 msgid "Common image formats"
 msgstr "Formatos de imaxe habituais"
 
-#: src/mainwindow.cpp:1666
+#: src/mainwindow.cpp:1669
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1668
+#: src/mainwindow.cpp:1671
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1674
+#: src/mainwindow.cpp:1677
 msgid "Export Bitmap Graphics"
 msgstr "Exportar como mapas de bits"
 
-#: src/mainwindow.cpp:1726
+#: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Non foi posíbel gardar o ficheiro %1."
 
-#: src/mainwindow.cpp:1823
+#: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sen título %1"
 
-#: src/mainwindow.cpp:1926
+#: src/mainwindow.cpp:1929
 msgid "Unable to paste molecule."
 msgstr "Non foi posíbel apegar a molécula."
 
-#: src/mainwindow.cpp:1955
+#: src/mainwindow.cpp:1958
 msgid "Paste failed (format unavailable)."
 msgstr "Fallou o apegar (formato non dispoñíbel)."
 
-#: src/mainwindow.cpp:2406
+#: src/mainwindow.cpp:2411
 msgid "Copy failed (mdl unavailable)."
 msgstr "Fallou a copia (mdl non dispoñíbel)."
 
-#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2576 src/mainwindow.cpp:2642
-#: src/mainwindow.cpp:3251
+#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
+#: src/mainwindow.cpp:3256
 #, qt-format
 msgid "View %1"
 msgstr "Vista %1"
 
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2607
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Vista %1"
 
-#: src/mainwindow.cpp:2611
+#: src/mainwindow.cpp:2616
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista desprendida"
 
-#: src/mainwindow.cpp:2842
+#: src/mainwindow.cpp:2847
 msgid "Normal Size"
 msgstr "Tamaño normal"
 
-#: src/mainwindow.cpp:2859
+#: src/mainwindow.cpp:2864
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/mainwindow.cpp:2960
+#: src/mainwindow.cpp:2965
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Borrar"
 
-#: src/mainwindow.cpp:3098
+#: src/mainwindow.cpp:3103
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3104
+#: src/mainwindow.cpp:3109
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] en %2"
 
-#: src/mainwindow.cpp:3596
+#: src/mainwindow.cpp:3601
 msgid "Add"
 msgstr "Engadir"
 
-#: src/mainwindow.cpp:3601
+#: src/mainwindow.cpp:3606
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3611
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/mainwindow.cpp:3634
+#: src/mainwindow.cpp:3639
 msgid "No tools or engines loaded."
 msgstr "Non se cargou ningunha ferramenta nin motor."
 
-#: src/mainwindow.cpp:3636
+#: src/mainwindow.cpp:3641
 msgid "No engines loaded."
 msgstr "Non se cargou ningún motor."
 
-#: src/mainwindow.cpp:3638
+#: src/mainwindow.cpp:3643
 msgid "No tools loaded."
 msgstr "Non se cargou ningunha ferramenta."
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3644
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " É difícil que este programa funcione correctamente. Corrixa este erro."
 
-#: src/mainwindow.cpp:3683
+#: src/mainwindow.cpp:3688
 msgid "Objects"
 msgstr "Obxectos"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3689:330
+#: src/mainwindow.cpp:3694:330
 msgid "Colors"
 msgstr "Cores"
 
-#: src/mainwindow.cpp:3722
+#: src/mainwindow.cpp:3727
 msgid " copy"
 msgstr " copiar"
 

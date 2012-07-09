@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-02 00:00-0400\n"
+"POT-Creation-Date: 2012-07-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:52+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -40,9 +40,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
-#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
-#: src/mainwindow.cpp:3642:69
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
+#: src/mainwindow.cpp:3647:69
 msgid "Avogadro"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr "ล้างอะตอม"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3660 src/mainwindow.cpp:3677:390 rc.cpp:402
+#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
 msgid "Settings"
 msgstr "ตั้งค่า"
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "&Zoom"
 msgstr "ย่อ-ข&ยาย"
 
-#: src/mainwindow.cpp:562 src/mainwindow.cpp:1791
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
 msgstr "นำขึ้นมาข้างหน้าทั้งหมด"
 
@@ -139,15 +139,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:950 src/mainwindow.cpp:1431
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
 msgid "Common molecule formats"
 msgstr "รูปแบบโมเลกุลทั่วไป"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
 msgid "All files"
 msgstr "แฟ้มทั้งหมด"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
 msgid "CML"
 msgstr ""
 
@@ -183,15 +183,15 @@ msgstr ""
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:965 src/mainwindow.cpp:1442
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
 msgid "PDB"
 msgstr ""
 
-#: src/mainwindow.cpp:966 src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
 msgid "Sybyl Mol2"
 msgstr ""
 
-#: src/mainwindow.cpp:967 src/mainwindow.cpp:1445
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
 msgid "XYZ"
 msgstr ""
 
@@ -210,7 +210,7 @@ msgstr "กำลังโหลด %1..."
 msgid "Loading %1..."
 msgstr "กำลังโหลด %1..."
 
-#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1317
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "การอ่านแฟ้มโมเลกุล %1 ล้มเหลว"
@@ -233,198 +233,198 @@ msgid ""
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:1214
 msgid "Select Molecule to View"
 msgstr "เลือกโมเลกุลที่จะดู"
 
-#: src/mainwindow.cpp:1236
+#: src/mainwindow.cpp:1239
 msgid "Molecule Title"
 msgstr ""
 
-#: src/mainwindow.cpp:1309
+#: src/mainwindow.cpp:1312
 msgid "Atoms: "
 msgstr "อะตอม: "
 
-#: src/mainwindow.cpp:1310
+#: src/mainwindow.cpp:1313
 msgid " Bonds: "
 msgstr " พันธะ: "
 
-#: src/mainwindow.cpp:1326
+#: src/mainwindow.cpp:1329
 msgid "File Loaded..."
 msgstr "โหลดแฟ้มแล้ว..."
 
-#: src/mainwindow.cpp:1339
+#: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
 msgstr "คุณต้องการจะบันทึกการเปลี่ยนแปลงไปยังเอกสารหรือไม่?"
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
 msgstr "การเปลี่ยนแปลงของคุณที่ทำไว้จะสูญหาย ถ้าไม่ได้บันทึก"
 
-#: src/mainwindow.cpp:1352
+#: src/mainwindow.cpp:1355
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr ""
 
-#: src/mainwindow.cpp:1353
+#: src/mainwindow.cpp:1356
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:1355
+#: src/mainwindow.cpp:1358
 msgid "Save..."
 msgstr "บันทึก..."
 
-#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1358 src/savedialog.cpp:65
 msgid "Save"
 msgstr "บันทึก"
 
-#: src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:1441
 msgid "GAMESS Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
 msgstr ""
 
-#: src/mainwindow.cpp:1443
+#: src/mainwindow.cpp:1446
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1448
+#: src/mainwindow.cpp:1451
 msgid "Save Molecule As"
 msgstr "บันทึกโมเลกุลเป็น"
 
-#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
+#: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
 msgid "PNG"
 msgstr ""
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1665
 msgid "Common image formats"
 msgstr "รูปแบบแฟ้มรูปภาพทั่วไป"
 
-#: src/mainwindow.cpp:1666
+#: src/mainwindow.cpp:1669
 msgid "BMP"
 msgstr ""
 
-#: src/mainwindow.cpp:1668
+#: src/mainwindow.cpp:1671
 msgid "JPEG"
 msgstr ""
 
-#: src/mainwindow.cpp:1674
+#: src/mainwindow.cpp:1677
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1726
+#: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "ไม่สามารถบันทึกแฟ้ม %1"
 
-#: src/mainwindow.cpp:1823
+#: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
 msgstr "ไม่มีหัวเรื่อง %1"
 
-#: src/mainwindow.cpp:1926
+#: src/mainwindow.cpp:1929
 msgid "Unable to paste molecule."
 msgstr "ไม่สามารถวางโมเลกุลได้"
 
-#: src/mainwindow.cpp:1955
+#: src/mainwindow.cpp:1958
 msgid "Paste failed (format unavailable)."
 msgstr "การวางล้มเหลว (ไม่มีรูปแบบแฟ้มที่ใช้ได้)"
 
-#: src/mainwindow.cpp:2406
+#: src/mainwindow.cpp:2411
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2576 src/mainwindow.cpp:2642
-#: src/mainwindow.cpp:3251
+#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
+#: src/mainwindow.cpp:3256
 #, qt-format
 msgid "View %1"
 msgstr "ดู %1"
 
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2607
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "ดู %1"
 
-#: src/mainwindow.cpp:2611
+#: src/mainwindow.cpp:2616
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2842
+#: src/mainwindow.cpp:2847
 msgid "Normal Size"
 msgstr "ขนาดปกติ"
 
-#: src/mainwindow.cpp:2859
+#: src/mainwindow.cpp:2864
 msgid "Full Screen"
 msgstr "เต็มจอ"
 
-#: src/mainwindow.cpp:2960
+#: src/mainwindow.cpp:2965
 msgid "Ctrl+Backspace"
 msgstr ""
 
-#: src/mainwindow.cpp:3098
+#: src/mainwindow.cpp:3103
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr ""
 
-#: src/mainwindow.cpp:3104
+#: src/mainwindow.cpp:3109
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
-#: src/mainwindow.cpp:3596
+#: src/mainwindow.cpp:3601
 msgid "Add"
 msgstr "เพิ่ม"
 
-#: src/mainwindow.cpp:3601
+#: src/mainwindow.cpp:3606
 msgid "Duplicate"
 msgstr "ทำสำเนา"
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3611
 msgid "Remove"
 msgstr "ลบออก"
 
-#: src/mainwindow.cpp:3634
+#: src/mainwindow.cpp:3639
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3636
+#: src/mainwindow.cpp:3641
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3638
+#: src/mainwindow.cpp:3643
 msgid "No tools loaded."
 msgstr "ยังไม่ได้โหลดเครื่องมือ"
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3644
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr " ดูเหมือนว่าแอพคลิเคชันทำงานได้ไม่ถูกต้อง กรุณาแก้ไขข้อผิดพลาดนี้"
 
-#: src/mainwindow.cpp:3683
+#: src/mainwindow.cpp:3688
 msgid "Objects"
 msgstr "วัตถุ"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3689:330
+#: src/mainwindow.cpp:3694:330
 msgid "Colors"
 msgstr "สี"
 
-#: src/mainwindow.cpp:3722
+#: src/mainwindow.cpp:3727
 msgid " copy"
 msgstr " คัดลอก"
 
