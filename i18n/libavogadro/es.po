@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-09 00:00-0400\n"
+"POT-Creation-Date: 2012-07-16 00:00-0400\n"
 "PO-Revision-Date: 2011-04-03 18:50+0000\n"
 "Last-Translator: Lu <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -3186,13 +3186,13 @@ msgstr ""
 msgid "Orbitals"
 msgstr "Orbitales"
 
-#: src/extensions/surfaces/orbitalextension.cpp:164
+#: src/extensions/surfaces/orbitalextension.cpp:167
 #: src/extensions/surfaces/orbitaltablemodel.cpp:122
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:165
+#: src/extensions/surfaces/orbitalextension.cpp:168
 #: src/extensions/surfaces/orbitaltablemodel.cpp:131
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
