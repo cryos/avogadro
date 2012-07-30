@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-23 00:00-0400\n"
+"POT-Creation-Date: 2012-07-30 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 14:06+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -1750,14 +1750,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Moment dipolar estimat (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Descàrrega de Xarxa fallida"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Temps de connexió sobrepassat o un altre error."
 
@@ -1802,20 +1802,20 @@ msgstr "Nom químic"
 msgid "Chemical structure to download."
 msgstr "Estructura química a descarregar."
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "Adreça URL"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "Adreça URL de la molècula a descarregar."
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "La molècula especificada no s'ha trobat: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "La molècula especificada no s'ha carregat: %1"

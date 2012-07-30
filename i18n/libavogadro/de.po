@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-23 00:00-0400\n"
+"POT-Creation-Date: 2012-07-30 00:00-0400\n"
 "PO-Revision-Date: 2011-03-26 18:30+0000\n"
 "Last-Translator: Florian Selent <Unknown>\n"
 "Language-Team: <de@li.org>\n"
@@ -1742,14 +1742,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Geschätztes Dipolmoment (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Herunterladen übers Netzwerk fehlgeschlagen"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Netzwerk-Zeitüberschreitung oder anderer Fehler."
 
@@ -1794,20 +1794,20 @@ msgstr "chemischer Name"
 msgid "Chemical structure to download."
 msgstr "chemische Struktur zum Herunterladen"
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "URL des Moleküls zum Downloaden"
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Spezifiziertes Molekül konnte nicht gefunden werden: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Spezifiziertes Molekül konnte nicht geladen werden: %1"

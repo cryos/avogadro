@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-23 00:00-0400\n"
+"POT-Creation-Date: 2012-07-30 00:00-0400\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -1766,14 +1766,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Оцінка дипольного моменту (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Звантаження з мережі зазнало невдачі"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Перевищено час очікування на відповідь або інша помилка."
 
@@ -1818,20 +1818,20 @@ msgstr "Назва речовини"
 msgid "Chemical structure to download."
 msgstr "Хімічна структура для звантаження."
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "Адреса"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "Адреса молекули для звантаження."
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Не вдалося знайти вказану молекулу: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Не вдалося завантажити вказану молекулу: %1"

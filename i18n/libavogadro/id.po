@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-23 00:00-0400\n"
+"POT-Creation-Date: 2012-07-30 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:34+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -1746,14 +1746,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Perkiraan Momen Dipol (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Muaturun Jaringan Gagal"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Bataswaktu jaringan atau kesalahan lain."
 
@@ -1798,20 +1798,20 @@ msgstr "Nama Kimia"
 msgid "Chemical structure to download."
 msgstr "Muat turun struktur kimia"
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "URL molekul untuk muaturun."
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Molekul yang dikehendaki tidak ditemukan: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Molekul yang dikehendaki tidak bisa dimuat: %1"
