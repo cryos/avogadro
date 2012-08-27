@@ -99,13 +99,13 @@ namespace Avogadro {
     if (!dir.exists() || !dir.isReadable() ) {
       qWarning() << "Cannot find the directory: " << m_directory;
 
-     // Can't really do anything!
-     ui.directoryTreeView->setEnabled(false);
-     ui.insertFragmentButton->setEnabled(false);
-     ui.filterLineEdit->setEnabled(false);
-     ui.clearToolButton->setEnabled(false);
+      // Can't really do anything!
+      ui.directoryTreeView->setEnabled(false);
+      ui.insertFragmentButton->setEnabled(false);
+      ui.filterLineEdit->setEnabled(false);
+      ui.clearToolButton->setEnabled(false);
 
-     return;
+      return;
     }
 
     d->model = new QFileSystemModel(this);
@@ -177,7 +177,6 @@ namespace Avogadro {
     if (fileInfo.isDir())
       return d->fragment; // return an empty fragment and do nothing
 
-    OBMol obfragment;
     Molecule *mol;
     if (d->crystalFiles) {
       // No bonding, at first
