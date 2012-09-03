@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-08-27 00:00-0400\n"
+"POT-Creation-Date: 2012-09-03 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:34+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -785,7 +785,7 @@ msgstr "berkas video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:183
+#: src/extensions/insertfragmentdialog.cpp:194
 #: src/extensions/quantuminput/inputfileextension.cpp:172
 #: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
@@ -908,7 +908,7 @@ msgstr "Pneyunting Kartesian..."
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1439,14 +1439,14 @@ msgstr "Trajektori..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Berkas"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr "Impor"
@@ -1651,44 +1651,44 @@ msgstr "Hidrogen"
 msgid "Add or remove hydrogens"
 msgstr "Tambah atau hapus hidrogen"
 
-#: src/extensions/insertfragmentdialog.cpp:184
+#: src/extensions/insertfragmentdialog.cpp:195
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
 msgstr "Tidak bisa membaca berkas %1."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:59
 msgid "Crystal..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:62
+#: src/extensions/insertfragmentextension.cpp:64
 msgid "Fragment..."
 msgstr "Fragmen..."
 
-#: src/extensions/insertfragmentextension.cpp:67
+#: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "S&isipan"
 
-#: src/extensions/insertfragmentextension.cpp:119
-#: src/extensions/insertfragmentextension.cpp:164
+#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:166
 msgid "Insert SMILES"
 msgstr "Sisipkan SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:120
+#: src/extensions/insertfragmentextension.cpp:122
 msgid "Insert SMILES fragment:"
 msgstr "Sisipkan SMILES fragmen:"
 
-#: src/extensions/insertfragmentextension.cpp:169
-#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:310
 #: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr "Sisipkan Fragmen"
 
-#: src/extensions/insertfragmentextension.cpp:177
+#: src/extensions/insertfragmentextension.cpp:179
 #, fuzzy
 msgid "Insert Crystal"
 msgstr "Inverskan Chirality"

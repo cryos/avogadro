@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-08-27 00:00-0400\n"
+"POT-Creation-Date: 2012-09-03 00:00-0400\n"
 "PO-Revision-Date: 2011-03-19 19:34+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -781,7 +781,7 @@ msgstr ""
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:183
+#: src/extensions/insertfragmentdialog.cpp:194
 #: src/extensions/quantuminput/inputfileextension.cpp:172
 #: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
@@ -896,7 +896,7 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1407,14 +1407,14 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr ""
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr ""
@@ -1615,44 +1615,44 @@ msgstr ""
 msgid "Add or remove hydrogens"
 msgstr ""
 
-#: src/extensions/insertfragmentdialog.cpp:184
+#: src/extensions/insertfragmentdialog.cpp:195
 #, qt-format
 msgid "Cannot read molecular file %1."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:59
 msgid "Crystal..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:62
+#: src/extensions/insertfragmentextension.cpp:64
 msgid "Fragment..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:67
+#: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:119
-#: src/extensions/insertfragmentextension.cpp:164
+#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:166
 msgid "Insert SMILES"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:120
+#: src/extensions/insertfragmentextension.cpp:122
 msgid "Insert SMILES fragment:"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:169
-#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:310
 #: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:177
+#: src/extensions/insertfragmentextension.cpp:179
 msgid "Insert Crystal"
 msgstr ""
 
