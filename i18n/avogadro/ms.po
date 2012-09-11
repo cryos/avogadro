@@ -1,0 +1,1312 @@
+# Malay translation for avogadro
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-10 00:00-0400\n"
+"PO-Revision-Date: 2012-04-30 03:03+0000\n"
+"Last-Translator: abuyop <Unknown>\n"
+"Language-Team: Malay <ms@li.org>\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-09-04 04:44+0000\n"
+"X-Generator: Launchpad (build 15890)\n"
+
+#: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
+msgid "OK"
+msgstr "OK"
+
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
+#, qt-format
+msgctxt "%1 is the Git revision number."
+msgid "(Git revision: %1)"
+msgstr "(Revisi Git: %1)"
+
+#: src/aboutdialog.cpp:69
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
+msgstr ""
+"<h3>%1</h3><br/><br/>Versi Aplikasi: %2<br/><br/>Versi Pustaka: %3<br/><br/"
+">Versi Open Babel: %4"
+
+#. i18n: file: src/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
+#: src/mainwindow.cpp:3647:69
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/aboutdialog.cpp:73
+#, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
+msgstr ""
+"<br/><br/>Versi Qt: %1<br/><br/>untuk maklumat lanjut semak <a href=\"http://"
+"avogadro.openmolecules.net/\">Laman Sesawang Avogadro</a>.<br/><br/>Program "
+"ini disediakan TANPA SEBARANG JAMINAN, TERMASUKLAH REKABENTUK, "
+"KEBOLEHDAGANGAN DAN KESESUAIAN TERHADAP TUJUAN TERTENTU.<br/>"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr "Potong Molekul"
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr "Potong Atom"
+
+#: src/editcommands.cpp:101
+msgid "Paste"
+msgstr "Tampal"
+
+#: src/editcommands.cpp:136
+msgid "Clear Molecule"
+msgstr "Kosongkan Molekul"
+
+#: src/editcommands.cpp:138
+msgid "Clear Atoms"
+msgstr "Kosongkan Atom"
+
+#. i18n: file: src/projecttreeeditor.ui:179
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
+#: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
+#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
+msgid "Settings"
+msgstr "Tetapan"
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:970
+msgid "Open File"
+msgstr "Buka Fail"
+
+#: src/mainwindow.cpp:408
+msgid "Messages"
+msgstr "Mesej"
+
+#: src/mainwindow.cpp:546
+msgid "Window"
+msgstr "Tetingkap"
+
+#: src/mainwindow.cpp:549
+msgid "&Minimize"
+msgstr "&Minimumkan"
+
+#: src/mainwindow.cpp:550
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: src/mainwindow.cpp:555
+msgid "&Zoom"
+msgstr "&Zum"
+
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
+msgid "Bring All to Front"
+msgstr "Bawa Semua ke Hadapan"
+
+#: src/mainwindow.cpp:591
+msgid "Record Test..."
+msgstr "Rakam Ujian..."
+
+#: src/mainwindow.cpp:594
+msgid "Play Test..."
+msgstr "Main Ujian..."
+
+#: src/mainwindow.cpp:896
+msgid "&Tool Settings..."
+msgstr "Tetapan Aka&t..."
+
+#: src/mainwindow.cpp:899
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr "Ctrl+T"
+
+#: src/mainwindow.cpp:904
+msgid "&Display Settings..."
+msgstr "Tetapan Papa&ran..."
+
+#: src/mainwindow.cpp:907
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
+msgid "Common molecule formats"
+msgstr "Format molekul umum"
+
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
+msgid "All files"
+msgstr "Semua fail"
+
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:957
+msgid "Computational Chemistry Output"
+msgstr "Output Kimia Berkomputer"
+
+#: src/mainwindow.cpp:958
+msgid "Crystallographic Interchange CIF"
+msgstr "CIF Pertukaran Kristalografi"
+
+#: src/mainwindow.cpp:959
+msgid "GAMESS-US Output"
+msgstr "Output GAMESS-US"
+
+#: src/mainwindow.cpp:960
+msgid "Gaussian 98/03 Output"
+msgstr "Output Gaussian 98/03"
+
+#: src/mainwindow.cpp:961
+msgid "Gaussian Formatted Checkpoint"
+msgstr "Titik Semakan Gaussian Terformat"
+
+#: src/mainwindow.cpp:962
+msgid "HyperChem"
+msgstr "HyperChem"
+
+#: src/mainwindow.cpp:963
+msgid "MDL Mol"
+msgstr "Mol MDL"
+
+#: src/mainwindow.cpp:964
+msgid "NWChem Output"
+msgstr "Output NWChem"
+
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
+msgid "Sybyl Mol2"
+msgstr "Mol2 Sybyl"
+
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:1040 src/mainwindow.cpp:1045 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "tiada tajuk"
+
+#: src/mainwindow.cpp:1061
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr "Memuatkan %1..."
+
+#: src/mainwindow.cpp:1065
+#, qt-format
+msgid "Loading %1..."
+msgstr "Memuatkan %1..."
+
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr "Membaca molekul fail gagal, fail %1"
+
+#: src/mainwindow.cpp:1108
+msgid "Reading multi-molecule file. This may take a while..."
+msgstr "Membaca fail molekul-berbilang. Ia mungkin mengambil masa..."
+
+#: src/mainwindow.cpp:1135
+msgid "This file does not contain 3D coordinates."
+msgstr "Fail ini tidak mengandungi koordinat 3D."
+
+#: src/mainwindow.cpp:1139
+msgid "Do you want Avogadro to build a rough geometry?"
+msgstr "Anda hendak Avogadri bina geometri kasar?"
+
+#: src/mainwindow.cpp:1157
+msgid ""
+"This file does not contain 3D coordinates.\n"
+"You may not be able to edit or view properly."
+msgstr ""
+"Fail ini tidak mengandungi koordinat 3D.\n"
+"Anda tidak boleh sunting atau lihat dengan baik"
+
+#: src/mainwindow.cpp:1214
+msgid "Select Molecule to View"
+msgstr "Pilih Molekul untuk Dipaparkan"
+
+#: src/mainwindow.cpp:1239
+msgid "Molecule Title"
+msgstr "Tajuk Molekul"
+
+#: src/mainwindow.cpp:1312
+msgid "Atoms: "
+msgstr "Atom: "
+
+#: src/mainwindow.cpp:1313
+msgid " Bonds: "
+msgstr " Ikatan: "
+
+#: src/mainwindow.cpp:1329
+msgid "File Loaded..."
+msgstr "Fail Dimuatkan..."
+
+#: src/mainwindow.cpp:1342
+msgid "Do you want to save the changes you made in the document?"
+msgstr "Anda hendak simpan perubahan yang anda buat dalam dokumen?"
+
+#: src/mainwindow.cpp:1351
+msgid "Your changes will be lost if you don't save them."
+msgstr "Perubahan anda akan hilang jika anda tidak menyimpannya."
+
+#: src/mainwindow.cpp:1355
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.cpp:1356
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:1358
+msgid "Save..."
+msgstr "Simpan..."
+
+#: src/mainwindow.cpp:1358 src/savedialog.cpp:65
+msgid "Save"
+msgstr "Simpan"
+
+#: src/mainwindow.cpp:1441
+msgid "GAMESS Input"
+msgstr "Input GAMESS"
+
+#: src/mainwindow.cpp:1442
+msgid "Gaussian Cartesian Input"
+msgstr "Input Cartesian Gaussian"
+
+#: src/mainwindow.cpp:1443
+msgid "Gaussian Z-matrix Input"
+msgstr "Input Matrik-Z Gaussian"
+
+#: src/mainwindow.cpp:1444
+msgid "MDL SDfile"
+msgstr "Fail SD MDL"
+
+#: src/mainwindow.cpp:1446
+msgid "NWChem Input"
+msgstr "Input NWChem"
+
+#: src/mainwindow.cpp:1451
+msgid "Save Molecule As"
+msgstr "Simpan Molekul Sebagai"
+
+#: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1665
+msgid "Common image formats"
+msgstr "Format imej umum"
+
+#: src/mainwindow.cpp:1669
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1671
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1677
+msgid "Export Bitmap Graphics"
+msgstr "Eksport Grafik Peta Bit"
+
+#: src/mainwindow.cpp:1729
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Tidak dapat simpan fail %1"
+
+#: src/mainwindow.cpp:1826
+#, qt-format
+msgid "Untitled %1"
+msgstr "Tidak Bertajuk %1"
+
+#: src/mainwindow.cpp:1929
+msgid "Unable to paste molecule."
+msgstr "Tidak boleh tampal molekul."
+
+#: src/mainwindow.cpp:1958
+msgid "Paste failed (format unavailable)."
+msgstr "Tampal gagal (format tidak tersedia)."
+
+#: src/mainwindow.cpp:2411
+msgid "Copy failed (mdl unavailable)."
+msgstr "Salin gagal (mdl tidak tersedia)."
+
+#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
+#: src/mainwindow.cpp:3256
+#, qt-format
+msgid "View %1"
+msgstr "Paparan %1"
+
+#: src/mainwindow.cpp:2607
+#, qt-format
+msgctxt "View number (from 1 on)"
+msgid "View %1"
+msgstr "Paparan %1"
+
+#: src/mainwindow.cpp:2616
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: Paparan Tertanggal"
+
+#: src/mainwindow.cpp:2847
+msgid "Normal Size"
+msgstr "Saiz Normal"
+
+#: src/mainwindow.cpp:2864
+msgid "Full Screen"
+msgstr "Skrin Penuh"
+
+#: src/mainwindow.cpp:2965
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/mainwindow.cpp:3103
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr "[*]Avogadro"
+
+#: src/mainwindow.cpp:3109
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr "%1[*] - %2"
+
+#: src/mainwindow.cpp:3601
+msgid "Add"
+msgstr "Tambah"
+
+#: src/mainwindow.cpp:3606
+msgid "Duplicate"
+msgstr "Gandakan"
+
+#: src/mainwindow.cpp:3611
+msgid "Remove"
+msgstr "Buang"
+
+#: src/mainwindow.cpp:3639
+msgid "No tools or engines loaded."
+msgstr "Tiada alat atau enjin dimuatkan."
+
+#: src/mainwindow.cpp:3641
+msgid "No engines loaded."
+msgstr "Tiada enjin dimuatkan."
+
+#: src/mainwindow.cpp:3643
+msgid "No tools loaded."
+msgstr "Tiada alat dimuatkan."
+
+#: src/mainwindow.cpp:3644
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+" Ia kelihatan aplikasi ini tidak berfungsi dengan baik. Sila betulkan ralat "
+"ini."
+
+#: src/mainwindow.cpp:3688
+msgid "Objects"
+msgstr "Objek"
+
+#. i18n: file: src/pluginsettings.ui:38
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+#: src/mainwindow.cpp:3694:330
+msgid "Colors"
+msgstr "Warna"
+
+#: src/mainwindow.cpp:3727
+msgid " copy"
+msgstr " salinan"
+
+#: src/pluginsettings.cpp:53
+msgid "Name: "
+msgstr "Nama: "
+
+#: src/pluginsettings.cpp:54
+msgid "Identifier: "
+msgstr "Pengenalpasti: "
+
+#: src/pluginsettings.cpp:55
+msgid "File: "
+msgstr "Fail: "
+
+#: src/pluginsettings.cpp:56
+msgid "Description:\n"
+msgstr "Keterangan:\n"
+
+#: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "Molekul"
+
+#: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "Atom"
+
+#: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "Ikatan"
+
+#: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr "Baki"
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "ikatan %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr "Label"
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr "Pemilihan Pengguna"
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "Ralat"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr "hanya label boleh mempunyai sub-item"
+
+#. i18n: file: src/projecttreeeditor.ui:168
+#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
+#: src/projecttreemodel.cpp:65:387
+msgid "Item"
+msgstr "Item"
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr "Indeks"
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr "Rendah"
+
+#. i18n: file: src/settingsdialog.ui:86
+#. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
+#: src/settingsdialog.cpp:107:414
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr "Sederhana"
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr "Tinggi"
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr "Tidak Ditakrif"
+
+#. i18n: file: src/settingsdialog.ui:144
+#. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
+#: src/settingsdialog.cpp:122:423
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr "Tiada"
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr "Beberapa"
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr "Sederhana"
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr "Banyak"
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr "Tidak Ditakrif"
+
+#: src/updatecheck.cpp:93
+msgid "Network Update Check Failed"
+msgstr "Semakan Kemaskini Rangkaian Gagal"
+
+#: src/updatecheck.cpp:94
+msgid "Network timeout or other error."
+msgstr "Had masa tamat rangkaian atau ralat lain."
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr "Versi Terkemaskini Avogadro Tersedia"
+
+#. i18n: file: src/addenginedialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
+msgid "Add Display Type"
+msgstr "Tambah Jenis Paparan"
+
+#. i18n: file: src/addenginedialog.ui:19
+#. i18n: ectx: property (text), widget (QLabel, baseLabe)
+msgid "Type:"
+msgstr "Jenis:"
+
+#. i18n: file: src/addenginedialog.ui:32
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
+msgid "Name:"
+msgstr "Nama:"
+
+#. i18n: file: src/addenginedialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
+msgid "Description:"
+msgstr "Keterangan:"
+
+#. i18n: file: src/enginecolorswidget.ui:13
+#. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
+msgid "Form"
+msgstr "Bentuk"
+
+#. i18n: file: src/enginecolorswidget.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Color by:"
+msgstr "Warna mengikut:"
+
+#. i18n: file: src/engineprimitiveswidget.ui:41
+#. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:44
+#. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
+msgid "Add Selected Primitives"
+msgstr "Tambah Primitif Terpilih"
+
+#. i18n: file: src/engineprimitiveswidget.ui:55
+#. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:58
+#. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
+msgid "Remove Selected Primitives"
+msgstr "Buang Primitif Terpilih"
+
+#. i18n: file: src/engineprimitiveswidget.ui:69
+#. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
+#. i18n: file: src/engineprimitiveswidget.ui:72
+#. i18n: ectx: property (text), widget (QToolButton, resetButton)
+msgid "Add All Primitives"
+msgstr "Tambah Semua Primitif"
+
+#. i18n: file: src/engineprimitiveswidget.ui:83
+#. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
+msgid "Display Only Selected Primitives"
+msgstr "Hanya Papar Primitif Terpilih"
+
+#. i18n: file: src/engineprimitiveswidget.ui:86
+#. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
+msgid "Assign to Selection"
+msgstr "Umpuk ke Pemilihan"
+
+#. i18n: file: src/importdialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
+msgid "Import Molecule File"
+msgstr "Import Fail Molekul"
+
+#. i18n: file: src/importdialog.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Filename:"
+msgstr "Nama fail:"
+
+#. i18n: file: src/importdialog.ui:34
+#. i18n: ectx: property (text), widget (QPushButton, selectButton)
+msgid "Select..."
+msgstr "Pilih..."
+
+#. i18n: file: src/importdialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Format:"
+msgstr "Format:"
+
+#. i18n: file: src/importdialog.ui:53
+#. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
+msgid "Automatically detect from extension"
+msgstr "Kesan secara automatik dari sambungan"
+
+#. i18n: file: src/importdialog.ui:63
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
+msgid "Perceive bonding"
+msgstr "Kembalikan pengikatan"
+
+#. i18n: file: src/importdialog.ui:73
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
+msgid "Perceive bond orders"
+msgstr "Kembalikan tertib ikatan"
+
+#. i18n: file: src/importdialog.ui:83
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
+msgid "Coordinates are in Ångstroms"
+msgstr "Koordinat dalam Ångstroms"
+
+#. i18n: file: src/mainwindow.ui:32
+#. i18n: ectx: property (title), widget (QMenu, menuHelp)
+msgid "&Help"
+msgstr "&Bantuan"
+
+#. i18n: file: src/mainwindow.ui:46
+#. i18n: ectx: property (title), widget (QMenu, menuFile)
+msgid "&File"
+msgstr "&Fail"
+
+#. i18n: file: src/mainwindow.ui:50
+#. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
+msgid "Open &Recent"
+msgstr "Buka &Terkini"
+
+#. i18n: file: src/mainwindow.ui:55
+#. i18n: ectx: property (title), widget (QMenu, menuExport)
+msgid "Export"
+msgstr "Eksport"
+
+#. i18n: file: src/mainwindow.ui:61
+#. i18n: ectx: property (title), widget (QMenu, menuImport)
+msgid "Import"
+msgstr "Import"
+
+#. i18n: file: src/mainwindow.ui:80
+#. i18n: ectx: property (title), widget (QMenu, menuSettings)
+msgid "Se&ttings"
+msgstr "&Tetapan"
+
+#. i18n: file: src/mainwindow.ui:84
+#. i18n: ectx: property (title), widget (QMenu, menuToolbars)
+msgid "Toolbars"
+msgstr "Palang Alat"
+
+#. i18n: file: src/mainwindow.ui:93
+#. i18n: ectx: property (title), widget (QMenu, menuBuild)
+msgid "&Build"
+msgstr "&Binaan"
+
+#. i18n: file: src/mainwindow.ui:98
+#. i18n: ectx: property (title), widget (QMenu, menuView)
+msgid "&View"
+msgstr "&Lihat"
+
+#. i18n: file: src/mainwindow.ui:102
+#. i18n: ectx: property (title), widget (QMenu, menuProjection)
+msgid "Projection"
+msgstr "Unjuran"
+
+#. i18n: file: src/mainwindow.ui:128
+#. i18n: ectx: property (title), widget (QMenu, menuEdit)
+msgid "&Edit"
+msgstr "&Sunting"
+
+#. i18n: file: src/mainwindow.ui:141
+#. i18n: ectx: property (title), widget (QMenu, menuExtensions)
+msgid "E&xtensions"
+msgstr "Sa&mbungan"
+
+#. i18n: file: src/mainwindow.ui:146
+#. i18n: ectx: property (title), widget (QMenu, menuSelect)
+msgid "&Select"
+msgstr "&Pilih"
+
+#. i18n: file: src/mainwindow.ui:163
+#. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
+msgid "Main Toolbar"
+msgstr "Palang Alat Utama"
+
+#. i18n: file: src/mainwindow.ui:200
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
+#. i18n: file: src/settingsdialog.ui:255
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "Project Tree"
+msgstr "Pepohon Projek"
+
+#. i18n: file: src/mainwindow.ui:233
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
+#. i18n: file: src/pluginsettings.ui:23
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Display Types"
+msgstr "Jenis Paparan"
+
+#. i18n: file: src/mainwindow.ui:242
+#. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
+#. i18n: file: src/pluginsettings.ui:28
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Tools"
+msgstr "Alatan"
+
+#. i18n: file: src/mainwindow.ui:259
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:267
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Open"
+msgstr "B&uka"
+
+#. i18n: file: src/mainwindow.ui:262
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#. i18n: file: src/mainwindow.ui:272
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:283
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Quit"
+msgstr "Ke&luar"
+
+#. i18n: file: src/mainwindow.ui:275
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#. i18n: file: src/mainwindow.ui:288
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Recent"
+msgstr "Terkini"
+
+#. i18n: file: src/mainwindow.ui:293
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Clear Recent"
+msgstr "K&osongkan Terkini"
+
+#. i18n: file: src/mainwindow.ui:298
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:306
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&New"
+msgstr "&Baru"
+
+#. i18n: file: src/mainwindow.ui:301
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#. i18n: file: src/mainwindow.ui:311
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:319
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Close"
+msgstr "T&utup"
+
+#. i18n: file: src/mainwindow.ui:314
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#. i18n: file: src/mainwindow.ui:324
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:332
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Save"
+msgstr "&Simpan"
+
+#. i18n: file: src/mainwindow.ui:327
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#. i18n: file: src/mainwindow.ui:337
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Save &As..."
+msgstr "Simp&an Sebagai..."
+
+#. i18n: file: src/mainwindow.ui:340
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#. i18n: file: src/mainwindow.ui:345
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Revert To Saved"
+msgstr "Kembali Untuk Disimpan"
+
+#. i18n: file: src/mainwindow.ui:350
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Graphics..."
+msgstr "&Grafik..."
+
+#. i18n: file: src/mainwindow.ui:359
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Full Screen Mode"
+msgstr "Mod Skrin &Penuh"
+
+#. i18n: file: src/mainwindow.ui:362
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Esc"
+msgstr "Esc"
+
+#. i18n: file: src/mainwindow.ui:371
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Set &Background Color..."
+msgstr "Tetapkan Warna &Latar Belakang"
+
+#. i18n: file: src/mainwindow.ui:376
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&About"
+msgstr "Perih&al"
+
+#. i18n: file: src/mainwindow.ui:388
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Undo"
+msgstr "Buat &Asal"
+
+#. i18n: file: src/mainwindow.ui:391
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#. i18n: file: src/mainwindow.ui:400
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Redo"
+msgstr "Buat &Semula"
+
+#. i18n: file: src/mainwindow.ui:403
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#. i18n: file: src/mainwindow.ui:412
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "New View"
+msgstr "Paparan Baru"
+
+#. i18n: file: src/mainwindow.ui:424
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Close View"
+msgstr "Paparan Dekat"
+
+#. i18n: file: src/mainwindow.ui:433
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Center"
+msgstr "Tengah"
+
+#. i18n: file: src/mainwindow.ui:442
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Align View To Axes"
+msgstr "Jajar Pandangan ke Paksi"
+
+#. i18n: file: src/mainwindow.ui:447
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Paste"
+msgstr "&Tampal"
+
+#. i18n: file: src/mainwindow.ui:450
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#. i18n: file: src/mainwindow.ui:455
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Copy"
+msgstr "Salin"
+
+#. i18n: file: src/mainwindow.ui:458
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#. i18n: file: src/mainwindow.ui:463
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Cut"
+msgstr "Potong"
+
+#. i18n: file: src/mainwindow.ui:466
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#. i18n: file: src/mainwindow.ui:471
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Clear"
+msgstr "Kosongkan"
+
+#. i18n: file: src/mainwindow.ui:476
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Select All"
+msgstr "Pilih Semua"
+
+#. i18n: file: src/mainwindow.ui:479
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#. i18n: file: src/mainwindow.ui:484
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Select None"
+msgstr "Pilih Tiada"
+
+#. i18n: file: src/mainwindow.ui:487
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#. i18n: file: src/mainwindow.ui:496
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Configure Avogadro..."
+msgstr "Konfigur Avogadro..."
+
+#. i18n: file: src/mainwindow.ui:507
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Tutorials"
+msgstr "Tutorial"
+
+#. i18n: file: src/mainwindow.ui:516
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Duplicate View"
+msgstr "Gandakan Paparan"
+
+#. i18n: file: src/mainwindow.ui:524
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Display Axes"
+msgstr "Papar Paksi"
+
+#. i18n: file: src/mainwindow.ui:532
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Debug Information"
+msgstr "Maklumat Nyah Pepijat"
+
+#. i18n: file: src/mainwindow.ui:540
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Avogadro Help"
+msgstr "Bantuan Avogadro"
+
+#. i18n: file: src/mainwindow.ui:545
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Release Notes"
+msgstr "Nota Keluaran"
+
+#. i18n: file: src/mainwindow.ui:550
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Report a Bug"
+msgstr "Laporkan Pepijat"
+
+#. i18n: file: src/mainwindow.ui:555
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "FAQ"
+msgstr "FAQ"
+
+#. i18n: file: src/mainwindow.ui:560
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Avogadro Website"
+msgstr "Laman Sesawang Avogadro"
+
+#. i18n: file: src/mainwindow.ui:569
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Plugin Manager..."
+msgstr "Pengurus Pemalam..."
+
+#. i18n: file: src/mainwindow.ui:578
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Project Tree Editor..."
+msgstr "Penyunting Pepohon Projek"
+
+#. i18n: file: src/mainwindow.ui:587
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Detach View"
+msgstr "Tanggalkan Paparan"
+
+#. i18n: file: src/mainwindow.ui:592
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Molecule File..."
+msgstr "Fail Molekul..."
+
+#. i18n: file: src/mainwindow.ui:603
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Use Quick Render"
+msgstr "Guna Penerap Pantas"
+
+#. i18n: file: src/mainwindow.ui:608
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Vector Graphics..."
+msgstr "Grafik &Vektor..."
+
+#. i18n: file: src/mainwindow.ui:616
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Display Unit Cell Axes"
+msgstr "Papar Unit Paksi Sel"
+
+#. i18n: file: src/mainwindow.ui:624
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "All Molecules in File..."
+msgstr "Semua Molekul dalam Fail..."
+
+#. i18n: file: src/mainwindow.ui:629
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Reset Display Types"
+msgstr "Tetap Semula Jenis Paparan"
+
+#. i18n: file: src/mainwindow.ui:640
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Perspective"
+msgstr "Perspektif"
+
+#. i18n: file: src/mainwindow.ui:648
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Orthographic"
+msgstr "Ortografik"
+
+#. i18n: file: src/pluginsettings.ui:16
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:246
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "Plugins"
+msgstr "Pemalam"
+
+#. i18n: file: src/pluginsettings.ui:33
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Extensions"
+msgstr "Sambungan"
+
+#. i18n: file: src/pluginsettings.ui:52
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+msgid "Details"
+msgstr "Perincian"
+
+#. i18n: file: src/projecttreeeditor.ui:17
+#. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
+#. i18n: file: src/projecttreeeditor.ui:164
+#. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
+msgid "Tree Items"
+msgstr "Item Pepohon"
+
+#. i18n: file: src/projecttreeeditor.ui:34
+#. i18n: ectx: property (text), widget (QLabel, textLabel)
+#. i18n: file: src/projecttreeeditor.ui:201
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Type"
+msgstr "Jenis"
+
+#. i18n: file: src/projecttreeeditor.ui:48
+#. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
+msgid "New Item"
+msgstr "Item Baru"
+
+#. i18n: file: src/projecttreeeditor.ui:51
+#. i18n: ectx: property (text), widget (QToolButton, newItemButton)
+msgid "&New Item"
+msgstr "Item &Baru"
+
+#. i18n: file: src/projecttreeeditor.ui:62
+#. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
+msgid "New Subitem"
+msgstr "Sub-Item baru"
+
+#. i18n: file: src/projecttreeeditor.ui:65
+#. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
+msgid "New &Subitem"
+msgstr "&Sub-Item Baru"
+
+#. i18n: file: src/projecttreeeditor.ui:76
+#. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
+msgid "Delete Item"
+msgstr "Padam Item"
+
+#. i18n: file: src/projecttreeeditor.ui:79
+#. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
+msgid "&Delete Item"
+msgstr "Pa&dam Item"
+
+#. i18n: file: src/projecttreeeditor.ui:103
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
+msgid "Move Item Left (before Parent Item)"
+msgstr "Alih Item Ke Kiri (sebelum Item Induk)"
+
+#. i18n: file: src/projecttreeeditor.ui:106
+#. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
+msgid "L"
+msgstr "L"
+
+#. i18n: file: src/projecttreeeditor.ui:117
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+"Alih Item Ke Kanan (sebagai Sub-item Pertama bagi Item Saudara Berikutnya)"
+
+#. i18n: file: src/projecttreeeditor.ui:120
+#. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
+msgid "R"
+msgstr "R"
+
+#. i18n: file: src/projecttreeeditor.ui:133
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
+msgid "Move Item Up"
+msgstr "Alih Item Ke Atas"
+
+#. i18n: file: src/projecttreeeditor.ui:136
+#. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
+msgid "U"
+msgstr "U"
+
+#. i18n: file: src/projecttreeeditor.ui:147
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
+msgid "Move Item Down"
+msgstr "Alih Item Ke Bawah"
+
+#. i18n: file: src/projecttreeeditor.ui:150
+#. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
+msgid "D"
+msgstr "D"
+
+#. i18n: file: src/projecttreeeditor.ui:187
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Alias"
+msgstr "Alias"
+
+#. i18n: file: src/projecttreeeditor.ui:217
+#. i18n: ectx: property (text), widget (QPushButton, settingsButton)
+msgid "Settings..."
+msgstr "Tetapan..."
+
+#. i18n: file: src/settingsdialog.ui:34
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:237
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "General"
+msgstr "Am"
+
+#. i18n: file: src/settingsdialog.ui:42
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
+msgid "Quality:"
+msgstr "Kualiti:"
+
+#. i18n: file: src/settingsdialog.ui:49
+#. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
+#. i18n: file: src/settingsdialog.ui:107
+#. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
+msgid "Set the global rendering quality."
+msgstr "Tetapkan kualiti penerapan sejagat."
+
+#. i18n: file: src/settingsdialog.ui:100
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
+msgid "Fog:"
+msgstr "Kabus:"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr " ,Launchpad Contributions:,abuyop"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Cincangan %2)\n"
+#~ "LibAvogadro: \t%3 (Cincangan %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#~ msgctxt "main.cpp"
+#~ msgid "Antialiasing."
+#~ msgstr "Anti Alias."
+
+#~ msgctxt "main.cpp"
+#~ msgid "System has OpenGL support."
+#~ msgstr "Sistem mempunyai sokongan OpenGL."
+
+#~ msgctxt "main.cpp"
+#~ msgid "This system does not support OpenGL."
+#~ msgstr "Sistem ini tidak menyokong OpenGL."
+
+#~ msgctxt "main.cpp"
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgctxt "main.cpp"
+#~ msgid "Direct Rendering."
+#~ msgstr "Penerapan Terus"
+
+#~ msgctxt "main.cpp"
+#~ msgid "Double Buffering."
+#~ msgstr "Penimbalan Berganda."
+
+#~ msgctxt "main.cpp"
+#~ msgid "OpenGL capabilities found: "
+#~ msgstr "keupayaan OpenGL ditemui: "
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#~ msgid "Common vector image formats"
+#~ msgstr "Format imej vektor umum"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
+#~ msgid "Backspace"
+#~ msgstr "Backspace"
+
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Usage: %1 [options] [files]\n"
+#~ "\n"
+#~ "Advanced Molecular Editor (version %2)\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  -h, --help\t\tShow help options (this)\n"
+#~ "  -v, --version\t\tShow version information\n"
+#~ msgstr ""
+#~ "Penggunaan: %1 [options] [files]\n"
+#~ "\n"
+#~ "Penyunting Molekul Lanjutan (versi %2)\n"
+#~ "\n"
+#~ "Pilihan:\n"
+#~ "  -h, --help\t\tPapar pilihan bantuan (yang ini)\n"
+#~ "  -v, --version\t\tPapar maklumat versi\n"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
+#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
+#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Versi Aplikasi: %2<br/><br/>Versi Pustaka: %3<br/"
+#~ "><br/>Versi Open Babel: %4<br/><br/>Versi Qt: %5<br/><br/>Untuk maklumat "
+#~ "lanjut semak <a href=\"http://avogadro.openmolecules.net/\">Laman "
+#~ "Sesawang Avogadro</a>.<br/><br/>Program sediakan AS IS TANPA SEBARANG "
+#~ "JAMINAN, TERMASUKLAH REKA BENTUK, KEBOLEHDAGANGAN UNTUK SEBARANG TUJUAN."
+#~ "<br/>"
+
+#~ msgctxt "main.cpp"
+#~ msgid "About to test OpenGL capabilities."
+#~ msgstr "Akan mengujia keupayaan OpenGL."
