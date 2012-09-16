@@ -235,6 +235,7 @@ namespace Avogadro {
   bool ZMatrixModel::removeRows(int position, int rows,
                                 const QModelIndex &index)
   {
+    return true;
   }
 
   void ZMatrixModel::addRow(int row)
