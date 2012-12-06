@@ -20,6 +20,6 @@ add_library(spglib STATIC ${spglib_SRCS})
 set_target_properties(spglib PROPERTIES COMPILE_FLAGS "-w")
 
 # Set -fPIC on x86_64
-if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^(i.86|x86|x86_64)$")
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC"  )
 endif()
