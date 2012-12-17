@@ -2357,7 +2357,8 @@ protected:
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
-QMimeData* MainWindow::prepareClipboardData(PrimitiveList selectedItems, const char* format)
+  QMimeData* MainWindow::prepareClipboardData(PrimitiveList selectedItems,
+                                              const char* format)
   {
     QMimeData *mimeData = new QMimeData;
     QImage clipboardImage;
@@ -2502,9 +2503,10 @@ QMimeData* MainWindow::prepareClipboardData(PrimitiveList selectedItems, const c
     }
   }
 
-void MainWindow::copyAsSMILES()
-{
-  QMimeData *mimeData = prepareClipboardData( d->glWidget->selectedPrimitives(), "smi" );
+  void MainWindow::copyAsSMILES()
+  {
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedPrimitives(),
+                                               "smi");
 
     if ( mimeData ) {
       QApplication::clipboard()->setMimeData(mimeData, QClipboard::Clipboard);
@@ -2513,11 +2515,12 @@ void MainWindow::copyAsSMILES()
         QApplication::clipboard()->setMimeData(mimeData, QClipboard::Selection);
       }
     }
-}
+  }
 
-void MainWindow::copyAsInChI()
-{
-  QMimeData *mimeData = prepareClipboardData( d->glWidget->selectedPrimitives(), "inchi" );
+  void MainWindow::copyAsInChI()
+  {
+    QMimeData *mimeData = prepareClipboardData(d->glWidget->selectedPrimitives(),
+                                               "inchi");
 
     if ( mimeData ) {
       QApplication::clipboard()->setMimeData(mimeData, QClipboard::Clipboard);
@@ -2526,7 +2529,7 @@ void MainWindow::copyAsInChI()
         QApplication::clipboard()->setMimeData(mimeData, QClipboard::Selection);
       }
     }
-}
+  }
 
   void MainWindow::clear()
   {
