@@ -270,76 +270,80 @@ namespace Avogadro
     ui.unitsCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setAtomStyle(int n)
   {
     m_atomStyle = (LammpsInputDialog::atomStyle) n;
     ui.atomStyleCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setDimensionType(int n)
   {
-    m_dimensionType = (LammpsInputDialog::dimensionType) n;
+    m_dimensionType = static_cast<LammpsInputDialog::dimensionType>(n);
     ui.dimensionCombo->setEnabled(true);
-    if(n==0)
-    {
+    if (n == 0) {
       setZBoundaryType(0);
       ui.zBoundaryCombo->setCurrentIndex(0);
       ui.zBoundaryCombo->setEnabled(false);
       ui.zReplicateSpin->setValue(1);
       ui.zReplicateSpin->setEnabled(false);
     }
-    if(n==1)
-    {
+    if (n == 1) {
       ui.zBoundaryCombo->setEnabled(true);
       ui.zReplicateSpin->setEnabled(true);
     }
     updatePreviewText();
   }
+
   void LammpsInputDialog::setXBoundaryType(int n)
   {
-    m_xBoundaryType = (LammpsInputDialog::boundaryType) n;
+    m_xBoundaryType = static_cast<LammpsInputDialog::boundaryType>(n);
     ui.xBoundaryCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setYBoundaryType(int n)
   {
-    m_yBoundaryType = (LammpsInputDialog::boundaryType) n;
+    m_yBoundaryType = static_cast<LammpsInputDialog::boundaryType>(n);
     ui.yBoundaryCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setZBoundaryType(int n)
   {
-    m_zBoundaryType = (LammpsInputDialog::boundaryType) n;
+    m_zBoundaryType = static_cast<LammpsInputDialog::boundaryType>(n);
     //should be careful here
     //z boundary must be p for 2d!!!
     ui.zBoundaryCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setWaterPotential(int n)
   {
-    m_waterPotential = (LammpsInputDialog::waterPotential) n;
+    m_waterPotential = static_cast<LammpsInputDialog::waterPotential>(n);
     ui.waterPotentialCombo->setEnabled(true);
-    if(n==1)
-    {
+    if (n == 1) {
       setAtomStyle(7);
       ui.atomStyleCombo->setCurrentIndex(7);
       ui.atomStyleCombo->setEnabled(false);
     }
-    if(n==0)
-    {
+    if (n == 0) {
       ui.atomStyleCombo->setEnabled(true);
     }
     updatePreviewText();
   }
+
   void LammpsInputDialog::setReadData()
   {
     m_readData = ui.readDataLine->text();
-    if(m_readData != "" )
+    if (m_readData != "" )
       readData = true;
     else
       readData = false;
     updatePreviewText();
   }
+
   void LammpsInputDialog::setMolecule(Molecule *molecule)
   {
     // Disconnect the old molecule first...
@@ -357,115 +361,128 @@ namespace Avogadro
         this, SLOT(updatePreviewText()));
     updatePreviewText();
   }
+
   void LammpsInputDialog::setEnsemble(int n)
   {
-    m_ensemble = (LammpsInputDialog::ensemble) n;
+    m_ensemble = static_cast<LammpsInputDialog::ensemble>(n);
     ui.ensembleCombo->setEnabled(true);
-    if(n==1)
-    {
+    if (n == 1) {
       ui.tempSpin->setValue(0.0);
       ui.tempSpin->setEnabled(false);
       ui.nhChainSpin->setValue(0);
       ui.nhChainSpin->setEnabled(false);
     }
-    else if(n==0)
-    {
+    else if (n == 0) {
       ui.tempSpin->setEnabled(true);
       ui.nhChainSpin->setEnabled(true);
       ui.nhChainSpin->setValue(1);
     }
     updatePreviewText();
   }
+
   void LammpsInputDialog::setTemperature(double n)
   {
     m_temperature = n;
     ui.tempSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setNHChain(int n)
   {
     m_nhChain = n;
     ui.nhChainSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setTimeStep(double n)
   {
     m_timeStep = n;
     ui.stepSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setRunSteps(int n)
   {
     m_runSteps = n;
     ui.runSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setXReplicate(int n)
   {
     m_xReplicate = n;
     ui.xReplicateSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setYReplicate(int n)
   {
     m_yReplicate = n;
     ui.yReplicateSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setZReplicate(int n)
   {
     m_zReplicate = n;
     ui.zReplicateSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setDumpStep(int n)
   {
     m_dumpStep = n;
     ui.dumpStepSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setDumpXYZ()
   {
     m_dumpXYZ = ui.dumpXYZEdit->text();
     updatePreviewText();
   }
+
   void LammpsInputDialog::setVelocityDist(int n)
   {
-    m_velocityDist = (LammpsInputDialog::velocityDist) n;
+    m_velocityDist = static_cast<LammpsInputDialog::velocityDist>(n);
     ui.velocityDistCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setVelocityTemp(double n)
   {
     m_velocityTemp = n;
     ui.velocityTempSpin->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setZeroMOM(bool state)
   {
     m_zeroMOM = state;
     ui.zeroMOMCheck->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setZeroL(bool state)
   {
     m_zeroL = state;
     ui.zeroLCheck->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setThermoStyle(int n)
   {
-    m_thermoStyle = (LammpsInputDialog::thermoStyle) n;
+    m_thermoStyle = static_cast<LammpsInputDialog::thermoStyle>(n);
     ui.thermoStyleCombo->setEnabled(true);
     updatePreviewText();
   }
+
   void LammpsInputDialog::setThermoInterval(int n)
   {
     m_thermoInterval = n;
     ui.thermoSpin->setEnabled(true);
     updatePreviewText();
   }
-
 
   QString LammpsInputDialog::generateInputDeck()
   {
@@ -487,7 +504,7 @@ namespace Avogadro
     mol << "\n";
 
     mol << "# Atom Definition\n";
-    if(readData)
+    if (readData)
       mol << "read_data      " << m_readData << "\n";
     mol << "replicate      "
       << m_xReplicate << " "
@@ -509,9 +526,10 @@ namespace Avogadro
     mol << "\n";
 
     mol << "# Output\n";
-    if(m_dumpXYZ != "")
+    if (m_dumpXYZ != "") {
       mol << "dump           dumpXYZ all xyz "
         << m_dumpStep << " " << m_dumpXYZ << "\n";
+    }
     mol << "thermo_style   " << getThermoStyle(m_thermoStyle) << "\n";
     mol << "thermo         " << m_thermoInterval << "\n";
     mol << "\n";
@@ -519,7 +537,6 @@ namespace Avogadro
     mol << "# Run the simulation\n";
     mol << "run            " << m_runSteps << "\n";
     mol << "\n";
-
 
     return buffer;
   }
@@ -584,6 +601,7 @@ namespace Avogadro
         return "full";
     }
   }
+
   QString LammpsInputDialog::getDimensionType(dimensionType t)
   {
     switch(t)
@@ -596,6 +614,7 @@ namespace Avogadro
         return "3d";
     }
   }
+
   QString LammpsInputDialog::getXBoundaryType(boundaryType t)
   {
     switch(t)
@@ -616,6 +635,7 @@ namespace Avogadro
         return "p";
     }
   }
+
   QString LammpsInputDialog::getYBoundaryType(boundaryType t)
   {
     switch(t)
@@ -636,6 +656,7 @@ namespace Avogadro
         return "p";
     }
   }
+
   QString LammpsInputDialog::getZBoundaryType(boundaryType t)
   {
     switch(t)
@@ -656,6 +677,7 @@ namespace Avogadro
         return "p";
     }
   }
+
   QString LammpsInputDialog::getWaterPotential(waterPotential t)
   {
     switch(t)
@@ -727,6 +749,7 @@ namespace Avogadro
         }
     }
   }
+
   QString LammpsInputDialog::getEnsemble(ensemble t)
   {
     switch(t)
@@ -764,6 +787,7 @@ namespace Avogadro
         }
     }
   }
+
   QString LammpsInputDialog::getVelocityDist(velocityDist t)
   {
     switch(t)
@@ -776,6 +800,7 @@ namespace Avogadro
         return "gaussian";
     }
   }
+
   QString LammpsInputDialog::getZeroMOM()
   {
     if(m_zeroMOM)
@@ -783,6 +808,7 @@ namespace Avogadro
     else
       return "no";
   }
+
   QString LammpsInputDialog::getZeroL()
   {
     if(m_zeroL)
@@ -790,6 +816,7 @@ namespace Avogadro
     else
       return "no";
   }
+
   QString LammpsInputDialog::getThermoStyle(thermoStyle t)
   {
     switch(t)
@@ -825,7 +852,6 @@ namespace Avogadro
     settings.setValue("lammps/savepath", m_savePath);
   }
 
-
   void LammpsInputDialog::determineAtomTypesSPC(int &hyd, int &oxy)
   {
     double ThisMass;
@@ -839,8 +865,7 @@ namespace Avogadro
     }
     int AtomIndex=0;
     //Set AtomType integer
-    for(itr=AtomMass.begin();itr!=AtomMass.end();++itr)
-    {
+    for (itr = AtomMass.begin(); itr != AtomMass.end(); ++itr) {
       AtomIndex++;
       AtomType[itr.key()] = AtomIndex;
     }
@@ -849,7 +874,5 @@ namespace Avogadro
     //returns a different order for O and H.
     hyd = AtomType.value("O");
     oxy = AtomType.value("H");
-
   }
 }
-
