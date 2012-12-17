@@ -37,11 +37,9 @@
 #include <avogadro/camera.h>
 
 #include <QtPlugin>
-#include <QDebug>
 #include <QAbstractButton>
 
 using Eigen::Vector3d;
-using Eigen::Matrix3d;
 using Eigen::Transform3d;
 using Eigen::AngleAxisd;
 
@@ -58,8 +56,11 @@ namespace Avogadro {
   };
 
   ManipulateTool::ManipulateTool(QObject *parent) : Tool(parent),
-                                                    m_clickedAtom(0), m_leftButtonPressed(false), m_midButtonPressed(false),
-                                                    m_rightButtonPressed(false), m_eyecandy(new Eyecandy),
+                                                    m_clickedAtom(0),
+                                                    m_leftButtonPressed(false),
+                                                    m_midButtonPressed(false),
+                                                    m_rightButtonPressed(false),
+                                                    m_eyecandy(new Eyecandy),
                                                     m_settingsWidget(0)
   {
     m_eyecandy->setColor(1.0, 0.0, 0.0, 1.0);
