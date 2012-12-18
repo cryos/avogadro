@@ -1,0 +1,78 @@
+data_global
+_chemical_name_mineral 'Nacrite'
+loop_
+_publ_author_name
+'Zhukhlistov A P'
+_journal_name_full 'Crystallography Reports'
+_journal_volume 53 
+_journal_year 2008
+_journal_page_first 76
+_journal_page_last 82
+_publ_section_title
+;
+ Crystal structure of nacrite from the electron diffraction data
+;
+_database_code_amcsd 0012394
+_chemical_formula_sum 'Al2 Si2 O9 H4'
+_cell_length_a 8.910
+_cell_length_b 5.144
+_cell_length_c 14.593
+_cell_angle_alpha 90
+_cell_angle_beta 100.50
+_cell_angle_gamma 90
+_cell_volume 657.642
+_exptl_crystal_density_diffrn      2.607
+_symmetry_space_group_name_H-M 'C 1 c 1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+  'x,-y,1/2+z'
+  '1/2+x,1/2-y,1/2+z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Al1   0.32750  -0.07030  -0.00020
+Al2   0.16280   0.42450   0.00040
+Si1   0.06320   0.27960   0.18970
+Si2   0.23420  -0.23440   0.19070
+O1   0.13490   0.00110   0.22150
+O2   0.18090   0.50270   0.23620
+O3   0.41190  -0.19250   0.23710
+O4   0.02140   0.31110   0.07880
+O5   0.21430  -0.26200   0.07940
+O-h1   0.32710   0.23790   0.07480
+O-h2   0.16400   0.11530  -0.06600
+O-h3   0.28530  -0.37930  -0.06500
+O-h4   0.47720   0.04320  -0.06510
+H1   0.42600   0.31800   0.09600
+H2   0.59900   0.41000   0.37800
+H3   0.30000   0.34600   0.38000
+H4   0.49900  -0.11400   0.38000
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Al1 0.00817 0.00643 0.00939 -0.00114 0.00064 0.00075
+Al2 0.00778 0.00630 0.00834 -0.00068 0.00064 0.00150
+Si1 0.00778 0.00617 0.01043 -0.00183 0.00446 -0.00075
+Si2 0.00817 0.00885 0.00834 -0.00091 0.00255 0.00037
+O1 0.01011 0.00858 0.01565 -0.00023 0.00764 -0.00112
+O2 0.00933 0.00858 0.01043 0.00183 0.00127 -0.00224
+O3 0.01166 0.01019 0.01565 0.00411 0.00637 0.00037
+O4 0.01089 0.00871 0.01043 -0.00479 0.00446 -0.00112
+O5 0.01089 0.01099 0.00939 0.00320 0.00318 0.00523
+O-h1 0.01011 0.00818 0.01147 0.00023 0.00637 0.00187
+O-h2 0.01283 0.01059 0.01460 -0.00297 0.00573 -0.00486
+O-h3 0.00855 0.00938 0.01252 0.00114 0.00446 -0.00075
+O-h4 0.01089 0.01206 0.01460 0.00068 0.00573 0.00000
+H1 0.04899 0.03928 0.04589 0.01027 0.03057 0.02580
+H2 0.03849 0.04424 0.04381 -0.02146 -0.00255 0.01533
+H3 0.03577 0.03820 0.03442 0.02009 0.01401 -0.01421
+H4 0.03499 0.03740 0.04172 0.02762 0.03184 0.00897

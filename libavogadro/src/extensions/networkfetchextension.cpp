@@ -117,9 +117,11 @@ namespace Avogadro
                                                     "", &ok);
       if (!ok || structureName.isEmpty())
         return 0;
-      // Hard coding the PDB download URL - this could be used for other services
+      // Hard coding the NIH resolver download URL - this could be used for other services
       m_network->get(QNetworkRequest(
-          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf?get3d=true")));
+          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf?get3d=true"
+               + "&resolver=name_by_opsin,name_by_cir,name_by_chemspider"
+               + "&requester=Avogadro")));
 
       *m_moleculeName = structureName + ".sdf";
     }
@@ -133,7 +135,7 @@ namespace Avogadro
                                           "", &ok);
       if (!ok || url.isEmpty())
         return 0;
-      // Hard coding the PDB download URL - this could be used for other services
+      // Arbitrary URL
       m_network->get(QNetworkRequest(QUrl(url)));
 
       *m_moleculeName = url;

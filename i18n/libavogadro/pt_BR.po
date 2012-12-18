@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-05-14 00:00-0400\n"
+"POT-Creation-Date: 2012-12-17 00:00-0500\n"
 "PO-Revision-Date: 2011-04-01 03:04+0000\n"
 "Last-Translator: Júlio Cezar Santos Pires <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -87,479 +87,480 @@ msgid "Highlight particular features which match a SMARTS pattern."
 msgstr ""
 "Realçar funcionalidades particulares que coincidem com o padrão SMARTS."
 
-#: src/elementtranslator.cpp:42
+#: src/elementtranslator.cpp:40
 msgid "Hydrogen"
 msgstr "Hidrogênio"
 
-#: src/elementtranslator.cpp:45
+#: src/elementtranslator.cpp:43
 msgid "Helium"
 msgstr "Hélio"
 
-#: src/elementtranslator.cpp:48
+#: src/elementtranslator.cpp:46
 msgid "Lithium"
 msgstr "Lítio"
 
-#: src/elementtranslator.cpp:51
+#: src/elementtranslator.cpp:49
 msgid "Beryllium"
 msgstr "Berílio"
 
-#: src/elementtranslator.cpp:54
+#: src/elementtranslator.cpp:52
 msgid "Boron"
 msgstr "Boro"
 
-#: src/elementtranslator.cpp:57
+#: src/elementtranslator.cpp:55
 msgid "Carbon"
 msgstr "Carbono"
 
-#: src/elementtranslator.cpp:60
+#: src/elementtranslator.cpp:58
 msgid "Nitrogen"
 msgstr "Nitrogênio"
 
-#: src/elementtranslator.cpp:63
+#: src/elementtranslator.cpp:61
 msgid "Oxygen"
 msgstr "Oxigênio"
 
-#: src/elementtranslator.cpp:66
+#: src/elementtranslator.cpp:64
 msgid "Fluorine"
 msgstr "Flúor"
 
-#: src/elementtranslator.cpp:69
+#: src/elementtranslator.cpp:67
 msgid "Neon"
 msgstr "Neônio"
 
-#: src/elementtranslator.cpp:72
+#: src/elementtranslator.cpp:70
 msgid "Sodium"
 msgstr "Sódio"
 
-#: src/elementtranslator.cpp:75
+#: src/elementtranslator.cpp:73
 msgid "Magnesium"
 msgstr "Magnésio"
 
-#: src/elementtranslator.cpp:78
+#: src/elementtranslator.cpp:76
 msgid "Aluminum"
 msgstr "Alumínio"
 
-#: src/elementtranslator.cpp:81
+#: src/elementtranslator.cpp:79
 msgid "Silicon"
 msgstr "Silício"
 
-#: src/elementtranslator.cpp:84
+#: src/elementtranslator.cpp:82
 msgid "Phosphorus"
 msgstr "Fósforo"
 
-#: src/elementtranslator.cpp:87
+#: src/elementtranslator.cpp:85
 msgid "Sulfur"
 msgstr "Enxofre"
 
-#: src/elementtranslator.cpp:90
+#: src/elementtranslator.cpp:88
 msgid "Chlorine"
 msgstr "Cloro"
 
-#: src/elementtranslator.cpp:93
+#: src/elementtranslator.cpp:91
 msgid "Argon"
 msgstr "Argônio"
 
-#: src/elementtranslator.cpp:96
+#: src/elementtranslator.cpp:94
 msgid "Potassium"
 msgstr "Potássio"
 
-#: src/elementtranslator.cpp:99
+#: src/elementtranslator.cpp:97
 msgid "Calcium"
 msgstr "Cálcio"
 
-#: src/elementtranslator.cpp:102
+#: src/elementtranslator.cpp:100
 msgid "Scandium"
 msgstr "Escândio"
 
-#: src/elementtranslator.cpp:105
+#: src/elementtranslator.cpp:103
 msgid "Titanium"
 msgstr "Titânio"
 
-#: src/elementtranslator.cpp:108
+#: src/elementtranslator.cpp:106
 msgid "Vanadium"
 msgstr "Vanádio"
 
-#: src/elementtranslator.cpp:111
+#: src/elementtranslator.cpp:109
 msgid "Chromium"
 msgstr "Crômio"
 
-#: src/elementtranslator.cpp:114
+#: src/elementtranslator.cpp:112
 msgid "Manganese"
 msgstr "Manganês"
 
-#: src/elementtranslator.cpp:117
+#: src/elementtranslator.cpp:115
 msgid "Iron"
 msgstr "Ferro"
 
-#: src/elementtranslator.cpp:120
+#: src/elementtranslator.cpp:118
 msgid "Cobalt"
 msgstr "Cobalto"
 
-#: src/elementtranslator.cpp:123
+#: src/elementtranslator.cpp:121
 msgid "Nickel"
 msgstr "Níquel"
 
-#: src/elementtranslator.cpp:126
+#: src/elementtranslator.cpp:124
 msgid "Copper"
 msgstr "Cobre"
 
-#: src/elementtranslator.cpp:129
+#: src/elementtranslator.cpp:127
 msgid "Zinc"
 msgstr "Zinco"
 
-#: src/elementtranslator.cpp:132
+#: src/elementtranslator.cpp:130
 msgid "Gallium"
 msgstr "Gálio"
 
-#: src/elementtranslator.cpp:135
+#: src/elementtranslator.cpp:133
 msgid "Germanium"
 msgstr "Germânio"
 
-#: src/elementtranslator.cpp:138
+#: src/elementtranslator.cpp:136
 msgid "Arsenic"
 msgstr "Arsênio"
 
-#: src/elementtranslator.cpp:141
+#: src/elementtranslator.cpp:139
 msgid "Selenium"
 msgstr "Selênio"
 
-#: src/elementtranslator.cpp:144
+#: src/elementtranslator.cpp:142
 msgid "Bromine"
 msgstr "Bromo"
 
-#: src/elementtranslator.cpp:147
+#: src/elementtranslator.cpp:145
 msgid "Krypton"
 msgstr "Criptônio"
 
-#: src/elementtranslator.cpp:150
+#: src/elementtranslator.cpp:148
 msgid "Rubidium"
 msgstr "Rubídio"
 
-#: src/elementtranslator.cpp:153
+#: src/elementtranslator.cpp:151
 msgid "Strontium"
 msgstr "Estrôncio"
 
-#: src/elementtranslator.cpp:156
+#: src/elementtranslator.cpp:154
 msgid "Yttrium"
 msgstr "Ítrio"
 
-#: src/elementtranslator.cpp:159
+#: src/elementtranslator.cpp:157
 msgid "Zirconium"
 msgstr "Zircônio"
 
-#: src/elementtranslator.cpp:162
+#: src/elementtranslator.cpp:160
 msgid "Niobium"
 msgstr "Nióbio"
 
-#: src/elementtranslator.cpp:165
+#: src/elementtranslator.cpp:163
 msgid "Molybdenum"
 msgstr "Molibdênio"
 
-#: src/elementtranslator.cpp:168
+#: src/elementtranslator.cpp:166
 msgid "Technetium"
 msgstr "Tecnécio"
 
-#: src/elementtranslator.cpp:171
+#: src/elementtranslator.cpp:169
 msgid "Ruthenium"
 msgstr "Rutênio"
 
-#: src/elementtranslator.cpp:174
+#: src/elementtranslator.cpp:172
 msgid "Rhodium"
 msgstr "Ródio"
 
-#: src/elementtranslator.cpp:177
+#: src/elementtranslator.cpp:175
 msgid "Palladium"
 msgstr "Paládio"
 
-#: src/elementtranslator.cpp:180
+#: src/elementtranslator.cpp:178
 msgid "Silver"
 msgstr "Prata"
 
-#: src/elementtranslator.cpp:183
+#: src/elementtranslator.cpp:181
 msgid "Cadmium"
 msgstr "Cádmio"
 
-#: src/elementtranslator.cpp:186
+#: src/elementtranslator.cpp:184
 msgid "Indium"
 msgstr "Índio"
 
-#: src/elementtranslator.cpp:189
+#: src/elementtranslator.cpp:187
 msgid "Tin"
 msgstr "Estanho"
 
-#: src/elementtranslator.cpp:192
+#: src/elementtranslator.cpp:190
 msgid "Antimony"
 msgstr "Antimônio"
 
-#: src/elementtranslator.cpp:195
+#: src/elementtranslator.cpp:193
 msgid "Tellurium"
 msgstr "Telúrio"
 
-#: src/elementtranslator.cpp:198
+#: src/elementtranslator.cpp:196
 msgid "Iodine"
 msgstr "Iodo"
 
-#: src/elementtranslator.cpp:201
+#: src/elementtranslator.cpp:199
 msgid "Xenon"
 msgstr "Xenônio"
 
-#: src/elementtranslator.cpp:204
+#: src/elementtranslator.cpp:202
 msgid "Cesium"
 msgstr "Césio"
 
-#: src/elementtranslator.cpp:207
+#: src/elementtranslator.cpp:205
 msgid "Barium"
 msgstr "Bário"
 
-#: src/elementtranslator.cpp:210
+#: src/elementtranslator.cpp:208
 msgid "Lanthanum"
 msgstr "Lantânio"
 
-#: src/elementtranslator.cpp:213
+#: src/elementtranslator.cpp:211
 msgid "Cerium"
 msgstr "Cério"
 
-#: src/elementtranslator.cpp:216
+#: src/elementtranslator.cpp:214
 msgid "Praseodymium"
 msgstr "Praseodímio"
 
-#: src/elementtranslator.cpp:219
+#: src/elementtranslator.cpp:217
 msgid "Neodymium"
 msgstr "Neodímio"
 
-#: src/elementtranslator.cpp:222
+#: src/elementtranslator.cpp:220
 msgid "Promethium"
 msgstr "Promécio"
 
-#: src/elementtranslator.cpp:225
+#: src/elementtranslator.cpp:223
 msgid "Samarium"
 msgstr "Samário"
 
-#: src/elementtranslator.cpp:228
+#: src/elementtranslator.cpp:226
 msgid "Europium"
 msgstr "Európio"
 
-#: src/elementtranslator.cpp:231
+#: src/elementtranslator.cpp:229
 msgid "Gadolinium"
 msgstr "Gadolínio"
 
-#: src/elementtranslator.cpp:234
+#: src/elementtranslator.cpp:232
 msgid "Terbium"
 msgstr "Térbio"
 
-#: src/elementtranslator.cpp:237
+#: src/elementtranslator.cpp:235
 msgid "Dysprosium"
 msgstr "Disprósio"
 
-#: src/elementtranslator.cpp:240
+#: src/elementtranslator.cpp:238
 msgid "Holmium"
 msgstr "Hólmio"
 
-#: src/elementtranslator.cpp:243
+#: src/elementtranslator.cpp:241
 msgid "Erbium"
 msgstr "Érbio"
 
-#: src/elementtranslator.cpp:246
+#: src/elementtranslator.cpp:244
 msgid "Thulium"
 msgstr "Túlio"
 
-#: src/elementtranslator.cpp:249
+#: src/elementtranslator.cpp:247
 msgid "Ytterbium"
 msgstr "Itérbio"
 
-#: src/elementtranslator.cpp:252
+#: src/elementtranslator.cpp:250
 msgid "Lutetium"
 msgstr "Lutécio"
 
-#: src/elementtranslator.cpp:255
+#: src/elementtranslator.cpp:253
 msgid "Hafnium"
 msgstr "Háfnio"
 
-#: src/elementtranslator.cpp:258
+#: src/elementtranslator.cpp:256
 msgid "Tantalum"
 msgstr "Tantálio"
 
-#: src/elementtranslator.cpp:261
+#: src/elementtranslator.cpp:259
 msgid "Tungsten"
 msgstr "Tungstênio"
 
-#: src/elementtranslator.cpp:264
+#: src/elementtranslator.cpp:262
 msgid "Rhenium"
 msgstr "Rênio"
 
-#: src/elementtranslator.cpp:267
+#: src/elementtranslator.cpp:265
 msgid "Osmium"
 msgstr "Ósmio"
 
-#: src/elementtranslator.cpp:270
+#: src/elementtranslator.cpp:268
 msgid "Iridium"
 msgstr "Irídio"
 
-#: src/elementtranslator.cpp:273
+#: src/elementtranslator.cpp:271
 msgid "Platinum"
 msgstr "Platina"
 
-#: src/elementtranslator.cpp:276
+#: src/elementtranslator.cpp:274
 msgid "Gold"
 msgstr "Ouro"
 
-#: src/elementtranslator.cpp:279
+#: src/elementtranslator.cpp:277
 msgid "Mercury"
 msgstr "Mercúrio"
 
-#: src/elementtranslator.cpp:282
+#: src/elementtranslator.cpp:280
 msgid "Thallium"
 msgstr "Tálio"
 
-#: src/elementtranslator.cpp:285
+#: src/elementtranslator.cpp:283
 msgid "Lead"
 msgstr "Chumbo"
 
-#: src/elementtranslator.cpp:288
+#: src/elementtranslator.cpp:286
 msgid "Bismuth"
 msgstr "Bismuto"
 
-#: src/elementtranslator.cpp:291
+#: src/elementtranslator.cpp:289
 msgid "Polonium"
 msgstr "Polônio"
 
-#: src/elementtranslator.cpp:294
+#: src/elementtranslator.cpp:292
 msgid "Astatine"
 msgstr "Astato"
 
-#: src/elementtranslator.cpp:297
+#: src/elementtranslator.cpp:295
 msgid "Radon"
 msgstr "Radônio"
 
-#: src/elementtranslator.cpp:300
+#: src/elementtranslator.cpp:298
 msgid "Francium"
 msgstr "Frâncio"
 
-#: src/elementtranslator.cpp:303
+#: src/elementtranslator.cpp:301
 msgid "Radium"
 msgstr "Rádio"
 
-#: src/elementtranslator.cpp:306
+#: src/elementtranslator.cpp:304
 msgid "Actinium"
 msgstr "Actínio"
 
-#: src/elementtranslator.cpp:309
+#: src/elementtranslator.cpp:307
 msgid "Thorium"
 msgstr "Tório"
 
-#: src/elementtranslator.cpp:312
+#: src/elementtranslator.cpp:310
 msgid "Protactinium"
 msgstr "Protactínio"
 
-#: src/elementtranslator.cpp:315
+#: src/elementtranslator.cpp:313
 msgid "Uranium"
 msgstr "Urânio"
 
-#: src/elementtranslator.cpp:318
+#: src/elementtranslator.cpp:316
 msgid "Neptunium"
 msgstr "Neptúnio"
 
-#: src/elementtranslator.cpp:321
+#: src/elementtranslator.cpp:319
 msgid "Plutonium"
 msgstr "Plutônio"
 
-#: src/elementtranslator.cpp:324
+#: src/elementtranslator.cpp:322
 msgid "Americium"
 msgstr "Amerício"
 
-#: src/elementtranslator.cpp:327
+#: src/elementtranslator.cpp:325
 msgid "Curium"
 msgstr "Cúrio"
 
-#: src/elementtranslator.cpp:330
+#: src/elementtranslator.cpp:328
 msgid "Berkelium"
 msgstr "Berquélio"
 
-#: src/elementtranslator.cpp:333
+#: src/elementtranslator.cpp:331
 msgid "Californium"
 msgstr "Califórnio"
 
-#: src/elementtranslator.cpp:336
+#: src/elementtranslator.cpp:334
 msgid "Einsteinium"
 msgstr "Einstênio"
 
-#: src/elementtranslator.cpp:339
+#: src/elementtranslator.cpp:337
 msgid "Fermium"
 msgstr "Férmio"
 
-#: src/elementtranslator.cpp:342
+#: src/elementtranslator.cpp:340
 msgid "Mendelevium"
 msgstr "Mendelévio"
 
-#: src/elementtranslator.cpp:345
+#: src/elementtranslator.cpp:343
 msgid "Nobelium"
 msgstr "Nobélio"
 
-#: src/elementtranslator.cpp:348
+#: src/elementtranslator.cpp:346
 msgid "Lawrencium"
 msgstr "Laurêncio"
 
-#: src/elementtranslator.cpp:351
+#: src/elementtranslator.cpp:349
 msgid "Rutherfordium"
 msgstr "Ruterfórdio"
 
-#: src/elementtranslator.cpp:354
+#: src/elementtranslator.cpp:352
 msgid "Dubnium"
 msgstr "Dúbnio"
 
-#: src/elementtranslator.cpp:357
+#: src/elementtranslator.cpp:355
 msgid "Seaborgium"
 msgstr "Seabórguio"
 
-#: src/elementtranslator.cpp:360
+#: src/elementtranslator.cpp:358
 msgid "Bohrium"
 msgstr "Bóhrio"
 
-#: src/elementtranslator.cpp:363
+#: src/elementtranslator.cpp:361
 msgid "Hassium"
 msgstr "Hássio"
 
-#: src/elementtranslator.cpp:366
+#: src/elementtranslator.cpp:364
 msgid "Meitnerium"
 msgstr "Meitnério"
 
-#: src/elementtranslator.cpp:369
+#: src/elementtranslator.cpp:367
 msgid "Darmstadtium"
 msgstr "Darmstádio"
 
-#: src/elementtranslator.cpp:372
+#: src/elementtranslator.cpp:370
 msgid "Roentgenium"
 msgstr "Roentgênio"
 
-#: src/elementtranslator.cpp:375
+#: src/elementtranslator.cpp:373
 msgid "Copernicium"
 msgstr "Copernício"
 
-#: src/elementtranslator.cpp:378
+#: src/elementtranslator.cpp:376
 msgid "Ununtrium"
 msgstr "Ununtrio"
 
-#: src/elementtranslator.cpp:381
-msgid "Ununquadium"
-msgstr "ununquadio"
+#: src/elementtranslator.cpp:379
+#, fuzzy
+msgid "Flerovium"
+msgstr "Mendelévio"
 
-#: src/elementtranslator.cpp:384
+#: src/elementtranslator.cpp:382
 msgid "Ununpentium"
 msgstr "Ununpentio"
 
-#: src/elementtranslator.cpp:387
-msgid "Ununhexium"
-msgstr "Ununhexio"
+#: src/elementtranslator.cpp:385
+msgid "Livermorium"
+msgstr ""
 
-#: src/elementtranslator.cpp:390
+#: src/elementtranslator.cpp:388
 msgid "Ununseptium"
 msgstr "Ununséptio"
 
-#: src/elementtranslator.cpp:393
+#: src/elementtranslator.cpp:391
 msgid "Ununoctium"
 msgstr "Ununoctio"
 
-#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+#: src/elementtranslator.cpp:395 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -623,11 +624,11 @@ msgstr "Selecione a Cor da Etiqueta do Átomo"
 msgid "Select Bond Labels Color"
 msgstr "Selecione a Cor da Etiqueta do Vínculo"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "Selecione a Fonte da Etiqueta do Átomo"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "Selecione a Fonte da Etiqueta do Vínculo"
 
@@ -638,14 +639,6 @@ msgstr "Rótulo"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Desenha rótulos de átomos e ligações"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr ""
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Renderiza escala de cores para gradientes"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -792,7 +785,7 @@ msgstr "arquivos de video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:183
+#: src/extensions/insertfragmentdialog.cpp:194
 #: src/extensions/quantuminput/inputfileextension.cpp:172
 #: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
@@ -917,7 +910,7 @@ msgstr "Editor Cartesiano..."
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1043,7 +1036,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:455
 #: src/extensions/crystallography/crystallographyextension.cpp:687
-#: src/extensions/crystallography/crystallographyextension.cpp:1987
+#: src/extensions/crystallography/crystallographyextension.cpp:1988
 msgid "Show &Editors"
 msgstr ""
 
@@ -1054,7 +1047,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:559
 #: src/extensions/crystallography/crystallographyextension.cpp:696
-#: src/extensions/crystallography/crystallographyextension.cpp:1995
+#: src/extensions/crystallography/crystallographyextension.cpp:1996
 msgid "Show &Property Display"
 msgstr ""
 
@@ -1079,7 +1072,7 @@ msgid "Remove &Unit Cell"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:654
-#: src/extensions/crystallography/crystallographyextension.cpp:1965
+#: src/extensions/crystallography/crystallographyextension.cpp:1966
 msgid "Add &Unit Cell"
 msgstr ""
 
@@ -1123,11 +1116,11 @@ msgctxt "Lattice type"
 msgid "Cubic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1486
+#: src/extensions/crystallography/crystallographyextension.cpp:1487
 msgid "Paste Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1756
+#: src/extensions/crystallography/crystallographyextension.cpp:1757
 msgid ""
 "Niggli-reduction failed. The input structure's lattice that is confusing the "
 "Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
@@ -1135,201 +1128,201 @@ msgid ""
 "try again."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1870
+#: src/extensions/crystallography/crystallographyextension.cpp:1871
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1879
+#: src/extensions/crystallography/crystallographyextension.cpp:1880
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1972
+#: src/extensions/crystallography/crystallographyextension.cpp:1973
 msgid "I&mport Crystal from Clipboard..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2010
+#: src/extensions/crystallography/crystallographyextension.cpp:2011
 msgid "&Wrap Atoms to Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2017
+#: src/extensions/crystallography/crystallographyextension.cpp:2018
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Manipular Átomo"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2024
+#: src/extensions/crystallography/crystallographyextension.cpp:2025
 msgid "Rotate To Standard &Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2031
+#: src/extensions/crystallography/crystallographyextension.cpp:2032
 msgid "Scale Cell To &Volume..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2040
+#: src/extensions/crystallography/crystallographyextension.cpp:2041
 msgid "&Slab..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2055
+#: src/extensions/crystallography/crystallographyextension.cpp:2056
 msgid "Perceive Space&group..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2062
+#: src/extensions/crystallography/crystallographyextension.cpp:2063
 msgid "Set &Spacegroup..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2069
+#: src/extensions/crystallography/crystallographyextension.cpp:2070
 msgid "&Fill Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2070
+#: src/extensions/crystallography/crystallographyextension.cpp:2071
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2077
+#: src/extensions/crystallography/crystallographyextension.cpp:2078
 msgid "Sy&mmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2084
+#: src/extensions/crystallography/crystallographyextension.cpp:2085
 msgid "Reduce Cell (&Primitive)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2091
+#: src/extensions/crystallography/crystallographyextension.cpp:2092
 msgid "Reduce Cell (&Niggli)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2109
+#: src/extensions/crystallography/crystallographyextension.cpp:2110
 msgid "&Angstrom"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2119
+#: src/extensions/crystallography/crystallographyextension.cpp:2120
 msgid "&Bohr"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2128
+#: src/extensions/crystallography/crystallographyextension.cpp:2129
 msgid "&Nanometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2137
+#: src/extensions/crystallography/crystallographyextension.cpp:2138
 msgid "&Picometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2149
+#: src/extensions/crystallography/crystallographyextension.cpp:2150
 msgid "&Degree"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2159
+#: src/extensions/crystallography/crystallographyextension.cpp:2160
 msgid "&Radian"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2171
+#: src/extensions/crystallography/crystallographyextension.cpp:2172
 msgid "Display &cartesian coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2180
+#: src/extensions/crystallography/crystallographyextension.cpp:2181
 msgid "Display &fractional coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2193
+#: src/extensions/crystallography/crystallographyextension.cpp:2194
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2203
+#: src/extensions/crystallography/crystallographyextension.cpp:2204
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2217
+#: src/extensions/crystallography/crystallographyextension.cpp:2218
 msgid "Display &cartesian matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2227
+#: src/extensions/crystallography/crystallographyextension.cpp:2228
 msgid "Display &fractional matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2247
+#: src/extensions/crystallography/crystallographyextension.cpp:2248
 msgid "Display as &row vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2257
+#: src/extensions/crystallography/crystallographyextension.cpp:2258
 msgid "Display as &column vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2266
+#: src/extensions/crystallography/crystallographyextension.cpp:2267
 msgid "&Crystal View Options..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2316
-#: src/extensions/crystallography/crystallographyextension.cpp:2448
-#: src/extensions/crystallography/crystallographyextension.cpp:2612
+#: src/extensions/crystallography/crystallographyextension.cpp:2317
+#: src/extensions/crystallography/crystallographyextension.cpp:2449
+#: src/extensions/crystallography/crystallographyextension.cpp:2613
 msgid "Select tolerance in current cartesian units:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2338
-#: src/extensions/crystallography/crystallographyextension.cpp:2468
-#: src/extensions/crystallography/crystallographyextension.cpp:2632
+#: src/extensions/crystallography/crystallographyextension.cpp:2339
+#: src/extensions/crystallography/crystallographyextension.cpp:2469
+#: src/extensions/crystallography/crystallographyextension.cpp:2633
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2354
+#: src/extensions/crystallography/crystallographyextension.cpp:2355
 msgid "Perceive Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2388
+#: src/extensions/crystallography/crystallographyextension.cpp:2389
 msgid "Set Spacegroup:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2402
+#: src/extensions/crystallography/crystallographyextension.cpp:2403
 msgid "Set Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2415
+#: src/extensions/crystallography/crystallographyextension.cpp:2416
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
 "Would you like to set a spacegroup now?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2434
+#: src/extensions/crystallography/crystallographyextension.cpp:2435
 msgid "Fill Unit Cell"
 msgstr "Completar Célula Unitária"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2482
+#: src/extensions/crystallography/crystallographyextension.cpp:2483
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2501
+#: src/extensions/crystallography/crystallographyextension.cpp:2502
 msgid "Symmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2577
+#: src/extensions/crystallography/crystallographyextension.cpp:2578
 msgid "Wrap Atoms To Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2598
+#: src/extensions/crystallography/crystallographyextension.cpp:2599
 msgid "Rotate to Standard Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2650
+#: src/extensions/crystallography/crystallographyextension.cpp:2651
 msgid "Reduce to Primitive Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2663
+#: src/extensions/crystallography/crystallographyextension.cpp:2664
 msgid "Reduce to Niggli Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2686
+#: src/extensions/crystallography/crystallographyextension.cpp:2687
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2700
+#: src/extensions/crystallography/crystallographyextension.cpp:2701
 msgid "Scale Unit Cell Volume"
 msgstr ""
 
@@ -1417,7 +1410,7 @@ msgstr ""
 msgid "Build"
 msgstr "&Construir"
 
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:529
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:531
 msgid "Cut Slab From Crystal"
 msgstr ""
 
@@ -1447,14 +1440,14 @@ msgstr "Trajetória..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Arquivo"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr "Importar"
@@ -1657,44 +1650,44 @@ msgstr "Hidrogênios"
 msgid "Add or remove hydrogens"
 msgstr "Adiciona ou remove hidrogênios"
 
-#: src/extensions/insertfragmentdialog.cpp:184
+#: src/extensions/insertfragmentdialog.cpp:195
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
 msgstr "Não foi possível ler o arquivo %1."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:59
 msgid "Crystal..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:62
+#: src/extensions/insertfragmentextension.cpp:64
 msgid "Fragment..."
 msgstr "Fragmento..."
 
-#: src/extensions/insertfragmentextension.cpp:67
+#: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "&Inserir"
 
-#: src/extensions/insertfragmentextension.cpp:119
-#: src/extensions/insertfragmentextension.cpp:164
+#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:166
 msgid "Insert SMILES"
 msgstr "Inserir SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:120
+#: src/extensions/insertfragmentextension.cpp:122
 msgid "Insert SMILES fragment:"
 msgstr "Inserir fragmentos de SMILES:"
 
-#: src/extensions/insertfragmentextension.cpp:169
-#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:310
 #: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr "Inserir Fragmento"
 
-#: src/extensions/insertfragmentextension.cpp:177
+#: src/extensions/insertfragmentextension.cpp:179
 #, fuzzy
 msgid "Insert Crystal"
 msgstr "Inserir Fragmento"
@@ -1752,14 +1745,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Momento Dipolar Estimado (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Download Falhou"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Tempo expirou ou outro erro."
 
@@ -1804,20 +1797,20 @@ msgstr "Nome Químico"
 msgid "Chemical structure to download."
 msgstr "Estrutura química para baixar."
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "URL da molécula para baixar."
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "A molécula especificada não pode ser encontrada: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "A molécula especificada não pode ser carregada: %1"
@@ -3186,13 +3179,13 @@ msgstr ""
 msgid "Orbitals"
 msgstr "Orbitais"
 
-#: src/extensions/surfaces/orbitalextension.cpp:164
+#: src/extensions/surfaces/orbitalextension.cpp:167
 #: src/extensions/surfaces/orbitaltablemodel.cpp:122
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:165
+#: src/extensions/surfaces/orbitalextension.cpp:168
 #: src/extensions/surfaces/orbitaltablemodel.cpp:131
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
@@ -3428,50 +3421,50 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "Erro OpenGL"
 
-#: src/glwidget.cpp:1700
+#: src/glwidget.cpp:1701
 msgid "Debug Information"
 msgstr "Informações de Debug"
 
-#: src/glwidget.cpp:1704
+#: src/glwidget.cpp:1705
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1708
+#: src/glwidget.cpp:1709
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Tamanho da Visualização: %L1 x %L2"
 
-#: src/glwidget.cpp:1715
+#: src/glwidget.cpp:1716
 #, qt-format
 msgid "ModelView row 1: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1721
+#: src/glwidget.cpp:1722
 #, qt-format
 msgid "ModelView row 2: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1727
+#: src/glwidget.cpp:1728
 #, qt-format
 msgid "ModelView row 3: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1733
+#: src/glwidget.cpp:1734
 #, qt-format
 msgid "ModelView row 4: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1742
+#: src/glwidget.cpp:1743
 msgid "No molecule set"
 msgstr "Nenhuma molécula definida"
 
-#: src/glwidget.cpp:1747
+#: src/glwidget.cpp:1748
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Átomos: %L1"
 
-#: src/glwidget.cpp:1751
+#: src/glwidget.cpp:1752
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Ligações: %L1"
@@ -3486,7 +3479,7 @@ msgstr "sem título"
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3508,12 +3501,12 @@ msgstr "Falha ao ler molécula com índice %1 do arquivo '%2'."
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Tipo de Arquivo '%1' não pode ser escrito."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "O formato do arquivo '%1' não pode ser escrito."
@@ -3533,13 +3526,13 @@ msgstr "Não possível abrir o arquivo '%1'."
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Falha ao substituir molécula com índice %1 no arquivo '%2'."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Arquivo %1 não pôde ser aberto para leitura."
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Falha ao ler a molécula do arquivo '%1'."
@@ -3549,40 +3542,40 @@ msgstr "Falha ao ler a molécula do arquivo '%1'."
 msgid "File %1 can not be opened for writing."
 msgstr "O Arquivo %1 não pode ser aberto para escrita"
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível renomear o arquivo "
 "original."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível renomear o novo arquivo."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível remover o arquivo "
 "antigo."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Falha ao escrever no arquivo '%1'. Falha de funcionamento do OpenBabel."
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Arquivo %1 não pôde ser aberta para escrita."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Falha ao escrever os confórmeros no arquivo '%1'."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molécula %1"
@@ -10039,6 +10032,15 @@ msgstr ""
 "devel@lists.sourceforge.net,,,,,,,,,,andregondim@ubuntu.com,avogadro-"
 "devel@lists.sourceforge.net,,,,,,,,,,andregondim@ubuntu.com,avogadro-"
 "devel@lists.sourceforge.net,,,,,,,"
+
+#~ msgid "Ununquadium"
+#~ msgstr "ununquadio"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexio"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Renderiza escala de cores para gradientes"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Parâmetros de Célula Unitária..."

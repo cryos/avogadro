@@ -34,6 +34,7 @@
 
 #include <QInputDialog>
 #include <QDebug>
+#include <QTimer>
 
 using namespace std;
 using namespace OpenBabel;
@@ -51,7 +52,8 @@ namespace Avogadro {
     Extension(parent),
     m_fragmentDialog(0),
     m_crystalDialog(0),
-    m_molecule(0)
+    m_molecule(0),
+    m_justFinished(false)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Crystal..."));
@@ -230,15 +232,18 @@ namespace Avogadro {
               }
             }
           }
-        if (noSelectedHatoms) // add the heavy atom
+        if (noSelectedHatoms && !selectedIds.contains(atom->id())) { // add the heavy atom
           selectedIds.append(atom->id());
+        }
 
-      } else {
+      } else { // this is a hydrogen
         const Atom *hydrogen = atom;
-        if (!hydrogen->neighbors().empty()) {
+        if (!hydrogen->neighbors().empty()) { // it's bonded to something
           atom = m_molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
         }
-        selectedIds.append(atom->id());
+        if (!selectedIds.contains(atom->id())) {
+          selectedIds.append(atom->id());
+        }
       }
     }
 
@@ -251,6 +256,14 @@ namespace Avogadro {
     if (!dialog)
       return;
 
+    // Prevent "double insert"
+    if (m_justFinished)
+      return;
+
+    // Don't allow two inserts unless spaced by 2 seconds
+    // This avoids a "double insert"
+    QTimer::singleShot(2*1000, this, SLOT(resetTimer()));
+
     const Molecule fragment = dialog->fragment();
     if (fragment.numAtoms() == 0)
       return;
@@ -258,6 +271,7 @@ namespace Avogadro {
     *m_molecule = fragment;
     m_molecule->update();
     emit moleculeChanged(m_molecule, Extension::NewWindow);
+    m_justFinished = true;
   }
 
   // only called by the fragment dialog (not SMILES)
@@ -266,6 +280,14 @@ namespace Avogadro {
     InsertFragmentDialog *dialog = qobject_cast<InsertFragmentDialog *>(this->sender());
     if (!dialog)
       return;
+
+    // Prevent "double insert"
+    if (m_justFinished)
+      return;
+
+    // Don't allow two inserts unless spaced by 2 seconds
+    // This avoids a "double insert"
+    QTimer::singleShot(2*1000, this, SLOT(resetTimer()));
 
     // Get the fragment and make sure it exists (e.g., we didn't try to insert a directory
     const Molecule fragment = dialog->fragment();
@@ -287,6 +309,12 @@ namespace Avogadro {
     foreach(int id, selectedIds) {
       emit performCommand(new InsertFragmentCommand(m_molecule, fragment, m_widget, tr("Insert Fragment"), id));
     }
+    m_justFinished = true;
+  }
+
+  void InsertFragmentExtension::resetTimer()
+  {
+    m_justFinished = false; // done with the delay
   }
 
 } // end namespace Avogadro

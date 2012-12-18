@@ -1,0 +1,70 @@
+data_global
+_chemical_name_mineral 'Sepiolite'
+loop_
+_publ_author_name
+'Giustetto R'
+'Levy D'
+'Wahyudi O'
+'Ricchiardi G'
+'Vitillo J G'
+_journal_name_full 'European Journal of Mineralogy'
+_journal_volume 23 
+_journal_year 2011
+_journal_page_first 449
+_journal_page_last 466
+_publ_section_title
+;
+ Crystal structure refinement of a sepiolite/indigo Maya Blue pigment
+ using molecular modelling and synchrotron diffraction
+;
+_database_code_amcsd 0018363
+_chemical_compound_source 'Germany'
+_chemical_formula_sum 'Mg4 Si6 O22.82 H13.64'
+_cell_length_a 13.395
+_cell_length_b 27.016
+_cell_length_c 5.2765
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+_cell_volume 1909.456
+_exptl_crystal_density_diffrn      2.242
+_symmetry_space_group_name_H-M 'P n c n'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2-x,1/2+y,1/2+z'
+  '1/2+x,1/2-y,1/2-z'
+  '1/2+x,1/2+y,-z'
+  '1/2-x,1/2-y,z'
+  'x,-y,1/2+z'
+  '-x,y,1/2-z'
+  '-x,-y,-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_U_iso_or_equiv
+Mg1   0.00000   0.02900   0.25000   1.00000   0.02900
+Mg2   0.00000   0.08400   0.75000   1.00000   0.02900
+Mg3   0.00000   0.14590   0.25000   1.00000   0.02900
+Mg4   0.00000   0.20400   0.75000   1.00000   0.02900
+Si1   0.20000   0.02740   0.59100   1.00000   0.01100
+Si2   0.21100   0.14070   0.57700   1.00000   0.01100
+Si3   0.20400   0.19480   0.06200   1.00000   0.01100
+O1   0.07600   0.03000   0.60200   1.00000   0.01400
+O-H2   0.07600   0.08900   0.05500   1.00000   0.01400
+O3   0.09000   0.14530   0.55500   1.00000   0.01400
+O4   0.07800   0.19300   0.06700   1.00000   0.01400
+O5   0.24800   0.00260   0.33300   1.00000   0.01400
+O6   0.24400   0.08330   0.60000   1.00000   0.01400
+O7   0.24300   0.16500   0.30800   1.00000   0.01400
+O8   0.25500   0.17200   0.80600   1.00000   0.01400
+O9   0.25000   0.25000   0.07600   1.00000   0.01400
+Wat10   0.10600   0.25270   0.58100   0.98000   0.02600
+Wat11   0.56300  -0.10200   0.03200   0.73000   0.08000
+Wat12   0.50000   0.18600   0.25000   0.92000   0.08000
+Wat13   0.50000   0.04000   0.25000   0.96000   0.08000
+Wat14   0.53000   0.16800   0.66000   0.26000   0.08000
+

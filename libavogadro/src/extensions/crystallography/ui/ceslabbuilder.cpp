@@ -475,11 +475,13 @@ namespace Avogadro
         xRepeats = ui.spin_slab_x->value();
         xCutoff = xRepeats * xSpacing / 2.0;
       }
+      xCutoff += 1.0e-6; // add some slop for unit cell boundaries
 
       if (ui.yWidthUnits->currentIndex() == 1) {
         yRepeats = ui.spin_slab_y->value();
         yCutoff = yRepeats * ySpacing / 2.0;
       }
+      yCutoff += 1.0e-6; // add some slop for unit cell boundaries
 
       // Here's the supercell matrix
       Eigen::Matrix3d surfaceMatrix;
@@ -499,7 +501,7 @@ namespace Avogadro
           Eigen::Vector3d newPos = rotation * (translatedPos);
 
           // OK, before we update the atom, see if we should trim it...
-          if (newPos.z() > 0.1)
+          if (newPos.z() > 0.01)
             // We use a slight slop factor, although in principle
             //   every atom should be in xy plane
             mol->removeAtom(a);
@@ -553,6 +555,9 @@ namespace Avogadro
     else
       ui.warningLabel->hide();
 
+    ui.xWidthUnits->setCurrentIndex(settings.value("x_units", 0).toInt());
+    ui.yWidthUnits->setCurrentIndex(settings.value("y_units", 0).toInt());
+
     settings.endGroup(); // slabbuilder
     settings.endGroup(); // crystallography
   }
@@ -570,6 +575,9 @@ namespace Avogadro
     settings.setValue("mi_h", ui.spin_mi_h->value());
     settings.setValue("mi_k", ui.spin_mi_k->value());
     settings.setValue("mi_l", ui.spin_mi_l->value());
+
+    settings.setValue("x_units", ui.xWidthUnits->currentIndex());
+    settings.setValue("y_units", ui.yWidthUnits->currentIndex());
 
     settings.endGroup(); // slabbuilder
     settings.endGroup(); // crystallography
