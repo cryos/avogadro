@@ -64,8 +64,6 @@ namespace Avogadro {
   private:
     Ui::InsertFragmentDialog ui;
 
-    void fillUnitCell(Molecule *molecule);
-
     InsertFragmentPrivate *d;
   };
 
