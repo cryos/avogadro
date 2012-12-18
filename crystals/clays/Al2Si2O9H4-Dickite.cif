@@ -1,0 +1,49 @@
+data_global
+_chemical_name_mineral 'Dickite'
+loop_
+_publ_author_name
+'Bailey S W'
+_journal_name_full 'American Mineralogist'
+_journal_volume 48 
+_journal_year 1963
+_journal_page_first 1196
+_journal_page_last 1209
+_publ_section_title
+;
+ Polymorphism of the kaolin minerals
+;
+_database_code_amcsd 0000126
+_chemical_formula_sum 'Si2 Al2 O9 H4'
+_cell_length_a 5.150
+_cell_length_b 8.940
+_cell_length_c 14.736
+_cell_angle_alpha 90
+_cell_angle_beta 103.58
+_cell_angle_gamma 90
+_cell_volume 659.492
+_exptl_crystal_density_diffrn      2.600
+_symmetry_space_group_name_H-M 'C 1 c 1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+  'x,-y,1/2+z'
+  '1/2+x,1/2-y,1/2+z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Si1   0.02880   0.34990   0.04050
+Si2   0.54000   0.17680   0.04020
+Al1   0.31660   0.49660   0.23200
+Al2   0.81160   0.33300   0.23060
+O1   0.03850   0.51270  -0.00610
+O2   0.73550   0.27760  -0.00580
+O3   0.24120   0.23950   0.00580
+O4   0.07200   0.36240   0.15230
+O5   0.64160   0.16870   0.15260
+O-H1   0.57560   0.47420   0.15740
+O-H2   0.05090   0.47670   0.29480
+O-H3   0.55090   0.35510   0.29810
+O-H4   0.96350   0.16680   0.29630

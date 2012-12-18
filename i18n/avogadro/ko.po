@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-05-14 00:00-0400\n"
+"POT-Creation-Date: 2012-12-17 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 14:01+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -40,9 +40,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1316 src/mainwindow.cpp:1338
-#: src/mainwindow.cpp:1492 src/mainwindow.cpp:1725 src/mainwindow.cpp:3105
-#: src/mainwindow.cpp:3642:69
+#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
+#: src/mainwindow.cpp:3647:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -81,7 +81,7 @@ msgstr "원자 제거"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3660 src/mainwindow.cpp:3677:390 rc.cpp:402
+#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
 msgid "Settings"
 msgstr "설정"
 
@@ -109,7 +109,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "확대/축소(&Z)"
 
-#: src/mainwindow.cpp:562 src/mainwindow.cpp:1791
+#: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
 msgstr "모두 앞으로 보내기"
 
@@ -139,15 +139,15 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:950 src/mainwindow.cpp:1431
+#: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
 msgid "Common molecule formats"
 msgstr "표준 분자 형식"
 
-#: src/mainwindow.cpp:955 src/mainwindow.cpp:1428 src/mainwindow.cpp:1665
+#: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
 msgid "All files"
 msgstr "모든 파일들"
 
-#: src/mainwindow.cpp:956 src/mainwindow.cpp:1425 src/mainwindow.cpp:1437
+#: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
 msgid "CML"
 msgstr "CML"
 
@@ -183,15 +183,15 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "NWChem 출력"
 
-#: src/mainwindow.cpp:965 src/mainwindow.cpp:1442
+#: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:966 src/mainwindow.cpp:1444
+#: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:967 src/mainwindow.cpp:1445
+#: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -210,7 +210,7 @@ msgstr "%1 불러오는 중"
 msgid "Loading %1..."
 msgstr "%1 불러오는 중"
 
-#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1317
+#: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "%1 분자모형 파일을 읽는 데 실패함"
@@ -234,199 +234,199 @@ msgid ""
 "You may not be able to edit or view properly."
 msgstr "이 파일에는 3D 좌표 정보가 없습니다."
 
-#: src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:1214
 msgid "Select Molecule to View"
 msgstr "보고자 하는 분자 선택"
 
-#: src/mainwindow.cpp:1236
+#: src/mainwindow.cpp:1239
 msgid "Molecule Title"
 msgstr "분자 명칭"
 
-#: src/mainwindow.cpp:1309
+#: src/mainwindow.cpp:1312
 msgid "Atoms: "
 msgstr "원자: "
 
-#: src/mainwindow.cpp:1310
+#: src/mainwindow.cpp:1313
 msgid " Bonds: "
 msgstr " 결합: "
 
-#: src/mainwindow.cpp:1326
+#: src/mainwindow.cpp:1329
 msgid "File Loaded..."
 msgstr "파일 불러옴..."
 
-#: src/mainwindow.cpp:1339
+#: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
 msgstr "문서의 변경된 사항을 저장하시겠습니까?"
 
-#: src/mainwindow.cpp:1348
+#: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
 msgstr "저장하지 않으면 변경 사항을 잃어버리게 됩니다."
 
-#: src/mainwindow.cpp:1352
+#: src/mainwindow.cpp:1355
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1353
+#: src/mainwindow.cpp:1356
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1355
+#: src/mainwindow.cpp:1358
 msgid "Save..."
 msgstr "저장..."
 
-#: src/mainwindow.cpp:1355 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1358 src/savedialog.cpp:65
 msgid "Save"
 msgstr "저장"
 
-#: src/mainwindow.cpp:1438
+#: src/mainwindow.cpp:1441
 msgid "GAMESS Input"
 msgstr "GAMESS 입력"
 
-#: src/mainwindow.cpp:1439
+#: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Cartesian 입력"
 
-#: src/mainwindow.cpp:1440
+#: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
 msgstr "가우스 Z-matrix 입력"
 
-#: src/mainwindow.cpp:1441
+#: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1443
+#: src/mainwindow.cpp:1446
 msgid "NWChem Input"
 msgstr "NWChem 입력"
 
-#: src/mainwindow.cpp:1448
+#: src/mainwindow.cpp:1451
 msgid "Save Molecule As"
 msgstr "다른 이름으로 분자 저장"
 
-#: src/mainwindow.cpp:1655 src/mainwindow.cpp:1667
+#: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1662
+#: src/mainwindow.cpp:1665
 msgid "Common image formats"
 msgstr "일반적인 이미지 포맷"
 
-#: src/mainwindow.cpp:1666
+#: src/mainwindow.cpp:1669
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1668
+#: src/mainwindow.cpp:1671
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1674
+#: src/mainwindow.cpp:1677
 msgid "Export Bitmap Graphics"
 msgstr "비트맵 그래픽으로 내보내기"
 
-#: src/mainwindow.cpp:1726
+#: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "%1 파일을 저장할 수 없습니다"
 
-#: src/mainwindow.cpp:1823
+#: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
 msgstr "제목없음 %1"
 
-#: src/mainwindow.cpp:1926
+#: src/mainwindow.cpp:1929
 msgid "Unable to paste molecule."
 msgstr "분자를 붙여넣을 수 없습니다"
 
-#: src/mainwindow.cpp:1955
+#: src/mainwindow.cpp:1958
 msgid "Paste failed (format unavailable)."
 msgstr "붙여넣기 실패 (사용불가능한 포맷)"
 
-#: src/mainwindow.cpp:2406
+#: src/mainwindow.cpp:2411
 msgid "Copy failed (mdl unavailable)."
 msgstr "복사 실패 (mdl 사용불가능)"
 
-#: src/mainwindow.cpp:2544 src/mainwindow.cpp:2576 src/mainwindow.cpp:2642
-#: src/mainwindow.cpp:3251
+#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
+#: src/mainwindow.cpp:3256
 #, qt-format
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2607
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2611
+#: src/mainwindow.cpp:2616
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 분리된 보기"
 
-#: src/mainwindow.cpp:2842
+#: src/mainwindow.cpp:2847
 msgid "Normal Size"
 msgstr "보통 크기"
 
-#: src/mainwindow.cpp:2859
+#: src/mainwindow.cpp:2864
 msgid "Full Screen"
 msgstr "전체 화면"
 
-#: src/mainwindow.cpp:2960
+#: src/mainwindow.cpp:2965
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3098
+#: src/mainwindow.cpp:3103
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3104
+#: src/mainwindow.cpp:3109
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3596
+#: src/mainwindow.cpp:3601
 msgid "Add"
 msgstr "추가"
 
-#: src/mainwindow.cpp:3601
+#: src/mainwindow.cpp:3606
 msgid "Duplicate"
 msgstr "복사"
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3611
 msgid "Remove"
 msgstr "삭제"
 
-#: src/mainwindow.cpp:3634
+#: src/mainwindow.cpp:3639
 msgid "No tools or engines loaded."
 msgstr "도구나 엔진을 불러올 수 없습니다:"
 
-#: src/mainwindow.cpp:3636
+#: src/mainwindow.cpp:3641
 msgid "No engines loaded."
 msgstr "엔진을 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3638
+#: src/mainwindow.cpp:3643
 msgid "No tools loaded."
 msgstr "도구를 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3644
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
 
-#: src/mainwindow.cpp:3683
+#: src/mainwindow.cpp:3688
 msgid "Objects"
 msgstr "개체"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3689:330
+#: src/mainwindow.cpp:3694:330
 msgid "Colors"
 msgstr "색상"
 
-#: src/mainwindow.cpp:3722
+#: src/mainwindow.cpp:3727
 msgid " copy"
 msgstr " 복사"
 

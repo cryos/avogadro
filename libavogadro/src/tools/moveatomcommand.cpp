@@ -43,7 +43,7 @@ namespace Avogadro {
     setText(QObject::tr("Manipulate Atom"));
     m_moleculeCopy = *molecule;
     m_molecule = molecule;
-    m_type =type;
+    m_type = type;
     undone = false;
   }
 
@@ -55,6 +55,7 @@ namespace Avogadro {
       Molecule newMolecule = *m_molecule;
       *m_molecule = m_moleculeCopy;
       m_moleculeCopy = newMolecule;
+      m_molecule->updateMolecule();
     }
     QUndoCommand::redo();
   }
@@ -66,6 +67,7 @@ namespace Avogadro {
     *m_molecule = m_moleculeCopy;
     m_moleculeCopy = newMolecule;
     undone = true;
+    m_molecule->updateMolecule();
   }
 
   bool MoveAtomCommand::mergeWith (const QUndoCommand *)

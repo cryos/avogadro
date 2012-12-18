@@ -778,7 +778,7 @@ namespace Avogadro{
       // Calculate a new estimate (e.g., the geometry changed
       Vector3d dipoleMoment(0.0, 0.0, 0.0);
       // Use MMFF94 charges -- good estimate of dipole moment
-      OpenBabel::OBForceField *ff = OpenBabel::OBForceField::FindForceField("MMFF94");
+      OpenBabel::OBForceField *ff = OpenBabel::OBForceField::FindForceField("MMFF94")->MakeNewInstance();
       OpenBabel::OBMol obmol = OBMol();
       if (ff->Setup(obmol)) {
         ff->GetPartialCharges(obmol);
@@ -787,6 +787,7 @@ namespace Avogadro{
           if (chg)
             dipoleMoment += Vector3d(atom->GetVector().AsArray()) * atof(chg->GetValue().c_str());
         }
+        delete ff; // the new instance
         dipoleMoment *= 3.60; // fit from regression, R^2 = 0.769
       }
       else {

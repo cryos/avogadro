@@ -143,7 +143,8 @@ namespace Avogadro {
   bool CartoonEngine::renderOpaque(PainterDevice *pd)
   {
     // Check if the mesh need updating before drawing it
-    if (m_update) updateMesh(pd);
+    if (m_update)
+      updateMesh(pd);
 
     if (m_mesh) {
       if (m_mesh->stable() && m_mesh->valid()) {
@@ -212,25 +213,21 @@ namespace Avogadro {
 
   void CartoonEngine::updateMesh(PainterDevice *pd)
   {
-    if (!isEnabled()) return;
+    if (!isEnabled())
+      return;
     // Get a list of residues for the molecule
     const Molecule *molecule = pd->molecule();
 
-    //if (molecule->numResidues() == 0)
-    //  return; // There's no use generating meshes for non-biomolecules
-    if (molecule->numResidues() == 0) {
-      OpenBabel::OBChainsParser chainparser;
-      OpenBabel::OBMol mol = molecule->OBMol();
-      mol.UnsetFlag(OB_CHAINS_MOL);
-      chainparser.PerceiveChains(mol);
-      ((Molecule*)molecule)->setOBMol(&mol);
+    if (molecule->numResidues() < 3) {
+      m_update = false;
+      return; // There's no use generating meshes for non-biomolecules
     }
  
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
  
     if (!m_mesh) {
-      Molecule *mol = (Molecule*) molecule;
+      Molecule *mol = const_cast<Molecule *>(molecule);
       m_mesh = mol->addMesh();
     }
       

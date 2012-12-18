@@ -1,0 +1,81 @@
+#------------------------------------------------------------------------------
+#$Date: 2012-02-28 15:44:07 +0000 (Tue, 28 Feb 2012) $
+#$Revision: 35913 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/00/73/9007375.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9007375
+loop_
+_publ_author_name
+'Caracas, R.'
+'Gonze, X.'
+_publ_section_title
+;
+ First-principles study of the electronic properties of A2B3 minerals,
+ with A=Bi,Sb and B=S,Se
+ Note: Hypothetical sulphosalt structure derived from density functional theory
+;
+_journal_name_full               'Physics and Chemistry of Minerals'
+_journal_page_first              295
+_journal_page_last               300
+_journal_volume                  32
+_journal_year                    2005
+_chemical_formula_sum            'Bi2 S3'
+_chemical_name_mineral           Bismuthinite
+_space_group_IT_number           62
+_symmetry_space_group_name_Hall  '-P 2ac 2n'
+_symmetry_space_group_name_H-M   'P n m a'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   11.305
+_cell_length_b                   3.981
+_cell_length_c                   11.147
+_cell_volume                     501.673
+_exptl_crystal_density_diffrn    6.807
+_cod_database_code               9007375
+_amcsd_database_code             AMCSD#0008907
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+x,1/2-y,z
+-x,1/2+y,-z
+1/2-x,1/2+y,1/2+z
+1/2+x,1/2-y,1/2-z
+1/2+x,y,1/2-z
+1/2-x,-y,1/2+z
+-x,-y,-z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Bi1 0.51650 0.25000 0.17480
+Bi2 0.65960 0.75000 0.46550
+S1 0.62300 0.75000 0.05750
+S2 0.71530 0.25000 0.30630
+S3 0.45080 0.75000 0.37300
+0000
+S1 0.01600 0.01300 0.01300 0.00000 -0.00200 0.00000
+S2 0.01800 0.01900 0.01400 0.00000 0.00100 0.00000
+S3 0.01700 0.01800 0.01300 0.00000 -0.00200 0.00000
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Bi1 0.48339 0.25000 0.32581 0.01849
+Bi2 0.34069 0.75000 0.03429 0.02001
+S1 0.28540 0.25000 0.19410 0.01418
+S2 0.55000 0.75000 0.12840 0.01672
+S3 0.37560 0.75000 0.44230 0.01608

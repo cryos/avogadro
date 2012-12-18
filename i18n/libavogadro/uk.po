@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-05-14 00:00-0400\n"
+"POT-Creation-Date: 2012-12-17 00:00-0500\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -91,479 +91,480 @@ msgstr "набором SMARTS"
 msgid "Highlight particular features which match a SMARTS pattern."
 msgstr "Позначати окремі елементи, які відповідають набору SMARTS."
 
-#: src/elementtranslator.cpp:42
+#: src/elementtranslator.cpp:40
 msgid "Hydrogen"
 msgstr "Водень"
 
-#: src/elementtranslator.cpp:45
+#: src/elementtranslator.cpp:43
 msgid "Helium"
 msgstr "Гелій"
 
-#: src/elementtranslator.cpp:48
+#: src/elementtranslator.cpp:46
 msgid "Lithium"
 msgstr "Літій"
 
-#: src/elementtranslator.cpp:51
+#: src/elementtranslator.cpp:49
 msgid "Beryllium"
 msgstr "Берилій"
 
-#: src/elementtranslator.cpp:54
+#: src/elementtranslator.cpp:52
 msgid "Boron"
 msgstr "Бор"
 
-#: src/elementtranslator.cpp:57
+#: src/elementtranslator.cpp:55
 msgid "Carbon"
 msgstr "Вуглець"
 
-#: src/elementtranslator.cpp:60
+#: src/elementtranslator.cpp:58
 msgid "Nitrogen"
 msgstr "Азот"
 
-#: src/elementtranslator.cpp:63
+#: src/elementtranslator.cpp:61
 msgid "Oxygen"
 msgstr "Кисень"
 
-#: src/elementtranslator.cpp:66
+#: src/elementtranslator.cpp:64
 msgid "Fluorine"
 msgstr "Фтор"
 
-#: src/elementtranslator.cpp:69
+#: src/elementtranslator.cpp:67
 msgid "Neon"
 msgstr "Неон"
 
-#: src/elementtranslator.cpp:72
+#: src/elementtranslator.cpp:70
 msgid "Sodium"
 msgstr "Натрій"
 
-#: src/elementtranslator.cpp:75
+#: src/elementtranslator.cpp:73
 msgid "Magnesium"
 msgstr "Магній"
 
-#: src/elementtranslator.cpp:78
+#: src/elementtranslator.cpp:76
 msgid "Aluminum"
 msgstr "Алюміній"
 
-#: src/elementtranslator.cpp:81
+#: src/elementtranslator.cpp:79
 msgid "Silicon"
 msgstr "Кремній"
 
-#: src/elementtranslator.cpp:84
+#: src/elementtranslator.cpp:82
 msgid "Phosphorus"
 msgstr "Фосфор"
 
-#: src/elementtranslator.cpp:87
+#: src/elementtranslator.cpp:85
 msgid "Sulfur"
 msgstr "Сірка"
 
-#: src/elementtranslator.cpp:90
+#: src/elementtranslator.cpp:88
 msgid "Chlorine"
 msgstr "Хлор"
 
-#: src/elementtranslator.cpp:93
+#: src/elementtranslator.cpp:91
 msgid "Argon"
 msgstr "Аргон"
 
-#: src/elementtranslator.cpp:96
+#: src/elementtranslator.cpp:94
 msgid "Potassium"
 msgstr "Калій"
 
-#: src/elementtranslator.cpp:99
+#: src/elementtranslator.cpp:97
 msgid "Calcium"
 msgstr "Кальцій"
 
-#: src/elementtranslator.cpp:102
+#: src/elementtranslator.cpp:100
 msgid "Scandium"
 msgstr "Скандій"
 
-#: src/elementtranslator.cpp:105
+#: src/elementtranslator.cpp:103
 msgid "Titanium"
 msgstr "Титан"
 
-#: src/elementtranslator.cpp:108
+#: src/elementtranslator.cpp:106
 msgid "Vanadium"
 msgstr "Ванадій"
 
-#: src/elementtranslator.cpp:111
+#: src/elementtranslator.cpp:109
 msgid "Chromium"
 msgstr "Хром"
 
-#: src/elementtranslator.cpp:114
+#: src/elementtranslator.cpp:112
 msgid "Manganese"
 msgstr "Марганець"
 
-#: src/elementtranslator.cpp:117
+#: src/elementtranslator.cpp:115
 msgid "Iron"
 msgstr "Залізо"
 
-#: src/elementtranslator.cpp:120
+#: src/elementtranslator.cpp:118
 msgid "Cobalt"
 msgstr "Кобальт"
 
-#: src/elementtranslator.cpp:123
+#: src/elementtranslator.cpp:121
 msgid "Nickel"
 msgstr "Нікель"
 
-#: src/elementtranslator.cpp:126
+#: src/elementtranslator.cpp:124
 msgid "Copper"
 msgstr "Мідь"
 
-#: src/elementtranslator.cpp:129
+#: src/elementtranslator.cpp:127
 msgid "Zinc"
 msgstr "Цинк"
 
-#: src/elementtranslator.cpp:132
+#: src/elementtranslator.cpp:130
 msgid "Gallium"
 msgstr "Галій"
 
-#: src/elementtranslator.cpp:135
+#: src/elementtranslator.cpp:133
 msgid "Germanium"
 msgstr "Германій"
 
-#: src/elementtranslator.cpp:138
+#: src/elementtranslator.cpp:136
 msgid "Arsenic"
 msgstr "Миш'як"
 
-#: src/elementtranslator.cpp:141
+#: src/elementtranslator.cpp:139
 msgid "Selenium"
 msgstr "Селен"
 
-#: src/elementtranslator.cpp:144
+#: src/elementtranslator.cpp:142
 msgid "Bromine"
 msgstr "Бром"
 
-#: src/elementtranslator.cpp:147
+#: src/elementtranslator.cpp:145
 msgid "Krypton"
 msgstr "Криптон"
 
-#: src/elementtranslator.cpp:150
+#: src/elementtranslator.cpp:148
 msgid "Rubidium"
 msgstr "Рубідій"
 
-#: src/elementtranslator.cpp:153
+#: src/elementtranslator.cpp:151
 msgid "Strontium"
 msgstr "Стронцій"
 
-#: src/elementtranslator.cpp:156
+#: src/elementtranslator.cpp:154
 msgid "Yttrium"
 msgstr "Ітрій"
 
-#: src/elementtranslator.cpp:159
+#: src/elementtranslator.cpp:157
 msgid "Zirconium"
 msgstr "Цирконій"
 
-#: src/elementtranslator.cpp:162
+#: src/elementtranslator.cpp:160
 msgid "Niobium"
 msgstr "Ніобій"
 
-#: src/elementtranslator.cpp:165
+#: src/elementtranslator.cpp:163
 msgid "Molybdenum"
 msgstr "Молібден"
 
-#: src/elementtranslator.cpp:168
+#: src/elementtranslator.cpp:166
 msgid "Technetium"
 msgstr "Технецій"
 
-#: src/elementtranslator.cpp:171
+#: src/elementtranslator.cpp:169
 msgid "Ruthenium"
 msgstr "Рутеній"
 
-#: src/elementtranslator.cpp:174
+#: src/elementtranslator.cpp:172
 msgid "Rhodium"
 msgstr "Родій"
 
-#: src/elementtranslator.cpp:177
+#: src/elementtranslator.cpp:175
 msgid "Palladium"
 msgstr "Паладій"
 
-#: src/elementtranslator.cpp:180
+#: src/elementtranslator.cpp:178
 msgid "Silver"
 msgstr "Срібло"
 
-#: src/elementtranslator.cpp:183
+#: src/elementtranslator.cpp:181
 msgid "Cadmium"
 msgstr "Кадмій"
 
-#: src/elementtranslator.cpp:186
+#: src/elementtranslator.cpp:184
 msgid "Indium"
 msgstr "Індій"
 
-#: src/elementtranslator.cpp:189
+#: src/elementtranslator.cpp:187
 msgid "Tin"
 msgstr "Олово"
 
-#: src/elementtranslator.cpp:192
+#: src/elementtranslator.cpp:190
 msgid "Antimony"
 msgstr "Сурма"
 
-#: src/elementtranslator.cpp:195
+#: src/elementtranslator.cpp:193
 msgid "Tellurium"
 msgstr "Телур"
 
-#: src/elementtranslator.cpp:198
+#: src/elementtranslator.cpp:196
 msgid "Iodine"
 msgstr "Йод"
 
-#: src/elementtranslator.cpp:201
+#: src/elementtranslator.cpp:199
 msgid "Xenon"
 msgstr "Ксенон"
 
-#: src/elementtranslator.cpp:204
+#: src/elementtranslator.cpp:202
 msgid "Cesium"
 msgstr "Цезій"
 
-#: src/elementtranslator.cpp:207
+#: src/elementtranslator.cpp:205
 msgid "Barium"
 msgstr "Барій"
 
-#: src/elementtranslator.cpp:210
+#: src/elementtranslator.cpp:208
 msgid "Lanthanum"
 msgstr "Лантан"
 
-#: src/elementtranslator.cpp:213
+#: src/elementtranslator.cpp:211
 msgid "Cerium"
 msgstr "Церій"
 
-#: src/elementtranslator.cpp:216
+#: src/elementtranslator.cpp:214
 msgid "Praseodymium"
 msgstr "Празеодим"
 
-#: src/elementtranslator.cpp:219
+#: src/elementtranslator.cpp:217
 msgid "Neodymium"
 msgstr "Неодим"
 
-#: src/elementtranslator.cpp:222
+#: src/elementtranslator.cpp:220
 msgid "Promethium"
 msgstr "Прометій"
 
-#: src/elementtranslator.cpp:225
+#: src/elementtranslator.cpp:223
 msgid "Samarium"
 msgstr "Самарій"
 
-#: src/elementtranslator.cpp:228
+#: src/elementtranslator.cpp:226
 msgid "Europium"
 msgstr "Європій"
 
-#: src/elementtranslator.cpp:231
+#: src/elementtranslator.cpp:229
 msgid "Gadolinium"
 msgstr "Гадоліній"
 
-#: src/elementtranslator.cpp:234
+#: src/elementtranslator.cpp:232
 msgid "Terbium"
 msgstr "Тербій"
 
-#: src/elementtranslator.cpp:237
+#: src/elementtranslator.cpp:235
 msgid "Dysprosium"
 msgstr "Диспрозій"
 
-#: src/elementtranslator.cpp:240
+#: src/elementtranslator.cpp:238
 msgid "Holmium"
 msgstr "Гольмій"
 
-#: src/elementtranslator.cpp:243
+#: src/elementtranslator.cpp:241
 msgid "Erbium"
 msgstr "Ербій"
 
-#: src/elementtranslator.cpp:246
+#: src/elementtranslator.cpp:244
 msgid "Thulium"
 msgstr "Тулій"
 
-#: src/elementtranslator.cpp:249
+#: src/elementtranslator.cpp:247
 msgid "Ytterbium"
 msgstr "Ітербій"
 
-#: src/elementtranslator.cpp:252
+#: src/elementtranslator.cpp:250
 msgid "Lutetium"
 msgstr "Лютецій"
 
-#: src/elementtranslator.cpp:255
+#: src/elementtranslator.cpp:253
 msgid "Hafnium"
 msgstr "Гафній"
 
-#: src/elementtranslator.cpp:258
+#: src/elementtranslator.cpp:256
 msgid "Tantalum"
 msgstr "Тантал"
 
-#: src/elementtranslator.cpp:261
+#: src/elementtranslator.cpp:259
 msgid "Tungsten"
 msgstr "Вольфрам"
 
-#: src/elementtranslator.cpp:264
+#: src/elementtranslator.cpp:262
 msgid "Rhenium"
 msgstr "Реній"
 
-#: src/elementtranslator.cpp:267
+#: src/elementtranslator.cpp:265
 msgid "Osmium"
 msgstr "Осмій"
 
-#: src/elementtranslator.cpp:270
+#: src/elementtranslator.cpp:268
 msgid "Iridium"
 msgstr "Іридій"
 
-#: src/elementtranslator.cpp:273
+#: src/elementtranslator.cpp:271
 msgid "Platinum"
 msgstr "Платина"
 
-#: src/elementtranslator.cpp:276
+#: src/elementtranslator.cpp:274
 msgid "Gold"
 msgstr "Золото"
 
-#: src/elementtranslator.cpp:279
+#: src/elementtranslator.cpp:277
 msgid "Mercury"
 msgstr "Ртуть"
 
-#: src/elementtranslator.cpp:282
+#: src/elementtranslator.cpp:280
 msgid "Thallium"
 msgstr "Талій"
 
-#: src/elementtranslator.cpp:285
+#: src/elementtranslator.cpp:283
 msgid "Lead"
 msgstr "Свинець"
 
-#: src/elementtranslator.cpp:288
+#: src/elementtranslator.cpp:286
 msgid "Bismuth"
 msgstr "Вісмут"
 
-#: src/elementtranslator.cpp:291
+#: src/elementtranslator.cpp:289
 msgid "Polonium"
 msgstr "Полоній"
 
-#: src/elementtranslator.cpp:294
+#: src/elementtranslator.cpp:292
 msgid "Astatine"
 msgstr "Астат"
 
-#: src/elementtranslator.cpp:297
+#: src/elementtranslator.cpp:295
 msgid "Radon"
 msgstr "Радон"
 
-#: src/elementtranslator.cpp:300
+#: src/elementtranslator.cpp:298
 msgid "Francium"
 msgstr "Францій"
 
-#: src/elementtranslator.cpp:303
+#: src/elementtranslator.cpp:301
 msgid "Radium"
 msgstr "Радій"
 
-#: src/elementtranslator.cpp:306
+#: src/elementtranslator.cpp:304
 msgid "Actinium"
 msgstr "Актиній"
 
-#: src/elementtranslator.cpp:309
+#: src/elementtranslator.cpp:307
 msgid "Thorium"
 msgstr "Торій"
 
-#: src/elementtranslator.cpp:312
+#: src/elementtranslator.cpp:310
 msgid "Protactinium"
 msgstr "Протактиній"
 
-#: src/elementtranslator.cpp:315
+#: src/elementtranslator.cpp:313
 msgid "Uranium"
 msgstr "Уран"
 
-#: src/elementtranslator.cpp:318
+#: src/elementtranslator.cpp:316
 msgid "Neptunium"
 msgstr "Нептуній"
 
-#: src/elementtranslator.cpp:321
+#: src/elementtranslator.cpp:319
 msgid "Plutonium"
 msgstr "Плутоній"
 
-#: src/elementtranslator.cpp:324
+#: src/elementtranslator.cpp:322
 msgid "Americium"
 msgstr "Америцій"
 
-#: src/elementtranslator.cpp:327
+#: src/elementtranslator.cpp:325
 msgid "Curium"
 msgstr "Кюрій"
 
-#: src/elementtranslator.cpp:330
+#: src/elementtranslator.cpp:328
 msgid "Berkelium"
 msgstr "Берклій"
 
-#: src/elementtranslator.cpp:333
+#: src/elementtranslator.cpp:331
 msgid "Californium"
 msgstr "Каліфорній"
 
-#: src/elementtranslator.cpp:336
+#: src/elementtranslator.cpp:334
 msgid "Einsteinium"
 msgstr "Ейнштейній"
 
-#: src/elementtranslator.cpp:339
+#: src/elementtranslator.cpp:337
 msgid "Fermium"
 msgstr "Фермій"
 
-#: src/elementtranslator.cpp:342
+#: src/elementtranslator.cpp:340
 msgid "Mendelevium"
 msgstr "Менделєвій"
 
-#: src/elementtranslator.cpp:345
+#: src/elementtranslator.cpp:343
 msgid "Nobelium"
 msgstr "Нобелій"
 
-#: src/elementtranslator.cpp:348
+#: src/elementtranslator.cpp:346
 msgid "Lawrencium"
 msgstr "Лоуренсій"
 
-#: src/elementtranslator.cpp:351
+#: src/elementtranslator.cpp:349
 msgid "Rutherfordium"
 msgstr "Резерфордій"
 
-#: src/elementtranslator.cpp:354
+#: src/elementtranslator.cpp:352
 msgid "Dubnium"
 msgstr "Дубній"
 
-#: src/elementtranslator.cpp:357
+#: src/elementtranslator.cpp:355
 msgid "Seaborgium"
 msgstr "Сіборгій"
 
-#: src/elementtranslator.cpp:360
+#: src/elementtranslator.cpp:358
 msgid "Bohrium"
 msgstr "Борій"
 
-#: src/elementtranslator.cpp:363
+#: src/elementtranslator.cpp:361
 msgid "Hassium"
 msgstr "Гасій"
 
-#: src/elementtranslator.cpp:366
+#: src/elementtranslator.cpp:364
 msgid "Meitnerium"
 msgstr "Майтнерій"
 
-#: src/elementtranslator.cpp:369
+#: src/elementtranslator.cpp:367
 msgid "Darmstadtium"
 msgstr "Дармштадтій"
 
-#: src/elementtranslator.cpp:372
+#: src/elementtranslator.cpp:370
 msgid "Roentgenium"
 msgstr "Рентгеній"
 
-#: src/elementtranslator.cpp:375
+#: src/elementtranslator.cpp:373
 msgid "Copernicium"
 msgstr "Коперніцій"
 
-#: src/elementtranslator.cpp:378
+#: src/elementtranslator.cpp:376
 msgid "Ununtrium"
 msgstr "Унунтрій"
 
-#: src/elementtranslator.cpp:381
-msgid "Ununquadium"
-msgstr "Унунквадій"
+#: src/elementtranslator.cpp:379
+#, fuzzy
+msgid "Flerovium"
+msgstr "Менделєвій"
 
-#: src/elementtranslator.cpp:384
+#: src/elementtranslator.cpp:382
 msgid "Ununpentium"
 msgstr "Унунпентій"
 
-#: src/elementtranslator.cpp:387
-msgid "Ununhexium"
-msgstr "Унунгексій"
+#: src/elementtranslator.cpp:385
+msgid "Livermorium"
+msgstr ""
 
-#: src/elementtranslator.cpp:390
+#: src/elementtranslator.cpp:388
 msgid "Ununseptium"
 msgstr "Унунсептій"
 
-#: src/elementtranslator.cpp:393
+#: src/elementtranslator.cpp:391
 msgid "Ununoctium"
 msgstr "Унуноктій"
 
-#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+#: src/elementtranslator.cpp:395 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
 msgstr "Невідомий"
 
@@ -627,11 +628,11 @@ msgstr "Вибір кольору міток атомів"
 msgid "Select Bond Labels Color"
 msgstr "Вибір кольору міток зв’язків"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "Вибір шрифту міток атомів"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "Вибір шрифту міток зв’язків"
 
@@ -642,14 +643,6 @@ msgstr "Мітка"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "Показ міток атомів і зв’язків"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "Накладання"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "Показ шкали кольорів градієнтів"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -797,7 +790,7 @@ msgstr "відеофайли (*.avi)"
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:183
+#: src/extensions/insertfragmentdialog.cpp:194
 #: src/extensions/quantuminput/inputfileextension.cpp:172
 #: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
@@ -919,7 +912,7 @@ msgstr "Редактор декартових координат…"
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1044,7 +1037,7 @@ msgstr "Сховати пункти &редагування"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:455
 #: src/extensions/crystallography/crystallographyextension.cpp:687
-#: src/extensions/crystallography/crystallographyextension.cpp:1987
+#: src/extensions/crystallography/crystallographyextension.cpp:1988
 msgid "Show &Editors"
 msgstr "Показат пункти &редагування"
 
@@ -1055,7 +1048,7 @@ msgstr "Сховати панель &властивостей"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:559
 #: src/extensions/crystallography/crystallographyextension.cpp:696
-#: src/extensions/crystallography/crystallographyextension.cpp:1995
+#: src/extensions/crystallography/crystallographyextension.cpp:1996
 msgid "Show &Property Display"
 msgstr "Показати панель &властивостей"
 
@@ -1080,7 +1073,7 @@ msgid "Remove &Unit Cell"
 msgstr "Вилучити &одиничну комірку"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:654
-#: src/extensions/crystallography/crystallographyextension.cpp:1965
+#: src/extensions/crystallography/crystallographyextension.cpp:1966
 msgid "Add &Unit Cell"
 msgstr "Вилучити &одиничну комірку"
 
@@ -1124,11 +1117,11 @@ msgctxt "Lattice type"
 msgid "Cubic"
 msgstr "кубічна"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1486
+#: src/extensions/crystallography/crystallographyextension.cpp:1487
 msgid "Paste Crystal"
 msgstr "Вставити кристал"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1756
+#: src/extensions/crystallography/crystallographyextension.cpp:1757
 msgid ""
 "Niggli-reduction failed. The input structure's lattice that is confusing the "
 "Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
@@ -1136,12 +1129,12 @@ msgid ""
 "try again."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1870
+#: src/extensions/crystallography/crystallographyextension.cpp:1871
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr "Цю одиничну комірку вже зведено до канонічного представлення Нігглі."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1879
+#: src/extensions/crystallography/crystallographyextension.cpp:1880
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
@@ -1149,128 +1142,128 @@ msgstr ""
 "Не вдалося звести комірку за допомогою 1000 ітерацій алгоритму зведення. "
 "Спроби припинено."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1972
+#: src/extensions/crystallography/crystallographyextension.cpp:1973
 msgid "I&mport Crystal from Clipboard..."
 msgstr "&Імпортувати кристал з буфера…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2010
+#: src/extensions/crystallography/crystallographyextension.cpp:2011
 msgid "&Wrap Atoms to Cell"
 msgstr "З&горнути атоми до комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2017
+#: src/extensions/crystallography/crystallographyextension.cpp:2018
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Керування атомом"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2024
+#: src/extensions/crystallography/crystallographyextension.cpp:2025
 msgid "Rotate To Standard &Orientation"
 msgstr "Обернути до стандартної &орієнтації"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2031
+#: src/extensions/crystallography/crystallographyextension.cpp:2032
 msgid "Scale Cell To &Volume..."
 msgstr "Масштабувати комірку до о&б’єму…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2040
+#: src/extensions/crystallography/crystallographyextension.cpp:2041
 msgid "&Slab..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2055
+#: src/extensions/crystallography/crystallographyextension.cpp:2056
 msgid "Perceive Space&group..."
 msgstr "Визначити п&росторову групу…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2062
+#: src/extensions/crystallography/crystallographyextension.cpp:2063
 msgid "Set &Spacegroup..."
 msgstr "Встановити просторову &групу…"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2069
+#: src/extensions/crystallography/crystallographyextension.cpp:2070
 msgid "&Fill Unit Cell"
 msgstr "&Заповникти одиничну комірку"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2070
+#: src/extensions/crystallography/crystallographyextension.cpp:2071
 msgid "Fill the unit cell using current spacegroup."
 msgstr "Заповникти одиничну комірку на основі поточної просторової групи."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2077
+#: src/extensions/crystallography/crystallographyextension.cpp:2078
 msgid "Sy&mmetrize Crystal"
 msgstr "С&иметризувати кристал"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2084
+#: src/extensions/crystallography/crystallographyextension.cpp:2085
 msgid "Reduce Cell (&Primitive)"
 msgstr "Звести комірку (до &базової)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2091
+#: src/extensions/crystallography/crystallographyextension.cpp:2092
 msgid "Reduce Cell (&Niggli)"
 msgstr "Звести комірку (за &Нігглі)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2109
+#: src/extensions/crystallography/crystallographyextension.cpp:2110
 msgid "&Angstrom"
 msgstr "&ангстрем"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2119
+#: src/extensions/crystallography/crystallographyextension.cpp:2120
 msgid "&Bohr"
 msgstr "&бор"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2128
+#: src/extensions/crystallography/crystallographyextension.cpp:2129
 msgid "&Nanometer"
 msgstr "&нанометр"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2137
+#: src/extensions/crystallography/crystallographyextension.cpp:2138
 msgid "&Picometer"
 msgstr "&пікометр"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2149
+#: src/extensions/crystallography/crystallographyextension.cpp:2150
 msgid "&Degree"
 msgstr "&градус"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2159
+#: src/extensions/crystallography/crystallographyextension.cpp:2160
 msgid "&Radian"
 msgstr "&радіан"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2171
+#: src/extensions/crystallography/crystallographyextension.cpp:2172
 msgid "Display &cartesian coordinates"
 msgstr "Показувати вісі &декартової системи координат"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2180
+#: src/extensions/crystallography/crystallographyextension.cpp:2181
 msgid "Display &fractional coordinates"
 msgstr "Показувати вісі &місцевої системи координат"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2193
+#: src/extensions/crystallography/crystallographyextension.cpp:2194
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr "Зберігати &декартові вісі координат під час змін геометрії комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2203
+#: src/extensions/crystallography/crystallographyextension.cpp:2204
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr "Зберігати &місцеві вісі координат під час змін у геометрії комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2217
+#: src/extensions/crystallography/crystallographyextension.cpp:2218
 msgid "Display &cartesian matrix"
 msgstr "Показувати матрицю &декартової системи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2227
+#: src/extensions/crystallography/crystallographyextension.cpp:2228
 msgid "Display &fractional matrix"
 msgstr "Показувати матрицю &місцевої системи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2247
+#: src/extensions/crystallography/crystallographyextension.cpp:2248
 msgid "Display as &row vectors"
 msgstr "Показувати як вектори-&рядки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2257
+#: src/extensions/crystallography/crystallographyextension.cpp:2258
 msgid "Display as &column vectors"
 msgstr "Показувати як вектори-стовп&чики"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2266
+#: src/extensions/crystallography/crystallographyextension.cpp:2267
 msgid "&Crystal View Options..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2316
-#: src/extensions/crystallography/crystallographyextension.cpp:2448
-#: src/extensions/crystallography/crystallographyextension.cpp:2612
+#: src/extensions/crystallography/crystallographyextension.cpp:2317
+#: src/extensions/crystallography/crystallographyextension.cpp:2449
+#: src/extensions/crystallography/crystallographyextension.cpp:2613
 msgid "Select tolerance in current cartesian units:"
 msgstr "Виберіть припустиме відхилення у поточних одиницях декартової системи:"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2338
-#: src/extensions/crystallography/crystallographyextension.cpp:2468
-#: src/extensions/crystallography/crystallographyextension.cpp:2632
+#: src/extensions/crystallography/crystallographyextension.cpp:2339
+#: src/extensions/crystallography/crystallographyextension.cpp:2469
+#: src/extensions/crystallography/crystallographyextension.cpp:2633
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
@@ -1280,19 +1273,19 @@ msgstr ""
 "\n"
 "Бажаєте повторити спробу з іншим припустимим відхиленням?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2354
+#: src/extensions/crystallography/crystallographyextension.cpp:2355
 msgid "Perceive Spacegroup"
 msgstr "Виявлення просторової групи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2388
+#: src/extensions/crystallography/crystallographyextension.cpp:2389
 msgid "Set Spacegroup:"
 msgstr "Встановити просторову групу:"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2402
+#: src/extensions/crystallography/crystallographyextension.cpp:2403
 msgid "Set Spacegroup"
 msgstr "Встановлення просторової групи"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2415
+#: src/extensions/crystallography/crystallographyextension.cpp:2416
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
@@ -1302,11 +1295,11 @@ msgstr ""
 "\n"
 "Бажаєте встановити просторову групу зараз?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2434
+#: src/extensions/crystallography/crystallographyextension.cpp:2435
 msgid "Fill Unit Cell"
 msgstr "Заповнити елементарну комірку"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2482
+#: src/extensions/crystallography/crystallographyextension.cpp:2483
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
@@ -1317,32 +1310,32 @@ msgstr ""
 "\n"
 "Бажаєте повторити спробу з іншим припустимим відхиленням?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2501
+#: src/extensions/crystallography/crystallographyextension.cpp:2502
 msgid "Symmetrize Crystal"
 msgstr "Симетризація кристала"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2577
+#: src/extensions/crystallography/crystallographyextension.cpp:2578
 msgid "Wrap Atoms To Cell"
 msgstr "Згорнути атоми до комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2598
+#: src/extensions/crystallography/crystallographyextension.cpp:2599
 msgid "Rotate to Standard Orientation"
 msgstr "Обернути до стандартної орієнтації"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2650
+#: src/extensions/crystallography/crystallographyextension.cpp:2651
 msgid "Reduce to Primitive Cell"
 msgstr "Звести до базової комірки"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2663
+#: src/extensions/crystallography/crystallographyextension.cpp:2664
 msgid "Reduce to Niggli Cell"
 msgstr "Звести до комірки Нігглі"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2686
+#: src/extensions/crystallography/crystallographyextension.cpp:2687
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr "Вкажіт нови об’єм"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2700
+#: src/extensions/crystallography/crystallographyextension.cpp:2701
 msgid "Scale Unit Cell Volume"
 msgstr "Масштабування об’єму одиничної комірки"
 
@@ -1435,7 +1428,7 @@ msgstr ""
 msgid "Build"
 msgstr "&Збирання"
 
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:529
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:531
 msgid "Cut Slab From Crystal"
 msgstr ""
 
@@ -1465,14 +1458,14 @@ msgstr "Траєкторія…"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Файл"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr "Імпортувати"
@@ -1677,45 +1670,45 @@ msgstr "Водневі атоми"
 msgid "Add or remove hydrogens"
 msgstr "Додати або вилучити атоми водню"
 
-#: src/extensions/insertfragmentdialog.cpp:184
+#: src/extensions/insertfragmentdialog.cpp:195
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
 msgstr "Не вдалося прочитати файл %1."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:59
 #, fuzzy
 msgid "Crystal..."
 msgstr "Вставити кристал"
 
-#: src/extensions/insertfragmentextension.cpp:62
+#: src/extensions/insertfragmentextension.cpp:64
 msgid "Fragment..."
 msgstr "Фрагмент…"
 
-#: src/extensions/insertfragmentextension.cpp:67
+#: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr "SMILES…"
 
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "Вставити"
 
-#: src/extensions/insertfragmentextension.cpp:119
-#: src/extensions/insertfragmentextension.cpp:164
+#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:166
 msgid "Insert SMILES"
 msgstr "Вставити SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:120
+#: src/extensions/insertfragmentextension.cpp:122
 msgid "Insert SMILES fragment:"
 msgstr "Вставити фрагмент SMILES:"
 
-#: src/extensions/insertfragmentextension.cpp:169
-#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:310
 #: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr "Вставити фрагмент"
 
-#: src/extensions/insertfragmentextension.cpp:177
+#: src/extensions/insertfragmentextension.cpp:179
 #, fuzzy
 msgid "Insert Crystal"
 msgstr "Імпорт кристала"
@@ -1773,14 +1766,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Оцінка дипольного моменту (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "Звантаження з мережі зазнало невдачі"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "Перевищено час очікування на відповідь або інша помилка."
 
@@ -1825,20 +1818,20 @@ msgstr "Назва речовини"
 msgid "Chemical structure to download."
 msgstr "Хімічна структура для звантаження."
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "Адреса"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "Адреса молекули для звантаження."
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Не вдалося знайти вказану молекулу: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Не вдалося завантажити вказану молекулу: %1"
@@ -3214,13 +3207,13 @@ msgstr "Молекулярні орбіталі…"
 msgid "Orbitals"
 msgstr "Орбіталі"
 
-#: src/extensions/surfaces/orbitalextension.cpp:164
+#: src/extensions/surfaces/orbitalextension.cpp:167
 #: src/extensions/surfaces/orbitaltablemodel.cpp:122
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr "ВЗМО"
 
-#: src/extensions/surfaces/orbitalextension.cpp:165
+#: src/extensions/surfaces/orbitalextension.cpp:168
 #: src/extensions/surfaces/orbitaltablemodel.cpp:131
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
@@ -3457,50 +3450,50 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "Помилка OpenGL"
 
-#: src/glwidget.cpp:1700
+#: src/glwidget.cpp:1701
 msgid "Debug Information"
 msgstr "Діагностична інформація"
 
-#: src/glwidget.cpp:1704
+#: src/glwidget.cpp:1705
 #, qt-format
 msgid "FPS: %L1"
 msgstr "Частота кадрів: %L1"
 
-#: src/glwidget.cpp:1708
+#: src/glwidget.cpp:1709
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Розміри вікна перегляду: %L1 x %L2"
 
-#: src/glwidget.cpp:1715
+#: src/glwidget.cpp:1716
 #, qt-format
 msgid "ModelView row 1: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1721
+#: src/glwidget.cpp:1722
 #, qt-format
 msgid "ModelView row 2: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1727
+#: src/glwidget.cpp:1728
 #, qt-format
 msgid "ModelView row 3: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1733
+#: src/glwidget.cpp:1734
 #, qt-format
 msgid "ModelView row 4: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1742
+#: src/glwidget.cpp:1743
 msgid "No molecule set"
 msgstr "Не вказано молекули"
 
-#: src/glwidget.cpp:1747
+#: src/glwidget.cpp:1748
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Атоми: %L1"
 
-#: src/glwidget.cpp:1751
+#: src/glwidget.cpp:1752
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Зв’язки: %L1"
@@ -3515,7 +3508,7 @@ msgstr "без назви"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: номер %1 перевищує межі нумерації."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3537,12 +3530,12 @@ msgstr "Спроба читання молекули з номером %1 з ф�
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "replaceMolecule: номер %1 перевищує межі нумерації."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Запис файлів типу «%1» не підтримується."
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Запис типу файлів «%1» не підтримується."
@@ -3562,13 +3555,13 @@ msgstr "Не вдалося відкрити файл «%1» для читанн
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Спроба заміни молекули з номером %1 у файлі «%2» зазнала невдачі."
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Не вдалося відкрити файл %1 для читання."
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Спроба читання даних молекули з файла «%1» зазнала невдачі."
@@ -3578,42 +3571,42 @@ msgstr "Спроба читання даних молекули з файла «
 msgid "File %1 can not be opened for writing."
 msgstr "Не вдалося відкрити файл %1 для запису."
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося перейменувати "
 "початковий файл."
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося перейменувати "
 "новий файл."
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Спроба зберегти файл молекули завершилася невдало: не вдалося вилучити "
 "старий файл."
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Спроба запису молекули до файла «%1» завершилася невдало. Помилка у функції "
 "OpenBabel."
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Не вдалося відкрити файл %1 для запису."
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Спроба запису конформерів до файла «%1» завершилася невдало."
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "Молекула %1"
@@ -10110,6 +10103,18 @@ msgstr ""
 "yurchor@gmail.com,skrypnychuk@gmail.com,,,yurchor@gmail.com,"
 "skrypnychuk@gmail.com,,,yurchor@gmail.com,skrypnychuk@gmail.com,,,"
 "yurchor@gmail.com,skrypnychuk@gmail.com"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Унунквадій"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Унунгексій"
+
+#~ msgid "Overlay"
+#~ msgstr "Накладання"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Показ шкали кольорів градієнтів"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Параметри елементарної комірки…"

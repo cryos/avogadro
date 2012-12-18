@@ -1161,7 +1161,8 @@ namespace Avogadro
     QList<QString> newIds;
 
     // Duplicate tolerance squared
-    const double dupTolSquared = 1e-8; // 1e-4 ^2
+    const double tolerance = 1e-6;
+    const double dupTolSquared = 1e-12; // 1e-6 ^2
 
     // Non-fatal assert -- if the number of atoms has
     // changed, just tail-recurse and try again.
@@ -1182,9 +1183,9 @@ namespace Avogadro
       curVec = &origFCoords[i];
 
       // Round off to remove floating point math errors
-      double x = StableComp::round(curVec->x(), 6);
-      double y = StableComp::round(curVec->y(), 6);
-      double z = StableComp::round(curVec->z(), 6);
+      double x = StableComp::round(curVec->x(), 7);
+      double y = StableComp::round(curVec->y(), 7);
+      double z = StableComp::round(curVec->z(), 7);
 
       // Get tranformed OB vectors
       obxformed = sg->Transform(OpenBabel::vector3(x,y,z));
@@ -1205,9 +1206,9 @@ namespace Avogadro
         if (tmp.y() < 0.0) ++tmp.y();
         if (tmp.z() < 0.0) ++tmp.z();
         // Add a fudge factor for cell edges
-        if (tmp.x() >= 1.0 - 1e-4) tmp.x() = 0.0;
-        if (tmp.y() >= 1.0 - 1e-4) tmp.y() = 0.0;
-        if (tmp.z() >= 1.0 - 1e-4) tmp.z() = 0.0;
+        if (tmp.x() >= 1.0 - tolerance) tmp.x() = 0.0;
+        if (tmp.y() >= 1.0 - tolerance) tmp.y() = 0.0;
+        if (tmp.z() >= 1.0 - tolerance) tmp.z() = 0.0;
         xformed.append(tmp);
       }
 
@@ -1259,9 +1260,9 @@ namespace Avogadro
       if (it->y() < 0) ++(it->y());
       if (it->z() < 0) ++(it->z());
       // Add a fudge factor for cell edges
-      if (it->x() >= 1.0 - 1e-4) it->x() = 0.0;
-      if (it->y() >= 1.0 - 1e-4) it->y() = 0.0;
-      if (it->z() >= 1.0 - 1e-4) it->z() = 0.0;
+      if (it->x() >= 1.0 - 1e-6) it->x() = 0.0;
+      if (it->y() >= 1.0 - 1e-6) it->y() = 0.0;
+      if (it->z() >= 1.0 - 1e-6) it->z() = 0.0;
     }
     setCurrentFractionalCoords(currentAtomicSymbols(),
                                fcoords);

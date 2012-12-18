@@ -1168,13 +1168,16 @@ protected:
         builder.Build(*obMolecule);
         obMolecule->AddHydrogens(); // Add some hydrogens before running force field
 
-        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
-        if (!pFF || !pFF->Setup(*obMolecule)) {
-          pFF = OBForceField::FindForceField("UFF");
+        OBForceField* pFF =  OBForceField::FindForceField("MMFF94")->MakeNewInstance();
+        if (pFF && !pFF->Setup(*obMolecule)) {
+          pFF = OBForceField::FindForceField("UFF")->MakeNewInstance();
           if (!pFF || !pFF->Setup(*obMolecule)) return; // can't do anything more
         }
-        pFF->ConjugateGradients(250, 1.0e-4);
-        pFF->UpdateCoordinates(*obMolecule);
+        if (pFF) {
+          pFF->ConjugateGradients(250, 1.0e-4);
+          pFF->UpdateCoordinates(*obMolecule);
+          delete pFF;
+        }
       } // building geometry
 
     } // check 3D coordinates
@@ -2392,9 +2395,11 @@ protected:
         }
       } // end looping over bonds
 
-      // Copy unit cell
-      moleculeCopy->setOBUnitCell
-        (new OBUnitCell(*(d->molecule->OBUnitCell())));
+      // Copy unit cell, if available
+      if (d->molecule->OBUnitCell()) {
+        moleculeCopy->setOBUnitCell
+          (new OBUnitCell(*(d->molecule->OBUnitCell())));
+      }
     } // should now have a copy of our selected fragment
 
     OBConversion conv;

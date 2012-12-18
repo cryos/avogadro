@@ -1,0 +1,75 @@
+#------------------------------------------------------------------------------
+#$Date: 2012-02-28 15:44:07 +0000 (Tue, 28 Feb 2012) $
+#$Revision: 35913 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/00/00/9000016.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9000016
+loop_
+_publ_author_name
+'Hendricks, S. B.'
+'Jefferson, M. E.'
+_publ_section_title
+;
+ Crystal structure of vermiculites and mixed vermiculite-chlorites
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              851
+_journal_page_last               862
+_journal_volume                  23
+_journal_year                    1938
+_chemical_formula_sum            'H2 Mg3 O12 Si4'
+_chemical_name_mineral           Vermiculite
+_space_group_IT_number           9
+_symmetry_space_group_name_Hall  'C -2yc'
+_symmetry_space_group_name_H-M   'C 1 c 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 93.25
+_cell_angle_gamma                90
+_cell_length_a                   5.33
+_cell_length_b                   9.18
+_cell_length_c                   28.85
+_cell_volume                     1409.343
+_exptl_crystal_density_diffrn    1.787
+_[local]_cod_chemical_formula_sum_orig 'Mg3 (O12 Si4) H2'
+_cod_database_code               9000016
+_amcsd_database_code             AMCSD#0000018
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2+y,z
+x,-y,1/2+z
+1/2+x,1/2-y,1/2+z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Mg1 0.00000 0.00000 0.00000
+Mg2 0.00000 0.33333 0.00000
+Mg3 0.00000 0.66667 0.00000
+O-H1 0.18000 0.50000 0.04000
+O-H2 -0.18000 0.83333 -0.04000
+O1 0.18000 0.83333 0.04000
+O2 -0.18000 0.50000 -0.04000
+O3 0.18000 0.16667 0.04000
+O4 -0.18000 0.16667 -0.04000
+O5 -0.04800 0.75000 0.11500
+O6 0.04800 0.58330 -0.11500
+O7 0.45200 0.75000 0.11500
+O8 -0.45200 0.58330 -0.11500
+O9 0.20200 0.00000 0.11500
+O10 -0.20200 0.33333 -0.11500
+Si1 0.19600 0.83333 0.09500
+Si2 -0.19600 0.50000 -0.09500
+Si3 -0.30400 0.66667 0.09500
+Si4 0.30400 0.66667 -0.09500

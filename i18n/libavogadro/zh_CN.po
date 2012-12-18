@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-05-14 00:00-0400\n"
+"POT-Creation-Date: 2012-12-17 00:00-0500\n"
 "PO-Revision-Date: 2011-03-25 12:56+0000\n"
 "Last-Translator: ZhangCheng <skyxxzc@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -86,479 +86,480 @@ msgstr "以 SMARTS 模式着色"
 msgid "Highlight particular features which match a SMARTS pattern."
 msgstr ""
 
-#: src/elementtranslator.cpp:42
+#: src/elementtranslator.cpp:40
 msgid "Hydrogen"
 msgstr "氢"
 
-#: src/elementtranslator.cpp:45
+#: src/elementtranslator.cpp:43
 msgid "Helium"
 msgstr "氦"
 
-#: src/elementtranslator.cpp:48
+#: src/elementtranslator.cpp:46
 msgid "Lithium"
 msgstr "锂"
 
-#: src/elementtranslator.cpp:51
+#: src/elementtranslator.cpp:49
 msgid "Beryllium"
 msgstr "铍"
 
-#: src/elementtranslator.cpp:54
+#: src/elementtranslator.cpp:52
 msgid "Boron"
 msgstr "硼"
 
-#: src/elementtranslator.cpp:57
+#: src/elementtranslator.cpp:55
 msgid "Carbon"
 msgstr "碳"
 
-#: src/elementtranslator.cpp:60
+#: src/elementtranslator.cpp:58
 msgid "Nitrogen"
 msgstr "氮"
 
-#: src/elementtranslator.cpp:63
+#: src/elementtranslator.cpp:61
 msgid "Oxygen"
 msgstr "氧"
 
-#: src/elementtranslator.cpp:66
+#: src/elementtranslator.cpp:64
 msgid "Fluorine"
 msgstr "氟"
 
-#: src/elementtranslator.cpp:69
+#: src/elementtranslator.cpp:67
 msgid "Neon"
 msgstr "氖"
 
-#: src/elementtranslator.cpp:72
+#: src/elementtranslator.cpp:70
 msgid "Sodium"
 msgstr "钠"
 
-#: src/elementtranslator.cpp:75
+#: src/elementtranslator.cpp:73
 msgid "Magnesium"
 msgstr "镁"
 
-#: src/elementtranslator.cpp:78
+#: src/elementtranslator.cpp:76
 msgid "Aluminum"
 msgstr "铝"
 
-#: src/elementtranslator.cpp:81
+#: src/elementtranslator.cpp:79
 msgid "Silicon"
 msgstr "硅"
 
-#: src/elementtranslator.cpp:84
+#: src/elementtranslator.cpp:82
 msgid "Phosphorus"
 msgstr "磷"
 
-#: src/elementtranslator.cpp:87
+#: src/elementtranslator.cpp:85
 msgid "Sulfur"
 msgstr "硫"
 
-#: src/elementtranslator.cpp:90
+#: src/elementtranslator.cpp:88
 msgid "Chlorine"
 msgstr "氯"
 
-#: src/elementtranslator.cpp:93
+#: src/elementtranslator.cpp:91
 msgid "Argon"
 msgstr "氩"
 
-#: src/elementtranslator.cpp:96
+#: src/elementtranslator.cpp:94
 msgid "Potassium"
 msgstr "钾"
 
-#: src/elementtranslator.cpp:99
+#: src/elementtranslator.cpp:97
 msgid "Calcium"
 msgstr "钙"
 
-#: src/elementtranslator.cpp:102
+#: src/elementtranslator.cpp:100
 msgid "Scandium"
 msgstr "钪"
 
-#: src/elementtranslator.cpp:105
+#: src/elementtranslator.cpp:103
 msgid "Titanium"
 msgstr "钛"
 
-#: src/elementtranslator.cpp:108
+#: src/elementtranslator.cpp:106
 msgid "Vanadium"
 msgstr "钒"
 
-#: src/elementtranslator.cpp:111
+#: src/elementtranslator.cpp:109
 msgid "Chromium"
 msgstr "铬"
 
-#: src/elementtranslator.cpp:114
+#: src/elementtranslator.cpp:112
 msgid "Manganese"
 msgstr "锰"
 
-#: src/elementtranslator.cpp:117
+#: src/elementtranslator.cpp:115
 msgid "Iron"
 msgstr "铁"
 
-#: src/elementtranslator.cpp:120
+#: src/elementtranslator.cpp:118
 msgid "Cobalt"
 msgstr "钴"
 
-#: src/elementtranslator.cpp:123
+#: src/elementtranslator.cpp:121
 msgid "Nickel"
 msgstr "镍"
 
-#: src/elementtranslator.cpp:126
+#: src/elementtranslator.cpp:124
 msgid "Copper"
 msgstr "铜"
 
-#: src/elementtranslator.cpp:129
+#: src/elementtranslator.cpp:127
 msgid "Zinc"
 msgstr "锌"
 
-#: src/elementtranslator.cpp:132
+#: src/elementtranslator.cpp:130
 msgid "Gallium"
 msgstr "镓"
 
-#: src/elementtranslator.cpp:135
+#: src/elementtranslator.cpp:133
 msgid "Germanium"
 msgstr "锗"
 
-#: src/elementtranslator.cpp:138
+#: src/elementtranslator.cpp:136
 msgid "Arsenic"
 msgstr "砷"
 
-#: src/elementtranslator.cpp:141
+#: src/elementtranslator.cpp:139
 msgid "Selenium"
 msgstr "硒"
 
-#: src/elementtranslator.cpp:144
+#: src/elementtranslator.cpp:142
 msgid "Bromine"
 msgstr "溴"
 
-#: src/elementtranslator.cpp:147
+#: src/elementtranslator.cpp:145
 msgid "Krypton"
 msgstr "氪"
 
-#: src/elementtranslator.cpp:150
+#: src/elementtranslator.cpp:148
 msgid "Rubidium"
 msgstr "铷"
 
-#: src/elementtranslator.cpp:153
+#: src/elementtranslator.cpp:151
 msgid "Strontium"
 msgstr "锶"
 
-#: src/elementtranslator.cpp:156
+#: src/elementtranslator.cpp:154
 msgid "Yttrium"
 msgstr "钇"
 
-#: src/elementtranslator.cpp:159
+#: src/elementtranslator.cpp:157
 msgid "Zirconium"
 msgstr "锆"
 
-#: src/elementtranslator.cpp:162
+#: src/elementtranslator.cpp:160
 msgid "Niobium"
 msgstr "铌"
 
-#: src/elementtranslator.cpp:165
+#: src/elementtranslator.cpp:163
 msgid "Molybdenum"
 msgstr "钼"
 
-#: src/elementtranslator.cpp:168
+#: src/elementtranslator.cpp:166
 msgid "Technetium"
 msgstr "锝"
 
-#: src/elementtranslator.cpp:171
+#: src/elementtranslator.cpp:169
 msgid "Ruthenium"
 msgstr "钌"
 
-#: src/elementtranslator.cpp:174
+#: src/elementtranslator.cpp:172
 msgid "Rhodium"
 msgstr "铑"
 
-#: src/elementtranslator.cpp:177
+#: src/elementtranslator.cpp:175
 msgid "Palladium"
 msgstr "钯"
 
-#: src/elementtranslator.cpp:180
+#: src/elementtranslator.cpp:178
 msgid "Silver"
 msgstr "银"
 
-#: src/elementtranslator.cpp:183
+#: src/elementtranslator.cpp:181
 msgid "Cadmium"
 msgstr "镉"
 
-#: src/elementtranslator.cpp:186
+#: src/elementtranslator.cpp:184
 msgid "Indium"
 msgstr "铟"
 
-#: src/elementtranslator.cpp:189
+#: src/elementtranslator.cpp:187
 msgid "Tin"
 msgstr "锡"
 
-#: src/elementtranslator.cpp:192
+#: src/elementtranslator.cpp:190
 msgid "Antimony"
 msgstr "锑"
 
-#: src/elementtranslator.cpp:195
+#: src/elementtranslator.cpp:193
 msgid "Tellurium"
 msgstr "碲"
 
-#: src/elementtranslator.cpp:198
+#: src/elementtranslator.cpp:196
 msgid "Iodine"
 msgstr "碘"
 
-#: src/elementtranslator.cpp:201
+#: src/elementtranslator.cpp:199
 msgid "Xenon"
 msgstr "氙"
 
-#: src/elementtranslator.cpp:204
+#: src/elementtranslator.cpp:202
 msgid "Cesium"
 msgstr "铯"
 
-#: src/elementtranslator.cpp:207
+#: src/elementtranslator.cpp:205
 msgid "Barium"
 msgstr "钡"
 
-#: src/elementtranslator.cpp:210
+#: src/elementtranslator.cpp:208
 msgid "Lanthanum"
 msgstr "镧"
 
-#: src/elementtranslator.cpp:213
+#: src/elementtranslator.cpp:211
 msgid "Cerium"
 msgstr "铈"
 
-#: src/elementtranslator.cpp:216
+#: src/elementtranslator.cpp:214
 msgid "Praseodymium"
 msgstr "镨"
 
-#: src/elementtranslator.cpp:219
+#: src/elementtranslator.cpp:217
 msgid "Neodymium"
 msgstr "钕"
 
-#: src/elementtranslator.cpp:222
+#: src/elementtranslator.cpp:220
 msgid "Promethium"
 msgstr "钷"
 
-#: src/elementtranslator.cpp:225
+#: src/elementtranslator.cpp:223
 msgid "Samarium"
 msgstr "钐"
 
-#: src/elementtranslator.cpp:228
+#: src/elementtranslator.cpp:226
 msgid "Europium"
 msgstr "铕"
 
-#: src/elementtranslator.cpp:231
+#: src/elementtranslator.cpp:229
 msgid "Gadolinium"
 msgstr "钆"
 
-#: src/elementtranslator.cpp:234
+#: src/elementtranslator.cpp:232
 msgid "Terbium"
 msgstr "铽"
 
-#: src/elementtranslator.cpp:237
+#: src/elementtranslator.cpp:235
 msgid "Dysprosium"
 msgstr "镝"
 
-#: src/elementtranslator.cpp:240
+#: src/elementtranslator.cpp:238
 msgid "Holmium"
 msgstr "钬"
 
-#: src/elementtranslator.cpp:243
+#: src/elementtranslator.cpp:241
 msgid "Erbium"
 msgstr "铒"
 
-#: src/elementtranslator.cpp:246
+#: src/elementtranslator.cpp:244
 msgid "Thulium"
 msgstr "铥"
 
-#: src/elementtranslator.cpp:249
+#: src/elementtranslator.cpp:247
 msgid "Ytterbium"
 msgstr "镱"
 
-#: src/elementtranslator.cpp:252
+#: src/elementtranslator.cpp:250
 msgid "Lutetium"
 msgstr "镥"
 
-#: src/elementtranslator.cpp:255
+#: src/elementtranslator.cpp:253
 msgid "Hafnium"
 msgstr "铪"
 
-#: src/elementtranslator.cpp:258
+#: src/elementtranslator.cpp:256
 msgid "Tantalum"
 msgstr "钽"
 
-#: src/elementtranslator.cpp:261
+#: src/elementtranslator.cpp:259
 msgid "Tungsten"
 msgstr "钨"
 
-#: src/elementtranslator.cpp:264
+#: src/elementtranslator.cpp:262
 msgid "Rhenium"
 msgstr "铼"
 
-#: src/elementtranslator.cpp:267
+#: src/elementtranslator.cpp:265
 msgid "Osmium"
 msgstr "锇"
 
-#: src/elementtranslator.cpp:270
+#: src/elementtranslator.cpp:268
 msgid "Iridium"
 msgstr "铱"
 
-#: src/elementtranslator.cpp:273
+#: src/elementtranslator.cpp:271
 msgid "Platinum"
 msgstr "铂"
 
-#: src/elementtranslator.cpp:276
+#: src/elementtranslator.cpp:274
 msgid "Gold"
 msgstr "金"
 
-#: src/elementtranslator.cpp:279
+#: src/elementtranslator.cpp:277
 msgid "Mercury"
 msgstr "汞"
 
-#: src/elementtranslator.cpp:282
+#: src/elementtranslator.cpp:280
 msgid "Thallium"
 msgstr "铊"
 
-#: src/elementtranslator.cpp:285
+#: src/elementtranslator.cpp:283
 msgid "Lead"
 msgstr "铅"
 
-#: src/elementtranslator.cpp:288
+#: src/elementtranslator.cpp:286
 msgid "Bismuth"
 msgstr "铋"
 
-#: src/elementtranslator.cpp:291
+#: src/elementtranslator.cpp:289
 msgid "Polonium"
 msgstr "钋"
 
-#: src/elementtranslator.cpp:294
+#: src/elementtranslator.cpp:292
 msgid "Astatine"
 msgstr "砹"
 
-#: src/elementtranslator.cpp:297
+#: src/elementtranslator.cpp:295
 msgid "Radon"
 msgstr "氡"
 
-#: src/elementtranslator.cpp:300
+#: src/elementtranslator.cpp:298
 msgid "Francium"
 msgstr "钫"
 
-#: src/elementtranslator.cpp:303
+#: src/elementtranslator.cpp:301
 msgid "Radium"
 msgstr "镭"
 
-#: src/elementtranslator.cpp:306
+#: src/elementtranslator.cpp:304
 msgid "Actinium"
 msgstr "锕"
 
-#: src/elementtranslator.cpp:309
+#: src/elementtranslator.cpp:307
 msgid "Thorium"
 msgstr "钍"
 
-#: src/elementtranslator.cpp:312
+#: src/elementtranslator.cpp:310
 msgid "Protactinium"
 msgstr "镤"
 
-#: src/elementtranslator.cpp:315
+#: src/elementtranslator.cpp:313
 msgid "Uranium"
 msgstr "铀"
 
-#: src/elementtranslator.cpp:318
+#: src/elementtranslator.cpp:316
 msgid "Neptunium"
 msgstr "镎"
 
-#: src/elementtranslator.cpp:321
+#: src/elementtranslator.cpp:319
 msgid "Plutonium"
 msgstr "钚"
 
-#: src/elementtranslator.cpp:324
+#: src/elementtranslator.cpp:322
 msgid "Americium"
 msgstr "镅"
 
-#: src/elementtranslator.cpp:327
+#: src/elementtranslator.cpp:325
 msgid "Curium"
 msgstr "锔"
 
-#: src/elementtranslator.cpp:330
+#: src/elementtranslator.cpp:328
 msgid "Berkelium"
 msgstr "锫"
 
-#: src/elementtranslator.cpp:333
+#: src/elementtranslator.cpp:331
 msgid "Californium"
 msgstr "锎"
 
-#: src/elementtranslator.cpp:336
+#: src/elementtranslator.cpp:334
 msgid "Einsteinium"
 msgstr "锿"
 
-#: src/elementtranslator.cpp:339
+#: src/elementtranslator.cpp:337
 msgid "Fermium"
 msgstr "镄"
 
-#: src/elementtranslator.cpp:342
+#: src/elementtranslator.cpp:340
 msgid "Mendelevium"
 msgstr "钔"
 
-#: src/elementtranslator.cpp:345
+#: src/elementtranslator.cpp:343
 msgid "Nobelium"
 msgstr "锘"
 
-#: src/elementtranslator.cpp:348
+#: src/elementtranslator.cpp:346
 msgid "Lawrencium"
 msgstr "铹"
 
-#: src/elementtranslator.cpp:351
+#: src/elementtranslator.cpp:349
 msgid "Rutherfordium"
 msgstr "钅卢"
 
-#: src/elementtranslator.cpp:354
+#: src/elementtranslator.cpp:352
 msgid "Dubnium"
 msgstr "钅杜"
 
-#: src/elementtranslator.cpp:357
+#: src/elementtranslator.cpp:355
 msgid "Seaborgium"
 msgstr "钅喜"
 
-#: src/elementtranslator.cpp:360
+#: src/elementtranslator.cpp:358
 msgid "Bohrium"
 msgstr "钅波"
 
-#: src/elementtranslator.cpp:363
+#: src/elementtranslator.cpp:361
 msgid "Hassium"
 msgstr "钅黑"
 
-#: src/elementtranslator.cpp:366
+#: src/elementtranslator.cpp:364
 msgid "Meitnerium"
 msgstr "钅麦"
 
-#: src/elementtranslator.cpp:369
+#: src/elementtranslator.cpp:367
 msgid "Darmstadtium"
 msgstr "钅达"
 
-#: src/elementtranslator.cpp:372
+#: src/elementtranslator.cpp:370
 msgid "Roentgenium"
 msgstr "钅仑"
 
-#: src/elementtranslator.cpp:375
+#: src/elementtranslator.cpp:373
 msgid "Copernicium"
 msgstr ""
 
-#: src/elementtranslator.cpp:378
+#: src/elementtranslator.cpp:376
 msgid "Ununtrium"
 msgstr "Uut"
 
-#: src/elementtranslator.cpp:381
-msgid "Ununquadium"
-msgstr "Uuq"
+#: src/elementtranslator.cpp:379
+#, fuzzy
+msgid "Flerovium"
+msgstr "钔"
 
-#: src/elementtranslator.cpp:384
+#: src/elementtranslator.cpp:382
 msgid "Ununpentium"
 msgstr "Uup"
 
-#: src/elementtranslator.cpp:387
-msgid "Ununhexium"
-msgstr "Uuh"
+#: src/elementtranslator.cpp:385
+msgid "Livermorium"
+msgstr ""
 
-#: src/elementtranslator.cpp:390
+#: src/elementtranslator.cpp:388
 msgid "Ununseptium"
 msgstr "Uus"
 
-#: src/elementtranslator.cpp:393
+#: src/elementtranslator.cpp:391
 msgid "Ununoctium"
 msgstr "Uuo"
 
-#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+#: src/elementtranslator.cpp:395 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
 msgstr "未知"
 
@@ -622,11 +623,11 @@ msgstr "选择原子标签颜色"
 msgid "Select Bond Labels Color"
 msgstr "选择键标签"
 
-#: src/engines/labelengine.cpp:361
+#: src/engines/labelengine.cpp:367
 msgid "Select Atom Labels Font"
 msgstr "选择原子标签字体"
 
-#: src/engines/labelengine.cpp:378
+#: src/engines/labelengine.cpp:384
 msgid "Select Bond Labels Font"
 msgstr "选择键标签字体"
 
@@ -637,14 +638,6 @@ msgstr "标签"
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
 msgstr "渲染原子和键标签"
-
-#: src/engines/overlayengine.h:37
-msgid "Overlay"
-msgstr "叠加"
-
-#: src/engines/overlayengine.h:38
-msgid "Renders color scale for gradients"
-msgstr "为渐变色渲染色差度"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -789,7 +782,7 @@ msgstr "视频文件 (*.avi)"
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:183
+#: src/extensions/insertfragmentdialog.cpp:194
 #: src/extensions/quantuminput/inputfileextension.cpp:172
 #: src/extensions/quantuminput/inputfileextension.cpp:182
 #: src/extensions/selectextension.cpp:276
@@ -904,7 +897,7 @@ msgstr "笛卡尔坐标编辑器..."
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
@@ -1024,7 +1017,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:455
 #: src/extensions/crystallography/crystallographyextension.cpp:687
-#: src/extensions/crystallography/crystallographyextension.cpp:1987
+#: src/extensions/crystallography/crystallographyextension.cpp:1988
 msgid "Show &Editors"
 msgstr ""
 
@@ -1035,7 +1028,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:559
 #: src/extensions/crystallography/crystallographyextension.cpp:696
-#: src/extensions/crystallography/crystallographyextension.cpp:1995
+#: src/extensions/crystallography/crystallographyextension.cpp:1996
 msgid "Show &Property Display"
 msgstr ""
 
@@ -1060,7 +1053,7 @@ msgid "Remove &Unit Cell"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:654
-#: src/extensions/crystallography/crystallographyextension.cpp:1965
+#: src/extensions/crystallography/crystallographyextension.cpp:1966
 msgid "Add &Unit Cell"
 msgstr ""
 
@@ -1104,11 +1097,11 @@ msgctxt "Lattice type"
 msgid "Cubic"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1486
+#: src/extensions/crystallography/crystallographyextension.cpp:1487
 msgid "Paste Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1756
+#: src/extensions/crystallography/crystallographyextension.cpp:1757
 msgid ""
 "Niggli-reduction failed. The input structure's lattice that is confusing the "
 "Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
@@ -1116,201 +1109,201 @@ msgid ""
 "try again."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1870
+#: src/extensions/crystallography/crystallographyextension.cpp:1871
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1879
+#: src/extensions/crystallography/crystallographyextension.cpp:1880
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1972
+#: src/extensions/crystallography/crystallographyextension.cpp:1973
 msgid "I&mport Crystal from Clipboard..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2010
+#: src/extensions/crystallography/crystallographyextension.cpp:2011
 msgid "&Wrap Atoms to Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2017
+#: src/extensions/crystallography/crystallographyextension.cpp:2018
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "操纵原子"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2024
+#: src/extensions/crystallography/crystallographyextension.cpp:2025
 msgid "Rotate To Standard &Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2031
+#: src/extensions/crystallography/crystallographyextension.cpp:2032
 msgid "Scale Cell To &Volume..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2040
+#: src/extensions/crystallography/crystallographyextension.cpp:2041
 msgid "&Slab..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2055
+#: src/extensions/crystallography/crystallographyextension.cpp:2056
 msgid "Perceive Space&group..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2062
+#: src/extensions/crystallography/crystallographyextension.cpp:2063
 msgid "Set &Spacegroup..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2069
+#: src/extensions/crystallography/crystallographyextension.cpp:2070
 msgid "&Fill Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2070
+#: src/extensions/crystallography/crystallographyextension.cpp:2071
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2077
+#: src/extensions/crystallography/crystallographyextension.cpp:2078
 msgid "Sy&mmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2084
+#: src/extensions/crystallography/crystallographyextension.cpp:2085
 msgid "Reduce Cell (&Primitive)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2091
+#: src/extensions/crystallography/crystallographyextension.cpp:2092
 msgid "Reduce Cell (&Niggli)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2109
+#: src/extensions/crystallography/crystallographyextension.cpp:2110
 msgid "&Angstrom"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2119
+#: src/extensions/crystallography/crystallographyextension.cpp:2120
 msgid "&Bohr"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2128
+#: src/extensions/crystallography/crystallographyextension.cpp:2129
 msgid "&Nanometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2137
+#: src/extensions/crystallography/crystallographyextension.cpp:2138
 msgid "&Picometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2149
+#: src/extensions/crystallography/crystallographyextension.cpp:2150
 msgid "&Degree"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2159
+#: src/extensions/crystallography/crystallographyextension.cpp:2160
 msgid "&Radian"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2171
+#: src/extensions/crystallography/crystallographyextension.cpp:2172
 msgid "Display &cartesian coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2180
+#: src/extensions/crystallography/crystallographyextension.cpp:2181
 msgid "Display &fractional coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2193
+#: src/extensions/crystallography/crystallographyextension.cpp:2194
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2203
+#: src/extensions/crystallography/crystallographyextension.cpp:2204
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2217
+#: src/extensions/crystallography/crystallographyextension.cpp:2218
 msgid "Display &cartesian matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2227
+#: src/extensions/crystallography/crystallographyextension.cpp:2228
 msgid "Display &fractional matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2247
+#: src/extensions/crystallography/crystallographyextension.cpp:2248
 msgid "Display as &row vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2257
+#: src/extensions/crystallography/crystallographyextension.cpp:2258
 msgid "Display as &column vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2266
+#: src/extensions/crystallography/crystallographyextension.cpp:2267
 msgid "&Crystal View Options..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2316
-#: src/extensions/crystallography/crystallographyextension.cpp:2448
-#: src/extensions/crystallography/crystallographyextension.cpp:2612
+#: src/extensions/crystallography/crystallographyextension.cpp:2317
+#: src/extensions/crystallography/crystallographyextension.cpp:2449
+#: src/extensions/crystallography/crystallographyextension.cpp:2613
 msgid "Select tolerance in current cartesian units:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2338
-#: src/extensions/crystallography/crystallographyextension.cpp:2468
-#: src/extensions/crystallography/crystallographyextension.cpp:2632
+#: src/extensions/crystallography/crystallographyextension.cpp:2339
+#: src/extensions/crystallography/crystallographyextension.cpp:2469
+#: src/extensions/crystallography/crystallographyextension.cpp:2633
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2354
+#: src/extensions/crystallography/crystallographyextension.cpp:2355
 msgid "Perceive Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2388
+#: src/extensions/crystallography/crystallographyextension.cpp:2389
 msgid "Set Spacegroup:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2402
+#: src/extensions/crystallography/crystallographyextension.cpp:2403
 msgid "Set Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2415
+#: src/extensions/crystallography/crystallographyextension.cpp:2416
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
 "Would you like to set a spacegroup now?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2434
+#: src/extensions/crystallography/crystallographyextension.cpp:2435
 msgid "Fill Unit Cell"
 msgstr "填充晶胞"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2482
+#: src/extensions/crystallography/crystallographyextension.cpp:2483
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2501
+#: src/extensions/crystallography/crystallographyextension.cpp:2502
 msgid "Symmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2577
+#: src/extensions/crystallography/crystallographyextension.cpp:2578
 msgid "Wrap Atoms To Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2598
+#: src/extensions/crystallography/crystallographyextension.cpp:2599
 msgid "Rotate to Standard Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2650
+#: src/extensions/crystallography/crystallographyextension.cpp:2651
 msgid "Reduce to Primitive Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2663
+#: src/extensions/crystallography/crystallographyextension.cpp:2664
 msgid "Reduce to Niggli Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2686
+#: src/extensions/crystallography/crystallographyextension.cpp:2687
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2700
+#: src/extensions/crystallography/crystallographyextension.cpp:2701
 msgid "Scale Unit Cell Volume"
 msgstr ""
 
@@ -1398,7 +1391,7 @@ msgstr ""
 msgid "Build"
 msgstr "构建(&B)"
 
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:529
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:531
 msgid "Cut Slab From Crystal"
 msgstr ""
 
@@ -1428,14 +1421,14 @@ msgstr "轨迹..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "文件(&F)"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/insertfragmentextension.cpp:93
+#: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:81
 msgid "Import"
 msgstr "导入"
@@ -1636,44 +1629,44 @@ msgstr "氢"
 msgid "Add or remove hydrogens"
 msgstr "添加或删除氢原子"
 
-#: src/extensions/insertfragmentdialog.cpp:184
+#: src/extensions/insertfragmentdialog.cpp:195
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
 msgstr "不能读取文件 %1。"
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:59
 msgid "Crystal..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:62
+#: src/extensions/insertfragmentextension.cpp:64
 msgid "Fragment..."
 msgstr "片段..."
 
-#: src/extensions/insertfragmentextension.cpp:67
+#: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:95
+#: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "插入(&I)"
 
-#: src/extensions/insertfragmentextension.cpp:119
-#: src/extensions/insertfragmentextension.cpp:164
+#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:166
 msgid "Insert SMILES"
 msgstr "插入SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:120
+#: src/extensions/insertfragmentextension.cpp:122
 msgid "Insert SMILES fragment:"
 msgstr "插入SMILES片段:"
 
-#: src/extensions/insertfragmentextension.cpp:169
-#: src/extensions/insertfragmentextension.cpp:288
+#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:310
 #: src/extensions/insertfragmentextension.h:36
 msgid "Insert Fragment"
 msgstr "插入片段"
 
-#: src/extensions/insertfragmentextension.cpp:177
+#: src/extensions/insertfragmentextension.cpp:179
 #, fuzzy
 msgid "Insert Crystal"
 msgstr "插入片段"
@@ -1731,14 +1724,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "偶极矩估计值（D）:"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
+#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:181
+#: src/extensions/networkfetchextension.cpp:213
 msgid "Network Download Failed"
 msgstr "网络下载失败"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:171
 msgid "Network timeout or other error."
 msgstr "网络超时或发生其它错误."
 
@@ -1783,20 +1776,20 @@ msgstr "化学名称"
 msgid "Chemical structure to download."
 msgstr "下载化学结构。"
 
-#: src/extensions/networkfetchextension.cpp:130
+#: src/extensions/networkfetchextension.cpp:132
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:131
+#: src/extensions/networkfetchextension.cpp:133
 msgid "URL of molecule to download."
 msgstr "从URL下载分子。"
 
-#: src/extensions/networkfetchextension.cpp:180
+#: src/extensions/networkfetchextension.cpp:182
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "特定的分子没有找到: %1"
 
-#: src/extensions/networkfetchextension.cpp:212
+#: src/extensions/networkfetchextension.cpp:214
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "特定的分子无法载入: %1"
@@ -3141,13 +3134,13 @@ msgstr ""
 msgid "Orbitals"
 msgstr "轨道"
 
-#: src/extensions/surfaces/orbitalextension.cpp:164
+#: src/extensions/surfaces/orbitalextension.cpp:167
 #: src/extensions/surfaces/orbitaltablemodel.cpp:122
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:165
+#: src/extensions/surfaces/orbitalextension.cpp:168
 #: src/extensions/surfaces/orbitaltablemodel.cpp:131
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
@@ -3378,50 +3371,50 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "OpenGL 错误"
 
-#: src/glwidget.cpp:1700
+#: src/glwidget.cpp:1701
 msgid "Debug Information"
 msgstr "调试信息"
 
-#: src/glwidget.cpp:1704
+#: src/glwidget.cpp:1705
 #, qt-format
 msgid "FPS: %L1"
 msgstr "帧速率: %L1"
 
-#: src/glwidget.cpp:1708
+#: src/glwidget.cpp:1709
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "显示尺寸: %L1 x %L2"
 
-#: src/glwidget.cpp:1715
+#: src/glwidget.cpp:1716
 #, qt-format
 msgid "ModelView row 1: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1721
+#: src/glwidget.cpp:1722
 #, qt-format
 msgid "ModelView row 2: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1727
+#: src/glwidget.cpp:1728
 #, qt-format
 msgid "ModelView row 3: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1733
+#: src/glwidget.cpp:1734
 #, qt-format
 msgid "ModelView row 4: %L1 %L2 %L3 %L4"
 msgstr ""
 
-#: src/glwidget.cpp:1742
+#: src/glwidget.cpp:1743
 msgid "No molecule set"
 msgstr "没有分子集合"
 
-#: src/glwidget.cpp:1747
+#: src/glwidget.cpp:1748
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "原子: %L1"
 
-#: src/glwidget.cpp:1751
+#: src/glwidget.cpp:1752
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "键: %L1"
@@ -3436,7 +3429,7 @@ msgstr "未命名"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: index %1 out of reach."
 
-#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:616
+#: src/moleculefile.cpp:140 src/moleculefile.cpp:367 src/moleculefile.cpp:618
 #: src/readfilethread_p.cpp:128
 #, qt-format
 msgid "File type '%1' is not supported for reading."
@@ -3458,12 +3451,12 @@ msgstr "读取含有索引 %1 的分子信息的文件 '%2' 失败。"
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "replaceMolecule: index %1 out of reach."
 
-#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:548
+#: src/moleculefile.cpp:195 src/moleculefile.cpp:445 src/moleculefile.cpp:550
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "文件类型 '%1' 不支持写入操作。"
 
-#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:555
+#: src/moleculefile.cpp:201 src/moleculefile.cpp:454 src/moleculefile.cpp:557
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "文件 '%1' 的文件类型不支持写入操作。"
@@ -3483,13 +3476,13 @@ msgstr "无法打开文件 '%1' 并读取。"
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "用索引 %1替换文件 '%2' 中的分子失败。"
 
-#: src/moleculefile.cpp:357 src/moleculefile.cpp:605
+#: src/moleculefile.cpp:357 src/moleculefile.cpp:607
 #: src/readfilethread_p.cpp:116
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "文件 %1 无法被打开并读取。"
 
-#: src/moleculefile.cpp:400 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:400 src/moleculefile.cpp:633
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "从文件 '%1' 读取分子失败。"
@@ -3499,34 +3492,34 @@ msgstr "从文件 '%1' 读取分子失败。"
 msgid "File %1 can not be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/moleculefile.cpp:493
+#: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "保存分子文件失败 - 无法重命名原始文件。"
 
-#: src/moleculefile.cpp:500
+#: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "保存分子文件失败 - 无法重命名新文件。"
 
-#: src/moleculefile.cpp:509
+#: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "保存分子文件失败 - 无法删除旧文件。"
 
-#: src/moleculefile.cpp:518
+#: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "将分子写入到文件 '%1' 失败。 OpenBabel功能失效。"
 
-#: src/moleculefile.cpp:535
+#: src/moleculefile.cpp:537
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/moleculefile.cpp:587
+#: src/moleculefile.cpp:589
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "将构象异构体写入到文件 '%1' 失败"
 
-#: src/moleculefile.cpp:625 src/readfilethread_p.cpp:194
+#: src/moleculefile.cpp:627 src/readfilethread_p.cpp:194
 #, qt-format
 msgid "Molecule %1"
 msgstr "分子 %1"
@@ -9967,6 +9960,18 @@ msgstr ""
 "cuiweicui1985@gmail.com,schemacs@gmail.com,yjjart@gmail.com,,,avogadro-"
 "devel@lists.sourceforge.net,schemacs@gmail.com,,allen19920930@gmail.com,"
 "skyxxzc@gmail.com,cuiweicui1985@gmail.com,yjjart@gmail.com"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Uuq"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Uuh"
+
+#~ msgid "Overlay"
+#~ msgstr "叠加"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "为渐变色渲染色差度"
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "晶胞参数..."

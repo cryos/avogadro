@@ -1,7 +1,7 @@
 /**********************************************************************
   ElementTranslator - Class to handle translation/i18n of element names
 
-  Copyright (C) 2007 Geoffrey R. Hutchison
+  Copyright (C) 2007,2012 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -27,12 +27,10 @@
 namespace Avogadro {
 
   ElementTranslator::ElementTranslator() : QObject()
-  {
-  }
+  {  }
 
   ElementTranslator::~ElementTranslator()
-  {
-  }
+  {  }
 
   QString ElementTranslator::name(int element)
   {
@@ -378,13 +376,13 @@ namespace Avogadro {
       result = tr("Ununtrium");
       break;
     case 114:
-      result = tr("Ununquadium");
+      result = tr("Flerovium");
       break;
     case 115:
       result = tr("Ununpentium");
       break;
     case 116:
-      result = tr("Ununhexium");
+      result = tr("Livermorium");
       break;
     case 117:
       result = tr("Ununseptium");

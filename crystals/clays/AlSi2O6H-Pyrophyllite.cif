@@ -1,0 +1,63 @@
+data_global
+_chemical_name_mineral 'Pyrophyllite'
+loop_
+_publ_author_name
+'Lee J H'
+'Guggenheim S'
+_journal_name_full 'American Mineralogist'
+_journal_volume 66 
+_journal_year 1981
+_journal_page_first 350
+_journal_page_last 357
+_publ_section_title
+;
+ Single crystal X-ray refinement of pyrophyllite-1Tc
+;
+_database_code_amcsd 0000823
+_chemical_formula_sum 'Al Si2 O6 H'
+_cell_length_a 5.160
+_cell_length_b 8.966
+_cell_length_c 9.347
+_cell_angle_alpha 91.18
+_cell_angle_beta 100.46
+_cell_angle_gamma 89.64
+_cell_volume 425.157
+_exptl_crystal_density_diffrn      2.815
+_symmetry_space_group_name_H-M 'C -1'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,z'
+  '-x,-y,-z'
+  '1/2-x,1/2-y,-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Al   0.49950   0.16705  -0.00008
+Si1   0.74490  -0.00303   0.29169
+Si2   0.75950   0.32577   0.29230
+O1   0.64950   0.00180   0.11550
+O2   0.73140   0.30790   0.11580
+O-H   0.22630   0.19270   0.10810
+Ob1   0.04980   0.38910   0.35890
+Ob2   0.72510   0.16370   0.35840
+Ob3   0.54520   0.44260   0.33250
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Al 0.00691 0.00672 0.01275 -0.00115 0.00142 -0.00025
+Si1 0.00744 0.00651 0.01236 -0.00207 0.00142 0.00004
+Si2 0.00744 0.00659 0.01322 -0.00184 0.00213 -0.00033
+O1 0.01070 0.00936 0.01326 -0.00092 0.00047 -0.00042
+O2 0.00887 0.01058 0.01284 -0.00184 0.00142 -0.00083
+O-H 0.01044 0.01181 0.01626 0.00115 0.00283 0.00209
+Ob1 0.01017 0.01099 0.01669 -0.00484 0.00142 0.00083
+Ob2 0.01474 0.00692 0.01669 -0.00184 0.00402 -0.00042
+Ob3 0.00796 0.01262 0.01797 0.00046 0.00165 -0.00292

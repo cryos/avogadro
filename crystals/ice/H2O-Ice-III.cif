@@ -1,0 +1,54 @@
+data_global
+_chemical_name_mineral 'Ice III'
+loop_
+_publ_author_name
+'McFarlan R'
+_journal_name_full 'Journal of Chemical Physics'
+_journal_volume 4 
+_journal_year 1936
+_journal_page_first 253
+_journal_page_last 259
+_publ_section_title
+;
+ The Structure of Ice III
+ _cod_database_code 1011024
+;
+_database_code_amcsd 0017931
+_chemical_formula_sum 'O4 H7'
+_cell_length_a 10.2
+_cell_length_b 5.87
+_cell_length_c 7.17
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+_cell_volume 429.297
+_exptl_crystal_density_diffrn      1.099
+_symmetry_space_group_name_H-M 'I b a m'
+loop_
+_space_group_symop_operation_xyz
+  'x,y,z'
+  '1/2+x,1/2+y,1/2+z'
+  'x,-y,1/2+z'
+  '1/2+x,1/2-y,+z'
+  '-x,y,1/2-z'
+  '1/2-x,1/2+y,-z'
+  '-x,y,1/2+z'
+  '1/2-x,1/2+y,+z'
+  'x,-y,1/2-z'
+  '1/2+x,1/2-y,-z'
+  'x,y,-z'
+  '1/2+x,1/2+y,1/2-z'
+  '-x,-y,z'
+  '1/2-x,1/2-y,1/2+z'
+  '-x,-y,-z'
+  '1/2-x,1/2-y,1/2-z'
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+O1   0.12600   0.21800   0.06250
+H1   0.25000   0.25000   0.00000
+H2   0.12600   0.00000   0.00000
+H3   0.00000   0.21800   0.00000
+H4   0.00000   0.50000   0.25000

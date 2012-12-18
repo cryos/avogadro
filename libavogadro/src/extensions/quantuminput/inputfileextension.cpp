@@ -31,6 +31,7 @@
 #include "molproinputdialog.h"
 #include "mopacinputdialog.h"
 #include "nwcheminputdialog.h"
+#include "psi4inputdialog.h"
 #include "qcheminputdialog.h"
 #include "teracheminputdialog.h"
 #include "lammpsinputdialog.h"
@@ -91,6 +92,11 @@ namespace Avogadro
     m_actions.append(action);
 
     action = new QAction(this);
+    action->setText(tr("&PSI4..."));
+    action->setData("PSI4");
+    m_actions.append(action);
+
+    action = new QAction(this);
     action->setText(tr("&Q-Chem..."));
     action->setData("QChem");
     m_actions.append(action);
@@ -115,6 +121,7 @@ namespace Avogadro
     m_hasDialog["Molpro"] = false;
     m_hasDialog["MOPAC"] = false;
     m_hasDialog["NWChem"] = false;
+    m_hasDialog["PSI4"] = false;
     m_hasDialog["QChem"] = false;
     m_hasDialog["TeraChem"] = false;
     m_hasDialog["Lammps"] = false;
@@ -229,6 +236,8 @@ namespace Avogadro
       return new MOPACInputDialog(static_cast<QWidget*>(parent()));
     else if (name == "NWChem")
       return new NWChemInputDialog(static_cast<QWidget*>(parent()));
+    else if (name == "PSI4")
+      return new Psi4InputDialog(static_cast<QWidget*>(parent()));
     else if (name == "QChem")
       return new QChemInputDialog(static_cast<QWidget*>(parent()));
     else if (name == "TeraChem")
