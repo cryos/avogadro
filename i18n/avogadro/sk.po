@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-12-17 00:00-0500\n"
+"POT-Creation-Date: 2012-12-24 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:05+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -41,8 +41,8 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3110
-#: src/mainwindow.cpp:3647:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3161
+#: src/mainwindow.cpp:3698:69
 msgid "Avogadro"
 msgstr "Avodagro"
 
@@ -85,7 +85,7 @@ msgstr "Vyčisti Atómy"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3665 src/mainwindow.cpp:3682:390 rc.cpp:402
+#: src/mainwindow.cpp:3716 src/mainwindow.cpp:3733:402 rc.cpp:414
 msgid "Settings"
 msgstr "Nastavenia"
 
@@ -347,74 +347,79 @@ msgstr "Nemôžem vložiť molekulu."
 msgid "Paste failed (format unavailable)."
 msgstr "Vloženie zlyhalo (nedostupný formát)"
 
-#: src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2416
+#, fuzzy
+msgid "Copy failed (format unavailable)."
+msgstr "Kopírovanie zlyhalo (mdl nedostupné)"
+
+#: src/mainwindow.cpp:2431
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopírovanie zlyhalo (mdl nedostupné)"
 
-#: src/mainwindow.cpp:2549 src/mainwindow.cpp:2581 src/mainwindow.cpp:2647
-#: src/mainwindow.cpp:3256
+#: src/mainwindow.cpp:2598 src/mainwindow.cpp:2630 src/mainwindow.cpp:2696
+#: src/mainwindow.cpp:3307
 #, qt-format
 msgid "View %1"
 msgstr "Zobraziť %1"
 
-#: src/mainwindow.cpp:2607
+#: src/mainwindow.cpp:2656
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Pohľad %1"
 
-#: src/mainwindow.cpp:2616
+#: src/mainwindow.cpp:2665
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Odelený pohľad"
 
-#: src/mainwindow.cpp:2847
+#: src/mainwindow.cpp:2896
 msgid "Normal Size"
 msgstr "Normálna Veľkosť"
 
-#: src/mainwindow.cpp:2864
+#: src/mainwindow.cpp:2913
 msgid "Full Screen"
 msgstr "Celá Obrazovka"
 
-#: src/mainwindow.cpp:2965
+#: src/mainwindow.cpp:3016
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3103
+#: src/mainwindow.cpp:3154
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3109
+#: src/mainwindow.cpp:3160
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3601
+#: src/mainwindow.cpp:3652
 msgid "Add"
 msgstr "Pridať"
 
-#: src/mainwindow.cpp:3606
+#: src/mainwindow.cpp:3657
 msgid "Duplicate"
 msgstr "Duplikovať"
 
-#: src/mainwindow.cpp:3611
+#: src/mainwindow.cpp:3662
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: src/mainwindow.cpp:3639
+#: src/mainwindow.cpp:3690
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3641
+#: src/mainwindow.cpp:3692
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3643
+#: src/mainwindow.cpp:3694
 msgid "No tools loaded."
 msgstr "Žiadne nástroje nie sú spustené"
 
-#: src/mainwindow.cpp:3644
+#: src/mainwindow.cpp:3695
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -422,17 +427,17 @@ msgstr ""
 " Je pravdepodobné, táto aplikácia nebude fungovať správne. Opravte prosím "
 "túto chybu."
 
-#: src/mainwindow.cpp:3688
+#: src/mainwindow.cpp:3739
 msgid "Objects"
 msgstr "Objekty"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3694:330
+#: src/mainwindow.cpp:3745:342
 msgid "Colors"
 msgstr "Farby"
 
-#: src/mainwindow.cpp:3727
+#: src/mainwindow.cpp:3778
 msgid " copy"
 msgstr " kopírovať"
 
@@ -505,7 +510,7 @@ msgstr "iba štítky môžu mať sub položky"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:387
+#: src/projecttreemodel.cpp:65:399
 msgid "Item"
 msgstr "Položka"
 
@@ -520,7 +525,7 @@ msgstr "Nízké"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:414
+#: src/settingsdialog.cpp:107:426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Stredné"
@@ -537,7 +542,7 @@ msgstr "Nedefinované"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:423
+#: src/settingsdialog.cpp:122:435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Žiadne"
@@ -731,350 +736,371 @@ msgstr ""
 msgid "&Edit"
 msgstr "&Upraviť"
 
-#. i18n: file: src/mainwindow.ui:141
+#. i18n: file: src/mainwindow.ui:132
+#. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
+#, fuzzy
+msgid "Copy As"
+msgstr "Kopírovať"
+
+#. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
 msgstr "&Rozšírenia"
 
-#. i18n: file: src/mainwindow.ui:146
+#. i18n: file: src/mainwindow.ui:154
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
 msgstr "&Výber"
 
-#. i18n: file: src/mainwindow.ui:163
+#. i18n: file: src/mainwindow.ui:171
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
 msgstr "Hlavný panel s nástrojmi"
 
-#. i18n: file: src/mainwindow.ui:200
+#. i18n: file: src/mainwindow.ui:208
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:233
+#. i18n: file: src/mainwindow.ui:241
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "Zobraziť typy"
 
-#. i18n: file: src/mainwindow.ui:242
+#. i18n: file: src/mainwindow.ui:250
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "Nástroje"
 
-#. i18n: file: src/mainwindow.ui:259
-#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:267
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:275
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
 msgstr "&Otvoriť"
 
-#. i18n: file: src/mainwindow.ui:262
+#. i18n: file: src/mainwindow.ui:270
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#. i18n: file: src/mainwindow.ui:272
+#. i18n: file: src/mainwindow.ui:280
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#. i18n: file: src/mainwindow.ui:283
+#. i18n: file: src/mainwindow.ui:291
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
 msgstr "&Ukončiť"
 
-#. i18n: file: src/mainwindow.ui:275
+#. i18n: file: src/mainwindow.ui:283
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#. i18n: file: src/mainwindow.ui:288
+#. i18n: file: src/mainwindow.ui:296
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
 msgstr "Nedávne"
 
-#. i18n: file: src/mainwindow.ui:293
+#. i18n: file: src/mainwindow.ui:301
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
 msgstr "&Vyčistiť nedávne"
 
-#. i18n: file: src/mainwindow.ui:298
-#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:306
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
 msgstr "&Nový"
 
-#. i18n: file: src/mainwindow.ui:301
+#. i18n: file: src/mainwindow.ui:309
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#. i18n: file: src/mainwindow.ui:311
-#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:319
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:327
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
 msgstr "&Zavrieť"
 
-#. i18n: file: src/mainwindow.ui:314
+#. i18n: file: src/mainwindow.ui:322
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#. i18n: file: src/mainwindow.ui:324
-#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:332
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:340
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
 msgstr "&Uložiť"
 
-#. i18n: file: src/mainwindow.ui:327
+#. i18n: file: src/mainwindow.ui:335
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#. i18n: file: src/mainwindow.ui:337
+#. i18n: file: src/mainwindow.ui:345
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
 msgstr "Uložiť &ako..."
 
-#. i18n: file: src/mainwindow.ui:340
+#. i18n: file: src/mainwindow.ui:348
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#. i18n: file: src/mainwindow.ui:345
+#. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
 msgstr "Vrátiť sa k uloženiu"
 
-#. i18n: file: src/mainwindow.ui:350
+#. i18n: file: src/mainwindow.ui:358
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
 msgstr "&Grafický..."
 
-#. i18n: file: src/mainwindow.ui:359
+#. i18n: file: src/mainwindow.ui:367
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
 msgstr "&Celoobrazovkový režim"
 
-#. i18n: file: src/mainwindow.ui:362
+#. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
 msgstr "Esc"
 
-#. i18n: file: src/mainwindow.ui:371
+#. i18n: file: src/mainwindow.ui:379
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
 msgstr "Nastaviť farbu &pozadia..."
 
-#. i18n: file: src/mainwindow.ui:376
+#. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
 msgstr "&O programe"
 
-#. i18n: file: src/mainwindow.ui:388
+#. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
 msgstr "&Vrátiť späť"
 
-#. i18n: file: src/mainwindow.ui:391
+#. i18n: file: src/mainwindow.ui:399
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#. i18n: file: src/mainwindow.ui:400
+#. i18n: file: src/mainwindow.ui:408
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
 msgstr "&Opakovať"
 
-#. i18n: file: src/mainwindow.ui:403
+#. i18n: file: src/mainwindow.ui:411
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#. i18n: file: src/mainwindow.ui:412
+#. i18n: file: src/mainwindow.ui:420
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
 msgstr "Nový pohľad"
 
-#. i18n: file: src/mainwindow.ui:424
+#. i18n: file: src/mainwindow.ui:432
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
 msgstr "Zatvoriť pohľad"
 
-#. i18n: file: src/mainwindow.ui:433
+#. i18n: file: src/mainwindow.ui:441
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:442
+#. i18n: file: src/mainwindow.ui:450
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:447
+#. i18n: file: src/mainwindow.ui:455
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
 msgstr "&Vložiť"
 
-#. i18n: file: src/mainwindow.ui:450
+#. i18n: file: src/mainwindow.ui:458
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#. i18n: file: src/mainwindow.ui:455
+#. i18n: file: src/mainwindow.ui:463
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
 msgstr "Kopírovať"
 
-#. i18n: file: src/mainwindow.ui:458
+#. i18n: file: src/mainwindow.ui:466
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#. i18n: file: src/mainwindow.ui:463
+#. i18n: file: src/mainwindow.ui:471
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
 msgstr "Vystrihnúť"
 
-#. i18n: file: src/mainwindow.ui:466
+#. i18n: file: src/mainwindow.ui:474
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#. i18n: file: src/mainwindow.ui:471
+#. i18n: file: src/mainwindow.ui:479
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
 msgstr "Vyčistiť"
 
-#. i18n: file: src/mainwindow.ui:476
+#. i18n: file: src/mainwindow.ui:484
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
 msgstr "Vybrať všetko"
 
-#. i18n: file: src/mainwindow.ui:479
+#. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#. i18n: file: src/mainwindow.ui:484
+#. i18n: file: src/mainwindow.ui:492
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
 msgstr "Nevybrať nič"
 
-#. i18n: file: src/mainwindow.ui:487
+#. i18n: file: src/mainwindow.ui:495
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#. i18n: file: src/mainwindow.ui:496
+#. i18n: file: src/mainwindow.ui:504
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
 msgstr "Konfigurovať Avogadro..."
 
-#. i18n: file: src/mainwindow.ui:507
+#. i18n: file: src/mainwindow.ui:515
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
 msgstr "Návody"
 
-#. i18n: file: src/mainwindow.ui:516
+#. i18n: file: src/mainwindow.ui:524
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
 msgstr "Zdvojený pohľad"
 
-#. i18n: file: src/mainwindow.ui:524
+#. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
 msgstr "Zobrazenie osí"
 
-#. i18n: file: src/mainwindow.ui:532
+#. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
 msgstr "Ladiace informácie"
 
-#. i18n: file: src/mainwindow.ui:540
+#. i18n: file: src/mainwindow.ui:548
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
 msgstr "Pomocník Avogadro"
 
-#. i18n: file: src/mainwindow.ui:545
+#. i18n: file: src/mainwindow.ui:553
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
 msgstr "Poznámky k vydaniu"
 
-#. i18n: file: src/mainwindow.ui:550
+#. i18n: file: src/mainwindow.ui:558
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
 msgstr "Ohlásiť chybu"
 
-#. i18n: file: src/mainwindow.ui:555
+#. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
 msgstr "Často kladené otázky"
 
-#. i18n: file: src/mainwindow.ui:560
+#. i18n: file: src/mainwindow.ui:568
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
 msgstr "Webová stránka Avogadro"
 
-#. i18n: file: src/mainwindow.ui:569
+#. i18n: file: src/mainwindow.ui:577
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
 msgstr "Správca rozšírení"
 
-#. i18n: file: src/mainwindow.ui:578
+#. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
 msgstr "Editor stormu projektu..."
 
-#. i18n: file: src/mainwindow.ui:587
+#. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
 msgstr "Odpojený pohľad"
 
-#. i18n: file: src/mainwindow.ui:592
+#. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
 msgstr "Súbor molekuly..."
 
-#. i18n: file: src/mainwindow.ui:603
+#. i18n: file: src/mainwindow.ui:611
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
 msgstr "Použi rýchle vykreslenie"
 
-#. i18n: file: src/mainwindow.ui:608
+#. i18n: file: src/mainwindow.ui:616
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
 msgstr "&Vektorová Grafika..."
 
-#. i18n: file: src/mainwindow.ui:616
+#. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:624
+#. i18n: file: src/mainwindow.ui:632
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
 msgstr "Všetky molekuly v súbore..."
 
-#. i18n: file: src/mainwindow.ui:629
+#. i18n: file: src/mainwindow.ui:637
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
 msgstr "Restovať zobrazené typy"
 
-#. i18n: file: src/mainwindow.ui:640
+#. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Perspective"
 msgstr ""
 
-#. i18n: file: src/mainwindow.ui:648
+#. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
+msgstr ""
+
+#. i18n: file: src/mainwindow.ui:661
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "SMILES"
+msgstr ""
+
+#. i18n: file: src/mainwindow.ui:666
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "InChI"
+msgstr ""
+
+#. i18n: file: src/mainwindow.ui:669
+#. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
+msgid "IUPAC InChI identifier"
 msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:16

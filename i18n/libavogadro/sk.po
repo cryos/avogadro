@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-12-17 00:00-0500\n"
+"POT-Creation-Date: 2012-12-24 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:28+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -783,9 +783,9 @@ msgstr "video súbory (*.avi)"
 #: src/extensions/forcefieldextension.cpp:203
 #: src/extensions/forcefieldextension.cpp:215
 #: src/extensions/forcefieldextension.cpp:245
-#: src/extensions/insertfragmentdialog.cpp:194
-#: src/extensions/quantuminput/inputfileextension.cpp:172
-#: src/extensions/quantuminput/inputfileextension.cpp:182
+#: src/extensions/insertfragmentdialog.cpp:192
+#: src/extensions/quantuminput/inputfileextension.cpp:185
+#: src/extensions/quantuminput/inputfileextension.cpp:195
 #: src/extensions/selectextension.cpp:276
 #: src/extensions/selectextension.cpp:288
 #: src/extensions/selectextension.cpp:294 src/extensions/trajvideomaker.cpp:51
@@ -818,7 +818,7 @@ msgid "E&xtensions"
 msgstr "R&ozšírenia"
 
 #: src/extensions/animationextension.cpp:135
-#: src/extensions/quantuminput/inputfileextension.cpp:173
+#: src/extensions/quantuminput/inputfileextension.cpp:186
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "Nie je možné prečítať formát súboru %1."
@@ -874,7 +874,7 @@ msgstr "Súbor trajektorie %1 nesúhlasí s počtom atómov v aktuálnej molekul
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3891
+#: src/extensions/animationextension.h:39:4352
 msgid "Animation"
 msgstr "Animácia"
 
@@ -907,7 +907,7 @@ msgstr "Karteziánsky editor..."
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108:4096
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108:4557
 msgid "&Build"
 msgstr "&Zostaviť"
 
@@ -1640,7 +1640,7 @@ msgstr "Vodíky"
 msgid "Add or remove hydrogens"
 msgstr "Pridať alebo odstrániť vodíky"
 
-#: src/extensions/insertfragmentdialog.cpp:195
+#: src/extensions/insertfragmentdialog.cpp:193
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
 msgstr "Nie je možné prečítať súbor %1."
@@ -2179,11 +2179,12 @@ msgstr "MOPAC nefunguje správne. Možno nie je správne nainštalovaný."
 #: src/extensions/quantuminput/daltoninputdialog.cpp:356
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:187
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:391
+#: src/extensions/quantuminput/lammpsinputdialog.cpp:241
 #: src/extensions/quantuminput/molproinputdialog.cpp:172
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3221
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3592
 msgid "Show Preview"
 msgstr "Zobraziť náhľad"
 
@@ -2194,6 +2195,8 @@ msgstr "Zobraziť náhľad"
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:463
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:473
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:897
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:410
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2207,6 +2210,7 @@ msgstr "Zobraziť náhľad"
 #: src/extensions/quantuminput/daltoninputdialog.cpp:360
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:191
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:395
+#: src/extensions/quantuminput/lammpsinputdialog.cpp:245
 #: src/extensions/quantuminput/molproinputdialog.cpp:176
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
@@ -2312,11 +2316,15 @@ msgstr "Vytvorenie vstupných súborov pre balík kvantovej chémie GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, dataTitleLine)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:53
+#. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:41
+#. i18n: ectx: property (text), widget (QLineEdit, titleLine)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
@@ -2432,43 +2440,51 @@ msgstr ""
 msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:58
+#: src/extensions/quantuminput/inputfileextension.cpp:60
 msgid "&Abinit..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:63
+#: src/extensions/quantuminput/inputfileextension.cpp:65
 msgid "&Dalton..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:68
+#: src/extensions/quantuminput/inputfileextension.cpp:70
 msgid "&GAMESS-UK..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:73
+#: src/extensions/quantuminput/inputfileextension.cpp:75
 msgid "&Gaussian..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:78
+#: src/extensions/quantuminput/inputfileextension.cpp:80
 msgid "&MOLPRO..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:83
+#: src/extensions/quantuminput/inputfileextension.cpp:85
 msgid "M&OPAC..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:88
+#: src/extensions/quantuminput/inputfileextension.cpp:90
 msgid "&NWChem..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:93
+#: src/extensions/quantuminput/inputfileextension.cpp:95
+msgid "&PSI4..."
+msgstr ""
+
+#: src/extensions/quantuminput/inputfileextension.cpp:100
 msgid "&Q-Chem..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:98
+#: src/extensions/quantuminput/inputfileextension.cpp:105
 msgid "&TeraChem..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:183
+#: src/extensions/quantuminput/inputfileextension.cpp:109
+msgid "&LAMMPS..."
+msgstr ""
+
+#: src/extensions/quantuminput/inputfileextension.cpp:196
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Nie je možné prečítať súbor %1."
@@ -2480,6 +2496,24 @@ msgstr ""
 #: src/extensions/quantuminput/inputfileextension.h:41
 msgid "Create input files for quantum chemistry packages"
 msgstr ""
+
+#: src/extensions/quantuminput/lammpsinputdialog.cpp:175
+msgid "Lammps Input Deck Generator Warning"
+msgstr ""
+
+#: src/extensions/quantuminput/lammpsinputdialog.cpp:176
+#, fuzzy
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"Lammps input deck preview pane?"
+msgstr ""
+"Chcete aktualizovať náhľad textu, pričom stratíte všetky zmeny vykonané vo "
+"vstupnom náhľade súboru Q-Chem?"
+
+#: src/extensions/quantuminput/lammpsinputdialog.cpp:233
+#, fuzzy
+msgid "Lammps Input"
+msgstr "Vstup NWChem"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
 msgid "Molpro Input Deck Generator Warning"
@@ -2560,6 +2594,24 @@ msgstr ""
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
 msgid "NWChem Input Deck"
 msgstr ""
+
+#: src/extensions/quantuminput/psi4inputdialog.cpp:116
+msgid "Psi4 Input Deck Generator Warning"
+msgstr ""
+
+#: src/extensions/quantuminput/psi4inputdialog.cpp:117
+#, fuzzy
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"Psi4 input deck preview pane?"
+msgstr ""
+"Chcete aktualizovať náhľad textu, pričom stratíte všetky zmeny vykonané vo "
+"vstupnom náhľade súboru Q-Chem?"
+
+#: src/extensions/quantuminput/psi4inputdialog.cpp:173
+#, fuzzy
+msgid "Psi4 Input Deck"
+msgstr "Vstup NWChem"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -2699,7 +2751,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:3569
+#: src/extensions/shaderextension.h:41:4030
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2777,13 +2829,13 @@ msgstr "Osa Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:3630
+#: src/extensions/spectra/spectradialog.cpp:188:4091
 msgid "&Appearance"
 msgstr "&Vzhľad"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:3696
+#: src/extensions/spectra/spectradialog.cpp:189:4157
 msgid "E&xport Image"
 msgstr "E&xport Obrázku"
 
@@ -3039,7 +3091,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:3624
+#: src/extensions/spectra/spectradialog.cpp:998:4085
 msgid "&Advanced >>"
 msgstr ""
 
@@ -3089,7 +3141,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:280
-#: src/extensions/spectra/vibrationwidget.cpp:290:3903
+#: src/extensions/spectra/vibrationwidget.cpp:290:4364
 msgid "Start &Animation"
 msgstr "Spustiť &animáciu"
 
@@ -3102,7 +3154,7 @@ msgstr "Zastaviť &animáciu"
 #: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:304:3906
+#: src/extensions/spectra/vibrationwidget.cpp:304:4367
 msgid "Pause"
 msgstr ""
 
@@ -3265,7 +3317,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4055
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4516
 msgid "Nanotube Builder"
 msgstr ""
 
@@ -3778,11 +3830,15 @@ msgstr "z otáčanie"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:502
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:937
+#. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:480
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:351
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:434
+#. i18n: ectx: property (text), widget (QPushButton, resetButton)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:352
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
@@ -3936,7 +3992,7 @@ msgstr "Rozsah Nastavenia"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:4120
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:4623
 msgid "Add Atom"
 msgstr "Pridať Atóm"
 
@@ -4018,7 +4074,7 @@ msgstr "Kresliť a upraviť atómy a väzby"
 msgid "Draw Settings"
 msgstr ""
 
-#: src/tools/manipulatetool.cpp:52
+#: src/tools/manipulatetool.cpp:69
 #, fuzzy
 msgid ""
 "Manipulation Tool (F10)\n"
@@ -4034,15 +4090,15 @@ msgstr ""
 "Stredné Tlačítko myši: Kliknúť a ťahaním presunúť atómy ďalej alebo bližšie\n"
 "Pravé Tlačítko myši: Kliknúť a ťahaním otáčať vybranými atómami."
 
-#: src/tools/manipulatetool.h:53
+#: src/tools/manipulatetool.h:56
 msgid "Manipulate"
 msgstr "Spravovať"
 
-#: src/tools/manipulatetool.h:54
+#: src/tools/manipulatetool.h:57
 msgid "Translate, rotate, and adjust atoms and fragments"
 msgstr "Preložiť, otočiť a nastaviť atómy a úlomky"
 
-#: src/tools/manipulatetool.h:55
+#: src/tools/manipulatetool.h:58
 msgid "Manipulate Settings"
 msgstr "Nastavenie Manipulácie"
 
@@ -4428,6 +4484,12 @@ msgstr "A"
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, phiSpin)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:420
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, psiSpin)
+#. i18n: file: src/tools/manipulatesettingswidget.ui:105
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, xRotateSpinBox)
+#. i18n: file: src/tools/manipulatesettingswidget.ui:121
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, yRotateSpinBox)
+#. i18n: file: src/tools/manipulatesettingswidget.ui:137
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, zRotateSpinBox)
 msgid "°"
 msgstr "°"
 
@@ -5459,6 +5521,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:69
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:74
@@ -5923,11 +5987,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:546
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:974
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:517
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:471
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:396
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:493
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
@@ -6008,11 +6076,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:40
+#. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:31
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
@@ -6247,11 +6319,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:512
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:947
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:490
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:361
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:444
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:362
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:459
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -6268,6 +6344,8 @@ msgstr "Použite formulár"
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:381
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:382
+#. i18n: ectx: property (text), widget (QPushButton, computeButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:479
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
 msgid "Compute..."
@@ -6283,11 +6361,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:539
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:967
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:510
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:388
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:464
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:389
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:486
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -6332,6 +6414,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:64
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:64
@@ -6349,6 +6433,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:114
+#. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:97
@@ -6363,6 +6449,8 @@ msgstr "Teória:"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:133
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -6390,6 +6478,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:163
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MP2"
@@ -6412,6 +6502,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:225
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:235
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:310
@@ -6426,6 +6518,8 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:230
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:225
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:235
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:240
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -6469,6 +6563,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:294
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:230
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "aug-cc-pVDZ"
 msgstr ""
 
@@ -6562,6 +6658,8 @@ msgstr "STO-2G"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:195
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:190
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:215
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:205
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -7366,6 +7464,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:173
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD(T)"
 msgstr "CCSD(T)"
 
@@ -7465,6 +7565,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:293
 #. i18n: ectx: property (text), widget (QLabel, label_6)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:295
+#. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:310
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:251
@@ -7493,6 +7595,8 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:74
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -7539,6 +7643,8 @@ msgstr "V:"
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:97
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:253
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:258
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:273
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -8771,6 +8877,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:48
+#. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:48
@@ -8788,6 +8896,8 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:198
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:171
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:196
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:186
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -8871,6 +8981,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:168
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD"
@@ -8919,6 +9031,535 @@ msgstr "Checkpoint:"
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:376
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Z-matrix (compact)"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, LammpsInputDialog)
+#, fuzzy
+msgid "LAMMPS Input"
+msgstr "Vstup GAMESS"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:37
+#. i18n: ectx: property (toolTip), widget (QLabel, label_7)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:50
+#. i18n: ectx: property (toolTip), widget (QLineEdit, titleLine)
+msgid "Input file comments"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:67
+#. i18n: ectx: property (toolTip), widget (QLabel, label_units)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:87
+#. i18n: ectx: property (toolTip), widget (QComboBox, unitsCombo)
+msgid "Select the unit style to be used during the simulation."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:74
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_units)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
+#. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
+"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
+"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
+"html>"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
+#. i18n: ectx: property (text), widget (QLabel, label_units)
+#, fuzzy
+msgid "Units"
+msgstr "Jednotky:"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:101
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+msgid "lj"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:106
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+msgid "real"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:111
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+msgid "metal"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:116
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+msgid "si"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:121
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+msgid "cgs"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:126
+#. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:226
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+#, fuzzy
+msgid "electron"
+msgstr "Výber"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:134
+#. i18n: ectx: property (text), widget (QLabel, label_waterPotential)
+msgid "Water Potential"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:142
+#. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
+msgid "NONE"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:147
+#. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
+#, fuzzy
+msgid "SPC"
+msgstr "SCF"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:152
+#. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
+msgid "SPC/E"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:167
+#. i18n: ectx: property (toolTip), widget (QLabel, label_atomstyle)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:187
+#. i18n: ectx: property (toolTip), widget (QComboBox, atomStyleCombo)
+msgid "Select atom_style used by the data file."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:174
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_atomstyle)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
+#. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
+"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
+"p></body></html>"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
+#. i18n: ectx: property (text), widget (QLabel, label_atomstyle)
+#, fuzzy
+msgid "Atom Style"
+msgstr "Štýl:"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:201
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+#, fuzzy
+msgid "angle"
+msgstr "Uhol"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:206
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "atomic"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:211
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "bond"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:216
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "charge"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:221
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+#, fuzzy
+msgid "dipole"
+msgstr "Dipól"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:231
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "ellipsoid"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:236
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "full"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:241
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "line"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:246
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "meso"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:251
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+#, fuzzy
+msgid "molecular"
+msgstr "Molekula"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:256
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "peri"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:261
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "sphere"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:266
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+#, fuzzy
+msgid "tri"
+msgstr "Ytrium"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:271
+#. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
+msgid "wavepacket"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:279
+#. i18n: ectx: property (toolTip), widget (QLabel, label_readdata)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:289
+#. i18n: ectx: property (toolTip), widget (QLineEdit, readDataLine)
+msgid "Specify the name to be used for the coordinate file."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:282
+#. i18n: ectx: property (text), widget (QLabel, label_readdata)
+#, fuzzy
+msgid "Coordinate Data File"
+msgstr "Typ Súradnice:"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:296
+#. i18n: ectx: property (text), widget (QLabel, label_therm)
+msgid "Ensemble"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:304
+#. i18n: ectx: property (text), item, widget (QComboBox, ensembleCombo)
+msgid "NVT"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:309
+#. i18n: ectx: property (text), item, widget (QComboBox, ensembleCombo)
+msgid "NVE"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:317
+#. i18n: ectx: property (text), widget (QLabel, label_temp)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:735
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#, fuzzy
+msgid "Temperature"
+msgstr "Šablóna"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:337
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:347
+#. i18n: ectx: property (toolTip), widget (QSpinBox, nhChainSpin)
+msgid "Select the number of Nosé-Hoover chains in the NVT ensemble."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:340
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "NH Chains"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:383
+#. i18n: ectx: property (toolTip), widget (QLabel, label_2)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:393
+#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, stepSpin)
+msgid ""
+"Time step for the simulation in units according to \"Units\" specification."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:386
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#, fuzzy
+msgid "Time Step"
+msgstr "Maximum Krokov:"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:406
+#. i18n: ectx: property (toolTip), widget (QLabel, label_4)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:632
+#. i18n: ectx: property (toolTip), widget (QLineEdit, dumpXYZEdit)
+msgid "Filename of the XYZ file to write during the simulation."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:409
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Dump XYZ"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:423
+#. i18n: ectx: property (toolTip), widget (QLabel, label_dimension)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:837
+#. i18n: ectx: property (toolTip), widget (QComboBox, dimensionCombo)
+msgid "Number of dimensions in the system."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:426
+#. i18n: ectx: property (text), widget (QLabel, label_dimension)
+#, fuzzy
+msgid "Dimensions"
+msgstr "Rozšírenia"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:436
+#. i18n: ectx: property (toolTip), widget (QComboBox, zBoundaryCombo)
+#, fuzzy
+msgid "Change Z boundary style."
+msgstr "Zmeniť H na metyl"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:443
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:483
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:523
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+#, fuzzy
+msgid "p"
+msgstr "pH"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:448
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:488
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:528
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+msgid "s"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:453
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:493
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:533
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+msgid "f"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:458
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:498
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:538
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+#, fuzzy
+msgid "m"
+msgstr "qm"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:463
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:503
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:543
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+#, fuzzy
+msgid "fs"
+msgstr "fps"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:468
+#. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:508
+#. i18n: ectx: property (text), item, widget (QComboBox, yBoundaryCombo)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:548
+#. i18n: ectx: property (text), item, widget (QComboBox, xBoundaryCombo)
+msgid "fm"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:476
+#. i18n: ectx: property (toolTip), widget (QComboBox, yBoundaryCombo)
+#, fuzzy
+msgid "Change Y boundary style."
+msgstr "Zmeniť H na metyl"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:516
+#. i18n: ectx: property (toolTip), widget (QComboBox, xBoundaryCombo)
+#, fuzzy
+msgid "Change X boundary style."
+msgstr "Zmeniť H na metyl"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:556
+#. i18n: ectx: property (toolTip), widget (QLabel, label_boundary)
+msgid "Select bondary Styles in X, Y and Z directions."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:559
+#. i18n: ectx: property (text), widget (QLabel, label_boundary)
+msgid "Boundary"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:579
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+msgid "Number of replicants in X, Y and Z directions."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:582
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#, fuzzy
+msgid "Replicate"
+msgstr "Duplikovať"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:602
+#. i18n: ectx: property (toolTip), widget (QSpinBox, xReplicateSpin)
+msgid "Replicate the X direction."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:612
+#. i18n: ectx: property (toolTip), widget (QSpinBox, yReplicateSpin)
+msgid "Replicate the Y direction."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:622
+#. i18n: ectx: property (toolTip), widget (QSpinBox, zReplicateSpin)
+msgid "Replicate the Z direction."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:639
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:649
+#. i18n: ectx: property (toolTip), widget (QSpinBox, runSpin)
+msgid "Total number of timesteps to run the simulation."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:642
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "Total Steps"
+msgstr "Energia"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:675
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+msgid "Dump Interval"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:705
+#. i18n: ectx: property (toolTip), widget (QLabel, label_8)
+msgid "Set the initial atom velocities for the simulation."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:708
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+msgid "Initial Velocities"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:715
+#. i18n: ectx: property (toolTip), widget (QComboBox, velocityDistCombo)
+msgid "Select the distribution of initial atom velocities."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:719
+#. i18n: ectx: property (text), item, widget (QComboBox, velocityDistCombo)
+msgid "gaussian"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:724
+#. i18n: ectx: property (text), item, widget (QComboBox, velocityDistCombo)
+msgid "uniform"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:732
+#. i18n: ectx: property (toolTip), widget (QLabel, label_9)
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:742
+#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, velocityTempSpin)
+msgid "Set the initial atom velocities to match this temperature."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:758
+#. i18n: ectx: property (toolTip), widget (QCheckBox, zeroMOMCheck)
+msgid "Remove system linear momentum from initial velocities."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:761
+#. i18n: ectx: property (text), widget (QCheckBox, zeroMOMCheck)
+msgid "Zero Linear Momentum"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:771
+#. i18n: ectx: property (toolTip), widget (QCheckBox, zeroLCheck)
+msgid "Remove system angular momentum from initial velocities."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:774
+#. i18n: ectx: property (text), widget (QCheckBox, zeroLCheck)
+msgid "Zero Angular Momentum"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:797
+#. i18n: ectx: property (toolTip), widget (QLabel, label_10)
+msgid "Control the thermodynamic output during the simulation."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:800
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#, fuzzy
+msgid "Output"
+msgstr "Výstup:"
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:807
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+msgid "Output Interval"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:844
+#. i18n: ectx: property (text), item, widget (QComboBox, dimensionCombo)
+msgid "2d"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:849
+#. i18n: ectx: property (text), item, widget (QComboBox, dimensionCombo)
+msgid "3d"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:857
+#. i18n: ectx: property (toolTip), widget (QComboBox, thermoStyleCombo)
+msgid "Thermodynamic output style."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:861
+#. i18n: ectx: property (text), item, widget (QComboBox, thermoStyleCombo)
+msgid "One Line"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:866
+#. i18n: ectx: property (text), item, widget (QComboBox, thermoStyleCombo)
+msgid "Multi Line"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
+#. i18n: ectx: property (html), widget (QTextEdit, previewText)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"family:'Courier New,courier'; font-size:10pt;\"></p></body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:20
@@ -9007,6 +9648,42 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
 msgstr "Vstup NWChem"
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, Psi4InputDialog)
+msgid "Psi4 Input"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:138
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+msgid "SAPT0"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:143
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+msgid "SAPT2"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:148
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#, fuzzy
+msgid "B3LYP-D"
+msgstr "B3LYP"
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:153
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+msgid "B97-D"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:158
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+msgid "M05-2X"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:220
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
+msgid "jun-cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, QChemInputDialog)
@@ -9661,6 +10338,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)
+#. i18n: file: src/tools/manipulatesettingswidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ManipulateSettingsWidget)
 #. i18n: file: src/tools/navigatesettingswidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
 msgid "Form"
@@ -9841,6 +10520,58 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
 msgid "&Hide when finished"
 msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:70
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "X (Å)"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:77
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Y (Å)"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:84
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Z (Å)"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:91
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "Translate by:"
+msgstr "Š&ablóna"
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:150
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+msgid "X-axis"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:157
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+msgid "Y-axis"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:164
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+msgid "Z-axis"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:171
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Rotate around:"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:179
+#. i18n: ectx: property (text), item, widget (QComboBox, rotateComboBox)
+msgid "Origin"
+msgstr ""
+
+#. i18n: file: src/tools/manipulatesettingswidget.ui:184
+#. i18n: ectx: property (text), item, widget (QComboBox, rotateComboBox)
+#, fuzzy
+msgid "Geometry"
+msgstr "Optimalizovať geometriu"
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
@@ -10111,9 +10842,6 @@ msgstr ""
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
-#~ msgid "Duplicate"
-#~ msgstr "Duplikovať"
-
 #~ msgid "Remove"
 #~ msgstr "Odstrániť"
 
@@ -10190,9 +10918,6 @@ msgstr ""
 #~ msgid "Customi&ze >>"
 #~ msgstr "Prispôso&biť >>"
 
-#~ msgid "Template"
-#~ msgstr "Šablóna"
-
 #~ msgid "&Vibrations..."
 #~ msgstr "&Vibrácie..."
 
@@ -10255,9 +10980,6 @@ msgstr ""
 
 #~ msgid "Renders computed molecular surfaces"
 #~ msgstr "Vykreslí vypočítaný molekulárny povrch"
-
-#~ msgid "Optimize Geometry"
-#~ msgstr "Optimalizovať geometriu"
 
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Vstup Q-Chem..."
