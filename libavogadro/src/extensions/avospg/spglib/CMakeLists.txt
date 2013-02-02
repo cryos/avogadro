@@ -20,7 +20,7 @@ set(spglib_HDRS
   spglib.h
 )
 
-add_library(spglib SHARED ${spglib_SRCS})
+add_library(spglib STATIC ${spglib_SRCS})
 
 # Suppress spglib warnings
 set_target_properties(spglib PROPERTIES
@@ -53,7 +53,3 @@ foreach(headerFile ${spglib_HDRS})
   set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
   execute_process(COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach()
-
-install(TARGETS spglib
-LIBRARY       DESTINATION ${LIB_INSTALL_DIR}
-PUBLIC_HEADER DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
