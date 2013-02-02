@@ -18,6 +18,12 @@ if (WIN32 AND ENABLE_DEPRECATED_INSTALL_RULES)
   # Set the directories to defaults if not set
 
   ##############################################
+  # AvoSpgLib                                  #
+  ##############################################
+  install(FILES "${Avogadro_BINARY_DIR}/bin/avogadro_AvoSpg.dll"
+    DESTINATION bin)
+
+  ##############################################
   # Zlib                                       #
   ##############################################
   find_file(zlib_DLL "zlib1.dll" PATHS
