@@ -546,7 +546,7 @@ if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 #    )
     install(FILES
       "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
-      DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
+      DESTINATION "./${QT_MKSPECS_RELATIVE}/features"
     )
 #  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
 else()
