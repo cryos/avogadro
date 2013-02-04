@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-01-28 00:00-0500\n"
+"POT-Creation-Date: 2013-02-04 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:24+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -882,7 +882,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:4352
+#: src/extensions/animationextension.h:39:4427
 msgid "Animation"
 msgstr "Animació"
 
@@ -912,12 +912,13 @@ msgstr "Editor cartesià..."
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
+#: src/extensions/insertdnaextension.cpp:73
 #: src/extensions/insertfragmentextension.cpp:97
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108:4557
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:108:4632
 msgid "&Build"
 msgstr "&Compila"
 
@@ -1655,6 +1656,52 @@ msgstr "Hidrògens"
 msgid "Add or remove hydrogens"
 msgstr "Afegeix o suprimeix hidrògens"
 
+#: src/extensions/insertdnaextension.cpp:56
+msgid "DNA/RNA..."
+msgstr ""
+
+#: src/extensions/insertdnaextension.cpp:73
+#: src/extensions/insertfragmentextension.cpp:97
+#: src/extensions/insertpeptideextension.cpp:75
+msgid "&Insert"
+msgstr "&Insereix"
+
+#: src/extensions/insertdnaextension.cpp:127
+#, fuzzy
+msgid "Insert DNA"
+msgstr "&Insereix"
+
+#: src/extensions/insertdnaextension.cpp:221
+#, fuzzy
+msgctxt "uracil"
+msgid "U"
+msgstr "U"
+
+#: src/extensions/insertdnaextension.cpp:222
+msgid "Uracil"
+msgstr ""
+
+#: src/extensions/insertdnaextension.cpp:228
+#, fuzzy
+msgctxt "thymine"
+msgid "T"
+msgstr "T"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:79
+#. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
+#: src/extensions/insertdnaextension.cpp:229:879
+msgid "Thymine"
+msgstr ""
+
+#: src/extensions/insertdnaextension.h:30
+#, fuzzy
+msgid "Insert DNA/RNA"
+msgstr "&Insereix"
+
+#: src/extensions/insertdnaextension.h:31
+msgid "Insert DNA/RNA chains"
+msgstr ""
+
 #: src/extensions/insertfragmentdialog.cpp:193
 #, fuzzy, qt-format
 msgid "Cannot read molecular file %1."
@@ -1671,11 +1718,6 @@ msgstr "Fragment..."
 #: src/extensions/insertfragmentextension.cpp:69
 msgid "SMILES..."
 msgstr "SMILES..."
-
-#: src/extensions/insertfragmentextension.cpp:97
-#: src/extensions/insertpeptideextension.cpp:75
-msgid "&Insert"
-msgstr "&Insereix"
 
 #: src/extensions/insertfragmentextension.cpp:121
 #: src/extensions/insertfragmentextension.cpp:166
@@ -1711,7 +1753,7 @@ msgstr "Pèptid"
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:861 rc.cpp:1080
+#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "Insereix un pèptid"
 
@@ -1945,7 +1987,7 @@ msgstr "Propietats de l'estereoisòmer"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1339 rc.cpp:1840 rc.cpp:2182
+#: src/extensions/propextension.h:43:1414 rc.cpp:1915 rc.cpp:2257
 msgid "Properties"
 msgstr "Propietats"
 
@@ -2212,7 +2254,7 @@ msgstr ""
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3592
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3667
 msgid "Show Preview"
 msgstr "Mostra la previsualització"
 
@@ -2243,7 +2285,7 @@ msgstr "Mostra la previsualització"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1305
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1380
 msgid "Hide Preview"
 msgstr "Amaga la previsualització"
 
@@ -2360,7 +2402,7 @@ msgstr "Crea fitxers d'entrada per al paquet químic quàntic GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1170
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1245
 msgid "Title"
 msgstr "Títol"
 
@@ -2800,7 +2842,7 @@ msgstr "Fitxers de paràmetres shader (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4030
+#: src/extensions/shaderextension.h:41:4105
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -2881,13 +2923,13 @@ msgstr "Eix Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4091
+#: src/extensions/spectra/spectradialog.cpp:188:4166
 msgid "&Appearance"
 msgstr "&Aparença"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4157
+#: src/extensions/spectra/spectradialog.cpp:189:4232
 msgid "E&xport Image"
 msgstr "E&xporta Imatge"
 
@@ -3143,7 +3185,7 @@ msgstr "&Avançat <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4085
+#: src/extensions/spectra/spectradialog.cpp:998:4160
 msgid "&Advanced >>"
 msgstr "&Avançat >>"
 
@@ -3169,7 +3211,7 @@ msgstr "Vibracions"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2692
+#: src/extensions/spectra/vibrationextension.cpp:202:2767
 msgid "Vibrational Analysis"
 msgstr "Anàlisis vibracional"
 
@@ -3193,7 +3235,7 @@ msgstr "Sortida %1 vibracions per freqüència..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:280
-#: src/extensions/spectra/vibrationwidget.cpp:290:4364
+#: src/extensions/spectra/vibrationwidget.cpp:290:4439
 msgid "Start &Animation"
 msgstr "Inicia &Animació"
 
@@ -3206,7 +3248,7 @@ msgstr "Atura &animació"
 #: src/extensions/spectra/vibrationwidget.cpp:283
 #: src/extensions/spectra/vibrationwidget.cpp:292
 #: src/extensions/spectra/vibrationwidget.cpp:301
-#: src/extensions/spectra/vibrationwidget.cpp:304:4367
+#: src/extensions/spectra/vibrationwidget.cpp:304:4442
 msgid "Pause"
 msgstr "Pausa"
 
@@ -3372,7 +3414,7 @@ msgstr "Constructor de super cel·les ..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4516
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4591
 #, fuzzy
 msgid "Nanotube Builder"
 msgstr "Cadenes pèptides"
@@ -3928,7 +3970,7 @@ msgstr "rotació z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1299 rc.cpp:1858 rc.cpp:2909
+#: src/tools/autorotatetool.cpp:296:1374 rc.cpp:1933 rc.cpp:2984
 msgid "Reset"
 msgstr "Inicialització"
 
@@ -4098,7 +4140,7 @@ msgstr "Configuració de mesuraments"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:4623
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:4698
 msgid "Add Atom"
 msgstr "Afegeix un àtom"
 
@@ -4154,7 +4196,7 @@ msgstr "Element:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:812:2323
+#: src/tools/drawtool.cpp:812:2398
 msgid "Other..."
 msgstr "Altre..."
 
@@ -4162,11 +4204,15 @@ msgstr "Altre..."
 msgid "Bond Order:"
 msgstr "Ordre d'enllaç:"
 
-#: src/tools/drawtool.cpp:821
+#. i18n: file: src/extensions/insertdnadialog.ui:190
+#. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
+#: src/tools/drawtool.cpp:821:912
 msgid "Single"
 msgstr "Senzill"
 
-#: src/tools/drawtool.cpp:822
+#. i18n: file: src/extensions/insertdnadialog.ui:197
+#. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
+#: src/tools/drawtool.cpp:822:915
 msgid "Double"
 msgstr "Doble"
 
@@ -4349,7 +4395,7 @@ msgstr "Editor de Matriu Z ..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2410
+#: src/tools/zmatrixtool.h:39:2485
 msgid "Z-Matrix"
 msgstr "Matriu Z"
 
@@ -4448,6 +4494,8 @@ msgstr "Y"
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/extensions/cartesianeditor.ui:301
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
+#. i18n: file: src/extensions/insertdnadialog.ui:137
+#. i18n: ectx: property (text), item, widget (QComboBox, bpCombo)
 msgid "Z"
 msgstr "Z"
 
@@ -4593,6 +4641,10 @@ msgstr "Radi de tall:"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:64
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
+#. i18n: file: src/extensions/insertdnadialog.ui:52
+#. i18n: ectx: property (text), widget (QToolButton, toolButton_A)
+#. i18n: file: src/extensions/insertdnadialog.ui:127
+#. i18n: ectx: property (text), item, widget (QComboBox, bpCombo)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:464
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:238
@@ -5714,6 +5766,118 @@ msgstr "Algoritme"
 msgid "10e-"
 msgstr "10e-"
 
+#. i18n: file: src/extensions/insertdnadialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, InsertDNADialog)
+msgid "Insert Nucleic Acids"
+msgstr ""
+
+#. i18n: file: src/extensions/insertdnadialog.ui:20
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+msgid "DNA/RNA Builder"
+msgstr ""
+
+#. i18n: file: src/extensions/insertdnadialog.ui:27
+#. i18n: ectx: property (text), item, widget (QComboBox, typeComboBox)
+#, fuzzy
+msgid "DNA"
+msgstr "N/A"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:32
+#. i18n: ectx: property (text), item, widget (QComboBox, typeComboBox)
+#, fuzzy
+msgid "RNA"
+msgstr "N/A"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:40
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#, fuzzy
+msgid "Nucleic Acids:"
+msgstr "Nucli:"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:49
+#. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_A)
+#, fuzzy
+msgid "Adenine"
+msgstr "Alanina"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:59
+#. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_C)
+#, fuzzy
+msgid "Cytosine"
+msgstr "Tirosina"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:62
+#. i18n: ectx: property (text), widget (QToolButton, toolButton_C)
+#. i18n: file: src/extensions/insertpeptidedialog.ui:474
+#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+msgid "C"
+msgstr "C"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:69
+#. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_G)
+#, fuzzy
+msgid "Guanine"
+msgstr "Alanina"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:72
+#. i18n: ectx: property (text), widget (QToolButton, toolButton_G)
+#. i18n: file: src/extensions/insertpeptidedialog.ui:494
+#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+msgid "G"
+msgstr "G"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:82
+#. i18n: ectx: property (text), widget (QToolButton, toolButton_TU)
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1494
+#. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
+msgid "T"
+msgstr "T"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:104
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "Sequence:"
+msgstr "Freqüències"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:120
+#. i18n: ectx: property (toolTip), widget (QComboBox, bpCombo)
+#. i18n: file: src/extensions/insertdnadialog.ui:150
+#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, bpTurnsSpin)
+msgid "the number of base pairs per helix turn"
+msgstr ""
+
+#. i18n: file: src/extensions/insertdnadialog.ui:132
+#. i18n: ectx: property (text), item, widget (QComboBox, bpCombo)
+#. i18n: file: src/extensions/insertpeptidedialog.ui:469
+#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+msgid "B"
+msgstr "B"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:142
+#. i18n: ectx: property (text), item, widget (QComboBox, bpCombo)
+#. i18n: file: src/extensions/insertpeptidedialog.ui:387
+#. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
+msgid "Other"
+msgstr "Altra"
+
+#. i18n: file: src/extensions/insertdnadialog.ui:172
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "Bases Per Turn:"
+msgstr ""
+
+#. i18n: file: src/extensions/insertdnadialog.ui:183
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Strands:"
+msgstr ""
+
+#. i18n: file: src/extensions/insertdnadialog.ui:227
+#. i18n: ectx: property (text), widget (QPushButton, insertButton)
+#. i18n: file: src/extensions/insertfragmentdialog.ui:70
+#. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
+#, fuzzy
+msgid "Insert"
+msgstr "&Insereix"
+
 #. i18n: file: src/extensions/insertfragmentdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, InsertFragmentDialog)
 msgid "Insert Fragment..."
@@ -5729,12 +5893,6 @@ msgstr "Filtre: "
 #. i18n: ectx: property (toolTip), widget (QLineEdit, filterLineEdit)
 msgid "Type a name or part of a name to show only matching files."
 msgstr ""
-
-#. i18n: file: src/extensions/insertfragmentdialog.ui:70
-#. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
-#, fuzzy
-msgid "Insert"
-msgstr "&Insereix"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:20
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6028,11 +6186,6 @@ msgstr "Hèlix 3-10"
 msgid "Pi Helix"
 msgstr "Hèlix Pi"
 
-#. i18n: file: src/extensions/insertpeptidedialog.ui:387
-#. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-msgid "Other"
-msgstr "Altra"
-
 #. i18n: file: src/extensions/insertpeptidedialog.ui:397
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Phi:"
@@ -6053,16 +6206,6 @@ msgstr "Cadena número:"
 msgid "The chain number for the new peptide"
 msgstr "El nombre de cadena per al següent pèptid"
 
-#. i18n: file: src/extensions/insertpeptidedialog.ui:469
-#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
-msgid "B"
-msgstr "B"
-
-#. i18n: file: src/extensions/insertpeptidedialog.ui:474
-#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
-msgid "C"
-msgstr "C"
-
 #. i18n: file: src/extensions/insertpeptidedialog.ui:484
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "E"
@@ -6072,11 +6215,6 @@ msgstr "E"
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "F"
 msgstr "F"
-
-#. i18n: file: src/extensions/insertpeptidedialog.ui:494
-#. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
-msgid "G"
-msgstr "G"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolecularPropertiesDialog)
@@ -8420,11 +8558,6 @@ msgstr "TD"
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "TH"
 msgstr "TH"
-
-#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1494
-#. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
-msgid "T"
-msgstr "T"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1499
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
@@ -11978,9 +12111,6 @@ msgstr ""
 
 #~ msgid "Move Item Up"
 #~ msgstr "Puja l'element"
-
-#~ msgid "U"
-#~ msgstr "U"
 
 #~ msgid "Move Item Down"
 #~ msgstr "Baixa l'element"
