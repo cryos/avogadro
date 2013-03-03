@@ -20,7 +20,12 @@ set(spglib_HDRS
   spglib.h
 )
 
-add_library(spglib STATIC ${spglib_SRCS})
+if(UNIX)
+  add_library(spglib SHARED ${spglib_SRCS})
+  target_link_libraries(spglib m)
+else() # Build statically on windows.
+  add_library(spglib STATIC ${spglib_SRCS})
+endif()
 
 # Suppress spglib warnings
 set_target_properties(spglib PROPERTIES
