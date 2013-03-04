@@ -31,22 +31,6 @@ endif()
 set_target_properties(spglib PROPERTIES
   COMPILE_FLAGS "-w"
   OUTPUT_NAME avogadro_spglib
-  LABELS spglib
-  PUBLIC_HEADER ${spglib_HDRS})
+  LABELS spglib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
-##I'm not sure I understand this, but it seems to work well for me.
-# Set up the include directory and symlink/copy all headers to it.
-# Note: Windows lacks symlinks and so the files must be copied.
-#make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
-if(UNIX)
-  set(header_cmd "create_symlink")
-else()
-  set(header_cmd "copy_if_different")
-endif()
-foreach(headerFile ${spglib_HDRS})
-  set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
-  set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
-endforeach()

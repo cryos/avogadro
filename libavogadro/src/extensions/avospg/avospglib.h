@@ -40,7 +40,7 @@ namespace Avogadro {
 #ifdef SYSTEM_SPGLIB
 #include <spglib/spglib.h>
 #else
-#include <avogadro/spglib.h>
+#include "spglib/spglib.h"
 #endif
     }
 
