@@ -27,7 +27,9 @@
 
 #include <avogadro/global.h>
 #include <avogadro/tool.h>
+#ifndef Q_MOC_RUN
 #include <boost/python.hpp>
+#endif
 
 #include <QObject>
 #include <QAction>
