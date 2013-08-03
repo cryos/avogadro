@@ -340,7 +340,7 @@ void GamessEFPData::RemoveGroups( Atom *atom )
         m_efpCount--;
       }
       delete (*iter);
-      m_groups.erase( (iter) );
+      iter = m_groups.erase( (iter) );
     }
     else
     {
@@ -355,7 +355,7 @@ void GamessEFPData::RemoveGroup( GamessEFPGroup *group )
   std::vector<GamessEFPGroup *>::iterator iter;
   for ( iter = m_groups.begin(); iter != m_groups.end(); iter++ ) {
     if ( *iter == group ) {
-      m_groups.erase( iter );
+      iter = m_groups.erase( iter );
     }
   }
 }
