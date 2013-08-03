@@ -806,8 +806,7 @@ bool GamessControlGroup::UseDFT( bool State )
 }
 bool GamessControlGroup::UseDFT( void ) const
 {
-  bool result = false;
-  result = (( Options & ( 1<<4 ) )?true:false );
+  bool result = (( Options & ( 1<<4 ) )?true:false );
   if ( GetSCFType() > 3 ) result = false;
   if ( GetMPLevel() > 0 ) result = false;
   if ( GetCIType() > 0 ) result = false;

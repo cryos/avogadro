@@ -376,17 +376,15 @@ void SlaterSet::processDensity(SlaterShell &shell)
     // Calculate the off-diagonal parts of the matrix
     for (unsigned int j = 0; j < i; ++j) {
       if (isSmall(set->m_density.coeffRef(i, j))) continue;
-      double a = 0.0, b = 0.0;
       // Do the first basis
-      a = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
+      double a = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
                      dr[set->m_slaterIndices[i]], i);
-      b = calcSlater(shell.set, deltas[set->m_slaterIndices[j]],
+      double b = calcSlater(shell.set, deltas[set->m_slaterIndices[j]],
                      dr[set->m_slaterIndices[j]], j);
       rho += 2.0 * set->m_density.coeffRef(i, j) * (a*b);
     }
     // Now calculate the matrix diagonal
-    double tmp = 0.0;
-    tmp = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
+    double tmp = calcSlater(shell.set, deltas[set->m_slaterIndices[i]],
                      dr[set->m_slaterIndices[i]], i);
     rho += set->m_density.coeffRef(i, i) * (tmp*tmp);
   }

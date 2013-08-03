@@ -349,7 +349,7 @@ namespace Avogadro {
 	if (!current)
 	  return;
 
-    bool itemsEnabled = false;
+    bool itemsEnabled = true;
     bool currentItemEnabled = false;
     bool moveItemUpEnabled = false;
     bool moveItemDownEnabled = false;
@@ -359,7 +359,6 @@ namespace Avogadro {
     bool settingsButtonEnabled = false;
     QString aliasText, typeText;
 
-    itemsEnabled = true;
     if (current) {
       int idx;
       int idxCount;

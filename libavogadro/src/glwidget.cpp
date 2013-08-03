@@ -2985,16 +2985,6 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
     //QPaintEngine::Type oldEngineType = QGL::preferredPaintEngine();
     QPaintEngine *engine = paintEngine();
 
-    //if (engine && (oldEngineType == QPaintEngine::OpenGL2) && engine->isActive()) {
-    //    qWarning("QGLWidget::renderText(): Calling renderText() while a GL 2 paint engine is"
-    //             " active on the same device is not allowed.");
-    //    return;
-    //}
-
-    // this changes what paintEngine() returns
-    //QGL::setPreferredPaintEngine(QPaintEngine::OpenGL);
-    //qgl_engine_selector()->setPreferredPaintEngine(QPaintEngine::OpenGL);
-    engine = paintEngine();
     QPainter *p;
     bool reuse_painter = false;
     bool use_depth_testing = glIsEnabled(GL_DEPTH_TEST);
