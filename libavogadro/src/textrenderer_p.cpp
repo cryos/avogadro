@@ -212,7 +212,10 @@ namespace Avogadro {
     //     much it is surrounded by other pixels.
 
     int *neighborhood = new int[ texwidth * texheight ];
-    if( ! neighborhood ) return false;
+    if( ! neighborhood ) {
+      delete [] rawbitmap;
+      return false;
+    }
     for( int i = 0; i < texheight * texwidth; i++)
       neighborhood[i] = 0;
 
@@ -246,7 +249,12 @@ namespace Avogadro {
     GLubyte *glyphbitmap = new GLubyte[ texwidth * texheight ];
     if( ! glyphbitmap ) return false;
     GLubyte *outlinebitmap = new GLubyte[ texwidth * texheight ];
-    if( ! outlinebitmap ) return false;
+    if( ! outlinebitmap ) {
+      delete [] neighborhood;
+      delete [] rawbitmap;
+      delete [] glyphbitmap;
+      return false;
+    }
 
     for( int n = 0; n < texwidth * texheight; n++ )
     {
@@ -264,9 +272,17 @@ namespace Avogadro {
     // *** STEP 5 : pass the final bitmap to OpenGL for texturing ***
 
     glGenTextures( 1, &m_glyphTexture );
-    if( ! m_glyphTexture ) return false;
+    if( ! m_glyphTexture ) {
+      delete [] outlinebitmap;
+      delete [] glyphbitmap;
+      return false;
+    }
     glGenTextures( 1, &m_outlineTexture );
-    if( ! m_outlineTexture ) return false;
+    if( ! m_outlineTexture ) {
+      delete [] outlinebitmap;
+      delete [] glyphbitmap;
+      return false;
+    }
 
     glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
 

@@ -956,6 +956,11 @@ namespace Avogadro
 
       if ( *t == tout )
       {
+        delete [] f5;
+        delete [] f4;
+        delete [] f3;
+        delete [] f2;
+        delete [] f1;
         return 2;
       }
 
