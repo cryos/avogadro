@@ -259,7 +259,7 @@ namespace Avogadro
       vector< vector<int> > maplist = sp.GetUMapList();
 
       for (vector< vector<int> >::iterator it1 = maplist.begin();
-           it1 != maplist.end(); it1++) {
+           it1 != maplist.end(); ++it1) {
 
         QVector<int> matches = QVector<int>::fromStdVector( *it1 );
 

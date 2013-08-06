@@ -265,7 +265,7 @@ void GamessEFPGroup::GetCenterOfMass( Molecule *molecule, double &x, double &y, 
   sum[1] = 0.0;
   sum[2] = 0.0;
 
-  for ( std::vector<Atom *>::iterator i = atoms.begin(); i != atoms.end(); i++ ) {
+  for ( std::vector<Atom *>::iterator i = atoms.begin(); i != atoms.end(); ++i ) {
     Atom *atom = *i;
 
     double m = atom->OBAtom().GetAtomicMass();
@@ -285,7 +285,7 @@ void GamessEFPGroup::GetCenterOfMass( Molecule *molecule, double &x, double &y, 
 
 bool GamessEFPGroup::Contains(Atom *atom)
 {
-  for ( std::vector<Atom *>::iterator i = atoms.begin(); i != atoms.end(); i++ ) {
+  for ( std::vector<Atom *>::iterator i = atoms.begin(); i != atoms.end(); ++i ) {
     if(atom == *i)
     {
       return true;
@@ -345,7 +345,7 @@ void GamessEFPData::RemoveGroups( Atom *atom )
     else
     {
       // if we remove it automatically increments
-      iter++;
+      ++iter;
     }
   }
 }
@@ -353,7 +353,7 @@ void GamessEFPData::RemoveGroups( Atom *atom )
 void GamessEFPData::RemoveGroup( GamessEFPGroup *group )
 {
   std::vector<GamessEFPGroup *>::iterator iter;
-  for ( iter = m_groups.begin(); iter != m_groups.end(); iter++ ) {
+  for ( iter = m_groups.begin(); iter != m_groups.end(); ++iter ) {
     if ( *iter == group ) {
       iter = m_groups.erase( iter );
     }
@@ -1784,10 +1784,10 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 
   if ( IData->EFP->GetGroupCount() ) {
     // write out EFP info
-    for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); iter++ ) {
+    for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); ++iter ) {
       if (( *iter )->type != GamessEFPGroup::QMType ) { continue; }
 
-      for ( std::vector<Atom *>::iterator i = ( *iter )->atoms.begin(); i != ( *iter )->atoms.end(); i++ ) {
+      for ( std::vector<Atom *>::iterator i = ( *iter )->atoms.begin(); i != ( *iter )->atoms.end(); ++i ) {
         Atom *atom = *i;
 
         char atomicNumber = atom ->atomicNumber();
@@ -1806,7 +1806,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
     File << " $EFRAG" << endl;
     File << "COORD=CART" << endl;
 
-    for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); iter++ ) {
+    for ( EFPGroupIter iter = IData->EFP->GetGroupBegin(); iter != IData->EFP->GetGroupEnd(); ++iter ) {
       if (( *iter )->type != GamessEFPGroup::EFPType ) { continue; }
 
       double com[3];
@@ -1821,7 +1821,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
         dist[i] = 0.0;
       }
 
-      for ( std::vector<Atom *>::iterator idx = ( *iter )->atoms.begin(); idx != ( *iter )->atoms.end(); idx++ ) {
+      for ( std::vector<Atom *>::iterator idx = ( *iter )->atoms.begin(); idx != ( *iter )->atoms.end(); ++idx ) {
         Atom *atom = *idx;
 
         double atomPos[3];

@@ -143,7 +143,7 @@ namespace Avogadro
           lit = (*vit).constBegin();
           while(lit == (*vit).constEnd())
           {
-            vit++;
+            ++vit;
             if(vit != vl->constEnd())
             {
               lit = (*vit).constBegin();
@@ -166,10 +166,10 @@ namespace Avogadro
         {
           if(vit != vl->constEnd())
           {
-            lit++;
+            ++lit;
             while(lit == (*vit).constEnd())
             {
-              vit++;
+              ++vit;
 
               if(vit == vl->constEnd())
               {
