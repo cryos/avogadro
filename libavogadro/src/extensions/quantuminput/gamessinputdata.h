@@ -515,7 +515,7 @@ namespace Avogadro {
       inline short GetGuess(void) const {return GuessType;};
       const char * GetGuessText(void) const;
       short SetGuess(const char *GuessText);
-      inline short SetGuess(short NewGuess) {if ((NewGuess<0)&&(NewGuess>5)) return -1; GuessType = NewGuess; return GetGuess();};
+      inline short SetGuess(short NewGuess) {if ((NewGuess<0)||(NewGuess>5)) return -1; GuessType = NewGuess; return GetGuess();};
       inline short GetVecSource(void) const {return VecSource;};
       inline void SetVecSource(short NewVal) {if (NewVal>0) VecSource = NewVal;};
       inline long GetNumOrbs(void) const {return NumOrbs;};
