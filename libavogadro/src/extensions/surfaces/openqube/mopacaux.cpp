@@ -141,7 +141,7 @@ void MopacAux::load(SlaterSet* basis)
   Molecule &mol = basis->moleculeRef();
   mol.clearAtoms();
   if (m_atomPos.size() == m_atomNums.size()) {
-    for (int i = 0; i < m_atomPos.size(); ++i) {
+    for (size_t i = 0; i < m_atomPos.size(); ++i) {
       mol.addAtom(m_atomPos[i], m_atomNums[i]);
     }
   }

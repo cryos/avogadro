@@ -762,8 +762,8 @@ namespace Avogadro {
 
     if (d->fogLevel) {
       glFogi(GL_FOG_MODE, GL_LINEAR);
-      GLfloat fogColor[4]= {d->background.redF(), d->background.greenF(),
-                            d->background.blueF(), d->background.alphaF()};
+      GLfloat fogColor[4]= {static_cast<GLfloat>(d->background.redF()), static_cast<GLfloat>(d->background.greenF()),
+                            static_cast<GLfloat>(d->background.blueF()), static_cast<GLfloat>(d->background.alphaF())};
       glFogfv(GL_FOG_COLOR, fogColor);
       Vector3d distance = camera()->modelview() * d->center;
       double distanceToCenter = distance.norm();
@@ -977,11 +977,11 @@ namespace {
   // http://bytes.com/topic/c/answers/621985-print-binary-representation
   char* debug16bit(const quint16 x) {
     static char buff[sizeof(quint16) * CHAR_BIT + 1];
-    unsigned int i;
-    int j = sizeof(int) * CHAR_BIT - 1;
+    quint16 i;
+    quint16 j = sizeof(quint16) * CHAR_BIT - 1;
 
     buff[j] = 0;
-    for(i=0;i<sizeof(int) * CHAR_BIT; i++)
+    for(i=0;i<sizeof(quint16) * CHAR_BIT; i++)
       {
         if(x & (1 << i))
           buff[j] = '1';

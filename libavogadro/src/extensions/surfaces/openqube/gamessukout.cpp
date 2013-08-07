@@ -296,7 +296,6 @@ void GamessukOut::readInitialCoordinates(std::ifstream &ifs)
   // string to mark end of the coordinates
   char coordEnd[86]="         ****************************************************************************";
   double x=0.0,y=0.0,z=0.0;
-  bool ok;
 
   // skip five lines
   ifs.getline(buffer, BUFF_SIZE) &&
@@ -316,9 +315,9 @@ void GamessukOut::readInitialCoordinates(std::ifstream &ifs)
       //std::cout << "Coord line" << buffer << std::endl;
       gukBasis.atomLabels.push_back(tokens.at(1));
 
-      ok = from_string<double>(x, tokens.at(3), std::dec);
-      ok = from_string<double>(y, tokens.at(4), std::dec);
-      ok = from_string<double>(z, tokens.at(5), std::dec);
+      from_string<double>(x, tokens.at(3), std::dec);
+      from_string<double>(y, tokens.at(4), std::dec);
+      from_string<double>(z, tokens.at(5), std::dec);
       gukBasis.coordinates.push_back( Eigen::Vector3d( x, y, z)); // Want coordinates in Bohr
     }
 
@@ -332,7 +331,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
 
   //std::cout << "readBasisSet\n";
 
-  bool ok, newAtom=true, gotAtom=false, firstAtom=true;
+  bool newAtom=true, gotAtom=false, firstAtom=true;
   std::string atomLabel;
   double exponent,coefficient;
   orbital stype;
@@ -430,7 +429,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
         2       2sp      4        3.664980      -0.747384  (   -0.395897  )       1.709178  (    0.236460  )
       */
 
-    ok = from_string<int>(nshell, tokens.at(0), std::dec);
+    from_string<int>(nshell, tokens.at(0), std::dec);
 
     if ( nshell != lastNshell )
     {
@@ -474,14 +473,14 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
     } // end new shell
 
     // Now check for coefficients - we take the second lot to match Gaussian
-    ok = from_string<double>(exponent, tokens.at(3), std::dec);
+    from_string<double>(exponent, tokens.at(3), std::dec);
 
     if ( stype == SP)
     {
       if ( tokens.size() != 12 ) std::cerr << "PROBLEM READING SP LINE!\n";
-      ok = from_string<double>(coefficient, tokens.at(6), std::dec);
+      from_string<double>(coefficient, tokens.at(6), std::dec);
       s_coeff.push_back(coefficient);
-      ok = from_string<double>(coefficient, tokens.at(10), std::dec);
+      from_string<double>(coefficient, tokens.at(10), std::dec);
       p_coeff.push_back(coefficient);
       sp_exponents.push_back(exponent);
     }
@@ -489,7 +488,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
     {
       //std::cout << "Adding exponent " << exponent << std::endl;
       gukBasis.gtoExponents.push_back(exponent);
-      ok = from_string<double>(coefficient, tokens.at(6), std::dec);
+      from_string<double>(coefficient, tokens.at(6), std::dec);
       gukBasis.gtoCoefficients.push_back(coefficient);
     } // end type ==  SP
 
@@ -509,7 +508,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
   if (strstr(buffer," total number of shells")==NULL) std::cerr << "Error reading nShell!: " << line << std::endl;
   // reuse nshell from above as temporary variable
   tokenize(tokens, buffer, " \t\n");
-  ok = from_string<int>(nshell, tokens.at(4), std::dec);
+  from_string<int>(nshell, tokens.at(4), std::dec);
   gukBasis.nShell=nshell;
 
 
@@ -518,7 +517,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
   if (strstr(buffer," total number of basis")==NULL) std::cerr << "Error reading nBasisFunctions!: " << line << std::endl;
   tokenize(tokens, buffer, " \t\n");
   // reuse nshell from above as temporary variable
-  ok = from_string<int>(nshell, tokens.at(5), std::dec);
+  from_string<int>(nshell, tokens.at(5), std::dec);
   gukBasis.nBasisFunctions=nshell;
 
   // nElectrons
@@ -526,7 +525,7 @@ void GamessukOut::readBasisSet(std::ifstream &ifs)
   if (strstr(buffer," number of electrons")==NULL) std::cerr << "Error reading nElectrons!: " << line << std::endl;
   tokenize(tokens, buffer, " \t\n");
   // reuse nshell from above as temporary variable
-  ok = from_string<int>(nshell, tokens.at(3), std::dec);
+  from_string<int>(nshell, tokens.at(3), std::dec);
   gukBasis.nElectrons=nshell;
 
 
@@ -570,7 +569,6 @@ void GamessukOut::readOptimisedCoordinates(std::ifstream &ifs)
 
   //std::cout << "readOptimisedCoordinates\n";
 
-  bool ok;
   double x,y,z;
 
   // Nuke the old coordinates
@@ -595,9 +593,9 @@ void GamessukOut::readOptimisedCoordinates(std::ifstream &ifs)
 
         tokenize(tokens, buffer, " \t\n");
 
-        ok = from_string<double>(x, tokens.at(0), std::dec);
-        ok = from_string<double>(y, tokens.at(1), std::dec);
-        ok = from_string<double>(z, tokens.at(2), std::dec);
+        from_string<double>(x, tokens.at(0), std::dec);
+        from_string<double>(y, tokens.at(1), std::dec);
+        from_string<double>(z, tokens.at(2), std::dec);
 
         gukBasis.coordinates.push_back( Eigen::Vector3d( x, y, z ));
         gukBasis.atomLabels.push_back(tokens.at(4));
@@ -623,9 +621,9 @@ void GamessukOut::readOptimisedCoordinates(std::ifstream &ifs)
         tokenize(tokens, buffer, " \t\n");
 
         gukBasis.atomLabels.push_back(tokens.at(0));
-        ok = from_string<double>(x, tokens.at(3), std::dec);
-        ok = from_string<double>(y, tokens.at(4), std::dec);
-        ok = from_string<double>(z, tokens.at(5), std::dec);
+        from_string<double>(x, tokens.at(3), std::dec);
+        from_string<double>(y, tokens.at(4), std::dec);
+        from_string<double>(z, tokens.at(5), std::dec);
 
         gukBasis.coordinates.push_back( Eigen::Vector3d( x, y, z ));
 
@@ -668,7 +666,6 @@ int GamessukOut::readMOVectors(std::ifstream &ifs)
        number of orbitals read in
     */
 
-  bool ok;
   unsigned int norbitals, norbitalsRead;
   double energy;
 
@@ -683,7 +680,7 @@ int GamessukOut::readMOVectors(std::ifstream &ifs)
 
   for ( unsigned int i=0; i < tokens.size() ; i++ )
   {
-    ok = from_string<double>(energy, tokens.at(i), std::dec);
+    from_string<double>(energy, tokens.at(i), std::dec);
     //std::cout << "adding e " << energy << std::endl;
     gukBasis.moEnergies.push_back(energy);
   }
@@ -714,7 +711,7 @@ int GamessukOut::readMOVectors(std::ifstream &ifs)
     for (unsigned int j=0; j < norbitals ; j++ )
     {
       // reuse variable energy to hold coefficient
-      ok = from_string<double>(energy, tokens.at(j+4), std::dec);
+      from_string<double>(energy, tokens.at(j+4), std::dec);
       gukBasis.moVectors.at(norbitalsRead+j).push_back(energy);
       //std::cout << "Adding " << energy << " to vector " << norbitalsRead+j << std::endl;
     }

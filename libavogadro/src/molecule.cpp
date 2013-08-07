@@ -1675,7 +1675,7 @@ namespace Avogadro{
     // Copy the atoms and bonds over
     unsigned int size = other.m_atoms.size();
     for (unsigned int i = 0; i < size; ++i) {
-      if (other.m_atoms.at(i) > 0) {
+      if (other.m_atoms.at(i) != 0) {
         Atom *atom = new Atom(this);
         atom->setId(other.m_atoms[i]->id());
         atom->setIndex(other.m_atoms[i]->index());
