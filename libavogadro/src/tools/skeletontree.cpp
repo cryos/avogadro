@@ -140,7 +140,7 @@ namespace Avogadro {
 
   void SkeletonTree::populate(Atom *rootAtom, Bond *rootBond, Molecule* molecule)
   {
-    if (!m_rootNode) {
+    if (m_rootNode) {
       delete m_rootNode;
     }
 
