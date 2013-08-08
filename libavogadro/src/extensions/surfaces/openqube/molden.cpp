@@ -130,7 +130,7 @@ void MoldenFile::processLine()
         m_shellNums.push_back(numGTOs);
 
         // now read all the exponents and contraction coefficients
-        for (unsigned int gto = 0; gto < numGTOs; ++gto) {
+        for (int gto = 0; gto < numGTOs; ++gto) {
           key = m_in->readLine().trimmed();
           list = key.split(' ', QString::SkipEmptyParts);
           m_a.push_back(list[0].toDouble());
@@ -162,6 +162,10 @@ void MoldenFile::processLine()
         key = m_in->readLine().trimmed();
       } // finished parsing a new MO
 
+      break;
+    case STO:
+    case SCF:
+    case NotParsing:
       break;
     }
   }

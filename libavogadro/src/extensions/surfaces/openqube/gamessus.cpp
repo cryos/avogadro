@@ -112,7 +112,6 @@ void GAMESSUSOutput::processLine(GaussianSet *basis)
     QString shell;
     orbital shellType;
     vector <vector <double> > columns;
-    unsigned int numColumns, numRows;
 
     // parsing a line -- what mode are we in?
     switch (m_currentMode) {
@@ -178,6 +177,8 @@ void GAMESSUSOutput::processLine(GaussianSet *basis)
         key = m_in->readLine(); // symmetries
         key = m_in->readLine(); // now we've got coefficients
         list = key.split(' ', QString::SkipEmptyParts);
+        unsigned int numColumns = 0;
+        unsigned int numRows = 0;
         while (list.size() > 5) {
           numColumns = list.size() - 4;
           columns.resize(numColumns);
