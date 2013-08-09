@@ -1611,7 +1611,7 @@ namespace Avogadro
     OpenBabel::OBUnitCell *cell = currentCell();
 
     // For sanity checks:
-    double origVolume = currentVolume();
+    //double origVolume = currentVolume(); // TODO put back again when Q_ASSERT_X ok?
 
     // Cache the current fractional coordinates for later.
     QList<Eigen::Vector3d> fcoords = currentFractionalCoords();

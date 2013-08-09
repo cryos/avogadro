@@ -389,7 +389,6 @@ namespace Avogadro {
   {
     if (m_leftButtonPressed && !m_hits.size()) {
       event->accept();
-      QPoint deltaDragging = event->pos() - m_lastDraggingPosition;
 
       if( ( event->pos() - m_initialDraggingPosition ).manhattanLength() > 2 )
         m_movedSinceButtonPressed = true;

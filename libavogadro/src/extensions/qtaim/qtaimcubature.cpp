@@ -1314,7 +1314,6 @@ void property_v(unsigned int ndim, unsigned int npts, const double *xyz, void *p
     basinList.append( paramVariantList.at(i).toLongLong()  );
     counter++;
   }
-  qint64 nbasin=basinList.length();
 
   // prepare input
 

@@ -246,6 +246,9 @@ long GamessInputData::WriteInputFile( ostream &buffer )
   //   if(buffer) {
   //     delete buffer;
   //   }
+  // TODO: workaround to avoid warning
+  // To change like WriteToFile function? 
+  (void) BasisTest;
   return 1;
 }
 
