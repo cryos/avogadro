@@ -18,8 +18,5 @@ add_library(tubegen STATIC ${tubegen_SRCS})
 # Suppress warnings
 set_target_properties(tubegen PROPERTIES COMPILE_FLAGS "-w")
 
-# Set -fPIC on x86_64
-if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC"  )
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC"  )
-endif()
+# Set PIC flag
+set_target_properties(tubegen PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
