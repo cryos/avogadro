@@ -196,7 +196,6 @@ namespace Avogadro
     // Format definition, will be used for parsing
     int NameCol=-1, Xcol=-1, Ycol=-1, Zcol=-1;
     QString format("");
-    int a;
     double b;
     bool ok;
     for (int i=0; i<data.size(); i++) {
@@ -204,7 +203,7 @@ namespace Avogadro
         continue;
       }
 
-      a = data.at(i).toInt(&ok);
+      data.at(i).toInt(&ok);
       if (ok) {
         format += "i";
         continue;

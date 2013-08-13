@@ -63,7 +63,12 @@ namespace Avogadro {
       virtual QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+
+      #pragma GCC diagnostic push
+      #pragma GCC diagnostic ignored "-Wunused-parameter"
       virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event) { return 0; }
+      #pragma GCC diagnostic pop
+
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
 
       virtual bool paint(GLWidget *widget);

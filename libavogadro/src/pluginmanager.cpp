@@ -323,29 +323,6 @@ namespace Avogadro {
     dir.setNameFilters(filters);
     dir.setFilter(QDir::Files | QDir::Readable);
 
-    bool failed = false;
-#ifdef Q_WS_MAC
-    dir.cd("Library/Application Support");
-    if (!dir.cd("Avogadro")) {
-      if (!dir.mkdir("Avogadro")) failed = true;
-      if (!dir.cd("Avogadro")) failed = true;
-    }
-#else
-  #ifdef WIN32
-    dir = QCoreApplication::applicationDirPath();
-  #else
-    if(!dir.cd(".avogadro")) {
-      if (!dir.mkdir(".avogadro")) failed = true;
-      if (!dir.cd(".avogadro")) failed = true;
-    }
-  #endif
-#endif
-
-    if(!dir.cd(type + "Scripts")) {
-      if (!dir.mkdir(type + "Scripts")) failed = true;
-      if (!dir.cd(type + "Scripts")) failed = true;
-    }
-
     foreach (const QString& file, dir.entryList())
       scripts.append(QString(dir.canonicalPath() + '/' + file));
 

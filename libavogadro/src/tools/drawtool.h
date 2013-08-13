@@ -73,7 +73,12 @@ namespace Avogadro {
       /*! Handle a mouse move (perhaps drawing a bond)
       */
       virtual QUndoCommand* mouseMoveEvent(GLWidget *widget, QMouseEvent *event);
+
+      #pragma GCC diagnostic push
+      #pragma GCC diagnostic ignored "-Wunused-parameter"
       virtual QUndoCommand* mouseDoubleClickEvent(GLWidget *widget, QMouseEvent *event) { return 0; }
+      #pragma GCC diagnostic pop
+
       /*! Handle a scroll wheel (i.e., zooming in and out of the canvas)
       */
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
