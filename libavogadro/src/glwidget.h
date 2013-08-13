@@ -29,7 +29,10 @@
 
 #include <avogadro/global.h>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #include <Eigen/Core>
+#pragma GCC diagnostic pop
 
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>

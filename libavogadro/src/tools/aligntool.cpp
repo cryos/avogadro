@@ -251,9 +251,6 @@ namespace Avogadro {
       if (m_selectedAtoms[1].isNull())
         return;
       // Now line up the line from atom[0] to atom[1] with the axis selected
-      double alpha, beta, gamma;
-      alpha = beta = gamma = 0.0;
-
       Vector3d pos = *m_selectedAtoms[1]->pos();
       pos.normalize();
       Vector3d axis;
