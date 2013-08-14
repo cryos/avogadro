@@ -152,7 +152,7 @@ namespace Avogadro {
         std::vector<std::vector<int> >::iterator match;
         for (match = mlist.begin(); match != mlist.end(); ++match) { // iterate through matches
           for (unsigned idx = 0; idx < (*match).size(); ++idx) { // iterate through atoms in match
-            if (atom->index() == ((*match)[idx] - 1)) { // TODO: OB uses index from 1
+            if (static_cast<int>(atom->index()) == ((*match)[idx] - 1)) { // TODO: OB uses index from 1
               matched = true;
               break;
             }
