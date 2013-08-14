@@ -40,7 +40,7 @@ endif()
 ###########################################################
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_CXX_FLAGS_WARN "-Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+  set (CMAKE_CXX_FLAGS_WARN "-Werror -Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
   # On Linux with GCC 4.3+ these flags generate thousands of warnings, so they
   # are now optional. Most of the warnings are in included headers.
   option(EXTRA_WARNINGS

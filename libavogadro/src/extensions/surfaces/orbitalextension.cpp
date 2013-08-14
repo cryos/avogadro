@@ -154,7 +154,7 @@ namespace Avogadro
       if (property.isValid())
         alphaSymmetries = property.toStringList();
 
-      for (int i = 0; i < m_basis->numMOs(); i++) {
+      for (size_t i = 0; i < m_basis->numMOs(); i++) {
         QString num = "";
         if (i+1 != homo && i+1 != lumo) {
           num = (leqHOMO) ? "-" : "+";
@@ -171,12 +171,12 @@ namespace Avogadro
 
         Orbital orb;
         // Get the energy from the molecule property list, if available
-        if (alphaEnergies.size() > i)
+        if (static_cast<size_t>(alphaEnergies.size()) > i)
           orb.energy = alphaEnergies[i].toDouble();
         else
           orb.energy = 0.0;
         // symmetries (if available)
-        if (alphaSymmetries.size() > i)
+        if (static_cast<size_t>(alphaSymmetries.size()) > i)
           orb.symmetry = alphaSymmetries[i];
         orb.index = i;
         orb.description = desc;
@@ -421,19 +421,19 @@ namespace Avogadro
       int endIndex =  (m_widget->precalcLimit())
           ? homo + (m_widget->precalcRange()/2) - 1
           : m_basis->numMOs();
-      if (endIndex > m_basis->numMOs() - 1) {
+      if (endIndex > static_cast<int>(m_basis->numMOs() - 1)) {
         endIndex = m_basis->numMOs() - 1;
       }
 
-      for (unsigned int i = startIndex; i <= endIndex; i++) {
+      for (int i = startIndex; i <= endIndex; i++) {
         addCalculationToQueue(i+1,  // orbital
                               OrbitalWidget::OrbitalQualityToDouble(m_widget->defaultQuality()),
                               m_widget->isovalue(),
                               priority);
 
         // Update priority. Stays the same when i = homo.
-        if ( i + 1 < homo ) priority--;
-        else if ( i + 1 > homo) priority++;
+        if ( i + 1 < static_cast<int>(homo) ) priority--;
+        else if ( i + 1 > static_cast<int>(homo)) priority++;
       }
     }
     checkQueue();

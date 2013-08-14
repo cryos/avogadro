@@ -123,7 +123,7 @@ namespace Avogadro {
   PluginItem *PluginItemModel::plugin ( const QModelIndex & index ) const
   {
     if(!index.isValid() || !index.internalPointer()) {
-      return false;
+      return 0;
     }
 
     PluginItem *plugin = static_cast<PluginItem *>(index.internalPointer());
