@@ -1610,9 +1610,6 @@ namespace Avogadro
     // Get current unit cell
     OpenBabel::OBUnitCell *cell = currentCell();
 
-    // For sanity checks:
-    double origVolume = currentVolume();
-
     // Cache the current fractional coordinates for later.
     QList<Eigen::Vector3d> fcoords = currentFractionalCoords();
 
@@ -1888,8 +1885,6 @@ namespace Avogadro
     // Update cell
     setCurrentCellMatrix(cob.transpose() * currentCellMatrix());
 
-    //    Q_ASSERT_X(StableComp::eq(origVolume, currentVolume(), tol),
-    //               Q_FUNC_INFO, "Cell volume changed during Niggli reduction.");
 
     // fix coordinates
     // Apply COB matrix:

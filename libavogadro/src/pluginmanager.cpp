@@ -346,6 +346,11 @@ namespace Avogadro {
       if (!dir.cd(type + "Scripts")) failed = true;
     }
 
+    if (failed) {
+      qWarning() << "Insufficient permissions to access scripts directory";
+      return scripts;
+    }
+
     foreach (const QString& file, dir.entryList())
       scripts.append(QString(dir.canonicalPath() + '/' + file));
 
