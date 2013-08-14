@@ -41,9 +41,9 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   MolproInputDialog::MolproInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : InputDialog(parent, f), m_calculationType(OPT),
+    : InputDialog(parent, f), m_2009(false), m_calculationType(OPT),
     m_theoryType(RHF), m_basisType(B631Gd),
-    m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_2009(false)
+    m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots

@@ -142,6 +142,7 @@ namespace Avogadro {
   {
     if (m_rootNode) {
       delete m_rootNode;
+      m_rootNode = 0;
     }
 
     m_rootNode = new Node(rootAtom);
