@@ -51,7 +51,7 @@ namespace Avogadro {
     QString text;
 
     text  = tr("Name: ") + plugin->name() + '\n';
-    text  = tr("Identifier: ") + plugin->identifier() + '\n';
+    text += tr("Identifier: ") + plugin->identifier() + '\n';
     text += tr("File: ") + plugin->fileName() + "\n\n";
     text += tr("Description:\n") + plugin->description() + '\n';
 

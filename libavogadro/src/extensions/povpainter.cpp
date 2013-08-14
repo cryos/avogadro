@@ -399,9 +399,7 @@ namespace Avogadro
                                      double aspectRatio,
                                      const GLWidget* glwidget)
   {
-    m_painter = 0;
     m_output = 0;
-    m_file = 0;
     m_aspectRatio = aspectRatio;
     m_glwidget = glwidget;
     m_painter = new POVPainter;
@@ -425,6 +423,7 @@ namespace Avogadro
     delete m_output;
     m_output = 0;
     delete m_file;
+    delete m_painter;
   }
 
   void POVPainterDevice::initializePOV()
