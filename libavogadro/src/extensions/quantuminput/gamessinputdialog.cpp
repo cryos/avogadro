@@ -741,17 +741,8 @@ namespace Avogadro {
     ui.miscRPACCheck->setChecked( m_inputData->Control->GetRPAC() );
 
     int force = m_inputData->Control->GetFriend();
-    if (( m_inputData->Control->GetExeType() != 1 ) &&
-        ( force == Friend_None ) )
-    {
-      ui.miscAIMPACCheck->setEnabled( true );
-      ui.miscRPACCheck->setEnabled( true );
-    }
-    else
-    {
-      ui.miscAIMPACCheck->setEnabled( true );
-      ui.miscRPACCheck->setEnabled( true );
-    }
+    ui.miscAIMPACCheck->setEnabled( true );
+    ui.miscRPACCheck->setEnabled( true );
 
     QRadioButton *forceButton =
       qobject_cast<QRadioButton *>( m_miscForceButtons->button( force ) );
