@@ -2788,7 +2788,7 @@ protected:
     }
 
     // if smooth transitions are disabled, center now and return
-    if( !d->molecule->numAtoms() >= 1000 ) {
+    if( !d->molecule || d->molecule->numAtoms() >= 1000 ) {
       camera->setModelview(goal);
       d->glWidget->update();
       return;
@@ -2853,7 +2853,7 @@ protected:
     }
 
     // if smooth transitions are disabled, center now and return
-    if( !d->molecule->numAtoms() >= 1000 ) {
+    if( !d->molecule || d->molecule->numAtoms() >= 1000 ) {
       camera->setModelview(goal);
       d->glWidget->update();
       return;
