@@ -230,9 +230,8 @@ long GamessInputData::GetNumElectrons() const
 long GamessInputData::WriteInputFile( ostream &buffer )
 {
 
-  long BasisTest=0;
   buffer << "!   File created by the GAMESS Input Deck Generator Plugin for Avogadro" << endl;
-  if ( Basis ) BasisTest = Basis->WriteToFile( buffer, this );
+  if ( Basis ) Basis->WriteToFile( buffer, this );
   if ( Control ) Control->WriteToFile( buffer, this, GetNumElectrons() );
   if ( DFT ) DFT->WriteToFile( buffer, this );
   if ( System ) System->WriteToFile( buffer );
