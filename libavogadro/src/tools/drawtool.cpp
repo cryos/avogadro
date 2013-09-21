@@ -444,6 +444,11 @@ namespace Avogadro {
                 }
               }
             }
+            // if we're creating a bond to or from a hydrogen, do NOT adjust the hydrogens ever
+            if (m_bond->beginAtom()->isHydrogen() || m_bond->endAtom()->isHydrogen()) {
+              adjBegin = AdjustHydrogens::Never;
+              adjEnd = AdjustHydrogens::Never;
+            }
           }
 
           bondCommand = new AddBondDrawCommand(widget->molecule(), m_bond, adjBegin, adjEnd);
