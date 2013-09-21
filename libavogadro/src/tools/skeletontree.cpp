@@ -113,13 +113,14 @@ namespace Avogadro {
 
   // ##########  Constructor  ##########
 
-  SkeletonTree::SkeletonTree() {}
+  SkeletonTree::SkeletonTree() : m_rootNode(0) {}
 
   // ##########  Destructor  ##########
 
   SkeletonTree::~SkeletonTree()
   {
-    delete m_rootNode;
+    if (m_rootNode)
+      delete m_rootNode;
   }
 
   // ##########  rootAtom  ##########
