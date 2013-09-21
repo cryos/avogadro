@@ -330,6 +330,7 @@ namespace Avogadro {
      obatom.SetAtomicNum(m_atomicNumber);
      obatom.SetPartialCharge(d->partialCharge);
      obatom.SetFormalCharge(d->formalCharge);
+     obatom.SetId(m_id);
 
      // Save custom label
      if (!d->customLabel.isEmpty()) {
