@@ -29,12 +29,7 @@
 
 #include <openbabel/obconversion.h>
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
-#pragma GCC diagnostic ignored "-Wdelete-non-virtual-dtor"
-#pragma GCC diagnostic ignored "-pedantic"
 #include <openbabel/conformersearch.h>
-#pragma GCC diagnostic pop
 
 #include <QProgressDialog>
 #include <QWriteLocker>
