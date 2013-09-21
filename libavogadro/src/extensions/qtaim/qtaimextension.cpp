@@ -28,6 +28,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/painter.h>
+#include <avogadro/toolgroup.h>
 
 #include <QAction>
 
@@ -64,19 +65,19 @@ namespace Avogadro
   {
     // create an action for our first action
     QAction *action = new QAction( this );
-    action->setText( tr("Molecular Graph" ));
+    action->setText( tr("Molecular Graph..." ));
     m_actions.append( action );
     action->setData( FirstAction );
 
     // create an action for our second action
     action = new QAction( this );
-    action->setText( tr("Molecular Graph with Lone Pairs" ));
+    action->setText( tr("Molecular Graph with Lone Pairs..." ));
     m_actions.append( action );
     action->setData( SecondAction );
 
     // create an action for our third action
     action = new QAction( this );
-    action->setText( tr("Atomic Charge" ));
+    action->setText( tr("Atomic Charge..." ));
     m_actions.append( action );
     action->setData( ThirdAction );
   }
