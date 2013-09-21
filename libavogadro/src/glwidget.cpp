@@ -2712,8 +2712,10 @@ namespace Avogadro {
         settings.value("renderModelViewDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
     d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
-    int pr = settings.value("projection", GLWidget::Perspective).toInt();
+    int pr = settings.value("projection", GLWidget::Perspective, 1).toInt();
     // Makes the compiler happy about the type conversion.
+    if (pr != 1 && pr != 2)
+      pr = 1; // set a default if this is screwed up
     d->projection = GLWidget::ProjectionType(pr);
 
     loadEngines(settings);
