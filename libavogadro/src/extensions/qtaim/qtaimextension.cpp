@@ -118,7 +118,7 @@ namespace Avogadro
     m_molecule = molecule;
   }
 
-  QUndoCommand* QTAIMExtension::performAction(QAction *action, GLWidget *)
+  QUndoCommand* QTAIMExtension::performAction(QAction *action, GLWidget *widget)
   {
 
     bool wavefunctionAlreadyLoaded;
@@ -183,6 +183,8 @@ namespace Avogadro
     }
 
     m_molecule->clear();
+    widget->toolGroup()->setActiveTool("Navigate");
+
 
     // Instantiate an Evaluator
     QTAIMWavefunctionEvaluator eval(wfn);
