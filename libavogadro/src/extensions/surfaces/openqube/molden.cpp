@@ -133,10 +133,10 @@ void MoldenFile::processLine()
         for (int gto = 0; gto < numGTOs; ++gto) {
           key = m_in->readLine().trimmed();
           list = key.split(' ', QString::SkipEmptyParts);
-          m_a.push_back(list[0].toDouble());
-          m_c.push_back(list[1].toDouble());
+          m_a.push_back(list[0].replace('D','E').toDouble());
+          m_c.push_back(list[1].replace('D','E').toDouble());
           if (shellType == SP && list.size() > 2)
-            m_csp.push_back(list[2].toDouble());
+            m_csp.push_back(list[2].replace('D','E').toDouble());
         } // finished parsing a new GTO
         key = m_in->readLine().trimmed(); // start reading the next shell
       }
@@ -158,7 +158,7 @@ void MoldenFile::processLine()
         if (list.size() < 2)
           break;
 
-        m_MOcoeffs.push_back(list[1].toDouble());
+        m_MOcoeffs.push_back(list[1].replace('D','E').toDouble());
         key = m_in->readLine().trimmed();
       } // finished parsing a new MO
 
