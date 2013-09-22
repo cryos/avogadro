@@ -80,6 +80,8 @@ namespace Avogadro
 
   GamessExtension::~GamessExtension()
   {
+    delete m_inputData;
+    delete m_efpModel;
     if(m_inputDialog)
     {
       m_inputDialog->close();
@@ -133,8 +135,9 @@ namespace Avogadro
 
   void GamessExtension::dockWidgetDestroyed()
   {
-    m_gamessEfpDock = 0;
-    m_efpView = 0;
+    m_efpButton->deleteLater();
+    m_efpView->deleteLater();
+    m_gamessEfpDock->deleteLater();
   }
 
   void GamessExtension::setMolecule(Molecule *molecule)

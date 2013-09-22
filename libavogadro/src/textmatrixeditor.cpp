@@ -51,7 +51,8 @@ TextMatrixEditor::TextMatrixEditor(QWidget *parent) :
 }
 
 TextMatrixEditor::~TextMatrixEditor()
-{}
+{
+}
 
 Eigen::Matrix3d TextMatrixEditor::matrix() const
 {
