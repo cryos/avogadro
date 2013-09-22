@@ -490,11 +490,13 @@ namespace Avogadro {
                                                     qulonglong(FALSE_ID)).toInt());
       m_mesh2 = m_molecule->meshById(settings.value("mesh2Id",
                                                     qulonglong(FALSE_ID)).toInt());
-      Cube *cube = m_molecule->cubeById(m_mesh1->cube());
-      m_min = cube->min();
-      m_max = cube->max();
-      if (m_mesh1->colors().size() == 0)
-        m_colored = false;
+      if (m_mesh1) {
+        Cube *cube = m_molecule->cubeById(m_mesh1->cube());
+        m_min = cube->min();
+        m_max = cube->max();
+        if (m_mesh1->colors().size() == 0)
+          m_colored = false;
+      }
     }
   }
 
