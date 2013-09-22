@@ -61,6 +61,7 @@ namespace Avogadro {
 
   InsertDNAExtension::~InsertDNAExtension()
   {
+      delete(m_dialog);
   }
 
   QList<QAction *> InsertDNAExtension::actions() const
