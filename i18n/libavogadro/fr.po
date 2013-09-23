@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-04-08 00:01-0400\n"
+"POT-Creation-Date: 2013-09-23 00:00-0400\n"
 "PO-Revision-Date: 2011-04-11 15:12+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -647,9 +647,9 @@ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr ""
 "Représenter les atomes comme tétraèdres, octaèdres, et autres polygones"
 
-#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:99
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/qtaim/qtaimextension.h:35
 msgid "QTAIM"
 msgstr "QTAIM"
@@ -780,10 +780,10 @@ msgstr "fichiers vidéo (*.avi)"
 #: src/extensions/animationextension.cpp:244
 #: src/extensions/animationextension.cpp:258
 #: src/extensions/animationextension.cpp:264
-#: src/extensions/forcefieldextension.cpp:190
-#: src/extensions/forcefieldextension.cpp:203
-#: src/extensions/forcefieldextension.cpp:215
-#: src/extensions/forcefieldextension.cpp:245
+#: src/extensions/forcefieldextension.cpp:191
+#: src/extensions/forcefieldextension.cpp:204
+#: src/extensions/forcefieldextension.cpp:216
+#: src/extensions/forcefieldextension.cpp:246
 #: src/extensions/insertfragmentdialog.cpp:192
 #: src/extensions/quantuminput/inputfileextension.cpp:185
 #: src/extensions/quantuminput/inputfileextension.cpp:195
@@ -805,10 +805,10 @@ msgid "Animation..."
 msgstr "Animation..."
 
 #: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:152
-#: src/extensions/qtaim/qtaimextension.cpp:99
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/extensions/forcefieldextension.cpp:153
+#: src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
@@ -898,13 +898,13 @@ msgstr ""
 "Aucune maille conventionnelle n'est définie pour la molécule -- impossible "
 "d'utiliser des coordonnées fractionnaires."
 
-#: src/extensions/cartesianextension.cpp:559
+#: src/extensions/cartesianextension.cpp:558
 msgid "Cartesian Editor..."
 msgstr "Editeur cartésien..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
-#: src/extensions/cartesianextension.cpp:574
+#: src/extensions/cartesianextension.cpp:573
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -1039,7 +1039,7 @@ msgstr "Masquer les &éditeurs"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:455
 #: src/extensions/crystallography/crystallographyextension.cpp:687
-#: src/extensions/crystallography/crystallographyextension.cpp:1988
+#: src/extensions/crystallography/crystallographyextension.cpp:1983
 msgid "Show &Editors"
 msgstr "Afficher les &éditeurs"
 
@@ -1050,7 +1050,7 @@ msgstr "Masquer l'affichage des &propriétés"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:559
 #: src/extensions/crystallography/crystallographyextension.cpp:696
-#: src/extensions/crystallography/crystallographyextension.cpp:1996
+#: src/extensions/crystallography/crystallographyextension.cpp:1991
 msgid "Show &Property Display"
 msgstr "Afficher les &propriétés"
 
@@ -1075,7 +1075,7 @@ msgid "Remove &Unit Cell"
 msgstr "Effacer la &maille conventionnelle"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:654
-#: src/extensions/crystallography/crystallographyextension.cpp:1966
+#: src/extensions/crystallography/crystallographyextension.cpp:1961
 msgid "Add &Unit Cell"
 msgstr "Afficher la &maille conventionnelle"
 
@@ -1123,7 +1123,7 @@ msgstr "Cubique"
 msgid "Paste Crystal"
 msgstr "Coller un cristal"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1757
+#: src/extensions/crystallography/crystallographyextension.cpp:1754
 msgid ""
 "Niggli-reduction failed. The input structure's lattice that is confusing the "
 "Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
@@ -1131,14 +1131,14 @@ msgid ""
 "try again."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1871
+#: src/extensions/crystallography/crystallographyextension.cpp:1868
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 "Cette maille conventionnelle est déjà réduite à sa représentation canonique "
 "de Niggli."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1880
+#: src/extensions/crystallography/crystallographyextension.cpp:1877
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
@@ -1146,132 +1146,132 @@ msgstr ""
 "Impossible de réduire cette maille après 1000 itérations de l'algorithme de "
 "Réduction. Abandon."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1973
+#: src/extensions/crystallography/crystallographyextension.cpp:1968
 msgid "I&mport Crystal from Clipboard..."
 msgstr "I&mporter un cristal à partir du presse-papier..."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2011
+#: src/extensions/crystallography/crystallographyextension.cpp:2006
 msgid "&Wrap Atoms to Cell"
 msgstr "&Regrouper les atomes dans la maille"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2018
+#: src/extensions/crystallography/crystallographyextension.cpp:2013
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Manipuler atome"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2025
+#: src/extensions/crystallography/crystallographyextension.cpp:2020
 msgid "Rotate To Standard &Orientation"
 msgstr "Tourner vers l'&orientation standard"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2032
+#: src/extensions/crystallography/crystallographyextension.cpp:2027
 msgid "Scale Cell To &Volume..."
 msgstr "Mettre la maille à l'échelle du @volume..."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2041
+#: src/extensions/crystallography/crystallographyextension.cpp:2036
 msgid "&Slab..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2056
+#: src/extensions/crystallography/crystallographyextension.cpp:2051
 msgid "Perceive Space&group..."
 msgstr "Détecter le &groupe d'espace..."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2063
+#: src/extensions/crystallography/crystallographyextension.cpp:2058
 msgid "Set &Spacegroup..."
 msgstr "Choisir le groupe d'&espace..."
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2070
+#: src/extensions/crystallography/crystallographyextension.cpp:2065
 msgid "&Fill Unit Cell"
 msgstr "&Remplir la maille éconventionnelle"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2071
+#: src/extensions/crystallography/crystallographyextension.cpp:2066
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 "&Remplir la maille conventionnelle en utilisant le groupe d'espace actuel"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2078
+#: src/extensions/crystallography/crystallographyextension.cpp:2073
 msgid "Sy&mmetrize Crystal"
 msgstr "Sy&métriser le cristal"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2085
+#: src/extensions/crystallography/crystallographyextension.cpp:2080
 msgid "Reduce Cell (&Primitive)"
 msgstr "Réduire la maille (&primitive)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2092
+#: src/extensions/crystallography/crystallographyextension.cpp:2087
 msgid "Reduce Cell (&Niggli)"
 msgstr "Réduire la maille (&Niggli)"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2110
+#: src/extensions/crystallography/crystallographyextension.cpp:2105
 msgid "&Angstrom"
 msgstr "&Angstrom"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2120
+#: src/extensions/crystallography/crystallographyextension.cpp:2115
 msgid "&Bohr"
 msgstr "&Bohr"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2129
+#: src/extensions/crystallography/crystallographyextension.cpp:2124
 msgid "&Nanometer"
 msgstr "&Nanomètre"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2138
+#: src/extensions/crystallography/crystallographyextension.cpp:2133
 msgid "&Picometer"
 msgstr "&Picomètre"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2150
+#: src/extensions/crystallography/crystallographyextension.cpp:2145
 msgid "&Degree"
 msgstr "&Degré"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2160
+#: src/extensions/crystallography/crystallographyextension.cpp:2155
 msgid "&Radian"
 msgstr "&Radian"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2172
+#: src/extensions/crystallography/crystallographyextension.cpp:2167
 msgid "Display &cartesian coordinates"
 msgstr "Afficher les coordonnées cartésiennes"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2181
+#: src/extensions/crystallography/crystallographyextension.cpp:2176
 msgid "Display &fractional coordinates"
 msgstr "Afficher les coordonnées fractionnaires"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2194
+#: src/extensions/crystallography/crystallographyextension.cpp:2189
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 "Préserver les coordonnées &cartésiennes pendant la modification de la maille"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2204
+#: src/extensions/crystallography/crystallographyextension.cpp:2199
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 "Préserver les coordonnées &fractionnaires pendant la modification de la "
 "maille"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2218
+#: src/extensions/crystallography/crystallographyextension.cpp:2213
 msgid "Display &cartesian matrix"
 msgstr "Afficher la matrice &cartésienne"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2228
+#: src/extensions/crystallography/crystallographyextension.cpp:2223
 msgid "Display &fractional matrix"
 msgstr "Afficher la matrice &fractionnaire"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2248
+#: src/extensions/crystallography/crystallographyextension.cpp:2243
 msgid "Display as &row vectors"
 msgstr "Afficher en vecteurs &lignes"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2258
+#: src/extensions/crystallography/crystallographyextension.cpp:2253
 msgid "Display as &column vectors"
 msgstr "Afficher en vecteurs &colonnes"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2267
+#: src/extensions/crystallography/crystallographyextension.cpp:2262
 msgid "&Crystal View Options..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2317
-#: src/extensions/crystallography/crystallographyextension.cpp:2449
-#: src/extensions/crystallography/crystallographyextension.cpp:2613
+#: src/extensions/crystallography/crystallographyextension.cpp:2312
+#: src/extensions/crystallography/crystallographyextension.cpp:2444
+#: src/extensions/crystallography/crystallographyextension.cpp:2608
 msgid "Select tolerance in current cartesian units:"
 msgstr "Choisir la tolérance en unités cartésiennes actuelles :"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2339
-#: src/extensions/crystallography/crystallographyextension.cpp:2469
-#: src/extensions/crystallography/crystallographyextension.cpp:2633
+#: src/extensions/crystallography/crystallographyextension.cpp:2334
+#: src/extensions/crystallography/crystallographyextension.cpp:2464
+#: src/extensions/crystallography/crystallographyextension.cpp:2628
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
@@ -1281,19 +1281,19 @@ msgstr ""
 "\n"
 "Souhaitez-vous réessayer avec une tolérance différente ?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2355
+#: src/extensions/crystallography/crystallographyextension.cpp:2350
 msgid "Perceive Spacegroup"
 msgstr "Détecter le groupe d'espace"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2389
+#: src/extensions/crystallography/crystallographyextension.cpp:2384
 msgid "Set Spacegroup:"
 msgstr "Choisir le groupe d'espace :"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2403
+#: src/extensions/crystallography/crystallographyextension.cpp:2398
 msgid "Set Spacegroup"
 msgstr "Choisir le groupe d'espace"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2416
+#: src/extensions/crystallography/crystallographyextension.cpp:2411
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
@@ -1303,11 +1303,11 @@ msgstr ""
 "\n"
 "Souhaitez-vous en choisir un maintenant ?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2435
+#: src/extensions/crystallography/crystallographyextension.cpp:2430
 msgid "Fill Unit Cell"
 msgstr "Remplir la maille"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2483
+#: src/extensions/crystallography/crystallographyextension.cpp:2478
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
@@ -1318,32 +1318,32 @@ msgstr ""
 "\n"
 "Souhaitez-vous réessayer avec une tolérance différente ?"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2502
+#: src/extensions/crystallography/crystallographyextension.cpp:2497
 msgid "Symmetrize Crystal"
 msgstr "Symétriser le cristal"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2578
+#: src/extensions/crystallography/crystallographyextension.cpp:2573
 msgid "Wrap Atoms To Cell"
 msgstr "Regrouper les atomes dans la maille"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2599
+#: src/extensions/crystallography/crystallographyextension.cpp:2594
 msgid "Rotate to Standard Orientation"
 msgstr "Tourner vers l'orientation standard"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2651
+#: src/extensions/crystallography/crystallographyextension.cpp:2646
 msgid "Reduce to Primitive Cell"
 msgstr "Réduire à une maille primitive"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2664
+#: src/extensions/crystallography/crystallographyextension.cpp:2659
 msgid "Reduce to Niggli Cell"
 msgstr "Réduire à une maille de Niggli"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2687
+#: src/extensions/crystallography/crystallographyextension.cpp:2682
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr "Saisissez un nouveau volume de maille :"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2701
+#: src/extensions/crystallography/crystallographyextension.cpp:2696
 msgid "Scale Unit Cell Volume"
 msgstr "Mettre le volume de maille conventionnelle à l'échelle"
 
@@ -1502,46 +1502,46 @@ msgstr "Importer une trajectoire"
 msgid "Import trajectory files"
 msgstr "Importer les fichiers de trajectoire"
 
-#: src/extensions/forcefieldextension.cpp:76
+#: src/extensions/forcefieldextension.cpp:77
 msgid "&Optimize Geometry"
 msgstr "&Optimisation de la géométrie"
 
-#: src/extensions/forcefieldextension.cpp:78
+#: src/extensions/forcefieldextension.cpp:79
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
 msgstr "Ctrl+Alt+O"
 
-#: src/extensions/forcefieldextension.cpp:83
+#: src/extensions/forcefieldextension.cpp:84
 msgid "Setup Force Field..."
 msgstr "Configurer le champ de force..."
 
-#: src/extensions/forcefieldextension.cpp:93
+#: src/extensions/forcefieldextension.cpp:94
 msgid "Calculate Energy"
 msgstr "Calculer l'énergie"
 
-#: src/extensions/forcefieldextension.cpp:98
+#: src/extensions/forcefieldextension.cpp:99
 msgid "Conformer Search..."
 msgstr "Recherche de conformères..."
 
-#: src/extensions/forcefieldextension.cpp:108
+#: src/extensions/forcefieldextension.cpp:109
 msgid "Constraints..."
 msgstr "Contraintes..."
 
-#: src/extensions/forcefieldextension.cpp:113
+#: src/extensions/forcefieldextension.cpp:114
 msgid "Ignore Selection"
 msgstr "Ignorer la sélection"
 
-#: src/extensions/forcefieldextension.cpp:118
+#: src/extensions/forcefieldextension.cpp:119
 msgid "Fix Selected Atoms"
 msgstr "Fixer les atomes sélectionnés"
 
-#: src/extensions/forcefieldextension.cpp:152
+#: src/extensions/forcefieldextension.cpp:153
 msgid "&Molecular Mechanics"
 msgstr "&Mécanique moléculaire"
 
-#: src/extensions/forcefieldextension.cpp:191
-#: src/extensions/forcefieldextension.cpp:216
-#: src/extensions/forcefieldextension.cpp:246
+#: src/extensions/forcefieldextension.cpp:192
+#: src/extensions/forcefieldextension.cpp:217
+#: src/extensions/forcefieldextension.cpp:247
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
@@ -1549,41 +1549,41 @@ msgstr ""
 "Echec de la configuration du champ de force pour cette molécule. Basculer en "
 "UFF."
 
-#: src/extensions/forcefieldextension.cpp:201
+#: src/extensions/forcefieldextension.cpp:202
 #, qt-format
 msgid "Energy = %L1 %2"
 msgstr "Energie = %L1 %2"
 
-#: src/extensions/forcefieldextension.cpp:266
+#: src/extensions/forcefieldextension.cpp:267
 msgid "Geometric Optimization"
 msgstr "Optimisation géométrique"
 
-#: src/extensions/forcefieldextension.cpp:665
+#: src/extensions/forcefieldextension.cpp:666
 msgid "Forcefield Optimization"
 msgstr "Optimisation par champ de force"
 
-#: src/extensions/forcefieldextension.cpp:666
-#: src/extensions/forcefieldextension.cpp:669
-#: src/extensions/forcefieldextension.cpp:672
-#: src/extensions/forcefieldextension.cpp:675
-#: src/extensions/forcefieldextension.cpp:679
+#: src/extensions/forcefieldextension.cpp:667
+#: src/extensions/forcefieldextension.cpp:670
+#: src/extensions/forcefieldextension.cpp:673
+#: src/extensions/forcefieldextension.cpp:676
+#: src/extensions/forcefieldextension.cpp:680
 #: src/extensions/trajvideomaker.cpp:67
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/extensions/forcefieldextension.cpp:668
+#: src/extensions/forcefieldextension.cpp:669
 msgid "Systematic Rotor Search"
 msgstr "Recherche systématique de rotor"
 
-#: src/extensions/forcefieldextension.cpp:671
+#: src/extensions/forcefieldextension.cpp:672
 msgid "Random Rotor Search"
 msgstr "Recherche aléatoire de rotor"
 
-#: src/extensions/forcefieldextension.cpp:674
+#: src/extensions/forcefieldextension.cpp:675
 msgid "Weighted Rotor Search"
 msgstr "Recherche pondérée de rotor"
 
-#: src/extensions/forcefieldextension.cpp:678
+#: src/extensions/forcefieldextension.cpp:679
 msgid "Genetic Algorithm Search"
 msgstr ""
 
@@ -2141,11 +2141,11 @@ msgstr "Energie (kJ/mol) :"
 msgid "Conformer"
 msgstr "Conformère"
 
-#: src/extensions/propmodel.cpp:974
+#: src/extensions/propmodel.cpp:981
 msgid "Yes"
 msgstr "Oui"
 
-#: src/extensions/propmodel.cpp:976
+#: src/extensions/propmodel.cpp:983
 msgid "No"
 msgstr "Non"
 
@@ -2163,23 +2163,26 @@ msgstr "pythonTerminalDock"
 msgid "Interactive python scripting terminal"
 msgstr "Terminal de script python interactif"
 
-#: src/extensions/qtaim/qtaimextension.cpp:67
-msgid "Molecular Graph"
+#: src/extensions/qtaim/qtaimextension.cpp:69
+#, fuzzy
+msgid "Molecular Graph..."
 msgstr "Graphe moléculaire"
 
-#: src/extensions/qtaim/qtaimextension.cpp:73
-msgid "Molecular Graph with Lone Pairs"
+#: src/extensions/qtaim/qtaimextension.cpp:75
+#, fuzzy
+msgid "Molecular Graph with Lone Pairs..."
 msgstr "Graphe moléculaire avec paires libres"
 
-#: src/extensions/qtaim/qtaimextension.cpp:79
-msgid "Atomic Charge"
+#: src/extensions/qtaim/qtaimextension.cpp:81
+#, fuzzy
+msgid "Atomic Charge..."
 msgstr "Charge atomique"
 
-#: src/extensions/qtaim/qtaimextension.cpp:149
+#: src/extensions/qtaim/qtaimextension.cpp:151
 msgid "Open WFN File"
 msgstr "Ouvrir un fichier WFN"
 
-#: src/extensions/qtaim/qtaimextension.cpp:151
+#: src/extensions/qtaim/qtaimextension.cpp:153
 msgid "WFN files (*.wfn);;All files (*.*)"
 msgstr "Fichiers WFN (*.wfn);; Tous les fichiers (*.*)"
 
@@ -2433,11 +2436,11 @@ msgstr "Créer les fichiers d'entrée pour GAMESS"
 msgid "Title"
 msgstr "Titre"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1544
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1535
 msgid "Advanced Settings Changed"
 msgstr "Paramètres avancés modifiés"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1545
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1536
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
@@ -2445,11 +2448,11 @@ msgstr ""
 "Les paramètres avancés ont changé.\n"
 "Réinitialiser?"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1566
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1557
 msgid "Advanced Settings Reset"
 msgstr "Réinitialiser les paramètes avancés"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1567
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1558
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
@@ -2457,11 +2460,11 @@ msgstr ""
 "Etes-vous sûr de vouloir réinitialiser les paramètres avancés?\n"
 "Tous les changements seront perdus!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1579
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid "Basic Settings Reset"
 msgstr "Réinitialiser les paramètes élémentaires"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1580
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1571
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
@@ -2469,7 +2472,7 @@ msgstr ""
 "Etes-vous sûr de vouloir réinitialiser les paramètres élémentaires?\n"
 "Tous les changements seront perdus!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1646
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1637
 msgid "GAMESS Input Deck"
 msgstr "Fichier de données GAMESS"
 
@@ -3826,23 +3829,23 @@ msgstr ""
 "Le second est aligné sur l'axe choisi.\n"
 "Bouton droit: Réinitialiser l'alignement."
 
-#: src/tools/aligntool.cpp:293
+#: src/tools/aligntool.cpp:290
 msgid "Axis:"
 msgstr "Axe:"
 
-#: src/tools/aligntool.cpp:304
+#: src/tools/aligntool.cpp:301
 msgid "Align:"
 msgstr "Aligner:"
 
-#: src/tools/aligntool.cpp:309
+#: src/tools/aligntool.cpp:306
 msgid "Everything"
 msgstr "Tout"
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:662
+#: src/tools/aligntool.cpp:307 src/tools/selectrotatetool.cpp:661
 msgid "Molecule"
 msgstr "Molécule"
 
-#: src/tools/aligntool.cpp:314 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:311 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Aligner"
 
@@ -3878,74 +3881,74 @@ msgstr ""
 "Fonction supplémentaire lors de l'exécution\n"
 "Bouton gauche: déplacement des atomes par glisser-déposer"
 
-#: src/tools/autoopttool.cpp:237
+#: src/tools/autoopttool.cpp:235
 msgid "AutoOpt: Could not setup force field...."
 msgstr "Auto-optimisation: impossible de configurer le champ de force...."
 
-#: src/tools/autoopttool.cpp:245
+#: src/tools/autoopttool.cpp:243
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:249
+#: src/tools/autoopttool.cpp:247
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr "Nbre de contraintes : %1"
 
-#: src/tools/autoopttool.cpp:274
+#: src/tools/autoopttool.cpp:272
 msgid "Force Field:"
 msgstr "Champ de force:"
 
-#: src/tools/autoopttool.cpp:289
+#: src/tools/autoopttool.cpp:287
 msgid "Steps per Update:"
 msgstr "Nombre d'étapes avant d'actualiser:"
 
-#: src/tools/autoopttool.cpp:300
+#: src/tools/autoopttool.cpp:298
 msgid "Algorithm:"
 msgstr "Algorithme:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:303:834
+#: src/tools/autoopttool.cpp:301:834
 msgid "Steepest Descent"
 msgstr "Plus grande pente"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:304:837
+#: src/tools/autoopttool.cpp:302:837
 msgid "Conjugate Gradients"
 msgstr "Gradients conjugués"
 
-#: src/tools/autoopttool.cpp:305
+#: src/tools/autoopttool.cpp:303
 msgid "Molecular Dynamics (300K)"
 msgstr "Dynamique moléculaire (300K)"
 
-#: src/tools/autoopttool.cpp:306
+#: src/tools/autoopttool.cpp:304
 msgid "Molecular Dynamics (600K)"
 msgstr "Dynamique moléculaire (600K)"
 
-#: src/tools/autoopttool.cpp:307
+#: src/tools/autoopttool.cpp:305
 msgid "Molecular Dynamics (900K)"
 msgstr "Dynamique moléculaire (900K)"
 
-#: src/tools/autoopttool.cpp:309 src/tools/autoopttool.cpp:395
+#: src/tools/autoopttool.cpp:307 src/tools/autoopttool.cpp:393
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Commencer"
 
-#: src/tools/autoopttool.cpp:311
+#: src/tools/autoopttool.cpp:309
 msgid "Fixed atoms are movable"
 msgstr "Les atomes fixés sont déplaçables"
 
-#: src/tools/autoopttool.cpp:313
+#: src/tools/autoopttool.cpp:311
 msgid "Ignored atoms are movable"
 msgstr "Les atomes ignorés sont déplaçables"
 
-#: src/tools/autoopttool.cpp:368 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Arrêter"
 
-#: src/tools/autoopttool.cpp:576
+#: src/tools/autoopttool.cpp:574
 msgid "AutoOpt Molecule"
 msgstr "Auto-optimiser molécule"
 
@@ -4203,7 +4206,7 @@ msgstr "Supprimer liaison"
 msgid "Change Element"
 msgstr "Changer élément"
 
-#: src/tools/drawcommand.cpp:950 src/tools/drawtool.cpp:497
+#: src/tools/drawcommand.cpp:950 src/tools/drawtool.cpp:502
 msgid "Change Bond Order"
 msgstr "Changer l'ordre des liaisons"
 
@@ -4225,45 +4228,45 @@ msgstr ""
 msgid "Draw Atom"
 msgstr "Dessiner un atome"
 
-#: src/tools/drawtool.cpp:450
+#: src/tools/drawtool.cpp:455
 msgid "Draw Bond"
 msgstr "Dessiner une liaison"
 
-#: src/tools/drawtool.cpp:459 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:464 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "Dessiner"
 
-#: src/tools/drawtool.cpp:785
+#: src/tools/drawtool.cpp:790
 msgid "Element:"
 msgstr "Elément:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:812:2398
+#: src/tools/drawtool.cpp:817:2398
 msgid "Other..."
 msgstr "Autre..."
 
-#: src/tools/drawtool.cpp:816
+#: src/tools/drawtool.cpp:821
 msgid "Bond Order:"
 msgstr "Multiplicité:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:821:912
+#: src/tools/drawtool.cpp:826:912
 msgid "Single"
 msgstr "Simple"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:822:915
+#: src/tools/drawtool.cpp:827:915
 msgid "Double"
 msgstr "Double"
 
-#: src/tools/drawtool.cpp:823
+#: src/tools/drawtool.cpp:828
 msgid "Triple"
 msgstr "Triple"
 
-#: src/tools/drawtool.cpp:838
+#: src/tools/drawtool.cpp:843
 msgid "Adjust Hydrogens"
 msgstr "Ajuster les hydrogènes"
 
@@ -4358,49 +4361,49 @@ msgstr ""
 "Utiliser la touche Ctrl pour inverser la sélection et la touche majuscule "
 "pour ajouter à une sélection"
 
-#: src/tools/selectrotatetool.cpp:655
+#: src/tools/selectrotatetool.cpp:654
 msgid "Selection Mode:"
 msgstr "Mode de Sélection:"
 
-#: src/tools/selectrotatetool.cpp:660
+#: src/tools/selectrotatetool.cpp:659
 msgid "Atom/Bond"
 msgstr "Atome/Liaison"
 
-#: src/tools/selectrotatetool.cpp:661
+#: src/tools/selectrotatetool.cpp:660
 msgid "Residue"
 msgstr "Résidu"
 
-#: src/tools/selectrotatetool.cpp:664
+#: src/tools/selectrotatetool.cpp:663
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Nombre d'atomes :"
 
-#: src/tools/selectrotatetool.cpp:665
+#: src/tools/selectrotatetool.cpp:664
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Ajouter contraintes"
 
-#: src/tools/selectrotatetool.cpp:720
+#: src/tools/selectrotatetool.cpp:719
 msgid "Change color of the atom"
 msgstr "Modifier la couleur de l'atome"
 
-#: src/tools/selectrotatetool.cpp:744
+#: src/tools/selectrotatetool.cpp:743
 msgid "Change label of the atom"
 msgstr "Modifier l'étiquette de l'atome"
 
-#: src/tools/selectrotatetool.cpp:745 src/tools/selectrotatetool.cpp:754
+#: src/tools/selectrotatetool.cpp:744 src/tools/selectrotatetool.cpp:753
 msgid "New Label:"
 msgstr "Nouvelle étiquette :"
 
-#: src/tools/selectrotatetool.cpp:753
+#: src/tools/selectrotatetool.cpp:752
 msgid "Change label of the bond"
 msgstr "Modifier l'étiquette de la liaison"
 
-#: src/tools/selectrotatetool.cpp:785
+#: src/tools/selectrotatetool.cpp:784
 msgid "Change radius of the atom"
 msgstr "Modifier le rayon de l'atome"
 
-#: src/tools/selectrotatetool.cpp:786
+#: src/tools/selectrotatetool.cpp:785
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-04-08 00:01-0400\n"
+"POT-Creation-Date: 2013-09-23 00:00-0400\n"
 "PO-Revision-Date: 2011-02-20 15:24+0000\n"
 "Last-Translator: Zbyněk Schwarz <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -651,9 +651,9 @@ msgstr "Mnohoúhelník"
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr "Vykresluje atomy jako čtyřstěnné, osmistěnné a jiné mnohoúhelníky"
 
-#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:99
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/qtaim/qtaimextension.h:35
 msgid "QTAIM"
 msgstr "QTAIM"
@@ -785,10 +785,10 @@ msgstr "Video soubory (*.avi)"
 #: src/extensions/animationextension.cpp:244
 #: src/extensions/animationextension.cpp:258
 #: src/extensions/animationextension.cpp:264
-#: src/extensions/forcefieldextension.cpp:190
-#: src/extensions/forcefieldextension.cpp:203
-#: src/extensions/forcefieldextension.cpp:215
-#: src/extensions/forcefieldextension.cpp:245
+#: src/extensions/forcefieldextension.cpp:191
+#: src/extensions/forcefieldextension.cpp:204
+#: src/extensions/forcefieldextension.cpp:216
+#: src/extensions/forcefieldextension.cpp:246
 #: src/extensions/insertfragmentdialog.cpp:192
 #: src/extensions/quantuminput/inputfileextension.cpp:185
 #: src/extensions/quantuminput/inputfileextension.cpp:195
@@ -810,10 +810,10 @@ msgid "Animation..."
 msgstr "Vykreslování..."
 
 #: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:152
-#: src/extensions/qtaim/qtaimextension.cpp:99
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/extensions/forcefieldextension.cpp:153
+#: src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
@@ -898,13 +898,13 @@ msgstr ""
 "Pro molekulu nebyla stanovena žádná jednotková buňka -- nelze použít "
 "souřadnice vyjádřené zlomkem."
 
-#: src/extensions/cartesianextension.cpp:559
+#: src/extensions/cartesianextension.cpp:558
 msgid "Cartesian Editor..."
 msgstr "Karteziánský editor..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
-#: src/extensions/cartesianextension.cpp:574
+#: src/extensions/cartesianextension.cpp:573
 #: src/extensions/crystallography/crystallographyextension.cpp:168
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -1037,7 +1037,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:455
 #: src/extensions/crystallography/crystallographyextension.cpp:687
-#: src/extensions/crystallography/crystallographyextension.cpp:1988
+#: src/extensions/crystallography/crystallographyextension.cpp:1983
 msgid "Show &Editors"
 msgstr ""
 
@@ -1048,7 +1048,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:559
 #: src/extensions/crystallography/crystallographyextension.cpp:696
-#: src/extensions/crystallography/crystallographyextension.cpp:1996
+#: src/extensions/crystallography/crystallographyextension.cpp:1991
 msgid "Show &Property Display"
 msgstr ""
 
@@ -1073,7 +1073,7 @@ msgid "Remove &Unit Cell"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:654
-#: src/extensions/crystallography/crystallographyextension.cpp:1966
+#: src/extensions/crystallography/crystallographyextension.cpp:1961
 msgid "Add &Unit Cell"
 msgstr ""
 
@@ -1121,7 +1121,7 @@ msgstr ""
 msgid "Paste Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1757
+#: src/extensions/crystallography/crystallographyextension.cpp:1754
 msgid ""
 "Niggli-reduction failed. The input structure's lattice that is confusing the "
 "Niggli-reduction algorithm. Try making a small perturbation (approx. 2 "
@@ -1129,201 +1129,201 @@ msgid ""
 "try again."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1871
+#: src/extensions/crystallography/crystallographyextension.cpp:1868
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1880
+#: src/extensions/crystallography/crystallographyextension.cpp:1877
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:1973
+#: src/extensions/crystallography/crystallographyextension.cpp:1968
 msgid "I&mport Crystal from Clipboard..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2011
+#: src/extensions/crystallography/crystallographyextension.cpp:2006
 msgid "&Wrap Atoms to Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2018
+#: src/extensions/crystallography/crystallographyextension.cpp:2013
 #, fuzzy
 msgid "&Translate Atoms..."
 msgstr "Upravit atom"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2025
+#: src/extensions/crystallography/crystallographyextension.cpp:2020
 msgid "Rotate To Standard &Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2032
+#: src/extensions/crystallography/crystallographyextension.cpp:2027
 msgid "Scale Cell To &Volume..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2041
+#: src/extensions/crystallography/crystallographyextension.cpp:2036
 msgid "&Slab..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2056
+#: src/extensions/crystallography/crystallographyextension.cpp:2051
 msgid "Perceive Space&group..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2063
+#: src/extensions/crystallography/crystallographyextension.cpp:2058
 msgid "Set &Spacegroup..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2070
+#: src/extensions/crystallography/crystallographyextension.cpp:2065
 msgid "&Fill Unit Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2071
+#: src/extensions/crystallography/crystallographyextension.cpp:2066
 msgid "Fill the unit cell using current spacegroup."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2078
+#: src/extensions/crystallography/crystallographyextension.cpp:2073
 msgid "Sy&mmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2085
+#: src/extensions/crystallography/crystallographyextension.cpp:2080
 msgid "Reduce Cell (&Primitive)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2092
+#: src/extensions/crystallography/crystallographyextension.cpp:2087
 msgid "Reduce Cell (&Niggli)"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2110
+#: src/extensions/crystallography/crystallographyextension.cpp:2105
 msgid "&Angstrom"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2120
+#: src/extensions/crystallography/crystallographyextension.cpp:2115
 msgid "&Bohr"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2129
+#: src/extensions/crystallography/crystallographyextension.cpp:2124
 msgid "&Nanometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2138
+#: src/extensions/crystallography/crystallographyextension.cpp:2133
 msgid "&Picometer"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2150
+#: src/extensions/crystallography/crystallographyextension.cpp:2145
 msgid "&Degree"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2160
+#: src/extensions/crystallography/crystallographyextension.cpp:2155
 msgid "&Radian"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2172
+#: src/extensions/crystallography/crystallographyextension.cpp:2167
 msgid "Display &cartesian coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2181
+#: src/extensions/crystallography/crystallographyextension.cpp:2176
 msgid "Display &fractional coordinates"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2194
+#: src/extensions/crystallography/crystallographyextension.cpp:2189
 msgid "Preserve &Cartesian Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2204
+#: src/extensions/crystallography/crystallographyextension.cpp:2199
 msgid "Preserve &Fractional Coordinates During Cell Modification"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2218
+#: src/extensions/crystallography/crystallographyextension.cpp:2213
 msgid "Display &cartesian matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2228
+#: src/extensions/crystallography/crystallographyextension.cpp:2223
 msgid "Display &fractional matrix"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2248
+#: src/extensions/crystallography/crystallographyextension.cpp:2243
 msgid "Display as &row vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2258
+#: src/extensions/crystallography/crystallographyextension.cpp:2253
 msgid "Display as &column vectors"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2267
+#: src/extensions/crystallography/crystallographyextension.cpp:2262
 msgid "&Crystal View Options..."
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2317
-#: src/extensions/crystallography/crystallographyextension.cpp:2449
-#: src/extensions/crystallography/crystallographyextension.cpp:2613
+#: src/extensions/crystallography/crystallographyextension.cpp:2312
+#: src/extensions/crystallography/crystallographyextension.cpp:2444
+#: src/extensions/crystallography/crystallographyextension.cpp:2608
 msgid "Select tolerance in current cartesian units:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2339
-#: src/extensions/crystallography/crystallographyextension.cpp:2469
-#: src/extensions/crystallography/crystallographyextension.cpp:2633
+#: src/extensions/crystallography/crystallographyextension.cpp:2334
+#: src/extensions/crystallography/crystallographyextension.cpp:2464
+#: src/extensions/crystallography/crystallographyextension.cpp:2628
 msgid ""
 "Spacegroup perception failed.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2355
+#: src/extensions/crystallography/crystallographyextension.cpp:2350
 msgid "Perceive Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2389
+#: src/extensions/crystallography/crystallographyextension.cpp:2384
 msgid "Set Spacegroup:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2403
+#: src/extensions/crystallography/crystallographyextension.cpp:2398
 msgid "Set Spacegroup"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2416
+#: src/extensions/crystallography/crystallographyextension.cpp:2411
 msgid ""
 "There is not a spacegroup set for this document.\n"
 "\n"
 "Would you like to set a spacegroup now?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2435
+#: src/extensions/crystallography/crystallographyextension.cpp:2430
 msgid "Fill Unit Cell"
 msgstr "Vyplnit jednotkovou buňku"
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2483
+#: src/extensions/crystallography/crystallographyextension.cpp:2478
 msgid ""
 "Spacegroup P1 detected -- cannot symmetrize to this spacegroup.\n"
 "\n"
 "Would you like to try again with a different tolerance?"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2502
+#: src/extensions/crystallography/crystallographyextension.cpp:2497
 msgid "Symmetrize Crystal"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2578
+#: src/extensions/crystallography/crystallographyextension.cpp:2573
 msgid "Wrap Atoms To Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2599
+#: src/extensions/crystallography/crystallographyextension.cpp:2594
 msgid "Rotate to Standard Orientation"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2651
+#: src/extensions/crystallography/crystallographyextension.cpp:2646
 msgid "Reduce to Primitive Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2664
+#: src/extensions/crystallography/crystallographyextension.cpp:2659
 msgid "Reduce to Niggli Cell"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2687
+#: src/extensions/crystallography/crystallographyextension.cpp:2682
 msgctxt "Unit cell volume"
 msgid "Enter new volume:"
 msgstr ""
 
-#: src/extensions/crystallography/crystallographyextension.cpp:2701
+#: src/extensions/crystallography/crystallographyextension.cpp:2696
 msgid "Scale Unit Cell Volume"
 msgstr ""
 
@@ -1477,87 +1477,87 @@ msgstr "Zavést dráhy"
 msgid "Import trajectory files"
 msgstr "Zavést soubory s drahami"
 
-#: src/extensions/forcefieldextension.cpp:76
+#: src/extensions/forcefieldextension.cpp:77
 msgid "&Optimize Geometry"
 msgstr "&Vyladit uspořádání"
 
-#: src/extensions/forcefieldextension.cpp:78
+#: src/extensions/forcefieldextension.cpp:79
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
 msgstr "Ctrl+Alt+O"
 
-#: src/extensions/forcefieldextension.cpp:83
+#: src/extensions/forcefieldextension.cpp:84
 msgid "Setup Force Field..."
 msgstr "Nastavit silové pole..."
 
-#: src/extensions/forcefieldextension.cpp:93
+#: src/extensions/forcefieldextension.cpp:94
 msgid "Calculate Energy"
 msgstr "Vypočítat energii"
 
-#: src/extensions/forcefieldextension.cpp:98
+#: src/extensions/forcefieldextension.cpp:99
 msgid "Conformer Search..."
 msgstr "Hledání konformačního izomeru..."
 
-#: src/extensions/forcefieldextension.cpp:108
+#: src/extensions/forcefieldextension.cpp:109
 msgid "Constraints..."
 msgstr "Omezení..."
 
-#: src/extensions/forcefieldextension.cpp:113
+#: src/extensions/forcefieldextension.cpp:114
 msgid "Ignore Selection"
 msgstr "Nevšímat si výběru"
 
-#: src/extensions/forcefieldextension.cpp:118
+#: src/extensions/forcefieldextension.cpp:119
 msgid "Fix Selected Atoms"
 msgstr "Upevnit vybrané atomy"
 
-#: src/extensions/forcefieldextension.cpp:152
+#: src/extensions/forcefieldextension.cpp:153
 msgid "&Molecular Mechanics"
 msgstr "&Molekulární mechanika"
 
-#: src/extensions/forcefieldextension.cpp:191
-#: src/extensions/forcefieldextension.cpp:216
-#: src/extensions/forcefieldextension.cpp:246
+#: src/extensions/forcefieldextension.cpp:192
+#: src/extensions/forcefieldextension.cpp:217
+#: src/extensions/forcefieldextension.cpp:247
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
 msgstr ""
 "Pro tuto molekulu nelze ustavit nyní vybrané silové pole. Přepíná se na UFF."
 
-#: src/extensions/forcefieldextension.cpp:201
+#: src/extensions/forcefieldextension.cpp:202
 #, qt-format
 msgid "Energy = %L1 %2"
 msgstr "Energie = %L1 %2"
 
-#: src/extensions/forcefieldextension.cpp:266
+#: src/extensions/forcefieldextension.cpp:267
 msgid "Geometric Optimization"
 msgstr "Vyladění uspořádání"
 
-#: src/extensions/forcefieldextension.cpp:665
+#: src/extensions/forcefieldextension.cpp:666
 msgid "Forcefield Optimization"
 msgstr "Vyladění silového pole"
 
-#: src/extensions/forcefieldextension.cpp:666
-#: src/extensions/forcefieldextension.cpp:669
-#: src/extensions/forcefieldextension.cpp:672
-#: src/extensions/forcefieldextension.cpp:675
-#: src/extensions/forcefieldextension.cpp:679
+#: src/extensions/forcefieldextension.cpp:667
+#: src/extensions/forcefieldextension.cpp:670
+#: src/extensions/forcefieldextension.cpp:673
+#: src/extensions/forcefieldextension.cpp:676
+#: src/extensions/forcefieldextension.cpp:680
 #: src/extensions/trajvideomaker.cpp:67
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/extensions/forcefieldextension.cpp:668
+#: src/extensions/forcefieldextension.cpp:669
 msgid "Systematic Rotor Search"
 msgstr "Soustavné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:671
+#: src/extensions/forcefieldextension.cpp:672
 msgid "Random Rotor Search"
 msgstr "Náhodné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:674
+#: src/extensions/forcefieldextension.cpp:675
 msgid "Weighted Rotor Search"
 msgstr "Zatížené hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:678
+#: src/extensions/forcefieldextension.cpp:679
 msgid "Genetic Algorithm Search"
 msgstr ""
 
@@ -2112,11 +2112,11 @@ msgstr "Energie (kJ/mol):"
 msgid "Conformer"
 msgstr "Konformační izomer"
 
-#: src/extensions/propmodel.cpp:974
+#: src/extensions/propmodel.cpp:981
 msgid "Yes"
 msgstr "Ano"
 
-#: src/extensions/propmodel.cpp:976
+#: src/extensions/propmodel.cpp:983
 msgid "No"
 msgstr "Ne"
 
@@ -2134,23 +2134,26 @@ msgstr "pythonTerminalDock"
 msgid "Interactive python scripting terminal"
 msgstr "Vzájemně působící pythonovský skriptovací terminál"
 
-#: src/extensions/qtaim/qtaimextension.cpp:67
-msgid "Molecular Graph"
+#: src/extensions/qtaim/qtaimextension.cpp:69
+#, fuzzy
+msgid "Molecular Graph..."
 msgstr "Molekulární graf"
 
-#: src/extensions/qtaim/qtaimextension.cpp:73
-msgid "Molecular Graph with Lone Pairs"
+#: src/extensions/qtaim/qtaimextension.cpp:75
+#, fuzzy
+msgid "Molecular Graph with Lone Pairs..."
 msgstr "Molekulární graf s volnými dvojicemi elektronů"
 
-#: src/extensions/qtaim/qtaimextension.cpp:79
-msgid "Atomic Charge"
+#: src/extensions/qtaim/qtaimextension.cpp:81
+#, fuzzy
+msgid "Atomic Charge..."
 msgstr "Elektrický náboj atomu"
 
-#: src/extensions/qtaim/qtaimextension.cpp:149
+#: src/extensions/qtaim/qtaimextension.cpp:151
 msgid "Open WFN File"
 msgstr "Otevřít soubor WFN"
 
-#: src/extensions/qtaim/qtaimextension.cpp:151
+#: src/extensions/qtaim/qtaimextension.cpp:153
 msgid "WFN files (*.wfn);;All files (*.*)"
 msgstr "Soubory WFN (*.wfn);;Všechny soubory (*.*)"
 
@@ -2400,11 +2403,11 @@ msgstr "Vytvořit vstupní soubory pro GAMESS balíček pro kvantovou chemii"
 msgid "Title"
 msgstr "Název"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1544
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1535
 msgid "Advanced Settings Changed"
 msgstr "Změna pokročilých nastavení"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1545
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1536
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
@@ -2412,11 +2415,11 @@ msgstr ""
 "Pokročilá nastavení byla změněna.\n"
 "Zahodit změny?"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1566
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1557
 msgid "Advanced Settings Reset"
 msgstr "Smazání pokročilých nastavení"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1567
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1558
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
@@ -2424,11 +2427,11 @@ msgstr ""
 "Jste si jisti, že chcete smazat pokročilá nastavení?\n"
 "Všechny změny budou ztraceny!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1579
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid "Basic Settings Reset"
 msgstr "Smazání základních nastavení"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1580
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1571
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
@@ -2436,7 +2439,7 @@ msgstr ""
 "Jste si jisti, že chcete smazat základní nastavení?\n"
 "Všechny změny budou ztraceny!"
 
-#: src/extensions/quantuminput/gamessinputdialog.cpp:1646
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1637
 msgid "GAMESS Input Deck"
 msgstr "Vstupní balíček GAMESS"
 
@@ -3766,23 +3769,23 @@ msgstr ""
 "\tDruhý atom je zarovnán k vybrané ose.\n"
 "Pravé tlačítko myši: \tZrušit zarovnání."
 
-#: src/tools/aligntool.cpp:293
+#: src/tools/aligntool.cpp:290
 msgid "Axis:"
 msgstr "Osa:"
 
-#: src/tools/aligntool.cpp:304
+#: src/tools/aligntool.cpp:301
 msgid "Align:"
 msgstr "Zarovnání:"
 
-#: src/tools/aligntool.cpp:309
+#: src/tools/aligntool.cpp:306
 msgid "Everything"
 msgstr "Vše"
 
-#: src/tools/aligntool.cpp:310 src/tools/selectrotatetool.cpp:662
+#: src/tools/aligntool.cpp:307 src/tools/selectrotatetool.cpp:661
 msgid "Molecule"
 msgstr "Molekula"
 
-#: src/tools/aligntool.cpp:314 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:311 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Zarovnání"
 
@@ -3818,74 +3821,74 @@ msgstr ""
 "Funkce navíc při spuštěném nástroji\n"
 "Levé tlačítko myši: Klepnout a táhnout atomy pro pohybování s nimi"
 
-#: src/tools/autoopttool.cpp:237
+#: src/tools/autoopttool.cpp:235
 msgid "AutoOpt: Could not setup force field...."
 msgstr "Automatické vyladění: Nelze nastavit silové pole..."
 
-#: src/tools/autoopttool.cpp:245
+#: src/tools/autoopttool.cpp:243
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Automatické vyladění: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:249
+#: src/tools/autoopttool.cpp:247
 #, qt-format
 msgid "Num Constraints: %1"
 msgstr "Omezení: %1"
 
-#: src/tools/autoopttool.cpp:274
+#: src/tools/autoopttool.cpp:272
 msgid "Force Field:"
 msgstr "Silové pole:"
 
-#: src/tools/autoopttool.cpp:289
+#: src/tools/autoopttool.cpp:287
 msgid "Steps per Update:"
 msgstr "Kroky při obnovení:"
 
-#: src/tools/autoopttool.cpp:300
+#: src/tools/autoopttool.cpp:298
 msgid "Algorithm:"
 msgstr "Algoritmus:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:303:834
+#: src/tools/autoopttool.cpp:301:834
 msgid "Steepest Descent"
 msgstr "Nejstrmější pokles"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:304:837
+#: src/tools/autoopttool.cpp:302:837
 msgid "Conjugate Gradients"
 msgstr "Sdružovat přechody"
 
-#: src/tools/autoopttool.cpp:305
+#: src/tools/autoopttool.cpp:303
 msgid "Molecular Dynamics (300K)"
 msgstr "Molekulární dynamika (300K)"
 
-#: src/tools/autoopttool.cpp:306
+#: src/tools/autoopttool.cpp:304
 msgid "Molecular Dynamics (600K)"
 msgstr "Molekulární dynamika (600K)"
 
-#: src/tools/autoopttool.cpp:307
+#: src/tools/autoopttool.cpp:305
 msgid "Molecular Dynamics (900K)"
 msgstr "Molekulární dynamika (900K)"
 
-#: src/tools/autoopttool.cpp:309 src/tools/autoopttool.cpp:395
+#: src/tools/autoopttool.cpp:307 src/tools/autoopttool.cpp:393
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Spustit"
 
-#: src/tools/autoopttool.cpp:311
+#: src/tools/autoopttool.cpp:309
 msgid "Fixed atoms are movable"
 msgstr "Pevné atomy jsou pohyblivé"
 
-#: src/tools/autoopttool.cpp:313
+#: src/tools/autoopttool.cpp:311
 msgid "Ignored atoms are movable"
 msgstr "Neuvažované atomy jsou pohyblivé"
 
-#: src/tools/autoopttool.cpp:368 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/tools/autoopttool.cpp:576
+#: src/tools/autoopttool.cpp:574
 msgid "AutoOpt Molecule"
 msgstr "Automatické vyladění molekuly"
 
@@ -4136,7 +4139,7 @@ msgstr "Smazat vazbu"
 msgid "Change Element"
 msgstr "Změnit prvek"
 
-#: src/tools/drawcommand.cpp:950 src/tools/drawtool.cpp:497
+#: src/tools/drawcommand.cpp:950 src/tools/drawtool.cpp:502
 msgid "Change Bond Order"
 msgstr "Změnit druh vazby"
 
@@ -4157,45 +4160,45 @@ msgstr ""
 msgid "Draw Atom"
 msgstr "Nakreslit Atom"
 
-#: src/tools/drawtool.cpp:450
+#: src/tools/drawtool.cpp:455
 msgid "Draw Bond"
 msgstr "Nakreslit vazbu"
 
-#: src/tools/drawtool.cpp:459 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:464 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "Nakreslit"
 
-#: src/tools/drawtool.cpp:785
+#: src/tools/drawtool.cpp:790
 msgid "Element:"
 msgstr "Prvek:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:812:2398
+#: src/tools/drawtool.cpp:817:2398
 msgid "Other..."
 msgstr "Ostatní:"
 
-#: src/tools/drawtool.cpp:816
+#: src/tools/drawtool.cpp:821
 msgid "Bond Order:"
 msgstr "Druh vazby:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:821:912
+#: src/tools/drawtool.cpp:826:912
 msgid "Single"
 msgstr "Jednoduchá"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:822:915
+#: src/tools/drawtool.cpp:827:915
 msgid "Double"
 msgstr "Dvojná"
 
-#: src/tools/drawtool.cpp:823
+#: src/tools/drawtool.cpp:828
 msgid "Triple"
 msgstr "Trojná"
 
-#: src/tools/drawtool.cpp:838
+#: src/tools/drawtool.cpp:843
 msgid "Adjust Hydrogens"
 msgstr "Upravit Vodíky"
 
@@ -4288,49 +4291,49 @@ msgstr ""
 "Použijte klávesu Ctrl pro přepínání výběru a klávesu Shift pro přidání do "
 "výběru"
 
-#: src/tools/selectrotatetool.cpp:655
+#: src/tools/selectrotatetool.cpp:654
 msgid "Selection Mode:"
 msgstr "Režim výběru:"
 
-#: src/tools/selectrotatetool.cpp:660
+#: src/tools/selectrotatetool.cpp:659
 msgid "Atom/Bond"
 msgstr "Atom/Vazba"
 
-#: src/tools/selectrotatetool.cpp:661
+#: src/tools/selectrotatetool.cpp:660
 msgid "Residue"
 msgstr "Zbytek"
 
-#: src/tools/selectrotatetool.cpp:664
+#: src/tools/selectrotatetool.cpp:663
 #, fuzzy
 msgid "Add Center of Atoms"
 msgstr "Počet atomů:"
 
-#: src/tools/selectrotatetool.cpp:665
+#: src/tools/selectrotatetool.cpp:664
 #, fuzzy
 msgid "Add Center of Mass"
 msgstr "Přidat omezení"
 
-#: src/tools/selectrotatetool.cpp:720
+#: src/tools/selectrotatetool.cpp:719
 msgid "Change color of the atom"
 msgstr "Změnit barvu atomu"
 
-#: src/tools/selectrotatetool.cpp:744
+#: src/tools/selectrotatetool.cpp:743
 msgid "Change label of the atom"
 msgstr "Změnit štítek u atomu"
 
-#: src/tools/selectrotatetool.cpp:745 src/tools/selectrotatetool.cpp:754
+#: src/tools/selectrotatetool.cpp:744 src/tools/selectrotatetool.cpp:753
 msgid "New Label:"
 msgstr "Nový štítek:"
 
-#: src/tools/selectrotatetool.cpp:753
+#: src/tools/selectrotatetool.cpp:752
 msgid "Change label of the bond"
 msgstr "Změnit štítek u vazby"
 
-#: src/tools/selectrotatetool.cpp:785
+#: src/tools/selectrotatetool.cpp:784
 msgid "Change radius of the atom"
 msgstr "Změnit poloměr atomu"
 
-#: src/tools/selectrotatetool.cpp:786
+#: src/tools/selectrotatetool.cpp:785
 #, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"

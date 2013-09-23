@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-04-08 00:00-0400\n"
+"POT-Creation-Date: 2013-09-23 00:00-0400\n"
 "PO-Revision-Date: 2011-02-04 13:46+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -41,8 +41,8 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3161
-#: src/mainwindow.cpp:3698:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:3695:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -86,7 +86,7 @@ msgstr "Удалить атомы"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3716 src/mainwindow.cpp:3733:402 rc.cpp:414
+#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
 msgid "Settings"
 msgstr "Настройки"
 
@@ -349,79 +349,79 @@ msgstr "Не удалось вставить молекулу."
 msgid "Paste failed (format unavailable)."
 msgstr "Вставка не удалась (формат недоступен)"
 
-#: src/mainwindow.cpp:2416
+#: src/mainwindow.cpp:2413
 #, fuzzy
 msgid "Copy failed (format unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:2431
+#: src/mainwindow.cpp:2428
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:2598 src/mainwindow.cpp:2630 src/mainwindow.cpp:2696
-#: src/mainwindow.cpp:3307
+#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
+#: src/mainwindow.cpp:3304
 #, qt-format
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2656
+#: src/mainwindow.cpp:2653
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2665
+#: src/mainwindow.cpp:2662
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Открепленное окно просмотра"
 
-#: src/mainwindow.cpp:2896
+#: src/mainwindow.cpp:2893
 msgid "Normal Size"
 msgstr "Нормальный размер"
 
-#: src/mainwindow.cpp:2913
+#: src/mainwindow.cpp:2910
 msgid "Full Screen"
 msgstr "Полноэкранный режим"
 
-#: src/mainwindow.cpp:3016
+#: src/mainwindow.cpp:3013
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3154
+#: src/mainwindow.cpp:3151
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:3157
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3652
+#: src/mainwindow.cpp:3649
 msgid "Add"
 msgstr "Добавить"
 
-#: src/mainwindow.cpp:3657
+#: src/mainwindow.cpp:3654
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: src/mainwindow.cpp:3662
+#: src/mainwindow.cpp:3659
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/mainwindow.cpp:3690
+#: src/mainwindow.cpp:3687
 msgid "No tools or engines loaded."
 msgstr "Не загружены инструменты или движки."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3689
 msgid "No engines loaded."
 msgstr "Не загружены движки."
 
-#: src/mainwindow.cpp:3694
+#: src/mainwindow.cpp:3691
 msgid "No tools loaded."
 msgstr "Не загружены инструменты."
 
-#: src/mainwindow.cpp:3695
+#: src/mainwindow.cpp:3692
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -429,17 +429,17 @@ msgstr ""
 " Маловероятно, что это приложение будет работать корректно. Пожалуста "
 "исправьте эту ошибку."
 
-#: src/mainwindow.cpp:3739
+#: src/mainwindow.cpp:3736
 msgid "Objects"
 msgstr "Объекты"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3745:342
+#: src/mainwindow.cpp:3742:342
 msgid "Colors"
 msgstr "Цвета"
 
-#: src/mainwindow.cpp:3778
+#: src/mainwindow.cpp:3775
 msgid " copy"
 msgstr " копировать"
 
@@ -460,25 +460,25 @@ msgid "Description:\n"
 msgstr "Описание:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
-#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:467
+#: src/projecttreeeditor.cpp:497 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Молекула"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:499
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Атомы"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:501
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Связи"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:503
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Аминокислотые остатки"
@@ -492,13 +492,13 @@ msgid "bond %1"
 msgstr "связь %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:495
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Метка"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:505 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Пользовательский выбор"
 
