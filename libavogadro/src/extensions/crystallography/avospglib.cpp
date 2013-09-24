@@ -274,6 +274,8 @@ namespace Avogadro {
 
       // if spglib cannot refine the cell, return 0.
       if (numBravaisAtoms <= 0) {
+        delete[] positions;
+        delete[] types;
         return 0;
       }
 
@@ -443,6 +445,8 @@ namespace Avogadro {
 
       // if spglib cannot refine the cell, return 0.
       if (numBravaisAtoms <= 0) {
+        delete[] positions;
+        delete[] types;
         return 0;
       }
 

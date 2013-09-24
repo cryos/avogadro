@@ -2214,7 +2214,7 @@ static int is_hall_symbol_cubic( double shift[3],
 				 Centering centering )
 {
   int i, hall_number;
-  Symmetry *conv_symmetry;
+  Symmetry *conv_symmetry = 0;
   double trans_mat[3][3] = { { 0, 0, 1 },
 			     { 0,-1, 0 },
 			     { 1, 0, 0 } };
@@ -2278,6 +2278,8 @@ static int is_hall_symbol_cubic( double shift[3],
   return 0;
 
  found:
+  if (conv_symmetry)
+    sym_free_symmetry(conv_symmetry);
   return hall_number;
 
 }

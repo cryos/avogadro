@@ -214,11 +214,12 @@ namespace Avogadro {
     FOR_ATOMS_OF_MOL(atom,obmol) {
       QString symbol = QString(OpenBabel::etab.GetSymbol(atom->GetAtomicNum()));
       double shift   = QString(atom->GetData("NMR Isotropic Shift")->GetValue().c_str()).toFloat();
-      QList<double> *list = new QList<double>;
+      QList<double> *list = 0;
       if (m_NMRdata->contains(symbol)) {
         list	= m_NMRdata->value(symbol);
       }
       else {
+        list = new QList<double>;
         // Dump symbol into NMR Type list
         ui.combo_type->addItem(symbol);
       }

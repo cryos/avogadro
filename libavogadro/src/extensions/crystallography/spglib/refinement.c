@@ -177,7 +177,7 @@ static int get_symmetrized_positions( Cell * bravais,
 
   debug_print("get_symmetrized_positions\n");
 
-  ind_atoms = malloc( sizeof( double ) * bravais->size );
+  ind_atoms = malloc( sizeof(int) * bravais->size );
   positions = mat_alloc_VecDBL( bravais->size );
   num_ind_atoms = 0;
 

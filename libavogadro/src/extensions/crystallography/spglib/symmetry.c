@@ -112,6 +112,7 @@ void sym_free_symmetry( Symmetry *symmetry )
     free( symmetry->trans );
   }
   free( symmetry );
+  symmetry = 0;
 }
 
 Symmetry * sym_get_operation( SPGCONST Cell *cell,
@@ -193,7 +194,7 @@ static int get_operation( int rot[][3][3],
   int num_sym;
   int multi;
   PointSymmetry lattice_sym;
-  Cell *primitive;
+  Cell *primitive = 0;
   VecDBL *pure_trans;
 
   pure_trans = sym_get_pure_translation(cell, symprec);
@@ -241,6 +242,8 @@ static int get_operation( int rot[][3][3],
 
  err:
   mat_free_VecDBL( pure_trans );
+  if (primitive)
+    cel_free_cell( primitive );
   return 0;
 }
 
@@ -428,9 +431,9 @@ static int get_space_group_operation( int rot[][3][3],
       mat_copy_matrix_i3(rot[num_sym + j], lattice_sym->rot[i]);
     }
     num_sym += tmp_trans->size;
+    mat_free_VecDBL( tmp_trans );
   }
 
-  mat_free_VecDBL( tmp_trans );
   return num_sym;
 }
 
@@ -525,7 +528,7 @@ static PointSymmetry get_lattice_symmetry( SPGCONST Cell *cell,
 	  mat_copy_matrix_i3( lattice_sym.rot[num_sym], axes );
 	  num_sym++;
 	}
-	if ( num_sym > 48 ) {
+	if ( num_sym >= 48 ) {
 	  warning_print("spglib: Too many lattice symmetries was found.\n");
 	  warning_print("        Tolerance may be too large ");
 	  warning_print("(line %d, %s).\n", __LINE__, __FILE__);

@@ -374,6 +374,8 @@ namespace Avogadro {
             *m_currentReference = m_currentReference->normalized();
           }
           else {
+            if (reference)
+              delete reference;
             m_currentReference = new Vector3d(*m_referencePoint);
           }
         }
@@ -484,6 +486,8 @@ namespace Avogadro {
           }
           else
           {
+            if (reference)
+              delete reference;
             m_snapped = false;
             delete m_currentReference;
             m_currentReference = new Vector3d(*m_referencePoint);
@@ -1319,6 +1323,7 @@ namespace Avogadro {
 
       if(angle < 0) {
         angle = tAngle;
+        delete smallestRef;
         smallestRef = new Vector3d(v);
       }
       else if(tAngle < angle) {
@@ -1547,6 +1552,8 @@ namespace Avogadro {
     }
     else
     {
+      if (reference)
+        delete reference;
       m_snapped = false;
       delete m_currentReference;
       m_currentReference = new Vector3d(*m_referencePoint);
@@ -1577,6 +1584,8 @@ namespace Avogadro {
     }
     else
     {
+      if (reference)
+        delete reference;
       m_snapped = false;
       delete m_currentReference;
       m_currentReference = new Vector3d(*m_referencePoint);

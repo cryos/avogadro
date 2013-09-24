@@ -88,6 +88,7 @@ int spg_get_symmetry( int rotation[][3][3],
   if (symmetry->size > max_size) {
     fprintf(stderr, "spglib: Indicated max size(=%d) is less than number ", max_size);
     fprintf(stderr, "spglib: of symmetry operations(=%d).\n", symmetry->size);
+    cel_free_cell( cell );
     sym_free_symmetry( symmetry );
     return 0;
   }
@@ -196,8 +197,8 @@ int spg_find_primitive( double lattice[3][3],
 	  position[i][j] = primitive->position[i][j];
 	}
       }
-      cel_free_cell( primitive );
     }
+    cel_free_cell( primitive );
   } else {
     num_prim_atom = 0;
   }

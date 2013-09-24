@@ -44,6 +44,7 @@ void cel_free_cell( Cell * cell )
     free( cell->types );
   }
   free ( cell );
+  cell = 0;
 }
 
 void cel_set_cell( Cell * cell,
