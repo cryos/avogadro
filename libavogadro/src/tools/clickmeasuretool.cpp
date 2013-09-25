@@ -217,7 +217,7 @@ namespace Avogadro {
       }
       if (m_lastMeasurement.at(4) != m_dihedral) {
         emit message(dihedralString);
-        m_lastMeasurement[4] = m_angle;
+        m_lastMeasurement[4] = m_dihedral;
       }
     }
   }
