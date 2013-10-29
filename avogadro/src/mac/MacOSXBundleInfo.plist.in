@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>10.3.9</key>
-	<string>LSMinimumSystemVersion</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.6.0</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Avogadro</string>
+  <key>NSPrincipalClass</key>
+  <string>NSApplication</string>
+  <key>NSHighResolutionCapable</key>
+  <string>True</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 	<dict>
@@ -57,7 +61,7 @@
 		<key>CFBundleTypeExtensions</key>
 		<array>
 			<string>mdl</string>
-			<string>mol</string>			
+			<string>mol</string>
 		</array>
 		<key>CFBundleTypeRole</key>
 		<string>Editor</string>
@@ -72,7 +76,7 @@
 		<key>CFBundleTypeExtensions</key>
 		<array>
 			<string>sd</string>
-			<string>sdf</string>			
+			<string>sdf</string>
 		</array>
 		<key>CFBundleTypeRole</key>
 		<string>Editor</string>
