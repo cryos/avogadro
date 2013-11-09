@@ -85,6 +85,7 @@ namespace Avogadro
     Q_OBJECT
     public:
       PrimitiveItemDelegate(QTreeView *view, QWidget *parent);
+      ~PrimitiveItemDelegate();
 
       void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
       QSize sizeHint(const QStyleOptionViewItem &opt, const QModelIndex &index) const;

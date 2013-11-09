@@ -62,7 +62,8 @@ using namespace std;
 								CrystalCell(double in_a,double in_b,double in_c, 
 										 double in_alpha,double in_beta,double in_gamma,
 										 unsigned basisDim,TAtomicCoordinate* theBasis);
-			
+								~CrystalCell();
+
 			unsigned	GetBasisCount() { return basisCount; };
       TAtomicCoordinate GetAtomicCoordinate(unsigned index);
 			TPoint3D	GetCoordinate(unsigned index);

@@ -94,6 +94,10 @@
 	}
 	
 //
+	CrystalCell::~CrystalCell()
+	{
+		free(basis);
+	}
 
 	// =======================================================
 	// * Retrieve an atomic coordinate from the basis

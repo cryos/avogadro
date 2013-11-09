@@ -39,6 +39,8 @@ namespace Avogadro {
 
     public:
       ProjectTreeModelDelegate(ProjectTreeModel *model);
+      ~ProjectTreeModelDelegate();
+
       /**
        * The name for this project tree model delegate
        */

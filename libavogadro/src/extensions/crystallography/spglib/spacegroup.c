@@ -70,12 +70,12 @@ Spacegroup spa_get_spacegroup_with_primitive( SPGCONST Cell * primitive,
   smallest_prim = get_cell_with_smallest_lattice( primitive, symprec );
   if ( smallest_prim->size > 0 ) {
     spacegroup = get_spacegroup( primitive, symprec );
-    cel_free_cell( smallest_prim );
   } else {
     spacegroup.number = 0;
     warning_print("spglib: Space group could not be found ");
     warning_print("(line %d, %s).\n", __LINE__, __FILE__);
   }
+  cel_free_cell( smallest_prim );
   return spacegroup;
 }
 
