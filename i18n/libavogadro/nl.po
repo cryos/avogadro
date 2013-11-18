@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-11-11 00:00-0500\n"
+"POT-Creation-Date: 2013-11-18 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:27+0000\n"
 "Last-Translator: Sander Deryckere <sanderd17@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -653,9 +653,9 @@ msgstr "Veelhoek"
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr "Geef atomen als tetraeders, octaeders en andere veelhoeken weer"
 
-#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/qtaim/qtaimextension.h:35
 msgid "QTAIM"
 msgstr ""
@@ -812,9 +812,9 @@ msgstr "Animatie..."
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:153
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
@@ -2135,25 +2135,25 @@ msgstr "pythonTerminalDock"
 msgid "Interactive python scripting terminal"
 msgstr "interactieve python scripting terminal"
 
-#: src/extensions/qtaim/qtaimextension.cpp:70
+#: src/extensions/qtaim/qtaimextension.cpp:69
 #, fuzzy
 msgid "Molecular Graph..."
 msgstr "Moleculaire orbitaal"
 
-#: src/extensions/qtaim/qtaimextension.cpp:76
+#: src/extensions/qtaim/qtaimextension.cpp:75
 msgid "Molecular Graph with Lone Pairs..."
 msgstr ""
 
-#: src/extensions/qtaim/qtaimextension.cpp:82
+#: src/extensions/qtaim/qtaimextension.cpp:81
 #, fuzzy
 msgid "Atomic Charge..."
 msgstr "Formele lading"
 
-#: src/extensions/qtaim/qtaimextension.cpp:152
+#: src/extensions/qtaim/qtaimextension.cpp:150
 msgid "Open WFN File"
 msgstr ""
 
-#: src/extensions/qtaim/qtaimextension.cpp:154
+#: src/extensions/qtaim/qtaimextension.cpp:152
 msgid "WFN files (*.wfn);;All files (*.*)"
 msgstr ""
 

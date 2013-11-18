@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-11-11 00:00-0500\n"
+"POT-Creation-Date: 2013-11-18 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:39+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -650,9 +650,9 @@ msgstr "Đa giác"
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr "Vẽ nguyên tử dưới dạng tứ giác, bát giác và các đa giác khác"
 
-#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/qtaim/qtaimextension.h:35
 msgid "QTAIM"
 msgstr ""
@@ -808,9 +808,9 @@ msgstr "Hình động..."
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:153
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
@@ -2128,26 +2128,26 @@ msgstr "pythonTerminalDock"
 msgid "Interactive python scripting terminal"
 msgstr "Cửa sổ lệnh tương tác Python"
 
-#: src/extensions/qtaim/qtaimextension.cpp:70
+#: src/extensions/qtaim/qtaimextension.cpp:69
 #, fuzzy
 msgid "Molecular Graph..."
 msgstr "Orbital phân tử..."
 
-#: src/extensions/qtaim/qtaimextension.cpp:76
+#: src/extensions/qtaim/qtaimextension.cpp:75
 #, fuzzy
 msgid "Molecular Graph with Lone Pairs..."
 msgstr "Orbital phân tử..."
 
-#: src/extensions/qtaim/qtaimextension.cpp:82
+#: src/extensions/qtaim/qtaimextension.cpp:81
 #, fuzzy
 msgid "Atomic Charge..."
 msgstr "Điện tích riêng phần"
 
-#: src/extensions/qtaim/qtaimextension.cpp:152
+#: src/extensions/qtaim/qtaimextension.cpp:150
 msgid "Open WFN File"
 msgstr ""
 
-#: src/extensions/qtaim/qtaimextension.cpp:154
+#: src/extensions/qtaim/qtaimextension.cpp:152
 msgid "WFN files (*.wfn);;All files (*.*)"
 msgstr ""
 

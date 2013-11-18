@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2013-11-11 00:00-0500\n"
+"POT-Creation-Date: 2013-11-18 00:00-0500\n"
 "PO-Revision-Date: 2011-02-09 13:56+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -647,9 +647,9 @@ msgstr "多邊形"
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr "以四面體八面體或其他呈現原子團的形狀"
 
-#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/engines/qtaimengine.h:42 src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/qtaim/qtaimextension.h:35
 msgid "QTAIM"
 msgstr "QTAIM"
@@ -804,9 +804,9 @@ msgstr "動畫"
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:153
-#: src/extensions/qtaim/qtaimextension.cpp:102
-#: src/extensions/qtaim/qtaimextension.cpp:105
-#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/extensions/qtaim/qtaimextension.cpp:101
+#: src/extensions/qtaim/qtaimextension.cpp:104
+#: src/extensions/qtaim/qtaimextension.cpp:107
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
@@ -2107,26 +2107,26 @@ msgstr "python 程式的小視窗"
 msgid "Interactive python scripting terminal"
 msgstr "互動式 python 指令終端機"
 
-#: src/extensions/qtaim/qtaimextension.cpp:70
+#: src/extensions/qtaim/qtaimextension.cpp:69
 #, fuzzy
 msgid "Molecular Graph..."
 msgstr "分子圖"
 
-#: src/extensions/qtaim/qtaimextension.cpp:76
+#: src/extensions/qtaim/qtaimextension.cpp:75
 #, fuzzy
 msgid "Molecular Graph with Lone Pairs..."
 msgstr "帶有未鍵結電子對的分子圖"
 
-#: src/extensions/qtaim/qtaimextension.cpp:82
+#: src/extensions/qtaim/qtaimextension.cpp:81
 #, fuzzy
 msgid "Atomic Charge..."
 msgstr "原子電荷"
 
-#: src/extensions/qtaim/qtaimextension.cpp:152
+#: src/extensions/qtaim/qtaimextension.cpp:150
 msgid "Open WFN File"
 msgstr "開啟 WFN 檔"
 
-#: src/extensions/qtaim/qtaimextension.cpp:154
+#: src/extensions/qtaim/qtaimextension.cpp:152
 msgid "WFN files (*.wfn);;All files (*.*)"
 msgstr "WFN 檔 (*.wfn);;所有檔案 (*.*)"
 
