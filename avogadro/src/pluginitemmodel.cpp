@@ -46,6 +46,11 @@ namespace Avogadro {
     d->pluginItems = PluginManager::instance()->pluginItems(type);
   }
 
+  PluginItemModel::~PluginItemModel()
+  {
+    delete(d);
+  }
+
   bool PluginItemModel::changed() const
   {
     return d->changed;

@@ -264,9 +264,19 @@ namespace Avogadro {
     // *** STEP 5 : pass the final bitmap to OpenGL for texturing ***
 
     glGenTextures( 1, &m_glyphTexture );
-    if( ! m_glyphTexture ) return false;
+    if( ! m_glyphTexture )
+    {
+      delete [] glyphbitmap;
+      delete [] outlinebitmap;
+      return false;
+    }
     glGenTextures( 1, &m_outlineTexture );
-    if( ! m_outlineTexture ) return false;
+    if( ! m_outlineTexture )
+    {
+      delete [] glyphbitmap;
+      delete [] outlinebitmap;
+      return false;
+    }
 
     glPixelStorei( GL_UNPACK_ALIGNMENT, 1 );
 

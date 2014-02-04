@@ -102,6 +102,11 @@ namespace Avogadro
     d->view = view;
   }
 
+  PrimitiveItemDelegate::~PrimitiveItemDelegate()
+  {
+    delete(d);
+  }
+
   void PrimitiveItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
   {
     const QAbstractItemModel *model = index.model();

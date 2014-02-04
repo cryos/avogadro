@@ -45,6 +45,11 @@ namespace Avogadro
     d->model = model;
   }
   
+  ProjectTreeModelDelegate::~ProjectTreeModelDelegate()
+  {
+    delete(d);
+  }
+
   QWidget *ProjectTreeModelDelegate::settingsWidget()
   {
     return 0;
