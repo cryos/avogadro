@@ -11,7 +11,12 @@ set(spglib_SRCS
   spg_database.c
   spglib.c
   symmetry.c
-  symmetry_kpoint.c
+  kpoint.c
+  site_symmetry.c
+  sitesym_database.c
+  spglib_f.c
+  spin.c
+  tetrahedron_method.c
 )
 
 add_library(spglib STATIC ${spglib_SRCS})

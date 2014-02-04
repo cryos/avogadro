@@ -8,12 +8,13 @@
 
 #include "debug.h"
 
+/* cell->size = 0 is a sign of False */
 Cell * cel_alloc_cell( const int size )
 {
     Cell *cell;
     int i, j;
     
-    cell = malloc( sizeof( Cell ) );
+    cell = (Cell*) malloc( sizeof( Cell ) );
 
     for ( i = 0; i < 3; i++ ) {
       for ( j = 0; j < 3; j++ ) {
@@ -41,9 +42,12 @@ void cel_free_cell( Cell * cell )
 {
   if ( cell->size > 0 ) {
     free( cell->position );
+    cell->position = NULL;
     free( cell->types );
+    cell->types = NULL;
   }
   free ( cell );
+  cell = NULL;
 }
 
 void cel_set_cell( Cell * cell,

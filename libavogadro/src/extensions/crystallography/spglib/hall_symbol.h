@@ -10,7 +10,7 @@
 
 int hal_get_hall_symbol( double origin_shift[3],
 			 const Centering centering,
+			 double bravais_lattice[3][3],
 			 SPGCONST Symmetry *symmetry,
-			 SPGCONST double bravais_lattice[3][3],
 			 const double symprec );
 #endif

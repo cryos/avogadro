@@ -172,7 +172,7 @@ static PointgroupType pointgroup_data[32] = {
   },
   {
     {2, 0, 0, 4, 0, 1, 3, 2, 0, 0},
-    "-62m ",
+    "-6m2 ",
     HEXA,
     LAUE6MMM,
   },
@@ -302,111 +302,198 @@ static int rot_axes[][3] = {
   { 3,-1,-1},
 };
 
-static int get_pointgroup_number( const Symmetry * symmetry );
-static int get_pointgroup_class_table( int table[10],
-				       const Symmetry * symmetry );
-static int get_rotation_type( SPGCONST int rot[3][3] );
-static int get_rotation_axis( SPGCONST int rot[3][3] );
-static int get_orthogonal_axis( int ortho_axes[],
-				SPGCONST int proper_rot[3][3],
-				const int rot_order );
-static int laue2m( int axes[3],
-		   const Symmetry * symmetry );
+static void set_transformation_matrix(Pointgroup * pointgroup,
+				      SPGCONST int rotations[][3][3],
+				      const int num_rotations);
+static PointSymmetry get_pointsymmetry(SPGCONST int rotations[][3][3],
+				       const int num_rotations);
+static int get_pointgroup_number(SPGCONST PointSymmetry * pointsym);
+static int get_pointgroup_class_table(int table[10],
+				      SPGCONST PointSymmetry * pointsym);
+static int get_rotation_type(SPGCONST int rot[3][3]);
+static int get_rotation_axis(SPGCONST int rot[3][3]);
+static int get_orthogonal_axis(int ortho_axes[],
+			       SPGCONST int proper_rot[3][3],
+			       const int rot_order);
+static int laue2m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym);
 
 #ifdef DEBUG
-static int lauemmm( int axes[3],
-		    const Symmetry * symmetry );
-static int laue4m( int axes[3],
-		   const Symmetry * symmetry );
-static int laue4mmm( int axes[3],
-		     const Symmetry * symmetry );
-static int laue3( int axes[3],
-		  const Symmetry * symmetry );
-static int laue3m( int axes[3],
-		   const Symmetry * symmetry );
-static int lauem3m( int axes[3],
-		    const Symmetry * symmetry );
+static int lauemmm(int axes[3],
+		   SPGCONST PointSymmetry * pointsym);
+static int laue4m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym);
+static int laue4mmm(int axes[3],
+		    SPGCONST PointSymmetry * pointsym);
+static int laue3(int axes[3],
+		 SPGCONST PointSymmetry * pointsym);
+static int laue3m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym);
+static int lauem3m(int axes[3],
+		   SPGCONST PointSymmetry * pointsym);
 #endif
 
-static int laue_one_axis( int axes[3],
-			  const Symmetry * symmetry,
-			  const int rot_order );
-static int lauennn( int axes[3],
-		    const Symmetry * symmetry,
-		    const int rot_order );
-static int get_axes( int axes[3],
-		     const Laue laue,
-		     const Symmetry * symmetry );
-static void get_proper_rotation( int prop_rot[3][3],
-				 SPGCONST int rot[3][3] );
-static void get_transform_matrix( int mat[3][3],
-				  const int axes[3] );
-static int is_exist_axis( const int axis_vec[3], const int axis_index );
+static int laue_one_axis(int axes[3],
+			 SPGCONST PointSymmetry * pointsym,
+			 const int rot_order);
+static int lauennn(int axes[3],
+		   SPGCONST PointSymmetry * pointsym,
+		   const int rot_order);
+static int get_axes(int axes[3],
+		    const Laue laue,
+		    SPGCONST PointSymmetry * pointsym);
+static void get_proper_rotation(int prop_rot[3][3],
+				SPGCONST int rot[3][3]);
+static void get_transformation_matrix(int tmat[3][3],
+				      const int axes[3]);
+static int is_exist_axis(const int axis_vec[3], const int axis_index);
+static void sort_axes(int axes[3]);
 
 
-int ptg_get_pointgroup_number( const Symmetry * symmetry )
+int ptg_get_pointgroup_number(const Symmetry * symmetry)
 {
-  return get_pointgroup_number( symmetry );
+  PointSymmetry pointsym;
+
+  pointsym = get_pointsymmetry(symmetry->rot,
+			       symmetry->size);
+  return get_pointgroup_number(&pointsym);
 }
 
-Pointgroup ptg_get_pointgroup( const int pointgroup_number )
+int ptg_get_pointgroup_number_by_rotations(SPGCONST int rotations[][3][3],
+					   const int num_rotations)
 {
+  PointSymmetry pointsym;
+
+  pointsym = get_pointsymmetry(rotations, num_rotations);
+  return get_pointgroup_number(&pointsym);
+}
+
+Pointgroup ptg_get_pointgroup(const int pointgroup_number)
+{
+  int i;
   Pointgroup pointgroup;
   PointgroupType pointgroup_type;
   
   pointgroup_type = pointgroup_data[ pointgroup_number ];
-  strcpy( pointgroup.symbol, pointgroup_type.symbol );
+  strcpy(pointgroup.symbol, pointgroup_type.symbol);
+  for (i = 0; i < 5; i++) {
+    if (pointgroup.symbol[i] == ' ') {pointgroup.symbol[i] = '\0';}
+  }
   pointgroup.holohedry = pointgroup_type.holohedry;
   pointgroup.laue = pointgroup_type.laue;
 
-  debug_print("Point group: %s\n", pointgroup_type.symbol );
+  debug_print("ptg_get_pointgroup: %s\n", pointgroup_type.symbol);
 
   return pointgroup;
 }
 
+Centering ptg_get_transformation_matrix(double trans_mat[3][3],
+					SPGCONST int rotations[][3][3],
+					const int num_rotations)
+{
+  int pg_num;
+  double correction_mat[3][3];
+  Centering centering;
+  Pointgroup pointgroup;
+
+  debug_print("ptg_get_transformation_matrix:\n");
+
+  pg_num = ptg_get_pointgroup_number_by_rotations(rotations,
+						  num_rotations);
+  pointgroup = ptg_get_pointgroup(pg_num);
+  set_transformation_matrix(&pointgroup, rotations, num_rotations);
+
+  debug_print("transformation matrix:\n");
+  debug_print_matrix_i3(pointgroup.transform_mat);
+
+  /* Centering is not determined only from symmetry operations */
+  /* sometimes. Therefore centering and transformation matrix are */
+  /* related. */
+  centering = lat_get_centering(correction_mat,
+				pointgroup.transform_mat,
+				pointgroup.laue);
+
+  mat_multiply_matrix_id3(trans_mat,
+			  pointgroup.transform_mat,
+			  correction_mat);
+
+  debug_print("correction matrix:\n");
+  debug_print_matrix_d3(correction_mat);
+
+  return centering;
+}
+
 /* pointgroup is modified. */
-void ptg_get_transformation_matrix( Pointgroup * pointgroup,
-				    const Symmetry * symmetry )
+static void set_transformation_matrix(Pointgroup * pointgroup,
+				      SPGCONST int rotations[][3][3],
+				      const int num_rotations)
 {
   int axes[3];
   int transform_mat[3][3];
+  PointSymmetry pointsym;
 
-  get_axes( axes, pointgroup->laue, symmetry );
-  get_transform_matrix( transform_mat, axes );
-  mat_copy_matrix_i3( pointgroup->transform_mat, transform_mat );
+  pointsym = get_pointsymmetry(rotations, num_rotations);
+  get_axes(axes, pointgroup->laue, &pointsym);
+  get_transformation_matrix(transform_mat, axes);
+  mat_copy_matrix_i3(pointgroup->transform_mat, transform_mat);
 }
 
-static int get_pointgroup_number( const Symmetry * symmetry )
+static PointSymmetry get_pointsymmetry(SPGCONST int rotations[][3][3],
+				       const int num_rotations)
+{
+  int i, j;
+  PointSymmetry pointsym;
+
+  pointsym.size = 0;
+  for (i = 0; i < num_rotations; i++) {
+    for (j = 0; j < pointsym.size; j++) {
+      if (mat_check_identity_matrix_i3(rotations[i], pointsym.rot[j])) {
+	goto escape;
+      }
+    }
+    mat_copy_matrix_i3(pointsym.rot[pointsym.size], rotations[i]);
+    pointsym.size++;
+  escape:
+    ;
+  }
+
+  return pointsym;
+}
+
+static int get_pointgroup_number(SPGCONST PointSymmetry * pointsym)
 {
   int i, j, pg_num, counter;
   int table[10];
   PointgroupType pointgroup_type;
 
-  /* Get list of rotation part of symmetry operations */
-  if ( ! get_pointgroup_class_table( table, symmetry ) ) {
+  debug_print("get_pointgroup_number:");
+  
+  /* Get list of point symmetry operations */
+  if (! get_pointgroup_class_table(table, pointsym)) {
     pg_num = -1;
     goto end;
   }
 
   pg_num = -1;
-  for ( i = 0; i < 32; i++ ) {
+  for (i = 0; i < 32; i++) {
     counter = 0;
     pointgroup_type = pointgroup_data[ i ];
-    for ( j = 0; j < 10; j++ ) {
-      if ( pointgroup_type.table[j] == table[j] ) { counter++; }
+    for (j = 0; j < 10; j++) {
+      if (pointgroup_type.table[j] == table[j]) { counter++; }
     }
-    if ( counter == 10 ) {
+    if (counter == 10) {
       pg_num = i;
       break;
     }
   }
 
  end:
+  debug_print(" %d\n", pg_num);
   return pg_num;
 }
 
-static int get_pointgroup_class_table( int table[10],
-				       const Symmetry * symmetry )
+static int get_pointgroup_class_table(int table[10],
+				      SPGCONST PointSymmetry * pointsym)
 {
   /* Look-up table */
   /* Operation   -6 -4 -3 -2 -1  1  2  3  4  6 */
@@ -426,10 +513,10 @@ static int get_pointgroup_class_table( int table[10],
 
   int i, rot_type;
 
-  for ( i = 0; i < 10; i++ ) { table[i] = 0; }
-  for ( i = 0; i < symmetry->size; i++ ) {
-    rot_type = get_rotation_type( symmetry->rot[i] );
-    if ( rot_type == -1 ) {
+  for (i = 0; i < 10; i++) { table[i] = 0; }
+  for (i = 0; i < pointsym->size; i++) {
+    rot_type = get_rotation_type(pointsym->rot[i]);
+    if (rot_type == -1) {
       goto err;
     } else {
       table[rot_type]++;
@@ -444,12 +531,12 @@ static int get_pointgroup_class_table( int table[10],
   return 0;
 }
 
-static int get_rotation_type( SPGCONST int rot[3][3] )
+static int get_rotation_type(SPGCONST int rot[3][3])
 {
   int rot_type;
 
-  if ( mat_get_determinant_i3( rot ) == -1 ) {
-    switch ( mat_get_trace_i3( rot ) ) {
+  if (mat_get_determinant_i3(rot) == -1) {
+    switch (mat_get_trace_i3(rot)) {
     case -2: /* -6 */
       rot_type = 0;
       break;
@@ -470,7 +557,7 @@ static int get_rotation_type( SPGCONST int rot[3][3] )
       break;
     }
   } else {
-    switch ( mat_get_trace_i3( rot ) ) {
+    switch (mat_get_trace_i3(rot)) {
     case 3:  /* 1 */
       rot_type = 5;
       break;
@@ -495,9 +582,9 @@ static int get_rotation_type( SPGCONST int rot[3][3] )
   return rot_type;
 }
 
-static int get_axes( int axes[3],
-		     const Laue laue,
-		     const Symmetry * symmetry )
+static int get_axes(int axes[3],
+		    const Laue laue,
+		    SPGCONST PointSymmetry * pointsym)
 {
   switch (laue) {
   case LAUE1:
@@ -506,34 +593,34 @@ static int get_axes( int axes[3],
     axes[2] = 2;
     break;
   case LAUE2M:
-    laue2m( axes, symmetry );
+    laue2m(axes, pointsym);
     break;
   case LAUEMMM:
-    lauennn( axes, symmetry, 2 );
+    lauennn(axes, pointsym, 2);
     break;
   case LAUE4M:
-    laue_one_axis( axes, symmetry, 4 );
+    laue_one_axis(axes, pointsym, 4);
     break;
   case LAUE4MMM:
-    laue_one_axis( axes, symmetry, 4 );
+    laue_one_axis(axes, pointsym, 4);
     break;
   case LAUE3:
-    laue_one_axis( axes, symmetry, 3 );
+    laue_one_axis(axes, pointsym, 3);
     break;
   case LAUE3M:
-    laue_one_axis( axes, symmetry, 3 );
+    laue_one_axis(axes, pointsym, 3);
     break;
   case LAUE6M:
-    laue_one_axis( axes, symmetry, 3 );
+    laue_one_axis(axes, pointsym, 3);
     break;
   case LAUE6MMM:
-    laue_one_axis( axes, symmetry, 3 );
+    laue_one_axis(axes, pointsym, 3);
     break;
   case LAUEM3:
-    lauennn( axes, symmetry, 2 );
+    lauennn(axes, pointsym, 2);
     break;
   case LAUEM3M:
-    lauennn( axes, symmetry, 4 );
+    lauennn(axes, pointsym, 4);
     break;
   default:
     break;
@@ -542,57 +629,57 @@ static int get_axes( int axes[3],
   return 1;
 }
 
-static int laue2m( int axes[3],
-		   const Symmetry * symmetry )
+static int laue2m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym)
 {
   int i, num_ortho_axis, norm, min_norm, is_found, tmpval;
   int prop_rot[3][3], t_mat[3][3];
   int ortho_axes[NUM_ROT_AXES];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search two-fold rotation */
-    if ( ! ( mat_get_trace_i3( prop_rot ) == -1 ) ) {
+    if (! (mat_get_trace_i3(prop_rot) == -1)) {
       continue;
     }
 
     /* The first axis */
-    axes[1] = get_rotation_axis( prop_rot );
+    axes[1] = get_rotation_axis(prop_rot);
     break;
   }
 
   /* The second axis */
-  num_ortho_axis = get_orthogonal_axis( ortho_axes, prop_rot, 2 );
-  if ( ! num_ortho_axis ) { goto err; }
+  num_ortho_axis = get_orthogonal_axis(ortho_axes, prop_rot, 2);
+  if (! num_ortho_axis) { goto err; }
   
   min_norm = 8;
   is_found = 0;
-  for ( i = 0; i < num_ortho_axis; i++ ) {
-    norm = mat_norm_squared_i3( rot_axes[ortho_axes[i]] );
-    if ( norm < min_norm ) {
+  for (i = 0; i < num_ortho_axis; i++) {
+    norm = mat_norm_squared_i3(rot_axes[ortho_axes[i]]);
+    if (norm < min_norm) {
       min_norm = norm;
       axes[0] = ortho_axes[i];
       is_found = 1;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
   
   /* The third axis */
   min_norm = 8;
   is_found = 0;
-  for ( i = 0; i < num_ortho_axis; i++ ) {
-    norm = mat_norm_squared_i3( rot_axes[ortho_axes[i]] );
-    if ( norm < min_norm && ( ! ( ortho_axes[i] == axes[0] ) ) ) {
+  for (i = 0; i < num_ortho_axis; i++) {
+    norm = mat_norm_squared_i3(rot_axes[ortho_axes[i]]);
+    if (norm < min_norm && (! (ortho_axes[i] == axes[0]))) {
       min_norm = norm;
       axes[2] = ortho_axes[i];
       is_found = 1;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[2];
     axes[2] = tmpval;
@@ -605,90 +692,86 @@ static int laue2m( int axes[3],
 }
 
 #ifdef DEBUG
-static int lauemmm( int axes[3],
-		    const Symmetry * symmetry )
+static int lauemmm(int axes[3],
+		   SPGCONST PointSymmetry * pointsym)
 {
   int i, count, axis, tmpval;
-  int prop_rot[3][3], t_mat[3][3];
+  int prop_rot[3][3];
 
-  for ( i = 0; i < 3; i++ ) { axes[i] = -1; }
+
+  for (i = 0; i < 3; i++) { axes[i] = -1; }
   count = 0;
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search two-fold rotation */
-    if ( ! ( mat_get_trace_i3( prop_rot ) == -1 ) ) {
+    if (! (mat_get_trace_i3(prop_rot) == -1)) {
       continue;
     }
 
-    axis = get_rotation_axis( prop_rot );
-    if ( ! ( ( axis == axes[0] ) ||
-	     ( axis == axes[1] ) ||
-	     ( axis == axes[2] ) ) ) {
+    axis = get_rotation_axis(prop_rot);
+    if (! ((axis == axes[0]) ||
+	   (axis == axes[1]) ||
+	   (axis == axes[2]))) {
       axes[count] = axis;
       count++;
     }
   }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
-    tmpval = axes[0];
-    axes[0] = axes[1];
-    axes[1] = tmpval;
-  }
+  sort_axes(axes);
 
   return 1;
 }
 
-static int laue4m( int axes[3],
-		   const Symmetry * symmetry )
+static int laue4m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym)
 {
   int i, num_ortho_axis, norm, min_norm, is_found, tmpval;
   int axis_vec[3];
   int prop_rot[3][3], t_mat[3][3];
   int ortho_axes[NUM_ROT_AXES];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search foud-fold rotation */
-    if (  mat_get_trace_i3( prop_rot ) == 1 ) {
+    if ( mat_get_trace_i3(prop_rot) == 1) {
       /* The first axis */
-      axes[2] = get_rotation_axis( prop_rot );
+      axes[2] = get_rotation_axis(prop_rot);
       break;
     }
   }
 
   /* The second axis */
-  num_ortho_axis = get_orthogonal_axis( ortho_axes, prop_rot, 4 );
-  if ( ! num_ortho_axis ) { goto err; }
+  num_ortho_axis = get_orthogonal_axis(ortho_axes, prop_rot, 4);
+  if (! num_ortho_axis) { goto err; }
   
   min_norm = 8;
   is_found = 0;
-  for ( i = 0; i < num_ortho_axis; i++ ) {
-    norm = mat_norm_squared_i3( rot_axes[ortho_axes[i]] );
-    if ( norm < min_norm ) {
+  for (i = 0; i < num_ortho_axis; i++) {
+    norm = mat_norm_squared_i3(rot_axes[ortho_axes[i]]);
+    if (norm < min_norm) {
       min_norm = norm;
       axes[0] = ortho_axes[i];
       is_found = 1;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
   
   /* The third axis */
-  mat_multiply_matrix_vector_i3( axis_vec, prop_rot, rot_axes[axes[0]] );
+  mat_multiply_matrix_vector_i3(axis_vec, prop_rot, rot_axes[axes[0]]);
   is_found = 0;
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    if ( is_exist_axis( axis_vec, i ) ) {
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    if (is_exist_axis(axis_vec, i)) {
       is_found = 1;
       axes[1] = i;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[1];
     axes[1] = tmpval;
@@ -700,58 +783,58 @@ static int laue4m( int axes[3],
   return 0;
 }
 
-static int laue4mmm( int axes[3],
-		     const Symmetry * symmetry )
+static int laue4mmm(int axes[3],
+		    SPGCONST PointSymmetry * pointsym)
 {
   int i, is_found, tmpval, axis;
   int prop_rot[3][3], prop_rot2[3][3], t_mat[3][3];
   int axis_vec[3];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search foud-fold rotation */
-    if ( mat_get_trace_i3( prop_rot ) == 1 ) {
+    if (mat_get_trace_i3(prop_rot) == 1) {
       /* The first axis */
-      axes[2] = get_rotation_axis( prop_rot );
+      axes[2] = get_rotation_axis(prop_rot);
       break;
     }
   }
 
   is_found = 0;
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot2, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot2, pointsym->rot[i]);
 
     /* Search two-fold rotation */
-    if ( ! ( mat_get_trace_i3( prop_rot2 ) == -1 ) ) {
+    if (! (mat_get_trace_i3(prop_rot2) == -1)) {
       continue;
     }
 
     /* The second axis */
-    axis = get_rotation_axis( prop_rot2 );
-    if ( ! ( axis == axes[2] ) ) {
+    axis = get_rotation_axis(prop_rot2);
+    if (! (axis == axes[2])) {
       axes[0] = axis;
       is_found = 1;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
 
   /* The third axis */
-  mat_multiply_matrix_vector_i3( axis_vec, prop_rot, rot_axes[axes[0]] );
+  mat_multiply_matrix_vector_i3(axis_vec, prop_rot, rot_axes[axes[0]]);
   is_found = 0;
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    if ( is_exist_axis( axis_vec, i ) ) {
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    if (is_exist_axis(axis_vec, i)) {
       is_found = 1;
       axes[1] = i;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[1];
     axes[1] = tmpval;
@@ -763,58 +846,58 @@ static int laue4mmm( int axes[3],
   return 0;
 }
 
-static int laue3( int axes[3],
-		  const Symmetry * symmetry )
+static int laue3(int axes[3],
+		 SPGCONST PointSymmetry * pointsym)
 {
   int i, num_ortho_axis, norm, min_norm, is_found, tmpval;
   int prop_rot[3][3], t_mat[3][3];
   int axis_vec[3];
   int ortho_axes[NUM_ROT_AXES];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search thee-fold rotation */
-    if ( mat_get_trace_i3( prop_rot ) == 0 ) {
+    if (mat_get_trace_i3(prop_rot) == 0) {
       /* The first axis */
-      axes[2] = get_rotation_axis( prop_rot );
+      axes[2] = get_rotation_axis(prop_rot);
       break;
     }
   }
 
   /* The second axis */
-  num_ortho_axis = get_orthogonal_axis( ortho_axes, prop_rot, 3 );
-  if ( ! num_ortho_axis ) { goto err; }
+  num_ortho_axis = get_orthogonal_axis(ortho_axes, prop_rot, 3);
+  if (! num_ortho_axis) { goto err; }
   min_norm = 8;
   is_found = 0;
-  for ( i = 0; i < num_ortho_axis; i++ ) {
-    norm = mat_norm_squared_i3( rot_axes[ortho_axes[i]] );
-    if ( norm < min_norm ) {
+  for (i = 0; i < num_ortho_axis; i++) {
+    norm = mat_norm_squared_i3(rot_axes[ortho_axes[i]]);
+    if (norm < min_norm) {
       min_norm = norm;
       axes[0] = ortho_axes[i];
       is_found = 1;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
   
   /* The third axis */
-  mat_multiply_matrix_vector_i3( axis_vec, prop_rot, rot_axes[axes[0]] );
+  mat_multiply_matrix_vector_i3(axis_vec, prop_rot, rot_axes[axes[0]]);
   is_found = 0;
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    is_found = is_exist_axis( axis_vec, i );
-    if ( is_found == 1 ) {
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    is_found = is_exist_axis(axis_vec, i);
+    if (is_found == 1) {
       axes[1] = i;
       break;
     }
-    if ( is_found == -1 ) {
+    if (is_found == -1) {
       axes[1] = i + NUM_ROT_AXES;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[1];
     axes[1] = tmpval;
@@ -826,63 +909,63 @@ static int laue3( int axes[3],
   return 0;
 }
 
-static int laue3m( int axes[3],
-		   const Symmetry * symmetry )
+static int laue3m(int axes[3],
+		  SPGCONST PointSymmetry * pointsym)
 {
   int i, is_found, tmpval, axis;
   int prop_rot[3][3], prop_rot2[3][3], t_mat[3][3];
   int axis_vec[3];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search three-fold rotation */
-    if ( mat_get_trace_i3( prop_rot ) == 0 ) {
+    if (mat_get_trace_i3(prop_rot) == 0) {
       /* The first axis */
-      axes[2] = get_rotation_axis( prop_rot );
+      axes[2] = get_rotation_axis(prop_rot);
       debug_print("laue3m prop_rot\n");
-      debug_print_matrix_i3( prop_rot );
+      debug_print_matrix_i3(prop_rot);
       break;
     }
   }
 
   is_found = 0;
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot2, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot2, pointsym->rot[i]);
 
     /* Search two-fold rotation */
-    if ( ! ( mat_get_trace_i3( prop_rot2 ) == -1 ) ) {
+    if (! (mat_get_trace_i3(prop_rot2) == -1)) {
       continue;
     }
 
     /* The second axis */
-    axis = get_rotation_axis( prop_rot2 );
-    if ( ! ( axis == axes[2] ) ) {
+    axis = get_rotation_axis(prop_rot2);
+    if (! (axis == axes[2])) {
       axes[0] = axis;
       is_found = 1;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
   /* The third axis */
-  mat_multiply_matrix_vector_i3( axis_vec, prop_rot, rot_axes[axes[0]] );
+  mat_multiply_matrix_vector_i3(axis_vec, prop_rot, rot_axes[axes[0]]);
   is_found = 0;
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    is_found = is_exist_axis( axis_vec, i );
-    if ( is_found == 1 ) {
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    is_found = is_exist_axis(axis_vec, i);
+    if (is_found == 1) {
       axes[1] = i;
       break;
     }
-    if ( is_found == -1 ) {
+    if (is_found == -1) {
       axes[1] = i + NUM_ROT_AXES;
       break;
     }
   }
-  if ( ! is_found ) { goto err; }
+  if (! is_found) { goto err; }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[1];
     axes[1] = tmpval;
@@ -894,171 +977,171 @@ static int laue3m( int axes[3],
   return 0;
 }
 
-static int lauem3m( int axes[3],
-		    const Symmetry * symmetry )
+static int lauem3m(int axes[3],
+		   SPGCONST PointSymmetry * pointsym)
 {
   int i, count, axis, tmpval;
-  int prop_rot[3][3], t_mat[3][3];
+  int prop_rot[3][3];
 
-  for ( i = 0; i < 3; i++ ) { axes[i] = -1; }
+  for (i = 0; i < 3; i++) { axes[i] = -1; }
   count = 0;
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search four-fold rotation */
-    if ( ! ( mat_get_trace_i3( prop_rot ) == 1 ) ) {
+    if (! (mat_get_trace_i3(prop_rot) == 1)) {
       continue;
     }
 
-    axis = get_rotation_axis( prop_rot );
-    if ( ! ( ( axis == axes[0] ) ||
-	     ( axis == axes[1] ) ||
-	     ( axis == axes[2] ) ) ) {
+    axis = get_rotation_axis(prop_rot);
+    if (! ((axis == axes[0]) ||
+	   (axis == axes[1]) ||
+	   (axis == axes[2]))) {
       axes[count] = axis;
       count++;
     }
   }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
-    tmpval = axes[0];
-    axes[0] = axes[1];
-    axes[1] = tmpval;
-  }
+  sort_axes(axes);
 
   return 1;
 }
 #endif
 
-static int laue_one_axis( int axes[3],
-			  const Symmetry * symmetry,
-			  const int rot_order )
+static int laue_one_axis(int axes[3],
+			 SPGCONST PointSymmetry * pointsym,
+			 const int rot_order)
 {
   int i, j, num_ortho_axis, det, min_det, is_found, tmpval;
   int axis_vec[3], tmp_axes[3];
   int prop_rot[3][3], t_mat[3][3];
   int ortho_axes[NUM_ROT_AXES];
 
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  debug_print("laue_one_axis with rot_order %d\n", rot_order);
+  
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search foud-fold rotation */
-    if ( rot_order == 4 ) {
-      if (  mat_get_trace_i3( prop_rot ) == 1 ) {
+    if (rot_order == 4) {
+      if (mat_get_trace_i3(prop_rot) == 1) {
 	/* The first axis */
-	axes[2] = get_rotation_axis( prop_rot );
+	axes[2] = get_rotation_axis(prop_rot);
 	break;
       }
     }
 
     /* Search three-fold rotation */
-    if ( rot_order == 3 ) {
-      if (  mat_get_trace_i3( prop_rot ) == 0 ) {
+    if (rot_order == 3) {
+      if (mat_get_trace_i3(prop_rot) == 0) {
 	/* The first axis */
-	axes[2] = get_rotation_axis( prop_rot );
+	axes[2] = get_rotation_axis(prop_rot);
 	break;
       }
     }
   }
 
   /* Candidates of the second axis */
-  num_ortho_axis = get_orthogonal_axis( ortho_axes, prop_rot, rot_order );
-  if ( ! num_ortho_axis ) { goto err; }
+  num_ortho_axis = get_orthogonal_axis(ortho_axes, prop_rot, rot_order);
+  if (! num_ortho_axis) { goto err; }
 
   tmp_axes[2] = axes[2];
   min_det = 4;
   is_found = 0;
-  for ( i = 0; i < num_ortho_axis; i++ ) {
+  for (i = 0; i < num_ortho_axis; i++) {
     tmp_axes[0] = ortho_axes[i];
-    mat_multiply_matrix_vector_i3( axis_vec, prop_rot,
-				   rot_axes[tmp_axes[0]] );
-    for ( j = 0; j < num_ortho_axis; j++ ) {
-      is_found = is_exist_axis( axis_vec, ortho_axes[j] );
-      if ( is_found == 1 ) {
+    mat_multiply_matrix_vector_i3(axis_vec,
+				  prop_rot,
+				  rot_axes[tmp_axes[0]]);
+    for (j = 0; j < num_ortho_axis; j++) {
+      is_found = is_exist_axis(axis_vec, ortho_axes[j]);
+      if (is_found == 1) {
 	tmp_axes[1] = ortho_axes[j];
 	break;
       }
-      if ( is_found == -1 ) {
+      if (is_found == -1) {
 	tmp_axes[1] = ortho_axes[j] + NUM_ROT_AXES;
 	break;
       }
     }
 
-    get_transform_matrix( t_mat, tmp_axes );
-    det = mat_get_determinant_i3( t_mat );
-    if ( det < 0 ) { det = -det; }
-    if ( det < min_det ) {
+    get_transformation_matrix(t_mat, tmp_axes);
+    det = mat_get_determinant_i3(t_mat);
+    if (det < 0) { det = -det; }
+    if (det < min_det) {
       min_det = det;
       axes[0] = tmp_axes[0];
       axes[1] = tmp_axes[1];
     }
+
+    if (is_found) { goto end; }
   }
-  if ( ! is_found ) { goto err; }
-  
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
+
+ err: /* axes are not correctly found. */
+  return 0;
+
+ end:
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
     tmpval = axes[0];
     axes[0] = axes[1];
     axes[1] = tmpval;
   }
 
+  debug_print("axes[0] = %d\n", axes[0]);
+  debug_print("axes[1] = %d\n", axes[1]);
+  debug_print("axes[2] = %d\n", axes[2]);
+
   return 1;
 
- err:
-  return 0;
 }
 
-static int lauennn( int axes[3],
-		    const Symmetry * symmetry,
-		    const int rot_order )
+static int lauennn(int axes[3],
+		   SPGCONST PointSymmetry * pointsym,
+		   const int rot_order)
 {
-  int i, count, axis, tmpval;
-  int prop_rot[3][3], t_mat[3][3];
+  int i, count, axis;
+  int prop_rot[3][3];
 
-  for ( i = 0; i < 3; i++ ) { axes[i] = -1; }
+  for (i = 0; i < 3; i++) { axes[i] = -1; }
   count = 0;
-  for ( i = 0; i < symmetry->size; i++ ) {
-    get_proper_rotation( prop_rot, symmetry->rot[i] );
+  for (i = 0; i < pointsym->size; i++) {
+    get_proper_rotation(prop_rot, pointsym->rot[i]);
 
     /* Search two- or four-fold rotation */
-    if ( ( mat_get_trace_i3( prop_rot ) == -1 && rot_order == 2) ||
-	 ( mat_get_trace_i3( prop_rot ) == 1 && rot_order == 4 ) ) {
-      axis = get_rotation_axis( prop_rot );
-      if ( ! ( ( axis == axes[0] ) ||
-	       ( axis == axes[1] ) ||
-	       ( axis == axes[2] ) ) ) {
+    if ((mat_get_trace_i3(prop_rot) == -1 && rot_order == 2) ||
+	(mat_get_trace_i3(prop_rot) == 1 && rot_order == 4)) {
+      axis = get_rotation_axis(prop_rot);
+      if (! ((axis == axes[0]) ||
+	     (axis == axes[1]) ||
+	     (axis == axes[2]))) {
 	axes[count] = axis;
 	count++;
       }
     }
   }
 
-  get_transform_matrix( t_mat, axes );
-  if ( mat_get_determinant_i3( t_mat ) < 0 ) {
-    tmpval = axes[0];
-    axes[0] = axes[1];
-    axes[1] = tmpval;
-  }
+  sort_axes(axes);
 
   return 1;
 }
 
-static int get_rotation_axis( SPGCONST int proper_rot[3][3] )
+static int get_rotation_axis(SPGCONST int proper_rot[3][3])
 {
   int i, axis = -1;
   int vec[3];
 
   /* No specific axis for I and -I */
-  if ( mat_check_identity_matrix_i3( proper_rot, identity ) ) {
+  if (mat_check_identity_matrix_i3(proper_rot, identity)) {
     goto end;
   }
 
   /* Look for eigenvector = rotation axis */
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    mat_multiply_matrix_vector_i3( vec, proper_rot, rot_axes[i] );
-    if ( vec[0] == rot_axes[i][0] &&
-	 vec[1] == rot_axes[i][1] &&
-	 vec[2] == rot_axes[i][2] ) {
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    mat_multiply_matrix_vector_i3(vec, proper_rot, rot_axes[i]);
+    if (vec[0] == rot_axes[i][0] &&
+	vec[1] == rot_axes[i][1] &&
+	vec[2] == rot_axes[i][2]) {
       axis = i;
       break;
     }
@@ -1066,7 +1149,7 @@ static int get_rotation_axis( SPGCONST int proper_rot[3][3] )
   
  end:
 #ifdef DEBUG
-  if ( axis == -1 ) {
+  if (axis == -1) {
     printf("rotation axis cound not found.\n");
   }
 #endif
@@ -1074,9 +1157,9 @@ static int get_rotation_axis( SPGCONST int proper_rot[3][3] )
   return axis;
 }
 
-static int get_orthogonal_axis( int ortho_axes[],
-				SPGCONST int proper_rot[3][3],
-				const int rot_order )
+static int get_orthogonal_axis(int ortho_axes[],
+			       SPGCONST int proper_rot[3][3],
+			       const int rot_order)
 {
   int i, num_ortho_axis;
   int vec[3];
@@ -1084,19 +1167,19 @@ static int get_orthogonal_axis( int ortho_axes[],
 
   num_ortho_axis = 0;
 
-  mat_copy_matrix_i3( sum_rot, identity );
-  mat_copy_matrix_i3( rot, identity );
-  for ( i = 0; i < rot_order-1; i++ ) {
-    mat_multiply_matrix_i3( rot, proper_rot, rot );
-    mat_add_matrix_i3( sum_rot, rot, sum_rot );
+  mat_copy_matrix_i3(sum_rot, identity);
+  mat_copy_matrix_i3(rot, identity);
+  for (i = 0; i < rot_order - 1; i++) {
+    mat_multiply_matrix_i3(rot, proper_rot, rot);
+    mat_add_matrix_i3(sum_rot, rot, sum_rot);
   }
   
-  for ( i = 0; i < NUM_ROT_AXES; i++ ) {
-    mat_multiply_matrix_vector_i3( vec, sum_rot, rot_axes[i] );
-    if ( vec[0] == 0 &&
-	 vec[1] == 0 &&
-	 vec[2] == 0 ) {
-      ortho_axes[ num_ortho_axis ] = i;
+  for (i = 0; i < NUM_ROT_AXES; i++) {
+    mat_multiply_matrix_vector_i3(vec, sum_rot, rot_axes[i]);
+    if (vec[0] == 0 &&
+	vec[1] == 0 &&
+	vec[2] == 0) {
+      ortho_axes[num_ortho_axis] = i;
       num_ortho_axis++;
     }
   }
@@ -1104,43 +1187,74 @@ static int get_orthogonal_axis( int ortho_axes[],
   return num_ortho_axis;
 }
 
-static void get_proper_rotation( int prop_rot[3][3],
-				 SPGCONST int rot[3][3] )
+static void get_proper_rotation(int prop_rot[3][3],
+				SPGCONST int rot[3][3])
 {
-  if ( mat_get_determinant_i3( rot ) == -1 ) {
-    mat_multiply_matrix_i3( prop_rot, inversion, rot );
+  if (mat_get_determinant_i3(rot) == -1) {
+    mat_multiply_matrix_i3(prop_rot, inversion, rot);
   } else {
-    mat_copy_matrix_i3( prop_rot, rot );
+    mat_copy_matrix_i3(prop_rot, rot);
   }
 }
 
-static void get_transform_matrix( int mat[3][3],
-				  const int axes[3] )
+static void get_transformation_matrix(int tmat[3][3],
+				      const int axes[3])
 {
   int i, j, s[3];
   
-  for ( i = 0; i < 3; i++ ) {
-    if ( axes[i] < NUM_ROT_AXES ) {
+  for (i = 0; i < 3; i++) {
+    if (axes[i] < NUM_ROT_AXES) {
       s[i] = 1;
     } else {
-      s[i] = -1;
+      s[i] = -1; /* axes[i] + NUM_ROT_AXES means improper rotation. */
     }
   }
-  for ( i = 0; i < 3; i++ ) {
-    for ( j = 0; j < 3; j++ ) {
-      mat[i][j] = s[j] * rot_axes[axes[j]%NUM_ROT_AXES][i];
+  for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      tmat[i][j] = s[j] * rot_axes[axes[j]%NUM_ROT_AXES][i];
     }
   }
 }
 
-static int is_exist_axis( const int axis_vec[3], const int axis_index )
+static int is_exist_axis(const int axis_vec[3], const int axis_index)
 {
-  if ( ( axis_vec[0] == rot_axes[axis_index][0] ) &&
-       ( axis_vec[1] == rot_axes[axis_index][1] ) &&
-       ( axis_vec[2] == rot_axes[axis_index][2] ) ) { return 1; }
-  if ( ( axis_vec[0] == -rot_axes[axis_index][0] ) &&
-       ( axis_vec[1] == -rot_axes[axis_index][1] ) &&
-       ( axis_vec[2] == -rot_axes[axis_index][2] ) ) { return -1; }
+  if ((axis_vec[0] == rot_axes[axis_index][0]) &&
+      (axis_vec[1] == rot_axes[axis_index][1]) &&
+      (axis_vec[2] == rot_axes[axis_index][2])) { return 1; }
+  if ((axis_vec[0] == -rot_axes[axis_index][0]) &&
+      (axis_vec[1] == -rot_axes[axis_index][1]) &&
+      (axis_vec[2] == -rot_axes[axis_index][2])) { return -1; }
   return 0;
+}
+
+static void sort_axes(int axes[3])
+{
+  int axis;
+  int t_mat[3][3];
+
+  if (axes[1] > axes[2]) {
+    axis = axes[1];
+    axes[1] = axes[2];
+    axes[2] = axis;
+  }
+
+  if (axes[0] > axes[1]) {
+    axis = axes[0];
+    axes[0] = axes[1];
+    axes[1] = axis;
+  }
+
+  if (axes[1] > axes[2]) {
+    axis = axes[1];
+    axes[1] = axes[2];
+    axes[2] = axis;
+  }
+
+  get_transformation_matrix(t_mat, axes);
+  if (mat_get_determinant_i3(t_mat) < 0) {
+    axis = axes[1];
+    axes[1] = axes[2];
+    axes[2] = axis;
+  }
 }
 
