@@ -2,7 +2,7 @@
   Copyright (C) 2007 Carsten Niehaus <cniehaus@kde.org>
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
@@ -71,7 +71,7 @@ namespace Avogadro {
             "<br/><br/>Library Version: %3"
             "<br/><br/>Open Babel Version: %4").arg(tr("Avogadro")).arg(appVersion).arg(libVersion).arg(obVersion) +
           tr("<br/><br/>Qt Version: %1"
-            "<br/><br/>For more information check the <a href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>."
+            "<br/><br/>For more information check the <a href=\"http://avogadro.cc/\">Avogadro homepage</a>."
             "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
             " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
             " PARTICULAR PURPOSE.<br/>"

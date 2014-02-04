@@ -1,5 +1,5 @@
 # Hello World Avogadro extension.
-# See http://avogadro.openmolecules.net/ for more information.
+# See http://avogadro.cc/ for more information.
 
 # Project name
 project(RotateSelectionExtension)

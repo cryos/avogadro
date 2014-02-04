@@ -1,4 +1,4 @@
-# Avogadro CMake version file - http://avogadro.openmolecules.net/
+# Avogadro CMake version file - http://avogadro.cc/
 
 set(PACKAGE_VERSION @Avogadro_VERSION_MAJOR@.@Avogadro_VERSION_MINOR@.@Avogadro_VERSION_PATCH@)
 

@@ -1,4 +1,4 @@
-# Avogadro CMake configuration file - http://avogadro.openmolecules.net/
+# Avogadro CMake configuration file - http://avogadro.cc/
 
 # If this file was found, then Avogadro has been found
 set(Avogadro_FOUND 1)

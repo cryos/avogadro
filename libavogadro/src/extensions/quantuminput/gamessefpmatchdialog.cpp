@@ -4,7 +4,7 @@
   Copyright (C) 2007  <>
 
   This file is part of the $PROJECT$.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by

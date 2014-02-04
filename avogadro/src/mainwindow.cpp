@@ -6,7 +6,7 @@
   Copyright (C) 2007-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
@@ -1853,22 +1853,22 @@ protected:
   // Instead, we've got a bunch of one-line actions...
   void MainWindow::openTutorialURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Tutorials"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Tutorials"));
   }
 
   void MainWindow::openFAQURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/Avogadro:FAQ"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Avogadro:FAQ"));
   }
 
   void MainWindow::openWebsiteURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.openmolecules.net/wiki/"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/"));
   }
 
   void MainWindow::openReleaseNotesURL() const
   {
-    QDesktopServices::openUrl(QUrl( "http://avogadro.openmolecules.net/wiki/Avogadro_" + QString(VERSION) ));
+    QDesktopServices::openUrl(QUrl( "http://avogadro.cc/wiki/Avogadro_" + QString(VERSION) ));
   }
 
   void MainWindow::openBugURL() const

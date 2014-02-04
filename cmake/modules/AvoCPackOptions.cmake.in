@@ -4,14 +4,14 @@
 if(CPACK_GENERATOR MATCHES "NSIS")
   set(CPACK_NSIS_MUI_ICON "@CMAKE_SOURCE_DIR@/avogadro/src/icons\\\\avogadro.ico")
 #  set(CPACK_PACKAGE_ICON "@CMAKE_SOURCE_DIR@/avogadro/src/icons\\\\avogadro.bmp")
-  set(CPACK_NSIS_HELP_LINK "http:\\\\avogadro.openmolecules.net")
-  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\avogadro.openmolecules.net")
+  set(CPACK_NSIS_HELP_LINK "http:\\\\avogadro.cc")
+  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\avogadro.cc")
   set(CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
   set(CPACK_CREATE_DESKTOP_LINKS "avogadro")
   SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\Avogadro.exe")
   SET(CPACK_NSIS_MENU_LINKS
-    "http://avogadro.openmolecules.net/wiki/Avogadro_@CPACK_PACKAGE_VERSION@" "Release Notes"
-    "http://avogadro.openmolecules.net/" "Avogadro Web Site")
+    "http://avogadro.cc/wiki/Avogadro_@CPACK_PACKAGE_VERSION@" "Release Notes"
+    "http://avogadro.cc/" "Avogadro Web Site")
   SET(CPACK_NSIS_MODIFY_PATH ON)
 
   # Associate Avogadro with some file extensions

@@ -1,7 +1,7 @@
 ######################################################################
 # Example CMake project building a 3rd party extension against 
 # installed Avogadro library.  
-# See http://avogadro.openmolecules.net/ for more information.
+# See http://avogadro.cc/ for more information.
 ######################################################################
 
 # Project name - plugin name or something meaningful
