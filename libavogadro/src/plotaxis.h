@@ -5,7 +5,7 @@
   Copyright (C) 2008 David Lonie <loniedavid@gmail.com> (Avogadro)
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   This file is based on KPlotWidget from the KDE library. For more
   information see <http://www.kde.org/>

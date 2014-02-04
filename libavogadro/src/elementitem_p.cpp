@@ -6,7 +6,7 @@
  Some portions (C) 2010 by Konstantin Tokarev
 
  This file is part of the Avogadro molecular editor project.
- For more information, see <http://avogadro.openmolecules.net/>
+ For more information, see <http://avogadro.cc/>
 
  Avogadro is free software; you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by

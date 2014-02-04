@@ -50,7 +50,7 @@ gerrit_user() {
 
 For more information on working with Gerrit,
 
-  http://avogadro.openmolecules.net/wiki/Working_with_Gerrit
+  http://avogadro.cc/wiki/Working_with_Gerrit
 EOF
 }
 

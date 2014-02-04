@@ -4,7 +4,7 @@
   Copyright (C) 2009 by David Lonie
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as

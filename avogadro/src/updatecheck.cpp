@@ -4,7 +4,7 @@
   Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU Lesser General Public License as published by
@@ -82,7 +82,7 @@ namespace Avogadro
     }
 
     // Check the URL for the latest release version of Avogadro
-    m_network->get(QNetworkRequest(QUrl("http://avogadro.openmolecules.net/version.txt")));
+    m_network->get(QNetworkRequest(QUrl("http://avogadro.cc/version.txt")));
   }
 
   void UpdateCheck::replyFinished(QNetworkReply *reply)

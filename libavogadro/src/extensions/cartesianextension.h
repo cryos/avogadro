@@ -5,7 +5,7 @@
   Based on code written by Tim Vandermeersch and Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.openmolecules.net/>
+  For more information, see <http://avogadro.cc/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>

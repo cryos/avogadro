@@ -24,7 +24,7 @@ VIProductVersion "1.1.0.0" # file version for the installer in the scheme "x.x.x
 Name "Avogadro"
 !define REGKEY "SOFTWARE\Avogadro"
 !define COMPANY "Avogadro Team"
-!define URL "http://avogadro.openmolecules.net/wiki/Main_Page"
+!define URL "http://avogadro.cc/wiki/Main_Page"
 !define PRODUCT_NAME "Avogadro"
 !define PRODUCT_EXE "$INSTDIR\Avogadro.exe"
 !define PRODUCT_EXE2 "Avogadro.exe"
@@ -256,7 +256,7 @@ Section "-Installation actions" SecInstallation
   SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\$(^Name).lnk" "${PRODUCT_EXE}" "" "$INSTDIR\Avogadro.exe"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Release Notes.lnk" "http://avogadro.openmolecules.net/wiki/Avogadro_${VERSION}" ""
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Release Notes.lnk" "http://avogadro.cc/wiki/Avogadro_${VERSION}" ""
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "$INSTDIR\uninstall.exe"
   
   # create desktop icon

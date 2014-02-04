@@ -50,7 +50,7 @@
 		<title>Introduction</title>
 
 		<para>Avogadro is free, cross-platform and licensed under the GNU Public License. For more information, see
-			the <ulink url="http://avogadro.openmolecules.net/">homepage</ulink>.
+			the <ulink url="http://avogadro.cc/">homepage</ulink>.
 		</para>
 	</chapter>
 
@@ -76,7 +76,7 @@
 			You could also join the IRC channel (#avogadro on
 			irc.freenode.net) and talk with other developers. For information on the
 			internals of Avogadro and LibAvogadro, review the avogadro <ulink
-				url="http://avogadro.openmolecules.net/dev-api/">developer API</ulink>.
+				url="http://avogadro.cc/dev-api/">developer API</ulink>.
 		</para>
 	</chapter>
 
@@ -133,7 +133,7 @@
 		<sect1 id="getting-avogadro">
 			<title>How to obtain Avogadro</title>
 			<para>
-				Avogadro  can be found on <ulink url="http://avogadro.openmolecules.net/">the Avogadro home page</ulink>.
+				Avogadro  can be found on <ulink url="http://avogadro.cc/">the Avogadro home page</ulink>.
 			</para>
 
 		</sect1>
@@ -160,7 +160,7 @@
 					All of these programs and libraries are likely to be available through your distribution's repository.
 				</para>
 			<para>
-				Further information can be found on <ulink url="http://avogadro.openmolecules.net/wiki/Compiling">the Avogadro home page</ulink>.
+				Further information can be found on <ulink url="http://avogadro.cc/wiki/Compiling">the Avogadro home page</ulink>.
 			</para>
 		</sect1>
 
