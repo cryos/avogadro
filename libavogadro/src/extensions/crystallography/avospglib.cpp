@@ -146,51 +146,12 @@ namespace Avogadro {
                                const Eigen::Matrix3d &cellMatrix,
                                const double cartTol)
     {
-      Q_ASSERT(fcoords.size() == atomicNums.size());
-
-      const int numAtoms = fcoords.size();
-
-      if (numAtoms < 1) {
-        qWarning() << "Cannot determine spacegroup of empty cell.";
+      Dataset set = getDataset(fcoords, atomicNums, cellMatrix, cartTol);
+      if (set) {
+        return set->spacegroup_number;
+      } else {
         return 0;
       }
-
-      // Spglib expects column vecs, so fill with transpose
-      double lattice[3][3] = {
-        {cellMatrix(0,0), cellMatrix(1,0), cellMatrix(2,0)},
-        {cellMatrix(0,1), cellMatrix(1,1), cellMatrix(2,1)},
-        {cellMatrix(0,2), cellMatrix(1,2), cellMatrix(2,2)}
-      };
-
-      // Build position list
-      double (*positions)[3] = new double[numAtoms][3];
-      int *types = new int[numAtoms];
-      const Eigen::Vector3d * fracCoord;
-      for (int i = 0; i < numAtoms; ++i) {
-        fracCoord         = &fcoords[i];
-        types[i]          = atomicNums[i];
-        positions[i][0]   = fracCoord->x();
-        positions[i][1]   = fracCoord->y();
-        positions[i][2]   = fracCoord->z();
-      }
-
-      // find spacegroup
-      char symbol[21];
-      int spg = spg_get_international(symbol,
-                                      lattice,
-                                      positions,
-                                      types,
-                                      numAtoms,
-                                      cartTol);
-
-      delete [] positions;
-      delete [] types;
-
-      if (spg > 230 || spg < 0) {
-        spg = 0;
-      }
-
-      return static_cast<unsigned int>(spg);
     }
 
     unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
@@ -220,6 +181,87 @@ namespace Avogadro {
       prepareMolecule(mol, cell, &fcoords, &atomicNums, &cellMatrix);
 
       return getSpacegroup(fcoords, atomicNums, cellMatrix, cartTol);
+    }
+
+    Dataset getDataset(const QList<Eigen::Vector3d> &fcoords,
+                       const QList<unsigned int> &atomicNums,
+                       const Eigen::Matrix3d &cellMatrix,
+                       const double cartTol)
+    {
+      Q_ASSERT(fcoords.size() == atomicNums.size());
+
+      const int numAtoms = fcoords.size();
+
+      if (numAtoms < 1) {
+        qWarning() << "Cannot determine spacegroup of empty cell.";
+        return Dataset();
+      }
+
+      // Spglib expects column vecs, so fill with transpose
+      double lattice[3][3] = {
+        {cellMatrix(0,0), cellMatrix(1,0), cellMatrix(2,0)},
+        {cellMatrix(0,1), cellMatrix(1,1), cellMatrix(2,1)},
+        {cellMatrix(0,2), cellMatrix(1,2), cellMatrix(2,2)}
+      };
+
+      // Build position list
+      double (*positions)[3] = new double[numAtoms][3];
+      int *types = new int[numAtoms];
+      const Eigen::Vector3d * fracCoord;
+      for (int i = 0; i < numAtoms; ++i) {
+        fracCoord         = &fcoords[i];
+        types[i]          = atomicNums[i];
+        positions[i][0]   = fracCoord->x();
+        positions[i][1]   = fracCoord->y();
+        positions[i][2]   = fracCoord->z();
+      }
+
+      // find spacegroup data
+      SpglibDataset * ptr = spg_get_dataset(lattice,
+                                            positions,
+                                            types,
+                                            numAtoms,
+                                            cartTol);
+      if (!ptr || ptr->spacegroup_number == 0) {
+        qWarning() << "Cannot determine spacegroup.";
+        return Dataset();
+      }
+
+      Dataset set(ptr, spg_free_dataset);
+
+      delete [] positions;
+      delete [] types;
+
+      return set;
+    }
+
+    Dataset getDataset(const QList<Eigen::Vector3d> &fcoords,
+                       const QStringList &ids,
+                       const Eigen::Matrix3d &cellMatrix,
+                       const double cartTol)
+    {
+      const QList<unsigned int> atomicNums = symbolsToAtomicNumbers(ids);
+
+      return getDataset(fcoords, atomicNums, cellMatrix, cartTol);
+    }
+
+    Dataset getDataset(const Molecule * const mol,
+                       OpenBabel::OBUnitCell *cell,
+                       const double cartTol)
+    {
+      Q_ASSERT(mol);
+      if (!cell) {
+        cell = mol->OBUnitCell();
+      }
+      Q_ASSERT(cell);
+
+      QList<Eigen::Vector3d> fcoords;
+      QList<unsigned int> atomicNums;
+      Eigen::Matrix3d cellMatrix;
+
+      prepareMolecule(mol, cell, &fcoords, &atomicNums, &cellMatrix);
+
+      return getDataset(fcoords, atomicNums, cellMatrix, cartTol);
     }
 
     unsigned int reduceToPrimitive(QList<Eigen::Vector3d> *fcoords,

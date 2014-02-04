@@ -22,6 +22,7 @@
 
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QSharedPointer>
 
 #define AVOSPGLIB_TOL 0.1
 
@@ -37,6 +38,9 @@ namespace Avogadro {
     extern "C" {
 #include "spglib/spglib.h"
     }
+
+    // Takes care of allocated data, always instatiate with a deleter.
+    typedef QSharedPointer<SpglibDataset> Dataset;
 
     /**
      * Return the spacegroup number of the crystal described by the
@@ -88,6 +92,57 @@ namespace Avogadro {
     unsigned int getSpacegroup(const Molecule * const mol,
                                OpenBabel::OBUnitCell *cell = 0,
                                const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param fcoords Fractional coordinates of atoms.
+     * @param atomicNums Atomic numbers of atoms
+     * @param cellMatrix Unit cell matrix as row vectors.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset getDataset(const QList<Eigen::Vector3d> &fcoords,
+                       const QList<unsigned int> &atomicNums,
+                       const Eigen::Matrix3d &cellMatrix,
+                       const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * @overload
+     *
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param fcoords Fractional coordinates of atoms.
+     * @param ids Element symbols of atoms.
+     * @param cellMatrix Unit cell matrix as row vectors.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset  getDataset(const QList<Eigen::Vector3d> &fcoords,
+                        const QStringList &ids,
+                        const Eigen::Matrix3d &cellMatrix,
+                        const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * @overload
+     *
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param mol Molecule from which to extract coordinates
+     * @param cell OpenBabel OBUnitCell to use for cell info. If 0
+     * (default), mol->OBUnitCell() is used.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset  getDataset(const Molecule * const mol,
+                        OpenBabel::OBUnitCell *cell = 0,
+                        const double cartTol = AVOSPGLIB_TOL);
 
     /**
      * Reduce the crystal described by the arguments to it's primitive
