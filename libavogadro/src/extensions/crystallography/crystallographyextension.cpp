@@ -159,6 +159,7 @@ namespace Avogadro
     case PerceiveSpacegroupIndex:
     case SetSpacegroupIndex:
     case FillUnitCellIndex:
+    case ReduceToAsymmetricUnitIndex:
     case SymmetrizeCrystalIndex:
       return tr("&Crystallography") + '>' + tr("Space&group");
     case PrimitiveReduceIndex:
@@ -334,6 +335,9 @@ namespace Avogadro
       break;
     case FillUnitCellIndex:
       actionFillUnitCell();
+      break;
+    case ReduceToAsymmetricUnitIndex:
+      actionReduceToAsymmetricUnit();
       break;
     case SymmetrizeCrystalIndex:
       actionSymmetrizeCrystal();
@@ -1242,6 +1246,84 @@ namespace Avogadro
     setCurrentFractionalCoords(newIds, newFCoords);
   }
 
+  // Inverse of fillUnitCell()
+  void CrystallographyExtension::reduceToAsymmetricUnit(double tolerance)
+  {
+    OpenBabel::OBUnitCell *cell = currentCell();
+    if (!cell)
+      return;
+    const OpenBabel::SpaceGroup *sg = cell->GetSpaceGroup();
+    if (!sg)
+      return; // nothing to do
+
+    wrapAtomsToCell();
+
+    QList<Eigen::Vector3d> FCoords =
+      currentFractionalCoords();
+    QList<QString> Ids = currentAtomicSymbols();
+
+    // Duplicate tolerance squared
+    const double dupTolSquared = tolerance*tolerance;
+
+    // Non-fatal assert -- if the number of atoms has
+    // changed, just tail-recurse and try again.
+    if (Ids.size() != FCoords.size()) {
+      return reduceToAsymmetricUnit(tolerance);
+    }
+
+    const Eigen::Vector3d *curVec;
+    std::list<OpenBabel::vector3> obxformed;
+    std::list<OpenBabel::vector3>::const_iterator obxit;
+    std::list<OpenBabel::vector3>::const_iterator obxit_end;
+    QList<Eigen::Vector3d> xformed;
+    QList<Eigen::Vector3d>::const_iterator xit, xit_end;
+
+    // This loop modifies Ids and Fcoords, but only by removing
+    // atoms for j > i.
+    for (int i = 0; i < Ids.size(); ++i) {
+      // Get tranformed OB vectors
+      curVec = &FCoords[i];
+      obxformed = sg->Transform(Eigen2OB(*curVec));
+
+      // Convert to Eigen, wrap to cell
+      xformed.clear();
+      Eigen::Vector3d tmp;
+      obxit_end = obxformed.end();
+      for (obxit = obxformed.begin();
+           obxit != obxit_end; ++obxit) {
+        tmp = OB2Eigen(*obxit);
+        // Pseudo-modulus
+        tmp.x() -= static_cast<int>(tmp.x());
+        tmp.y() -= static_cast<int>(tmp.y());
+        tmp.z() -= static_cast<int>(tmp.z());
+        // Correct negative values
+        if (tmp.x() < 0.0) ++tmp.x();
+        if (tmp.y() < 0.0) ++tmp.y();
+        if (tmp.z() < 0.0) ++tmp.z();
+        // Add a fudge factor for cell edges
+        if (tmp.x() >= 1.0 - 1e-6) tmp.x() = 0.0;
+        if (tmp.y() >= 1.0 - 1e-6) tmp.y() = 0.0;
+        if (tmp.z() >= 1.0 - 1e-6) tmp.z() = 0.0;
+        xformed.append(tmp);
+      }
+
+      // Check which of the remaining atoms are equivalent to the current
+      // atom and remove them.
+      xit_end = xformed.constEnd();
+      for (xit = xformed.constBegin();
+           xit != xit_end; ++xit) {
+        for (int j = i + 1; j < Ids.size(); j++) {
+          if ((FCoords[j] - *xit).squaredNorm() < dupTolSquared) {
+            FCoords.removeAt(j);
+            Ids.removeAt(j);
+          }
+        }
+      }
+    }
+
+    setCurrentFractionalCoords(Ids, FCoords);
+  }
+
   void CrystallographyExtension::wrapAtomsToCell()
   {
     QList<Eigen::Vector3d> fcoords =
@@ -2069,6 +2151,14 @@ namespace Avogadro
     CE_CACTION_DEBUG(FillUnitCellIndex);
     CE_CACTION_ASSERT(FillUnitCellIndex);
 
+    // ReduceToAsymmetricUnitIndex
+    a = new QAction(tr("Reduce to &Asymmetric Unit"), this);
+    a->setStatusTip(tr("Remove atoms in equivalent positions (inverse of Fill Unit Cell)."));
+    a->setData(++counter);
+    m_actions.append(a);
+    CE_CACTION_DEBUG(ReduceToAsymmetricUnitIndex);
+    CE_CACTION_ASSERT(ReduceToAsymmetricUnitIndex);
+
     // SymmetrizeCrystalIndex
     a = new QAction(tr("Sy&mmetrize Crystal"), this);
     a->setData(++counter);
@@ -2430,7 +2520,24 @@ namespace Avogadro
                                 tr("Fill Unit Cell")));
   }
 
-  void CrystallographyExtension::actionSymmetrizeCrystal()
+  void CrystallographyExtension::actionReduceToAsymmetricUnit()
+  {
+    // The crystal needs to be symmetrized first, but undo information
+    // is kept here. Symmetrization also asks for the tolerance.
+    CEUndoState before(this);
+    actionSymmetrizeCrystal(true);
+    QSettings settings;
+    double tol = settings.value
+      ("crystallographyextension/settings/spgTolAngstrom",
+       0.1).toDouble();
+
+    reduceToAsymmetricUnit(tol);
+    CEUndoState after(this);
+    pushUndo(new CEUndoCommand (before, after,
+                                tr("Reduce to Asymmetric Unit")));
+  }
+
+  void CrystallographyExtension::actionSymmetrizeCrystal(bool skipUndo)
   {
     QSettings settings;
     double tol = settings.value
@@ -2492,9 +2599,11 @@ namespace Avogadro
     orientStandard();
     currentCell()->SetSpaceGroup(spg);
 
-    CEUndoState after (this);
-    pushUndo(new CEUndoCommand (before, after,
-                                tr("Symmetrize Crystal")));
+    if (!skipUndo) {
+      CEUndoState after(this);
+      pushUndo(new CEUndoCommand(before, after,
+                                 tr("Symmetrize Crystal")));
+    }
 
     emit cellChanged();
   }

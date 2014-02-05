@@ -250,6 +250,7 @@ namespace Avogadro
 
     // Tool helpers/implementaions
     void fillUnitCell();
+    void reduceToAsymmetricUnit(double tolerance);
     void wrapAtomsToCell();
     void buildSuperCell(const unsigned int v1,
                         const unsigned int v2, const unsigned int v3);
@@ -285,6 +286,7 @@ namespace Avogadro
       PerceiveSpacegroupIndex,
       SetSpacegroupIndex,
       FillUnitCellIndex,
+      ReduceToAsymmetricUnitIndex,
       SymmetrizeCrystalIndex,
       // Reduce
       PrimitiveReduceIndex,
@@ -350,7 +352,8 @@ namespace Avogadro
     void actionPerceiveSpacegroup();
     void actionSetSpacegroup();
     void actionFillUnitCell();
-    void actionSymmetrizeCrystal();
+    void actionReduceToAsymmetricUnit();
+    void actionSymmetrizeCrystal(bool skipUndo = false);
     void actionPrimitiveReduce();
     void actionNiggliReduce();
     void actionToggleUnitCell();
