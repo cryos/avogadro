@@ -28,6 +28,7 @@
 
 namespace OpenBabel {
   class OBUnitCell;
+  class SpaceGroup;
 }
 
 namespace Avogadro {
@@ -41,6 +42,16 @@ namespace Avogadro {
 
     // Takes care of allocated data, always instatiate with a deleter.
     typedef QSharedPointer<SpglibDataset> Dataset;
+
+    /**
+     * Fetch the OpenBabel spacegroup structure equivalent to the
+     * provided Spglib dataset.
+     *
+     * @param spg_data Spglib dataset.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(Dataset spg_data);
 
     /**
      * Return the spacegroup number of the crystal described by the

@@ -141,6 +141,16 @@ namespace {
 
 namespace Avogadro {
   namespace Spglib {
+
+    const OpenBabel::SpaceGroup* toOpenBabel(Dataset spg_data)
+    {
+      const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(spg_data->hall_symbol);
+      if (!s) {
+        qWarning() << "Cannot find an OpenBabel equivalent to Spglib's Hall symbol" << spg_data->hall_symbol;
+      }
+      return s;
+    }
+
     unsigned int getSpacegroup(const QList<Eigen::Vector3d> &fcoords,
                                const QList<unsigned int> &atomicNums,
                                const Eigen::Matrix3d &cellMatrix,

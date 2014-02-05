@@ -2325,10 +2325,10 @@ namespace Avogadro
 
     OpenBabel::OBUnitCell *cell = currentCell();
 
-    unsigned int spg = Spglib::getSpacegroup(m_molecule,
+    Spglib::Dataset spg = Spglib::getDataset(m_molecule,
                                              cell, tol);
 
-    if (spg == 0) {
+    if (!spg) {
       if (QMessageBox::question
           (m_mainwindow, CE_DIALOG_TITLE,
            tr("Spacegroup perception failed.\n\nWould you "
@@ -2344,7 +2344,7 @@ namespace Avogadro
     }
 
     CEUndoState before (this);
-    cell->SetSpaceGroup(spg);
+    cell->SetSpaceGroup(Spglib::toOpenBabel(spg));
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Perceive Spacegroup")));
