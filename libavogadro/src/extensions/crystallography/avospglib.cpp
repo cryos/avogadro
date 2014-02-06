@@ -471,7 +471,8 @@ namespace Avogadro {
 
       applyToMolecule(mol, cell, fcoords, atomicNums, cellMatrix);
 
-      cell->SetSpaceGroup(spg);
+      Dataset set = getDataset(fcoords, atomicNums, cellMatrix, cartTol);
+      cell->SetSpaceGroup(toOpenBabel(set));
 
       return spg;
     }
@@ -621,7 +622,8 @@ namespace Avogadro {
 
       applyToMolecule(mol, cell, fcoords, atomicNums, cellMatrix);
 
-      cell->SetSpaceGroup(spg);
+      Dataset set = getDataset(fcoords, atomicNums, cellMatrix, cartTol);
+      cell->SetSpaceGroup(toOpenBabel(set));
 
       return spg;
     }
