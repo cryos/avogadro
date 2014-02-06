@@ -137,6 +137,10 @@ namespace {
     return ids;
   }
 
+  QByteArray getHallSymbol(int index) {
+    SpglibSpacegroupType type = spg_get_spacegroup_type(index);
+    return QByteArray(type.hall_symbol);
+  }
 } // end anon namespace
 
 namespace Avogadro {
@@ -146,7 +150,36 @@ namespace Avogadro {
     {
       const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(spg_data->hall_symbol);
       if (!s) {
-        qWarning() << "Cannot find an OpenBabel equivalent to Spglib's Hall symbol" << spg_data->hall_symbol;
+        qWarning() << "Cannot find an OpenBabel equivalent to Spglib's Hall symbol '" << spg_data->hall_symbol << "'";
+      }
+      return s;
+    }
+
+    const OpenBabel::SpaceGroup* toOpenBabel(const char* hall_symbol)
+    {
+      const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(hall_symbol);
+      // Make sure that we have a Hall symbol and not a HM symbol.
+      if (s) {
+        for (int i = 1; i <= 530; i++) {
+          if (getHallSymbol(i) == hall_symbol)
+            return s;
+        }
+      }
+      s = NULL;
+      qWarning() << "Cannot find an OpenBabel equivalent to Hall symbol" << hall_symbol;
+      return s;
+    }
+
+    const OpenBabel::SpaceGroup* toOpenBabel(int hall_number)
+    {
+      if (hall_number < 1 || hall_number > 530) {
+        qWarning() << "Invalid Hall number" << hall_number;
+        return NULL;
+      }
+      QByteArray hall = getHallSymbol(hall_number);
+      const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(hall.constData());
+      if (!s) {
+        qWarning() << "Cannot find an OpenBabel equivalent to Spglib's Hall symbol" << hall;
       }
       return s;
     }
