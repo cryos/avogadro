@@ -54,6 +54,30 @@ namespace Avogadro {
     const OpenBabel::SpaceGroup* toOpenBabel(Dataset spg_data);
 
     /**
+     * @overload
+     *
+     * Fetch the OpenBabel spacegroup structure described by the
+     * argument.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(const char* hall_symbol);
+
+    /**
+     * @overload
+     *
+     * Fetch the OpenBabel spacegroup structure described by the
+     * argument.
+     *
+     * @param hall_number Hall number, an opaque index provided by Dataset.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(int hall_number);
+
+    /**
      * Return the spacegroup number of the crystal described by the
      * arguments.
      *
