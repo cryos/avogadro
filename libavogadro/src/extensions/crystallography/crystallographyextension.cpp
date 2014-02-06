@@ -58,6 +58,9 @@
 #include <QtGui/QLabel>
 #include <QtGui/QMessageBox>
 #include <QtGui/QMainWindow>
+#include <QtGui/QTableView>
+#include <QtGui/QStandardItemModel>
+#include <QtGui/QScrollBar>
 
 #include <QtCore/QDebug>
 #include <QtCore/QSettings>
@@ -2444,46 +2447,64 @@ namespace Avogadro
 
   void CrystallographyExtension::actionSetSpacegroup()
   {
-    QStringList spacegroups;
+    QStandardItemModel spacegroups;
+    QStringList modelHeader;
+    modelHeader << tr("International")
+                << tr("Hall")
+                << tr("Hermann-Mauguin");
+    spacegroups.setHorizontalHeaderLabels(modelHeader);
     const OpenBabel::SpaceGroup *sg;
-    for (unsigned int i = 1; i <= 230; ++i) {
-      sg = OpenBabel::SpaceGroup::GetSpaceGroup(i);
-      spacegroups << QString("%1: %2")
-        .arg(i)
-        .arg(QString::fromStdString(sg->GetHMName()));
+    for (unsigned int i = 1; i <= 530; ++i) {
+      sg = Spglib::toOpenBabel(i);
+      QList<QStandardItem*> row;
+      row << new QStandardItem(QString::number(sg->GetId()))
+          << new QStandardItem(QString::fromStdString(sg->GetHallName()))
+          << new QStandardItem(QString::fromStdString(sg->GetHMName()));
+      spacegroups.appendRow(row);
     }
     OpenBabel::OBUnitCell *cell = currentCell();
 
-    unsigned int spg;
     // Try to perceive the current group w/ default tolerance if no
     // spacegroup already set.
     sg = cell->GetSpaceGroup();
+    int current;
     if (!sg) {
-      spg = Spglib::getSpacegroup(m_molecule,
-                                  currentCell());
-    }
-    // Otherwise use current sg as default
-    else {
-      spg = sg->GetId();
+      Spglib::Dataset set = Spglib::getDataset(m_molecule,
+                                               currentCell());
+      current = set->hall_number - 1;
+    } else {
+      current = Spglib::getHallNumber(sg->GetHallName().c_str()) - 1;
     }
 
-    bool ok;
+    QDialog dialog(m_mainwindow);
+    dialog.setLayout(new QVBoxLayout);
+    dialog.setWindowTitle(tr("Select spacegroup"));
+    QTableView* view = new QTableView;
+    view->setSelectionBehavior(QAbstractItemView::SelectRows);
+    view->setSelectionMode(QAbstractItemView::SingleSelection);
+    view->setCornerButtonEnabled(false);
+    view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->verticalHeader()->hide();
+    view->setModel(&spacegroups);
+    dialog.layout()->addWidget(view);
+    view->selectRow(current);
+    view->resizeColumnsToContents();
+    view->resizeRowsToContents();
+    view->setMinimumWidth(view->horizontalHeader()->length()
+                          + view->verticalScrollBar()->sizeHint().width());
+    connect(view, SIGNAL(activated(QModelIndex)), &dialog, SLOT(accept()));
+    QDialogButtonBox* buttons =
+      new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
+    connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+    dialog.layout()->addWidget(buttons);
+    if (dialog.exec() != QDialog::Accepted)
+        return;
 
-    QString selection =
-      QInputDialog::getItem(m_mainwindow,
-                            CE_DIALOG_TITLE,
-                            tr("Set Spacegroup:"),
-                            spacegroups,
-                            spg-1,
-                            false,
-                            &ok);
-
-    if (!ok) {
-      return;
-    }
-    unsigned int index = spacegroups.indexOf(selection);
+    int index = view->currentIndex().row();
     CEUndoState before (this);
-    cell->SetSpaceGroup(index+1);
+    cell->SetSpaceGroup(Spglib::toOpenBabel(index + 1));
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Set Spacegroup")));

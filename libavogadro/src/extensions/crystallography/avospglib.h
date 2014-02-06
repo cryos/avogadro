@@ -44,6 +44,35 @@ namespace Avogadro {
     typedef QSharedPointer<SpglibDataset> Dataset;
 
     /**
+     * Fetch the Hall symbol given a Hall number.
+     *
+     * @param hall_number Hall number, an opaque index provided by Dataset.
+     *
+     * @return Hall symbol if found, empty array otherwise.
+     */
+    QByteArray getHallSymbol(int hall_number);
+
+    /**
+     * Fetch the Hall number given a Hall symbol.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return Hall number if found, 0 otherwise.
+     */
+    int getHallNumber(const QByteArray hall_symbol);
+
+    /**
+     * @overload
+     *
+     * Fetch the Hall number given a Hall symbol.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return Hall number if found, 0 otherwise.
+     */
+    int getHallNumber(const char* hall_symbol);
+
+    /**
      * Fetch the OpenBabel spacegroup structure equivalent to the
      * provided Spglib dataset.
      *

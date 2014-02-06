@@ -136,15 +136,35 @@ namespace {
     }
     return ids;
   }
-
-  QByteArray getHallSymbol(int index) {
-    SpglibSpacegroupType type = spg_get_spacegroup_type(index);
-    return QByteArray(type.hall_symbol);
-  }
 } // end anon namespace
 
 namespace Avogadro {
   namespace Spglib {
+
+
+    QByteArray getHallSymbol(int hall_number)
+    {
+      if (hall_number < 1 || hall_number > 530) {
+        qWarning() << "Invalid Hall number" << hall_number;
+        return QByteArray();
+      }
+      SpglibSpacegroupType type = spg_get_spacegroup_type(hall_number);
+      return QByteArray(type.hall_symbol);
+    }
+
+    int getHallNumber(const QByteArray hall_symbol)
+    {
+      for (int i = 1; i <= 530; i++) {
+        if (getHallSymbol(i) == hall_symbol)
+          return i;
+      }
+      return 0;
+    }
+
+    int getHallNumber(const char* hall_symbol)
+    {
+      return getHallNumber(QByteArray::fromRawData(hall_symbol, strlen(hall_symbol)));
+    }
 
     const OpenBabel::SpaceGroup* toOpenBabel(Dataset spg_data)
     {
@@ -160,9 +180,8 @@ namespace Avogadro {
       const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(hall_symbol);
       // Make sure that we have a Hall symbol and not a HM symbol.
       if (s) {
-        for (int i = 1; i <= 530; i++) {
-          if (getHallSymbol(i) == hall_symbol)
-            return s;
+        if (getHallNumber(s->GetHallName().c_str())) {
+          return s;
         }
       }
       s = NULL;
@@ -172,10 +191,7 @@ namespace Avogadro {
 
     const OpenBabel::SpaceGroup* toOpenBabel(int hall_number)
     {
-      if (hall_number < 1 || hall_number > 530) {
-        qWarning() << "Invalid Hall number" << hall_number;
-        return NULL;
-      }
+
       QByteArray hall = getHallSymbol(hall_number);
       const OpenBabel::SpaceGroup* s = OpenBabel::SpaceGroup::GetSpaceGroup(hall.constData());
       if (!s) {
