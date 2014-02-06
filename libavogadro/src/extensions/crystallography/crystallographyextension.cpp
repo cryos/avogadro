@@ -2434,6 +2434,41 @@ namespace Avogadro
       }
     }
 
+    /*
+     * Check whether we should suggest symmetrization.
+     * We want to know whether there is noticeable translation or
+     * whether there is any scaling of unit cell. We do not care
+     * about mere rotations (they are handled by orientStandard()).
+     */
+    bool suggestSymmetrization = false;
+    Eigen::Matrix3d xform;
+    for (int i = 0; i < 3; i++) {
+      if (fabs(spg->origin_shift[i]) > 1e-6)
+        suggestSymmetrization = true;
+      for (int j = 0; j < 3; j++) {
+        xform(i,j) = spg->transformation_matrix[i][j];
+      }
+    }
+    suggestSymmetrization = suggestSymmetrization ||
+                            (xform * xform.transpose() - Eigen::Matrix3d::Identity()).squaredNorm() > 1e-6;
+    if (suggestSymmetrization) {
+      QString message = tr("Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguine symbol %3.\n"
+                           "Cell can be symmetrized further, do you wish to do so?");
+      message = message
+                .arg(spg->spacegroup_number)
+                .arg(spg->hall_symbol)
+                .arg(spg->international_symbol);
+      QMessageBox::StandardButton choice;
+      choice = QMessageBox::question
+               (m_mainwindow, CE_DIALOG_TITLE,
+                message,
+                QMessageBox::Yes | QMessageBox::No,
+                QMessageBox::Yes);
+      if (choice == QMessageBox::Yes) {
+        return actionSymmetrizeCrystal();
+      }
+    }
+
     CEUndoState before (this);
     cell->SetSpaceGroup(Spglib::toOpenBabel(spg));
     CEUndoState after (this);
