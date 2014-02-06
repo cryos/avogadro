@@ -2446,25 +2446,25 @@ namespace Avogadro
   {
     QStringList spacegroups;
     const OpenBabel::SpaceGroup *sg;
-    for (unsigned int i = 1; i <= 230; ++i) {
-      sg = OpenBabel::SpaceGroup::GetSpaceGroup(i);
-      spacegroups << QString("%1: %2")
-        .arg(i)
+    for (unsigned int i = 1; i <= 530; ++i) {
+      sg = Spglib::toOpenBabel(i);
+      spacegroups << QString("%1 | %2 | %3")
+        .arg(sg->GetId(), 3)
+        .arg(QString::fromStdString(sg->GetHallName()), 17)
         .arg(QString::fromStdString(sg->GetHMName()));
     }
     OpenBabel::OBUnitCell *cell = currentCell();
 
-    unsigned int spg;
     // Try to perceive the current group w/ default tolerance if no
     // spacegroup already set.
     sg = cell->GetSpaceGroup();
+    int current;
     if (!sg) {
-      spg = Spglib::getSpacegroup(m_molecule,
-                                  currentCell());
-    }
-    // Otherwise use current sg as default
-    else {
-      spg = sg->GetId();
+      Spglib::Dataset set = Spglib::getDataset(m_molecule,
+                                               currentCell());
+      current = set->hall_number - 1;
+    } else {
+      current = Spglib::getHallNumber(sg->GetHallName().c_str()) - 1;
     }
 
     bool ok;
@@ -2472,9 +2472,10 @@ namespace Avogadro
     QString selection =
       QInputDialog::getItem(m_mainwindow,
                             CE_DIALOG_TITLE,
-                            tr("Set Spacegroup:"),
+                            tr("Set Spacegroup. Fields are:\n"
+                               "spacegroup number | Hall symbol | Hermann-Mauguin symbol"),
                             spacegroups,
-                            spg-1,
+                            current,
                             false,
                             &ok);
 
@@ -2483,7 +2484,7 @@ namespace Avogadro
     }
     unsigned int index = spacegroups.indexOf(selection);
     CEUndoState before (this);
-    cell->SetSpaceGroup(index+1);
+    cell->SetSpaceGroup(Spglib::toOpenBabel(index + 1));
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Set Spacegroup")));
