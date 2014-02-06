@@ -601,9 +601,10 @@ namespace Avogadro
       const OpenBabel::SpaceGroup *sg;
       sg = cell->GetSpaceGroup();
       if (sg) {
-        spacegroup = QString("%1 (%2)")
-          .arg(sg->GetHMName().c_str())
-          .arg(sg->GetId());
+        spacegroup = QString("%1; Hall: %2; HM: %3")
+          .arg(sg->GetId())
+          .arg(sg->GetHallName().c_str())
+          .arg(sg->GetHMName().c_str());
       }
     }
 
