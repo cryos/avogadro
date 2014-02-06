@@ -2598,7 +2598,9 @@ namespace Avogadro
 
     wrapAtomsToCell();
     orientStandard();
-    currentCell()->SetSpaceGroup(spg);
+    Spglib::Dataset set = Spglib::getDataset(m_molecule,
+                                             currentCell(), tol);
+    currentCell()->SetSpaceGroup(Spglib::toOpenBabel(set));
 
     if (!skipUndo) {
       CEUndoState after(this);
@@ -2749,7 +2751,9 @@ namespace Avogadro
 
     wrapAtomsToCell();
     orientStandard();
-    currentCell()->SetSpaceGroup(spg);
+    Spglib::Dataset set = Spglib::getDataset(m_molecule,
+                                             currentCell(), tol);
+    currentCell()->SetSpaceGroup(Spglib::toOpenBabel(set));
 
     CEUndoState after (this);
     pushUndo(new CEUndoCommand (before, after,
