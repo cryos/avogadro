@@ -87,6 +87,7 @@ namespace Avogadro
       m_coordsPreserveCartFrac(Fractional),
       m_matrixCartFrac(Cartesian),
       m_matrixVectorStyle(RowVectors),
+      m_spgTolerance(1e-5),
       m_editorRefreshPending(false)
   {
     if (!m_mainwindow) {
@@ -203,6 +204,8 @@ namespace Avogadro
     case MatrixRowVectorsIndex:
     case MatrixColumnVectorsIndex:
       return tr("&Crystallography") + '>' + tr("&Settings") + '>' + tr("&Matrix Display");
+    case SpgToleranceIndex:
+      return tr("&Crystallography") + '>' + tr("&Settings");
     case ViewOptionsIndex:
       return tr("&View");
     default:
@@ -276,6 +279,8 @@ namespace Avogadro
     settings.setValue("vectorStyle", matrixVectorStyle());
     settings.endGroup();
 
+    settings.setValue("spgTolAngstrom", m_spgTolerance);
+
     settings.endGroup(); // "settings"
 
     settings.endGroup(); // "crystallographyextension"
@@ -314,6 +319,8 @@ namespace Avogadro
                                          RowVectors)
                           .toInt()));
     settings.endGroup();
+
+    m_spgTolerance = settings.value("spgTolAngstrom").toDouble();
 
     settings.endGroup(); // "settings"
 
@@ -422,6 +429,9 @@ namespace Avogadro
       break;
     case MatrixColumnVectorsIndex:
       actionMatrixColumnVectors();
+      break;
+    case SpgToleranceIndex:
+      actionSpgTolerance();
       break;
     case SettingsMainSep1Index:
     case MatrixCoordDisplaySep1Index:
@@ -1169,8 +1179,7 @@ namespace Avogadro
     QList<QString> newIds;
 
     // Duplicate tolerance squared
-    const double tolerance = 1e-6;
-    const double dupTolSquared = 1e-12; // 1e-6 ^2
+    const double dupTolSquared = m_spgTolerance*m_spgTolerance;
 
     // Non-fatal assert -- if the number of atoms has
     // changed, just tail-recurse and try again.
@@ -1214,9 +1223,9 @@ namespace Avogadro
         if (tmp.y() < 0.0) ++tmp.y();
         if (tmp.z() < 0.0) ++tmp.z();
         // Add a fudge factor for cell edges
-        if (tmp.x() >= 1.0 - tolerance) tmp.x() = 0.0;
-        if (tmp.y() >= 1.0 - tolerance) tmp.y() = 0.0;
-        if (tmp.z() >= 1.0 - tolerance) tmp.z() = 0.0;
+        if (tmp.x() >= 1.0 - 1e-6) tmp.x() = 0.0;
+        if (tmp.y() >= 1.0 - 1e-6) tmp.y() = 0.0;
+        if (tmp.z() >= 1.0 - 1e-6) tmp.z() = 0.0;
         xformed.append(tmp);
       }
 
@@ -1251,7 +1260,7 @@ namespace Avogadro
   }
 
   // Inverse of fillUnitCell()
-  void CrystallographyExtension::reduceToAsymmetricUnit(double tolerance)
+  void CrystallographyExtension::reduceToAsymmetricUnit()
   {
     OpenBabel::OBUnitCell *cell = currentCell();
     if (!cell)
@@ -1267,12 +1276,12 @@ namespace Avogadro
     QList<QString> Ids = currentAtomicSymbols();
 
     // Duplicate tolerance squared
-    const double dupTolSquared = tolerance*tolerance;
+    const double dupTolSquared = m_spgTolerance*m_spgTolerance;
 
     // Non-fatal assert -- if the number of atoms has
     // changed, just tail-recurse and try again.
     if (Ids.size() != FCoords.size()) {
-      return reduceToAsymmetricUnit(tolerance);
+      return reduceToAsymmetricUnit();
     }
 
     const Eigen::Vector3d *curVec;
@@ -2355,6 +2364,14 @@ namespace Avogadro
     CE_CACTION_DEBUG(MatrixColumnVectorsIndex);
     CE_CACTION_ASSERT(MatrixColumnVectorsIndex);
 
+    // SpgToleranceIndex
+    a = new QAction(tr("&Tolerance for symmetry operations..."), this);
+    a->setData(++counter);
+    m_actions.append(a);
+    ag->addAction(a);
+    CE_CACTION_DEBUG(SpgToleranceIndex);
+    CE_CACTION_ASSERT(SpgToleranceIndex);
+
     // ViewOptionIndex
     a = new QAction(tr("&Crystal View Options..."), this);
     a->setData(++counter);
@@ -2396,34 +2413,10 @@ namespace Avogadro
 
   void CrystallographyExtension::actionPerceiveSpacegroup()
   {
-    QSettings settings;
-
-    double tol = settings.value
-      ("crystallographyextension/settings/spgTolAngstrom",
-       0.1).toDouble();
-
-    bool ok;
-    tol = unconvertLength(QInputDialog::getDouble
-                          (m_mainwindow,
-                           CE_DIALOG_TITLE,
-                           tr("Select tolerance in current cartesian units:"),
-                           convertLength(tol), // initial
-                           convertLength(1e-5), // min
-                           convertLength(0.5), // max
-                           5, &ok));
-
-    if (!ok) {
-      return;
-    }
-
-    settings.setValue
-      ("crystallographyextension/settings/spgTolAngstrom", tol);
-    settings.sync();
-
-    OpenBabel::OBUnitCell *cell = currentCell();
+    OpenBabel::OBUnitCell* cell = currentCell();
 
     Spglib::Dataset spg = Spglib::getDataset(m_molecule,
-                                             cell, tol);
+                                             cell, m_spgTolerance);
 
     if (!spg) {
       if (QMessageBox::question
@@ -2585,15 +2578,10 @@ namespace Avogadro
   void CrystallographyExtension::actionReduceToAsymmetricUnit()
   {
     // The crystal needs to be symmetrized first, but undo information
-    // is kept here. Symmetrization also asks for the tolerance.
+    // is kept here.
     CEUndoState before(this);
     actionSymmetrizeCrystal(true);
-    QSettings settings;
-    double tol = settings.value
-      ("crystallographyextension/settings/spgTolAngstrom",
-       0.1).toDouble();
-
-    reduceToAsymmetricUnit(tol);
+    reduceToAsymmetricUnit();
     CEUndoState after(this);
     pushUndo(new CEUndoCommand (before, after,
                                 tr("Reduce to Asymmetric Unit")));
@@ -2601,31 +2589,8 @@ namespace Avogadro
 
   void CrystallographyExtension::actionSymmetrizeCrystal(bool skipUndo)
   {
-    QSettings settings;
-    double tol = settings.value
-      ("crystallographyextension/settings/spgTolAngstrom",
-       0.1).toDouble();
-
-    bool ok;
-    tol = unconvertLength(QInputDialog::getDouble
-                          (m_mainwindow,
-                           CE_DIALOG_TITLE,
-                           tr("Select tolerance in current cartesian units:"),
-                           convertLength(tol), // initial
-                           convertLength(1e-5), // min
-                           convertLength(0.5), // max
-                           5, &ok));
-
-    if (!ok) {
-      return;
-    }
-
-    settings.setValue
-      ("crystallographyextension/settings/spgTolAngstrom", tol);
-    settings.sync();
-
     CEUndoState before (this);
-    unsigned int spg = Spglib::refineCrystal(m_molecule, 0, tol);
+    unsigned int spg = Spglib::refineCrystal(m_molecule, 0, m_spgTolerance);
     // spg == 0: Spacegroup perception failed
     if (spg == 0) {
       if (QMessageBox::question
@@ -2660,7 +2625,7 @@ namespace Avogadro
     wrapAtomsToCell();
     orientStandard();
     Spglib::Dataset set = Spglib::getDataset(m_molecule,
-                                             currentCell(), tol);
+                                             currentCell(), m_spgTolerance);
     currentCell()->SetSpaceGroup(Spglib::toOpenBabel(set));
 
     if (!skipUndo) {
@@ -2769,31 +2734,8 @@ namespace Avogadro
 
   void CrystallographyExtension::actionPrimitiveReduce()
   {
-    QSettings settings;
-    double tol = settings.value
-      ("crystallographyextension/settings/spgTolAngstrom",
-       0.1).toDouble();
-
-    bool ok;
-    tol = unconvertLength(QInputDialog::getDouble
-                          (m_mainwindow,
-                           CE_DIALOG_TITLE,
-                           tr("Select tolerance in current cartesian units:"),
-                           convertLength(tol), // initial
-                           convertLength(1e-5), // min
-                           convertLength(0.5), // max
-                           5, &ok));
-
-    if (!ok) {
-      return;
-    }
-
-    settings.setValue
-      ("crystallographyextension/settings/spgTolAngstrom", tol);
-    settings.sync();
-
     CEUndoState before (this);
-    unsigned int spg = Spglib::reduceToPrimitive(m_molecule, 0, tol);
+    unsigned int spg = Spglib::reduceToPrimitive(m_molecule, 0, m_spgTolerance);
     // spg == 0: Spacegroup perception failed
     if (spg == 0) {
       if (QMessageBox::question
@@ -2813,7 +2755,7 @@ namespace Avogadro
     wrapAtomsToCell();
     orientStandard();
     Spglib::Dataset set = Spglib::getDataset(m_molecule,
-                                             currentCell(), tol);
+                                             currentCell(), m_spgTolerance);
     currentCell()->SetSpaceGroup(Spglib::toOpenBabel(set));
 
     CEUndoState after (this);
@@ -2953,6 +2895,26 @@ namespace Avogadro
              m_cachedFractionalIds.size());
     setCurrentFractionalCoords(m_cachedFractionalIds,
                                m_cachedFractionalCoords);
+  }
+
+  void CrystallographyExtension::actionSpgTolerance()
+  {
+    double tol;
+    bool ok;
+    tol = unconvertLength(QInputDialog::getDouble
+                          (m_mainwindow,
+                           CE_DIALOG_TITLE,
+                           tr("Select tolerance in current cartesian units:"),
+                           convertLength(m_spgTolerance), // initial
+                           convertLength(1e-5), // min
+                           convertLength(0.5), // max
+                           5, &ok));
+
+    if (!ok) {
+      return;
+    }
+
+    m_spgTolerance = tol;
   }
 
 } // end namespace Avogadro
