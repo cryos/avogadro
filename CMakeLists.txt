@@ -4,7 +4,7 @@ project(Avogadro) # the name of your project
 # The Avogadro version number, currently used by the Avogadro library too
 set(Avogadro_VERSION_MAJOR 1)
 set(Avogadro_VERSION_MINOR 1)
-set(Avogadro_VERSION_PATCH 1)
+set(Avogadro_VERSION_PATCH 2)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
@@ -234,9 +234,12 @@ find_package(Eigen3) # find and setup Eigen3 if available
 if(NOT EIGEN3_FOUND)
    message(STATUS "Cannot find Eigen3, trying Eigen2")
    find_package(Eigen2 REQUIRED) # Some version is required
+   set (EIGEN_INCLUDE_DIR "${EIGEN2_INCLUDE_DIR}")
 else()
 # Use Stage10 Eigen3 support
    set (EIGEN2_SUPPORT_STAGE10_FULL_EIGEN2_API TRUE)
+   add_definitions(-DEIGEN2_SUPPORT_STAGE10_FULL_EIGEN2_API)
+   set (EIGEN_INCLUDE_DIR "${EIGEN3_INCLUDE_DIR}")
 endif()
 
 find_package(ZLIB REQUIRED)

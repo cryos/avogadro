@@ -3,7 +3,7 @@ OPENBABEL_PREFIX = "@OPENBABEL2_INCLUDE_DIR@/../.."
 INCLUDEPATH += . \
                "$$AVOGADRO_PREFIX/include" \
                "@OPENBABEL2_INCLUDE_DIR@ \
-               "@EIGEN2_INCLUDE_DIR@"
+               "@EIGEN_INCLUDE_DIR@"
 LIBS += -L"$$AVOGADRO_PREFIX/lib" -lavogadro \
         -L"$$OPENBABEL_PREFIX/lib" -lopenbabel
 

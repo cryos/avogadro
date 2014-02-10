@@ -11,7 +11,7 @@ set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
   "${libavogadro_BINARY_DIR}/include;${tmp_include_dirs}")
 include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
-  ${EIGEN2_INCLUDE_DIR}
+  ${EIGEN_INCLUDE_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
 )
 

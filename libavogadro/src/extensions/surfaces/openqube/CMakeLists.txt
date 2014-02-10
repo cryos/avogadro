@@ -1,7 +1,17 @@
 find_package(Qt4 4.6 REQUIRED)
-find_package(Eigen2 REQUIRED)
 
-include_directories(${QT_INCLUDE_DIR} ${EIGEN2_INCLUDE_DIR})
+find_package(Eigen3) # find and setup Eigen3 if available
+if(NOT EIGEN3_FOUND)
+   message(STATUS "Cannot find Eigen3, trying Eigen2")
+   find_package(Eigen2 REQUIRED) # Some version is required
+   set (EIGEN_INCLUDE_DIR "${EIGEN2_INCLUDE_DIR}")
+else()
+# Use Stage10 Eigen3 support
+   set (EIGEN2_SUPPORT_STAGE10_FULL_EIGEN2_API TRUE)
+   set (EIGEN_INCLUDE_DIR "${EIGEN3_INCLUDE_DIR}")
+endif()
+
+include_directories(${QT_INCLUDE_DIR} ${EIGEN_INCLUDE_DIR})
 
 # Headers for our public API
 set(openqube_HDRS

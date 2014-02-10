@@ -13,7 +13,9 @@ add_definitions(-DQT_SHARED)
 # Add the Avogadro modules directory to the CMake module path
 set(CMAKE_MODULE_PATH ${Avogadro_PLUGIN_DIR}/cmake ${CMAKE_MODULE_PATH})
 find_package(Eigen2 REQUIRED)
-include_directories(${EIGEN2_INCLUDE_DIR})
+include_directories(${EIGEN_INCLUDE_DIR})
+
+
 if(Avogadro_ENABLE_GLSL)
   find_package(GLEW)
   if(GLEW_FOUND)
