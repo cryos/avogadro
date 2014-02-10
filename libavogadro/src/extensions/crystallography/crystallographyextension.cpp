@@ -1536,7 +1536,10 @@ namespace Avogadro
 
   void CrystallographyExtension::orientStandard()
   {
+    CartFrac preserve = m_coordsPreserveCartFrac;
+    m_coordsPreserveCartFrac = Fractional;
     setCurrentCellMatrix(currentCellMatrixInStandardOrientation());
+    m_coordsPreserveCartFrac = preserve;
   }
 
   void CrystallographyExtension::showPasteDialog(const QString &text)
