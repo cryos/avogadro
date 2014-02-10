@@ -250,7 +250,7 @@ namespace Avogadro
 
     // Tool helpers/implementaions
     void fillUnitCell();
-    void reduceToAsymmetricUnit(double tolerance);
+    void reduceToAsymmetricUnit();
     void wrapAtomsToCell();
     void buildSuperCell(const unsigned int v1,
                         const unsigned int v2, const unsigned int v3);
@@ -308,6 +308,7 @@ namespace Avogadro
       MatrixCoordDisplaySep1Index,
       MatrixRowVectorsIndex,
       MatrixColumnVectorsIndex,
+      SpgToleranceIndex,
       // View
       ViewOptionsIndex
     };
@@ -336,6 +337,7 @@ namespace Avogadro
     CartFrac m_coordsPreserveCartFrac;
     CartFrac m_matrixCartFrac;
     VectorStyle m_matrixVectorStyle;
+    double m_spgTolerance;
 
     // Coordinate preservation
     QList<QString> m_cachedFractionalIds;
@@ -382,6 +384,7 @@ namespace Avogadro
     void actionMatrixFrac();
     void actionMatrixRowVectors();
     void actionMatrixColumnVectors();
+    void actionSpgTolerance();
 
     // Coordinate preservation
     void cacheFractionalCoordinates();
