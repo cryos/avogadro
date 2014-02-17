@@ -22,11 +22,13 @@
 
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QSharedPointer>
 
 #define AVOSPGLIB_TOL 0.1
 
 namespace OpenBabel {
   class OBUnitCell;
+  class SpaceGroup;
 }
 
 namespace Avogadro {
@@ -37,6 +39,72 @@ namespace Avogadro {
     extern "C" {
 #include "spglib/spglib.h"
     }
+
+    // Takes care of allocated data, always instatiate with a deleter.
+    typedef QSharedPointer<SpglibDataset> Dataset;
+
+    /**
+     * Fetch the Hall symbol given a Hall number.
+     *
+     * @param hall_number Hall number, an opaque index provided by Dataset.
+     *
+     * @return Hall symbol if found, empty array otherwise.
+     */
+    QByteArray getHallSymbol(int hall_number);
+
+    /**
+     * Fetch the Hall number given a Hall symbol.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return Hall number if found, 0 otherwise.
+     */
+    int getHallNumber(const QByteArray hall_symbol);
+
+    /**
+     * @overload
+     *
+     * Fetch the Hall number given a Hall symbol.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return Hall number if found, 0 otherwise.
+     */
+    int getHallNumber(const char* hall_symbol);
+
+    /**
+     * Fetch the OpenBabel spacegroup structure equivalent to the
+     * provided Spglib dataset.
+     *
+     * @param spg_data Spglib dataset.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(Dataset spg_data);
+
+    /**
+     * @overload
+     *
+     * Fetch the OpenBabel spacegroup structure described by the
+     * argument.
+     *
+     * @param hall_symbol Hall symbol.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(const char* hall_symbol);
+
+    /**
+     * @overload
+     *
+     * Fetch the OpenBabel spacegroup structure described by the
+     * argument.
+     *
+     * @param hall_number Hall number, an opaque index provided by Dataset.
+     *
+     * @return OpenBabel spacegroup if found, NULL otherwise.
+     */
+    const OpenBabel::SpaceGroup* toOpenBabel(int hall_number);
 
     /**
      * Return the spacegroup number of the crystal described by the
@@ -88,6 +156,57 @@ namespace Avogadro {
     unsigned int getSpacegroup(const Molecule * const mol,
                                OpenBabel::OBUnitCell *cell = 0,
                                const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param fcoords Fractional coordinates of atoms.
+     * @param atomicNums Atomic numbers of atoms
+     * @param cellMatrix Unit cell matrix as row vectors.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset getDataset(const QList<Eigen::Vector3d> &fcoords,
+                       const QList<unsigned int> &atomicNums,
+                       const Eigen::Matrix3d &cellMatrix,
+                       const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * @overload
+     *
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param fcoords Fractional coordinates of atoms.
+     * @param ids Element symbols of atoms.
+     * @param cellMatrix Unit cell matrix as row vectors.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset  getDataset(const QList<Eigen::Vector3d> &fcoords,
+                        const QStringList &ids,
+                        const Eigen::Matrix3d &cellMatrix,
+                        const double cartTol = AVOSPGLIB_TOL);
+
+    /**
+     * @overload
+     *
+     * Return the spacegroup data of the crystal described by the
+     * arguments.
+     *
+     * @param mol Molecule from which to extract coordinates
+     * @param cell OpenBabel OBUnitCell to use for cell info. If 0
+     * (default), mol->OBUnitCell() is used.
+     * @param cartTol Tolerance in same units as cellMatrix.
+     *
+     * @return Spacegroup data if found, null dataset otherwise.
+     */
+    Dataset  getDataset(const Molecule * const mol,
+                        OpenBabel::OBUnitCell *cell = 0,
+                        const double cartTol = AVOSPGLIB_TOL);
 
     /**
      * Reduce the crystal described by the arguments to it's primitive

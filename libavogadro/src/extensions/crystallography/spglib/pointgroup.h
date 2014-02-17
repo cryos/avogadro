@@ -5,6 +5,7 @@
 #define __pointgroup_H__
 
 #include "symmetry.h"
+#include "lattice.h"
 
 typedef enum {
   NONE,
@@ -18,20 +19,6 @@ typedef enum {
   CUBIC,
 } Holohedry;
 
-typedef enum {
-  LAUE1,
-  LAUE2M,
-  LAUEMMM,
-  LAUE4M,
-  LAUE4MMM,
-  LAUE3,
-  LAUE3M,
-  LAUE6M,
-  LAUE6MMM,
-  LAUEM3,
-  LAUEM3M,
-} Laue;
-
 typedef struct {
   char symbol[6];
   Holohedry holohedry;
@@ -40,7 +27,10 @@ typedef struct {
 } Pointgroup;
 
 int ptg_get_pointgroup_number( const Symmetry * symmetry );
+int ptg_get_pointgroup_number_by_rotations( SPGCONST int rotations[][3][3],
+					    const int num_rotations );
 Pointgroup ptg_get_pointgroup( const int pointgroup_number );
-void ptg_get_transformation_matrix( Pointgroup * pointgroup,
-				    const Symmetry * symmetry );
+Centering ptg_get_transformation_matrix( double trans_mat[3][3],
+					 SPGCONST int rotations[][3][3],
+					 const int num_rotations );
 #endif

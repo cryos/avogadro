@@ -29,5 +29,10 @@ Symmetry * sym_reduce_operation( SPGCONST Cell * cell,
 				 const double symprec );
 VecDBL * sym_get_pure_translation( SPGCONST Cell *cell,
 				   const double symprec );
+VecDBL * sym_reduce_pure_translation( SPGCONST Cell * cell,
+				      const VecDBL * pure_trans,
+				      const double symprec );
+void sym_set_angle_tolerance(double tolerance);
+double sym_get_angle_tolerance(void);
 
 #endif
