@@ -40,6 +40,7 @@
 #include <QDebug>
 #include <QLibraryInfo>
 #include <QProcess>
+#include <QFont>
 
 #include <iostream>
 
@@ -74,6 +75,15 @@ int main(int argc, char *argv[])
     std::cout << "Enabling Threads" << std::endl;
     XInitThreads();
   }
+#endif
+
+#ifdef Q_WS_MACX
+    if ( QSysInfo::MacintoshVersion > QSysInfo::MV_10_8 )
+    {
+        // fix Mac OS X 10.9 (mavericks) font issue
+        // https://bugreports.qt-project.org/browse/QTBUG-32789
+        QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
+    }
 #endif
 
   // set up groups for QSettings
@@ -197,7 +207,7 @@ int main(int argc, char *argv[])
     printVersion(arguments[0]);
     return 0;
   }
-  else if(arguments.contains("-h") || arguments.contains("-help") 
+  else if(arguments.contains("-h") || arguments.contains("-help")
   	|| arguments.contains("--help")) {
     printHelp(arguments[0]);
     return 0;
