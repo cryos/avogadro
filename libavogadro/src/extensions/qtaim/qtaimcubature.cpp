@@ -1150,17 +1150,17 @@ QList<QVariant> QTAIMEvaluateProperty(QList<QVariant> variantList)
   */
   qint64 counter=0;
   QString wfnFileName=variantList.at(counter).toString(); counter++;
-  qreal x0=variantList.at(counter).toDouble(); counter++;
-  qreal y0=variantList.at(counter).toDouble(); counter++;
-  qreal z0=variantList.at(counter).toDouble(); counter++;
+  qreal x0=variantList.at(counter).toReal(); counter++;
+  qreal y0=variantList.at(counter).toReal(); counter++;
+  qreal z0=variantList.at(counter).toReal(); counter++;
 
   qint64 nncp=variantList.at(counter).toLongLong(); counter++;
   QList<QVector3D> ncpList;
   for( qint64 n=0 ; n < nncp ; ++n )
   {
-    qreal x=variantList.at(counter).toDouble(); counter++;
-    qreal y=variantList.at(counter).toDouble(); counter++;
-    qreal z=variantList.at(counter).toDouble(); counter++;
+    qreal x=variantList.at(counter).toReal(); counter++;
+    qreal y=variantList.at(counter).toReal(); counter++;
+    qreal z=variantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1189,7 +1189,7 @@ QList<QVariant> QTAIMEvaluateProperty(QList<QVariant> variantList)
 
   QList<QVariant> valueList;
 
-  double initialElectronDensity=eval.electronDensity( Eigen::Vector3d(x0,y0,z0) );
+  qreal initialElectronDensity=eval.electronDensity( Matrix<qreal,3,1>(x0,y0,z0) );
 
   // if less than some small value, then return zero for all integrands.
   if( initialElectronDensity < 1.e-5 )
@@ -1254,7 +1254,7 @@ QList<QVariant> QTAIMEvaluateProperty(QList<QVariant> variantList)
       {
         if( modeList.at(m) == 0 )
         {
-          valueList.append(eval.electronDensity( Eigen::Vector3d(x0,y0,z0) ));
+	    valueList.append(eval.electronDensity( Matrix<qreal,3,1>(x0,y0,z0) ));
         }
         else
         {
@@ -1292,9 +1292,9 @@ void property_v(unsigned int /* ndim */, unsigned int npts, const double *xyz, v
   QList<QVector3D> ncpList;
   for( qint64 i=0 ; i < nncp ; ++i )
   {
-    qreal x=paramVariantList.at(counter).toDouble(); counter++;
-    qreal y=paramVariantList.at(counter).toDouble(); counter++;
-    qreal z=paramVariantList.at(counter).toDouble(); counter++;
+    qreal x=paramVariantList.at(counter).toReal(); counter++;
+    qreal y=paramVariantList.at(counter).toReal(); counter++;
+    qreal z=paramVariantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1419,17 +1419,17 @@ QList<QVariant> QTAIMEvaluatePropertyRTP(QList<QVariant> variantList)
   */
   qint64 counter=0;
   QString wfnFileName=variantList.at(counter).toString(); counter++;
-  qreal r0=variantList.at(counter).toDouble(); counter++;
-  qreal t0=variantList.at(counter).toDouble(); counter++;
-  qreal p0=variantList.at(counter).toDouble(); counter++;
+  qreal r0=variantList.at(counter).toReal(); counter++;
+  qreal t0=variantList.at(counter).toReal(); counter++;
+  qreal p0=variantList.at(counter).toReal(); counter++;
 
   qint64 nncp=variantList.at(counter).toLongLong(); counter++;
   QList<QVector3D> ncpList;
   for( qint64 n=0 ; n < nncp ; ++n )
   {
-    qreal x=variantList.at(counter).toDouble(); counter++;
-    qreal y=variantList.at(counter).toDouble(); counter++;
-    qreal z=variantList.at(counter).toDouble(); counter++;
+    qreal x=variantList.at(counter).toReal(); counter++;
+    qreal y=variantList.at(counter).toReal(); counter++;
+    qreal z=variantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1472,7 +1472,7 @@ QList<QVariant> QTAIMEvaluatePropertyRTP(QList<QVariant> variantList)
 
   QList<QVariant> valueList;
 
-  double initialElectronDensity=eval.electronDensity( Eigen::Vector3d(x0,y0,z0) );
+  qreal initialElectronDensity=eval.electronDensity( Matrix<qreal,3,1>(x0,y0,z0) );
 
   // if less than some small value, then return zero for all integrands.
   if( initialElectronDensity < 1.e-5 )
@@ -1540,7 +1540,7 @@ QList<QVariant> QTAIMEvaluatePropertyRTP(QList<QVariant> variantList)
         {
           valueList.append(
 
-              r0*r0*sin(t0)*eval.electronDensity( Eigen::Vector3d(x0,y0,z0) )
+              r0*r0*sin(t0)*eval.electronDensity( Matrix<qreal,3,1>(x0,y0,z0) )
 
               );
         }
@@ -1580,9 +1580,9 @@ void property_v_rtp(unsigned int /* ndim */, unsigned int npts, const double *xy
   QList<QVector3D> ncpList;
   for( qint64 i=0 ; i < nncp ; ++i )
   {
-    qreal x=paramVariantList.at(counter).toDouble(); counter++;
-    qreal y=paramVariantList.at(counter).toDouble(); counter++;
-    qreal z=paramVariantList.at(counter).toDouble(); counter++;
+    qreal x=paramVariantList.at(counter).toReal(); counter++;
+    qreal y=paramVariantList.at(counter).toReal(); counter++;
+    qreal z=paramVariantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1691,16 +1691,16 @@ void property_r(unsigned int ndim, const double *xyz, void *param,
   QString wfnFileName=paramVariantList.at(counter).toString(); counter++;
 
   qreal r=xyz[0];
-  qreal t=paramVariantList.at(counter).toDouble(); counter++;
-  qreal p=paramVariantList.at(counter).toDouble(); counter++;
+  qreal t=paramVariantList.at(counter).toReal(); counter++;
+  qreal p=paramVariantList.at(counter).toReal(); counter++;
 
   qint64 nncp=paramVariantList.at(counter).toLongLong(); counter++;
   QList<QVector3D> ncpList;
   for( qint64 i=0 ; i < nncp ; ++i )
   {
-    qreal x=paramVariantList.at(counter).toDouble(); counter++;
-    qreal y=paramVariantList.at(counter).toDouble(); counter++;
-    qreal z=paramVariantList.at(counter).toDouble(); counter++;
+    qreal x=paramVariantList.at(counter).toReal(); counter++;
+    qreal y=paramVariantList.at(counter).toReal(); counter++;
+    qreal z=paramVariantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1738,7 +1738,7 @@ void property_r(unsigned int ndim, const double *xyz, void *param,
   {
     if( mode==0 )
     {
-      fval[m]=r*r*eval.electronDensity( Eigen::Vector3d(x,y,z) );
+	fval[m]=r*r*eval.electronDensity( Matrix<qreal,3,1>(x,y,z) );
     }
   }
 
@@ -1771,16 +1771,16 @@ QList<QVariant> QTAIMEvaluatePropertyTP(QList<QVariant> variantList)
   */
   qint64 counter=0;
   QString wfnFileName=variantList.at(counter).toString(); counter++;
-  qreal t=variantList.at(counter).toDouble(); counter++;
-  qreal p=variantList.at(counter).toDouble(); counter++;
+  qreal t=variantList.at(counter).toReal(); counter++;
+  qreal p=variantList.at(counter).toReal(); counter++;
 
   qint64 nncp=variantList.at(counter).toLongLong(); counter++;
   QList<QVector3D> ncpList;
   for( qint64 n=0 ; n < nncp ; ++n )
   {
-    qreal x=variantList.at(counter).toDouble(); counter++;
-    qreal y=variantList.at(counter).toDouble(); counter++;
-    qreal z=variantList.at(counter).toDouble(); counter++;
+    qreal x=variantList.at(counter).toReal(); counter++;
+    qreal y=variantList.at(counter).toReal(); counter++;
+    qreal z=variantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
@@ -1846,7 +1846,7 @@ QList<QVariant> QTAIMEvaluatePropertyTP(QList<QVariant> variantList)
   qreal x=xyzl(0);
   qreal y=xyzl(1);
   qreal z=xyzl(2);
-  qreal leftElectronDensity=eval.electronDensity( Eigen::Vector3d(x,y,z) );
+  qreal leftElectronDensity=eval.electronDensity( Matrix<qreal,3,1>(x,y,z) );
 
   if( leftElectronDensity < 1.e-5 )
   {
@@ -1896,7 +1896,7 @@ QList<QVariant> QTAIMEvaluatePropertyTP(QList<QVariant> variantList)
   x=xyzr(0);
   y=xyzr(1);
   z=xyzr(2);
-  qreal rightElectronDensity=eval.electronDensity( Eigen::Vector3d(x,y,z) );
+  qreal rightElectronDensity=eval.electronDensity( Matrix<qreal,3,1>(x,y,z) );
 
   if( rightElectronDensity < 1.e-5 )
   {
@@ -1959,7 +1959,7 @@ QList<QVariant> QTAIMEvaluatePropertyTP(QList<QVariant> variantList)
     x=xyzm(0);
     y=xyzm(1);
     z=xyzm(2);
-    qreal midpointElectronDensity=eval.electronDensity( Eigen::Vector3d(x,y,z) );
+    qreal midpointElectronDensity=eval.electronDensity( Matrix<qreal,3,1>(x,y,z) );
 
     if( midpointElectronDensity < 1.e-5 )
     {
@@ -2092,9 +2092,9 @@ void property_v_tp(unsigned int /* ndim */, unsigned int npts, const double *xyz
   QList<QVector3D> ncpList;
   for( qint64 i=0 ; i < nncp ; ++i )
   {
-    qreal x=paramVariantList.at(counter).toDouble(); counter++;
-    qreal y=paramVariantList.at(counter).toDouble(); counter++;
-    qreal z=paramVariantList.at(counter).toDouble(); counter++;
+    qreal x=paramVariantList.at(counter).toReal(); counter++;
+    qreal y=paramVariantList.at(counter).toReal(); counter++;
+    qreal z=paramVariantList.at(counter).toReal(); counter++;
 
     ncpList.append(QVector3D(x,y,z));
   }
