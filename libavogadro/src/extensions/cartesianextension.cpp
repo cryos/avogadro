@@ -52,14 +52,15 @@ namespace Avogadro
   static const QString EDITOR_FONT = "Courier";
 #endif
 
-  CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
-                                                      m_unit(CoordinateUnit(0)),
-                                                      m_format(CoordinateFormat(0)),
-                                                      m_illegalInput(false),
-                                                      m_defaultTextColor(palette().color(QPalette::Text)),
-                                                      m_alternateTextColor(Qt::red),
-                                                      m_defaultBackgroundColor(palette().color(QPalette::Base)),
-                                                      m_alternateBackgroundColor(Qt::white)
+  CartesianEditor::CartesianEditor(QWidget *parent)
+    : QDialog(parent),
+      m_unit(CoordinateUnit(0)),
+      m_format(CoordinateFormat(0)),
+      m_illegalInput(false),
+      m_defaultTextColor(palette().color(QPalette::Text)),
+      m_alternateTextColor(Qt::red),
+      m_defaultBackgroundColor(palette().color(QPalette::Base)),
+      m_alternateBackgroundColor(Qt::white)
   {
     setupUi(this);
     readSettings();
