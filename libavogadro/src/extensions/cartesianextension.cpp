@@ -55,12 +55,15 @@ namespace Avogadro
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
                                                       m_unit(CoordinateUnit(0)),
                                                       m_format(CoordinateFormat(0)),
-                                                      m_illegalInput(false)
+                                                      m_illegalInput(false),
+                                                      m_defaultTextColor(palette().color(QPalette::Text)),
+                                                      m_alternateTextColor(Qt::red),
+                                                      m_defaultBackgroundColor(palette().color(QPalette::Base)),
+                                                      m_alternateBackgroundColor(Qt::white)
   {
     setupUi(this);
     readSettings();
 
-    cartesianEdit->setTextColor(Qt::black);
     cartesianEdit->setCurrentFont(QFont(EDITOR_FONT,
                                         QApplication::font().pointSize() + 1));
 
@@ -139,7 +142,8 @@ namespace Avogadro
   {
     if (m_illegalInput) {
       m_illegalInput = false;
-      cartesianEdit->setTextColor(Qt::black);
+      cartesianEdit->setTextColor(m_defaultTextColor);
+      cartesianEdit->setTextBackgroundColor(m_defaultBackgroundColor);
       QString t = cartesianEdit->toPlainText();
       cartesianEdit->setText(t);
     }
@@ -158,7 +162,8 @@ namespace Avogadro
       m_molecule->update();
       updateCoordinates();
     } else {
-      cartesianEdit->setTextColor(Qt::red);
+      cartesianEdit->setTextColor(m_alternateTextColor);
+      cartesianEdit->setTextBackgroundColor(m_alternateBackgroundColor);
       QString t = cartesianEdit->toPlainText();
       cartesianEdit->setText(t);
       m_illegalInput = true;
@@ -362,7 +367,8 @@ namespace Avogadro
   void CartesianEditor::updateCoordinates()
   {
     m_illegalInput = false;
-    cartesianEdit->setTextColor(Qt::black);
+    cartesianEdit->setTextColor(m_defaultTextColor);
+    cartesianEdit->setTextBackgroundColor(m_defaultBackgroundColor);
     QString t = cartesianEdit->toPlainText();
     cartesianEdit->setText(t);
 
