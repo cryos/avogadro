@@ -99,6 +99,10 @@ namespace Avogadro {
     CoordinateFormat m_format;
     SortingType m_sort;
     bool m_illegalInput;
+    QColor m_defaultTextColor;
+    QColor m_alternateTextColor;
+    QColor m_defaultBackgroundColor;
+    QColor m_alternateBackgroundColor;
   };
 
   class CartesianExtension : public Extension
