@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-06-02 00:00-0400\n"
+"POT-Creation-Date: 2014-06-09 00:00-0400\n"
 "PO-Revision-Date: 2011-02-20 15:24+0000\n"
 "Last-Translator: Zbyněk Schwarz <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -888,23 +888,23 @@ msgstr "Kreslit dráhy, reakce a vibrace."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:99:369
+#: src/extensions/cartesianextension.cpp:103:369
 msgid "Cartesian Editor"
 msgstr "Kartézský editor"
 
-#: src/extensions/cartesianextension.cpp:100
+#: src/extensions/cartesianextension.cpp:104
 msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Pro molekulu nebyla stanovena žádná jednotková buňka -- nelze použít "
 "souřadnice vyjádřené zlomkem."
 
-#: src/extensions/cartesianextension.cpp:558
+#: src/extensions/cartesianextension.cpp:565
 msgid "Cartesian Editor..."
 msgstr "Karteziánský editor..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
-#: src/extensions/cartesianextension.cpp:573
+#: src/extensions/cartesianextension.cpp:580
 #: src/extensions/crystallography/crystallographyextension.cpp:173
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -918,11 +918,11 @@ msgstr "Karteziánský editor..."
 msgid "&Build"
 msgstr "&Sestavení"
 
-#: src/extensions/cartesianextension.h:107
+#: src/extensions/cartesianextension.h:111
 msgid "Cartesian editor"
 msgstr "Kartézský editor"
 
-#: src/extensions/cartesianextension.h:108
+#: src/extensions/cartesianextension.h:112
 msgid "Cartesian coordinates editor"
 msgstr "Editor pro kartézské souřadnice"
 

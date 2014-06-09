@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-06-02 00:00-0400\n"
+"POT-Creation-Date: 2014-06-09 00:00-0400\n"
 "PO-Revision-Date: 2011-04-09 18:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -892,23 +892,23 @@ msgstr "Анімація траєкторій, реакції та колива�
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:99:369
+#: src/extensions/cartesianextension.cpp:103:369
 msgid "Cartesian Editor"
 msgstr "Редактор декартових координат"
 
-#: src/extensions/cartesianextension.cpp:100
+#: src/extensions/cartesianextension.cpp:104
 msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Для молекули не визначено елементарної комірки — не можна використовувати "
 "дробові значення координат."
 
-#: src/extensions/cartesianextension.cpp:558
+#: src/extensions/cartesianextension.cpp:565
 msgid "Cartesian Editor..."
 msgstr "Редактор декартових координат…"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
-#: src/extensions/cartesianextension.cpp:573
+#: src/extensions/cartesianextension.cpp:580
 #: src/extensions/crystallography/crystallographyextension.cpp:173
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -922,11 +922,11 @@ msgstr "Редактор декартових координат…"
 msgid "&Build"
 msgstr "&Збирання"
 
-#: src/extensions/cartesianextension.h:107
+#: src/extensions/cartesianextension.h:111
 msgid "Cartesian editor"
 msgstr "Редактор декартових координат"
 
-#: src/extensions/cartesianextension.h:108
+#: src/extensions/cartesianextension.h:112
 msgid "Cartesian coordinates editor"
 msgstr "Редактор декартових координат"
 

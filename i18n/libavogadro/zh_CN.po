@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-06-02 00:00-0400\n"
+"POT-Creation-Date: 2014-06-09 00:00-0400\n"
 "PO-Revision-Date: 2011-03-25 12:56+0000\n"
 "Last-Translator: ZhangCheng <skyxxzc@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -879,21 +879,21 @@ msgstr "将轨迹、反应和振动进行动画化。"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:99:369
+#: src/extensions/cartesianextension.cpp:103:369
 msgid "Cartesian Editor"
 msgstr ""
 
-#: src/extensions/cartesianextension.cpp:100
+#: src/extensions/cartesianextension.cpp:104
 msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
-#: src/extensions/cartesianextension.cpp:558
+#: src/extensions/cartesianextension.cpp:565
 msgid "Cartesian Editor..."
 msgstr "笛卡尔坐标编辑器..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
-#: src/extensions/cartesianextension.cpp:573
+#: src/extensions/cartesianextension.cpp:580
 #: src/extensions/crystallography/crystallographyextension.cpp:173
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -907,11 +907,11 @@ msgstr "笛卡尔坐标编辑器..."
 msgid "&Build"
 msgstr "构建(&B)"
 
-#: src/extensions/cartesianextension.h:107
+#: src/extensions/cartesianextension.h:111
 msgid "Cartesian editor"
 msgstr ""
 
-#: src/extensions/cartesianextension.h:108
+#: src/extensions/cartesianextension.h:112
 msgid "Cartesian coordinates editor"
 msgstr ""
 
