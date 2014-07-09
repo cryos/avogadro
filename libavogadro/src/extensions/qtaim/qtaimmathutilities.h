@@ -24,6 +24,8 @@
 #ifndef QTAIMMATHUTILITIES_H
 #define QTAIMMATHUTILITIES_H
 
+#include "config.h"
+
 #include <QtGlobal>
 
 #include <Eigen/Core>

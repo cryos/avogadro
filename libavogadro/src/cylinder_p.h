@@ -25,6 +25,8 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <Eigen/Core>

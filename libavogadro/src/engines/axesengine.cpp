@@ -23,6 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "axesengine.h"
 
 #include <avogadro/color.h>

@@ -29,6 +29,8 @@
 #ifndef BONDCENTRICTOOL_H
 #define BONDCENTRICTOOL_H
 
+#include "config.h"
+
 #include "skeletontree.h"
 
 #include <avogadro/glwidget.h>

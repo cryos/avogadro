@@ -18,6 +18,8 @@
 #ifndef CETRANSLATEWIDGET_H
 #define CETRANSLATEWIDGET_H
 
+#include "config.h"
+
 #include "ceabstractdockwidget.h"
 #include "ui_cetranslatewidget.h"
 

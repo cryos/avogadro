@@ -25,6 +25,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "drawtool.h"
 #include "drawcommand.h"
 

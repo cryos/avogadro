@@ -1,3 +1,5 @@
+#include "config.h"
+
 #include <boost/python.hpp>
 #include <boost/tuple/tuple.hpp>
 

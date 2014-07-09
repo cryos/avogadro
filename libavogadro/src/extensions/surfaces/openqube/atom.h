@@ -17,6 +17,8 @@
 #ifndef OQ_ATOM_H
 #define OQ_ATOM_H
 
+#include "config.h"
+
 #include "molecule.h"
 
 #include <Eigen/Core>

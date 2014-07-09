@@ -25,6 +25,8 @@
 #ifndef QTAIMLSODAINTEGRATOR_H
 #define QTAIMLSODAINTEGRATOR_H
 
+#include "config.h"
+
 #include <QDebug>
 #include <QList>
 #include <QVector3D>

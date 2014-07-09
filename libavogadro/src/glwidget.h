@@ -27,6 +27,8 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <Eigen/Core>

@@ -22,6 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "meshgenerator.h"
 
 #include <Eigen/Geometry>

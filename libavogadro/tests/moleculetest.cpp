@@ -22,6 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include <QtTest>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>

@@ -17,6 +17,8 @@
 #ifndef GAMESSUS_H
 #define GAMESSUS_H
 
+#include "config.h"
+
 #include <QtCore/QIODevice>
 #include <Eigen/Core>
 #include <vector>

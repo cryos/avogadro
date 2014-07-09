@@ -25,6 +25,8 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <Eigen/Core>

@@ -26,6 +26,8 @@
 #ifndef PRIMITIVE_H
 #define PRIMITIVE_H
 
+#include "config.h"
+
 #include "global.h"
 
 #include <QObject>

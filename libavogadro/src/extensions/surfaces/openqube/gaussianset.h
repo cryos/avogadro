@@ -18,6 +18,8 @@
 #ifndef GAUSSIANSET_H
 #define GAUSSIANSET_H
 
+#include "config.h"
+
 #include "basisset.h"
 
 #include <QtCore/QFuture>

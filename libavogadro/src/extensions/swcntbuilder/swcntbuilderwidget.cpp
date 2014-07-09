@@ -15,6 +15,8 @@
   limitations under the License.
  **********************************************************************/
 
+#include "config.h"
+
 #include "swcntbuilderwidget.h"
 
 #include <avogadro/dockwidget.h>
