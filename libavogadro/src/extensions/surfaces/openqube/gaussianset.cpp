@@ -351,9 +351,66 @@ void GaussianSet::initCalculation()
       }
       break;
     case F:
-      skip = 10;
+    /*
+     Thanks, Jmol
+     Cartesian forms for f (l = 3) basis functions:
+     Type         Normalization
+     xxx          [(32768 * alpha^9) / (225 * pi^3))]^(1/4)
+     xxy          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     xxz          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     xyy          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     xyz          [(32768 * alpha^9) / (1 * pi^3))]^(1/4)
+     xzz          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     yyy          [(32768 * alpha^9) / (225 * pi^3))]^(1/4)
+     yyz          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     yzz          [(32768 * alpha^9) / (9 * pi^3))]^(1/4)
+     zzz          [(32768 * alpha^9) / (225 * pi^3))]^(1/4)
+
+     Thank you, Python
+                                 pi = 3.141592653589793
+     (32768./225./(pi**3.))**(0.25) = 1.4721580892990938
+     (32768./9./(pi**3.))**(0.25)   = 3.291845561298979
+     (32768./(pi**3.))**(0.25)      = 5.701643762839922
+     */
+      {
+      double norm1 = 1.4721580892990938;
+      double norm2 = 3.291845561298979;
+      double norm3 = 5.701643762839922;
+      m_moIndices[i] = indexMO;
+      indexMO += 10;
+      m_cIndices.push_back(static_cast<unsigned int>(m_gtoCN.size()));
+      for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm1); //xxx
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //xxy
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //xxz
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //xyy
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm3);  //xyz
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //xzz
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm1); //yyy
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //yyz
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm2);  //yzz
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm1); //zzz
+      }}
+      break;
     case F7:
-      skip = 7;
+      {
+      //m-independent normalization factor
+      //math.sqrt(2.**(3.+3./2.))/(math.pi**(3./4.))*math.sqrt(2.**3. / 15.)
+      //same as norm1 above.
+      double norm = 1.4721580892990935;
+      m_moIndices[i] = indexMO;
+      indexMO += 7;
+      m_cIndices.push_back(static_cast<unsigned int>(m_gtoCN.size()));
+      for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //0
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //+1
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //-1
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //+2
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //-2
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //+3
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //-3
+      }}
+      break;
     case G:
       skip = 15;
     case G9:
@@ -423,6 +480,14 @@ void GaussianSet::processPoint(GaussianShell &shell)
       tmp += pointD5(shell.set, i, deltas[set->m_atomIndices[i]],
                      dr2[set->m_atomIndices[i]], indexMO);
       break;
+    case F:
+      tmp += pointF(shell.set, i, deltas[set->m_atomIndices[i]],
+                     dr2[set->m_atomIndices[i]], indexMO);
+      break;
+    case F7:
+      tmp += pointF7(shell.set, i, deltas[set->m_atomIndices[i]],
+                     dr2[set->m_atomIndices[i]], indexMO);
+      break;
     default:
       // Not handled - return a zero contribution
       ;
@@ -468,6 +533,12 @@ void GaussianSet::processDensity(GaussianShell &shell)
       break;
     case D5:
       pointD5(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+      break;
+    case F:
+      pointF(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+      break;
+    case F7:
+      pointF7(shell.set, deltas[cAtom], dr2[cAtom], i, values);
       break;
     default:
       // Not handled - return a zero contribution
@@ -577,6 +648,68 @@ inline double GaussianSet::pointD(GaussianSet *set, unsigned int moIndex,
   return Dxx*xx + Dyy*yy + Dzz*zz + Dxy*xy + Dxz*xz + Dyz*yz;
 }
 
+inline double GaussianSet::pointF(GaussianSet *set, unsigned int moIndex,
+                                  const Vector3d &delta,
+                                  double dr2, unsigned int indexMO)
+{
+  // F type orbitals have 10 components and each component has a different
+  // independent MO weighting. Many things can be cached to save time though
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double xxx = 0.0;
+  double xxy = 0.0;
+  double xxz = 0.0;
+  double xyy = 0.0;
+  double xyz = 0.0;
+  double xzz = 0.0;
+  double yyy = 0.0;
+  double yyz = 0.0;
+  double yzz = 0.0;
+  double zzz = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    xxx += set->m_gtoCN[cIndex++] * tmpGTO;
+    xxy += set->m_gtoCN[cIndex++] * tmpGTO;
+    xxz += set->m_gtoCN[cIndex++] * tmpGTO;
+    xyy += set->m_gtoCN[cIndex++] * tmpGTO;
+    xyz += set->m_gtoCN[cIndex++] * tmpGTO;
+    xzz += set->m_gtoCN[cIndex++] * tmpGTO;
+    yyy += set->m_gtoCN[cIndex++] * tmpGTO;
+    yyz += set->m_gtoCN[cIndex++] * tmpGTO;
+    yzz += set->m_gtoCN[cIndex++] * tmpGTO;
+    zzz += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double Fxxx = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * \
+                delta.x() * delta.x() * delta.x();
+  double Fxxy = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * \
+                delta.x() * delta.x() * delta.y();
+  double Fxxz = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * \
+                delta.x() * delta.x() * delta.z();
+  double Fxyy = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * \
+                delta.x() * delta.y() * delta.y();
+  double Fxyz = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * \
+                delta.x() * delta.y() * delta.z();
+  double Fxzz = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) * \
+                delta.x() * delta.z() * delta.z();
+  double Fyyy = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) * \
+                delta.y() * delta.y() * delta.y();
+  double Fyyz = set->m_moMatrix.coeffRef(baseIndex+7, indexMO) * \
+                delta.y() * delta.y() * delta.z();
+  double Fyzz = set->m_moMatrix.coeffRef(baseIndex+8, indexMO) * \
+                delta.y() * delta.z() * delta.z();
+  double Fzzz = set->m_moMatrix.coeffRef(baseIndex+9, indexMO) * \
+                delta.z() * delta.z() * delta.z();
+
+  return Fxxx*xxx + Fxxy*xxy + Fxxz*xxz + Fxyy*xyy + Fxyz*xyz \
+        +Fxzz*xzz + Fyyy*yyy + Fyyz*yyz + Fyzz*yzz + Fzzz*zzz;
+}
+
 inline double GaussianSet::pointD5(GaussianSet *set, unsigned int moIndex,
                                    const Vector3d &delta,
                                    double dr2, unsigned int indexMO)
@@ -614,6 +747,64 @@ inline double GaussianSet::pointD5(GaussianSet *set, unsigned int moIndex,
   double D2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xy;
 
   return D0*d0 + D1p*d1p + D1n*d1n + D2p*d2p + D2n*d2n;
+}
+
+inline double GaussianSet::pointF7(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // Spherical F type orbitals have 7 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double f0 = 0.0, f1p = 0.0, f1n = 0.0, f2p = 0.0, f2n = 0.0, f3p = 0.0, f3n = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    f0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xxx = delta.x() * delta.x() * delta.x();
+  double xxy = delta.x() * delta.x() * delta.y();
+  double xxz = delta.x() * delta.x() * delta.z();
+  double xyy = delta.x() * delta.y() * delta.y();
+  double xyz = delta.x() * delta.y() * delta.z();
+  double xzz = delta.x() * delta.z() * delta.z();
+  double yyy = delta.y() * delta.y() * delta.y();
+  double yyz = delta.y() * delta.y() * delta.z();
+  double yzz = delta.y() * delta.z() * delta.z();
+  double zzz = delta.z() * delta.z() * delta.z();
+
+  double root6 = 2.449489742783178;
+  double root60 = 7.745966692414834;
+  double root360 = 18.973665961010276;
+
+  double F0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) *  \
+    (zzz - 3.0/2.0 * (xxz + yyz));
+  double F1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) *  \
+    ((6.0 * xzz - 3.0/2.0 * (xxx + xyy))/root6);
+  double F1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) *  \
+    ((6.0 * yzz - 3.0/2.0 * (xxy + yyy))/root6);
+  double F2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) *  \
+    ((15.0 * (xxz - yyz))/root60);
+  double F2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) *  \
+    ((30.0 * xyz)/root60);
+  double F3p = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) *  \
+    ((15.0 * xxx - 45.0 * xyy)/root360);
+  double F3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) *  \
+    ((45.0 * xxy - 15.0 * yyy)/root360);
+
+  return F0*f0 + F1p*f1p + F1n*f1n + F2p*f2p + F2n*f2n + F3p*f3p + F3n*f3n;
 }
 
 inline void GaussianSet::pointS(GaussianSet *set, double dr2, int basis,
@@ -684,11 +875,60 @@ inline void GaussianSet::pointD(GaussianSet *set, const Eigen::Vector3d &delta,
   out.coeffRef(baseIndex+5, 0) = delta.y() * delta.z() * yz;
 }
 
+inline void GaussianSet::pointF(GaussianSet *set, const Eigen::Vector3d &delta,
+                                double dr2, int basis,
+                                Eigen::MatrixXd &out)
+{
+  // F type orbitals have 10 components and each component has a different
+  // independent MO weighting. Many things can be cached to save time though
+  double xxx = 0.0;
+  double xxy = 0.0;
+  double xxz = 0.0;
+  double xyy = 0.0;
+  double xyz = 0.0;
+  double xzz = 0.0;
+  double yyy = 0.0;
+  double yyz = 0.0;
+  double yzz = 0.0;
+  double zzz = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    xxx += set->m_gtoCN[cIndex++] * tmpGTO;
+    xxy += set->m_gtoCN[cIndex++] * tmpGTO;
+    xxz += set->m_gtoCN[cIndex++] * tmpGTO;
+    xyy += set->m_gtoCN[cIndex++] * tmpGTO;
+    xyz += set->m_gtoCN[cIndex++] * tmpGTO;
+    xzz += set->m_gtoCN[cIndex++] * tmpGTO;
+    yyy += set->m_gtoCN[cIndex++] * tmpGTO;
+    yyz += set->m_gtoCN[cIndex++] * tmpGTO;
+    yzz += set->m_gtoCN[cIndex++] * tmpGTO;
+    zzz += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Save values to the matrix
+  int baseIndex = set->m_moIndices[basis];
+  out.coeffRef(baseIndex  , 0) = delta.x() * delta.x() * delta.x() * xxx;
+  out.coeffRef(baseIndex+1, 0) = delta.x() * delta.x() * delta.y() * xxy;
+  out.coeffRef(baseIndex+2, 0) = delta.x() * delta.x() * delta.z() * xxz;
+  out.coeffRef(baseIndex+3, 0) = delta.x() * delta.y() * delta.y() * xyy;
+  out.coeffRef(baseIndex+4, 0) = delta.x() * delta.y() * delta.z() * xyz;
+  out.coeffRef(baseIndex+5, 0) = delta.x() * delta.z() * delta.z() * xzz;
+  out.coeffRef(baseIndex+6, 0) = delta.y() * delta.y() * delta.y() * yyy;
+  out.coeffRef(baseIndex+7, 0) = delta.y() * delta.y() * delta.z() * yyz;
+  out.coeffRef(baseIndex+8, 0) = delta.y() * delta.z() * delta.z() * yzz;
+  out.coeffRef(baseIndex+9, 0) = delta.z() * delta.z() * delta.z() * zzz;
+}
+
 inline void GaussianSet::pointD5(GaussianSet *set, const Eigen::Vector3d &delta,
                                  double dr2, int basis,
                                  Eigen::MatrixXd &out)
 {
-  // D type orbitals have six components and each component has a different
+  // spherical D type orbitals have 5 components and each component has a different
   // independent MO weighting. Many things can be cached to save time though
   double d0 = 0.0, d1p = 0.0, d1n = 0.0, d2p = 0.0, d2n = 0.0;
 
@@ -720,6 +960,56 @@ inline void GaussianSet::pointD5(GaussianSet *set, const Eigen::Vector3d &delta,
   out.coeffRef(baseIndex+2, 0) = yz * d1n;
   out.coeffRef(baseIndex+3, 0) = (xx - yy) * d2p;
   out.coeffRef(baseIndex+4, 0) = xy * d2n;
+}
+
+inline void GaussianSet::pointF7(GaussianSet *set, const Eigen::Vector3d &delta,
+                                 double dr2, int basis,
+                                 Eigen::MatrixXd &out)
+{
+  // spherical F type orbitals have 7 components and each component has a different
+  // independent MO weighting. Many things can be cached to save time though
+  double f0 = 0.0, f1p = 0.0, f1n = 0.0, f2p = 0.0, f2n = 0.0, f3p = 0.0, f3n = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    f0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xxx = delta.x() * delta.x() * delta.x();
+  double xxy = delta.x() * delta.x() * delta.y();
+  double xxz = delta.x() * delta.x() * delta.z();
+  double xyy = delta.x() * delta.y() * delta.y();
+  double xyz = delta.x() * delta.y() * delta.z();
+  double xzz = delta.x() * delta.z() * delta.z();
+  double yyy = delta.y() * delta.y() * delta.y();
+  double yyz = delta.y() * delta.y() * delta.z();
+  double yzz = delta.y() * delta.z() * delta.z();
+  double zzz = delta.z() * delta.z() * delta.z();
+
+  double root6 = 2.449489742783178;
+  double root60 = 7.745966692414834;
+  double root360 = 18.973665961010276;
+
+  // Save values to the matrix
+  int baseIndex = set->m_moIndices[basis];
+  out.coeffRef(baseIndex  , 0) = f0*(zzz - 3.0/2.0 * (xxz + yyz));
+  out.coeffRef(baseIndex+1, 0) = f1p*((6.0 * xzz - 3.0/2.0 * (xxx + xyy))/root6);
+  out.coeffRef(baseIndex+2, 0) = f1n*((6.0 * yzz - 3.0/2.0 * (xxy + yyy))/root6);
+  out.coeffRef(baseIndex+3, 0) = f2p*((15.0 * (xxz - yyz))/root60);
+  out.coeffRef(baseIndex+4, 0) = f2n*((30.0 * xyz)/root60);
+  out.coeffRef(baseIndex+5, 0) = f3p*((15.0 * xxx - 45.0 * xyy)/root360);
+  out.coeffRef(baseIndex+6, 0) = f3n*((45.0 * xxy - 15.0 * yyy)/root360);
 }
 
 unsigned int GaussianSet::numMOs()
