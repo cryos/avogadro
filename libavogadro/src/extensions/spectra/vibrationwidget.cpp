@@ -171,29 +171,32 @@ namespace Avogadro {
     QString format("%1");
 
     for (unsigned int row = 0; row < frequencies.size(); ++row) {
-      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 2));
-      newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-      // Some codes don't provide intensity data. Display "-" in place of intensities.
-      QTableWidgetItem *newInten;
-      if (row >= intensities.size()) {
-        newInten = new QTableWidgetItem("-");
-      }
-      else {
-        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
-      }
-      QTableWidgetItem *newRaman;
-      if (row >= raman_activities.size()) {
-        newRaman = new QTableWidgetItem("-");
-      }
-      else {
-        newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0,
-                                                   'f', 3));
-      }
-      newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-      newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-      ui.vibrationTable->setItem(row, 0, newFreq);
-      ui.vibrationTable->setItem(row, 1, newInten);
-      ui.vibrationTable->setItem(row, 2, newRaman);
+        QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 2));
+        newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        // Some codes don't provide intensity data. Display "-" in place of intensities.
+        QTableWidgetItem *newInten;
+        if (row >= intensities.size()) {
+            newInten = new QTableWidgetItem("-");
+        }
+        else {
+            newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
+        }
+        newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        ui.vibrationTable->setItem(row, 0, newFreq);
+        ui.vibrationTable->setItem(row, 1, newInten);
+
+        if (raman_activities.size() != 0) {
+            QTableWidgetItem *newRaman;
+            if (row >= raman_activities.size()) {
+                newRaman = new QTableWidgetItem("-");
+            }
+            else {
+                newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0,
+                                                           'f', 3));
+            }
+            newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            ui.vibrationTable->setItem(row, 2, newRaman);
+        }
     }
 
     // enable export button
