@@ -167,7 +167,7 @@ namespace Avogadro
 
   private:
 
-    OrbitalDock *m_dock;
+    QDockWidget *m_dock;
     OrbitalWidget *m_widget;
     QMutex *m_runningMutex;
 

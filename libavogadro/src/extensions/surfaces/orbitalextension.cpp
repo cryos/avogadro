@@ -5,8 +5,7 @@
   Copyright (C) 2009-2011 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
-  For more information, see <http://avogadro.cc/>
-
+  For more information, see <http://avogadro.openmolecules.net/>
   Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -88,8 +87,9 @@ namespace Avogadro
   QDockWidget * OrbitalExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new OrbitalDock( tr("Orbitals"),
-                                qobject_cast<QWidget *>(parent()) );
+//      m_dock = new OrbitalDock( tr("Orbitals"),
+//                                qobject_cast<QWidget *>(parent()) );
+      m_dock = new QDockWidget( tr("Orbitals"));
       m_dock->setObjectName("orbitalDock");
       if (!m_widget) {
         m_widget = new OrbitalWidget(m_dock);
@@ -110,7 +110,6 @@ namespace Avogadro
   void OrbitalExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-
     // Stuff we manage that will not be valid any longer
     m_queue.clear();
     m_currentRunningCalculation = -1;
@@ -122,9 +121,18 @@ namespace Avogadro
 
     loadBasis();
 
-    if (!m_basis || m_basis->numElectrons() == 0)
-      return; // no electrons, no orbitals
+    if (!m_basis || m_basis->numElectrons() == 0) {
+        if (m_dock) {
+          m_widget->setEnabled(false);
+          QList<Orbital> list;
+          list.clear();
+          m_widget->fillTable(list);
 
+          if (m_dock->toggleViewAction()->isChecked())
+            m_dock->toggleViewAction()->activate(QAction::Trigger);
+        }
+      return; // no electrons, no orbitals, no orbital widget
+    }
     // Show dock
     if (m_dock &&
         molecule &&

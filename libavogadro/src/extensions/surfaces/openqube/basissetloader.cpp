@@ -23,6 +23,7 @@
 #include "mopacaux.h"
 #include "molden.h"
 #include "gamessus.h"
+#include "orca.h"
 #include "cube.h"
 
 #include <QtCore/QDir>
@@ -63,6 +64,10 @@ QString BasisSetLoader::MatchBasisSet(const QString& filename)
       return fullFileName;
     }
     else if (completeSuffix.contains("gukout", Qt::CaseInsensitive)) {
+      return fullFileName;
+    }
+    else if (completeSuffix.contains("out", Qt::CaseInsensitive)
+             || completeSuffix.contains("orca", Qt::CaseInsensitive)) {
       return fullFileName;
     }
     else if (completeSuffix.contains("aux", Qt::CaseInsensitive)) {
@@ -111,6 +116,16 @@ BasisSet * BasisSetLoader::LoadBasisSet(const QString& filename)
     GaussianSet *gaussian = new GaussianSet;
     GamessukOut gukout(filename, gaussian);
     return gaussian;
+  }
+  else if (completeSuffix.contains("orca", Qt::CaseInsensitive)
+              || completeSuffix.contains("out", Qt::CaseInsensitive)) {
+       GaussianSet *gaussian = new GaussianSet;
+       ORCAOutput orcaout(filename, gaussian);
+       if (!orcaout.success()) {
+           return 0;
+       } else {
+           return gaussian;
+       }
   }
   else if (completeSuffix.contains("aux", Qt::CaseInsensitive)) {
     SlaterSet *slater = new SlaterSet;
