@@ -294,7 +294,7 @@ void GAMESSUSOutput::reorderMOs()
           break;
           //L?
         case D:
-          nPrimGTOs = 7;
+          nPrimGTOs = 6;
           GTOcounter += nPrimGTOs;
           break;
         case F:
