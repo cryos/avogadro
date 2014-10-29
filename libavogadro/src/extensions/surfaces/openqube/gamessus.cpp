@@ -171,6 +171,7 @@ void GAMESSUSOutput::processLine(GaussianSet *basis)
 
     case MO:
       m_MOcoeffs.clear(); // if the orbitals were punched multiple times
+      nMOs=0;
       while(!key.contains("END OF") && !key.contains("-----")) {
         // currently reading the MO number
         key = m_in->readLine(); // energies
@@ -195,6 +196,7 @@ void GAMESSUSOutput::processLine(GaussianSet *basis)
         // Now we need to re-order the MO coeffs, so we insert one MO at a time
         for (unsigned int i = 0; i < numColumns; ++i) {
           numRows = columns[i].size();
+          nMOs++;
           for (unsigned int j = 0; j < numRows; ++j) {
             qDebug() << "push back" << columns[i][j];
             m_MOcoeffs.push_back(columns[i][j]);
@@ -251,11 +253,81 @@ void GAMESSUSOutput::load(GaussianSet* basis)
   }
   //    qDebug() << " loading MOs " << m_MOcoeffs.size();
 
+  //f orbitals and beyond must be reordered
+  reorderMOs();
+
   // Now to load in the MO coefficients
   if (m_MOcoeffs.size())
     basis->addMOs(m_MOcoeffs);
 
   qDebug() << " done loadBasis ";
+}
+
+void GAMESSUSOutput::reorderMOs()
+{
+  qDebug() << "re-ordering F orbitals";
+  qDebug() << m_MOcoeffs.size();
+  qDebug() << m_shellTypes.size();
+  qDebug() << nMOs;
+  unsigned int GTOcounter = 0;
+  double yyy,zzz,xxy,xxz,yyx,yyz,zzx,zzy,xyz;
+  unsigned int nPrimGTOs=0;
+  for (unsigned int iMO =0;iMO<nMOs;iMO++)
+  {
+    qDebug() << "MO " << iMO;
+    //loop over the basis set shells
+    for (unsigned int i=0; i < m_shellTypes.size(); i++)
+    {
+      //The angular momentum of the shell
+      //determines the number of primitive GTOs.
+      //GAMESS always prints the full cartesian set.
+      nPrimGTOs = 0;
+      switch (m_shellTypes.at(i))
+      {
+        case S:
+          nPrimGTOs = 1;
+          GTOcounter += nPrimGTOs;
+          break;
+        case P:
+          nPrimGTOs = 3;
+          GTOcounter += nPrimGTOs;
+          break;
+          //L?
+        case D:
+          nPrimGTOs = 6;
+          GTOcounter += nPrimGTOs;
+          break;
+        case F:
+          nPrimGTOs = 10;
+          //f functions are the first set to be reordered.
+          //double xxx = m_MOcoeffs.at(MOcounter);
+          yyy = m_MOcoeffs.at(GTOcounter+1);
+          zzz = m_MOcoeffs.at(GTOcounter+2);
+          xxy = m_MOcoeffs.at(GTOcounter+3);
+          xxz = m_MOcoeffs.at(GTOcounter+4);
+          yyx = m_MOcoeffs.at(GTOcounter+5);
+          yyz = m_MOcoeffs.at(GTOcounter+6);
+          zzx = m_MOcoeffs.at(GTOcounter+7);
+          zzy = m_MOcoeffs.at(GTOcounter+8);
+          xyz = m_MOcoeffs.at(GTOcounter+9);
+          //xxx is unchanged
+          m_MOcoeffs.at(GTOcounter+1)=xxy; //xxy
+          m_MOcoeffs.at(GTOcounter+2)=xxz; //xxz
+          m_MOcoeffs.at(GTOcounter+3)=yyx; //xyy
+          m_MOcoeffs.at(GTOcounter+4)=xyz; //xyz
+          m_MOcoeffs.at(GTOcounter+5)=zzx; //xzz
+          m_MOcoeffs.at(GTOcounter+6)=yyy; //yyy
+          m_MOcoeffs.at(GTOcounter+7)=yyz; //yyz
+          m_MOcoeffs.at(GTOcounter+8)=zzy; //yzz
+          m_MOcoeffs.at(GTOcounter+9)=zzz; //zzz
+
+          GTOcounter += nPrimGTOs;
+          break;
+        default:
+          qDebug() << "Basis set not handled - results may be incorrect.\n";
+      }
+    }
+  }
 }
 
 void GAMESSUSOutput::outputAll()

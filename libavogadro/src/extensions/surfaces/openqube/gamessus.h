@@ -41,12 +41,14 @@ private:
   QIODevice *m_in;
   void processLine(GaussianSet *basis);
   void load(GaussianSet *basis);
+  void reorderMOs();
 
   double m_coordFactor;
   mode m_currentMode;
   int m_electrons;
   int m_currentAtom;
   unsigned int m_numBasisFunctions;
+  unsigned int nMOs;
   std::vector<orbital> m_shellTypes;
   std::vector<int> m_shellNums;
   std::vector<int> m_shelltoAtom;
