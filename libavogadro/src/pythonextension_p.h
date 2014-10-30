@@ -26,10 +26,14 @@
 #ifndef PYTHONEXTENSION_H
 #define PYTHONEXTENSION_H
 
+#ifndef Q_MOC_RUN
+#include <boost/python.hpp>
+#endif
+
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
-#include <boost/python.hpp>
+
 
 #include <QWidget>
 #include <QList>

@@ -25,9 +25,13 @@
 #ifndef PYTHONENGINE_H
 #define PYTHONENGINE_H
 
+#ifndef Q_MOC_RUN
+#include <boost/python.hpp>
+#endif
+
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <boost/python.hpp>
+
 
 namespace Avogadro {
 
