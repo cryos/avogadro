@@ -25,9 +25,13 @@
 #ifndef PYTHONTOOL_H
 #define PYTHONTOOL_H
 
+#ifndef Q_MOC_RUN
+#include <boost/python.hpp>
+#endif
+
 #include <avogadro/global.h>
 #include <avogadro/tool.h>
-#include <boost/python.hpp>
+
 
 #include <QObject>
 #include <QAction>
