@@ -104,35 +104,37 @@ void ORCAOutput::processLine(GaussianSet *basis)
         key = m_in->readLine(); // skip ----- line
         key = m_in->readLine(); // column titles
     } else if (key.contains("BASIS SET INFORMATION")) {
-        m_currentMode = GTO;
-        key = m_in->readLine(); // skip ----- line
+        if (!key.contains("AUXILIARY")) { // skip auxiliary basis set infos
+            m_currentMode = GTO;
+            key = m_in->readLine(); // skip ----- line
 
-        // Number of groups of distinct atoms
-        key = m_in->readLine();
-        list = key.split(' ', QString::SkipEmptyParts);
-        if (list.size() > 3) {
-            m_nGroups = list[2].toInt();
-        } else {
-            qDebug() << "Something wrong with the basisset informations";
-            return;
-        }
-        key = m_in->readLine(); // skip blank line
-        for (int i = 0; i < m_nGroups; ++i) {
-            key = m_in->readLine();             //skip group information
-        }
-        key = m_in->readLine(); // skip blank line
-        for (uint i = 0; i < basis->moleculeRef().numAtoms(); ++i) {
-            key = m_in->readLine();             //skip group information
-        }
-
-        // now skip
-        // blank line
-        // ----------------------------
-        // # Basis set for element : x
-        // ----------------------------
-        // blank line
-        for (unsigned int i = 0; i < 6; ++i) {
+            // Number of groups of distinct atoms
             key = m_in->readLine();
+            list = key.split(' ', QString::SkipEmptyParts);
+            if (list.size() > 3) {
+                m_nGroups = list[2].toInt();
+            } else {
+                qDebug() << "Something wrong with the basisset informations";
+                return;
+            }
+            key = m_in->readLine(); // skip blank line
+            for (int i = 0; i < m_nGroups; ++i) {
+                key = m_in->readLine();             //skip group information
+            }
+            key = m_in->readLine(); // skip blank line
+            for (uint i = 0; i < basis->moleculeRef().numAtoms(); ++i) {
+                key = m_in->readLine();             //skip group information
+            }
+
+            // now skip
+            // blank line
+            // ----------------------------
+            // # Basis set for element : x
+            // ----------------------------
+            // blank line
+            for (unsigned int i = 0; i < 6; ++i) {
+                key = m_in->readLine();
+            }
         }
     } else if (key.contains("TOTAL NUMBER OF BASIS SET")) {
         m_currentMode = NotParsing; // no longer reading GTOs
@@ -290,7 +292,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
                 key = m_in->readLine(); // skip -----------
                 key = m_in->readLine(); // now we've got coefficients
 
-                QRegExp  rx("[0-9]-");
+                QRegExp rx("[.][0-9]{6}[0-9-]");
                 while (rx.indexIn(key) != -1){          // avoid wrong splitting
                     key.insert(rx.indexIn(key)+1, " ");
                 }
@@ -358,7 +360,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
                     key = m_in->readLine(); // skip -----------
                     key = m_in->readLine(); // now we've got coefficients
 
-                    QRegExp  rx("[0-9]-");
+                QRegExp rx("[.][0-9]{6}[0-9-]");
                     while (rx.indexIn(key) != -1){          // avoid wrong splitting
                         key.insert(rx.indexIn(key)+1, " ");
                     }
