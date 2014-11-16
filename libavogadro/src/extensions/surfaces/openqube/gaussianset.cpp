@@ -289,6 +289,7 @@ void GaussianSet::initCalculation()
   // Add a final entry to the gtoIndices
   m_gtoIndices.push_back(m_gtoA.size());
   for(unsigned int i = 0; i < m_symmetry.size(); ++i) {
+    bool bSkipCanBeUsed = true;
     switch (m_symmetry[i]) {
     case S:
       m_moIndices[i] = indexMO++;
@@ -352,20 +353,49 @@ void GaussianSet::initCalculation()
       break;
     case F:
       skip = 10;
+      bSkipCanBeUsed=false;
     case F7:
-      skip = 7;
+      if (bSkipCanBeUsed)
+      {
+        skip = 7;
+        bSkipCanBeUsed=false;
+      }
     case G:
-      skip = 15;
+      if (bSkipCanBeUsed)
+      {
+        skip = 15;
+        bSkipCanBeUsed=false;
+      }
     case G9:
-      skip = 9;
+      if (bSkipCanBeUsed)
+      {
+        skip = 9;
+        bSkipCanBeUsed=false;
+      }
     case H:
-      skip = 21;
+      if (bSkipCanBeUsed)
+      {
+        skip = 21;
+        bSkipCanBeUsed=false;
+      }
     case H11:
-      skip = 11;
+      if (bSkipCanBeUsed)
+      {
+        skip = 11;
+        bSkipCanBeUsed=false;
+      }
     case I:
-      skip = 28;
+      if (bSkipCanBeUsed)
+      {
+        skip = 28;
+        bSkipCanBeUsed=false;
+      }
     case I13:
-      skip = 13;
+      if (bSkipCanBeUsed)
+      {
+        skip = 13;
+        bSkipCanBeUsed=false;
+      }
 
       m_moIndices[i] = indexMO;
       indexMO += skip;
