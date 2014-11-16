@@ -402,8 +402,8 @@ PyObject* toPyQt(T *obj)
   PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
 #endif
   if (!sip_obj) {
-    return incref(Py_None);
     std::cout << "toPyQt: could not convert";
+    return incref(Py_None);
   }
 
   return incref(sip_obj);
