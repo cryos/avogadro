@@ -27,6 +27,8 @@
 
 #include <avogadro/extension.h>
 
+#include <QtCore/QUrl>
+
 class QNetworkAccessManager;
 class QNetworkReply;
 class QString;
@@ -85,10 +87,12 @@ namespace Avogadro
     Molecule *m_molecule;
     QNetworkAccessManager *m_network;
     QString *m_moleculeName;
+    QUrl m_urlRequest;
+    int m_redirects;
 
   private slots:
     void replyFinished(QNetworkReply*);
-
+    QUrl checkRedirect(const QUrl& possibleRedirect, const QUrl& oldURL);
   };
 
   class NetworkFetchExtensionFactory : public QObject, public PluginFactory

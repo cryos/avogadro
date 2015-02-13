@@ -38,6 +38,7 @@
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
+#include <openbabel/format.h>
 //#include <openbabel/builder.h>
 //#include <openbabel/forcefield.h>
 
@@ -45,12 +46,13 @@ namespace Avogadro
 {
   using OpenBabel::OBConversion;
   using OpenBabel::OBMol;
+  using OpenBabel::OBFormat;
   /*using OpenBabel::OBBuilder;
   using OpenBabel::OBForceField;*/
 
   NetworkFetchExtension::NetworkFetchExtension(QObject* parent)
     : Extension(parent),
-    m_glwidget(0), m_molecule(0), m_network(0), m_moleculeName(0)
+      m_glwidget(0), m_molecule(0), m_network(0), m_moleculeName(0), m_redirects(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Fetch from PDB..."));
@@ -136,7 +138,9 @@ namespace Avogadro
       if (!ok || url.isEmpty())
         return 0;
       // Arbitrary URL
-      m_network->get(QNetworkRequest(QUrl(url)));
+      m_redirects = 0;
+      m_urlRequest = QUrl(url);
+      m_network->get(QNetworkRequest( m_urlRequest ));
 
       *m_moleculeName = url;
     }
@@ -162,6 +166,24 @@ namespace Avogadro
     m_molecule = molecule;
   }
 
+  QUrl NetworkFetchExtension::checkRedirect(const QUrl& possibleRedirectUrl, const QUrl& oldUrl)
+  {
+    // From Trolltech/Nokia:
+    // http://developer.nokia.com/community/wiki/Handling_an_HTTP_redirect_with_QNetworkAccessManager
+    QUrl redirectUrl;
+    /*
+     * Check if the URL is empty and that we aren't being fooled into a infinite redirect loop.
+     */
+    if(!possibleRedirectUrl.isEmpty() &&
+       possibleRedirectUrl != oldUrl &&
+       m_redirects < 10 // More than enough
+       ) {
+      redirectUrl = possibleRedirectUrl;
+      m_redirects++;
+    }
+    return redirectUrl;
+  }
+
   void NetworkFetchExtension::replyFinished(QNetworkReply *reply)
   {
     // Read in all the data
@@ -173,9 +195,27 @@ namespace Avogadro
       return;
     }
 
+    // Check for a redirect
+    QVariant possibleRedirectUrl =
+      reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+
+    // Is this a valid HTTP redirect?
+    m_urlRequest = this->checkRedirect(possibleRedirectUrl.toUrl(),
+                                       m_urlRequest);
+
+    // If we have a non-empty request, we need to try again
+    if(!m_urlRequest.isEmpty()) {
+      /* We'll do another request to the redirection url. */
+      m_network->get(QNetworkRequest( m_urlRequest ));
+      qDebug() << " handling redirect " << m_urlRequest;
+      reply->deleteLater();
+      return; // don't try to fetch, because it's not real data
+    }
+
+    // OK, we have our real data
     QByteArray data = reply->readAll();
 
-    // Check if the PDB was successfully downloaded
+    // Check if the file was successfully downloaded
     if (data.contains("Error report")) {
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Download Failed"),
@@ -184,24 +224,25 @@ namespace Avogadro
       return;
     }
 
-    // Now read it in with OpenBabel - we should add a wrapper class to automate
+    QString strData(data);
+    QFileInfo info(m_urlRequest.path());
+    QString contentType(reply->header(QNetworkRequest::ContentTypeHeader).toString());
     OBConversion conv;
-    QFileInfo info(*m_moleculeName);
-    conv.SetInFormat(info.suffix().toAscii());
+
+    qDebug() << " parsing " << strData.length() << " format "<< info.suffix() << " mime: " << contentType;
+
+    if ( info.suffix().isEmpty() || !conv.SetInFormat(info.suffix().toAscii()) ) {
+      // we might not get an extension, so
+      // try to guess from the content type
+      OBFormat *format = OBConversion::FormatFromMIME(contentType.toAscii());
+      if (!format || !conv.SetInFormat(format))
+        // nothing is working!
+        return;
+      }
+
+    // Now read it in with OpenBabel - we should add a wrapper class to automate
     OBMol *obmol = new OBMol;
     if (conv.ReadString(obmol, QString(data).toStdString())) {
-	  /*if (info.suffix() == "smi") {
-	    OBBuilder builder;
-	    builder.Build(*obmol);
-	    obmol->AddHydrogens(); // Add some hydrogens before running force field
-        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
-        if (!pFF || !pFF->Setup(*obmol)) {
-          pFF = OBForceField::FindForceField("UFF");
-          if (!pFF || !pFF->Setup(*obmol)) return; // can't do anything more
-        }
-        pFF->ConjugateGradients(250, 1.0e-4);
-        pFF->UpdateCoordinates(*obmol);
-	  }*/
       Molecule *mol = new Molecule;
       mol->setOBMol(obmol);
       mol->setFileName(*m_moleculeName);
@@ -220,4 +261,3 @@ namespace Avogadro
 } // End namespace Avogadro
 
 Q_EXPORT_PLUGIN2(networkfetchextension, Avogadro::NetworkFetchExtensionFactory)
-
