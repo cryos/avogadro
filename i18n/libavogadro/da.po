@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-02-09 00:00-0500\n"
+"POT-Creation-Date: 2015-02-23 00:00-0500\n"
 "PO-Revision-Date: 2011-03-12 21:52+0000\n"
 "Last-Translator: Stine Nielsen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -1466,14 +1466,14 @@ msgstr "Bane..."
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Fil"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 msgid "Import"
 msgstr "Importér"
 
@@ -1810,14 +1810,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Estimer dipolaritet (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:170
-#: src/extensions/networkfetchextension.cpp:181
-#: src/extensions/networkfetchextension.cpp:213
+#: src/extensions/networkfetchextension.cpp:192
+#: src/extensions/networkfetchextension.cpp:221
+#: src/extensions/networkfetchextension.cpp:254
 msgid "Network Download Failed"
 msgstr "Netværkhentningsfejl"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:171
+#: src/extensions/networkfetchextension.cpp:193
 msgid "Network timeout or other error."
 msgstr "Netværks timeout eller anden fejl."
 
@@ -1834,57 +1834,57 @@ msgstr "Molekylære egenskaber"
 msgid "Display standard molecular properties."
 msgstr "Vis standard molekylære egenskaber."
 
-#: src/extensions/networkfetchextension.cpp:56
+#: src/extensions/networkfetchextension.cpp:58
 msgid "Fetch from PDB..."
 msgstr "Hent fra PDB..."
 
-#: src/extensions/networkfetchextension.cpp:60
+#: src/extensions/networkfetchextension.cpp:62
 msgid "Fetch by chemical name..."
 msgstr ""
 
-#: src/extensions/networkfetchextension.cpp:64
+#: src/extensions/networkfetchextension.cpp:66
 msgid "Fetch from URL..."
 msgstr "Hent fra URL..."
 
-#: src/extensions/networkfetchextension.cpp:99
+#: src/extensions/networkfetchextension.cpp:101
 msgid "PDB Entry"
 msgstr "PDB element"
 
-#: src/extensions/networkfetchextension.cpp:100
+#: src/extensions/networkfetchextension.cpp:102
 msgid "PDB entry to download."
 msgstr "PDB element der skal hentes."
 
-#: src/extensions/networkfetchextension.cpp:114
+#: src/extensions/networkfetchextension.cpp:116
 msgid "Chemical Name"
 msgstr "Kemisk navn"
 
-#: src/extensions/networkfetchextension.cpp:115
+#: src/extensions/networkfetchextension.cpp:117
 msgid "Chemical structure to download."
 msgstr "Kemisk struktur som skal hentes."
 
-#: src/extensions/networkfetchextension.cpp:132
+#: src/extensions/networkfetchextension.cpp:134
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:133
+#: src/extensions/networkfetchextension.cpp:135
 msgid "URL of molecule to download."
 msgstr "URL til molekylerne som skal hentes."
 
-#: src/extensions/networkfetchextension.cpp:182
+#: src/extensions/networkfetchextension.cpp:222
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Det angivne molekyle kunne ikke findes: %1"
 
-#: src/extensions/networkfetchextension.cpp:214
+#: src/extensions/networkfetchextension.cpp:255
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Det angivne molekyle kunne ikke indlæses: %1"
 
-#: src/extensions/networkfetchextension.h:39
+#: src/extensions/networkfetchextension.h:41
 msgid "Network Fetch"
 msgstr "Hent fra netværk"
 
-#: src/extensions/networkfetchextension.h:40
+#: src/extensions/networkfetchextension.h:42
 msgid "Fetch molecule files over the network."
 msgstr "Hent molekyle filer fra netværk"
 

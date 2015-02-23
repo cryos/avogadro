@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-02-09 00:00-0500\n"
+"POT-Creation-Date: 2015-02-23 00:00-0500\n"
 "PO-Revision-Date: 2011-04-11 15:12+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1507,14 +1507,14 @@ msgstr "Trajectoire..."
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Fichier"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 msgid "Import"
 msgstr "Importer"
 
@@ -1856,14 +1856,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Moment dipolaire estimé (D) :"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:170
-#: src/extensions/networkfetchextension.cpp:181
-#: src/extensions/networkfetchextension.cpp:213
+#: src/extensions/networkfetchextension.cpp:192
+#: src/extensions/networkfetchextension.cpp:221
+#: src/extensions/networkfetchextension.cpp:254
 msgid "Network Download Failed"
 msgstr "Le téléchargement depuis le réseau a échoué"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:171
+#: src/extensions/networkfetchextension.cpp:193
 msgid "Network timeout or other error."
 msgstr "Délai d'attente réseau expiré, ou autre erreur"
 
@@ -1880,57 +1880,57 @@ msgstr "Propriétés de la molécule"
 msgid "Display standard molecular properties."
 msgstr "Afficher les propriétés moléculaires standards."
 
-#: src/extensions/networkfetchextension.cpp:56
+#: src/extensions/networkfetchextension.cpp:58
 msgid "Fetch from PDB..."
 msgstr "Chercher dans la PDB..."
 
-#: src/extensions/networkfetchextension.cpp:60
+#: src/extensions/networkfetchextension.cpp:62
 msgid "Fetch by chemical name..."
 msgstr "Télécharger par nom chimique..."
 
-#: src/extensions/networkfetchextension.cpp:64
+#: src/extensions/networkfetchextension.cpp:66
 msgid "Fetch from URL..."
 msgstr "Récupération depuis l'URL…"
 
-#: src/extensions/networkfetchextension.cpp:99
+#: src/extensions/networkfetchextension.cpp:101
 msgid "PDB Entry"
 msgstr "Entrée PDB"
 
-#: src/extensions/networkfetchextension.cpp:100
+#: src/extensions/networkfetchextension.cpp:102
 msgid "PDB entry to download."
 msgstr "Entrée PDB à télécharger"
 
-#: src/extensions/networkfetchextension.cpp:114
+#: src/extensions/networkfetchextension.cpp:116
 msgid "Chemical Name"
 msgstr "Nom chimique"
 
-#: src/extensions/networkfetchextension.cpp:115
+#: src/extensions/networkfetchextension.cpp:117
 msgid "Chemical structure to download."
 msgstr "Structure chimique à télécharger."
 
-#: src/extensions/networkfetchextension.cpp:132
+#: src/extensions/networkfetchextension.cpp:134
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:133
+#: src/extensions/networkfetchextension.cpp:135
 msgid "URL of molecule to download."
 msgstr "URL de la molécule à télécharger"
 
-#: src/extensions/networkfetchextension.cpp:182
+#: src/extensions/networkfetchextension.cpp:222
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "La molécule spécifiée n'a pas pu être trouvée: %1"
 
-#: src/extensions/networkfetchextension.cpp:214
+#: src/extensions/networkfetchextension.cpp:255
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "La molécule spécifiée n'a pas pu être chargée: %1"
 
-#: src/extensions/networkfetchextension.h:39
+#: src/extensions/networkfetchextension.h:41
 msgid "Network Fetch"
 msgstr "Recherche réseau"
 
-#: src/extensions/networkfetchextension.h:40
+#: src/extensions/networkfetchextension.h:42
 msgid "Fetch molecule files over the network."
 msgstr "Rechercher les fichiers de molécule sur le réseau"
 

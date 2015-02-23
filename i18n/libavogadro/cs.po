@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-02-09 00:00-0500\n"
+"POT-Creation-Date: 2015-02-23 00:00-0500\n"
 "PO-Revision-Date: 2011-02-20 15:24+0000\n"
 "Last-Translator: Zbyněk Schwarz <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1482,14 +1482,14 @@ msgstr "Dráha..."
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Soubor"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 msgid "Import"
 msgstr "Zavést"
 
@@ -1828,14 +1828,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Odhadovaný dipólový moment (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:170
-#: src/extensions/networkfetchextension.cpp:181
-#: src/extensions/networkfetchextension.cpp:213
+#: src/extensions/networkfetchextension.cpp:192
+#: src/extensions/networkfetchextension.cpp:221
+#: src/extensions/networkfetchextension.cpp:254
 msgid "Network Download Failed"
 msgstr "Stažení přes síť selhalo"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:171
+#: src/extensions/networkfetchextension.cpp:193
 msgid "Network timeout or other error."
 msgstr "Vypršení času na síti nebo jiná chyba."
 
@@ -1852,57 +1852,57 @@ msgstr "Vlastnosti molekul"
 msgid "Display standard molecular properties."
 msgstr "Zobrazit obvyklé vlastnosti molekul."
 
-#: src/extensions/networkfetchextension.cpp:56
+#: src/extensions/networkfetchextension.cpp:58
 msgid "Fetch from PDB..."
 msgstr "Natáhnout z PDB..."
 
-#: src/extensions/networkfetchextension.cpp:60
+#: src/extensions/networkfetchextension.cpp:62
 msgid "Fetch by chemical name..."
 msgstr "Natáhnout podle chemického názvu..."
 
-#: src/extensions/networkfetchextension.cpp:64
+#: src/extensions/networkfetchextension.cpp:66
 msgid "Fetch from URL..."
 msgstr "Natáhnout z internetové adresy (URL)..."
 
-#: src/extensions/networkfetchextension.cpp:99
+#: src/extensions/networkfetchextension.cpp:101
 msgid "PDB Entry"
 msgstr "Záznam PDB"
 
-#: src/extensions/networkfetchextension.cpp:100
+#: src/extensions/networkfetchextension.cpp:102
 msgid "PDB entry to download."
 msgstr "Záznam PDB ke stažení."
 
-#: src/extensions/networkfetchextension.cpp:114
+#: src/extensions/networkfetchextension.cpp:116
 msgid "Chemical Name"
 msgstr "Chemický název"
 
-#: src/extensions/networkfetchextension.cpp:115
+#: src/extensions/networkfetchextension.cpp:117
 msgid "Chemical structure to download."
 msgstr "Chemická struktura ke stažení."
 
-#: src/extensions/networkfetchextension.cpp:132
+#: src/extensions/networkfetchextension.cpp:134
 msgid "URL"
 msgstr "Internetová adresa (URL)"
 
-#: src/extensions/networkfetchextension.cpp:133
+#: src/extensions/networkfetchextension.cpp:135
 msgid "URL of molecule to download."
 msgstr "Internetová adresa molekuly ke stažení."
 
-#: src/extensions/networkfetchextension.cpp:182
+#: src/extensions/networkfetchextension.cpp:222
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Zadanou molekulu nelze najít: %1"
 
-#: src/extensions/networkfetchextension.cpp:214
+#: src/extensions/networkfetchextension.cpp:255
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Zadanou molekulu nelze nahrát: %1"
 
-#: src/extensions/networkfetchextension.h:39
+#: src/extensions/networkfetchextension.h:41
 msgid "Network Fetch"
 msgstr "Natáhnutí po síti"
 
-#: src/extensions/networkfetchextension.h:40
+#: src/extensions/networkfetchextension.h:42
 msgid "Fetch molecule files over the network."
 msgstr "Natáhnout soubory s molekulami přes síť."
 

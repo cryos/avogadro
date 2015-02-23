@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-02-09 00:00-0500\n"
+"POT-Creation-Date: 2015-02-23 00:00-0500\n"
 "PO-Revision-Date: 2011-02-04 13:39+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -1481,14 +1481,14 @@ msgstr "Ibilbidea..."
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Artxiboa"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/insertfragmentextension.cpp:95
-#: src/extensions/networkfetchextension.cpp:81
+#: src/extensions/networkfetchextension.cpp:83
 msgid "Import"
 msgstr "Inportatu"
 
@@ -1828,14 +1828,14 @@ msgid "Estimated Dipole Moment (D):"
 msgstr "Momentu Bipolarra Estimatua (D):"
 
 #: src/extensions/molecularpropextension.cpp:215
-#: src/extensions/networkfetchextension.cpp:170
-#: src/extensions/networkfetchextension.cpp:181
-#: src/extensions/networkfetchextension.cpp:213
+#: src/extensions/networkfetchextension.cpp:192
+#: src/extensions/networkfetchextension.cpp:221
+#: src/extensions/networkfetchextension.cpp:254
 msgid "Network Download Failed"
 msgstr "Sareko Deskarga Huts Egin Du!"
 
 #: src/extensions/molecularpropextension.cpp:216
-#: src/extensions/networkfetchextension.cpp:171
+#: src/extensions/networkfetchextension.cpp:193
 msgid "Network timeout or other error."
 msgstr "Sarearen denbora agortu da edo beste akats bat omen dago."
 
@@ -1852,57 +1852,57 @@ msgstr "Propietate Molekularrak"
 msgid "Display standard molecular properties."
 msgstr "Erakutsi adierazitako propietate molekularrak."
 
-#: src/extensions/networkfetchextension.cpp:56
+#: src/extensions/networkfetchextension.cpp:58
 msgid "Fetch from PDB..."
 msgstr "Erakutsi PDB-tik..."
 
-#: src/extensions/networkfetchextension.cpp:60
+#: src/extensions/networkfetchextension.cpp:62
 msgid "Fetch by chemical name..."
 msgstr "Erakutsi izen kimikoz..."
 
-#: src/extensions/networkfetchextension.cpp:64
+#: src/extensions/networkfetchextension.cpp:66
 msgid "Fetch from URL..."
 msgstr "Erakutsi URL-tik"
 
-#: src/extensions/networkfetchextension.cpp:99
+#: src/extensions/networkfetchextension.cpp:101
 msgid "PDB Entry"
 msgstr "PDB Sarbidea"
 
-#: src/extensions/networkfetchextension.cpp:100
+#: src/extensions/networkfetchextension.cpp:102
 msgid "PDB entry to download."
 msgstr "Deskargatzeko PDB sarbidea"
 
-#: src/extensions/networkfetchextension.cpp:114
+#: src/extensions/networkfetchextension.cpp:116
 msgid "Chemical Name"
 msgstr "Izen Kimikoa"
 
-#: src/extensions/networkfetchextension.cpp:115
+#: src/extensions/networkfetchextension.cpp:117
 msgid "Chemical structure to download."
 msgstr "Deskargatzeko estruktura kimikoa"
 
-#: src/extensions/networkfetchextension.cpp:132
+#: src/extensions/networkfetchextension.cpp:134
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:133
+#: src/extensions/networkfetchextension.cpp:135
 msgid "URL of molecule to download."
 msgstr "Deskargatzeko molekularen URL-a"
 
-#: src/extensions/networkfetchextension.cpp:182
+#: src/extensions/networkfetchextension.cpp:222
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Zehaztu den molekula ezin izan da aurkitu: %1"
 
-#: src/extensions/networkfetchextension.cpp:214
+#: src/extensions/networkfetchextension.cpp:255
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Zehaztu den molekula ezin izan da kargatu: %1"
 
-#: src/extensions/networkfetchextension.h:39
+#: src/extensions/networkfetchextension.h:41
 msgid "Network Fetch"
 msgstr "Erakutsi Sarea"
 
-#: src/extensions/networkfetchextension.h:40
+#: src/extensions/networkfetchextension.h:42
 msgid "Fetch molecule files over the network."
 msgstr "Erakutsi artxibo molekularrak sare osotik."
 
