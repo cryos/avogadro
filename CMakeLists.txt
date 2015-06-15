@@ -233,6 +233,10 @@ find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 
+if (Q_WS_X11)
+  find_package(X11 REQUIRED) # avogadro/src/main.cpp calls XInitThread().
+endif()
+
 # Check if we are building from a Git clone or a released version
 function(git_version dir version_var)
   # Function to figure out the Git short version hash
