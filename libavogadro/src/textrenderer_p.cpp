@@ -212,7 +212,11 @@ namespace Avogadro {
     //     much it is surrounded by other pixels.
 
     int *neighborhood = new int[ texwidth * texheight ];
-    if( ! neighborhood ) return false;
+    if( ! neighborhood )
+    {
+      delete [] rawbitmap;
+      return false;
+    }
     for( int i = 0; i < texheight * texwidth; i++)
       neighborhood[i] = 0;
 
@@ -244,9 +248,20 @@ namespace Avogadro {
     //     alpha channel is a bit more involved and uses the neighborhood map.
 
     GLubyte *glyphbitmap = new GLubyte[ texwidth * texheight ];
-    if( ! glyphbitmap ) return false;
+    if( ! glyphbitmap )
+    {
+      delete [] rawbitmap;
+      delete [] neighborhood;
+      return false;
+    }
     GLubyte *outlinebitmap = new GLubyte[ texwidth * texheight ];
-    if( ! outlinebitmap ) return false;
+    if( ! outlinebitmap )
+    {
+      delete [] rawbitmap;
+      delete [] neighborhood;
+      delete [] outlinebitmap;
+      return false;
+    }
 
     for( int n = 0; n < texwidth * texheight; n++ )
     {
