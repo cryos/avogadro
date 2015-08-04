@@ -85,6 +85,8 @@ namespace Avogadro {
       void symmetrize();
       void detectSymmetry();
 
+      void toleranceChanged(int);
+
     private:
       QList<QAction *> m_actions;
       Molecule *m_molecule;

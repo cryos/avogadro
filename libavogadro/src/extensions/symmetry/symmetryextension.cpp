@@ -178,8 +178,8 @@ msym_thresholds_t sloppy_thresholds = {
 
   void SymmetryExtension::detectSymmetry()
   {
-    if (m_molecule == NULL)
-      return;
+    if (m_molecule == NULL || m_molecule->numAtoms() < 2)
+      return; // if one atom = Kh
 
     // interface with libmsym
     msym_error_t ret = MSYM_SUCCESS;
@@ -215,9 +215,6 @@ msym_thresholds_t sloppy_thresholds = {
 
     // Set the thresholds
     switch (m_dialog->toleranceCombo->currentIndex()) {
-    case 3: // very loose
-      msymSetThresholds(ctx, &sloppy_thresholds);
-      break;
     case 2: // loose
       msymSetThresholds(ctx, &loose_thresholds);
       break;
@@ -228,6 +225,8 @@ msym_thresholds_t sloppy_thresholds = {
     default:
       msymSetThresholds(ctx, &tight_thresholds);
     }
+
+    // At any point, we'll set the text to NULL which will use C1 instead
 
     if(MSYM_SUCCESS != (ret = msymSetElements(ctx, length, elements))) {
       free(elements);
@@ -281,6 +280,9 @@ msym_thresholds_t sloppy_thresholds = {
       atom->setPos(Eigen::Vector3d(melements[i].v));
       //      qDebug() << " after " << atom->pos()->x() << " " << atom->pos()->y() << " " << atom->pos()->z();
     }
+
+    m_molecule->update();
+    m_widget->update();
   }
 
   void SymmetryExtension::updatePrimitives(Primitive*)
@@ -306,6 +308,15 @@ msym_thresholds_t sloppy_thresholds = {
     disconnect( m_molecule, 0, this, 0 );
   }
 
+  void SymmetryExtension::toleranceChanged(int tolerance)
+  {
+    if (tolerance < 0 || tolerance > m_dialog->toleranceCombo->count())
+      return;
+
+    m_tolerance = tolerance;
+    detectSymmetry();
+  }
+
   void SymmetryExtension::constructDialog()
   {
     if (!m_dialog) {
@@ -315,6 +326,8 @@ msym_thresholds_t sloppy_thresholds = {
 
       connect(m_dialog->detectSymmetryButton, SIGNAL(clicked()), this, SLOT(detectSymmetry()));
       connect(m_dialog->symmetrizeButton, SIGNAL(clicked()), this, SLOT(symmetrize()));
+
+      connect(m_dialog->toleranceCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(toleranceChanged(int)));
 
       m_dialog->toleranceCombo->setCurrentIndex(m_tolerance);
     }
