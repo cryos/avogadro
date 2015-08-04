@@ -88,7 +88,8 @@ msym_thresholds_t sloppy_thresholds = {
 };
 
   SymmetryExtension::SymmetryExtension(QObject *parent) : Extension(parent),
-                                                          m_molecule(0), m_dialog(0)
+                                                          m_molecule(0), m_dialog(0),
+                                                          m_tolerance(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Symmetry Properties..."));
@@ -138,19 +139,11 @@ msym_thresholds_t sloppy_thresholds = {
       connect(widget, SIGNAL(moleculeChanged(Molecule *)),
               this, SLOT(moleculeChanged(Molecule*)));
       m_widget = widget;
+
+      constructDialog();
+      update();
+      m_dialog->show();
     }
-
-    if (!m_dialog) {
-      m_dialog = new SymmetryDialog(m_widget);
-      connect(m_dialog, SIGNAL(accepted()), this, SLOT(disableUpdating()));
-      connect(m_dialog, SIGNAL(rejected()), this, SLOT(disableUpdating()));
-
-      connect(m_dialog->detectSymmetryButton, SIGNAL(clicked()), this, SLOT(detectSymmetry()));
-      connect(m_dialog->symmetrizeButton, SIGNAL(clicked()), this, SLOT(symmetrize()));
-    }
-
-    update();
-    m_dialog->show();
 
     return 0;
   }
@@ -169,6 +162,9 @@ msym_thresholds_t sloppy_thresholds = {
     if (pointGroup.isEmpty())
       pointGroup = "C1"; // default
 
+    if (m_molecule && m_molecule->numAtoms() == 1)
+      pointGroup = "Kh"; // sphere
+
     // check if we need an infinity symbol
     if (pointGroup[1] == '0')
       pointGroup = pointGroup.replace(1,1,trUtf8("\u221e"));
@@ -177,13 +173,12 @@ msym_thresholds_t sloppy_thresholds = {
     pointGroup.insert(1, "<sub>");
     pointGroup.append("</sub>");
 
-    qDebug() << " Point Group >" << pointGroup << "<";
     return pointGroup;
   }
 
   void SymmetryExtension::detectSymmetry()
   {
-    if (m_molecule == NULL || m_molecule->numAtoms() < 2)
+    if (m_molecule == NULL)
       return;
 
     // interface with libmsym
@@ -206,8 +201,7 @@ msym_thresholds_t sloppy_thresholds = {
 
     foreach (Atom *atom, m_molecule->atoms()) {
       unsigned int i = atom->index();
-      // 3 character elements plus null
-      snprintf(a[i].name, 4, "%s", OpenBabel::etab.GetSymbol(atom->atomicNumber()));
+      a[i].n = atom->atomicNumber();
       a[i].v[0] = atom->pos()->x();
       a[i].v[1] = atom->pos()->y();
       a[i].v[2] = atom->pos()->z();
@@ -237,20 +231,20 @@ msym_thresholds_t sloppy_thresholds = {
 
     if(MSYM_SUCCESS != (ret = msymSetElements(ctx, length, elements))) {
       free(elements);
-      m_dialog->pointGroupText->setText(pgSymbol("C1"));
+      m_dialog->pointGroupText->setText(pgSymbol(0));
       return;
     }
 
     if(MSYM_SUCCESS != (ret = msymFindSymmetry(ctx))) {
       free(elements);
-      m_dialog->pointGroupText->setText(pgSymbol("C1"));
+      m_dialog->pointGroupText->setText(pgSymbol(0));
       return;
     }
 
     /* Get the point group name */
     if(MSYM_SUCCESS != (ret = msymGetPointGroup(ctx, sizeof(char[6]), point_group))) {
       free(elements);
-      m_dialog->pointGroupText->setText(pgSymbol("C1"));
+      m_dialog->pointGroupText->setText(pgSymbol(0));
       return;
     }
 
@@ -310,6 +304,36 @@ msym_thresholds_t sloppy_thresholds = {
   {
     // don't ask for more updates
     disconnect( m_molecule, 0, this, 0 );
+  }
+
+  void SymmetryExtension::constructDialog()
+  {
+    if (!m_dialog) {
+      m_dialog = new SymmetryDialog(m_widget);
+      connect(m_dialog, SIGNAL(accepted()), this, SLOT(disableUpdating()));
+      connect(m_dialog, SIGNAL(rejected()), this, SLOT(disableUpdating()));
+
+      connect(m_dialog->detectSymmetryButton, SIGNAL(clicked()), this, SLOT(detectSymmetry()));
+      connect(m_dialog->symmetrizeButton, SIGNAL(clicked()), this, SLOT(symmetrize()));
+
+      m_dialog->toleranceCombo->setCurrentIndex(m_tolerance);
+    }
+  }
+
+  void SymmetryExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
+    m_tolerance = settings.value("tolerance", 1).toInt();
+  }
+
+  void SymmetryExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+
+    if (!m_dialog)
+      return; // nothing to save
+
+    settings.setValue("tolerance", m_dialog->toleranceCombo->currentIndex());
   }
 
 } // end namespace Avogadro

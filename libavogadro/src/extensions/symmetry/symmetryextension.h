@@ -69,6 +69,9 @@ namespace Avogadro {
 
       void setMolecule(Molecule *molecule);
 
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
+
     public Q_SLOTS:
       // Slots to take signals from Molecules, and GLWidget
       void update();
@@ -90,7 +93,9 @@ namespace Avogadro {
       SymmetryDialog *m_dialog;
 
       msym::msym_context ctx;
+      int m_tolerance;
 
+      void constructDialog();
       QString pgSymbol(char *);
   };
 
