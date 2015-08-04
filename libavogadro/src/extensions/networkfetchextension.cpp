@@ -105,7 +105,7 @@ namespace Avogadro
       if (!ok || pdbName.isEmpty())
         return 0;
       // Hard coding the PDB download URL - this could be used for other services
-      m_network->get(QNetworkRequest(QUrl("http://www.pdb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=" + pdbName)));
+      m_network->get(QNetworkRequest(QUrl("http://www.rcsb.org/pdb/files/" + pdbName + ".pdb")));
 
       *m_moleculeName = pdbName + ".pdb";
     }
@@ -235,10 +235,15 @@ namespace Avogadro
       // we might not get an extension, so
       // try to guess from the content type
       OBFormat *format = OBConversion::FormatFromMIME(contentType.toAscii());
-      if (!format || !conv.SetInFormat(format))
-        // nothing is working!
-        return;
+      if (!format || !conv.SetInFormat(format)) {
+        // last try, use the m_moleculeName
+        info.setFile(*m_moleculeName);
+        if ( info.suffix().isEmpty() || !conv.SetInFormat(info.suffix().toAscii()) ) {
+          // nothing is working!
+          return;
+        }
       }
+    }
 
     // Now read it in with OpenBabel - we should add a wrapper class to automate
     OBMol *obmol = new OBMol;
