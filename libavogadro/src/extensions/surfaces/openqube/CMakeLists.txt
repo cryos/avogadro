@@ -17,6 +17,7 @@ set(openqube_HDRS
   cube.h
   gamessukout.h
   gamessus.h
+  orca.h
   gaussianset.h
   molecule.h
   openqubeabi.h
@@ -31,6 +32,7 @@ set(openqube_SRCS
   cube.cpp
   gamessukout.cpp
   gamessus.cpp
+  orca.cpp
   gaussianfchk.cpp
   gaussianset.cpp
   molden.cpp
@@ -50,6 +52,6 @@ set_target_properties(OpenQube PROPERTIES
   SOVERSION 0
   LABELS openqube)
 
-target_link_libraries(OpenQube ${QT_QTCORE_LIBRARY})
+target_link_libraries(OpenQube ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 install(TARGETS OpenQube DESTINATION ${LIB_INSTALL_DIR})

@@ -113,6 +113,8 @@ namespace Avogadro {
     // Sort list by orbital
     qSort(list.begin(), list.end(), orbitalIndexLessThan);
 
+    m_tableModel->clearOrbitals();
+
     // Populate the model
     for (int i = 0; i < list.size(); i++) {
       m_tableModel->setOrbital(list.at(i));

@@ -2,7 +2,7 @@
 
   This source file is part of the OpenQube project.
 
-  Copyright 2010 Geoffrey R. Hutchison
+  Copyright 2014 Dagmar Lenk
 
   This source code is released under the New BSD License, (the "License").
 
@@ -14,44 +14,66 @@
 
 ******************************************************************************/
 
-#ifndef MOLDEN_H
-#define MOLDEN_H
+#ifndef ORCA_H
+#define ORCA_H
 
-#include "config.h"
+#include <QStringList>
 
+#include <QtCore/QIODevice>
 #include <Eigen/Core>
 #include <vector>
 
 #include "gaussianset.h"
 
+class QString;
+
 namespace OpenQube
 {
 
-class MoldenFile
+class OPENQUBE_EXPORT ORCAOutput
 {
   // Parsing mode: section of the file currently being parsed
-  enum mode { NotParsing, Atoms, GTO, STO, MO, SCF };
+  enum mode { NotParsing, Atoms, GTO, MO};
+
+
 public:
-  MoldenFile(const QString &filename, GaussianSet *basis);
-  ~MoldenFile();
+  ORCAOutput(const QString &filename, GaussianSet *basis);
+  ~ORCAOutput();
   void outputAll();
+  bool success() {return (m_orcaSuccess);}
 private:
   QIODevice *m_in;
-  void processLine();
-  void load(GaussianSet* basis);
-  void unnormalizeBasis();
+  void processLine(GaussianSet *basis);
+  void load(GaussianSet *basis);
 
+  // OrcaStuff
+
+  void orcaWarningMessage(const QString &m);
+  orbital orbitalIdx(QString txt);
+  bool m_orcaSuccess;
+
+  QStringList m_atomLabel;
+  QStringList m_basisAtomLabel;
+
+  std::vector<int> shellFunctions;
+  std::vector<orbital> shellTypes;
+  std::vector<std::vector<int> > m_orcaNumShells;
+  std::vector<std::vector<orbital> > m_orcaShellTypes;
+  int m_nGroups;
+
+
+  std::vector<std::vector<std::vector<Eigen::Vector2d> *> *> m_basisFunctions;
+
+  //
   double m_coordFactor;
   mode m_currentMode;
   int m_electrons;
 
-  bool m_sphericalD;
-  bool m_sphericalG;
-  bool m_orcaWritten;
+  bool m_openShell;
+  bool m_useBeta;
 
+  int m_currentAtom;
   unsigned int m_numBasisFunctions;
-  std::vector<int> m_aNums;
-  std::vector<double> m_aPos;
   std::vector<orbital> m_shellTypes;
   std::vector<int> m_shellNums;
   std::vector<int> m_shelltoAtom;
