@@ -25,6 +25,8 @@
 #ifndef SURFACEMESHGENERATOR_H
 #define SURFACEMESHGENERATOR_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <QThread>

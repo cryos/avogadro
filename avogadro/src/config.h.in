@@ -37,4 +37,6 @@
 
 #define VERSION "@Avogadro_VERSION_FULL@"
 
+#cmakedefine EIGEN2_SUPPORT_STAGE10_FULL_EIGEN2_API
+
 #endif  // AVOCONFIG_H

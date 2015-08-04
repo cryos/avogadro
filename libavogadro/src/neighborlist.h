@@ -25,6 +25,8 @@
 #ifndef NEIGHBORLIST_H
 #define NEIGHBORLIST_H
 
+#include "config.h"
+
 #include <avogadro/molecule.h>
 
 #include <Eigen/Core>

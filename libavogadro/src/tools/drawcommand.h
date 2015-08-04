@@ -26,6 +26,8 @@
 #ifndef DRAWCOMMAND_H
 #define DRAWCOMMAND_H
 
+#include "config.h"
+
 #include <QUndoCommand>
 #include <Eigen/Core>
 

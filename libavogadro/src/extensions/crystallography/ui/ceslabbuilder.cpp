@@ -17,6 +17,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include "ceslabbuilder.h"
 
 #include "../ceundo.h"

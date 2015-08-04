@@ -17,6 +17,8 @@
 #ifndef GAMESSUKOUT_H
 #define GAMESSUKOUT_H
 
+#include "config.h"
+
 #include "gaussianset.h"
 
 #include <Eigen/Core>

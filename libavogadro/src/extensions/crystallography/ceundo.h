@@ -21,6 +21,8 @@
 #ifndef CEUNDO_H
 #define CEUNDO_H
 
+#include "config.h"
+
 #include "crystallographyextension.h"
 
 #include <avogadro/molecule.h>

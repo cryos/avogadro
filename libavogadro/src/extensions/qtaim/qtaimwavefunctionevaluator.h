@@ -8,6 +8,8 @@
 #ifndef QTAIMWAVEFUNCTIONEVALUATOR_H
 #define QTAIMWAVEFUNCTIONEVALUATOR_H
 
+#include "config.h"
+
 #include "qtaimwavefunction.h"
 
 #include <Eigen/Core>

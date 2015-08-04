@@ -25,6 +25,8 @@
  #ifndef MESHGENERATOR_H
  #define MESHGENERATOR_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <Eigen/Core>

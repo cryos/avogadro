@@ -25,6 +25,8 @@
 #ifndef SURFACEDIALOG_H
 #define SURFACEDIALOG_H
 
+#include "config.h"
+
 #include <QDialog>
 
 #include "ui_surfacedialog.h"

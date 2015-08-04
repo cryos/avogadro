@@ -23,6 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "cartoonengine.h"
 #include "cartoonmeshgenerator.h"
 

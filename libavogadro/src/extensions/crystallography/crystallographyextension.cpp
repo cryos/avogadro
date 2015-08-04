@@ -27,6 +27,8 @@
  * @todo Find portable method to ensure that the cell matrix widget is 3 lines of text high.
  */
 
+#include "config.h"
+
 #include "crystallographyextension.h"
 
 #include "avospglib.h"

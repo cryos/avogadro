@@ -22,6 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "povpainter.h"
 
 #include <avogadro/color.h>

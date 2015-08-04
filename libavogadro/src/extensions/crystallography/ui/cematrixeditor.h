@@ -18,6 +18,8 @@
 #ifndef CEMATRIXEDITOR_H
 #define CEMATRIXEDITOR_H
 
+#include "config.h"
+
 #include "ceabstracteditor.h"
 
 #include <Eigen/Core>

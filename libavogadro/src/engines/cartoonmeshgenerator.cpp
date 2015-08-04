@@ -33,6 +33,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "cartoonmeshgenerator.h"
 
 #include <avogadro/molecule.h>

@@ -1,4 +1,6 @@
 // Last update: timvdm 19 June 2009
+#include "config.h"
+
 #include <boost/python/detail/wrap_python.hpp>
 #include <numpy/arrayobject.h> 
 #include <boost/python.hpp>
