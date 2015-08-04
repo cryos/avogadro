@@ -36,6 +36,8 @@
 #ifndef CARTOONMESHGENERATOR_H
 #define CARTOONMESHGENERATOR_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 #include <avogadro/color3f.h>
 

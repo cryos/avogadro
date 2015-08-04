@@ -24,6 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "selectrotatetool.h"
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>

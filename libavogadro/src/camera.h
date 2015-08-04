@@ -30,6 +30,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 #include <Eigen/Geometry>
 #include <QPoint>

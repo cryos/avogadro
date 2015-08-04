@@ -18,6 +18,8 @@
 #ifndef AVOSPGLIB_H
 #define AVOSPGLIB_H
 
+#include "config.h"
+
 #include <Eigen/Core>
 
 #include <QtCore/QList>

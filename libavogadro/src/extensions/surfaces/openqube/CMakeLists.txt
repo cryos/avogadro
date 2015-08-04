@@ -1,5 +1,11 @@
 find_package(Qt4 4.6 REQUIRED)
-find_package(Eigen2 REQUIRED)
+find_package(Eigen3)
+if(NOT EIGEN3_FOUND)
+  message(STATUS "Cannot find Eigen3, trying Eigen2")
+  find_package(Eigen2 REQUIRED)
+else()
+  set (EIGEN2_SUPPORT_STAGE10_FULL_EIGEN2_API TRUE)
+endif()
 
 include_directories(${QT_INCLUDE_DIR} ${EIGEN2_INCLUDE_DIR})
 

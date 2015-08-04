@@ -19,6 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include "animationextension.h"
 #include "trajvideomaker.h"
 #include <avogadro/molecule.h>

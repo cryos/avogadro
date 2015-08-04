@@ -25,6 +25,8 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include "config.h"
+
 #include <avogadro/primitive.h>
 #include <Eigen/Core>
 

@@ -25,6 +25,8 @@
 #ifndef QTAIMODEINTEGRATOR_H
 #define QTAIMODEINTEGRATOR_H
 
+#include "config.h"
+
 #include <QDebug>
 #include <QList>
 #include <QVector3D>

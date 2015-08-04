@@ -17,6 +17,8 @@
 #ifndef SLATERSET_H
 #define SLATERSET_H
 
+#include "config.h"
+
 #include "basisset.h"
 
 #include <QtCore/QFuture>

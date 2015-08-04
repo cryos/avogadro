@@ -24,6 +24,8 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
+#include "config.h"
+
 #include "global.h"
 
 #include <QObject>

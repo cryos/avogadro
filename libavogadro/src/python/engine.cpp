@@ -1,6 +1,8 @@
 // Last update: timvdm 18 June 2009
 #include <boost/python.hpp>
 
+#include "config.h"
+
 #include <Eigen/Core>
 
 #include <avogadro/engine.h>

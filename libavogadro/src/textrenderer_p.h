@@ -26,6 +26,8 @@
 #ifndef TEXTRENDERER_H
 #define TEXTRENDERER_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 #include <Eigen/Core>
 

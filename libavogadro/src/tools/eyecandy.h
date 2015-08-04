@@ -25,6 +25,8 @@
 #ifndef EYECANDY_H
 #define EYECANDY_H
 
+#include "config.h"
+
 #include <Eigen/Core>
 
 namespace Avogadro {

@@ -30,6 +30,8 @@
 #ifndef SKELETONTREE_H
 #define SKELETONTREE_H
 
+#include "config.h"
+
 #include <QObject>
 #include <QList>
 

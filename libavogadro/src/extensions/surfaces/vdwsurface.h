@@ -26,6 +26,8 @@
 #ifndef VDWSURFACE_H
 #define VDWSURFACE_H
 
+#include "config.h"
+
 #include <QObject>
 #include <QFuture>
 #include <QFutureWatcher>

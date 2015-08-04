@@ -26,6 +26,8 @@
 #ifndef CLICKMEASURETOOL_H
 #define CLICKMEASURETOOL_H
 
+#include "config.h"
+
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
