@@ -1,3 +1,0 @@
-[submodule "libavogadro/src/extensions/symmetry/libmsym"]
-	path = libavogadro/src/extensions/symmetry/libmsym
-	url = git@github.com:mcodev31/libmsym.git
