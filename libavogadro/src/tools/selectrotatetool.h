@@ -28,6 +28,8 @@
 #ifndef SELECTROTATETOOL_H
 #define SELECTROTATETOOL_H
 
+#include "config.h"
+
 #include <avogadro/tool.h>
 #include <avogadro/glwidget.h>
 

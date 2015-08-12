@@ -24,6 +24,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "config.h"
+
 #include <Eigen/Geometry>
 #include "ui_mainwindow.h"
 #include "flattabwidget.h"

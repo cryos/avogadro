@@ -25,6 +25,8 @@
 #ifndef TEXTMATRIXEDITOR_H
 #define TEXTMATRIXEDITOR_H
 
+#include "config.h"
+
 #include <avogadro/global.h> // For A_EXPORT
 
 #include <QtGui/QTextEdit>

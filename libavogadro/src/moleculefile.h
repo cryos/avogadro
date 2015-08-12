@@ -25,6 +25,8 @@
 #ifndef MOLECULEFILE_H
 #define MOLECULEFILE_H
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <QString>

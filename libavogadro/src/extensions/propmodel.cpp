@@ -20,6 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include "config.h"
+
 #include "propmodel.h"
 // for recursively setting bond lengths, angles, etc.
 #include "../tools/skeletontree.h"

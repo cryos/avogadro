@@ -17,6 +17,8 @@
 #ifndef GAUSSIANFCHK_H
 #define GAUSSIANFCHK_H
 
+#include "config.h"
+
 #include <QtCore/QIODevice>
 #include <Eigen/Core>
 #include <vector>

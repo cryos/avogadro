@@ -25,6 +25,8 @@
 #ifndef POVRAYDIALOG_H
 #define POVRAYDIALOG_H
 
+#include "config.h"
+
 #include <QDialog>
 #include <QList>
 

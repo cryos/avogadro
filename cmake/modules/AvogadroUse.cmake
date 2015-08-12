@@ -12,8 +12,18 @@ add_definitions(-DQT_SHARED)
 
 # Add the Avogadro modules directory to the CMake module path
 set(CMAKE_MODULE_PATH ${Avogadro_PLUGIN_DIR}/cmake ${CMAKE_MODULE_PATH})
-find_package(Eigen2 REQUIRED)
-include_directories(${EIGEN2_INCLUDE_DIR})
+
+# First, try to find Eigen3
+find_package(Eigen3)
+if(EIGEN3_FOUND)
+  include_directories(${EIGEN3_INCLUDE_DIR})
+# If Eigen3 wasn't found, find Eigen2. It will be required.
+else(EIGEN3_FOUND)
+  message("Eigen3 not found. Trying to find Eigen2...")
+  find_package(Eigen2 REQUIRED)
+  include_directories(${EIGEN2_INCLUDE_DIR})
+endif(EIGEN3_FOUND)
+
 if(Avogadro_ENABLE_GLSL)
   find_package(GLEW)
   if(GLEW_FOUND)
@@ -59,7 +69,7 @@ function(avogadro_plugin plugin_name src_list)
       DEPENDS "${plugin_name}.avo"
     )
   endif(UNIX)
-    
+
   install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/contrib")
 
   set_target_properties(${plugin_name} PROPERTIES

@@ -18,6 +18,8 @@
 #ifndef CRYSTALLOGRAPHYEXTENSION_H
 #define CRYSTALLOGRAPHYEXTENSION_H
 
+#include "config.h"
+
 #include "ui/ceslabbuilder.h"
 
 #include <avogadro/extension.h>

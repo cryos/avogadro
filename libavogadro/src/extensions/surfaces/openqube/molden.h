@@ -17,6 +17,8 @@
 #ifndef MOLDEN_H
 #define MOLDEN_H
 
+#include "config.h"
+
 #include <Eigen/Core>
 #include <vector>
 

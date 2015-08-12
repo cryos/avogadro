@@ -1651,8 +1651,8 @@ short GamessDataGroup::SetTitle( const char *NewTitle, long length )
 
   long TitleStart=0, TitleEnd=length-1, i, j;
   //Strip blanks of both ends of title
-  while (( NewTitle[TitleStart] <= ' ' )&&( TitleStart<length ) ) TitleStart ++;
-  while (( NewTitle[TitleEnd] <= ' ' )&&( TitleEnd>0 ) ) TitleEnd --;
+  while ( ( TitleStart<length )&&(NewTitle[TitleStart] <= ' ' ) ) TitleStart ++;
+  while (( TitleEnd>0 )&&( NewTitle[TitleEnd] <= ' ' ) ) TitleEnd --;
   length = TitleEnd - TitleStart + 1;
 
   if ( length <= 0 ) return 0;

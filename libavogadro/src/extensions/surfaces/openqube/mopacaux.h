@@ -17,6 +17,8 @@
 #ifndef MOPACAUX_H
 #define MOPACAUX_H
 
+#include "config.h"
+
 #include <QtCore/QTextStream>
 #include <Eigen/Core>
 #include <vector>

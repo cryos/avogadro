@@ -23,6 +23,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "molecule.h"
 
 #include "atom.h"
@@ -777,11 +779,17 @@ namespace Avogadro{
     else {
       // Calculate a new estimate (e.g., the geometry changed
       Vector3d dipoleMoment(0.0, 0.0, 0.0);
+
       foreach (Atom *a, atoms())
         dipoleMoment += *a->pos() * a->partialCharge();
 
+      // convert from electrons * Angstrom to Debye
+      // (1.602176487×10−19 C / electron) *  (1.0e-10 m/Ang / 3.33564e-30 C/m)
+      dipoleMoment *= 4.80321;
+
       if (estimate)
         *estimate = true;
+
       m_estimatedDipoleMoment = true;
       return dipoleMoment;
     }

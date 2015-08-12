@@ -17,6 +17,8 @@
 #ifndef OQ_MOLECULE_H
 #define OQ_MOLECULE_H
 
+#include "config.h"
+
 #include "openqubeabi.h"
 
 #include "atom.h"

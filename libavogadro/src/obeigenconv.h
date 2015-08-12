@@ -19,6 +19,8 @@
 #ifndef OBEIGENCONV_H
 #define OBEIGENCONV_H
 
+#include "config.h"
+
 #include <openbabel/math/vector3.h>
 #include <openbabel/math/matrix3x3.h>
 

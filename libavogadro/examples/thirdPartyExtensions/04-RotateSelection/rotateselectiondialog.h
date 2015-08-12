@@ -17,6 +17,8 @@
 #ifndef ROTATESELECTIONDIALOG_H
 #define ROTATESELECTIONDIALOG_H
 
+#include "config.h"
+
 #include <Eigen/Core>
 
 #include <QtGui/QDialog>

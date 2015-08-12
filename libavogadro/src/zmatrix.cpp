@@ -24,6 +24,8 @@
 
 #include "zmatrix.h"
 
+#include "config.h"
+
 #include <avogadro/global.h>
 
 #include <avogadro/molecule.h>

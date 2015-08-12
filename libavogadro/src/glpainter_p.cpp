@@ -26,6 +26,8 @@
   02110-1301, USA.
  **********************************************************************/
 
+#include "config.h"
+
 #include "glpainter_p.h"
 #include "glwidget.h"
 #include "camera.h"
