@@ -241,6 +241,15 @@ endif()
 
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
+option(Avogadro_USE_SYSTEM_SPGLIB "Use the system SPGLIB?" NO)
+if(Avogadro_USE_SYSTEM_SPGLIB)
+  #find_library(spglib symspg
+  #PATHS ${SPGLIB_LIBRARY_DIR} )
+  find_package(Spglib REQUIRED)
+  include_directories(${SPGLIB_INCLUDE_DIR})
+  add_definitions(-DSYSTEM_SPGLIB)
+  #target_link_libraries(AvoSpg ${SPGLIB_LIBRARY})
+endif()
 
 if (Q_WS_X11)
   find_package(X11 REQUIRED) # avogadro/src/main.cpp calls XInitThread().
