@@ -31,7 +31,6 @@
 
 #include "crystallographyextension.h"
 
-#include "avospglib.h"
 #include "crystalpastedialog.h"
 #include "ceundo.h"
 #include "stablecomparison.h"
@@ -46,6 +45,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/avospglib.h>
 #include <avogadro/obeigenconv.h>
 #include <avogadro/neighborlist.h>
 #include <avogadro/bond.h>
