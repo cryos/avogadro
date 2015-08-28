@@ -1,4 +1,4 @@
-# libmsym
+# LIBrary for Molecular SYMmetry
 
 libmsym is a C library dealing with point group symmetry in molecules. It can determine, symmetrize and generate molecules of any point group. It can also generate symmetry adapted linear combinations of atomic orbitals for a subset of all point groups and orbital angular momentum (l), and project orbitals into the irreducible representation with the larges component.
 
