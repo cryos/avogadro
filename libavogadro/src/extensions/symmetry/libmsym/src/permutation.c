@@ -65,7 +65,7 @@ err:
 typedef struct _perm_subgroup {
     int sopsl;
     int *sops;
-    struct _perm_subgroup *subgroup[2];
+    int subgroup[2];
 } perm_subgroup_t;
 
 
@@ -73,6 +73,7 @@ typedef struct _perm_subgroup {
 msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgmax, msym_symmetry_operation_t *sops, int *subgroupl, msym_subgroup_t **subgroup){
     msym_error_t ret = MSYM_SUCCESS;
     perm_subgroup_t *group = calloc(l, sizeof(perm_subgroup_t));
+    
     int *isops = malloc(sizeof(int[l]));
     int *msops = malloc(sizeof(int[l]));
     int gl = 0;
@@ -83,6 +84,7 @@ msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgm
             memset(msops, 0, sizeof(int[l]));
             group[gl].sopsl = c->l;
             group[gl].sops = calloc(c->l, sizeof(int));
+            group[gl].subgroup[0] = group[gl].subgroup[1] = -1;
             for(int next = c->s, j = 0;j < c->l;j++){
                 msops[next] = 1;
                 group[gl].sops[j] = next;
@@ -155,8 +157,8 @@ msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgm
                     group[gl].sopsl = n;
                     group[gl].sops = malloc(sizeof(int[n]));
                     memcpy(group[gl].sops, isops, sizeof(int[n]));
-                    group[gl].subgroup[0] = &group[i];
-                    group[gl].subgroup[1] = &group[j];
+                    group[gl].subgroup[0] = i;
+                    group[gl].subgroup[1] = j;
                     gl++;
                 }
             }
@@ -167,8 +169,9 @@ msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgm
     for(int i = 0;i < gl;i++){
         mgroup[i].sops = calloc(group[i].sopsl, sizeof(msym_symmetry_operation_t *));
         mgroup[i].sopsl = group[i].sopsl;
-        mgroup[i].subgroup[0] = &mgroup[group[i].subgroup[0] - group];
-        mgroup[i].subgroup[1] = &mgroup[group[i].subgroup[1] - group];
+        mgroup[i].subgroup[0] = group[i].subgroup[0] < 0 ? NULL : &mgroup[group[i].subgroup[0]];
+        mgroup[i].subgroup[1] = group[i].subgroup[1] < 0 ? NULL : &mgroup[group[i].subgroup[1]];
+        
         for(int j = 0;j < group[i].sopsl;j++){
             mgroup[i].sops[j] = &sops[group[i].sops[j]];
         }
@@ -178,6 +181,9 @@ msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgm
     *subgroupl = gl;
     
 err:
+    for(int i = 0;i < gl;i++){
+        free(group[i].sops);
+    }
     free(group);
     free(isops);
     free(msops);

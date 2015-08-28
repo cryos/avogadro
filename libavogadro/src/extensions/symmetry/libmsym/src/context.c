@@ -296,6 +296,8 @@ msym_error_t msymGetSubgroups(msym_context ctx, int *sgl, msym_subgroup_t **sg){
             ctx->ext.sg[i].sops = malloc(sizeof(msym_symmetry_operation_t *[ctx->sg[i].sopsl]));
             for(int j = 0;j < ctx->sg[i].sopsl;j++){
                 ctx->ext.sg[i].sops[j] = ctx->sg[i].sops[j] - ctx->pg->sops + ctx->ext.sops;
+                ctx->ext.sg[i].subgroup[0] = ctx->sg[i].subgroup[0] == NULL ? NULL : ctx->sg[i].subgroup[0] - ctx->sg + ctx->ext.sg;
+                ctx->ext.sg[i].subgroup[1] = ctx->sg[i].subgroup[1] == NULL ? NULL : ctx->sg[i].subgroup[1] - ctx->sg + ctx->ext.sg;
             }
         }
     }

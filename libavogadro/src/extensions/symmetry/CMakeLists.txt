@@ -18,4 +18,9 @@ avogadro_plugin(symmetryextension
 
 add_subdirectory(libmsym)
 
+# Fixes a compilation error involving position-independent code
+if(CMAKE_COMPILER_IS_GNUCXX)
+  set_property(TARGET msym PROPERTY COMPILE_FLAGS "${COMPILE_FLAGS} -fPIC")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
 target_link_libraries(symmetryextension msym)
