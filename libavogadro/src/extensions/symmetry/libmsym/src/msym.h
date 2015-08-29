@@ -139,10 +139,10 @@ extern "C" {
     
     msym_error_t msymSetThresholds(msym_context ctx, msym_thresholds_t *thresholds);
     msym_error_t msymGetThresholds(msym_context ctx, msym_thresholds_t **thresholds);
-    msym_error_t msymSetElements(msym_context ctx, int length, msym_element_t elements[length]);
+    msym_error_t msymSetElements(msym_context ctx, int length, msym_element_t *elements);
     msym_error_t msymGetElements(msym_context ctx, int *length, msym_element_t **elements);
     msym_error_t msymSetPointGroup(msym_context ctx, char *name);
-    msym_error_t msymGetPointGroup(msym_context ctx, int l, char buf[l]);
+    msym_error_t msymGetPointGroup(msym_context ctx, int l, char *buf);
     msym_error_t msymGetSubgroups(msym_context ctx, int *l, msym_subgroup_t **subgroups);
     msym_error_t msymSelectSubgroup(msym_context ctx, msym_subgroup_t *subgroup);
     msym_error_t msymGetSymmetryOperations(msym_context ctx, int *sopsl, msym_symmetry_operation_t **sops);
@@ -153,10 +153,15 @@ extern "C" {
     msym_error_t msymFindSymmetry(msym_context ctx);
     msym_error_t msymSymmetrizeMolecule(msym_context context, double *err);
     msym_error_t msymApplyTranslation(msym_context ctx, msym_element_t *element, double v[3]);
-    msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double c[l][l]);
-    msym_error_t msymGenerateElements(msym_context ctx, int length, msym_element_t elements[length]);
+#ifdef __cplusplus //VLA invalid in  C++
+    msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, void *c);
+    msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, void *c);
+#else
+    msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double (*c)[]);
+    msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double (*c)[]);
+#endif
+    msym_error_t msymGenerateElements(msym_context ctx, int length, msym_element_t *elements);
     msym_error_t msymGenerateOrbitalSubspaces(msym_context ctx);
-    msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double c[l][l]);
     msym_error_t msymAlignAxes(msym_context ctx);
     
     msym_error_t msymGetCenterOfMass(msym_context ctx, double v[3]);

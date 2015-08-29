@@ -151,6 +151,10 @@ int example(const char* in_file){
 
     free(coefficients); coefficients = NULL;
     
+    /* Aligning axes prior to orbital symmetrization will
+     * change the orientation of orbitals with l >= 1 */
+    if(MSYM_SUCCESS != (ret = msymAlignAxes(ctx))) goto err;
+    
     /* Symmetrize the molecule.
      * You can do this before orbital symmetrization as well,
      * but the permutations are already built, so you don't need to */
@@ -162,13 +166,11 @@ int example(const char* in_file){
     if(MSYM_SUCCESS != (ret = msymGetElements(ctx, &mlength, &melements))) goto err;
     if(mlength != length){ printf("Not possible!\n"); goto err;}
     
-    /* Aligning axes prior to orbital symmetrization will
-     * change the orientation of orbitals with l >= 1 */
-    if(MSYM_SUCCESS != (ret = msymAlignAxes(ctx))) goto err;
+    
     
     printf("New element coordinates:\n%d\n\n",mlength);
     for(int i = 0;i < mlength;i++){
-        printf("%s %lf %lf %lf\n",
+        printf("%s %12.9lf %12.9lf %12.9lf\n",
                melements[i].name,
                melements[i].v[0],
                melements[i].v[1],
@@ -220,8 +222,8 @@ int read_xyz(const char *name, msym_element_t **ratoms) {
     msym_element_t *a;
     int l;
     size_t cl;
-    char *comment;
-    if (fscanf(fp," %d",&l) != 1){
+    char buf[1024];
+    if (NULL == fgets(buf, sizeof(buf), fp) || sscanf(buf," %d ",&l) != 1){
         fprintf(stderr,"Unable to read file %s\n",name);
         return -1;
     }
@@ -232,11 +234,13 @@ int read_xyz(const char *name, msym_element_t **ratoms) {
         fprintf(stderr, "Too many elements in file %d\n",l);
         return -1;
     }
-    if((comment = fgetln(fp,&cl)) != NULL){
-        printf("Comment: %.*s", (int) cl, comment);
+    
+    //char * fgets ( comment, sizeof(comment), fp );
+    if(NULL != fgets(buf, sizeof(buf), fp)){
+        printf("Comment: %.*s", sizeof(buf), buf);
     }
     
-    for (int i = 0; fscanf(fp, "%s %lf %lf %lf", a[i].name, &(a[i].v[0]),  &(a[i].v[1]),  &(a[i].v[2])) == 4 && i < l; i++) {}
+    for (int i = 0; fgets(buf, sizeof(buf), fp) && sscanf(buf, "%s %lf %lf %lf", a[i].name, &(a[i].v[0]),  &(a[i].v[1]),  &(a[i].v[2])) == 4 && i < l; i++) {}
     *ratoms = a;
     return l;
     
