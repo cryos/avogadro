@@ -15,8 +15,6 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
-
     enum _msym_error {
         MSYM_SUCCESS = 0,
         MSYM_INVALID_INPUT = -1,

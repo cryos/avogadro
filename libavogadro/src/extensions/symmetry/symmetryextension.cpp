@@ -47,44 +47,44 @@ namespace Avogadro {
 #define DEFAULT_ORTHOGONALIZATION_THRESHOLD 0.1
 
 
-  msym_thresholds_t tight_thresholds = { // all defaults
-    .zero = 1.0e-3,
-    .geometry = 1.0e-3,
-    .angle = 1.0e-3,
-    .equivalence = 5.0e-4,
-    .permutation = 5.0e-3,
-    .eigfact = 1.0e-3,
-    .orthogonalization = 0.1
+msym_thresholds_t tight_thresholds = { // all defaults
+    1.0e-3, // zero
+    1.0e-3, // geometry
+    1.0e-3, // angle
+    5.0e-4, // equivalence
+    5.0e-3, // permutation
+    1.0e-3, // eigfact
+    0.1 // orthogonalization
 };
 
 msym_thresholds_t medium_thresholds = {
-    .zero = 1.0e-2,
-    .geometry = 1.0e-2,
-    .angle = 1.0e-2,
-    .equivalence = 6.3e-3,
-    .permutation = 1.58e-2,
-    .eigfact = 1.0e-3,
-    .orthogonalization = 0.1
+    1.0e-2, // zero
+    1.0e-2, // geometry
+    1.0e-2, // angle
+    6.3e-3, // equivalence
+    1.58e-2, // permutation
+    1.0e-3, // eigfact
+    0.1 // orthogonalization
 };
 
 msym_thresholds_t loose_thresholds = {
-    .zero = 0.06,
-    .geometry = 0.06,
-    .angle = 0.06,
-    .equivalence = 0.025,
-    .permutation = 1.0e-1,
-    .eigfact = 1.0e-3,
-    .orthogonalization = 0.1
+    0.06, // zero
+    0.06, // geometry
+    0.06, // angle
+    0.025, // equivalence
+    1.0e-1, // permutation
+    1.0e-3, // eigfact
+    0.1 // orthogonalization
 };
 
 msym_thresholds_t sloppy_thresholds = {
-    .zero = 0.08,
-    .geometry = 0.1,
-    .angle = 0.1,
-    .equivalence = 0.06,
-    .permutation = 1.0e-1,
-    .eigfact = 1.0e-3,
-    .orthogonalization = 0.1
+    0.08, // zero
+    0.1, // geometry
+    0.1, // angle
+    0.06, // equivalence
+    1.0e-1, // permutation
+    1.0e-3, // eigfact
+    0.1 // orthognalization
 };
 
   SymmetryExtension::SymmetryExtension(QObject *parent) : Extension(parent),
@@ -184,15 +184,8 @@ msym_thresholds_t sloppy_thresholds = {
     // interface with libmsym
     msym_error_t ret = MSYM_SUCCESS;
     msym_element_t *elements = NULL;
-    const char *error = NULL;
     char point_group[6];
-    double cm[3], radius = 0.0, symerr = 0.0;
     unsigned int length = m_molecule->numAtoms();
-
-    /* Do not free these variables */
-    msym_symmetry_operation_t *msops = NULL;
-    msym_subgroup_t *msg = NULL;
-    int msgl = 0, msopsl = 0, mlength = 0;
 
     // initialize the c-style array of atom names and coordinates
     msym_element_t *a;
