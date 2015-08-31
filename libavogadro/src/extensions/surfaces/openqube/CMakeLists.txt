@@ -54,4 +54,8 @@ set_target_properties(OpenQube PROPERTIES
 
 target_link_libraries(OpenQube ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
+add_executable(qube qube.cpp)
+target_link_libraries(qube OpenQube ${QT_LIBRARIES})
+install(TARGETS qube DESTINATION ${BIN_INSTALL_DIR})
+
 install(TARGETS OpenQube DESTINATION ${LIB_INSTALL_DIR})
