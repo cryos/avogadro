@@ -36,6 +36,7 @@ set(libavogadro_HDRS
   color3f.h
   colorbutton.h
   color.h
+  ${CMAKE_CURRENT_BINARY_DIR}/config.h
   cube.h
   dockextension.h
   dockwidget.h
