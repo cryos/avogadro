@@ -1,0 +1,1584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrcaInputDialog</class>
+ <widget class="QDialog" name="OrcaInputDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>799</width>
+    <height>703</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="modeTabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="basicSetupTab">
+      <attribute name="title">
+       <string>Basic</string>
+      </attribute>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>24</y>
+         <width>709</width>
+         <height>187</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Comment</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="4">
+         <widget class="QLineEdit" name="basicCommentLine"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Calculation</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="basicCalculationCombo">
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string>Single Point Energy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Geometry Optimization</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Frequency</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="2" colspan="3">
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>268</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Method</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QComboBox" name="basicMethodCombo">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>RHF</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>DFT</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>MP2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>CCSD</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="2">
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Basis set</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QComboBox" name="basicBasisSetCombo">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Charge</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QSpinBox" name="basicChargeSpin">
+            <property name="minimum">
+             <number>-10</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="2">
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="3">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Multiplicity</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QSpinBox" name="basicMultiplicitySpin"/>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Format</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QComboBox" name="basicFormatCombo">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>Cartesian</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>z-Matrix</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>z-Matrix compact</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>22</width>
+              <height>28</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="2">
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="3">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="4">
+         <spacer name="horizontalSpacer_12">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="advancedSetupTab">
+      <attribute name="title">
+       <string>Advanced</string>
+      </attribute>
+      <widget class="QTreeWidget" name="advancedTree">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>18</y>
+         <width>139</width>
+         <height>283</height>
+        </rect>
+       </property>
+       <column>
+        <property name="text">
+         <string>Advanced</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Basis Set</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Control</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>SCF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>RijCosX</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DFT</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Data</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QStackedWidget" name="advancedStacked">
+       <property name="geometry">
+        <rect>
+         <x>156</x>
+         <y>12</y>
+         <width>607</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="currentIndex">
+        <number>3</number>
+       </property>
+       <widget class="QWidget" name="basisSetPage">
+        <widget class="QGroupBox" name="basisBasisGroup">
+         <property name="geometry">
+          <rect>
+           <x>18</x>
+           <y>36</y>
+           <width>247</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Basis Set</string>
+         </property>
+         <widget class="QComboBox" name="basisBasisSetCombo">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>41</y>
+            <width>93</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="basisECPCheck">
+          <property name="geometry">
+           <rect>
+            <x>162</x>
+            <y>41</y>
+            <width>56</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ECP</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="basisAuxBasisGroup">
+         <property name="geometry">
+          <rect>
+           <x>318</x>
+           <y>36</y>
+           <width>277</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Aux. Basis Set</string>
+         </property>
+         <widget class="QComboBox" name="basisAuxBasisSetCombo">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>40</y>
+            <width>93</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="basisAuxECPCheck">
+          <property name="geometry">
+           <rect>
+            <x>168</x>
+            <y>40</y>
+            <width>97</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Aux. ECP</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="basisRelativisticGroup">
+         <property name="geometry">
+          <rect>
+           <x>18</x>
+           <y>156</y>
+           <width>247</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Relativistic</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>36</y>
+            <width>207</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QComboBox" name="basisRelativisticCombo">
+             <item>
+              <property name="text">
+               <string>ZORA</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>IORA</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>DKH</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="basisDKHLabel">
+             <property name="text">
+              <string>Order</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="basisDKHSpin">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>5</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="basisAuxCorrBasisGroup">
+         <property name="geometry">
+          <rect>
+           <x>318</x>
+           <y>162</y>
+           <width>277</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Corr. Aux. Basis Set</string>
+         </property>
+         <widget class="QComboBox" name="basisAuxCorrBasisSetCombo">
+          <property name="geometry">
+           <rect>
+            <x>14</x>
+            <y>40</y>
+            <width>93</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="basisAuxCorrECPCheck">
+          <property name="geometry">
+           <rect>
+            <x>168</x>
+            <y>40</y>
+            <width>100</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Corr. ECP</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="controlPage">
+        <widget class="QCheckBox" name="controlCosXCheck">
+         <property name="geometry">
+          <rect>
+           <x>426</x>
+           <y>18</y>
+           <width>100</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>RijCosX</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="geometry">
+          <rect>
+           <x>12</x>
+           <y>66</y>
+           <width>331</width>
+           <height>85</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Method</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>18</x>
+            <y>36</y>
+            <width>295</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <widget class="QCheckBox" name="controlDFTCheck">
+             <property name="text">
+              <string>DFT</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_20">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="controlMP2Check">
+             <property name="text">
+              <string>MP2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_21">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="controlCCSDCheck">
+             <property name="text">
+              <string>CCSD</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QComboBox" name="controlRunTypeCombo">
+         <property name="geometry">
+          <rect>
+           <x>122</x>
+           <y>19</y>
+           <width>217</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+         <item>
+          <property name="text">
+           <string>Single Point Energy</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Geometry Optimization</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Frequency</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QLabel" name="label_13">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>19</y>
+           <width>72</width>
+           <height>19</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Run type</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>18</x>
+           <y>222</y>
+           <width>130</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Charge</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="controlChargeSpin">
+            <property name="minimum">
+             <number>-10</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>222</y>
+           <width>161</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Multiplicity</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="controlMultiplicitySpin"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="dataPage">
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="geometry">
+          <rect>
+           <x>12</x>
+           <y>156</y>
+           <width>193</width>
+           <height>97</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Add. Print Options</string>
+         </property>
+         <widget class="QCheckBox" name="MOPrintCheck">
+          <property name="geometry">
+           <rect>
+            <x>24</x>
+            <y>30</y>
+            <width>109</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>MOs</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="basisPrintCheck">
+          <property name="geometry">
+           <rect>
+            <x>24</x>
+            <y>66</y>
+            <width>109</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Basis Sets</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>12</x>
+           <y>18</y>
+           <width>541</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Comment</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="dataCommentLine"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>264</x>
+           <y>90</y>
+           <width>287</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Coordinates</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dataFormatCombo">
+            <item>
+             <property name="text">
+              <string>Cartesian</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>z-Matrix</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>z-Matrix compact</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>13</x>
+           <y>91</y>
+           <width>192</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Printlevel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dataPrintCombo">
+            <item>
+             <property name="text">
+              <string>Nothing</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Mini</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Small</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Normal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Large</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <zorder>layoutWidget</zorder>
+        <zorder>layoutWidget</zorder>
+        <zorder>layoutWidget</zorder>
+        <zorder>groupBox_3</zorder>
+       </widget>
+       <widget class="QWidget" name="scfPage">
+        <widget class="QGroupBox" name="scfDampingGroup">
+         <property name="geometry">
+          <rect>
+           <x>294</x>
+           <y>186</y>
+           <width>311</width>
+           <height>85</height>
+          </rect>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="title">
+          <string>Damping</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <widget class="QDoubleSpinBox" name="scfDampFactorDSpin">
+          <property name="geometry">
+           <rect>
+            <x>222</x>
+            <y>48</y>
+            <width>76</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <double>0.980000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
+          </property>
+          <property name="value">
+           <double>0.700000000000000</double>
+          </property>
+         </widget>
+         <widget class="QDoubleSpinBox" name="scfDampErrorDSpin">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>48</y>
+            <width>76</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <double>0.980000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
+          </property>
+          <property name="value">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_36">
+          <property name="geometry">
+           <rect>
+            <x>162</x>
+            <y>48</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Factor</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_37">
+          <property name="geometry">
+           <rect>
+            <x>8</x>
+            <y>48</y>
+            <width>49</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string> Error </string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_41">
+          <property name="geometry">
+           <rect>
+            <x>24</x>
+            <y>18</y>
+            <width>280</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;select only if no defaults are wanted&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>0</y>
+           <width>240</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_22">
+          <item>
+           <widget class="QLabel" name="label_38">
+            <property name="text">
+             <string>Accuracy</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="scfAccCombo">
+            <item>
+             <property name="text">
+              <string>Normal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Tight SCF</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Very Tight SCF</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Extreme SCF</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QGroupBox" name="scfConvergerGroupBox">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>90</y>
+           <width>241</width>
+           <height>79</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Convergers</string>
+         </property>
+         <widget class="QRadioButton" name="scfDIISRadio">
+          <property name="geometry">
+           <rect>
+            <x>18</x>
+            <y>30</y>
+            <width>62</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>DIIS</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="scfKDIISRadio">
+          <property name="geometry">
+           <rect>
+            <x>126</x>
+            <y>30</y>
+            <width>73</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>KDIIS</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="scfLevelShiftGroup">
+         <property name="geometry">
+          <rect>
+           <x>294</x>
+           <y>90</y>
+           <width>311</width>
+           <height>79</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Levelshift </string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <widget class="QDoubleSpinBox" name="scfLevelErrorDSpin">
+          <property name="geometry">
+           <rect>
+            <x>56</x>
+            <y>42</y>
+            <width>76</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.001000000000000</double>
+          </property>
+          <property name="value">
+           <double>0.001000000000000</double>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_14">
+          <property name="geometry">
+           <rect>
+            <x>8</x>
+            <y>42</y>
+            <width>42</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Error</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>138</x>
+            <y>42</y>
+            <width>79</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Levelshift</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_39">
+          <property name="geometry">
+           <rect>
+            <x>24</x>
+            <y>18</y>
+            <width>280</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;select only if no defaults are wanted&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QDoubleSpinBox" name="scfLevelShiftDSpin">
+          <property name="geometry">
+           <rect>
+            <x>223</x>
+            <y>42</y>
+            <width>76</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
+          </property>
+          <property name="value">
+           <double>0.250000000000000</double>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="scf2ndOrderGroupBox">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>186</y>
+           <width>241</width>
+           <height>85</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>2nd Order</string>
+         </property>
+         <widget class="QRadioButton" name="scfSOSCFRadio">
+          <property name="geometry">
+           <rect>
+            <x>18</x>
+            <y>24</y>
+            <width>83</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SOSCF</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="scfNRSCFRadio">
+          <property name="geometry">
+           <rect>
+            <x>126</x>
+            <y>24</y>
+            <width>84</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>NRSCF</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="scfAHSCFRadio">
+          <property name="geometry">
+           <rect>
+            <x>126</x>
+            <y>54</y>
+            <width>84</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>AHSCF</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>42</y>
+           <width>241</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_23">
+          <item>
+           <widget class="QLabel" name="label_40">
+            <property name="text">
+             <string>max. SCF iterations</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="scfMaxIterSpin">
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>999</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>294</x>
+           <y>42</y>
+           <width>307</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QLabel" name="label_24">
+            <property name="text">
+             <string>SCF Type</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="scfTypeCombo">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>restricted</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>unrestricted</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>restricted open-shell</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="cosXPage">
+        <widget class="QCheckBox" name="cosXSFittingCheck">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>36</x>
+           <y>132</y>
+           <width>109</width>
+           <height>26</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SFitting</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>36</x>
+           <y>24</y>
+           <width>194</width>
+           <height>70</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_31">
+            <property name="text">
+             <string>GridX</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_24">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QComboBox" name="cosXGridCombo"/>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QLabel" name="label_32">
+            <property name="text">
+             <string>FinalGridX</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QComboBox" name="cosXFinalGridCombo"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="dftPage">
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>258</x>
+           <y>24</y>
+           <width>265</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>DFT Functional</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="dftFunctionalCombo"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>35</x>
+           <y>25</y>
+           <width>181</width>
+           <height>70</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_33">
+            <property name="text">
+             <string>Grid</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QComboBox" name="dftGridCombo"/>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QLabel" name="label_34">
+            <property name="text">
+             <string>FinalGrid</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QComboBox" name="dftFinalGridCombo"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTextEdit" name="previewText">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="hideButton">
+       <property name="text">
+        <string>Hide Preview</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetButton">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="generateButton">
+       <property name="text">
+        <string>Generate...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OrcaInputDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>517</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>6</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>6</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>
