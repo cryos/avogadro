@@ -168,6 +168,12 @@ int main(int argc, char *argv[])
 
   qDebug() << "Locale: " << translationCode;
 
+  // As suggested by iwao aoyama to make sure Windows opens files with kanji characters
+#ifdef WIN32
+  QString lang = QLocale::languageToString(QLocale::system().language());
+  std::locale::global(std::locale(lang.toLocal8Bit().constData()));
+#endif
+
   // Load Qt translations first
   bool tryLoadingQtTranslations = false;
   QString qtFilename = "qt_" + translationCode + ".qm";
