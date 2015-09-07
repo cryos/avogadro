@@ -225,6 +225,7 @@ set(I18N_LANGUAGE "" CACHE STRING "Build i18n only for selected language")
 
 find_package(Qt4 4.6.0 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
+find_package(X11) # find and setup X11 (not required for Mac and Windows)
 find_package(Linguist) # find and setup Linguist
 if(NOT Linguist_FOUND)
   message(WARNING " Qt4 Linguist not found, please install it if you want Avogadro translations")
