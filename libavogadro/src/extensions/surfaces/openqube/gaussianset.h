@@ -27,6 +27,8 @@
 #include <Eigen/Core>
 #include <vector>
 
+#include <QTextStream>
+
 namespace OpenQube
 {
 
@@ -208,6 +210,15 @@ private:
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
   static double pointF7(GaussianSet *set, unsigned int moIndex,
+                        const Eigen::Vector3d &delta,
+                        double dr2, unsigned int indexMO);
+  static double pointG9(GaussianSet *set, unsigned int moIndex,
+                        const Eigen::Vector3d &delta,
+                        double dr2, unsigned int indexMO);
+  static double pointH11(GaussianSet *set, unsigned int moIndex,
+                        const Eigen::Vector3d &delta,
+                        double dr2, unsigned int indexMO);
+  static double pointI13(GaussianSet *set, unsigned int moIndex,
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
   /// Calculate the basis for the density

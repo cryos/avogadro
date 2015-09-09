@@ -39,10 +39,16 @@ private:
   QIODevice *m_in;
   void processLine();
   void load(GaussianSet* basis);
+  void unnormalizeBasis();
 
   double m_coordFactor;
   mode m_currentMode;
   int m_electrons;
+
+  bool m_sphericalD;
+  bool m_sphericalG;
+  bool m_orcaWritten;
+
   unsigned int m_numBasisFunctions;
   std::vector<int> m_aNums;
   std::vector<double> m_aPos;

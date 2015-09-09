@@ -1,10 +1,12 @@
-/******************************************************************************
+ /******************************************************************************
 
   This source file is part of the OpenQube project.
 
   Copyright 2008-2010 Marcus D. Hanwell
   Copyright 2008 Albert De Fusco
 
+  Some Portions Copyright (C) Dagmar Lenk
+        - calculation of molecular orbitals with higher shells (F-I) for spherical coordinates (general set)
   This source code is released under the New BSD License, (the "License").
 
   Unless required by applicable law or agreed to in writing, software
@@ -14,7 +16,6 @@
   limitations under the License.
 
 ******************************************************************************/
-
 #include "gaussianset.h"
 
 #ifdef WIN32
@@ -148,7 +149,7 @@ void GaussianSet::addMOs(const vector<double>& MOs)
   m_moMatrix.resize(m_numMOs, m_numMOs);
 
   for (unsigned int j = 0; j < columns; ++j)
-    for (unsigned int i = 0; i < m_numMOs; ++i)
+      for (unsigned int i = 0; i < m_numMOs; ++i)
       m_moMatrix.coeffRef(i, j) = MOs[i + j*m_numMOs];
 }
 
@@ -340,15 +341,15 @@ void GaussianSet::initCalculation()
       m_cIndices.push_back(m_gtoCN.size());
       for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
         m_gtoCN.push_back(m_gtoC[j] * pow(2048 * pow(m_gtoA[j], 7.0)
-                                          / (9.0 * M_PI*M_PI*M_PI), 0.25));
+              / (9.0 * M_PI*M_PI*M_PI), 0.25));
         m_gtoCN.push_back(m_gtoC[j] * pow(2048 * pow(m_gtoA[j], 7.0)
-                                          / (M_PI*M_PI*M_PI), 0.25));
+              / (M_PI*M_PI*M_PI), 0.25));
         m_gtoCN.push_back(m_gtoCN.back());
         // I think this is correct but reaally need to check...
         m_gtoCN.push_back(m_gtoC[j] * pow(128 * pow(m_gtoA[j], 7.0)
-                                          / (M_PI*M_PI*M_PI), 0.25));
+              / (M_PI*M_PI*M_PI), 0.25));
         m_gtoCN.push_back(m_gtoC[j] * pow(2048 * pow(m_gtoA[j], 7.0)
-                                          / (M_PI*M_PI*M_PI), 0.25));
+              / (M_PI*M_PI*M_PI), 0.25));
       }
       break;
     case F:
@@ -399,10 +400,10 @@ void GaussianSet::initCalculation()
       //math.sqrt(2.**(3.+3./2.))/(math.pi**(3./4.))*math.sqrt(2.**3. / 15.)
       //same as norm1 above.
       double norm = 1.4721580892990935;
-      m_moIndices[i] = indexMO;
-      indexMO += 7;
+        m_moIndices[i] = indexMO;
+        indexMO += 7;
       m_cIndices.push_back(static_cast<unsigned int>(m_gtoCN.size()));
-      for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
         m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //0
         m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //+1
         m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //-1
@@ -411,51 +412,31 @@ void GaussianSet::initCalculation()
         m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //+3
         m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 2.25) * norm); //-3
       }}
-      break;
+        break;
     case G:
       skip = 15;
-      bSkipCanBeUsed = false;
     case G9:
-      if (bSkipCanBeUsed)
-      {
-        skip = 9;
-        bSkipCanBeUsed = false;
-      }
+      skip = 9;
     case H:
-      if (bSkipCanBeUsed)
-      {
-        skip = 21;
-        bSkipCanBeUsed = false;
-      }
+      skip = 21;
     case H11:
-      if (bSkipCanBeUsed)
-      {
-        skip = 11;
-        bSkipCanBeUsed = false;
-      }
+      skip = 11;
     case I:
-      if (bSkipCanBeUsed)
-      {
-        skip = 28;
-        bSkipCanBeUsed = false;
-      }
+      skip = 28;
     case I13:
-      if (bSkipCanBeUsed)
-      {
-        skip = 13;
-      }
+      skip = 13;
 
       m_moIndices[i] = indexMO;
       indexMO += skip;
       m_cIndices.push_back(m_gtoCN.size());
-      qDebug() << "Basis set not handled - results may be incorrect.";
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
       break;
-
     default:
       qDebug() << "Basis set not handled - results may be incorrect.";
     }
   }
   m_init = true;
+//  outputAll();
 }
 
 /// This is the stuff we actually use right now - porting to new data structure
@@ -562,6 +543,7 @@ void GaussianSet::processDensity(GaussianShell &shell)
       pointF7(shell.set, deltas[cAtom], dr2[cAtom], i, values);
       break;
     default:
+        qDebug() << " unhandled function !!!! ";
       // Not handled - return a zero contribution
       ;
     }
@@ -779,7 +761,7 @@ inline double GaussianSet::pointF7(GaussianSet *set, unsigned int moIndex,
   unsigned int baseIndex = set->m_moIndices[moIndex];
   double f0 = 0.0, f1p = 0.0, f1n = 0.0, f2p = 0.0, f2n = 0.0, f3p = 0.0, f3n = 0.0;
 
-  // Now iterate through the D type GTOs and sum their contributions
+  // Now iterate through the F type GTOs and sum their contributions
   unsigned int cIndex = set->m_cIndices[moIndex];
   for (unsigned int i = set->m_gtoIndices[moIndex];
        i < set->m_gtoIndices[moIndex+1]; ++i) {
@@ -825,7 +807,7 @@ inline double GaussianSet::pointF7(GaussianSet *set, unsigned int moIndex,
   double F3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) *  \
     ((45.0 * xxy - 15.0 * yyy)/root360);
 
-  return F0*f0 + F1p*f1p + F1n*f1n + F2p*f2p + F2n*f2n + F3p*f3p + F3n*f3n;
+  return  F0*f0 + F1p*f1p + F1n*f1n + F2p*f2p + F2n*f2n + F3p*f3p + F3n*f3n;
 }
 
 inline void GaussianSet::pointS(GaussianSet *set, double dr2, int basis,
@@ -1046,6 +1028,7 @@ void GaussianSet::outputAll()
 
   initCalculation();
 
+  int tmpOrbital = 0;
   if (!isValid()) {
     qDebug() << "Basis set is marked as invalid.";
     return;
@@ -1066,43 +1049,65 @@ void GaussianSet::outputAll()
     switch(m_symmetry[i]) {
     case S:
       qDebug() << "Shell" << i << "\tS\n  MO 1\t"
-               << m_moMatrix(0, m_moIndices[i])
-               << m_moMatrix(m_moIndices[i], 0);
+               << m_moMatrix(  m_moIndices[i], tmpOrbital);
       break;
     case P:
       qDebug() << "Shell" << i << "\tP\n  MO 1\t"
-               << m_moMatrix(0, m_moIndices[i])
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 2);
+               << m_moMatrix( m_moIndices[i], tmpOrbital)
+               << "\t" << m_moMatrix(  m_moIndices[i] + 1,tmpOrbital)
+               << "\t" << m_moMatrix( m_moIndices[i] + 2, tmpOrbital);
       break;
     case D:
       qDebug() << "Shell" << i << "\tD\n  MO 1\t"
-               << m_moMatrix(0, m_moIndices[i])
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 2)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 3)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 4)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 5);
-      break;
+               << m_moMatrix(  m_gtoIndices[i],tmpOrbital)
+               << "\t" << m_moMatrix( m_moIndices[i] + 1, tmpOrbital)
+               << "\t" << m_moMatrix(  m_moIndices[i] + 2, tmpOrbital)
+               << "\t" << m_moMatrix(  m_moIndices[i] + 3, tmpOrbital)
+               << "\t" << m_moMatrix(  m_moIndices[i] + 4, tmpOrbital)
+               << "\t" << m_moMatrix(  m_moIndices[i] + 5, tmpOrbital);
+        break;
     case D5:
-      qDebug() << "Shell" << i << "\tD5\n  MO 1\t"
-               << m_moMatrix(0, m_moIndices[i])
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 2)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 3)
-               << "\t" << m_moMatrix(0, m_moIndices[i] + 4);
-      break;
+        qDebug() << "Shell" << i << "\tD5\n  MO 1\t"
+                 << m_moMatrix( m_moIndices[i], tmpOrbital)
+                 << "\t" << m_moMatrix(  m_moIndices[i]+ 1, tmpOrbital)
+                 << "\t" << m_moMatrix(  m_moIndices[i] + 2, tmpOrbital)
+                 << "\t" << m_moMatrix(m_moIndices[i] + 3, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 4, tmpOrbital);
+        break;
     case F:
-      std::cout << "Shell " << i << "\tF\n  MO 1";
-      for (short j = 0; j < 10; ++j)
-        std::cout << "\t" << m_moMatrix(0, m_moIndices[i] + j);
-      std::cout << std::endl;
-      break;
+        qDebug() << "Shell" << i << "\tF\n  MO 1\t"
+                 << m_moMatrix( m_moIndices[i], tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 1, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 2, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 3, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 4, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 5, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 6, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 7, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 8, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 9, tmpOrbital);
+        break;
     case F7:
-      std::cout << "Shell " << i << "\tF7\n  MO 1";
-      for (short j = 0; j < 7; ++j)
-        std::cout << "\t" << m_moMatrix(0, m_moIndices[i] + j);
-      std::cout << std::endl;
+        qDebug() << "Shell" << i << "\tF7\n  MO 1\t"
+                 << m_moMatrix( m_moIndices[i], tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 1, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 2, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 3, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 4, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 5, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 6, tmpOrbital);
+      break;
+    case G9:
+        qDebug() << "Shell" << i << "\tG9\n  MO 1\t"
+                 << m_moMatrix( m_moIndices[i],tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 1, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 2, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 3, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 4, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 5, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 6, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 7, tmpOrbital)
+                 << "\t" << m_moMatrix( m_moIndices[i] + 8, tmpOrbital);
       break;
     default:
       qDebug() << "Error: unhandled type...";

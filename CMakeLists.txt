@@ -3,8 +3,8 @@ project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too
 set(Avogadro_VERSION_MAJOR 1)
-set(Avogadro_VERSION_MINOR 1)
-set(Avogadro_VERSION_PATCH 1)
+set(Avogadro_VERSION_MINOR 2)
+set(Avogadro_VERSION_PATCH 0)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
@@ -225,6 +225,7 @@ set(I18N_LANGUAGE "" CACHE STRING "Build i18n only for selected language")
 
 find_package(Qt4 4.6.0 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
+find_package(X11) # find and setup X11 (not required for Mac and Windows)
 find_package(Linguist) # find and setup Linguist
 if(NOT Linguist_FOUND)
   message(WARNING " Qt4 Linguist not found, please install it if you want Avogadro translations")
