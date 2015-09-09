@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-06-01 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:19+0000\n"
+"POT-Creation-Date: 2015-03-23 00:00-0400\n"
+"PO-Revision-Date: 2011-04-12 04:36+0000\n"
 "Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
-"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2015-03-24 05:10+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
+"Language: bg\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,8 +31,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -40,15 +40,15 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
 #: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:3695 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr "Изчистване на атоми"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Настройки"
 
@@ -341,9 +341,8 @@ msgid "Paste failed (format unavailable)."
 msgstr "Поставянето се провали (не е начин формат)"
 
 #: src/mainwindow.cpp:2413
-#, fuzzy
 msgid "Copy failed (format unavailable)."
-msgstr "Копирането се провали (не е наличен mdl)"
+msgstr ""
 
 #: src/mainwindow.cpp:2428
 msgid "Copy failed (mdl unavailable)."
@@ -426,7 +425,7 @@ msgstr "Oбекти"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3742 :342
 msgid "Colors"
 msgstr "Цветове"
 
@@ -503,7 +502,7 @@ msgstr "само етикетите могат да имат под-елемен
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "Елемент"
 
@@ -518,7 +517,7 @@ msgstr "Ниско"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Средно"
@@ -535,7 +534,7 @@ msgstr "Неопределено"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Без"
@@ -721,9 +720,8 @@ msgstr "&Изглед"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "Проектно дърво"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
@@ -732,9 +730,8 @@ msgstr "&Редактиране"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Копиране"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -1237,8 +1234,9 @@ msgstr "Мъгла:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,"
-"Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+"Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav "
+"Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
 "Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav "
 "Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
 "Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav "
@@ -1248,10 +1246,10 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
-"com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,"
-"svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
-"com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
+",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
+",,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.co"
+"m,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.c"
+"om,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
 
 #~ msgid "Tool Settings"
 #~ msgstr "Настройки на инструмента"
