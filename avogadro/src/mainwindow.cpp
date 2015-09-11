@@ -1851,6 +1851,11 @@ protected:
   // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
   // or we'd have one openURL("string")
   // Instead, we've got a bunch of one-line actions...
+  void MainWindow::openManualURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://manual.avogadro.cc/"));
+  }
+
   void MainWindow::openTutorialURL() const
   {
     QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Tutorials"));
@@ -1858,7 +1863,7 @@ protected:
 
   void MainWindow::openFAQURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Avogadro:FAQ"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/FAQ"));
   }
 
   void MainWindow::openWebsiteURL() const
@@ -3060,6 +3065,8 @@ protected:
     connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 
+    connect( ui.actionAvogadroHelp, SIGNAL( triggered() ),
+             this, SLOT( openManualURL() ));
     connect( ui.actionTutorials, SIGNAL( triggered() ),
              this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ),
