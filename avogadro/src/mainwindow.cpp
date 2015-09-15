@@ -3065,7 +3065,7 @@ protected:
     connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 
-    connect( ui.actionAvogadroHelp, SIGNAL( triggered() ),
+    connect( ui.actionAvogadro_Help, SIGNAL( triggered() ),
              this, SLOT( openManualURL() ));
     connect( ui.actionTutorials, SIGNAL( triggered() ),
              this, SLOT( openTutorialURL() ));
