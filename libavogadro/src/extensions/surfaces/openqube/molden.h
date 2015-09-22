@@ -37,7 +37,7 @@ public:
   void outputAll();
 private:
   QIODevice *m_in;
-  void processLine();
+  void processLine(GaussianSet* basis);
   void load(GaussianSet* basis);
   void unnormalizeBasis();
 
@@ -47,7 +47,6 @@ private:
 
   bool m_sphericalD;
   bool m_sphericalG;
-  bool m_orcaWritten;
 
   unsigned int m_numBasisFunctions;
   std::vector<int> m_aNums;
