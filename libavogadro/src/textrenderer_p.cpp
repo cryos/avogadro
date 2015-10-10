@@ -260,6 +260,7 @@ namespace Avogadro {
       delete [] rawbitmap;
       delete [] neighborhood;
       delete [] outlinebitmap;
+      delete [] glyphbitmap;
       return false;
     }
 

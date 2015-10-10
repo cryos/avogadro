@@ -410,7 +410,7 @@ namespace Avogadro
         }
 
         it=tmpMap.constBegin();
-        for (int i=0; it !=tmpMap.constEnd(); i++,it++ )
+        for (int i=0; it !=tmpMap.constEnd(); i++,++it )
           localAtom.push_back(it.value());
 
         matrix3x3 xform;
