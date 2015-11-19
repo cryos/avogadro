@@ -39,7 +39,7 @@ namespace Avogadro
       if ( pos>=bytecount ) return -1;
       if ( Buffer[pos]=='\0' ) return -1;
       test = 2;
-      while (( Buffer[pos+test] == KeyWord[test] )&&( test<length ) ) test++;
+      while (( test<length ) && ( Buffer[pos+test] == KeyWord[test] ) ) test++;
       test = ( long ) test==length;
     }
     return pos;
