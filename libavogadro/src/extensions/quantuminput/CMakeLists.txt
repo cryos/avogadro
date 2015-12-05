@@ -1,6 +1,6 @@
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-set(LINK_LIBS avogadro)
+set(LINK_LIBS AvoSpg avogadro)
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 
@@ -10,6 +10,7 @@ set(inputfileextension_SRCS
     inputdialog.cpp
     abinitinputdialog.cpp
     daltoninputdialog.cpp
+    espressoinputdialog.cpp
     gamessukinputdialog.cpp
     gaussianinputdialog.cpp
     molproinputdialog.cpp
@@ -23,6 +24,7 @@ set(inputfileextension_UIS
   abinitinputdialog.ui
   gaussianinputdialog.ui
   daltoninputdialog.ui
+  espressoinputdialog.ui
   gamessukinputdialog.ui
   molproinputdialog.ui
   mopacinputdialog.ui
