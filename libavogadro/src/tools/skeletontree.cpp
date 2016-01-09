@@ -25,6 +25,7 @@
  **********************************************************************/
 
 #include "skeletontree.h"
+#include <iostream>
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -221,7 +222,7 @@ namespace Avogadro {
   {
     if (m_rootNode) {
       //Rotate skeleton around a particular axis and center point
-      Eigen::Transform3d rotation;
+      Eigen::Projective3d rotation;
       rotation = Eigen::AngleAxisd(angle, rotationAxis);
       rotation.pretranslate(centerVector);
       rotation.translate(-centerVector);
@@ -248,11 +249,11 @@ namespace Avogadro {
   // ##########  recursiveRotate  ##########
 
   void SkeletonTree::recursiveRotate(Node* n,
-                                     const Eigen::Transform3d &rotationMatrix)
+                                     const Eigen::Projective3d &rotationMatrix)
   {
     // Update the root node with the new position
     Atom* a = n->atom();
-    a->setPos(rotationMatrix * (*a->pos()));
+    a->setPos(rotationMatrix.linear() * (*a->pos()));
     a->update();
 
     // Now update the children
@@ -270,10 +271,10 @@ namespace Avogadro {
       printSkeleton(node);
 
     Atom* a = n->atom();
-    cout << a->pos()->x() << "," << a->pos()->y()<< ","<<a->pos()->z() << endl;
+    std::cout << a->pos()->x() << "," << a->pos()->y()<< ","<<a->pos()->z() << endl;
 
     if (!n->isLeaf()) {
-      cout << "-------------" << endl;
+      std::cout << "-------------" << endl;
     }
   }
 

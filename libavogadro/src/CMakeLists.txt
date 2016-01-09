@@ -12,17 +12,8 @@ set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
 include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
+	${EIGEN3_INCLUDE_DIR}
 )
-
-if(EIGEN3_FOUND)
-	include_directories(
-		${EIGEN3_INCLUDE_DIR}
-	)
-elseif(EIGEN2_FOUND)
-	include_directories(
-		${EIGEN2_INCLUDE_DIR}
-	)
-endif(EIGEN3_FOUND)
 
 # I think this is necessary now in order to tell the linker where openbabel is
 link_directories(${OPENBABEL2_LIBRARY_DIRS})

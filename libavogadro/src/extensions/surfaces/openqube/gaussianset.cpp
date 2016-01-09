@@ -17,6 +17,7 @@
 
 ******************************************************************************/
 #include "gaussianset.h"
+#include <iostream>
 
 #ifdef WIN32
 #define _USE_MATH_DEFINES

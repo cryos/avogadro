@@ -41,7 +41,6 @@
 #include <openbabel/mol.h>
 
 #include <Eigen/Geometry>
-#include <Eigen/LeastSquares>
 
 #include <vector>
 
@@ -1272,4 +1271,3 @@ void OrcaAnalyseDialog::writeSettings(QSettings& settings) const
 // missing vtables with gcc, check that you haven't forgotten one of
 // these:
 //#include "orcaanalysedialog.moc"
-

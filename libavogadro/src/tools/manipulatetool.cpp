@@ -40,7 +40,7 @@
 #include <QAbstractButton>
 
 using Eigen::Vector3d;
-using Eigen::Transform3d;
+using Eigen::Projective3d;
 using Eigen::AngleAxisd;
 
 namespace Avogadro {
@@ -138,7 +138,7 @@ namespace Avogadro {
     double yRotate = m_settingsWidget->yRotateSpinBox->value() * DEG_TO_RAD;
     double zRotate = m_settingsWidget->zRotateSpinBox->value() * DEG_TO_RAD;
 
-    Eigen::Transform3d rotation;
+    Eigen::Projective3d rotation;
     rotation.matrix().setIdentity();
     rotation.translation() = center;
     rotation.rotate(AngleAxisd(xRotate, Vector3d::UnitX())
@@ -152,12 +152,12 @@ namespace Avogadro {
         if (p->type() == Primitive::AtomType) {
           Atom *atom = static_cast<Atom*>(p);
           tempPos = translate + *(atom->pos());
-          atom->setPos(rotation * tempPos);
+          atom->setPos(rotation.linear() * tempPos);
         }
     } else {
       foreach(Atom *atom, widget->molecule()->atoms()) {
         tempPos = translate + *(atom->pos());
-        atom->setPos(rotation * tempPos);
+        atom->setPos(rotation.linear() * tempPos);
       }
     }
 
@@ -199,7 +199,7 @@ namespace Avogadro {
     widget->setCursor(Qt::SizeVerCursor);
 
     // Move the selected atom(s) in to or out of the screen
-    Vector3d transformedGoal = widget->camera()->modelview() * *goal;
+    Vector3d transformedGoal = widget->camera()->modelview().linear() * *goal;
     double distanceToGoal = transformedGoal.norm();
 
     double t = ZOOM_SPEED * delta;
@@ -255,7 +255,7 @@ namespace Avogadro {
 
     // Rotate the selected atoms about the center
     // rotate only selected primitives
-    Transform3d fragmentRotation;
+    Eigen::Projective3d fragmentRotation;
     fragmentRotation.matrix().setIdentity();
     fragmentRotation.translation() = *center;
     fragmentRotation.rotate(
@@ -266,7 +266,7 @@ namespace Avogadro {
 
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
-        static_cast<Atom *>(p)->setPos(fragmentRotation * *static_cast<Atom *>(p)->pos());
+        static_cast<Atom *>(p)->setPos(fragmentRotation.linear() * *static_cast<Atom *>(p)->pos());
     widget->molecule()->update();
   }
 
@@ -274,7 +274,7 @@ namespace Avogadro {
                             double delta) const
   {
     // Tilt the selected atoms about the center
-    Transform3d fragmentRotation;
+    Eigen::Projective3d fragmentRotation;
     fragmentRotation.matrix().setIdentity();
     fragmentRotation.translation() = *center;
     fragmentRotation.rotate(AngleAxisd(delta * ROTATION_SPEED, widget->camera()->backTransformedZAxis()));
@@ -282,7 +282,7 @@ namespace Avogadro {
 
     foreach(Primitive *p, widget->selectedPrimitives())
       if (p->type() == Primitive::AtomType)
-        static_cast<Atom *>(p)->setPos(fragmentRotation * *static_cast<Atom *>(p)->pos());
+        static_cast<Atom *>(p)->setPos(fragmentRotation.linear() * *static_cast<Atom *>(p)->pos());
     widget->molecule()->update();
   }
 
