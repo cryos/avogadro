@@ -25,6 +25,10 @@
 #ifndef PYTHONENGINE_H
 #define PYTHONENGINE_H
 
+#ifdef Q_MOC_RUN
+#define BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
+#endif
+
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <boost/python.hpp>

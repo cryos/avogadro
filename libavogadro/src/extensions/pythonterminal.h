@@ -23,6 +23,10 @@
 #ifndef PYTHONTERMINAL_H
 #define PYTHONTERMINAL_H
 
+#ifdef Q_MOC_RUN
+#define BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
+#endif
+
 #include <avogadro/dockextension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
