@@ -7,7 +7,7 @@ REM requires NSIS (http://nsis.sourceforge.net)!
 SET cpack_options=-DCPACK_BINARY_NSIS:=ON -DCPACK_BINARY_ZIP:=OFF
 
 REM General
-SET PATH=%PATH%;D:\src\QT2\bin
+SET PATH=%PATH%;D:\src\QT2
 SET openbabel_dir=D:\src\openbabel\include\openbabel-2.0
 SET openbabel_lib=D:\src\openbabel\bin\openbabel-2.lib
 SET eigen3_dir=D:\src\eigen-3

@@ -17,9 +17,7 @@
 
 #ifndef GAUSSIANSET_H
 #define GAUSSIANSET_H
-#ifndef M_PI
-    #define M_PI 3.14159265358979323846
-#endif
+
 #include "config.h"
 
 #include "basisset.h"
