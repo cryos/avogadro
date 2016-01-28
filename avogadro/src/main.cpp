@@ -53,7 +53,7 @@
 #include "application.h"
 
 // Google breakpapd
-#include "exception_handler.h"
+#include "client/windows/handler/exception_handler.h"
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
 #endif
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 #endif
   //set up Google Breakpad
 
-  if (!QDir().mkdir("crash-reports") && !QDir("crash-reports").exists) 
+  if (!(QDir().mkdir("crash-reports")) && !(QDir("crash-reports").exists())) 
 	qDebug() << "Could not create crash-reports directory.";
   else
 	qDebug() << "/creash-reports successfully created.";
