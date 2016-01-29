@@ -21,6 +21,8 @@
 
 #include <QtGui/QWidget>
 
+
+
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
