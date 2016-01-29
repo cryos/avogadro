@@ -157,8 +157,8 @@ extern "C" {
     msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, void *c);
     msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, void *c);
 #else
-    msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double (*c)[]);
-    msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double (*c)[]);
+    msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double **c);
+    msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double **c);
 #endif
     msym_error_t msymGenerateElements(msym_context ctx, int length, msym_element_t *elements);
     msym_error_t msymGenerateOrbitalSubspaces(msym_context ctx);
