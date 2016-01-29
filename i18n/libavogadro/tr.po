@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2015-03-23 18:30+0000\n"
+"PO-Revision-Date: 2015-09-09 17:14+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-24 05:15+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-09-10 05:26+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
+"Language: tr\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -32,7 +32,8 @@ msgstr "Kısmi Yüke Göre Renklendir"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr "Atomik Kısmı Yüke Göre Renklendir (mavi = pozitif, kırmızı = negatif)"
+msgstr ""
+"Atomik Kısmı Yüke Göre Renklendir (mavi = pozitif, kırmızı = negatif)"
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
@@ -679,7 +680,8 @@ msgstr "Basit Telekafes"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr "Bağları tel (düz çizgi) olarak kaplar, büyük moleküller için uygundur"
+msgstr ""
+"Bağları tel (düz çizgi) olarak kaplar, büyük moleküller için uygundur"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
@@ -875,7 +877,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, animationGroup)
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:1191 rc.cpp:4754
+#: src/extensions/animationextension.h:39 :1191 rc.cpp:4754
 msgid "Animation"
 msgstr "Animasyon"
 
@@ -885,12 +887,13 @@ msgstr "Yörüngeleri, reaksiyonları ve titreşimleri canlandırır."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:103:369
+#: src/extensions/cartesianextension.cpp:103 :369
 msgid "Cartesian Editor"
 msgstr "Kartezyen Editör"
 
 #: src/extensions/cartesianextension.cpp:104
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Molekül için birim hücre tanımlanmadı -- kesirli koordinatlar kullanılamaz."
 
@@ -910,7 +913,7 @@ msgstr "Kartezyen Düzenleyici..."
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110:4959
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110 :4959
 msgid "&Build"
 msgstr "İnşa Et"
 
@@ -944,7 +947,8 @@ msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr "Kısıtlama ekleyebilmek için molekülünüzde en az bir atom bulunmalı"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Bağ kısıtlaması ekleyebilmek için molekülünüzde en az iki atom bulunmalı"
 
@@ -1175,7 +1179,8 @@ msgstr "İndirge &Asimetrik Birim"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2174
 msgid "Remove atoms in equivalent positions (inverse of Fill Unit Cell)."
-msgstr "Eş pozisyonlardaki atomları kaldır (\"Birim Hücreyi Doldur\"un tersi)."
+msgstr ""
+"Eş pozisyonlardaki atomları kaldır (\"Birim Hücreyi Doldur\"un tersi)."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2181
 msgid "Sy&mmetrize Crystal"
@@ -1267,15 +1272,15 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:2457
 #, qt-format
 msgid ""
-"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol %3."
-"<p><p>Cell can be symmetrized into a conventional setting, do you wish to do "
-"so? Actions that make use of symmetry (e.g. supercell builder) require this."
-"<p>"
+"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol "
+"%3.<p><p>Cell can be symmetrized into a conventional setting, do you wish to "
+"do so? Actions that make use of symmetry (e.g. supercell builder) require "
+"this.<p>"
 msgstr ""
-"<p>Algılanan Uzay Grubu %1, Hall simgesi %2, Hermann-Mauguin simgesi %3."
-"<p><p>Hücre geleneksel bir düzene göre simetrikleştirilebilir, bunu yapmak "
-"istiyor musunuz? Simetri kullanan komutlar (örn. süperhücre yapıcı) bunu "
-"gerektirir.<p>"
+"<p>Algılanan Uzay Grubu %1, Hall simgesi %2, Hermann-Mauguin simgesi "
+"%3.<p><p>Hücre geleneksel bir düzene göre simetrikleştirilebilir, bunu "
+"yapmak istiyor musunuz? Simetri kullanan komutlar (örn. süperhücre yapıcı) "
+"bunu gerektirir.<p>"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2479
 msgid "Perceive Spacegroup"
@@ -1400,7 +1405,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:26
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75:577
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75 :577
 msgid "Fractional Coordinates"
 msgstr ""
 
@@ -1438,7 +1443,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/ceslabbuilder.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, buildButton)
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232:692
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232 :692
 msgid "Build"
 msgstr ""
 
@@ -1448,7 +1453,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
-#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:695
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178 :695
 msgid "Translate Atoms"
 msgstr ""
 
@@ -1710,7 +1715,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/insertdnadialog.ui:79
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
-#: src/extensions/insertdnaextension.cpp:229:879
+#: src/extensions/insertdnaextension.cpp:229 :879
 msgid "Thymine"
 msgstr ""
 
@@ -1771,7 +1776,7 @@ msgstr "Peptit..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
+#: src/extensions/insertpeptideextension.h:43 :936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "Peptit Ekle"
 
@@ -1900,9 +1905,8 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:262
 #: src/extensions/orca/orcaanalysedialog.cpp:284
 #: src/extensions/orca/orcaspectra.cpp:92
-#, fuzzy
 msgid "OrcaExtension"
-msgstr "Genişletmeler"
+msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:189
 msgid " No vibration data found!"
@@ -1978,9 +1982,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:1253
-#, fuzzy
 msgid "Could not read file!"
-msgstr "%1 dosyası okunamıyor."
+msgstr ""
 
 #: src/extensions/orca/orcaextension.cpp:78
 msgid "Generate Orca Input..."
@@ -2003,9 +2006,8 @@ msgid "Provides a dialog box with the words \"H...\"."
 msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:542
-#, fuzzy
 msgid "ORCA Input Deck"
-msgstr "MOPAC Girdi Destesini Kaydet"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2019,7 +2021,7 @@ msgstr "MOPAC Girdi Destesini Kaydet"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3994
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183 :3994
 msgid "Show Preview"
 msgstr "Önizleme Göster"
 
@@ -2053,15 +2055,14 @@ msgstr "Önizleme Göster"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1497
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187 :1497
 msgid "Hide Preview"
 msgstr "Önizlemeyi Gizle"
 
 #: src/extensions/orca/orcainputdialog.cpp:719
 #: src/extensions/orca/orcainputdialog.cpp:797
-#, fuzzy
 msgid " Selection failure"
-msgstr "Seçimler"
+msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:720
 msgid "RijCosX option not available for the selected DFT functional!"
@@ -2103,13 +2104,13 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#: src/extensions/orca/orcaspectra.cpp:84:2353 rc.cpp:3229 rc.cpp:3341
+#: src/extensions/orca/orcaspectra.cpp:84 :2353 rc.cpp:3229 rc.cpp:3341
 msgid "Frequencies"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#: src/extensions/orca/orcaspectra.cpp:85:4679
+#: src/extensions/orca/orcaspectra.cpp:85 :4679
 msgid "Intensities"
 msgstr ""
 
@@ -2233,7 +2234,7 @@ msgstr "Uydurma Özellikleri"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1741 rc.cpp:2242 rc.cpp:2584
+#: src/extensions/propextension.h:43 :1741 rc.cpp:2242 rc.cpp:2584
 msgid "Properties"
 msgstr "Özellikler"
 
@@ -2245,14 +2246,14 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:393:448
+#: src/extensions/propmodel.cpp:393 :448
 msgid "Element"
 msgstr "Element"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/extensions/propmodel.cpp:395 src/extensions/propmodel.cpp:438
-#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481:517
+#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481 :517
 msgid "Type"
 msgstr "Tip"
 
@@ -2326,7 +2327,7 @@ msgstr "Açı %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:475:538
+#: src/extensions/propmodel.cpp:475 :538
 msgid "Angle"
 msgstr ""
 
@@ -2576,7 +2577,7 @@ msgstr "GAMESS kuantum kimya paketi için girdi dosyası oluştur"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1572
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632 :1572
 msgid "Title"
 msgstr "Başlık"
 
@@ -2685,7 +2686,8 @@ msgid "G03 Crashed."
 msgstr "G03 Çöktü."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussian doğru çalışmadı. Muhtemelen düzgün bir şekilde kurulmamış."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:60
@@ -2929,7 +2931,7 @@ msgstr "Kalan ile Seç"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231 :198
 msgid "Residue name"
 msgstr "Kalan İsmi"
 
@@ -2991,7 +2993,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4432
+#: src/extensions/shaderextension.h:41 :4432
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -3072,13 +3074,13 @@ msgstr "Y Ekseni"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4493
+#: src/extensions/spectra/spectradialog.cpp:188 :4493
 msgid "&Appearance"
 msgstr "&Görünüm"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4559
+#: src/extensions/spectra/spectradialog.cpp:189 :4559
 msgid "E&xport Image"
 msgstr ""
 
@@ -3306,7 +3308,7 @@ msgstr "Geçersiz Dosya Adı"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1174
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/extensions/spectra/spectradialog.cpp:956
-#: src/extensions/surfaces/surfaceextension.cpp:568:1443
+#: src/extensions/surfaces/surfaceextension.cpp:568 :1443
 msgid "Error"
 msgstr ""
 
@@ -3330,7 +3332,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4487
+#: src/extensions/spectra/spectradialog.cpp:998 :4487
 msgid "&Advanced >>"
 msgstr ""
 
@@ -3356,7 +3358,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:204:3094
+#: src/extensions/spectra/vibrationextension.cpp:204 :3094
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -3380,7 +3382,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:283
-#: src/extensions/spectra/vibrationwidget.cpp:293:4766
+#: src/extensions/spectra/vibrationwidget.cpp:293 :4766
 msgid "Start &Animation"
 msgstr ""
 
@@ -3393,7 +3395,7 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:286
 #: src/extensions/spectra/vibrationwidget.cpp:295
 #: src/extensions/spectra/vibrationwidget.cpp:304
-#: src/extensions/spectra/vibrationwidget.cpp:307:4769
+#: src/extensions/spectra/vibrationwidget.cpp:307 :4769
 msgid "Pause"
 msgstr ""
 
@@ -3556,7 +3558,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4918
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66 :4918
 msgid "Nanotube Builder"
 msgstr ""
 
@@ -3588,18 +3590,16 @@ msgid "Building..."
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:95
-#, fuzzy
 msgid "Symmetry Properties..."
-msgstr "Uydurma Özellikleri..."
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:170
 msgid "∞"
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:55
-#, fuzzy
 msgid "Symmetry Properties"
-msgstr "Uydurma Özellikleri"
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:56
 msgid "Display point group symmetry."
@@ -3984,13 +3984,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:301:834
+#: src/tools/autoopttool.cpp:301 :834
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:302:837
+#: src/tools/autoopttool.cpp:302 :837
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -4023,7 +4023,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, stopButton)
-#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224:1197
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224 :1197
 msgid "Stop"
 msgstr ""
 
@@ -4095,7 +4095,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1500 rc.cpp:1701 rc.cpp:2260
+#: src/tools/autorotatetool.cpp:296 :1500 rc.cpp:1701 rc.cpp:2260
 msgid "Reset"
 msgstr ""
 
@@ -4243,7 +4243,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
 msgid "Add Atom"
 msgstr ""
 
@@ -4293,7 +4293,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:819:2725
+#: src/tools/drawtool.cpp:819 :2725
 msgid "Other..."
 msgstr ""
 
@@ -4303,13 +4303,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:828:912
+#: src/tools/drawtool.cpp:828 :912
 msgid "Single"
 msgstr ""
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:829:915
+#: src/tools/drawtool.cpp:829 :915
 msgid "Double"
 msgstr ""
 
@@ -4468,7 +4468,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2812
+#: src/tools/zmatrixtool.h:39 :2812
 msgid "Z-Matrix"
 msgstr ""
 
@@ -5163,10 +5163,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5379,10 +5379,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:57
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5417,10 +5417,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:74
 #. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -6327,30 +6327,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Frames"
 msgstr ""
-",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
-"Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Efe "
-"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Efe Çiftci,Mustafa Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin "
-"çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Efe Çiftci,Mustafa "
-"Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin çevik,huseyinkozan, ,"
-"Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,"
-"Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad "
-"Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,Osman Tosun,"
-"Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Can Bülbül,Devrim Şahin,Efe Çiftci,Engin BAHADIR,Mustafa Yılmaz,Osman Tosun,"
-"Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Avogadro Team,Can Bülbül,Devrim Şahin,Efe Çiftci,Engin BAHADIR,Mustafa "
-"Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,"
-"Launchpad Contributions:,Avogadro Team,Can Bülbül,Devrim Şahin,Efe Çiftci,"
-"Engin BAHADIR,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,"
-"huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Can Bülbül,Devrim "
-"Şahin,Ebru Ersoy,Efe Çiftci,Enes Ateş,Engin BAHADIR,Fatih Bostancı,Hüseyin "
-"Kozan,Kudret EMRE,Mesut Yaver,Mustafa Yılmaz,Osman Tosun,Serdar Delican,"
-"Sinan Özgün,Yiğit Ateş,can kaçan,hayrettin çevik,kulkke,ozan,ubuntuki,yasin "
-"özdemir"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:160
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -6359,9 +6337,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:190
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
-#, fuzzy
 msgid "Load File"
-msgstr "Dosya yükle..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:210
 #. i18n: ectx: property (text), widget (QPushButton, plotButton)
@@ -6370,15 +6347,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:226
 #. i18n: ectx: property (title), widget (QGroupBox, fragmentGroup)
-#, fuzzy
 msgid "Fragments"
-msgstr "Parçala..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:238
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
-#, fuzzy
 msgid "select Fragment"
-msgstr "Parça Ekle"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:27
 #. i18n: ectx: attribute (title), widget (QWidget, basicSetupTab)
@@ -6394,9 +6369,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#, fuzzy
 msgid "Calculation"
-msgstr "Hesaplamayı İptal Et"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
@@ -6429,9 +6403,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunTypeCombo)
-#, fuzzy
 msgid "Frequency"
-msgstr "Frekans (cm⁻¹)"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, basicMethodCombo)
@@ -6503,17 +6476,15 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:158
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Basis set"
-msgstr "Basit Ayarları Sıfırla"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:744
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#, fuzzy
 msgid "Charge"
-msgstr "Kısmi Yük"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:236
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6524,9 +6495,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Format"
-msgstr "Biçim:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
@@ -6623,9 +6593,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, basisDKHLabel)
-#, fuzzy
 msgid "Order"
-msgstr "Bağ SIrası"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:574
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxCorrBasisGroup)
@@ -6654,9 +6623,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:819
 #. i18n: ectx: property (text), widget (QCheckBox, basisPrintCheck)
-#, fuzzy
 msgid "Basis Sets"
-msgstr "Basit Ayarları Sıfırla"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:858
 #. i18n: ectx: property (text), widget (QLabel, label_23)
@@ -6693,9 +6661,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Normal"
-msgstr "Biçim:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6722,8 +6689,9 @@ msgstr ""
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1200
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid ""
-"<html><head/><body><p><span style=\" font-size:10pt; font-style:italic;"
-"\">select only if no defaults are wanted</span></p></body></html>"
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">select only if no defaults are "
+"wanted</span></p></body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1055
@@ -6773,9 +6741,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1236
 #. i18n: ectx: property (title), widget (QGroupBox, scf2ndOrderGroupBox)
-#, fuzzy
 msgid "2nd Order"
-msgstr "Bağ SIrası"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1248
 #. i18n: ectx: property (text), widget (QRadioButton, scfSOSCFRadio)
@@ -6799,9 +6766,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1320
 #. i18n: ectx: property (text), widget (QLabel, label_24)
-#, fuzzy
 msgid "SCF Type"
-msgstr "Tip"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1331
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
@@ -6820,9 +6786,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1363
 #. i18n: ectx: property (text), widget (QCheckBox, cosXSFittingCheck)
-#, fuzzy
 msgid "SFitting"
-msgstr "&Ayarlar"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1379
 #. i18n: ectx: property (text), widget (QLabel, label_31)
@@ -9796,18 +9761,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
 #. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
@@ -9879,18 +9845,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
 #. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
@@ -10267,10 +10234,10 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
 #. i18n: ectx: property (html), widget (QTextEdit, previewText)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -11207,9 +11174,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SymmetryDialog)
-#, fuzzy
 msgid "Molecular Symmetry"
-msgstr "Molekül Özellikleri"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, toleranceLabel)
@@ -11223,9 +11189,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Tight"
-msgstr "Açık"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
@@ -11234,9 +11199,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
-#, fuzzy
 msgid "Symmetrize"
-msgstr "Kristali Simetrikleştir"
+msgstr ""
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -11318,54 +11282,63 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Efe "
-"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Efe Çiftci,Mustafa Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin "
-"çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Efe Çiftci,Mustafa "
-"Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin çevik,huseyinkozan, ,"
-"Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,"
-"Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad "
-"Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,Osman Tosun,"
-"Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Can Bülbül,Devrim Şahin,Efe Çiftci,Engin BAHADIR,Mustafa Yılmaz,Osman Tosun,"
-"Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Avogadro Team,Can Bülbül,Devrim Şahin,Efe Çiftci,Engin BAHADIR,Mustafa "
-"Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,"
-"Launchpad Contributions:,Avogadro Team,Can Bülbül,Devrim Şahin,Efe Çiftci,"
-"Engin BAHADIR,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,"
-"huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Can Bülbül,Devrim "
-"Şahin,Ebru Ersoy,Efe Çiftci,Enes Ateş,Engin BAHADIR,Fatih Bostancı,Hüseyin "
-"Kozan,Kudret EMRE,Mesut Yaver,Mustafa Yılmaz,Osman Tosun,Serdar Delican,"
-"Sinan Özgün,Yiğit Ateş,can kaçan,hayrettin çevik,kulkke,ozan,ubuntuki,yasin "
-"özdemir"
+"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad "
+"Contributions:,Efe Çiftci,Mustafa Yılmaz,Osman Tosun,Serdar Delican,Yiğit "
+"Ateş,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Efe "
+"Çiftci,Mustafa Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin "
+"çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe "
+"Çiftci,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin "
+"çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe "
+"Çiftci,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin "
+"çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe "
+"Çiftci,Engin BAHADIR,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin "
+"çevik,huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Can "
+"Bülbül,Devrim Şahin,Efe Çiftci,Engin BAHADIR,Mustafa Yılmaz,Osman "
+"Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad "
+"Contributions:,Avogadro Team,Can Bülbül,Devrim Şahin,Efe Çiftci,Engin "
+"BAHADIR,Mustafa Yılmaz,Osman Tosun,Yiğit Ateş,efuyam,hayrettin "
+"çevik,huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Can "
+"Bülbül,Devrim Şahin,Ebru Ersoy,Efe Çiftci,Enes Ateş,Engin BAHADIR,Fatih "
+"Bostancı,Hüseyin Kozan,Kudret EMRE,Mesut Yaver,Mustafa Yılmaz,Osman "
+"Tosun,Serdar Delican,Sinan Özgün,Yiğit Ateş,can kaçan,hayrettin "
+"çevik,kulkke,ozan,ubuntuki,yasin özdemir, ,Launchpad Contributions:,Avogadro "
+"Team,Can Bülbül,Devrim Şahin,Ebru Ersoy,Efe Çiftci,Enes Ateş,Engin "
+"BAHADIR,Fatih Bostancı,Hüseyin Kozan,Kudret EMRE,Mesut Yaver,Mustafa "
+"Yılmaz,Osman Tosun,Serdar Delican,Sinan Özgün,Yiğit Ateş,can kaçan,hayrettin "
+"çevik,kulkke,ozan,ubuntuki,yasin özdemir"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,"
-"huseyinkozan@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"apshalasha@gmail.com,rainman.neu@gmail.com,,yigitates52@gmail.com,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,a_bulbul@ug.bilkent.edu.tr,efe."
-"ciftci@linux.org.tr,apshalasha@gmail.com,rainman.neu@gmail.com,,"
-"yigitates52@gmail.com,hayros@gmail.com,huseyinkozan@gmail.com,,,a_bulbul@ug."
-"bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,apshalasha@gmail."
-"com,rainman.neu@gmail.com,yigitates52@gmail.com,,hayros@gmail.com,"
-"huseyinkozan@gmail.com,,,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe."
-"ciftci@linux.org.tr,apshalasha@gmail.com,rainman.neu@gmail.com,"
-"yigitates@ceviri.ubuntu-tr.net,,hayros@gmail.com,huseyinkozan@gmail.com,,,"
-"a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,,"
-"apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@ceviri.ubuntu-tr.net,,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-devel@lists.sourceforge."
-"net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,,"
-"apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@ceviri.ubuntu-tr.net,,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-devel@lists.sourceforge."
-"net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,,"
-"apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@ceviri.ubuntu-tr.net,,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-devel@lists.sourceforge."
-"net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,,efe.ciftci@linux.org.tr,,,"
-"faopera@gmail.com,posta@huseyinkozan.com.tr,kudretemre@hotmail.com,,"
-"apshalasha@gmail.com,rainman.neu@gmail.com,,para4360@gmail.com,,"
-"cankacan.47@gmail.com,hayros@gmail.com,,snow6.junk@gmail.com,,"
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,huseyinkoz"
+"an@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,hayros@gmail.com,hus"
+"eyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,apshalasha@gmail.com,rainman.ne"
+"u@gmail.com,,yigitates52@gmail.com,hayros@gmail.com,huseyinkozan@gmail.com,,,"
+"a_bulbul@ug.bilkent.edu.tr,efe.ciftci@linux.org.tr,apshalasha@gmail.com,rainm"
+"an.neu@gmail.com,,yigitates52@gmail.com,hayros@gmail.com,huseyinkozan@gmail.c"
+"om,,,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,aps"
+"halasha@gmail.com,rainman.neu@gmail.com,yigitates52@gmail.com,,hayros@gmail.c"
+"om,huseyinkozan@gmail.com,,,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe."
+"ciftci@linux.org.tr,apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@cevi"
+"ri.ubuntu-"
+"tr.net,,hayros@gmail.com,huseyinkozan@gmail.com,,,a_bulbul@ug.bilkent.edu.tr,"
+"room449@gmail.com,efe.ciftci@linux.org.tr,,apshalasha@gmail.com,rainman.neu@g"
+"mail.com,yigitates@ceviri.ubuntu-"
+"tr.net,,hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe."
+"ciftci@linux.org.tr,,apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@cev"
+"iri.ubuntu-tr.net,,hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe."
+"ciftci@linux.org.tr,,apshalasha@gmail.com,rainman.neu@gmail.com,yigitates@cev"
+"iri.ubuntu-tr.net,,hayros@gmail.com,huseyinkozan@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,,efe"
+".ciftci@linux.org.tr,,,faopera@gmail.com,posta@huseyinkozan.com.tr,kudretemre"
+"@hotmail.com,,apshalasha@gmail.com,rainman.neu@gmail.com,,para4360@gmail.com,"
+",cankacan.47@gmail.com,hayros@gmail.com,,snow6.junk@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,,efe"
+".ciftci@linux.org.tr,,,faopera@gmail.com,,kudretemre@hotmail.com,,apshalasha@"
+"gmail.com,rainman.neu@gmail.com,,para4360@gmail.com,,cankacan.47@gmail.com,ha"
+"yros@gmail.com,,snow6.junk@gmail.com,,"
 
 #~ msgid "Ununhexium"
 #~ msgstr "Ununheksiyum"
@@ -11418,6 +11391,9 @@ msgstr ""
 #~ msgid "MOPAC Input Deck (*.mop)"
 #~ msgstr "MOPAC Girdi Destesi (*.mop)"
 
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "MOPAC Girdi Destesini Kaydet"
+
 #~ msgid "NWChem Input Deck (*.nw)"
 #~ msgstr "NWChem Girdi Destesi (*.nw)"
 
@@ -11427,19 +11403,24 @@ msgstr ""
 #~ msgid "Cartesian Properties"
 #~ msgstr "Kartezyen Özellikleri"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Bükülme %1"
 
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Atom Indeksi %1"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Bağ %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Y %1"
 #~ msgstr "Y %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "X %1"
 #~ msgstr "X %1"
@@ -11450,6 +11431,7 @@ msgstr ""
 #~ msgid "QChem Input Deck (*.qcin)"
 #~ msgstr "QChem Girdi Destesi (*.qcin)"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Z  %1"
 #~ msgstr "Z  %1"
@@ -11457,6 +11439,10 @@ msgstr ""
 #~ msgid "Intensity (km/mol)"
 #~ msgstr "Yoğunluk (km/mol)"
 
+#~ msgid "Frequency (cm⁻¹)"
+#~ msgstr "Frekans (cm⁻¹)"
+
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Açı %1"
 

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2015-08-17 10:10+0000\n"
+"PO-Revision-Date: 2015-11-23 08:32+0000\n"
 "Last-Translator: aoyama iwao <iwao.aoyama@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-08-18 05:15+0000\n"
-"X-Generator: Launchpad (build 17690)\n"
+"X-Launchpad-Export-Date: 2015-11-24 05:10+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
+"Language: ja\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -843,9 +843,7 @@ msgstr "無効な動画ファイル名. ディレクトリの完全パスを含�
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
-"無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があり"
-"ます"
+msgstr "無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があります"
 
 #: src/extensions/animationextension.cpp:240
 #, qt-format
@@ -872,7 +870,7 @@ msgstr "トラジェクトリファイル %1 の原子数が、現在の分子�
 #. i18n: ectx: property (title), widget (QGroupBox, animationGroup)
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:1191 rc.cpp:4754
+#: src/extensions/animationextension.h:39 :1191 rc.cpp:4754
 msgid "Animation"
 msgstr "アニメーション"
 
@@ -882,15 +880,14 @@ msgstr "トラジェクトリ, 反応, 振動をアニメーションで表示"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:103:369
+#: src/extensions/cartesianextension.cpp:103 :369
 msgid "Cartesian Editor"
 msgstr "カルテシアン座標エディタ"
 
 #: src/extensions/cartesianextension.cpp:104
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
-msgstr ""
-"分子のユニットセルが定義されていません。 -- フラクショナル座標を使用できませ"
-"ん。"
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
+msgstr "分子のユニットセルが定義されていません。 -- フラクショナル座標を使用できません。"
 
 #: src/extensions/cartesianextension.cpp:565
 msgid "Cartesian Editor..."
@@ -908,7 +905,7 @@ msgstr "カルテシアンエディタ..."
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110:4959
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110 :4959
 msgid "&Build"
 msgstr "ビルド(&B)"
 
@@ -939,28 +936,22 @@ msgstr "拘束条件を追加"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
-"対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
+msgstr "対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
-"対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要がありま"
-"す"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
-"対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要がありま"
-"す"
+msgstr "対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
-"対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があ"
-"ります"
+msgstr "対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があります"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:170
 #: src/extensions/crystallography/crystallographyextension.cpp:173
@@ -1117,9 +1108,8 @@ msgid ""
 "orders of magnitude smaller than the tolerance) to the input lattices and "
 "try again."
 msgstr ""
-"Niggli既約化に失敗しました。入力された格子構造はNiggli既約化アルゴリズムに適"
-"しません。少し(許容値の二つ下のオーダー程度)構造を乱して再度試してみてくださ"
-"い。"
+"Niggli既約化に失敗しました。入力された格子構造はNiggli既約化アルゴリズムに適しません。少し(許容値の二つ下のオーダー程度)構造を乱して再度試し"
+"てみてください。"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:1968
 msgid ""
@@ -1271,14 +1261,13 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:2457
 #, qt-format
 msgid ""
-"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol %3."
-"<p><p>Cell can be symmetrized into a conventional setting, do you wish to do "
-"so? Actions that make use of symmetry (e.g. supercell builder) require this."
-"<p>"
+"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol "
+"%3.<p><p>Cell can be symmetrized into a conventional setting, do you wish to "
+"do so? Actions that make use of symmetry (e.g. supercell builder) require "
+"this.<p>"
 msgstr ""
-"<p>検出された空間群 %1, Hall記法 %2, ヘルマン・モーガン記号 %3<p><p>セルは標"
-"準的な構造に対称化できます。実行しますか？対称性を利用する操作 (例:スーパーセ"
-"ルビルダ) のために必要です。<p>"
+"<p>検出された空間群 %1, Hall記法 %2, ヘルマン・モーガン記号 "
+"%3<p><p>セルは標準的な構造に対称化できます。実行しますか？対称性を利用する操作 (例:スーパーセルビルダ) のために必要です。<p>"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2479
 msgid "Perceive Spacegroup"
@@ -1399,9 +1388,7 @@ msgstr "不正な組成式"
 msgid ""
 "The identities field must contain the same number of space delimited entries "
 "as line 6 of the POSCAR."
-msgstr ""
-"IdentityフィールドはPOSCARの6行目と同じ数だけのエントリをスペース区切りで含ま"
-"なければなりません。"
+msgstr "IdentityフィールドはPOSCARの6行目と同じ数だけのエントリをスペース区切りで含まなければなりません。"
 
 #: src/extensions/crystallography/ui/cecoordinateeditor.cpp:71
 msgid "Cartesian Coordinates"
@@ -1409,7 +1396,7 @@ msgstr "デカルト座標"
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:26
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75:577
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75 :577
 msgid "Fractional Coordinates"
 msgstr "フラクショナル座標"
 
@@ -1447,7 +1434,7 @@ msgstr "処理中..."
 
 #. i18n: file: src/extensions/crystallography/ui/ceslabbuilder.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, buildButton)
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232:692
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232 :692
 msgid "Build"
 msgstr "ビルド(&B)"
 
@@ -1457,7 +1444,7 @@ msgstr "結晶からスラブを作成"
 
 #. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
-#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:695
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178 :695
 msgid "Translate Atoms"
 msgstr "原子を並行移動"
 
@@ -1558,8 +1545,7 @@ msgstr "&分子力学"
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr ""
-"現在指定されている力場をこの分子には適用できません。UFF力場に変更します。"
+msgstr "現在指定されている力場をこの分子には適用できません。UFF力場に変更します。"
 
 #: src/extensions/forcefieldextension.cpp:202
 #, qt-format
@@ -1718,7 +1704,7 @@ msgstr "T"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:79
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
-#: src/extensions/insertdnaextension.cpp:229:879
+#: src/extensions/insertdnaextension.cpp:229 :879
 msgid "Thymine"
 msgstr "チミン"
 
@@ -1779,7 +1765,7 @@ msgstr "ペプチド"
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
+#: src/extensions/insertpeptideextension.h:43 :936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "ペプチドを挿入する"
 
@@ -1902,36 +1888,34 @@ msgstr "ネットワークから分子ファイルを取得"
 #: src/extensions/orca/orcaanalysedialog.cpp:962
 #: src/extensions/orca/orcainputdialog.cpp:1013
 msgid "OrcaExtension Warning"
-msgstr ""
+msgstr "Orca エクステンション 警告"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:188
 #: src/extensions/orca/orcaanalysedialog.cpp:262
 #: src/extensions/orca/orcaanalysedialog.cpp:284
 #: src/extensions/orca/orcaspectra.cpp:92
-#, fuzzy
 msgid "OrcaExtension"
-msgstr "エクステンション"
+msgstr "Orca エクステンション"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:189
 msgid " No vibration data found!"
-msgstr ""
+msgstr " 振動解析データがありません!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:263
 msgid " No vibration data found or molecule changed outside Orca Plugin!"
-msgstr ""
+msgstr " 振動解析データがないか、またはデータがOrca プラグイン以外で変更されました!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:285
 msgid "Selected displacement data don't fit to the actual molecule!"
-msgstr ""
+msgstr "選択された変位データは分子に適合しません!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:520
-#, fuzzy
 msgid "Orca Output File"
-msgstr "Dalton入力ファイル"
+msgstr "Orca アウトプットファイル"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:521
 msgid "extended Geometry File"
-msgstr ""
+msgstr "拡張ジオメトリファイル"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:522
 #: src/extensions/spectra/spectradialog.cpp:515
@@ -1942,11 +1926,11 @@ msgstr "全てのファイル"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:525
 msgid "Read Orca Outputfile"
-msgstr ""
+msgstr "Orca アウトプットファイルを読み込む"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:529
 msgid "no file found"
-msgstr ""
+msgstr "ファイルが見つかりません"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:591
 #: src/extensions/orca/orcaanalysedialog.cpp:651
@@ -1957,52 +1941,52 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:766
 #: src/extensions/orca/orcaanalysedialog.cpp:780
 msgid "Somethings wrong in the file structure"
-msgstr ""
+msgstr "ファイル構造が不正です"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:722
 msgid "Somethings wrong in the file structure - unitcells"
-msgstr ""
+msgstr "ユニットセルでファイル構造が不正です"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:857
 msgid "Something is wrong in the IR output! "
-msgstr ""
+msgstr "IRアウトプットが不正です "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:877
 msgid "Something is wrong in the raman output! "
-msgstr ""
+msgstr "ラマンアウトプットが不正です "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:906
 #: src/extensions/orca/orcaanalysedialog.cpp:929
 msgid "Something is wrong in the orbital energy output! "
-msgstr ""
+msgstr "オービタルエネルギーアウトプットが不正です "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:948
 msgid "No geometry found in file!"
-msgstr ""
+msgstr "ファイルにジオメトリがありません!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:963
 msgid ""
 "Molecule of the file does not fit the actual molecule structure! \n"
 " Would you like to override the actual molecule?"
 msgstr ""
+"ファイルの分子は現在の分子に適合しません!\n"
+" 続行しますか?"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:1253
-#, fuzzy
 msgid "Could not read file!"
-msgstr "ファイル ‘%1’ を読めません。"
+msgstr "ファイルを読み込めません!"
 
 #: src/extensions/orca/orcaextension.cpp:78
-#, fuzzy
 msgid "Generate Orca Input..."
-msgstr "生成..."
+msgstr "Orcaインプットを生成..."
 
 #: src/extensions/orca/orcaextension.cpp:84
 msgid "Analyse Orca Output..."
-msgstr ""
+msgstr "Orcaアウトプットを解析..."
 
 #: src/extensions/orca/orcaextension.cpp:98
 msgid "&Orca"
-msgstr ""
+msgstr "&Orca"
 
 #: src/extensions/orca/orcaextension.h:52
 msgid "Orca Test Example"
@@ -2013,9 +1997,8 @@ msgid "Provides a dialog box with the words \"H...\"."
 msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:542
-#, fuzzy
 msgid "ORCA Input Deck"
-msgstr "MOPACインプット"
+msgstr "ORCAインプット"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2029,7 +2012,7 @@ msgstr "MOPACインプット"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3994
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183 :3994
 msgid "Show Preview"
 msgstr "プレビューを表示"
 
@@ -2063,25 +2046,26 @@ msgstr "プレビューを表示"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1497
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187 :1497
 msgid "Hide Preview"
 msgstr "プレビューを隠す"
 
 #: src/extensions/orca/orcainputdialog.cpp:719
 #: src/extensions/orca/orcainputdialog.cpp:797
-#, fuzzy
 msgid " Selection failure"
-msgstr "選択モード:"
+msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:720
 msgid "RijCosX option not available for the selected DFT functional!"
-msgstr ""
+msgstr "選択されたDFT汎関数でRijCosXオプションは利用できません!"
 
 #: src/extensions/orca/orcainputdialog.cpp:798
 msgid ""
 "RijCosX not available for the selected DFT functional! \n"
 "RijCosX option reset!"
 msgstr ""
+"択されたDFT汎関数でRijCosXオプションは利用できません!\n"
+"RijCosXオプションをリセットします!"
 
 #: src/extensions/orca/orcainputdialog.cpp:1014
 msgid ""
@@ -2089,6 +2073,9 @@ msgid ""
 " Generating a new preview will lose all changes! \n"
 " Would you like to override them anyway?"
 msgstr ""
+"プレビューでの変更は保存されていません!\n"
+" 新しいプレビューでは変更は失われます!\n"
+" 続行しますか?"
 
 #: src/extensions/orca/orcainputdialog.cpp:1362
 #: src/extensions/quantuminput/abinitinputdialog.cpp:417
@@ -2113,19 +2100,19 @@ msgstr "入力を保存"
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#: src/extensions/orca/orcaspectra.cpp:84:2353 rc.cpp:3229 rc.cpp:3341
+#: src/extensions/orca/orcaspectra.cpp:84 :2353 rc.cpp:3229 rc.cpp:3341
 msgid "Frequencies"
 msgstr "振動解析"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#: src/extensions/orca/orcaspectra.cpp:85:4679
+#: src/extensions/orca/orcaspectra.cpp:85 :4679
 msgid "Intensities"
 msgstr "強度"
 
 #: src/extensions/orca/orcaspectra.cpp:93
 msgid " OrcaSpectra::No vibration data found!"
-msgstr ""
+msgstr " OrcaSpectra::振動データがありません!"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -2157,8 +2144,8 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
-"POV-Ray画像を直接レンダリング・POV-Rayファイルを保存のうちどちらのオプション"
-"も選択されていません。これでは出力が保存されませんが、よろしいですか？"
+"POV-Ray画像を直接レンダリング・POV-"
+"Rayファイルを保存のうちどちらのオプションも選択されていません。これでは出力が保存されませんが、よろしいですか？"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -2170,8 +2157,7 @@ msgstr "ファイルに書き込めません。"
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
-"ファイル %1 に書き込めません。 その場所に書き込む権限を持っていますか？"
+msgstr "ファイル %1 に書き込めません。 その場所に書き込む権限を持っていますか？"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
@@ -2181,9 +2167,7 @@ msgstr "POV-Rayのスタートに失敗しました"
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
-msgstr ""
-"POV-Rayのスタートに失敗しました。おそらく実行ファイルのパスが正しく設定されて"
-"いません。"
+msgstr "POV-Rayのスタートに失敗しました。おそらく実行ファイルのパスが正しく設定されていません。"
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
@@ -2192,9 +2176,7 @@ msgstr "POV-Ray"
 #: src/extensions/povrayextension.h:41
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
-msgstr ""
-"POV-Rayファイルを作り、POV-Rayコマンドラインプログラムを使ってレンダリングし"
-"ます。"
+msgstr "POV-Rayファイルを作り、POV-Rayコマンドラインプログラムを使ってレンダリングします。"
 
 #: src/extensions/propextension.cpp:69
 msgid "Atom Properties..."
@@ -2242,7 +2224,7 @@ msgstr "配座異性体のプロパティ"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1741 rc.cpp:2242 rc.cpp:2584
+#: src/extensions/propextension.h:43 :1741 rc.cpp:2242 rc.cpp:2584
 msgid "Properties"
 msgstr "プロパティ"
 
@@ -2250,19 +2232,18 @@ msgstr "プロパティ"
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
-msgstr ""
-"カルテシアン座標エディタを含む、原子、結合、角度、二面角のためのウィンドウ"
+msgstr "カルテシアン座標エディタを含む、原子、結合、角度、二面角のためのウィンドウ"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:393:448
+#: src/extensions/propmodel.cpp:393 :448
 msgid "Element"
 msgstr "元素"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/extensions/propmodel.cpp:395 src/extensions/propmodel.cpp:438
-#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481:517
+#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481 :517
 msgid "Type"
 msgstr "タイプ"
 
@@ -2340,7 +2321,7 @@ msgstr "角度 %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:475:538
+#: src/extensions/propmodel.cpp:475 :538
 msgid "Angle"
 msgstr "角度"
 
@@ -2431,9 +2412,7 @@ msgstr "Abinit入力ジェネレータからの警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Abinit input deck preview pane?"
-msgstr ""
-"Abinit入力プレビューペインへの全ての変更を破棄してプレビューテキストを更新し"
-"ますか？"
+msgstr "Abinit入力プレビューペインへの全ての変更を破棄してプレビューテキストを更新しますか？"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:437
 #: src/extensions/quantuminput/abinitinputdialog.cpp:450
@@ -2462,8 +2441,7 @@ msgstr "Abinitの実行可能ファイルが見つかりません"
 msgid ""
 "Pseudos (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *.psp)"
 msgstr ""
-"擬ポテンシャル (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *."
-"psp)"
+"擬ポテンシャル (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *.psp)"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:508
 msgid "abinit failed to start."
@@ -2493,9 +2471,7 @@ msgstr "Dalton入力ファイルジェネレータからの警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Dalton input file preview pane?"
-msgstr ""
-"Dalton入力ファイルプレビューペインへの変更を全て破棄してプレビューテキストを"
-"更新しますか？"
+msgstr "Dalton入力ファイルプレビューペインへの変更を全て破棄してプレビューテキストを更新しますか？"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
 msgid "Dalton Input File"
@@ -2598,7 +2574,7 @@ msgstr "GAMESSのインプットファイルを作る"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1572
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632 :1572
 msgid "Title"
 msgstr "タイトル"
 
@@ -2650,9 +2626,7 @@ msgstr "GAMESS-UKインプットジェネレータからの警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "GAMESS-UK input deck preview pane?"
-msgstr ""
-"GAMESS-UKインプットプレビューペインへの変更を全て破棄してプレビューテキストを"
-"更新しますか？"
+msgstr "GAMESS-UKインプットプレビューペインへの変更を全て破棄してプレビューテキストを更新しますか？"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:179
 msgid "GAMESS-UK Input Deck"
@@ -2666,9 +2640,7 @@ msgstr "Gaussianインプットジェネレータからの警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
-"Gaussianインプットプレビューペインへの変更を全て破棄してプレビューテキストを"
-"更新しますか？"
+msgstr "Gaussianインプットプレビューペインへの変更を全て破棄してプレビューテキストを更新しますか？"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -2709,10 +2681,9 @@ msgid "G03 Crashed."
 msgstr "G03はクラッシュしました"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"Gaussianは適切に実行しませんでした。おそらく、適切にインストールされていませ"
-"ん。"
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr "Gaussianは適切に実行しませんでした。おそらく、適切にインストールされていません。"
 
 #: src/extensions/quantuminput/inputfileextension.cpp:60
 msgid "&Abinit..."
@@ -2779,9 +2750,7 @@ msgstr "LAMMPSインプットジェネレータからの警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Lammps input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか?  Lammpsインプットプレビュー画面での変更は失"
-"われます。"
+msgstr "プレビューテキストを更新しますか?  Lammpsインプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:233
 msgid "Lammps Input"
@@ -2795,9 +2764,7 @@ msgstr "Molproインプットジェネレータ警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか?  Molproインプットプレビュー画面での変更は失"
-"われます。"
+msgstr "プレビューテキストを更新しますか?  Molproインプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
 msgid "Molpro Input Deck"
@@ -2811,9 +2778,7 @@ msgstr "MOPACインプット警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか? MOPACインプットプレビュー画面での変更は失わ"
-"れます。"
+msgstr "プレビューテキストを更新しますか? MOPACインプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
@@ -2855,8 +2820,7 @@ msgstr "MOPACがクラッシュしました"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:248
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"MOPACが適切に起動しませんでした。おそらく、適切にインストールされていません。"
+msgstr "MOPACが適切に起動しませんでした。おそらく、適切にインストールされていません。"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:126
 msgid "NWChem Input Deck Generator Warning"
@@ -2866,9 +2830,7 @@ msgstr "NewChem インプットジェネレーター警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか? NWChemインプットプレビュー画面での変更は失"
-"われます。"
+msgstr "プレビューテキストを更新しますか? NWChemインプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
 msgid "NWChem Input Deck"
@@ -2882,9 +2844,7 @@ msgstr "Psi4 インプットジェネレーター警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Psi4 input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか? Psi4 インプットプレビュー画面での変更は失わ"
-"れます。"
+msgstr "プレビューテキストを更新しますか? Psi4 インプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:173
 msgid "Psi4 Input Deck"
@@ -2898,9 +2858,7 @@ msgstr "Q-Chem インプットジェネレーター警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか? Q-Chem インプットプレビュー画面での変更は失"
-"われます。"
+msgstr "プレビューテキストを更新しますか? Q-Chem インプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
 msgid "QChem Input Deck"
@@ -2914,9 +2872,7 @@ msgstr "TeraChem インプットジェネレーター警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "TeraChem input deck preview pane?"
-msgstr ""
-"プレビューテキストを更新しますか? TeraChem インプットプレビュー画面での変更は"
-"失われます。"
+msgstr "プレビューテキストを更新しますか? TeraChem インプットプレビュー画面での変更は失われます。"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:175
 msgid "TeraChem Input Deck"
@@ -2964,7 +2920,7 @@ msgstr "残基による選択"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231 :198
 msgid "Residue name"
 msgstr "残基名"
 
@@ -3026,7 +2982,7 @@ msgstr "シェーダーパラメーターファイル (*.param)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4432
+#: src/extensions/shaderextension.h:41 :4432
 msgid "GLSL Shaders"
 msgstr "GLSL シェーダー"
 
@@ -3076,9 +3032,7 @@ msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
-msgstr ""
-"ロードされている分子の振動データには強度データがありません。視覚化のためには"
-"任意の値を強度データとして入力してください。"
+msgstr "ロードされている分子の振動データには強度データがありません。視覚化のためには任意の値を強度データとして入力してください。"
 
 #: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:139
 msgid "Wavenumber (cm<sup>-1</sup>)"
@@ -3106,13 +3060,13 @@ msgstr "Y 軸"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4493
+#: src/extensions/spectra/spectradialog.cpp:188 :4493
 msgid "&Appearance"
 msgstr "外観(&A)"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4559
+#: src/extensions/spectra/spectradialog.cpp:189 :4559
 msgid "E&xport Image"
 msgstr "画像のエクスポート(&E)"
 
@@ -3340,7 +3294,7 @@ msgstr "不正なファイル名"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1174
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/extensions/spectra/spectradialog.cpp:956
-#: src/extensions/surfaces/surfaceextension.cpp:568:1443
+#: src/extensions/surfaces/surfaceextension.cpp:568 :1443
 msgid "Error"
 msgstr "エラー"
 
@@ -3364,7 +3318,7 @@ msgstr "詳細設定(&A) <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4487
+#: src/extensions/spectra/spectradialog.cpp:998 :4487
 msgid "&Advanced >>"
 msgstr "詳細設定(&A) >>"
 
@@ -3390,7 +3344,7 @@ msgstr "振動"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:204:3094
+#: src/extensions/spectra/vibrationextension.cpp:204 :3094
 msgid "Vibrational Analysis"
 msgstr "振動解析"
 
@@ -3414,7 +3368,7 @@ msgstr "%1振動を周波数で並び換え"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:283
-#: src/extensions/spectra/vibrationwidget.cpp:293:4766
+#: src/extensions/spectra/vibrationwidget.cpp:293 :4766
 msgid "Start &Animation"
 msgstr "アニメーションを開始(&A)"
 
@@ -3427,7 +3381,7 @@ msgstr "アニメーションを停止(&A)"
 #: src/extensions/spectra/vibrationwidget.cpp:286
 #: src/extensions/spectra/vibrationwidget.cpp:295
 #: src/extensions/spectra/vibrationwidget.cpp:304
-#: src/extensions/spectra/vibrationwidget.cpp:307:4769
+#: src/extensions/spectra/vibrationwidget.cpp:307 :4769
 msgid "Pause"
 msgstr "一時停止"
 
@@ -3447,8 +3401,7 @@ msgstr "警告"
 msgid ""
 "This document is currently an isolated molecule. You need to create a unit "
 "cell."
-msgstr ""
-"このドキュメントは孤立系を含んでいます。ユニットセルを作成してください。"
+msgstr "このドキュメントは孤立系を含んでいます。ユニットセルを作成してください。"
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
@@ -3591,7 +3544,7 @@ msgstr "ナノチューブビルダ(&N)"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4918
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66 :4918
 msgid "Nanotube Builder"
 msgstr "ナノチューブビルダ"
 
@@ -3626,22 +3579,20 @@ msgid "Building..."
 msgstr "構築中..."
 
 #: src/extensions/symmetry/symmetryextension.cpp:95
-#, fuzzy
 msgid "Symmetry Properties..."
-msgstr "配座異性体のプロパティ..."
+msgstr "対称性の性質..."
 
 #: src/extensions/symmetry/symmetryextension.cpp:170
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/extensions/symmetry/symmetryextension.h:55
-#, fuzzy
 msgid "Symmetry Properties"
-msgstr "配座異性体のプロパティ"
+msgstr "対称性の性質"
 
 #: src/extensions/symmetry/symmetryextension.h:56
 msgid "Display point group symmetry."
-msgstr ""
+msgstr "点群の対称性を表示"
 
 #: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
@@ -3843,13 +3794,11 @@ msgstr "ファイル %1 を書き込みモードで開けません。"
 
 #: src/moleculefile.cpp:495
 msgid "Saving molecular file failed - could not rename original file."
-msgstr ""
-"分子ファイルの保存に失敗しました - オリジナルファイルをリネームできません。"
+msgstr "分子ファイルの保存に失敗しました - オリジナルファイルをリネームできません。"
 
 #: src/moleculefile.cpp:502
 msgid "Saving molecular file failed - could not rename new file."
-msgstr ""
-"分子ファイルの保存に失敗しました - 新しいファイルをリネームできません。"
+msgstr "分子ファイルの保存に失敗しました - 新しいファイルをリネームできません。"
 
 #: src/moleculefile.cpp:511
 msgid "Saving molecular file failed - could not remove old file."
@@ -3858,9 +3807,7 @@ msgstr "分子ファイルの保存に失敗しました - 古いファイルを
 #: src/moleculefile.cpp:520
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
-msgstr ""
-"ファイル'%1'への分子の書き込みに失敗しました。OpenBabelライブラリのエラーで"
-"す。"
+msgstr "ファイル'%1'への分子の書き込みに失敗しました。OpenBabelライブラリのエラーです。"
 
 #: src/moleculefile.cpp:537
 #, qt-format
@@ -4049,13 +3996,13 @@ msgstr "アルゴリズム:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:301:834
+#: src/tools/autoopttool.cpp:301 :834
 msgid "Steepest Descent"
 msgstr "最急降下法"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:302:837
+#: src/tools/autoopttool.cpp:302 :837
 msgid "Conjugate Gradients"
 msgstr "共役勾配法"
 
@@ -4088,7 +4035,7 @@ msgstr "無視された原子を移動可能にする"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, stopButton)
-#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224:1197
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224 :1197
 msgid "Stop"
 msgstr "ストップ"
 
@@ -4160,7 +4107,7 @@ msgstr "z 回転"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1500 rc.cpp:1701 rc.cpp:2260
+#: src/tools/autorotatetool.cpp:296 :1500 rc.cpp:1701 rc.cpp:2260
 msgid "Reset"
 msgstr "リセット"
 
@@ -4323,7 +4270,7 @@ msgstr "測定の設定"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
 msgid "Add Atom"
 msgstr "原子を追加"
 
@@ -4377,7 +4324,7 @@ msgstr "元素:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:819:2725
+#: src/tools/drawtool.cpp:819 :2725
 msgid "Other..."
 msgstr "その他..."
 
@@ -4387,13 +4334,13 @@ msgstr "結合次数:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:828:912
+#: src/tools/drawtool.cpp:828 :912
 msgid "Single"
 msgstr "単結合"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:829:915
+#: src/tools/drawtool.cpp:829 :915
 msgid "Double"
 msgstr "二重結合"
 
@@ -4571,7 +4518,7 @@ msgstr "Z マトリックスエディター..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2812
+#: src/tools/zmatrixtool.h:39 :2812
 msgid "Z-Matrix"
 msgstr "Z マトリックス"
 
@@ -5266,10 +5213,10 @@ msgstr "変更を戻す"
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5278,17 +5225,17 @@ msgid ""
 "coordinates here. You may paste almost any fragment of text, containing "
 "coordinates</p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
 " <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">原子座標をここにペーストす"
-"るｋここで編集してください。座標を含むほぼどんなテキストもペーストできます。"
-"</p></body></html>"
+"right:0px; -qt-block-indent:0; text-"
+"indent:0px;\">原子座標をここにペーストするｋここで編集してください。座標を含むほぼどんなテキストもペーストできます。</p></body><"
+"/html>"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
@@ -5493,10 +5440,10 @@ msgstr "原子識別子(&i):"
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:57
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5504,10 +5451,10 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
 "size:11pt;\"> H 100.00000 100.00000 100.00000</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5541,10 +5488,10 @@ msgstr "セルマトリックス"
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:74
 #. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5558,10 +5505,10 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
 "size:12pt;\">  0.00000 0.00000 3.00000</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -6467,70 +6414,50 @@ msgstr "閉じる"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Frames"
-msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,Avogadro Team,"
-"Geoff Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Katsuhiko Nishimra,Kenichi Ito,Rubia,aoyama iwao,hide D,tomo"
+msgstr "コマ数"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:160
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Scaling Factor"
-msgstr "スケール因子 (&F):"
+msgstr "変位の大きさ"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:190
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
-#, fuzzy
 msgid "Load File"
-msgstr "ファイルをロード..."
+msgstr "ファイルをロード"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:210
 #. i18n: ectx: property (text), widget (QPushButton, plotButton)
-#, fuzzy
 msgid "Plot Spectra"
-msgstr "スペクトルをインポート"
+msgstr "スペクトルをプロット"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:226
 #. i18n: ectx: property (title), widget (QGroupBox, fragmentGroup)
-#, fuzzy
 msgid "Fragments"
-msgstr "フラグメント..."
+msgstr "フラグメント"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:238
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
-#, fuzzy
 msgid "select Fragment"
-msgstr "フラグメントを挿入"
+msgstr "フラグメントを選択"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:27
 #. i18n: ectx: attribute (title), widget (QWidget, basicSetupTab)
-#, fuzzy
 msgid "Basic"
-msgstr "基本"
+msgstr "基本設定"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:836
 #. i18n: ectx: property (text), widget (QLabel, label_12)
-#, fuzzy
 msgid "Comment"
-msgstr "コマンド:"
+msgstr "コメント"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#, fuzzy
 msgid "Calculation"
-msgstr "計算:"
+msgstr "計算"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
@@ -6563,7 +6490,6 @@ msgstr "1点エネルギー"
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunTypeCombo)
-#, fuzzy
 msgid "Frequency"
 msgstr "振動解析"
 
@@ -6637,47 +6563,41 @@ msgstr "CCSD"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:158
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Basis set"
-msgstr "基底:"
+msgstr "基底"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:744
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#, fuzzy
 msgid "Charge"
-msgstr "電荷:"
+msgstr "電荷"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:236
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:773
 #. i18n: ectx: property (text), widget (QLabel, label_17)
-#, fuzzy
 msgid "Multiplicity"
-msgstr "多重度:"
+msgstr "多重度"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Format"
-msgstr "書式:"
+msgstr "フォーマット"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:871
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix"
-msgstr "Z マトリックス"
+msgstr "zマトリックス"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:876
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix compact"
-msgstr "Z-マトリックス（コンパクト）"
+msgstr "zマトリックス(コンパクト)"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:350
 #. i18n: ectx: attribute (title), widget (QWidget, advancedSetupTab)
@@ -6692,9 +6612,8 @@ msgstr "詳細"
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:429
 #. i18n: ectx: property (title), widget (QGroupBox, basisBasisGroup)
-#, fuzzy
 msgid "Basis Set"
-msgstr "基底:"
+msgstr "基底"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:373
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6715,7 +6634,7 @@ msgstr "SCF"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:615
 #. i18n: ectx: property (text), widget (QCheckBox, controlCosXCheck)
 msgid "RijCosX"
-msgstr ""
+msgstr "RijCosX"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:393
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6726,81 +6645,73 @@ msgstr "データ"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:454
 #. i18n: ectx: property (text), widget (QCheckBox, basisECPCheck)
-#, fuzzy
 msgid "ECP"
-msgstr "EPS"
+msgstr "ECP"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:468
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxBasisGroup)
-#, fuzzy
 msgid "Aux. Basis Set"
-msgstr "基底:"
+msgstr "補助基底"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:493
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxECPCheck)
 msgid "Aux. ECP"
-msgstr ""
+msgstr "補助ECP"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:507
 #. i18n: ectx: property (title), widget (QGroupBox, basisRelativisticGroup)
-#, fuzzy
 msgid "Relativistic"
-msgstr "相対値"
+msgstr "相対論的"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:529
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
 msgid "ZORA"
-msgstr ""
+msgstr "ZORA"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:534
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
 msgid "IORA"
-msgstr ""
+msgstr "IORA"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:539
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
-#, fuzzy
 msgid "DKH"
-msgstr "DnH"
+msgstr "DKH"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, basisDKHLabel)
-#, fuzzy
 msgid "Order"
-msgstr "結合次数"
+msgstr "オーダー"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:574
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxCorrBasisGroup)
-#, fuzzy
 msgid "Corr. Aux. Basis Set"
-msgstr "基底:"
+msgstr "相関補正基底"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:599
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxCorrECPCheck)
 msgid "Corr. ECP"
-msgstr ""
+msgstr "相関ECP"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:728
 #. i18n: ectx: property (text), widget (QLabel, label_13)
-#, fuzzy
 msgid "Run type"
-msgstr "計算タイプ:"
+msgstr "計算"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:794
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 msgid "Add. Print Options"
-msgstr ""
+msgstr "追加のプリントオプション"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:806
 #. i18n: ectx: property (text), widget (QCheckBox, MOPrintCheck)
 msgid "MOs"
-msgstr ""
+msgstr "MO"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:819
 #. i18n: ectx: property (text), widget (QCheckBox, basisPrintCheck)
-#, fuzzy
 msgid "Basis Sets"
-msgstr "基底:"
+msgstr "基底"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:858
 #. i18n: ectx: property (text), widget (QLabel, label_23)
@@ -6812,7 +6723,7 @@ msgstr "カルテシアン座標エディタ"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:896
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Printlevel"
-msgstr ""
+msgstr "プリントレベル"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:904
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6823,14 +6734,13 @@ msgstr "なし"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:909
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Mini"
-msgstr "最小:"
+msgstr "小"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:914
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
 msgid "Small"
-msgstr ""
+msgstr "やや小"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:919
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6838,154 +6748,140 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Normal"
-msgstr "標準"
+msgstr "中"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Large"
-msgstr "charge"
+msgstr "大"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:950
 #. i18n: ectx: property (title), widget (QGroupBox, scfDampingGroup)
 msgid "Damping"
-msgstr ""
+msgstr "ダンプ"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1012
 #. i18n: ectx: property (text), widget (QLabel, label_36)
-#, fuzzy
 msgid "Factor"
-msgstr "スケール因子 (&F):"
+msgstr "ファクター"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1025
 #. i18n: ectx: property (text), widget (QLabel, label_37)
-#, fuzzy
 msgid " Error "
-msgstr "エラー"
+msgstr " 誤差 "
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1038
 #. i18n: ectx: property (text), widget (QLabel, label_41)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1200
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid ""
-"<html><head/><body><p><span style=\" font-size:10pt; font-style:italic;"
-"\">select only if no defaults are wanted</span></p></body></html>"
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">select only if no defaults are "
+"wanted</span></p></body></html>"
 msgstr ""
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">デフォルト値を使用しない場合選択してください</span></p></body></html>"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1055
 #. i18n: ectx: property (text), widget (QLabel, label_38)
 msgid "Accuracy"
-msgstr ""
+msgstr "精度"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1068
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
-#, fuzzy
 msgid "Tight SCF"
-msgstr "ダイレクトSCF"
+msgstr "高精度なSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1073
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
-#, fuzzy
 msgid "Very Tight SCF"
-msgstr "最高"
+msgstr "非常に高精度なSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1078
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 msgid "Extreme SCF"
-msgstr ""
+msgstr "最高精度SCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1095
 #. i18n: ectx: property (title), widget (QGroupBox, scfConvergerGroupBox)
-#, fuzzy
 msgid "Convergers"
-msgstr "収束"
+msgstr "最適化法"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QRadioButton, scfDIISRadio)
 msgid "DIIS"
-msgstr ""
+msgstr "DIIS"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1120
 #. i18n: ectx: property (text), widget (QRadioButton, scfKDIISRadio)
 msgid "KDIIS"
-msgstr ""
+msgstr "KDIIS"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1134
 #. i18n: ectx: property (title), widget (QGroupBox, scfLevelShiftGroup)
-#, fuzzy
 msgid "Levelshift "
-msgstr "ラベルのオフセット:"
+msgstr "レベルシフト "
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1187
 #. i18n: ectx: property (text), widget (QLabel, label_16)
-#, fuzzy
 msgid "Levelshift"
-msgstr "ラベルのオフセット:"
+msgstr "レベルシフト"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1236
 #. i18n: ectx: property (title), widget (QGroupBox, scf2ndOrderGroupBox)
-#, fuzzy
 msgid "2nd Order"
-msgstr "結合次数"
+msgstr "２次計算"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1248
 #. i18n: ectx: property (text), widget (QRadioButton, scfSOSCFRadio)
 msgid "SOSCF"
-msgstr ""
+msgstr "SOSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1261
 #. i18n: ectx: property (text), widget (QRadioButton, scfNRSCFRadio)
 msgid "NRSCF"
-msgstr ""
+msgstr "NRSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1274
 #. i18n: ectx: property (text), widget (QRadioButton, scfAHSCFRadio)
 msgid "AHSCF"
-msgstr ""
+msgstr "AHSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1291
 #. i18n: ectx: property (text), widget (QLabel, label_40)
-#, fuzzy
 msgid "max. SCF iterations"
-msgstr "SCF 最大反復数:"
+msgstr "SCF最大反復"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1320
 #. i18n: ectx: property (text), widget (QLabel, label_24)
-#, fuzzy
 msgid "SCF Type"
-msgstr "SCF タイプ:"
+msgstr "SCFタイプ"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1331
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
-#, fuzzy
 msgid "restricted"
-msgstr "非制限"
+msgstr "制限"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1336
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
-#, fuzzy
 msgid "unrestricted"
 msgstr "非制限"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1341
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
-#, fuzzy
 msgid "restricted open-shell"
-msgstr "非制限"
+msgstr "制限開殻"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1363
 #. i18n: ectx: property (text), widget (QCheckBox, cosXSFittingCheck)
-#, fuzzy
 msgid "SFitting"
-msgstr "設定(&S)"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1379
 #. i18n: ectx: property (text), widget (QLabel, label_31)
-#, fuzzy
 msgid "GridX"
-msgstr "グリッド"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1402
 #. i18n: ectx: property (text), widget (QLabel, label_32)
@@ -6994,9 +6890,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1426
 #. i18n: ectx: property (text), widget (QLabel, label_21)
-#, fuzzy
 msgid "DFT Functional"
-msgstr "DFT 汎関数"
+msgstr "DFT汎関数"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1448
 #. i18n: ectx: property (text), widget (QLabel, label_33)
@@ -7007,9 +6902,8 @@ msgstr "グリッド"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1471
 #. i18n: ectx: property (text), widget (QLabel, label_34)
-#, fuzzy
 msgid "FinalGrid"
-msgstr "グリッド"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1530
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -9880,8 +9774,7 @@ msgid ""
 "On modern systems with fast processors and slow disks, direct is often "
 "faster."
 msgstr ""
-"ダイレクトモードでは積分値はディスクに保存されませんが、必要に応じて再計算さ"
-"れます。\n"
+"ダイレクトモードでは積分値はディスクに保存されませんが、必要に応じて再計算されます。\n"
 "高速なプロセッサとアクセスの遅いディスクを持つ現代的なシステムでは\n"
 "ダイレクトモードの方がおおむね高速です。"
 
@@ -9964,31 +9857,33 @@ msgstr "シミュレーションで用いる単位形式を選択"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
 #. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
 "font-weight:400; font-style:normal;\">\n"
 " <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
 #. i18n: ectx: property (text), widget (QLabel, label_units)
@@ -10059,31 +9954,33 @@ msgstr "データファイルで使用する原子形式 (atom_style) を選択"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
 #. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; "
 "font-weight:400; font-style:normal;\">\n"
 " <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
 #. i18n: ectx: property (text), widget (QLabel, label_atomstyle)
@@ -10459,10 +10356,10 @@ msgstr "複数行"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
 #. i18n: ectx: property (html), widget (QTextEdit, previewText)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -10470,10 +10367,10 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "family:'Courier New,courier'; font-size:10pt;\"></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-" <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+" <html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 " p, li { white-space: pre-wrap; }\n"
 " </style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -10885,9 +10782,7 @@ msgstr "画像を保存(&S)..."
 msgid ""
 "Use an optimized value for the font size instead of the scheme-specified "
 "value (screen to image point sizes don't translate well!)"
-msgstr ""
-"スキームが指定したフォントサイズの代わりに最適化された値を使用しまする（画面"
-"から画像へのポイントサイズの変換はうまくいかない！）"
+msgstr "スキームが指定したフォントサイズの代わりに最適化された値を使用しまする（画面から画像へのポイントサイズの変換はうまくいかない！）"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:631
 #. i18n: ectx: property (text), widget (QCheckBox, cb_imageFontAdjust)
@@ -11419,27 +11314,23 @@ msgstr "終了したら隠す(&H)"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SymmetryDialog)
-#, fuzzy
 msgid "Molecular Symmetry"
-msgstr "分子の性質"
+msgstr "分子の対称性"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, toleranceLabel)
-#, fuzzy
 msgid "Tolerance:"
-msgstr "SCFの収束基準値"
+msgstr "許容値:"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:49
 #. i18n: ectx: property (text), widget (QPushButton, detectSymmetryButton)
-#, fuzzy
 msgid "Detect Symmetry"
-msgstr "対称性"
+msgstr "対称性を検出"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Tight"
-msgstr "明るく"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
@@ -11448,9 +11339,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
-#, fuzzy
 msgid "Symmetrize"
-msgstr "対称性"
+msgstr "対称化"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -11530,28 +11420,37 @@ msgstr "原子を削除"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,Avogadro Team,"
-"Geoff Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,hide D,tomo, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Katsuhiko Nishimra,Kenichi Ito,Rubia,aoyama iwao,hide D,tomo"
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Katsuhiko Nishimra,Kenichi "
+"Ito,Rubia,aoyama iwao,hide D,tomo, ,Launchpad Contributions:,Avogadro "
+"Team,Geoff Hutchison,Katsuhiko Nishimra,Kenichi Ito,Rubia,aoyama iwao,hide "
+"D,tomo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
-"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,,,,"
-"avogadro-devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge."
-"net,,,,,,avogadro-devel@lists.sourceforge.net,,,,,,avogadro-devel@lists."
-"sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,ktns.87@gmail.com,"
-"ken.i54k@gmail.com,,iwao.aoyama@gmail.com,,"
+",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ktns.87@gmail.com,ken.i54k@gmail.com,,iwao.aoyam"
+"a@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ktns.87@gmail.com,ken.i54k@gmail.com,,iwao.aoyam"
+"a@gmail.com,,"
 
 #~ msgid "Ununhexium"
 #~ msgstr "ウンウンヘキシウム (Ununhexium)"
@@ -11589,14 +11488,17 @@ msgstr ""
 #~ msgid "Open Directory"
 #~ msgstr "ディレクトリを開く"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Y %1"
 #~ msgstr "Y %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "X %1"
 #~ msgstr "X %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Z  %1"
 #~ msgstr "Z %1"
@@ -11628,12 +11530,15 @@ msgstr ""
 #~ msgid "Fetch chemical structure..."
 #~ msgstr "化学構造を取ってくる"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "結合 %1"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "角度 %1"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "二面角 %1"
 
@@ -11828,3 +11733,43 @@ msgstr ""
 
 #~ msgid "Axes (Å)"
 #~ msgstr "軸 (Å)"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "現在孤立分子が表示されています.\n"
+#~ "\n"
+#~ "結晶ユニットセルを作成しますか?"
+
+#, qt-format
+#~ msgid "Atom Index %1"
+#~ msgstr "原子のインデックス %1"
+
+#~ msgid "Custom Value"
+#~ msgstr "カスタム値"
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "カスタマイズ(&z)<<"
+
+#~ msgid "Cartesian Properties"
+#~ msgstr "デカルト座標の性質"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "カスタマイズ(&z)>>"
+
+#~ msgid "alpha:"
+#~ msgstr "アルファ:"
+
+#~ msgid "beta:"
+#~ msgstr "ベータ:"
+
+#~ msgid "&Scale:"
+#~ msgstr "スケール(&S):"
+
+#~ msgid "Intensity (km/mol)"
+#~ msgstr "強度(km/mol)"
+
+#~ msgid "E&xport..."
+#~ msgstr "エクスポート(&x)..."

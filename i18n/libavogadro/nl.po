@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2015-03-23 18:10+0000\n"
+"PO-Revision-Date: 2015-09-09 17:15+0000\n"
 "Last-Translator: Sander Deryckere <sanderd17@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-24 05:12+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-09-10 05:23+0000\n"
+"X-Generator: Launchpad (build 17706)\n"
+"Language: nl\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -881,7 +881,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, animationGroup)
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:1191 rc.cpp:4754
+#: src/extensions/animationextension.h:39 :1191 rc.cpp:4754
 msgid "Animation"
 msgstr "Animatie"
 
@@ -891,12 +891,13 @@ msgstr "Animeer tracecten, reacties en vibraties"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:103:369
+#: src/extensions/cartesianextension.cpp:103 :369
 msgid "Cartesian Editor"
 msgstr "Cartesiaanse Editor"
 
 #: src/extensions/cartesianextension.cpp:104
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:565
@@ -915,7 +916,7 @@ msgstr "Cartesiaanse Bewerker..."
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110:4959
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110 :4959
 msgid "&Build"
 msgstr "&Bouw"
 
@@ -951,7 +952,8 @@ msgstr ""
 "toevoegen"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Je molecule moet minimum twee atomen bevatten om een bindingsbeperking te "
 "mogen toevoegen"
@@ -1273,10 +1275,10 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:2457
 #, qt-format
 msgid ""
-"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol %3."
-"<p><p>Cell can be symmetrized into a conventional setting, do you wish to do "
-"so? Actions that make use of symmetry (e.g. supercell builder) require this."
-"<p>"
+"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol "
+"%3.<p><p>Cell can be symmetrized into a conventional setting, do you wish to "
+"do so? Actions that make use of symmetry (e.g. supercell builder) require "
+"this.<p>"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2479
@@ -1397,7 +1399,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:26
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75:577
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75 :577
 msgid "Fractional Coordinates"
 msgstr ""
 
@@ -1435,7 +1437,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/ceslabbuilder.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, buildButton)
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232:692
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232 :692
 msgid "Build"
 msgstr ""
 
@@ -1445,7 +1447,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
-#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:695
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178 :695
 msgid "Translate Atoms"
 msgstr ""
 
@@ -1709,7 +1711,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/insertdnadialog.ui:79
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
-#: src/extensions/insertdnaextension.cpp:229:879
+#: src/extensions/insertdnaextension.cpp:229 :879
 msgid "Thymine"
 msgstr ""
 
@@ -1770,7 +1772,7 @@ msgstr "Peptide..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
+#: src/extensions/insertpeptideextension.h:43 :936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "Voeg Peptide in"
 
@@ -1899,9 +1901,8 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:262
 #: src/extensions/orca/orcaanalysedialog.cpp:284
 #: src/extensions/orca/orcaspectra.cpp:92
-#, fuzzy
 msgid "OrcaExtension"
-msgstr "Extensies"
+msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:189
 msgid " No vibration data found!"
@@ -1977,14 +1978,12 @@ msgid ""
 msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:1253
-#, fuzzy
 msgid "Could not read file!"
-msgstr "Kan het bestand %1 niet lezen."
+msgstr ""
 
 #: src/extensions/orca/orcaextension.cpp:78
-#, fuzzy
 msgid "Generate Orca Input..."
-msgstr "Genereer..."
+msgstr ""
 
 #: src/extensions/orca/orcaextension.cpp:84
 msgid "Analyse Orca Output..."
@@ -2003,9 +2002,8 @@ msgid "Provides a dialog box with the words \"H...\"."
 msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:542
-#, fuzzy
 msgid "ORCA Input Deck"
-msgstr "Sla MOPAC Input Deck op"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2019,7 +2017,7 @@ msgstr "Sla MOPAC Input Deck op"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3994
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183 :3994
 msgid "Show Preview"
 msgstr "Toon Voorbeeld"
 
@@ -2053,15 +2051,14 @@ msgstr "Toon Voorbeeld"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1497
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187 :1497
 msgid "Hide Preview"
 msgstr "Verberg Voorbeeld"
 
 #: src/extensions/orca/orcainputdialog.cpp:719
 #: src/extensions/orca/orcainputdialog.cpp:797
-#, fuzzy
 msgid " Selection failure"
-msgstr "Selectie Mode:"
+msgstr ""
 
 #: src/extensions/orca/orcainputdialog.cpp:720
 msgid "RijCosX option not available for the selected DFT functional!"
@@ -2103,13 +2100,13 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#: src/extensions/orca/orcaspectra.cpp:84:2353 rc.cpp:3229 rc.cpp:3341
+#: src/extensions/orca/orcaspectra.cpp:84 :2353 rc.cpp:3229 rc.cpp:3341
 msgid "Frequencies"
 msgstr "Frequenties"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#: src/extensions/orca/orcaspectra.cpp:85:4679
+#: src/extensions/orca/orcaspectra.cpp:85 :4679
 msgid "Intensities"
 msgstr ""
 
@@ -2233,7 +2230,7 @@ msgstr "Conformer Eigenschappen"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1741 rc.cpp:2242 rc.cpp:2584
+#: src/extensions/propextension.h:43 :1741 rc.cpp:2242 rc.cpp:2584
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -2247,14 +2244,14 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:393:448
+#: src/extensions/propmodel.cpp:393 :448
 msgid "Element"
 msgstr "Element"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/extensions/propmodel.cpp:395 src/extensions/propmodel.cpp:438
-#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481:517
+#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481 :517
 msgid "Type"
 msgstr "Type"
 
@@ -2328,7 +2325,7 @@ msgstr "Hoek %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:475:538
+#: src/extensions/propmodel.cpp:475 :538
 msgid "Angle"
 msgstr "Hoek"
 
@@ -2578,7 +2575,7 @@ msgstr "Creëer input bestanden voor het GAMESS quantum chemistry pakket"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1572
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632 :1572
 msgid "Title"
 msgstr "Titel"
 
@@ -2660,7 +2657,8 @@ msgstr "Gaussian Bezig."
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:288
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr "Gaussian is al bezig. Dat arm beestje van een computer niet opjagen é."
+msgstr ""
+"Gaussian is al bezig. Dat arm beestje van een computer niet opjagen é."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:299
 msgid "Gaussian Not Installed."
@@ -2687,7 +2685,8 @@ msgid "G03 Crashed."
 msgstr "G03 Crashed."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian is niet correct gestart. Misschien is het niet correct "
 "geïnstalleerd."
@@ -2934,7 +2933,7 @@ msgstr "Selecteer per residu"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231 :198
 msgid "Residue name"
 msgstr "Residu naam"
 
@@ -2996,7 +2995,7 @@ msgstr "Shader parameters bestanden (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4432
+#: src/extensions/shaderextension.h:41 :4432
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -3077,13 +3076,13 @@ msgstr "Y As"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4493
+#: src/extensions/spectra/spectradialog.cpp:188 :4493
 msgid "&Appearance"
 msgstr "&Uitzicht"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4559
+#: src/extensions/spectra/spectradialog.cpp:189 :4559
 msgid "E&xport Image"
 msgstr "E&xporteer Beeld"
 
@@ -3311,7 +3310,7 @@ msgstr "Ongeldige Bestandsnaam"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1174
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/extensions/spectra/spectradialog.cpp:956
-#: src/extensions/surfaces/surfaceextension.cpp:568:1443
+#: src/extensions/surfaces/surfaceextension.cpp:568 :1443
 msgid "Error"
 msgstr "FOUT"
 
@@ -3335,7 +3334,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4487
+#: src/extensions/spectra/spectradialog.cpp:998 :4487
 msgid "&Advanced >>"
 msgstr ""
 
@@ -3361,7 +3360,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:204:3094
+#: src/extensions/spectra/vibrationextension.cpp:204 :3094
 msgid "Vibrational Analysis"
 msgstr "Vibratie Analyse"
 
@@ -3385,7 +3384,7 @@ msgstr "Sorteer %1 vibraties per frequentie..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:283
-#: src/extensions/spectra/vibrationwidget.cpp:293:4766
+#: src/extensions/spectra/vibrationwidget.cpp:293 :4766
 msgid "Start &Animation"
 msgstr "Start &Animatie"
 
@@ -3398,7 +3397,7 @@ msgstr "Stop &Animatie"
 #: src/extensions/spectra/vibrationwidget.cpp:286
 #: src/extensions/spectra/vibrationwidget.cpp:295
 #: src/extensions/spectra/vibrationwidget.cpp:304
-#: src/extensions/spectra/vibrationwidget.cpp:307:4769
+#: src/extensions/spectra/vibrationwidget.cpp:307 :4769
 msgid "Pause"
 msgstr ""
 
@@ -3563,7 +3562,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4918
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66 :4918
 msgid "Nanotube Builder"
 msgstr ""
 
@@ -3595,18 +3594,16 @@ msgid "Building..."
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:95
-#, fuzzy
 msgid "Symmetry Properties..."
-msgstr "conformer Eigenschappen..."
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:170
 msgid "∞"
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:55
-#, fuzzy
 msgid "Symmetry Properties"
-msgstr "Conformer Eigenschappen"
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:56
 msgid "Display point group symmetry."
@@ -4007,13 +4004,13 @@ msgstr "Algoritme"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:301:834
+#: src/tools/autoopttool.cpp:301 :834
 msgid "Steepest Descent"
 msgstr "Stijlste Afdaling"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:302:837
+#: src/tools/autoopttool.cpp:302 :837
 msgid "Conjugate Gradients"
 msgstr "Vervoeg Gradienten"
 
@@ -4046,7 +4043,7 @@ msgstr "Genegeerde atomen zijn beweegbaar"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, stopButton)
-#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224:1197
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224 :1197
 msgid "Stop"
 msgstr "Stop"
 
@@ -4118,7 +4115,7 @@ msgstr "z-rotatie"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1500 rc.cpp:1701 rc.cpp:2260
+#: src/tools/autorotatetool.cpp:296 :1500 rc.cpp:1701 rc.cpp:2260
 msgid "Reset"
 msgstr "Reset"
 
@@ -4266,7 +4263,7 @@ msgstr "Meet instellingen"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
 msgid "Add Atom"
 msgstr "Voeg Atoom Toe"
 
@@ -4316,7 +4313,7 @@ msgstr "Element:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:819:2725
+#: src/tools/drawtool.cpp:819 :2725
 msgid "Other..."
 msgstr "Ande..."
 
@@ -4326,13 +4323,13 @@ msgstr "Bindings Orde:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:828:912
+#: src/tools/drawtool.cpp:828 :912
 msgid "Single"
 msgstr "Enkel"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:829:915
+#: src/tools/drawtool.cpp:829 :915
 msgid "Double"
 msgstr "Dubbel"
 
@@ -4491,7 +4488,7 @@ msgstr "Z Matrix Editor..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2812
+#: src/tools/zmatrixtool.h:39 :2812
 msgid "Z-Matrix"
 msgstr "Z-Matrix"
 
@@ -5186,10 +5183,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5402,10 +5399,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:57
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5440,10 +5437,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:74
 #. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -6350,24 +6347,8 @@ msgstr "SluitenG"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Frames"
 msgstr ""
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, ,"
-"Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
-"Deryckere,Water,cumulus007, ,Launchpad Contributions:,Geoff Hutchison,Sander "
-"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,"
-"cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"Joostkam,Sander Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,"
-"Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
-"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,"
-"cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"Joostkam,Sander Deryckere,Water,Willem Sonke,Yentl,cumulus007,goto"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:160
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -6376,47 +6357,40 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:190
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
-#, fuzzy
 msgid "Load File"
-msgstr "Bestand laden..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:210
 #. i18n: ectx: property (text), widget (QPushButton, plotButton)
-#, fuzzy
 msgid "Plot Spectra"
-msgstr "Importeer Spectra"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:226
 #. i18n: ectx: property (title), widget (QGroupBox, fragmentGroup)
-#, fuzzy
 msgid "Fragments"
-msgstr "Fragmenteer..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:238
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
-#, fuzzy
 msgid "select Fragment"
-msgstr "voeg Fragment in"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:27
 #. i18n: ectx: attribute (title), widget (QWidget, basicSetupTab)
-#, fuzzy
 msgid "Basic"
-msgstr "Basis"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:836
 #. i18n: ectx: property (text), widget (QLabel, label_12)
-#, fuzzy
 msgid "Comment"
-msgstr "Commando:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#, fuzzy
 msgid "Calculation"
-msgstr "Berekening:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
@@ -6449,9 +6423,8 @@ msgstr "Enkel Punt Energie"
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunTypeCombo)
-#, fuzzy
 msgid "Frequency"
-msgstr "Frequenties"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, basicMethodCombo)
@@ -6523,47 +6496,41 @@ msgstr "CCSD"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:158
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Basis set"
-msgstr "Basis Verzameling:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:744
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#, fuzzy
 msgid "Charge"
-msgstr "Lading:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:236
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:773
 #. i18n: ectx: property (text), widget (QLabel, label_17)
-#, fuzzy
 msgid "Multiplicity"
-msgstr "Multipliciteit:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Format"
-msgstr "Formaat:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:871
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix"
-msgstr "Z-Matrix"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:876
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix compact"
-msgstr "Z-matrix (compact)"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:350
 #. i18n: ectx: attribute (title), widget (QWidget, advancedSetupTab)
@@ -6578,9 +6545,8 @@ msgstr "Geavanceerd"
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:429
 #. i18n: ectx: property (title), widget (QGroupBox, basisBasisGroup)
-#, fuzzy
 msgid "Basis Set"
-msgstr "Basis Verzameling:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:373
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6612,15 +6578,13 @@ msgstr "Data"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:454
 #. i18n: ectx: property (text), widget (QCheckBox, basisECPCheck)
-#, fuzzy
 msgid "ECP"
-msgstr "EPS"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:468
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxBasisGroup)
-#, fuzzy
 msgid "Aux. Basis Set"
-msgstr "Basis Verzameling:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:493
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxECPCheck)
@@ -6644,21 +6608,18 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:539
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
-#, fuzzy
 msgid "DKH"
-msgstr "DnH"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, basisDKHLabel)
-#, fuzzy
 msgid "Order"
-msgstr "Bindings Orde"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:574
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxCorrBasisGroup)
-#, fuzzy
 msgid "Corr. Aux. Basis Set"
-msgstr "Basis Verzameling:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:599
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxCorrECPCheck)
@@ -6667,9 +6628,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:728
 #. i18n: ectx: property (text), widget (QLabel, label_13)
-#, fuzzy
 msgid "Run type"
-msgstr "Run Type:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:794
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
@@ -6683,9 +6643,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:819
 #. i18n: ectx: property (text), widget (QCheckBox, basisPrintCheck)
-#, fuzzy
 msgid "Basis Sets"
-msgstr "Basis Verzameling:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:858
 #. i18n: ectx: property (text), widget (QLabel, label_23)
@@ -6708,9 +6667,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:909
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Mini"
-msgstr "Minimum:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:914
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6723,15 +6681,13 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Normal"
-msgstr "Normale Uitvoering"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Large"
-msgstr "Lading:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:950
 #. i18n: ectx: property (title), widget (QGroupBox, scfDampingGroup)
@@ -6745,17 +6701,17 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1025
 #. i18n: ectx: property (text), widget (QLabel, label_37)
-#, fuzzy
 msgid " Error "
-msgstr "FOUT"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1038
 #. i18n: ectx: property (text), widget (QLabel, label_41)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1200
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid ""
-"<html><head/><body><p><span style=\" font-size:10pt; font-style:italic;"
-"\">select only if no defaults are wanted</span></p></body></html>"
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">select only if no defaults are "
+"wanted</span></p></body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1055
@@ -6765,15 +6721,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1068
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
-#, fuzzy
 msgid "Tight SCF"
-msgstr "Direct SCF"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1073
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
-#, fuzzy
 msgid "Very Tight SCF"
-msgstr "Zeer Hoog"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1078
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
@@ -6782,9 +6736,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1095
 #. i18n: ectx: property (title), widget (QGroupBox, scfConvergerGroupBox)
-#, fuzzy
 msgid "Convergers"
-msgstr "Convergentie"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QRadioButton, scfDIISRadio)
@@ -6808,9 +6761,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1236
 #. i18n: ectx: property (title), widget (QGroupBox, scf2ndOrderGroupBox)
-#, fuzzy
 msgid "2nd Order"
-msgstr "Bindings Orde"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1248
 #. i18n: ectx: property (text), widget (QRadioButton, scfSOSCFRadio)
@@ -6834,9 +6786,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1320
 #. i18n: ectx: property (text), widget (QLabel, label_24)
-#, fuzzy
 msgid "SCF Type"
-msgstr "SCF Type:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1331
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
@@ -6855,15 +6806,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1363
 #. i18n: ectx: property (text), widget (QCheckBox, cosXSFittingCheck)
-#, fuzzy
 msgid "SFitting"
-msgstr "&CD Instellingen"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1379
 #. i18n: ectx: property (text), widget (QLabel, label_31)
-#, fuzzy
 msgid "GridX"
-msgstr "Rooster"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1402
 #. i18n: ectx: property (text), widget (QLabel, label_32)
@@ -6884,9 +6833,8 @@ msgstr "Rooster"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1471
 #. i18n: ectx: property (text), widget (QLabel, label_34)
-#, fuzzy
 msgid "FinalGrid"
-msgstr "Rooster"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1530
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -9833,18 +9781,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
 #. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
@@ -9916,18 +9865,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
 #. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
@@ -10304,10 +10254,10 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
 #. i18n: ectx: property (html), widget (QTextEdit, previewText)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -11252,9 +11202,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SymmetryDialog)
-#, fuzzy
 msgid "Molecular Symmetry"
-msgstr "Moleculaire Eigenschappen"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, toleranceLabel)
@@ -11268,9 +11217,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Tight"
-msgstr "Licht"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
@@ -11360,42 +11308,48 @@ msgstr "verwijder atoom"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, ,"
-"Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
+",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, "
+",Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
 "Deryckere,Water,cumulus007, ,Launchpad Contributions:,Geoff Hutchison,Sander "
-"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,"
-"cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"Joostkam,Sander Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,"
-"Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
-"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,Joostkam,Sander Deryckere,Water,Willem1,Yentl,"
-"cumulus007,goto, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"Joostkam,Sander Deryckere,Water,Willem Sonke,Yentl,cumulus007,goto"
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem1,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem Sonke,Yentl,cumulus007,goto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Joostkam,Sander "
+"Deryckere,Water,Willem Sonke,Yentl,cumulus007,goto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,"
-"sanderd17@gmail.com,,,sanderd17@gmail.com,,cumulus0007@gmail.com,,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,willem.sonke@planet.nl,y.v.t@scarlet.be,"
-"cumulus0007@gmail.com,,,,avogadro-devel@lists.sourceforge.net,,,"
-"sanderd17@gmail.com,,,y.v.t@scarlet.be,,"
+",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,sander"
+"d17@gmail.com,,,sanderd17@gmail.com,,cumulus0007@gmail.com,,,,sanderd17@gmail"
+".com,,willem.sonke@planet.nl,y.v.t@scarlet.be,cumulus0007@gmail.com,,,,avogad"
+"ro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,willem.sonke@planet.nl,y.v"
+".t@scarlet.be,cumulus0007@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,,sanderd17@gmail.com,,,y.v.t@scarlet.be,,,,,avog"
+"adro-devel@lists.sourceforge.net,,,sanderd17@gmail.com,,,y.v.t@scarlet.be,,"
 
 #~ msgid "Ununbium"
 #~ msgstr "Ununbium"
@@ -11428,10 +11382,10 @@ msgstr ""
 #~ "\n"
 #~ "Klik met linkermuisknop op een binding om het manipulatievlak in te "
 #~ "stellen:\n"
-#~ "-Klik en versleep met linkermuisknop een van de atomen in de binding om "
-#~ "de hoek te wijzigen\n"
-#~ "-Klik en versleep met rechtermuisknop een van de atomen in de binding om "
-#~ "te lengte te wijzigen"
+#~ "-Klik en versleep met linkermuisknop een van de atomen in de binding om de "
+#~ "hoek te wijzigen\n"
+#~ "-Klik en versleep met rechtermuisknop een van de atomen in de binding om te "
+#~ "lengte te wijzigen"
 
 #~ msgid "alpha:"
 #~ msgstr "alfa:"
@@ -11490,6 +11444,9 @@ msgstr ""
 #~ msgid "MOPAC Input Deck (*.mop)"
 #~ msgstr "MOPAC Input Deck (*.mop)"
 
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "Sla MOPAC Input Deck op"
+
 #~ msgid "NWChem Input Deck (*.nw)"
 #~ msgstr "NWChem Input Deck (*.nw)"
 
@@ -11499,23 +11456,29 @@ msgstr ""
 #~ msgid "Cartesian Properties"
 #~ msgstr "Cartesiaanse Eigenschappen"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Binding %1"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Hoek %1"
 
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Atoom index %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Y %1"
 #~ msgstr "Y %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "X %1"
 #~ msgstr "X %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Z  %1"
 #~ msgstr "Z  %1"
@@ -11679,8 +11642,8 @@ msgstr ""
 #~ "Selectie Tool (F11)\n"
 #~ "klik om individuele atomen, residuen of fragmenten te nemen\n"
 #~ "sleep om meerdere atomen te selecteren\n"
-#~ "Gebruik Ctrl om de selectie van een atoom aan of uit te zetten en shift "
-#~ "om bij de selectie te voegen."
+#~ "Gebruik Ctrl om de selectie van een atoom aan of uit te zetten en shift om "
+#~ "bij de selectie te voegen."
 
 #~ msgid ""
 #~ "Navigation Tool (F9)\n"
@@ -11707,6 +11670,7 @@ msgstr ""
 #~ msgid "On:"
 #~ msgstr "Aan:"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsie %1"
 

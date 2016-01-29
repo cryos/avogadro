@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2015-03-23 18:26+0000\n"
-"Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
+"POT-Creation-Date: 2015-09-09 11:24-0400\n"
+"PO-Revision-Date: 2015-11-27 18:16+0000\n"
+"Last-Translator: Jean-Marc <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-24 05:10+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-11-28 04:37+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 "Language: \n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -49,9 +49,9 @@ msgid ""
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Version de QT : %1<br/><br/>Pour plus d'information, visitez le <a "
+"<br/><br/>Version de QT : %1<br/><br/>Pour plus d'information, visitez le <a "
 "href=\"http://avogadro.cc/\">site d'Avogadro</a>.<br/><br/>Le programme est "
-"fourni EN L'ETAT, sans AUCUNE SORTE DE GARANTIE, NI EXPLICITE,  NI "
+"fourni EN L'ÉTAT, sans AUCUNE SORTE DE GARANTIE, NI EXPLICITE,  NI "
 "IMPLICITE, Y COMPRIS LES GARANTIES DE CONCEPTION, DE COMMERCIALISATION OU "
 "D'ADAPTATION DANS UN BUT PARTICULIER.<br/>"
 
@@ -86,7 +86,7 @@ msgstr "Paramètres"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:970
 msgid "Open File"
-msgstr "Ouvrir fichier"
+msgstr "Ouvrir un fichier"
 
 #: src/mainwindow.cpp:408
 msgid "Messages"
@@ -156,7 +156,7 @@ msgstr "Sortie de logiciel de calcul de chimie"
 
 #: src/mainwindow.cpp:958
 msgid "Crystallographic Interchange CIF"
-msgstr "Echange cristallographique CIF"
+msgstr "Échange cristallographique CIF"
 
 #: src/mainwindow.cpp:959
 msgid "GAMESS-US Output"
@@ -247,11 +247,11 @@ msgstr "Titre de la molécule"
 
 #: src/mainwindow.cpp:1312
 msgid "Atoms: "
-msgstr "Atomes: "
+msgstr "Atomes : "
 
 #: src/mainwindow.cpp:1313
 msgid " Bonds: "
-msgstr " Liaisons: "
+msgstr " Liaisons : "
 
 #: src/mainwindow.cpp:1329
 msgid "File Loaded..."
@@ -259,11 +259,11 @@ msgstr "Fichier chargé..."
 
 #: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
-msgstr "Voulez-vous sauvegarder les modifications apportées au document ?"
+msgstr "Voulez-vous enregistrer les modifications apportées au document ?"
 
 #: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
-msgstr "Vos modifications seront perdues si vous ne les sauvegardez pas."
+msgstr "Vos modifications seront perdues si vous ne les enregistrez pas."
 
 #: src/mainwindow.cpp:1355
 msgctxt "Save"
@@ -347,7 +347,7 @@ msgstr "Le collage a échoué (format non disponible)."
 
 #: src/mainwindow.cpp:2413
 msgid "Copy failed (format unavailable)."
-msgstr "Echec de la copie (format non disponible)"
+msgstr "Échec de la copie (format non disponible)"
 
 #: src/mainwindow.cpp:2428
 msgid "Copy failed (mdl unavailable)."
@@ -367,7 +367,7 @@ msgstr "Vue %1"
 
 #: src/mainwindow.cpp:2662
 msgid "Avogadro: Detached View"
-msgstr "Avogadro : Nouvelle vue"
+msgstr "Avogadro : nouvelle vue"
 
 #: src/mainwindow.cpp:2893
 msgid "Normal Size"
@@ -440,19 +440,19 @@ msgstr " copier"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr "Nom: "
+msgstr "Nom : "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr "Identifiant : "
+msgstr "Identifiant : "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr "Fichier : "
+msgstr "Fichier : "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr "Description :\n"
+msgstr "Description :\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:467
@@ -484,13 +484,13 @@ msgstr "Résidus"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr "liaison%1"
+msgstr "liaison %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:495
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr "Etiquettes"
+msgstr "Étiquette"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:505 src/projecttreemodel.cpp:214
@@ -509,7 +509,7 @@ msgstr "seuls les étiquettes peuvent avoir un sous-élément"
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
 #: src/projecttreemodel.cpp:65 :399
 msgid "Item"
-msgstr "Element"
+msgstr "Élément"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
@@ -530,7 +530,7 @@ msgstr "Moyenne"
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "Elevée"
+msgstr "Élevée"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
@@ -585,17 +585,17 @@ msgstr "Ajouter type d'affichage"
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr "Type:"
+msgstr "Type :"
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr "Description:"
+msgstr "Description :"
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
@@ -605,7 +605,7 @@ msgstr "Formulaire"
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr "Colorer selon"
+msgstr "Colorer selon :"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
@@ -656,7 +656,7 @@ msgstr "Sélectionner..."
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr "Format:"
+msgstr "Format :"
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
@@ -676,7 +676,7 @@ msgstr "Interpréter les ordres de liaison"
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr "Les coordonnées sont en Ångstroms"
+msgstr "Les coordonnées sont en ångströms"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
@@ -731,7 +731,7 @@ msgstr "Projection"
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Edition"
+msgstr "&Éditer"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
@@ -872,7 +872,7 @@ msgstr "&Plein écran"
 #. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr "Echappement"
+msgstr "Échap"
 
 #. i18n: file: src/mainwindow.ui:379
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -882,7 +882,7 @@ msgstr "&Couleur d'arrière-plan..."
 #. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr "&A propos"
+msgstr "&À propos"
 
 #. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -897,7 +897,7 @@ msgstr "Ctrl+Z"
 #. i18n: file: src/mainwindow.ui:408
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr "&Refaire"
+msgstr "&Rétablir"
 
 #. i18n: file: src/mainwindow.ui:411
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -962,7 +962,7 @@ msgstr "Effacer"
 #. i18n: file: src/mainwindow.ui:484
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr "Sélectionner Tout"
+msgstr "Tout sélectionner"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -997,7 +997,7 @@ msgstr "Dupliquer la vue"
 #. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Afficher axes"
+msgstr "Afficher les axes"
 
 #. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1017,7 +1017,7 @@ msgstr "Notes sur cette version"
 #. i18n: file: src/mainwindow.ui:558
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr "Rapporter un bogue"
+msgstr "Signaler un bogue"
 
 #. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1027,7 +1027,7 @@ msgstr "Questions fréquentes"
 #. i18n: file: src/mainwindow.ui:568
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr "Site Web d'Avogadro"
+msgstr "Site web d'Avogadro"
 
 #. i18n: file: src/mainwindow.ui:577
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1037,7 +1037,7 @@ msgstr "Gestionnaire de greffons..."
 #. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr "Editeur d'arborescence de projet..."
+msgstr "Éditeur d'arborescence de projet..."
 
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1121,7 +1121,7 @@ msgstr "Détails"
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr "Eléments de l'arborescence"
+msgstr "Éléments de l'arborescence"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -1260,7 +1260,8 @@ msgstr ""
 "Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
 "Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
 "Contributions:,Benoit Jacob,Geoff Hutchison,Louis Ricard,Nizar "
-"Kerkeni,Pierre Slamich"
+"Kerkeni,Pierre Slamich, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Jean-Marc,Louis Ricard,Nizar Kerkeni,Pierre Slamich"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1281,7 +1282,8 @@ msgstr ""
 "s.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,"
 "psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,j"
 "acob.benoit.1@gmail.com,,louis.ricard@polytechnique.edu,nizarus@nizarus.tn,pi"
-"erre.slamich@gmail.com"
+"erre.slamich@gmail.com,,,jacob.benoit.1@gmail.com,,,louis.ricard@polytechniqu"
+"e.edu,nizarus@nizarus.tn,pierre.slamich@gmail.com"
 
 #~ msgid "Load File..."
 #~ msgstr "Ouvrir fichier..."
