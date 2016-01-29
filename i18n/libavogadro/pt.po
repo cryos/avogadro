@@ -8,31 +8,32 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2015-03-23 18:24+0000\n"
-"Last-Translator: David Rodrigues <david.rodrigues@gmail.com>\n"
+"PO-Revision-Date: 2016-01-15 05:46+0000\n"
+"Last-Translator: Tiago S. <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-24 05:14+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2016-01-16 05:09+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
+"Language: pt\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
-msgstr "Côr por índice."
+msgstr "Cor por índice"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr "Côr por índice (vermelho, laranja, amarelo, verde, azul, violeta)."
+msgstr "Cor por índice (vermelho, laranja, amarelo, verde, azul, violeta)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
-msgstr "Côr por carga parcial."
+msgstr "Cor por carga parcial"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr "Côr por carga atómica parcial (azuL = positivo, vermelho = negativo)."
+msgstr ""
+"Cor por carga atómica parcial (azul = positivo, vermelho = negativo)."
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
@@ -48,11 +49,11 @@ msgstr "Atribuir côr personalizada aos objectos."
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr "Côr por distância."
+msgstr "Cor por distância"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr "Côr conforme a distância ao átomo"
+msgstr "Cor conforme a distância ao primeiro átomo"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
@@ -60,7 +61,7 @@ msgstr "Cor por Elemento"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr "Côr por elemento (carbono = cinzento, oxigénio = vermelho,...)."
+msgstr "Cor por elemento (carbono = cinzento, oxigénio = vermelho, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
@@ -109,7 +110,7 @@ msgstr "Boro"
 
 #: src/elementtranslator.cpp:55
 msgid "Carbon"
-msgstr "Cabono"
+msgstr "Carbono"
 
 #: src/elementtranslator.cpp:58
 msgid "Nitrogen"
@@ -541,7 +542,7 @@ msgstr "Ununtrio"
 
 #: src/elementtranslator.cpp:379
 msgid "Flerovium"
-msgstr ""
+msgstr "Fleróvio"
 
 #: src/elementtranslator.cpp:382
 msgid "Ununpentium"
@@ -549,7 +550,7 @@ msgstr "Ununpentio"
 
 #: src/elementtranslator.cpp:385
 msgid "Livermorium"
-msgstr ""
+msgstr "Livermório"
 
 #: src/elementtranslator.cpp:388
 msgid "Ununseptium"
@@ -656,7 +657,7 @@ msgstr "QTAIM"
 
 #: src/engines/qtaimengine.h:43
 msgid "Renders primitives using QTAIM properties"
-msgstr ""
+msgstr "Desenha primitivas utilizando propriedades QTAIM"
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
@@ -878,7 +879,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, animationGroup)
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:1191 rc.cpp:4754
+#: src/extensions/animationextension.h:39 :1191 rc.cpp:4754
 msgid "Animation"
 msgstr "Animação"
 
@@ -888,12 +889,13 @@ msgstr "Animar trajectórias, reacções e vibrações."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:103:369
+#: src/extensions/cartesianextension.cpp:103 :369
 msgid "Cartesian Editor"
 msgstr "Editor Cartesiano"
 
 #: src/extensions/cartesianextension.cpp:104
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Sem células unitárias definidas para a molécula -- não pode usar coordenadas "
 "fraccionárias."
@@ -914,7 +916,7 @@ msgstr "Editor Cartesiano"
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110:4959
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110 :4959
 msgid "&Build"
 msgstr "&Construir"
 
@@ -950,7 +952,8 @@ msgstr ""
 "restrição."
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "A molécula deve conter pelo menos dois átomos para poder adicionar uma "
 "restrição à ligação."
@@ -983,11 +986,11 @@ msgstr "&Cristalografia"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:170
 msgid "Space&group"
-msgstr ""
+msgstr "Espaço&grupo"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:173
 msgid "&Reduce"
-msgstr ""
+msgstr "&Reduzir"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:193
 #: src/extensions/crystallography/crystallographyextension.cpp:196
@@ -996,19 +999,19 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:208
 #: src/extensions/crystallography/crystallographyextension.cpp:210
 msgid "&Settings"
-msgstr ""
+msgstr "&Configurações"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:193
 msgid "&Length Unit"
-msgstr ""
+msgstr "Unidade de &Comprimento"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:196
 msgid "&Angle Unit"
-msgstr ""
+msgstr "Unidade de &Ângulo"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:199
 msgid "&Coordinate Display"
-msgstr ""
+msgstr "Mostrar &Coordenada"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:202
 msgid "Coordinate &Preservation"
@@ -1039,7 +1042,7 @@ msgstr "Mostrar &Editores"
 #: src/extensions/crystallography/crystallographyextension.cpp:547
 #: src/extensions/crystallography/crystallographyextension.cpp:712
 msgid "Hide &Property Display"
-msgstr ""
+msgstr "Esconder Tela de &Propriedades"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:578
 #: src/extensions/crystallography/crystallographyextension.cpp:716
@@ -1061,11 +1064,11 @@ msgstr "Grupo espacial de simetria: %1"
 #: src/extensions/crystallography/crystallographyextension.cpp:654
 #, qt-format
 msgid "Unit cell volume: %L1%2"
-msgstr ""
+msgstr "Unidade de volume da célula: %L1%2"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:670
 msgid "Remove &Unit Cell"
-msgstr ""
+msgstr "Remover Célula &Unitária"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:674
 #: src/extensions/crystallography/crystallographyextension.cpp:2061
@@ -1123,17 +1126,24 @@ msgid ""
 "orders of magnitude smaller than the tolerance) to the input lattices and "
 "try again."
 msgstr ""
+"Falha na redução Niggli. A estrutura de entrada está a confundir o algoritmo "
+"de redução Niggli. Tente fazer uma pequena perturbação (cerca de duas ordens "
+"de magnitude menor do que a tolerância) para a entrada de reticulados e "
+"tente novamente."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:1968
 msgid ""
 "This unit cell is already reduced to its canonical Niggli representation."
 msgstr ""
+"Esta célula já está reduzida para sua representação canónica de Niggli."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:1977
 msgid ""
 "Failed to reduce cell after 1000 iterations of the reduction algorithm. "
 "Stopping."
 msgstr ""
+"Falha ao reduzir célula após 1000 iterações do algoritmo de redução. A "
+"interromper."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2068
 msgid "I&mport Crystal from Clipboard..."
@@ -1141,11 +1151,11 @@ msgstr "I&mportar Cristal da Área de Transferência..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2106
 msgid "&Wrap Atoms to Cell"
-msgstr ""
+msgstr "&Envolver Átomos em Célula"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2113
 msgid "&Translate Atoms..."
-msgstr ""
+msgstr "&Traduzir Átomos..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2120
 msgid "Rotate To Standard &Orientation"
@@ -1153,11 +1163,11 @@ msgstr "Rodar para &Orientação Padrão"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2127
 msgid "Scale Cell To &Volume..."
-msgstr ""
+msgstr "Redimensionar Célula para &Volume..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2136
 msgid "&Slab..."
-msgstr ""
+msgstr "&Fatiar"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2151
 msgid "Perceive Space&group..."
@@ -1246,19 +1256,19 @@ msgstr "Mostrar matriz &fraccional"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2351
 msgid "Display as &row vectors"
-msgstr ""
+msgstr "Mostrar como vetores em &linha"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2361
 msgid "Display as &column vectors"
-msgstr ""
+msgstr "Mostrar como vetores &colunares"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2370
 msgid "&Tolerance for symmetry operations..."
-msgstr ""
+msgstr "&Tolerância para operações simétricas..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2378
 msgid "&Crystal View Options..."
-msgstr ""
+msgstr "Opções de Visualização de &Cristais..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2426
 #: src/extensions/crystallography/crystallographyextension.cpp:2600
@@ -1272,10 +1282,10 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:2457
 #, qt-format
 msgid ""
-"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol %3."
-"<p><p>Cell can be symmetrized into a conventional setting, do you wish to do "
-"so? Actions that make use of symmetry (e.g. supercell builder) require this."
-"<p>"
+"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol "
+"%3.<p><p>Cell can be symmetrized into a conventional setting, do you wish to "
+"do so? Actions that make use of symmetry (e.g. supercell builder) require "
+"this.<p>"
 msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2479
@@ -1284,7 +1294,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2487
 msgid "International"
-msgstr ""
+msgstr "Internacional"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2488
 msgid "Hall"
@@ -1292,7 +1302,7 @@ msgstr ""
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2489
 msgid "Hermann-Mauguin"
-msgstr ""
+msgstr "Hermann-Mauguin"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2516
 msgid "Select spacegroup"
@@ -1330,7 +1340,7 @@ msgstr "Simetrizar Cristal"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2713
 msgid "Wrap Atoms To Cell"
-msgstr ""
+msgstr "Condensar Átomos Para Célula"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2734
 msgid "Rotate to Standard Orientation"
@@ -1342,7 +1352,7 @@ msgstr "Reduzir à Célula Primitiva"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2778
 msgid "Reduce to Niggli Cell"
-msgstr ""
+msgstr "Reduzir a Célula de Niggli"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2801
 msgctxt "Unit cell volume"
@@ -1399,13 +1409,13 @@ msgstr "Coordenadas Cartesianas"
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:26
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75:577
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75 :577
 msgid "Fractional Coordinates"
 msgstr "Coordenadas Fraccionais"
 
 #: src/extensions/crystallography/ui/cecoordinateeditor.cpp:282
 msgid "Set Fractional Coordinates"
-msgstr ""
+msgstr "Definir Coordenadas Fracionais"
 
 #: src/extensions/crystallography/ui/cecoordinateeditor.cpp:289
 msgid "Set Cartesian Coordinates"
@@ -1437,19 +1447,19 @@ msgstr "A Processar..."
 
 #. i18n: file: src/extensions/crystallography/ui/ceslabbuilder.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, buildButton)
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232:692
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232 :692
 msgid "Build"
 msgstr "Construir"
 
 #: src/extensions/crystallography/ui/ceslabbuilder.cpp:533
 msgid "Cut Slab From Crystal"
-msgstr ""
+msgstr "Cortar Placa do Cristal"
 
 #. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
-#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:695
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178 :695
 msgid "Translate Atoms"
-msgstr ""
+msgstr "Traduzir Átomos"
 
 #: src/extensions/crystallography/ui/cetranslatewidget.cpp:192
 msgid "No GLWidget?"
@@ -1457,7 +1467,7 @@ msgstr ""
 
 #: src/extensions/crystallography/ui/cetranslatewidget.cpp:199
 msgid "Please select one or more atoms."
-msgstr ""
+msgstr "Por favor, escolher um ou mais átomos."
 
 #: src/extensions/crystallography/ui/ceviewoptionswidget.cpp:243
 msgid "Set Unit Cell Color"
@@ -1574,19 +1584,19 @@ msgstr "Cancelar"
 
 #: src/extensions/forcefieldextension.cpp:669
 msgid "Systematic Rotor Search"
-msgstr ""
+msgstr "Busca Sistemática de Rotores"
 
 #: src/extensions/forcefieldextension.cpp:672
 msgid "Random Rotor Search"
-msgstr ""
+msgstr "Busca Aleatória de Rotores"
 
 #: src/extensions/forcefieldextension.cpp:675
 msgid "Weighted Rotor Search"
-msgstr ""
+msgstr "Busca Ponderada de Rotores"
 
 #: src/extensions/forcefieldextension.cpp:679
 msgid "Genetic Algorithm Search"
-msgstr ""
+msgstr "Busca de Algoritmo Genético"
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
@@ -1629,7 +1639,7 @@ msgstr "Exportart Gráficos Vectoriais"
 
 #: src/extensions/gl2psextension.h:37 src/extensions/gl2psextension.h:38
 msgid "Vector graphics export"
-msgstr ""
+msgstr "Exportar gráfico vetorial"
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
@@ -1690,7 +1700,7 @@ msgstr "&Inserir"
 
 #: src/extensions/insertdnaextension.cpp:127
 msgid "Insert DNA"
-msgstr ""
+msgstr "Inserir ADN"
 
 #: src/extensions/insertdnaextension.cpp:221
 msgctxt "uracil"
@@ -1708,22 +1718,22 @@ msgstr "T"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:79
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
-#: src/extensions/insertdnaextension.cpp:229:879
+#: src/extensions/insertdnaextension.cpp:229 :879
 msgid "Thymine"
 msgstr "Timina"
 
 #: src/extensions/insertdnaextension.h:30
 msgid "Insert DNA/RNA"
-msgstr ""
+msgstr "Inserir ADN/ARN"
 
 #: src/extensions/insertdnaextension.h:31
 msgid "Insert DNA/RNA chains"
-msgstr ""
+msgstr "Inserir cadeias de ADN/ARN"
 
 #: src/extensions/insertfragmentdialog.cpp:193
 #, qt-format
 msgid "Cannot read molecular file %1."
-msgstr ""
+msgstr "Não é possível ler ficheiro molecular %1"
 
 #: src/extensions/insertfragmentextension.cpp:59
 msgid "Crystal..."
@@ -1769,7 +1779,7 @@ msgstr "Peptídeo"
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
+#: src/extensions/insertpeptideextension.h:43 :936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "Inserir Peptídeo"
 
@@ -1779,7 +1789,7 @@ msgstr "Inserir sequências oligopeptídeas"
 
 #: src/extensions/invertchiralextension.cpp:42
 msgid "Invert Chirality"
-msgstr ""
+msgstr "Inverter Quiralidade"
 
 #: src/extensions/invertchiralextension.h:39
 msgid "InvertChiral"
@@ -1898,30 +1908,30 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:262
 #: src/extensions/orca/orcaanalysedialog.cpp:284
 #: src/extensions/orca/orcaspectra.cpp:92
-#, fuzzy
 msgid "OrcaExtension"
-msgstr "Extensões"
+msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:189
 msgid " No vibration data found!"
-msgstr ""
+msgstr " Nenhum dadod de vibração encontrado!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:263
 msgid " No vibration data found or molecule changed outside Orca Plugin!"
 msgstr ""
+" Nenhum dado de vibração encontrado ou a molécula mudou para fora do "
+"complemento Orca!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:285
 msgid "Selected displacement data don't fit to the actual molecule!"
 msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:520
-#, fuzzy
 msgid "Orca Output File"
-msgstr "Input File do tipo Dalton"
+msgstr "Ficheiro de Saída Orca"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:521
 msgid "extended Geometry File"
-msgstr ""
+msgstr "Ficheiro de Geometria Extendida"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:522
 #: src/extensions/spectra/spectradialog.cpp:515
@@ -1932,11 +1942,11 @@ msgstr "Todos os Ficheiros"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:525
 msgid "Read Orca Outputfile"
-msgstr ""
+msgstr "Ler Ficheiro de Saída Orca"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:529
 msgid "no file found"
-msgstr ""
+msgstr "nenhum ficheiro encontrado"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:591
 #: src/extensions/orca/orcaanalysedialog.cpp:651
@@ -1947,28 +1957,28 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:766
 #: src/extensions/orca/orcaanalysedialog.cpp:780
 msgid "Somethings wrong in the file structure"
-msgstr ""
+msgstr "Algo está errado com a estrutura do ficheiro"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:722
 msgid "Somethings wrong in the file structure - unitcells"
-msgstr ""
+msgstr "Algo está errado com a estrutura do ficheiro - unitcells"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:857
 msgid "Something is wrong in the IR output! "
-msgstr ""
+msgstr "Algo está errado com a saída IR! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:877
 msgid "Something is wrong in the raman output! "
-msgstr ""
+msgstr "Algo está errado com a saída raman! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:906
 #: src/extensions/orca/orcaanalysedialog.cpp:929
 msgid "Something is wrong in the orbital energy output! "
-msgstr ""
+msgstr "Algo está errado com a saída de energia orbital! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:948
 msgid "No geometry found in file!"
-msgstr ""
+msgstr "Nenhum ficheiro de geometria encontrado!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:963
 msgid ""
@@ -1977,30 +1987,28 @@ msgid ""
 msgstr ""
 
 #: src/extensions/orca/orcaanalysedialog.cpp:1253
-#, fuzzy
 msgid "Could not read file!"
-msgstr "Não foi possível ler o arquivo %1"
+msgstr "Não foi possível ler o ficheiro!"
 
 #: src/extensions/orca/orcaextension.cpp:78
-#, fuzzy
 msgid "Generate Orca Input..."
-msgstr "Gerar..."
+msgstr "A gerar entrada Orca..."
 
 #: src/extensions/orca/orcaextension.cpp:84
 msgid "Analyse Orca Output..."
-msgstr ""
+msgstr "A analisar a saída Orca..."
 
 #: src/extensions/orca/orcaextension.cpp:98
 msgid "&Orca"
-msgstr ""
+msgstr "&Orca"
 
 #: src/extensions/orca/orcaextension.h:52
 msgid "Orca Test Example"
-msgstr ""
+msgstr "Exemplo Teste Orca"
 
 #: src/extensions/orca/orcaextension.h:54
 msgid "Provides a dialog box with the words \"H...\"."
-msgstr ""
+msgstr "Apresenta uma caixa de diálogo \"H...\""
 
 #: src/extensions/orca/orcainputdialog.cpp:542
 msgid "ORCA Input Deck"
@@ -2018,7 +2026,7 @@ msgstr ""
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3994
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183 :3994
 msgid "Show Preview"
 msgstr "Mostrar a Antevisão"
 
@@ -2052,15 +2060,14 @@ msgstr "Mostrar a Antevisão"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1497
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187 :1497
 msgid "Hide Preview"
 msgstr "Esconder a Antevisão"
 
 #: src/extensions/orca/orcainputdialog.cpp:719
 #: src/extensions/orca/orcainputdialog.cpp:797
-#, fuzzy
 msgid " Selection failure"
-msgstr "Modo de Selecção:"
+msgstr " Falha na seleção"
 
 #: src/extensions/orca/orcainputdialog.cpp:720
 msgid "RijCosX option not available for the selected DFT functional!"
@@ -2102,15 +2109,15 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#: src/extensions/orca/orcaspectra.cpp:84:2353 rc.cpp:3229 rc.cpp:3341
+#: src/extensions/orca/orcaspectra.cpp:84 :2353 rc.cpp:3229 rc.cpp:3341
 msgid "Frequencies"
-msgstr ""
+msgstr "Frequências"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#: src/extensions/orca/orcaspectra.cpp:85:4679
+#: src/extensions/orca/orcaspectra.cpp:85 :4679
 msgid "Intensities"
-msgstr ""
+msgstr "Intensidades"
 
 #: src/extensions/orca/orcaspectra.cpp:93
 msgid " OrcaSpectra::No vibration data found!"
@@ -2226,7 +2233,7 @@ msgstr "Propriedades da conformação"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1741 rc.cpp:2242 rc.cpp:2584
+#: src/extensions/propextension.h:43 :1741 rc.cpp:2242 rc.cpp:2584
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -2240,14 +2247,14 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:393:448
+#: src/extensions/propmodel.cpp:393 :448
 msgid "Element"
 msgstr "Elemento"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/extensions/propmodel.cpp:395 src/extensions/propmodel.cpp:438
-#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481:517
+#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481 :517
 msgid "Type"
 msgstr "Tipo"
 
@@ -2321,7 +2328,7 @@ msgstr "Ângulo %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:475:538
+#: src/extensions/propmodel.cpp:475 :538
 msgid "Angle"
 msgstr "Ângulo"
 
@@ -2350,7 +2357,7 @@ msgstr "Torção"
 
 #: src/extensions/propmodel.cpp:512
 msgid "Energy (kJ/mol)"
-msgstr ""
+msgstr "Energia (kJ/mol)"
 
 #: src/extensions/propmodel.cpp:515
 msgid "Conformer"
@@ -2376,11 +2383,11 @@ msgstr ""
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
-msgstr ""
+msgstr "Consola Interativo do Python"
 
 #: src/extensions/qtaim/qtaimextension.cpp:69
 msgid "Molecular Graph..."
-msgstr ""
+msgstr "Gráfico Molecular..."
 
 #: src/extensions/qtaim/qtaimextension.cpp:75
 msgid "Molecular Graph with Lone Pairs..."
@@ -2388,7 +2395,7 @@ msgstr ""
 
 #: src/extensions/qtaim/qtaimextension.cpp:81
 msgid "Atomic Charge..."
-msgstr ""
+msgstr "Carga Atómica..."
 
 #: src/extensions/qtaim/qtaimextension.cpp:150
 msgid "Open WFN File"
@@ -2439,6 +2446,7 @@ msgstr ""
 msgid ""
 "Pseudos (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *.psp)"
 msgstr ""
+"Pseudos (*.hgh *.gth *.pspgth *.fhi *.pspnc *.paw *.mt *.UPF *.upf *.psp)"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:508
 msgid "abinit failed to start."
@@ -2478,7 +2486,7 @@ msgstr "Input File do tipo Dalton"
 
 #: src/extensions/quantuminput/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
-msgstr ""
+msgstr "Resultados para MQ"
 
 #: src/extensions/quantuminput/gamessextension.cpp:65
 msgid "Input Generator..."
@@ -2573,7 +2581,7 @@ msgstr "Criar ficheiros de dados para a aplicação de química quântica GAMESS
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1572
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632 :1572
 msgid "Title"
 msgstr "Título"
 
@@ -2633,7 +2641,7 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite Gaussiano"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:203
 msgid ""
@@ -2681,22 +2689,23 @@ msgid "G03 Crashed."
 msgstr "G03 falhou."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian não consegue ser correctamente executado. Poderá não estar "
 "correctamente instalado."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:60
 msgid "&Abinit..."
-msgstr ""
+msgstr "&Abinit..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:65
 msgid "&Dalton..."
-msgstr ""
+msgstr "&Dalton..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:70
 msgid "&GAMESS-UK..."
-msgstr ""
+msgstr "&GAMESS-UK..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
 msgid "&Gaussian..."
@@ -2712,23 +2721,23 @@ msgstr "M&OPAC"
 
 #: src/extensions/quantuminput/inputfileextension.cpp:90
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:95
 msgid "&PSI4..."
-msgstr ""
+msgstr "&PSI4..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:100
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:105
 msgid "&TeraChem..."
-msgstr ""
+msgstr "&TeraChem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:109
 msgid "&LAMMPS..."
-msgstr ""
+msgstr "&LAMMPS..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:196
 #, qt-format
@@ -2773,18 +2782,20 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "Alerta Holerite MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:138
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no holerite "
+"MOPAC de segurança?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Input Deck"
-msgstr ""
+msgstr "Gerador de Holerite MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -2793,7 +2804,8 @@ msgstr "MOPAC em execução."
 #: src/extensions/quantuminput/mopacinputdialog.cpp:181
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr "MOPAC já está em execução. Aguarde até que o cálculo tenha terminado."
+msgstr ""
+"MOPAC já está em execução. Aguarde até que o cálculo tenha terminado."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:191
 msgid "MOPAC Not Installed."
@@ -2809,7 +2821,8 @@ msgstr "MOPAC falhou em iniciar."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:207
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC não consegue iniciar. Poderá não estar correctamente instalado."
+msgstr ""
+"MOPAC não consegue iniciar. Poderá não estar correctamente instalado."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:212
 msgid "Running MOPAC calculation..."
@@ -2827,45 +2840,51 @@ msgstr ""
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:126
 msgid "NWChem Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite NWChem"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:127
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no holerite "
+"NWChem de segurança?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
 msgid "NWChem Input Deck"
-msgstr ""
+msgstr "Gerador de Holerite NWChem"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:116
 msgid "Psi4 Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite PSI4"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:117
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Psi4 input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no holerite PSI4 "
+"de segurança?"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:173
 msgid "Psi4 Input Deck"
-msgstr ""
+msgstr "Gerador de Holerite PSI4"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite Q-Chem"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:120
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no holerite Q-"
+"Chem de segurança?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
 msgid "QChem Input Deck"
-msgstr ""
+msgstr "Gerador de Holerite Q-Chem"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:132
 msgid "TeraChem Input Deck Generator Warning"
@@ -2923,7 +2942,7 @@ msgstr "Seleccionar por resíduo"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231 :198
 msgid "Residue name"
 msgstr "Nome do resíduo"
 
@@ -2985,7 +3004,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4432
+#: src/extensions/shaderextension.h:41 :4432
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -3066,13 +3085,13 @@ msgstr "Eixo YY"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4493
+#: src/extensions/spectra/spectradialog.cpp:188 :4493
 msgid "&Appearance"
 msgstr "%Aspecto"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4559
+#: src/extensions/spectra/spectradialog.cpp:189 :4559
 msgid "E&xport Image"
 msgstr "E&xportar imagem"
 
@@ -3300,7 +3319,7 @@ msgstr "Nome de Ficheiro Inválido"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1174
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/extensions/spectra/spectradialog.cpp:956
-#: src/extensions/surfaces/surfaceextension.cpp:568:1443
+#: src/extensions/surfaces/surfaceextension.cpp:568 :1443
 msgid "Error"
 msgstr "Erro"
 
@@ -3324,7 +3343,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4487
+#: src/extensions/spectra/spectradialog.cpp:998 :4487
 msgid "&Advanced >>"
 msgstr ""
 
@@ -3350,7 +3369,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:204:3094
+#: src/extensions/spectra/vibrationextension.cpp:204 :3094
 msgid "Vibrational Analysis"
 msgstr "Análise Vibracional"
 
@@ -3375,7 +3394,7 @@ msgstr "Ordenado %1 vibrações por frequência..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:283
-#: src/extensions/spectra/vibrationwidget.cpp:293:4766
+#: src/extensions/spectra/vibrationwidget.cpp:293 :4766
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
@@ -3388,7 +3407,7 @@ msgstr "Parar &Animação"
 #: src/extensions/spectra/vibrationwidget.cpp:286
 #: src/extensions/spectra/vibrationwidget.cpp:295
 #: src/extensions/spectra/vibrationwidget.cpp:304
-#: src/extensions/spectra/vibrationwidget.cpp:307:4769
+#: src/extensions/spectra/vibrationwidget.cpp:307 :4769
 msgid "Pause"
 msgstr ""
 
@@ -3553,7 +3572,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4918
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66 :4918
 msgid "Nanotube Builder"
 msgstr ""
 
@@ -3585,18 +3604,16 @@ msgid "Building..."
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:95
-#, fuzzy
 msgid "Symmetry Properties..."
-msgstr "Propriedades de conformação..."
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.cpp:170
 msgid "∞"
 msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:55
-#, fuzzy
 msgid "Symmetry Properties"
-msgstr "Propriedades da conformação"
+msgstr ""
 
 #: src/extensions/symmetry/symmetryextension.h:56
 msgid "Display point group symmetry."
@@ -3749,7 +3766,8 @@ msgstr "O tipo de ficheiro '%1'  não é suportado para leitura."
 #: src/moleculefile.cpp:173
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
-msgstr "A leitura da molécula com índice %1 a partir do ficheiro '%2' falhou."
+msgstr ""
+"A leitura da molécula com índice %1 a partir do ficheiro '%2' falhou."
 
 #: src/moleculefile.cpp:186
 #, qt-format
@@ -3990,13 +4008,13 @@ msgstr "Algoritmo:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:301:834
+#: src/tools/autoopttool.cpp:301 :834
 msgid "Steepest Descent"
 msgstr "Descida Inclinada"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:302:837
+#: src/tools/autoopttool.cpp:302 :837
 msgid "Conjugate Gradients"
 msgstr "Conjugar os Gradientes"
 
@@ -4029,7 +4047,7 @@ msgstr "Os átomos ignorados são amovíveis"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, stopButton)
-#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224:1197
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224 :1197
 msgid "Stop"
 msgstr "Parar"
 
@@ -4101,7 +4119,7 @@ msgstr "rotação em Z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1500 rc.cpp:1701 rc.cpp:2260
+#: src/tools/autorotatetool.cpp:296 :1500 rc.cpp:1701 rc.cpp:2260
 msgid "Reset"
 msgstr "Reiniciar"
 
@@ -4249,7 +4267,7 @@ msgstr "Definições de medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
 msgid "Add Atom"
 msgstr "Adicionar um Átomo"
 
@@ -4299,7 +4317,7 @@ msgstr "Elemento:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:819:2725
+#: src/tools/drawtool.cpp:819 :2725
 msgid "Other..."
 msgstr "Outro..."
 
@@ -4309,13 +4327,13 @@ msgstr "Ordem de Ligação:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:828:912
+#: src/tools/drawtool.cpp:828 :912
 msgid "Single"
 msgstr "Simples"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:829:915
+#: src/tools/drawtool.cpp:829 :915
 msgid "Double"
 msgstr "Duplo"
 
@@ -4474,7 +4492,7 @@ msgstr "Editor da Matriz Z..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2812
+#: src/tools/zmatrixtool.h:39 :2812
 msgid "Z-Matrix"
 msgstr "Matriz-Z"
 
@@ -5169,10 +5187,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5385,10 +5403,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:57
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5423,10 +5441,10 @@ msgstr ""
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:74
 #. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -6333,26 +6351,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Frames"
 msgstr ""
-",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
-"nitrofurano, ,Launchpad Contributions:,Ivo Fernandes, ,Launchpad "
-"Contributions:,Arrepiadd,Ivo Fernandes, ,Launchpad Contributions:,Arrepiadd,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
-"Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
-"Fernandes,Tiago, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,Frederico "
-"Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad Contributions:,"
-"Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,Frederico Tavares,Geoff "
-"Hutchison,Ivo Fernandes,Nuno Sousa Cerqueira,Tiago Silva, ,Launchpad "
-"Contributions:,Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,Frederico "
-"Tavares,Geoff Hutchison,Ivo Fernandes,Nuno Sousa Cerqueira,Tiago Silva, ,"
-"Launchpad Contributions:,Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,"
-"Frederico Tavares,Geoff Hutchison,Ivo Xavier,Nuno Sousa Cerqueira,Tharmas,"
-"Tiago Silva,danielagos"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:160
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -6361,27 +6361,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:190
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
-#, fuzzy
 msgid "Load File"
-msgstr "Carregar Ficheiro..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:210
 #. i18n: ectx: property (text), widget (QPushButton, plotButton)
-#, fuzzy
 msgid "Plot Spectra"
-msgstr "Importar espectro"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:226
 #. i18n: ectx: property (title), widget (QGroupBox, fragmentGroup)
-#, fuzzy
 msgid "Fragments"
-msgstr "Fragmento..."
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:238
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
-#, fuzzy
 msgid "select Fragment"
-msgstr "Inserir fragmento"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:27
 #. i18n: ectx: attribute (title), widget (QWidget, basicSetupTab)
@@ -6397,9 +6393,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#, fuzzy
 msgid "Calculation"
-msgstr "Abortar cálculo"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
@@ -6432,9 +6427,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunTypeCombo)
-#, fuzzy
 msgid "Frequency"
-msgstr "Frequência (cm⁻¹)"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, basicMethodCombo)
@@ -6506,17 +6500,15 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:158
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Basis set"
-msgstr "Anular Definições Básicas"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:744
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#, fuzzy
 msgid "Charge"
-msgstr "Carga:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:236
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6527,17 +6519,15 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Format"
-msgstr "Formato:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:871
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix"
-msgstr "Matriz-Z"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
@@ -6592,9 +6582,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:454
 #. i18n: ectx: property (text), widget (QCheckBox, basisECPCheck)
-#, fuzzy
 msgid "ECP"
-msgstr "EPS"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:468
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxBasisGroup)
@@ -6628,9 +6617,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, basisDKHLabel)
-#, fuzzy
 msgid "Order"
-msgstr "Ordem de ligação"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:574
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxCorrBasisGroup)
@@ -6644,9 +6632,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:728
 #. i18n: ectx: property (text), widget (QLabel, label_13)
-#, fuzzy
 msgid "Run type"
-msgstr "Tipo de Execução:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:794
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
@@ -6660,9 +6647,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:819
 #. i18n: ectx: property (text), widget (QCheckBox, basisPrintCheck)
-#, fuzzy
 msgid "Basis Sets"
-msgstr "Anular Definições Básicas"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:858
 #. i18n: ectx: property (text), widget (QLabel, label_23)
@@ -6699,15 +6685,13 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Normal"
-msgstr "Execução Normal"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Large"
-msgstr "Carga:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:950
 #. i18n: ectx: property (title), widget (QGroupBox, scfDampingGroup)
@@ -6721,17 +6705,17 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1025
 #. i18n: ectx: property (text), widget (QLabel, label_37)
-#, fuzzy
 msgid " Error "
-msgstr "Erro"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1038
 #. i18n: ectx: property (text), widget (QLabel, label_41)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1200
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid ""
-"<html><head/><body><p><span style=\" font-size:10pt; font-style:italic;"
-"\">select only if no defaults are wanted</span></p></body></html>"
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">select only if no defaults are "
+"wanted</span></p></body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1055
@@ -6756,9 +6740,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1095
 #. i18n: ectx: property (title), widget (QGroupBox, scfConvergerGroupBox)
-#, fuzzy
 msgid "Convergers"
-msgstr "Convergência"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QRadioButton, scfDIISRadio)
@@ -6782,9 +6765,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1236
 #. i18n: ectx: property (title), widget (QGroupBox, scf2ndOrderGroupBox)
-#, fuzzy
 msgid "2nd Order"
-msgstr "Ordem de ligação"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1248
 #. i18n: ectx: property (text), widget (QRadioButton, scfSOSCFRadio)
@@ -6808,9 +6790,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1320
 #. i18n: ectx: property (text), widget (QLabel, label_24)
-#, fuzzy
 msgid "SCF Type"
-msgstr "Tipo"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1331
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
@@ -9804,18 +9785,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
 #. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
@@ -9887,18 +9869,19 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
 #. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
@@ -10275,10 +10258,10 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
 #. i18n: ectx: property (html), widget (QTextEdit, previewText)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -10387,99 +10370,99 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "SAPT2"
-msgstr ""
+msgstr "SAPT2"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP-D"
-msgstr ""
+msgstr "B3LYP-D"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B97-D"
-msgstr ""
+msgstr "B97-D"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "M05-2X"
-msgstr ""
+msgstr "M05-2X"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "jun-cc-pVDZ"
-msgstr ""
+msgstr "jun-cc-pVDZ"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, QChemInputDialog)
 msgid "Q-Chem Input"
-msgstr ""
+msgstr "Entrada Q-Chem"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:136
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP5"
-msgstr ""
+msgstr "B3LYP5"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "M06-2X"
-msgstr ""
+msgstr "M06-2X"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:250
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LACVP"
-msgstr ""
+msgstr "LACVP"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, TeraChemInputDialog)
 msgid "TeraChem Input"
-msgstr ""
+msgstr "Entrada TeraChem"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:131
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP1"
-msgstr ""
+msgstr "B3LYP1"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:146
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "REVPBE"
-msgstr ""
+msgstr "REVPBE"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:154
 #. i18n: ectx: property (text), widget (QCheckBox, checkUnrestricted)
 msgid "Unrestricted"
-msgstr ""
+msgstr "Sem restrições"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:223
 #. i18n: ectx: property (text), item, widget (QComboBox, comboCoord)
 msgid "PBD"
-msgstr ""
+msgstr "PBD"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:393
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "no"
-msgstr ""
+msgstr "não"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:398
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "yes"
-msgstr ""
+msgstr "sim"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:403
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "D2"
-msgstr ""
+msgstr "D2"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:408
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "D3"
-msgstr ""
+msgstr "D3"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:429
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Dispersion:"
-msgstr ""
+msgstr "Dispersão:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:29
 #. i18n: ectx: attribute (title), widget (QWidget, loadTab)
@@ -10504,7 +10487,7 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Parameters:"
-msgstr ""
+msgstr "Parâmetros:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:162
 #. i18n: ectx: attribute (title), widget (QWidget, shaderTab)
@@ -10516,7 +10499,7 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:170
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Display Type:"
-msgstr ""
+msgstr "Modo de Exibição:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:190
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -10526,7 +10509,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/spectradialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SpectraDialog)
 msgid "Spectra Visualization"
-msgstr ""
+msgstr "Visualização de Espectro"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:48
 #. i18n: ectx: property (toolTip), widget (Avogadro::PlotWidget, plot)
@@ -10537,6 +10520,11 @@ msgid ""
 "Middle click + drag: Zoom to region\n"
 "Scroll wheel: Zoom to cursor"
 msgstr ""
+"Controles:\n"
+"Duplo clique esquerdo: Restaura limites padrão de eixos\n"
+"Clique direito + arrastar: Move gráfico\n"
+"Clique do meio + arrastar: Ampliação da região\n"
+"Roda do rato: Ampliação para o cursor"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:77
 #. i18n: ectx: property (text), widget (QPushButton, push_loadSpectra)
@@ -10546,12 +10534,12 @@ msgstr "&Carregar dados..."
 #. i18n: file: src/extensions/spectra/spectradialog.ui:116
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 msgid "&Close"
-msgstr ""
+msgstr "Fe&char"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:161
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Calculated Spectra:"
-msgstr ""
+msgstr "Espectro Calculado:"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:174
 #. i18n: ectx: property (text), widget (QPushButton, push_colorCalculated)
@@ -10562,12 +10550,12 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/spectradialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, push_colorForeground)
 msgid "Set Color..."
-msgstr ""
+msgstr "Definir Cor..."
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:181
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Imported Spectra:"
-msgstr ""
+msgstr "Espectro Importado:"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:204
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -10930,7 +10918,8 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr "frequências de vibração elevadas irão mostrar movimentos mais rápidos"
+msgstr ""
+"frequências de vibração elevadas irão mostrar movimentos mais rápidos"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:136
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
@@ -11168,22 +11157,22 @@ msgstr ""
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "angstrom"
-msgstr ""
+msgstr "angstrom"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "bohr radii"
-msgstr ""
+msgstr "raio de bohr"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "nanometers"
-msgstr ""
+msgstr "nanómetros"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "picometers"
-msgstr ""
+msgstr "picómetros"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
 #. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
@@ -11206,7 +11195,7 @@ msgstr "Procurar ligações &duplas"
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
 #. i18n: ectx: property (text), widget (QPushButton, push_hide)
 msgid "&Hide"
-msgstr ""
+msgstr "&Ocultar"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
 #. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
@@ -11215,91 +11204,88 @@ msgstr "&Esconder quando finalizado"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SymmetryDialog)
-#, fuzzy
 msgid "Molecular Symmetry"
-msgstr "Propriedades Moleculares"
+msgstr "Simetria Molecular"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, toleranceLabel)
 msgid "Tolerance:"
-msgstr ""
+msgstr "Tolerância:"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:49
 #. i18n: ectx: property (text), widget (QPushButton, detectSymmetryButton)
 msgid "Detect Symmetry"
-msgstr ""
+msgstr "Detetar Simetria"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Tight"
-msgstr "Claro"
+msgstr "Justo"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
 msgid "Loose"
-msgstr ""
+msgstr "Solto"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
-#, fuzzy
 msgid "Symmetrize"
-msgstr "Simetrizar Cristal"
+msgstr "Tornar Simétrico"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "X (Å)"
-msgstr ""
+msgstr "X (Å)"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:77
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Y (Å)"
-msgstr ""
+msgstr "Y (Å)"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:84
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Z (Å)"
-msgstr ""
+msgstr "Z (Å)"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Translate by:"
-msgstr ""
+msgstr "Traduzido por:"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:150
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "X-axis"
-msgstr ""
+msgstr "Eixo X"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:157
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Y-axis"
-msgstr ""
+msgstr "Eixo Y"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:164
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Z-axis"
-msgstr ""
+msgstr "Eixo Z"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Rotate around:"
-msgstr ""
+msgstr "Girar em volta:"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:179
 #. i18n: ectx: property (text), item, widget (QComboBox, rotateComboBox)
 msgid "Origin"
-msgstr ""
+msgstr "Origem"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:184
 #. i18n: ectx: property (text), item, widget (QComboBox, rotateComboBox)
 msgid "Geometry"
-msgstr ""
+msgstr "Geometria"
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Mostrar pistas visuais"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -11324,37 +11310,45 @@ msgstr "Remover Átomo"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
-"nitrofurano, ,Launchpad Contributions:,Ivo Fernandes, ,Launchpad "
-"Contributions:,Arrepiadd,Ivo Fernandes, ,Launchpad Contributions:,Arrepiadd,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad "
-"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
-"Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago, ,Launchpad "
+",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago "
+"Silva,nitrofurano, ,Launchpad Contributions:,Ivo Fernandes, ,Launchpad "
+"Contributions:,Arrepiadd,Ivo Fernandes, ,Launchpad "
+"Contributions:,Arrepiadd,Frederico Tavares,Geoff Hutchison,Ivo "
+"Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro "
+"Team,Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
 "Fernandes,Tiago, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,Frederico "
-"Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad Contributions:,"
-"Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,Frederico Tavares,Geoff "
-"Hutchison,Ivo Fernandes,Nuno Sousa Cerqueira,Tiago Silva, ,Launchpad "
+"Tavares,Geoff Hutchison,Ivo Fernandes,Tiago, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
+"Fernandes,Tiago Silva, ,Launchpad "
 "Contributions:,Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,Frederico "
-"Tavares,Geoff Hutchison,Ivo Fernandes,Nuno Sousa Cerqueira,Tiago Silva, ,"
-"Launchpad Contributions:,Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,"
-"Frederico Tavares,Geoff Hutchison,Ivo Xavier,Nuno Sousa Cerqueira,Tharmas,"
-"Tiago Silva,danielagos"
+"Tavares,Geoff Hutchison,Ivo Fernandes,Nuno Sousa Cerqueira,Tiago Silva, "
+",Launchpad Contributions:,Almufadado,Arrepiadd,Avogadro Team,David "
+"Rodrigues,Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Nuno Sousa "
+"Cerqueira,Tiago Silva, ,Launchpad "
+"Contributions:,Almufadado,Arrepiadd,Avogadro Team,David Rodrigues,Frederico "
+"Tavares,Geoff Hutchison,Ivo Xavier,Nuno Sousa Cerqueira,Tharmas,Tiago "
+"Silva,danielagos, ,Launchpad Contributions:,Almufadado,Arrepiadd,Avogadro "
+"Team,David Rodrigues,Frederico Tavares,Geoff Hutchison,Ivo Xavier,Manuel "
+"Silva,Nuno Sousa Cerqueira,Tharmas,Tiago S.,Tiago Silva,danielagos"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,"
-"ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,,avogadro-"
+",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,ivofernandes12@gm"
+"ail.com,,,,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,,avogadro-"
 "devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
-"com,,,,,,,avogadro-devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,"
-"ivofernandes12@gmail.com,,,,,,,avogadro-devel@lists.sourceforge.net,david."
-"rodrigues@gmail.com,,,ivofernandes12@gmail.com,,,,danielagostinho@sapo.pt"
+"com,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
+"com,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
+"com,,,,danielagostinho@sapo.pt,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
+"com,manuel.n.silva@gmail.com,,,,,danielagostinho@sapo.pt"
 
 #~ msgid "Angles (°)"
 #~ msgstr "Ângulos (°)"
@@ -11389,20 +11383,25 @@ msgstr ""
 #~ msgid "Cartesian Properties"
 #~ msgstr "Propriedades Cartesianas"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Ligação %1"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Ângulo %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Y %1"
 #~ msgstr "Y %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "X %1"
 #~ msgstr "X %1"
 
+#, qt-format
 #~ msgctxt "in Angstrom"
 #~ msgid "Z  %1"
 #~ msgstr "Z %1"
@@ -11437,6 +11436,9 @@ msgstr ""
 #~ msgid "Intensity (km/mol)"
 #~ msgstr "Intensidade (km/mol)"
 
+#~ msgid "Frequency (cm⁻¹)"
+#~ msgstr "Frequência (cm⁻¹)"
+
 #~ msgid "Axes (Å)"
 #~ msgstr "Eixos (Å)"
 
@@ -11458,9 +11460,11 @@ msgstr ""
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "Não é possível definir o campo de força para esta molécula."
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsão %1"
 
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Índice Atómico %1"
 
