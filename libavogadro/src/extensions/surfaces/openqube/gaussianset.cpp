@@ -52,7 +52,7 @@ static const double BOHR_TO_ANGSTROM = 0.529177249;
 static const double ANGSTROM_TO_BOHR = 1.0 / BOHR_TO_ANGSTROM;
 
 GaussianSet::GaussianSet() : m_numMOs(0), m_numAtoms(0), m_init(false),
-  m_cube(0), m_gaussianShells(0)
+  m_cube(0), m_gaussianShells(0), m_useOrcaNorm(false)
 {
 }
 
@@ -170,19 +170,22 @@ bool GaussianSet::calculateCubeMO(Cube *cube, unsigned int state)
   // Set up the calculation and ideally use the new QtConcurrent code to
   // multithread the calculation...
   if (state < 1 || state > static_cast<unsigned int>(m_moMatrix.rows()))
-    return false;
+      return false;
 
-  // Must be called before calculations begin
-  initCalculation();
-
+  // Must be called before calculations begin - use different init for Orca written data
+  if (!m_useOrcaNorm) {
+      initCalculation();
+  } else {
+      initCalculationForOrca();
+  }
   // Set up the points we want to calculate the density at
   m_gaussianShells = new QVector<GaussianShell>(cube->data()->size());
 
   for (int i = 0; i < m_gaussianShells->size(); ++i) {
-    (*m_gaussianShells)[i].set = this;
-    (*m_gaussianShells)[i].tCube = cube;
-    (*m_gaussianShells)[i].pos = i;
-    (*m_gaussianShells)[i].state = state;
+      (*m_gaussianShells)[i].set = this;
+      (*m_gaussianShells)[i].tCube = cube;
+      (*m_gaussianShells)[i].pos = i;
+      (*m_gaussianShells)[i].state = state;
   }
 
   // Lock the cube until we are done.
@@ -207,9 +210,14 @@ bool GaussianSet::calculateCubeDensity(Cube *cube)
   }
 
   // FIXME Still not working, committed so others could see current state.
+  // - seems to work for Orca data
 
-  // Must be called before calculations begin
-  initCalculation();
+  // Must be called before calculations begin - use different init for Orca written data
+  if (!m_useOrcaNorm) {
+      initCalculation();
+  } else {
+      initCalculationForOrca();
+  }
 
   // Set up the points we want to calculate the density at
   m_gaussianShells = new QVector<GaussianShell>(cube->data()->size());
@@ -252,6 +260,8 @@ BasisSet * GaussianSet::clone()
   result->m_numMOs = this->m_numMOs;
   result->m_numAtoms = this->m_numAtoms;
   result->m_init = this->m_init;
+  result->m_useOrcaNorm = this->m_useOrcaNorm;
+
 
   // Skip tmp vars
   return result;
@@ -290,7 +300,6 @@ void GaussianSet::initCalculation()
   // Add a final entry to the gtoIndices
   m_gtoIndices.push_back(m_gtoA.size());
   for(unsigned int i = 0; i < m_symmetry.size(); ++i) {
-    bool bSkipCanBeUsed = true;
     switch (m_symmetry[i]) {
     case S:
       m_moIndices[i] = indexMO++;
@@ -415,17 +424,41 @@ void GaussianSet::initCalculation()
         break;
     case G:
       skip = 15;
+      m_moIndices[i] = indexMO;
+      indexMO += skip;
+      m_cIndices.push_back(m_gtoCN.size());
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+      break;
     case G9:
       skip = 9;
+      m_moIndices[i] = indexMO;
+      indexMO += skip;
+      m_cIndices.push_back(m_gtoCN.size());
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+      break;
     case H:
       skip = 21;
+      m_moIndices[i] = indexMO;
+      indexMO += skip;
+      m_cIndices.push_back(m_gtoCN.size());
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+      break;
     case H11:
       skip = 11;
+      m_moIndices[i] = indexMO;
+      indexMO += skip;
+      m_cIndices.push_back(m_gtoCN.size());
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+      break;
     case I:
       skip = 28;
+      m_moIndices[i] = indexMO;
+      indexMO += skip;
+      m_cIndices.push_back(m_gtoCN.size());
+      qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+      break;
     case I13:
       skip = 13;
-
       m_moIndices[i] = indexMO;
       indexMO += skip;
       m_cIndices.push_back(m_gtoCN.size());
@@ -438,7 +471,280 @@ void GaussianSet::initCalculation()
   m_init = true;
 //  outputAll();
 }
+void GaussianSet::initCalculationForOrca()
+{
+  if (m_init)
+    return;
+  // This currently just involves normalising all contraction coefficients
+  m_numAtoms = m_molecule.numAtoms();
+  m_gtoCN.clear();
 
+  // Initialise the new data structures that are hopefully more efficient
+  unsigned int indexMO = 0;
+  unsigned int skip = 0; // for unimplemented shells
+
+  m_moIndices.resize(m_symmetry.size());
+  // Add a final entry to the gtoIndices
+  m_gtoIndices.push_back(m_gtoA.size());
+  for(unsigned int i = 0; i < m_symmetry.size(); ++i) {
+    switch (m_symmetry[i]) {
+    case S:
+      m_moIndices[i] = indexMO++;
+      m_cIndices.push_back(m_gtoCN.size());
+      // Normalization of the S-type orbitals (normalization used in JMol)
+      // (8 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
+      for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.71270547);
+      }
+      break;
+    case P:
+      m_moIndices[i] = indexMO;
+      indexMO += 3;
+      m_cIndices.push_back(m_gtoCN.size());
+      // Normalization of the P-type orbitals (normalization used in JMol)
+      // (128 alpha^5 / pi^3)^0.25 * [x|y|z]exp(-alpha * r^2)
+      for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.25) * 1.425410941);
+        m_gtoCN.push_back(m_gtoCN.back());
+        m_gtoCN.push_back(m_gtoCN.back());
+      }
+      break;
+    case D5:
+    {
+        // Spherical - 5 d components
+        // Order in d0, d+1, d-1, d+2, d-2
+        // Form d(3*z^2-r^2), dxz, dyz, d(x^2-y^2), dxy
+        m_moIndices[i] = indexMO;
+        indexMO += 5;
+        m_cIndices.push_back(m_gtoCN.size());
+        //
+        // define some tmp value to avoid over/underflows during calculations but leave the used formulas visible
+        //
+        double tmp = (8./(M_PI*M_PI*M_PI));
+
+        double tmp_d0  = 2./(pow(3.,.5));
+        double tmp_d1  = 4.;
+        double tmp_d2p = 2.;
+        double tmp_d2n = tmp_d1;
+
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+            double  tmpAlpha = m_gtoA[j];                                                 // alpha
+            double  tmp1Alpha = pow(m_gtoA[j], 3.0);                                      // alpha^3
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_d0*tmpAlpha * pow((tmp*tmp1Alpha),0.25));   // NormD0 -  2*pow((2^3 * alpha^7)/(3^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_d1*tmpAlpha * pow((tmp*tmp1Alpha),0.25));   // NormD1p - 2^2*pow((2^3 * alpha^7)/pi^3),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                            // NormD1n - same as NormD1p
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_d2p*tmpAlpha * pow((tmp*tmp1Alpha),0.25));  // NormD2p - 2*pow((2^3 * alpha^7)/pi^3),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_d2n*tmpAlpha * pow((tmp*tmp1Alpha),0.25));  // NormD2n - 2^2*pow((2^3 * alpha^7)/pi^3),.25) same as D1n
+        }
+        break;
+    }
+    case F7:
+    {
+        // Spherical - 7 F components
+        // Order in f0, f+1, f-1, f+2, f-2, f+3, f-3
+        //
+        m_moIndices[i] = indexMO;
+        indexMO += 7;
+        m_cIndices.push_back(m_gtoCN.size());
+        //
+        // define some tmp value to avoid over/underflows during calculations but leave the used formulas visible
+        //
+        double tmp = (8./(M_PI*M_PI*M_PI));
+        double tmp1 = (2./(M_PI*M_PI*M_PI));
+
+        double tmp_f0  = 4./(pow(15.,.5));
+        double tmp_f1  = 4./(pow(5.,.5));
+        double tmp_f2p = 4.;
+        double tmp_f2n = 8.;
+        double tmp_f3 = 4./(pow(3.,.5));
+
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+            double  tmpAlpha = m_gtoA[j];                                       // alpha
+            double  tmpAlpha2 = tmpAlpha * tmpAlpha;                            // alpha^2
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_f0 * tmpAlpha2 * pow((tmp*tmpAlpha),0.25));      // f0 4*pow((2^3 * alpha^9)/(15^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_f1 * tmpAlpha2 * pow((tmp1 * tmpAlpha),0.25));   // f+1 4*pow((2 * alpha^9)/(5^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                                  // f-1 (same as f+1)
+
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_f2p * tmpAlpha2 * pow((tmp*tmpAlpha),0.25));      // f+2 4*pow((2^3 * alpha^9 / pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_f2n * tmpAlpha2 * pow((tmp*tmpAlpha),0.25));      // f-2 8*pow((2^3 * alpha^9 / pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_f3 * tmpAlpha2 * pow((tmp1 * tmpAlpha),0.25));   // f+3 4*pow((2 * alpha^9)/(3^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                                  // f-3 (same as f+3)
+        }
+//        }
+        break;
+    }
+    case G:
+        skip = 15;
+        m_moIndices[i] = indexMO;
+        indexMO += skip;
+        m_cIndices.push_back(m_gtoCN.size());
+        qDebug() << m_symmetry[i] << " Basis set not handled - results may be incorrect.";
+        break;
+    case G9:
+    {
+        // Spherical - 9 G components
+        // Order in g0, g+1, g-1, g+2, g-2, g+3, g-3, g+4, g-4
+        //
+        m_moIndices[i] = indexMO;
+        indexMO += 9;
+        m_cIndices.push_back(m_gtoCN.size());
+
+        //
+        // define some tmp value to avoid over/underflows during calculations but leave the used formulas visible
+        //
+        double tmp = (8./(M_PI*M_PI*M_PI));
+        double tmp1 = (2./(M_PI*M_PI*M_PI));
+
+        double tmp_g0  = 2./(pow(105.,.5));
+        double tmp_g1 = 8./(pow(21.,.5));
+
+        double tmp_g2p = 4./(pow(21.,.5));
+        double tmp_g2n = 8./(pow(21.,.5));
+
+        double tmp_g3 = 8./(pow(3.,.5));
+
+        double tmp_g4p = 2./pow(3.,.5);
+        double tmp_g4n = 8./pow(3.,.5);
+
+
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+            double  tmpAlpha = pow(m_gtoA[j], 2.0);                                         // alpha^2
+            double  tmp1Alpha = tmpAlpha*m_gtoA[j];                                         // alpha^3
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g0*tmpAlpha * pow((tmp*tmp1Alpha),0.25));    // g0  2*pow((2^3 * alpha^11)/(105^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g1*tmpAlpha * pow((tmp1*tmp1Alpha),0.25));   // g+1  2^3 * pow((2 * alpha^11)/(21^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                              // g-1 (same as g+1)
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g2p*tmpAlpha * pow((tmp*tmp1Alpha),0.25));   // g+2  2^2 * pow((2^3 * alpha^11)/(21^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g2n*tmpAlpha * pow((tmp*tmp1Alpha),0.25));   // g-2  2^3 * pow((2^3 * alpha^11)/(21^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g3*tmpAlpha * pow((tmp1*tmp1Alpha),0.25));   // g+3  2^3 *pow((2 * alpha^11)/(3^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                              // g-3 (same as g+3)
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g4p*tmpAlpha * pow((tmp*tmp1Alpha),0.25));    // g+4  2*pow((2^3 * alpha^11)/(3^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_g4n*tmpAlpha * pow((tmp*tmp1Alpha),0.25));    // g-4  2^3 *pow((2^3 * alpha^11)/(3^2 * pi^3)),.25)
+        }
+        break;
+    }
+    case H11:
+    {
+        // Spherical - 11 H components
+        // Order in h0, h+1, h-1, h+2, h-2, h+3, h-3, h+4, h-4, h+5, h-5
+        //
+        m_moIndices[i] = indexMO;
+        indexMO += 11;
+        m_cIndices.push_back(m_gtoCN.size());
+
+        //
+        // define some tmp value to avoid over/underflows during calculations but leave the used formulas visible
+        //
+        double tmp = (8./(M_PI*M_PI*M_PI));
+        double tmp1 = (2./(M_PI*M_PI*M_PI));
+
+        double tmp_h0  = 4./(3. *pow(105.,.5));
+        double tmp_h1 = 4./(3. *pow(7.,.5));
+
+        double tmp_h2p = 8./3.;
+        double tmp_h2n = 16./3.;
+
+        double tmp_h3 = 4./(3. *pow(3.,.5));
+
+        double tmp_h4p = 4./pow(3.,.5);
+        double tmp_h4n = 16./pow(3.,.5);
+
+        double tmp_h5 = 4./pow(15,.5);
+
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+            double  tmpAlpha = pow(m_gtoA[j], 3.0);
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_h0*tmpAlpha * pow((tmp*m_gtoA[j]),0.25));    // h0  (2^2)/3  * pow((2^3 * alpha^13)/(105^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h1*tmpAlpha *pow((tmp*m_gtoA[j]),0.25));      // h+1  (2^2)/3 * pow((2^3 *alpha^13)/(7^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                              // h-1 (same as h+1)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h2p*tmpAlpha *pow((tmp*m_gtoA[j]),0.25));       // h+2  (2^3)/3 * pow((2^3 *alpha^13)/(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h2n*tmpAlpha *pow((tmp*m_gtoA[j]),0.25));       // h-2  (2^4)/3 * pow((2^3 *alpha^13)/(pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h3*tmpAlpha *pow((tmp1*m_gtoA[j]),0.25));       // h+3  (2^2)/3 * pow((2*alpha^13)/(3^2*pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                                // h-3 (same as h+3)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h4p*tmpAlpha *pow((tmp*m_gtoA[j]),0.25));       // h+4  (2^2)/sqrt(3) * pow((2^3 *alpha^13)/(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h4n*tmpAlpha *pow((tmp*m_gtoA[j]),0.25));       // h-4  (2^4)/sqrt(3) * pow((2^3 *alpha^13)/(pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_h5*tmpAlpha *pow((tmp1*m_gtoA[j]),0.25));       // h+5  (2^2)/sqrt(15) * pow((2*alpha^13)/(3^2*pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                                // h-5 (same as h+5)
+        }
+
+        break;
+    }
+    case I13:
+    {
+        // Spherical - 13 I components
+        // Order in i0, i+1, i-1, i+2, i-2, i+3, i-3, i+4, i-4, i+5, i-5, i+6, i-6
+        //
+        m_moIndices[i] = indexMO;
+        indexMO += 13;
+        m_cIndices.push_back(m_gtoCN.size());
+
+        // define some tmp value to avoid over/underflows during calculations but leave the used formulas visible
+        //
+        double tmp = (8./(M_PI*M_PI*M_PI));
+        double tmp1 = (2./(M_PI*M_PI*M_PI));
+
+        double tmp_i0  = 4./(3. *pow(1155.,.5));
+        double tmp_i1 = 8./(3. *pow(55.,.5));
+
+        double tmp_i2p = 4./(3. *pow(11.,.5));
+        double tmp_i2n = 8./(3. *pow(11.,.5));
+
+        double tmp_i4p = 4./pow(165.,.5);
+        double tmp_i4n = 16./pow(165.,.5);
+
+        double tmp_i5 = 8./pow(15,.5);
+
+        double tmp_i6p = 4./(3. *pow(5.,.5));
+        double tmp_i6n = 8./(3. *pow(5.,.5));
+
+        for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+            double  tmpAlpha = pow(m_gtoA[j], 3.0);
+
+            m_gtoCN.push_back(m_gtoC[j] *  tmp_i0*tmpAlpha * pow((tmp*tmpAlpha),0.25));    // i0  (2^2)/3  * pow((2^3 * alpha^15)/(1155^2 * pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i1*tmpAlpha *pow((tmp*tmpAlpha),0.25));      // i+1  (2^3)/3 * pow((2^3 *alpha^15)/(55^2 * pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                             // i-1  (same as i+1)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i2p*tmpAlpha *pow((tmp1*tmpAlpha),0.25));    // i+2  (2^2)/3 * pow((2*alpha^15)/(11^2)*(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i2n*tmpAlpha *pow((tmp1*tmpAlpha),0.25));    // i-2  (2^3)/3 * pow((2*alpha^1i)/(11^2)*(pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoCN.back());                                             // i+3  (same as i-2)
+            m_gtoCN.push_back(m_gtoCN.back());                                             // i-3  (same as i-2)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i4p*tmpAlpha *pow((tmp*tmpAlpha),0.25));     // i+4  (2^2)/sqrt(165) * pow((2^3 *alpha^15)/(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i4n*tmpAlpha *pow((tmp*tmpAlpha),0.25));     // i-4  (2^4)/sqrt(165) * pow((2^3 *alpha^15)/(pi^3)),.25)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i5*tmpAlpha *pow((tmp1*tmpAlpha),0.25));     // i+5  (2^3)/sqrt(15) * pow((2*alpha^15)/(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoCN.back());                                             // i-5 (same as i+5)
+
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i6p*tmpAlpha *pow((tmp1*tmpAlpha),0.25));    // i+6  (2^2)/3 * pow((2*alpha^15)/(5^2)*(pi^3)),.25)
+            m_gtoCN.push_back(m_gtoC[j] * tmp_i6n*tmpAlpha *pow((tmp1*tmpAlpha),0.25));    // i-6  (2^4)/3 * pow((2*alpha^15)/(5^2)(pi^3)),.25)
+        }
+        break;
+    }
+    default:
+      qDebug() << "Basis set not handled - results may be incorrect.";
+    }
+  }
+  m_init = true;
+//  outputAll();
+}
 /// This is the stuff we actually use right now - porting to new data structure
 void GaussianSet::processPoint(GaussianShell &shell)
 {
@@ -464,37 +770,76 @@ void GaussianSet::processPoint(GaussianShell &shell)
 
   // Now calculate the value at this point in space
   double tmp = 0.0;
-  for (unsigned int i = 0; i < basisSize; ++i) {
-    switch(basis[i]) {
-    case S:
-      tmp += pointS(shell.set, i,
-                    dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    case P:
-      tmp += pointP(shell.set, i, deltas[set->m_atomIndices[i]],
-                    dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    case D:
-      tmp += pointD(shell.set, i, deltas[set->m_atomIndices[i]],
-                    dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    case D5:
-      tmp += pointD5(shell.set, i, deltas[set->m_atomIndices[i]],
-                     dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    case F:
-      tmp += pointF(shell.set, i, deltas[set->m_atomIndices[i]],
-                     dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    case F7:
-      tmp += pointF7(shell.set, i, deltas[set->m_atomIndices[i]],
-                     dr2[set->m_atomIndices[i]], indexMO);
-      break;
-    default:
-      // Not handled - return a zero contribution
-      ;
-    }
+  if (!set->m_useOrcaNorm) {
+      for (unsigned int i = 0; i < basisSize; ++i) {
+          switch(basis[i]) {
+          case S:
+              tmp += pointS(shell.set, i,
+                            dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          case P:
+              tmp += pointP(shell.set, i, deltas[set->m_atomIndices[i]],
+                      dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          case D:
+              tmp += pointD(shell.set, i, deltas[set->m_atomIndices[i]],
+                      dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          case D5:
+              tmp += pointD5(shell.set, i, deltas[set->m_atomIndices[i]],
+                      dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          case F:
+              tmp += pointF(shell.set, i, deltas[set->m_atomIndices[i]],
+                      dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          case F7:
+              tmp += pointF7(shell.set, i, deltas[set->m_atomIndices[i]],
+                      dr2[set->m_atomIndices[i]], indexMO);
+              break;
+          default:
+              // Not handled - return a zero contribution
+              ;
+          }
+      }
+  } else {
+      for (unsigned int i = 0; i < basisSize; ++i) {
+        switch(basis[i]) {
+        case S:
+          tmp += pointS(shell.set, i,
+                        dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case P:
+          tmp += pointP(shell.set, i, deltas[set->m_atomIndices[i]],
+                        dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case D5:
+          tmp += pointOrcaD5(shell.set, i, deltas[set->m_atomIndices[i]],
+                         dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case F7:
+          tmp += pointOrcaF7(shell.set, i, deltas[set->m_atomIndices[i]],
+                         dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case G9:
+          tmp += pointOrcaG9(shell.set, i, deltas[set->m_atomIndices[i]],
+                         dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case H11:
+          tmp += pointOrcaH11(shell.set, i, deltas[set->m_atomIndices[i]],
+                         dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        case I13:
+          tmp += pointOrcaI13(shell.set, i, deltas[set->m_atomIndices[i]],
+                         dr2[set->m_atomIndices[i]], indexMO);
+          break;
+        default:
+          // Not handled - return a zero contribution
+          ;
+        }
+      }
   }
+
   // Set the value
   shell.tCube->setValue(shell.pos, tmp);
 }
@@ -521,32 +866,65 @@ void GaussianSet::processDensity(GaussianShell &shell)
 
   // Calculate the basis set values at this point
   MatrixXd values(matrixSize, 1);
-  for (unsigned int i = 0; i < basisSize; ++i) {
-    unsigned int cAtom = set->m_atomIndices[i];
-    switch(basis[i]) {
-    case S:
-      pointS(shell.set, dr2[cAtom], i, values);
-      break;
-    case P:
-      pointP(shell.set, deltas[cAtom], dr2[cAtom], i, values);
-      break;
-    case D:
-      pointD(shell.set, deltas[cAtom], dr2[cAtom], i, values);
-      break;
-    case D5:
-      pointD5(shell.set, deltas[cAtom], dr2[cAtom], i, values);
-      break;
-    case F:
-      pointF(shell.set, deltas[cAtom], dr2[cAtom], i, values);
-      break;
-    case F7:
-      pointF7(shell.set, deltas[cAtom], dr2[cAtom], i, values);
-      break;
-    default:
-        qDebug() << " unhandled function !!!! ";
-      // Not handled - return a zero contribution
-      ;
-    }
+  if (!set->m_useOrcaNorm) {
+      for (unsigned int i = 0; i < basisSize; ++i) {
+          unsigned int cAtom = set->m_atomIndices[i];
+          switch(basis[i]) {
+          case S:
+              pointS(shell.set, dr2[cAtom], i, values);
+              break;
+          case P:
+              pointP(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case D:
+              pointD(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case D5:
+              pointD5(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case F:
+              pointF(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case F7:
+              pointF7(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          default:
+              qDebug() << " unhandled function !!!! ";
+              // Not handled - return a zero contribution
+              ;
+          }
+      }
+  } else {
+      for (unsigned int i = 0; i < basisSize; ++i) {
+          unsigned int cAtom = set->m_atomIndices[i];
+          switch(basis[i]) {
+          case S:
+              pointS(shell.set, dr2[cAtom], i, values);
+              break;
+          case P:
+              pointP(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case D5:
+              pointOrcaD5(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case F7:
+              pointOrcaF7(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case G9:
+              pointOrcaG9(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case H11:
+              pointOrcaH11(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          case I13:
+              pointOrcaI13(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+              break;
+          default:
+              qDebug() << " unhandled function !!!! ";
+              // Not handled - return a zero contribution
+              ;
+          }
+      }
   }
 
   // Now calculate the value of the density at this point in space
@@ -743,7 +1121,9 @@ inline double GaussianSet::pointD5(GaussianSet *set, unsigned int moIndex,
   double xz = delta.x() * delta.z();
   double yz = delta.y() * delta.z();
 
-  double D0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (zz - dr2);
+//  double D0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (zz - dr2);    <----- wrong formula - changed to 3*z^2 - r^2   by Dagmar Lenk
+  double D0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (3*zz - dr2);
+
   double D1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * xz;
   double D1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * yz;
   double D2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (xx - yy);
@@ -809,6 +1189,339 @@ inline double GaussianSet::pointF7(GaussianSet *set, unsigned int moIndex,
 
   return  F0*f0 + F1p*f1p + F1n*f1n + F2p*f2p + F2n*f2n + F3p*f3p + F3n*f3n;
 }
+
+inline double GaussianSet::pointOrcaD5(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // D type orbitals have five components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double d0 = 0.0, d1p = 0.0, d1n = 0.0, d2p = 0.0, d2n = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    d0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    d1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    d1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    d2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    d2n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+  double xy = delta.x() * delta.y();
+  double xz = delta.x() * delta.z();
+  double yz = delta.y() * delta.z();
+
+  double D0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (3*zz - dr2);
+  double D1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * xz;
+  double D1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * yz;
+  double D2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (xx - yy);
+  double D2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xy;
+
+  return D0*d0 + D1p*d1p + D1n*d1n + D2p*d2p + D2n*d2n;
+}
+
+inline double GaussianSet::pointOrcaF7(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // F type orbitals have 7 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double f0 = 0.0, f1p = 0.0, f1n = 0.0, f2p = 0.0, f2n = 0.0, f3p = 0.0, f3n = 0.0;
+
+  // Now iterate through the F type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    f0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xyz = delta.x() * delta.y() * delta.z();
+  double xxx = delta.x() * delta.x() * delta.x();
+  double yyy = delta.y() * delta.y() * delta.y();
+  double zzz = delta.z() * delta.z() * delta.z();
+
+  double xxz = delta.x() * delta.x() * delta.z();
+  double xxy = delta.x() * delta.x() * delta.y();
+
+  double yyz = delta.y() * delta.y() * delta.z();
+  double yyx = delta.y() * delta.y() * delta.x();
+
+  double zzx = delta.z() * delta.z() * delta.x();
+  double zzy = delta.z() * delta.z() * delta.y();
+
+  double F0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (-3*xxz - 3*yyz + 2*zzz);
+  double F1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * (-xxx - yyx + 4*zzx);
+  double F1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * (-xxy -yyy + 4*zzy);
+  double F2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (-yyz +xxz);
+  double F2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xyz;
+  double F3p = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) * (-xxx + 3*yyx);
+  double F3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) *(-3*xxy + yyy);
+
+  return  F0*f0 + F1p*f1p + F1n*f1n + F2p*f2p + F2n*f2n + F3p*f3p + F3n*f3n;
+}
+
+inline double GaussianSet::pointOrcaG9(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // G type orbitals have 9 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double g0 = 0.0, g1p = 0.0, g1n = 0.0, g2p = 0.0, g2n = 0.0, g3p = 0.0, g3n = 0.0, g4p = 0.0, g4n = 0.0;
+
+  // Now iterate through the G type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    g0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    g1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g4n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xxxx = xx*xx;
+  double yyyy = yy*yy;
+  double zzzz = zz*zz;
+
+  double xz = delta.x() * delta.z();
+  double xy = delta.x() * delta.y();
+  double yz = delta.y() * delta.z();
+
+  // NormG0 * (35*z^4 - 30*z^2*r^2 +3*r^4) *exp(-alpha*r^2)
+  double G0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (35*zzzz - 30*zz*dr2 +3*dr2*dr2);
+
+  // NormG1p * x*z * (7*z^2 - 3*r^2) *exp(-alpha*r^2)
+  // NormG1n * y*z * (7*z^2 - 3*r^2) *exp(-alpha*r^2)
+  double G1tmp = (7*zz - 3*dr2);
+  double G1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * G1tmp * xz;
+  double G1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * G1tmp * yz;
+
+  // NormG2p * (x^2 - y^2) * (7*z^2 - r^2) *exp(-alpha*r^2)
+  // NormG2n * x * y * (7*z^2 - r^2) *exp(-alpha*r^2)
+  double G2tmp = (7*zz - dr2);
+  double G2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (xx - yy) * G2tmp;
+  double G2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xy * G2tmp;
+
+  // NormG3p * ... *exp(-alpha*r^2)
+  // NormG3n * ... *exp(-alpha*r^2)
+  double G3p = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) * (xx - 3*yy) * xz;
+  double G3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) * (3*xx - yy) * yz;
+
+  // NormG4p * (x^4 - 6*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  // NormG4n * x * y * (x^2 - y^2) *exp(-alpha*r^2)
+  double G4p = set->m_moMatrix.coeffRef(baseIndex+7, indexMO) * (xxxx - 6*xx*yy + yyyy);
+  double G4n = set->m_moMatrix.coeffRef(baseIndex+8, indexMO) * (xx - yy) * xy;
+
+  return  G0*g0 + G1p*g1p + G1n*g1n + G2p*g2p + G2n*g2n + G3p*g3p + G3n*g3n + G4p*g4p + G4n*g4n;
+}
+
+inline double GaussianSet::pointOrcaH11(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // H type orbitals have 11 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double h0 = 0.0, h1p = 0.0, h1n = 0.0, h2p = 0.0, h2n = 0.0, h3p = 0.0, h3n = 0.0, h4p = 0.0, h4n = 0.0, h5p = 0.0, h5n = 0.0;
+
+  // Now iterate through the H type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    h0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    h1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h4n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h5p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h5n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xxxx = xx*xx;
+  double yyyy = yy*yy;
+  double zzzz = zz*zz;
+  double xxyy = xx*yy;
+//  double yyzz = yy*zz;
+//  double xxzz = xx*zz;
+
+  double x = delta.x();
+  double y = delta.y();
+  double z = delta.z();
+  double xyz = x*y*z;
+
+  // NormH0 * z * (63*z^4 - 70*z^2*r^2 + 15*r^4) *exp(-alpha*r^2)
+  double H0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * z * (63*zzzz - 70*zz*dr2 +15*dr2*dr2);
+
+  // NormH1p * x * (21*z^4 -14*z^2*r^2 + r^4) *exp(-alpha*r^2)
+  // NormH1n * y * (21*z^4 -14*z^2*r^2 + r^4) *exp(-alpha*r^2)
+  double H1tmp = 21*zzzz -14*zz*dr2 + dr2*dr2;
+  double H1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * x * H1tmp;
+  double H1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * y * H1tmp;
+
+  // NormH2p * z * (x^2 - y^2) * (3*z^2 - r^2) *exp(-alpha*r^2)
+  // NormH2n * x*y*z * (3*z^2 - r^2) *exp(-alpha*r^2)
+  double H2tmp = (3*zz - dr2);
+  double H2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * z * (xx - yy) * H2tmp;
+  double H2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xyz * H2tmp;
+
+  // NormH3p * x * (x^2 - 3*y^2) * (9*z^2 - r^2) *exp(-alpha*r^2)
+  // NormH3n * y * (3*x^2 - y^2) * (9*z^2 - r^2) *exp(-alpha*r^2)
+  double H3tmp = (9*zz - dr2);
+  double H3p = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) * x * (xx - 3*yy) * H3tmp;
+  double H3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) * y * (3*xx - yy) * H3tmp;
+
+  // NormH4p * z * (x^4 - 6*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  // NormH4n * x*y*z * (x^2 - y^2) *exp(-alpha*r^2)
+  double H4p = set->m_moMatrix.coeffRef(baseIndex+7, indexMO) * z*(xxxx - 6*xxyy + yyyy);
+  double H4n = set->m_moMatrix.coeffRef(baseIndex+8, indexMO) * xyz*(xx - yy);
+
+  // NormH5p * x * (x^4 - 10*x^2*y^2 + 5*y^4) *exp(-alpha*r^2)
+  // NormH5n * y * (5*x^4 - 10*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  double H5p = set->m_moMatrix.coeffRef(baseIndex+9, indexMO) * x * (xxxx - 10*xxyy + 5*yyyy);
+  double H5n = set->m_moMatrix.coeffRef(baseIndex+10, indexMO) * y * (5*xxxx - 10*xxyy + yyyy);
+
+  return  H0*h0 + H1p*h1p + H1n*h1n + H2p*h2p + H2n*h2n + H3p*h3p + H3n*h3n + H4p*h4p + H4n*h4n + H5p*h5p + H5n*h5n;
+}
+
+
+inline double GaussianSet::pointOrcaI13(GaussianSet *set, unsigned int moIndex,
+                                   const Vector3d &delta,
+                                   double dr2, unsigned int indexMO)
+{
+  // I type orbitals have 13 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[moIndex];
+  double i0 = 0.0, i1p = 0.0, i1n = 0.0, i2p = 0.0, i2n = 0.0, i3p = 0.0, i3n = 0.0, i4p = 0.0, i4n = 0.0, i5p = 0.0, i5n = 0.0, i6p = 0.0, i6n = 0.0;
+
+  // Now iterate through the I type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[moIndex];
+  for (unsigned int i = set->m_gtoIndices[moIndex];
+       i < set->m_gtoIndices[moIndex+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    i0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    i1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i4n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i5p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i5n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i6p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i6n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xy = delta.x() * delta.y();
+  double xz = delta.x() * delta.z();
+  double yz = delta.y() * delta.z();
+
+  double x4 = xx*xx;
+  double x6 = x4*xx;
+  double y4 = yy*yy;
+  double y6 = y4*yy;
+
+  double z4 = zz*zz;
+  double z6 = z4 * zz;
+  double xxyy = xx*yy;
+
+
+  // NormI0 * (231*z^6 - 315*z^4*r^2 + 105*z^2*r^4 -5*r^6) *exp(-alpha*r^2)
+  double I0  = set->m_moMatrix.coeffRef(baseIndex  , indexMO) * (231*z6 - 315*z4*dr2 + 105*zz*dr2*dr2 - 5*dr2*dr2*dr2);
+
+  // NormI1p * x*z*(33z^4 - 30z^2*r^2 + 5*r^4) *exp(-alpha*r^2)
+  // NormI1n * y*z*(33z^4 - 30z^2*r^2 + 5*r^4) *exp(-alpha*r^2)
+  double I1tmp = 33.*z4 - 30.*zz*dr2 + 5.*dr2*dr2;
+  double I1p = set->m_moMatrix.coeffRef(baseIndex+1, indexMO) * xz * I1tmp;
+  double I1n = set->m_moMatrix.coeffRef(baseIndex+2, indexMO) * yz * I1tmp;
+
+  // NormI2p * ((x^2-y^2)(33*z4 -18*zz*r^2 +r^4)) *exp(-alpha*r^2)
+  // NormI2n * x*y*(33*z^4 - 18z^r^2 +r^4) *exp(-alpha*r^2)
+
+  double I2tmp = 33*z4 - 18*zz*dr2 + dr2*dr2;
+  double I2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (xx - yy) * I2tmp;
+  double I2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xy * I2tmp;
+
+  // NormI3p * x*z*(x^2 - 3y^2)*(11z^2 - 3r^2) *exp(-alpha*r^2)
+  // NormI3n * y*z*(3x^2 - y^2)*(11z^2 - 3r^2) *exp(-alpha*r^2)
+  double I3tmp = 11*zz - 3*dr2;
+  double I3p = set->m_moMatrix.coeffRef(baseIndex+5, indexMO) * xz * (3*xx - yy) * I3tmp;
+  double I3n = set->m_moMatrix.coeffRef(baseIndex+6, indexMO) * yz * (xx - 3*yy) * I3tmp;
+
+  // NormI4p * (x^4 - 6*x^2*y^2 +y^4)*(11z^2 - r^2)*exp(-alpha*r^2)
+  // NormI4n * x*y*(x^2 - y^2)(11z^2 - r^2) *exp(-alpha*r^2)
+  double I4tmp = 11*zz - dr2;
+  double I4p = set->m_moMatrix.coeffRef(baseIndex+7, indexMO) * (x4 - 6*xxyy +y4) * I4tmp;
+  double I4n = set->m_moMatrix.coeffRef(baseIndex+8, indexMO) * xy*(xx - yy) * I4tmp;
+
+  // NormI5p * xz(5x^4 - 10x^2*y^2 +y^4) *exp(-alpha*r^2)
+  // NormI5n * y*z*(5x^4 - 10x^2*y^2 +y^4) *exp(-alpha*r^2)
+  double I5tmp = 5*x4 - 10*xx*yy + y4;
+  double I5p = set->m_moMatrix.coeffRef(baseIndex+9, indexMO) * xz * I5tmp;
+  double I5n = set->m_moMatrix.coeffRef(baseIndex+10, indexMO) * yz * I5tmp;
+
+  // NormI6p * (x^6 - 15x^4*y^2 + 15x^2y^4 - y^6) *exp(-alpha*r^2)
+  // NormI6n * xy(3x^4 - 10x^2y^2 + 3y^4) *exp(-alpha*r^2)
+  double I6p = set->m_moMatrix.coeffRef(baseIndex+11, indexMO) * (x6 - 15*x4*yy + 15*xx*y4 - y6);
+  double I6n = set->m_moMatrix.coeffRef(baseIndex+12, indexMO) * xy * (3*x4 - 10*xx*yy + 3*y4);
+
+  return  I0*i0 + I1p*i1p + I1n*i1n + I2p*i2p + I2n*i2n + I3p*i3p + I3n*i3n + I4p*i4p + I4n*i4n + I5p*i5p + I5n*i5n + I6p*i6p + I6n* i6n;
+}
+
+
+
 
 inline void GaussianSet::pointS(GaussianSet *set, double dr2, int basis,
                                 Eigen::MatrixXd &out)
@@ -958,7 +1671,8 @@ inline void GaussianSet::pointD5(GaussianSet *set, const Eigen::Vector3d &delta,
 
   // Save values to the matrix
   int baseIndex = set->m_moIndices[basis];
-  out.coeffRef(baseIndex  , 0) = (zz - dr2) * d0;
+  //  out.coeffRef(baseIndex  , 0) = (zz - dr2) * d0; <-- wrong formula - changed to 3*z^2 - r^2   by Dagmar Lenk
+  out.coeffRef(baseIndex  , 0) = (3*zz - dr2) * d0;
   out.coeffRef(baseIndex+1, 0) = xz * d1p;
   out.coeffRef(baseIndex+2, 0) = yz * d1n;
   out.coeffRef(baseIndex+3, 0) = (xx - yy) * d2p;
@@ -1014,6 +1728,329 @@ inline void GaussianSet::pointF7(GaussianSet *set, const Eigen::Vector3d &delta,
   out.coeffRef(baseIndex+5, 0) = f3p*((15.0 * xxx - 45.0 * xyy)/root360);
   out.coeffRef(baseIndex+6, 0) = f3n*((45.0 * xxy - 15.0 * yyy)/root360);
 }
+
+inline void GaussianSet::pointOrcaD5(GaussianSet *set, const Eigen::Vector3d &delta,
+                                 double dr2, int basis,
+                                 Eigen::MatrixXd &out)
+{
+  // D type orbitals have 5 components and each component has a different
+  // independent MO weighting. Many things can be cached to save time though
+  double d0 = 0.0, d1p = 0.0, d1n = 0.0, d2p = 0.0, d2n = 0.0;
+
+  // Now iterate through the D type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    d0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    d1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    d1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    d2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    d2n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+  double xy = delta.x() * delta.y();
+  double xz = delta.x() * delta.z();
+  double yz = delta.y() * delta.z();
+
+  // Save values to the matrix
+  int baseIndex = set->m_moIndices[basis];
+
+  out.coeffRef(baseIndex  , 0) = (3*zz - dr2) * d0;
+  out.coeffRef(baseIndex+1, 0) = xz * d1p;
+  out.coeffRef(baseIndex+2, 0) = yz * d1n;
+  out.coeffRef(baseIndex+3, 0) = (xx - yy) * d2p;
+  out.coeffRef(baseIndex+4, 0) = xy * d2n;
+}
+inline void GaussianSet::pointOrcaF7(GaussianSet *set, const Eigen::Vector3d &delta,
+                    double dr2, int basis, Eigen::MatrixXd &out)
+{
+  // F type orbitals have 7 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+
+  double f0 = 0.0, f1p = 0.0, f1n = 0.0, f2p = 0.0, f2n = 0.0, f3p = 0.0, f3n = 0.0;
+
+  // Now iterate through the F type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    f0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    f3n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+  double xyz = delta.x() * delta.y() * delta.z();
+  double xxx = delta.x() * delta.x() * delta.x();
+  double yyy = delta.y() * delta.y() * delta.y();
+  double zzz = delta.z() * delta.z() * delta.z();
+
+  double xxz = delta.x() * delta.x() * delta.z();
+  double xxy = delta.x() * delta.x() * delta.y();
+
+  double yyz = delta.y() * delta.y() * delta.z();
+  double yyx = delta.y() * delta.y() * delta.x();
+
+  double zzx = delta.z() * delta.z() * delta.x();
+  double zzy = delta.z() * delta.z() * delta.y();
+
+  // Save values to the matrix
+  unsigned int baseIndex = set->m_moIndices[basis];
+  out.coeffRef(baseIndex  , 0) = (-3*xxz - 3*yyz + 2*zzz) * f0;
+  out.coeffRef(baseIndex+1, 0) = (-xxx - yyx + 4*zzx) *f1p;
+  out.coeffRef(baseIndex+2, 0) = (-xxy -yyy + 4*zzy) *f1n;
+  out.coeffRef(baseIndex+3, 0) = (-yyz +xxz) * f2p;
+  out.coeffRef(baseIndex+4, 0) = xyz * f2n;
+  out.coeffRef(baseIndex+5, 0) = (-xxx + 3*yyx) * f3p;
+  out.coeffRef(baseIndex+6, 0) = (-3*xxy + yyy) *f3n;
+
+}
+
+inline void GaussianSet::pointOrcaG9(GaussianSet *set, const Eigen::Vector3d &delta,
+                    double dr2, int basis, Eigen::MatrixXd &out)
+{
+  // G type orbitals have 9 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[basis];
+  double g0 = 0.0, g1p = 0.0, g1n = 0.0, g2p = 0.0, g2n = 0.0, g3p = 0.0, g3n = 0.0, g4p = 0.0, g4n = 0.0;
+
+  // Now iterate through the G type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    g0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    g1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    g4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    g4n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xxxx = xx*xx;
+  double yyyy = yy*yy;
+  double zzzz = zz*zz;
+
+  double xz = delta.x() * delta.z();
+  double xy = delta.x() * delta.y();
+  double yz = delta.y() * delta.z();
+
+  // NormG0 * (35*z^4 - 30*z^2*r^2 +3*r^4) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex  , 0) = (35*zzzz - 30*zz*dr2 +3*dr2*dr2) *g0;
+
+  // NormG1p * x*z * (7*z^2 - 3*r^2) *exp(-alpha*r^2)
+  // NormG1n * y*z * (7*z^2 - 3*r^2) *exp(-alpha*r^2)
+  double G1tmp = (7*zz - 3*dr2);
+  out.coeffRef(baseIndex+1, 0) = G1tmp * xz * g1p;
+  out.coeffRef(baseIndex+2, 0) = G1tmp * yz * g1n;
+
+  // NormG2p * (x^2 - y^2) * (7*z^2 - r^2) *exp(-alpha*r^2)
+  // NormG2n * x * y * (7*z^2 - r^2) *exp(-alpha*r^2)
+  double G2tmp = (7*zz - dr2);
+  out.coeffRef(baseIndex+3, 0) = (xx - yy) * G2tmp * g2p;
+  out.coeffRef(baseIndex+4, 0) = xy * G2tmp * g2n;
+
+  // NormG3p * ... *exp(-alpha*r^2)
+  // NormG3n * ... *exp(-alpha*r^2)
+  out.coeffRef(baseIndex+5, 0) = (xx - 3*yy) * xz * g3p;
+  out.coeffRef(baseIndex+6, 0) = (3*xx - yy) * yz * g3n;
+
+  // NormG4p * (x^4 - 6*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  // NormG4n * x * y * (x^2 - y^2) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex+7, 0) = (xxxx - 6*xx*yy + yyyy) * g4p;
+  out.coeffRef(baseIndex+8, 0) = (xx - yy) * xy * g4n;
+}
+
+inline void GaussianSet::pointOrcaH11(GaussianSet *set, const Eigen::Vector3d &delta,
+                                   double dr2, int basis, Eigen::MatrixXd &out)
+{
+  // H type orbitals have 11 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[basis];
+  double h0 = 0.0, h1p = 0.0, h1n = 0.0, h2p = 0.0, h2n = 0.0, h3p = 0.0, h3n = 0.0, h4p = 0.0, h4n = 0.0, h5p = 0.0, h5n = 0.0;
+
+  // Now iterate through the H type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    h0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    h1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h4n += set->m_gtoCN[cIndex++] * tmpGTO;
+    h5p += set->m_gtoCN[cIndex++] * tmpGTO;
+    h5n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xxxx = xx*xx;
+  double yyyy = yy*yy;
+  double zzzz = zz*zz;
+  double xxyy = xx*yy;
+//  double yyzz = yy*zz;
+//  double xxzz = xx*zz;
+
+  double x = delta.x();
+  double y = delta.y();
+  double z = delta.z();
+  double xyz = x*y*z;
+
+  // NormH0 * z * (63*z^4 - 70*z^2*r^2 + 15*r^4) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex  , 0) = z * (63*zzzz - 70*zz*dr2 +15*dr2*dr2) * h0;
+
+  // NormH1p * x * (21*z^4 -14*z^2*r^2 + r^4) *exp(-alpha*r^2)
+  // NormH1n * y * (21*z^4 -14*z^2*r^2 + r^4) *exp(-alpha*r^2)
+  double H1tmp = 21*zzzz -14*zz*dr2 + dr2*dr2;
+  out.coeffRef(baseIndex+1, 0) = x * H1tmp * h1p;
+  out.coeffRef(baseIndex+2, 0) = y * H1tmp * h1n;
+
+  // NormH2p * z * (x^2 - y^2) * (3*z^2 - r^2) *exp(-alpha*r^2)
+  // NormH2n * x*y*z * (3*z^2 - r^2) *exp(-alpha*r^2)
+  double H2tmp = (3*zz - dr2);
+  out.coeffRef(baseIndex+3, 0) = z * (xx - yy) * H2tmp * h2p;
+  out.coeffRef(baseIndex+4, 0) = xyz * H2tmp * h2n;
+
+  // NormH3p * x * (x^2 - 3*y^2) * (9*z^2 - r^2) *exp(-alpha*r^2)
+  // NormH3n * y * (3*x^2 - y^2) * (9*z^2 - r^2) *exp(-alpha*r^2)
+  double H3tmp = (9*zz - dr2);
+  out.coeffRef(baseIndex+5, 0) = x * (xx - 3*yy) * H3tmp * h3p;
+  out.coeffRef(baseIndex+6, 0) = y * (3*xx - yy) * H3tmp * h3n;
+
+  // NormH4p * z * (x^4 - 6*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  // NormH4n * x*y*z * (x^2 - y^2) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex+7, 0) = z*(xxxx - 6*xxyy + yyyy) * h4p;
+  out.coeffRef(baseIndex+8, 0) = xyz*(xx - yy) * h4n;
+
+  // NormH5p * x * (x^4 - 10*x^2*y^2 + 5*y^4) *exp(-alpha*r^2)
+  // NormH5n * y * (5*x^4 - 10*x^2*y^2 + y^4) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex+9, 0) = x * (xxxx - 10*xxyy + 5*yyyy) * h5p;
+  out.coeffRef(baseIndex+10, 0) = y * (5*xxxx - 10*xxyy + yyyy) * h5n;
+
+ }
+
+inline void GaussianSet::pointOrcaI13(GaussianSet *set, const Eigen::Vector3d &delta,
+                                  double dr2, int basis, Eigen::MatrixXd &out)
+{
+  // I type orbitals have 13 components and each component has a different
+  // MO weighting. Many things can be cached to save time
+  unsigned int baseIndex = set->m_moIndices[basis];
+  double i0 = 0.0, i1p = 0.0, i1n = 0.0, i2p = 0.0, i2n = 0.0, i3p = 0.0, i3n = 0.0, i4p = 0.0, i4n = 0.0, i5p = 0.0, i5n = 0.0, i6p = 0.0, i6n = 0.0;
+
+  // Now iterate through the I type GTOs and sum their contributions
+  unsigned int cIndex = set->m_cIndices[basis];
+  for (unsigned int i = set->m_gtoIndices[basis];
+       i < set->m_gtoIndices[basis+1]; ++i) {
+    // Calculate the common factor
+    double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+    i0  += set->m_gtoCN[cIndex++] * tmpGTO;
+    i1p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i1n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i2p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i3p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i3n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i4p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i4n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i5p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i5n += set->m_gtoCN[cIndex++] * tmpGTO;
+    i6p += set->m_gtoCN[cIndex++] * tmpGTO;
+    i6n += set->m_gtoCN[cIndex++] * tmpGTO;
+  }
+
+  // Calculate the prefactors
+
+  double xx = delta.x() * delta.x();
+  double yy = delta.y() * delta.y();
+  double zz = delta.z() * delta.z();
+
+  double xy = delta.x() * delta.y();
+  double xz = delta.x() * delta.z();
+  double yz = delta.y() * delta.z();
+
+  double x4 = xx*xx;
+  double x6 = x4*xx;
+  double y4 = yy*yy;
+  double y6 = y4*yy;
+
+  double z4 = zz*zz;
+  double z6 = z4 * zz;
+  double xxyy = xx*yy;
+
+
+  // NormI0 * (231*z^6 - 315*z^4*r^2 + 105*z^2*r^4 -5*r^6) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex  , 0) = (231*z6 - 315*z4*dr2 + 105*zz*dr2*dr2 - 5*dr2*dr2*dr2) * i0;
+
+  // NormI1p * x*z*(33z^4 - 30z^2*r^2 + 5*r^4) *exp(-alpha*r^2)
+  // NormI1n * y*z*(33z^4 - 30z^2*r^2 + 5*r^4) *exp(-alpha*r^2)
+  double I1tmp = 33.*z4 - 30.*zz*dr2 + 5.*dr2*dr2;
+  out.coeffRef(baseIndex+1, 0) = xz * I1tmp * i1p;
+  out.coeffRef(baseIndex+2, 0) = yz * I1tmp * i1n;
+
+  // NormI2p * ((x^2-y^2)(33*z4 -18*zz*r^2 +r^4)) *exp(-alpha*r^2)
+  // NormI2n * x*y*(33*z^4 - 18z^r^2 +r^4) *exp(-alpha*r^2)
+
+  double I2tmp = 33*z4 - 18*zz*dr2 + dr2*dr2;
+  out.coeffRef(baseIndex+3, 0) = (xx - yy) * I2tmp * i2p;
+  out.coeffRef(baseIndex+4, 0) = xy * I2tmp * i2n;
+
+  // NormI3p * x*z*(x^2 - 3y^2)*(11z^2 - 3r^2) *exp(-alpha*r^2)
+  // NormI3n * y*z*(3x^2 - y^2)*(11z^2 - 3r^2) *exp(-alpha*r^2)
+  double I3tmp = 11*zz - 3*dr2;
+  out.coeffRef(baseIndex+5, 0) = xz * (3*xx - yy) * I3tmp * i3p;
+  out.coeffRef(baseIndex+6, 0) = yz * (xx - 3*yy) * I3tmp * i3n;
+
+  // NormI4p * (x^4 - 6*x^2*y^2 +y^4)*(11z^2 - r^2)*exp(-alpha*r^2)
+  // NormI4n * x*y*(x^2 - y^2)(11z^2 - r^2) *exp(-alpha*r^2)
+  double I4tmp = 11*zz - dr2;
+  out.coeffRef(baseIndex+7, 0) = (x4 - 6*xxyy +y4) * I4tmp * i4p;
+  out.coeffRef(baseIndex+8, 0) = xy*(xx - yy) * I4tmp * i4n;
+
+  // NormI5p * xz(5x^4 - 10x^2*y^2 +y^4) *exp(-alpha*r^2)
+  // NormI5n * y*z*(5x^4 - 10x^2*y^2 +y^4) *exp(-alpha*r^2)
+  double I5tmp = 5*x4 - 10*xx*yy + y4;
+  out.coeffRef(baseIndex+9, 0) = xz * I5tmp * i5p;
+  out.coeffRef(baseIndex+10, 0) = yz * I5tmp * i5n;
+
+  // NormI6p * (x^6 - 15x^4*y^2 + 15x^2y^4 - y^6) *exp(-alpha*r^2)
+  // NormI6n * xy(3x^4 - 10x^2y^2 + 3y^4) *exp(-alpha*r^2)
+  out.coeffRef(baseIndex+11, 0) = (x6 - 15*x4*yy + 15*xx*y4 - y6) * i6p;
+  out.coeffRef(baseIndex+12, 0) = xy * (3*x4 - 10*xx*yy + 3*y4) * i6n;
+
+}
+
+
 
 unsigned int GaussianSet::numMOs()
 {
