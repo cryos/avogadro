@@ -49,6 +49,9 @@ ORCAOutput::ORCAOutput(const QString &filename, GaussianSet* basis):
     m_openShell = false;
     m_useBeta = false;
     m_orcaSuccess = true;
+
+    basis->setUseOrcaNormalization(true);
+
     //  openShellButton = qobject_cast<QCheckButton *>( m_scfConv2ndButtons->button(scfData->getConv2nd()) );
 
     // Process the formatted checkpoint and extract all the information we need
@@ -88,14 +91,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
     // Big switch statement checking for various things we are interested in
     // Make sure to switch mode:
     //      enum mode { NotParsing, Atoms, GTO, STO, MO, SCF }
-    if (key.contains("COORDINATES (BOHR)", Qt::CaseInsensitive)) {
-        basis->moleculeRef().clearAtoms();
-
-        m_coordFactor = 1.0; // coordinates are supposed to be in bohr?!
-        m_currentMode = Atoms;
-        key = m_in->readLine().trimmed(); // skip the column titles
-    }
-    else if (key.contains("CARTESIAN COORDINATES (A.U.)", Qt::CaseInsensitive)) {
+    if (key.contains("CARTESIAN COORDINATES (A.U.)", Qt::CaseInsensitive)) {
         basis->moleculeRef().clearAtoms();
 
         m_coordFactor = 1.; // leave the coords in BOHR ....
@@ -349,6 +345,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
                 m_orcaSuccess = false;
                 qDebug() << "Something went wrong during read of MOs\n check columns!!!";
             }
+            m_numBasisFunctions = numRows;
             if (m_openShell && m_useBeta) {
                 m_MOcoeffs.clear(); // if the orbitals were punched multiple times
                 QStringList orcaOrbitals;
@@ -419,6 +416,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
                     m_orcaSuccess = false;
                     qDebug() << "Something went wrong during read of MOs\n check columns!!!";
                 }
+                m_numBasisFunctions = numRows;
             }
 
             m_currentMode = NotParsing;
@@ -468,6 +466,11 @@ void ORCAOutput::load(GaussianSet* basis)
   if (m_MOcoeffs.size())
     basis->addMOs(m_MOcoeffs);
 
+  m_homo = ceil(m_electrons / 2.0 );
+  calculateDensityMatrix();
+
+  basis->setDensityMatrix(m_density);
+
   qDebug() << " Orca loadBasis done";
 }
 
@@ -501,5 +504,35 @@ orbital ORCAOutput::orbitalIdx(QString txt) {
     return UU;
 }
 
+void ORCAOutput::calculateDensityMatrix()
+{
+    std::vector<std::vector<double> > dens;
+//    dens.resize(m_numBasisFunctions, vector<double>(m_numBasisFunctions, 0.0));
+
+    Eigen::MatrixXd moMatrix;
+    moMatrix.resize(m_numBasisFunctions,m_numBasisFunctions);
+    m_density.resize(m_numBasisFunctions,m_numBasisFunctions);
+
+
+    for (unsigned int j = 0; j < m_numBasisFunctions; ++j)
+        for (unsigned int i = 0; i < m_numBasisFunctions; ++i)
+            moMatrix.coeffRef(i, j) = m_MOcoeffs[i + j*m_numBasisFunctions];
+
+    for (int j = 0; j < m_numBasisFunctions; j++) {
+        for (int i = 0; i< m_numBasisFunctions; i++) {
+            m_density(i,j) = 0.;
+            double density = 0.;
+            for (int k = 0; k < m_homo; k++) {
+                 density += moMatrix.coeffRef(i,k)*moMatrix.coeffRef(j,k);
+//                 dens.at(i).at(j) += m_MOcoeffs[k + i*m_numBasisFunctions] * m_MOcoeffs[k + j*m_numBasisFunctions];
+            }
+            m_density(i,j) = 2*density;
+//                 m_density(i,j) += moMatrix.coeffRef(i,50)*moMatrix.coeffRef(j,50);
+
+ //           qDebug() << " (" << i << "," << j << ") = " << moMatrix.coeffRef (i,j) << "  " << dens.at(i).at(j) << "  " <<  m_density(i,j);
+        }
+    }
 }
+
+} // end OpenQube namespace
 
