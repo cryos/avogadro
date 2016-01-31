@@ -54,6 +54,8 @@
 
 // Google breakpapd
 #include "client/windows/handler/exception_handler.h"
+#include "breakpaddialog.h"
+
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
 #endif
@@ -70,6 +72,7 @@ using namespace Avogadro;
 
 void printVersion(const QString &appName);
 void printHelp(const QString &appName);
+void DmpFilter();
 
 int main(int argc, char *argv[])
 {
@@ -97,7 +100,7 @@ int main(int argc, char *argv[])
 
   google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
 	  L"crash_reports",
-	  NULL,
+	  &DmpFilter,
 	  NULL,
 	  0,
 	  google_breakpad::ExceptionHandler::HANDLER_ALL,
@@ -316,4 +319,9 @@ void printHelp(const QString &appName)
       "  -v, --version\t\tShow version information\n"
       ).arg(appName, VERSION).toStdWString();
   #endif
+}
+
+void DmpFilter() {
+	breakpaddialog errordialog;
+	bool sendReport = errordialog.ask(NULL, NULL, NULL);
 }
