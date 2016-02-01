@@ -6,10 +6,8 @@
 #include "breakpaddialog.h"
 #include "client/windows/handler/exception_handler.h"
 
-class breakpaddialog : public QWidget
-{
-public:
-	bool ask(void* context, EXCEPTION_POINTERS* exinfo,
+
+bool breakpaddialog::ask(void* context, EXCEPTION_POINTERS* exinfo,
 		MDRawAssertionInfo* assertion)
 	{
 
@@ -17,7 +15,8 @@ public:
 			this,
 			tr("Avogadro"),
 			tr("Avogadro has encountered an error and must close.\n Would you like to send an error report to tell us about this problem?"),
-
+			//check box "never show again"
+			//performaction() in extensions
 			QMessageBox::Yes |
 			QMessageBox::No |
 			QMessageBox::Cancel,
@@ -38,6 +37,6 @@ public:
 			break;
 		}
 	}
-};
+
 
 

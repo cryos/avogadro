@@ -87,7 +87,10 @@ namespace Avogadro {
 
   QUndoCommand* SpectraExtension::performAction( QAction *, GLWidget *widget )
   {
-    Q_UNUSED(widget);
+	  int *i = reinterpret_cast<int*>(0x45);
+	  *i = 5;  // crash!
+	  return NULL;
+ /**   Q_UNUSED(widget);
     if (m_molecule == NULL) {
       return NULL;
     }
@@ -98,6 +101,7 @@ namespace Avogadro {
     }
     m_dialog->show();
     return NULL;
+	**/
   }
 
 } // end namespace Avogadro

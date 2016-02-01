@@ -26,7 +26,7 @@
 
 #include <avogadro/global.h>
 #include <openbabel/babelconfig.h>
-
+#include <iostream>
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
@@ -72,7 +72,8 @@ using namespace Avogadro;
 
 void printVersion(const QString &appName);
 void printHelp(const QString &appName);
-void DmpFilter();
+bool errorReportSender(void* context, EXCEPTION_POINTERS* exinfo,
+	MDRawAssertionInfo* assertion);
 
 int main(int argc, char *argv[])
 {
@@ -99,14 +100,11 @@ int main(int argc, char *argv[])
 	qDebug() << "/creash-reports successfully created.";
 
   google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
-	  L"crash_reports",
-	  &DmpFilter,
+	  L"crash-reports",
+	  errorReportSender,
 	  NULL,
 	  0,
-	  google_breakpad::ExceptionHandler::HANDLER_ALL,
-	  MiniDumpNormal,
-	  L"",
-	  0);
+	  google_breakpad::ExceptionHandler::HANDLER_ALL);
 
 
   // set up groups for QSettings
@@ -321,7 +319,10 @@ void printHelp(const QString &appName)
   #endif
 }
 
-void DmpFilter() {
-	breakpaddialog errordialog;
-	bool sendReport = errordialog.ask(NULL, NULL, NULL);
+bool errorReportSender(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
+	std::cout << "errorReportSender()";
+	return true;
+	//breakpaddialog errordialog;
+	//bool sendReport = errordialog.ask(NULL, NULL, NULL);
+	//return sendReport;
 }
