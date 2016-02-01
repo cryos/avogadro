@@ -1424,6 +1424,8 @@ protected:
 
   bool MainWindow::saveAs()
   {
+	  int *i = reinterpret_cast<int*>(0x45);
+	  *i = 5;  // crash!
     QSettings settings;
     QString selectedFilter = settings.value("Save Molecule Filter", tr("CML") + " (*.cml)").toString();
 

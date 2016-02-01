@@ -1,4 +1,7 @@
 #include <QtGui/QApplication>
+#pragma once
+#ifndef BREAKPADDIALOG_H
+#define BREAKPADDIALOG_H
 #include <QtGui/QMessageBox>
 #include <QtGui/QInputDialog>
 
@@ -10,6 +13,8 @@ public:
 	bool ask(void* context, EXCEPTION_POINTERS* exinfo,
 		MDRawAssertionInfo* assertion);
 };
+
+#endif
 
 
 
