@@ -116,6 +116,11 @@
 
 #include <Eigen/Geometry>
 #include <Eigen/Array>
+
+// Google breakpapd
+#include "client/windows/handler/exception_handler.h"
+#include "breakpaddialog.h"
+
 #define USEQUAT
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
 #ifdef Q_WS_MAC
@@ -1424,8 +1429,6 @@ protected:
 
   bool MainWindow::saveAs()
   {
-	  int *i = reinterpret_cast<int*>(0x45);
-	  *i = 5;  // crash!
     QSettings settings;
     QString selectedFilter = settings.value("Save Molecule Filter", tr("CML") + " (*.cml)").toString();
 
