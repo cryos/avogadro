@@ -42,6 +42,8 @@
 #include <QProcess>
 #include <QFont>
 #include <QDir>
+#include <QDialog>
+#include <QCheckBox>
 
 #include <iostream>
 
@@ -54,7 +56,6 @@
 
 // Google breakpapd
 #include "client/windows/handler/exception_handler.h"
-#include "breakpaddialog.h"
 
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
@@ -72,11 +73,21 @@ using namespace Avogadro;
 
 void printVersion(const QString &appName);
 void printHelp(const QString &appName);
-bool errorReportSender(void* context, EXCEPTION_POINTERS* exinfo,
-	MDRawAssertionInfo* assertion);
+
+//for Breakpad error reporting
+bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion);
+struct arginfo {
+	int argc;
+	char **argv;
+}*args;
 
 int main(int argc, char *argv[])
 {
+	//save main args in case of crash
+	args = new struct arginfo;
+	args->argc = argc;
+	args->argv = argv;
+
 #ifdef Q_WS_X11
   if(Library::threadedGL()) {
     std::cout << "Enabling Threads" << std::endl;
@@ -92,20 +103,12 @@ int main(int argc, char *argv[])
         QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
     }
 #endif
-  //set up Google Breakpad
+  //set up Google Breakpad directory
 
   if (!(QDir().mkdir("crash-reports")) && !(QDir("crash-reports").exists())) 
 	qDebug() << "Could not create crash-reports directory.";
   else
-	qDebug() << "/creash-reports successfully created.";
-
-  google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
-	  L"crash-reports",
-	  errorReportSender,
-	  NULL,
-	  0,
-	  google_breakpad::ExceptionHandler::HANDLER_ALL);
-
+	qDebug() << "/crash-reports successfully created.";
 
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");
@@ -284,6 +287,15 @@ int main(int argc, char *argv[])
       }
     }
   }
+
+  //initate Google Breakpad
+  google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
+	  L"crash-reports",
+	  sendErrorDialog,
+	  NULL,
+	  args,
+	  google_breakpad::ExceptionHandler::HANDLER_ALL);
+
   window->show();
   return app.exec();
 }
@@ -319,10 +331,48 @@ void printHelp(const QString &appName)
   #endif
 }
 
-bool errorReportSender(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
-	std::cout << "errorReportSender()";
-	return true;
-	//breakpaddialog errordialog;
-	//bool sendReport = errordialog.ask(NULL, NULL, NULL);
-	//return sendReport;
+bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
+	//TODO: check if 'do not ask again' setting is set
+	
+	//recreate an Application since the original may have crashed
+	//QMessageBox will not display without this
+	Application app(args->argc, args->argv);
+
+	//free memory from struct arginfo args
+	delete(args); 
+/**
+	QSettings settings;
+	
+	if (settings.contains("sendErrorReport") && settings.value("sendErrorReport").toBool() == true) {
+		return true;
+	}
+	else if (settings.contains("sendErrorReport") && settings.value("sendErrorReport").toBool() == false) {
+		return false;
+	}
+	else {
+	**/
+		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Send error report?", 0, NULL);
+		QCheckBox askAgain(QObject::tr("Do not ask again"), &msgBox);
+
+		askAgain.blockSignals(true);
+		
+		msgBox.addButton(&askAgain, QMessageBox::ActionRole);
+
+		QAbstractButton* yes = (QAbstractButton*)msgBox.addButton(QMessageBox::Yes);
+		QAbstractButton* no = (QAbstractButton*)msgBox.addButton(QMessageBox::No);
+
+		int ret = msgBox.exec();
+		bool send;
+		if (ret == QMessageBox::Yes) {
+			send = true;
+		}
+		else {
+			send = false;
+		}
+
+		//if (askAgain.checkState() == Qt::Checked) {
+		//	settings.setValue("sendErrorReport", send);
+	//	}
+		return send;
+	//}
 }
