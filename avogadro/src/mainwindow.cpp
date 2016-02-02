@@ -119,7 +119,6 @@
 
 // Google breakpapd
 #include "client/windows/handler/exception_handler.h"
-#include "breakpaddialog.h"
 
 #define USEQUAT
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
