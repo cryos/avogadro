@@ -1,21 +1,21 @@
 # Serbian translation for avogadro
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the avogadro package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012, 2013.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2013-02-10 05:12+0000\n"
+"PO-Revision-Date: 2016-01-23 00:51+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
-"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-24 05:15+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2016-01-24 05:10+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
+"Language: sr\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -606,7 +606,7 @@ msgstr "Сила"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr "Исцртајте распоред силе на атомима"
+msgstr "Исцртајте размештаје силе на атомима"
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
@@ -723,7 +723,7 @@ msgstr "Површине"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Исцртајте исоповрш мреже молекула"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -731,7 +731,8 @@ msgstr "Жичани оквир"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-msgstr "Исцртајте везе као жице (линије), идеално за врло велике (био)молекуле"
+msgstr ""
+"Исцртајте везе као жице (линије), идеално за врло велике (био)молекуле"
 
 #: src/extension.cpp:46
 msgid "Extensions"
@@ -877,7 +878,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, animationGroup)
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:1191 rc.cpp:4754
+#: src/extensions/animationextension.h:39 :1191 rc.cpp:4754
 msgid "Animation"
 msgstr "Анимација"
 
@@ -887,12 +888,13 @@ msgstr "Дочарајте трајекторије, реакције, и виб
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:103:369
+#: src/extensions/cartesianextension.cpp:103 :369
 msgid "Cartesian Editor"
 msgstr "Декартов уређивач"
 
 #: src/extensions/cartesianextension.cpp:104
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Није одређена јединична ћелија за молекул —— не могу да користим децималне "
 "координате."
@@ -913,7 +915,7 @@ msgstr "Декартов уређивач..."
 #: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/swcntbuilder/swcntbuilderextension.cpp:95
-#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110:4959
+#: src/extensions/swcntbuilder/swcntbuilderwidget.cpp:110 :4959
 msgid "&Build"
 msgstr "&Изгради"
 
@@ -948,7 +950,8 @@ msgstr ""
 "Ваш молекул мора да садржи најмање један атом да бисте додали ограничење"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Ваш молекул мора да садржи најмање два атома да бисте додали ограничење везе"
 
@@ -1164,7 +1167,7 @@ msgstr "&Табла..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2151
 msgid "Perceive Space&group..."
-msgstr "Опази просторну &групу..."
+msgstr "Спознај просторну &групу..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2158
 msgid "Set &Spacegroup..."
@@ -1180,11 +1183,13 @@ msgstr "Испуните јединичну ћелију користећи те
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2173
 msgid "Reduce to &Asymmetric Unit"
-msgstr ""
+msgstr "Умањи на &асиметричну јединицу"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2174
 msgid "Remove atoms in equivalent positions (inverse of Fill Unit Cell)."
 msgstr ""
+"Уклоните атоме на подударним положајима (супротно испуњавању јединичне "
+"ћелије)."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2181
 msgid "Sy&mmetrize Crystal"
@@ -1256,7 +1261,7 @@ msgstr "Прикажи као векторе &колоне"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2370
 msgid "&Tolerance for symmetry operations..."
-msgstr ""
+msgstr "&Толеранција за радње симетрије..."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2378
 msgid "&Crystal View Options..."
@@ -1277,31 +1282,35 @@ msgstr ""
 #: src/extensions/crystallography/crystallographyextension.cpp:2457
 #, qt-format
 msgid ""
-"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol %3."
-"<p><p>Cell can be symmetrized into a conventional setting, do you wish to do "
-"so? Actions that make use of symmetry (e.g. supercell builder) require this."
-"<p>"
+"<p>Perceived spacegroup %1, Hall symbol %2, Hermann-Mauguin symbol "
+"%3.<p><p>Cell can be symmetrized into a conventional setting, do you wish to "
+"do so? Actions that make use of symmetry (e.g. supercell builder) require "
+"this.<p>"
 msgstr ""
+"<p>Спознана просторна група %1, Халов симбол %2, Херман-Могенов симбол "
+"%3.<p><p>Ћелија се може симетризовати према уобичајеном подешавању, да ли "
+"желите то да урадите? Радње које користе симетрију (нпр. градитељ супер "
+"ћелије) то захтевају."
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2479
 msgid "Perceive Spacegroup"
-msgstr "Опази просторну групу"
+msgstr "Спознај просторну групу"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2487
 msgid "International"
-msgstr ""
+msgstr "Међународно"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2488
 msgid "Hall"
-msgstr ""
+msgstr "Хал"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2489
 msgid "Hermann-Mauguin"
-msgstr ""
+msgstr "Херман-Моген"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2516
 msgid "Select spacegroup"
-msgstr ""
+msgstr "Изабери просторну групу"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2545
 msgid "Set Spacegroup"
@@ -1323,7 +1332,7 @@ msgstr "Испуни јединичну ћелију"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2589
 msgid "Reduce to Asymmetric Unit"
-msgstr ""
+msgstr "Умањи на асиметричну јединицу"
 
 #: src/extensions/crystallography/crystallographyextension.cpp:2614
 msgid ""
@@ -1413,7 +1422,7 @@ msgstr "Декартов координатни систем"
 
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:26
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CECoordinateEditor)
-#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75:577
+#: src/extensions/crystallography/ui/cecoordinateeditor.cpp:75 :577
 msgid "Fractional Coordinates"
 msgstr "Разломачке координате"
 
@@ -1451,7 +1460,7 @@ msgstr "Радим..."
 
 #. i18n: file: src/extensions/crystallography/ui/ceslabbuilder.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, buildButton)
-#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232:692
+#: src/extensions/crystallography/ui/ceslabbuilder.cpp:232 :692
 msgid "Build"
 msgstr "Изгради"
 
@@ -1461,7 +1470,7 @@ msgstr "Одсеци таблу из кристала"
 
 #. i18n: file: src/extensions/crystallography/ui/cetranslatewidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, CETranslateWidget)
-#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178:695
+#: src/extensions/crystallography/ui/cetranslatewidget.cpp:178 :695
 msgid "Translate Atoms"
 msgstr "Преведи атоме"
 
@@ -1634,7 +1643,7 @@ msgstr "Општи записи векторске слике"
 
 #: src/extensions/gl2psextension.cpp:71
 msgid "SVG"
-msgstr "СВГ"
+msgstr "SVG"
 
 #: src/extensions/gl2psextension.cpp:72
 msgid "EPS"
@@ -1712,7 +1721,7 @@ msgstr "Уметни ДНА"
 #: src/extensions/insertdnaextension.cpp:221
 msgctxt "uracil"
 msgid "U"
-msgstr "У"
+msgstr "U"
 
 #: src/extensions/insertdnaextension.cpp:222
 msgid "Uracil"
@@ -1725,7 +1734,7 @@ msgstr "Т"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:79
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_TU)
-#: src/extensions/insertdnaextension.cpp:229:879
+#: src/extensions/insertdnaextension.cpp:229 :879
 msgid "Thymine"
 msgstr "Тимин"
 
@@ -1786,7 +1795,7 @@ msgstr "Пептид..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:936 rc.cpp:1155
+#: src/extensions/insertpeptideextension.h:43 :936 rc.cpp:1155
 msgid "Insert Peptide"
 msgstr "Уметни пептид"
 
@@ -1909,36 +1918,35 @@ msgstr "Довуците датотеке молекула са мреже."
 #: src/extensions/orca/orcaanalysedialog.cpp:962
 #: src/extensions/orca/orcainputdialog.cpp:1013
 msgid "OrcaExtension Warning"
-msgstr ""
+msgstr "Упозорење проширења Орке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:188
 #: src/extensions/orca/orcaanalysedialog.cpp:262
 #: src/extensions/orca/orcaanalysedialog.cpp:284
 #: src/extensions/orca/orcaspectra.cpp:92
-#, fuzzy
 msgid "OrcaExtension"
-msgstr "Проширења"
+msgstr "Проширење Орке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:189
 msgid " No vibration data found!"
-msgstr ""
+msgstr " Нисам нашао податке вибрације!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:263
 msgid " No vibration data found or molecule changed outside Orca Plugin!"
 msgstr ""
+" Нисам нашао податке вибрације или је молекул измењен ван прикључка Орке!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:285
 msgid "Selected displacement data don't fit to the actual molecule!"
-msgstr ""
+msgstr "Изабрани подаци размештаја не одговарају стварном молекулу!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:520
-#, fuzzy
 msgid "Orca Output File"
-msgstr "Далтонова улазна датотека"
+msgstr "Излазна датотека Орке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:521
 msgid "extended Geometry File"
-msgstr ""
+msgstr "Датотека проширене геометрије"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:522
 #: src/extensions/spectra/spectradialog.cpp:515
@@ -1949,11 +1957,11 @@ msgstr "Све датотеке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:525
 msgid "Read Orca Outputfile"
-msgstr ""
+msgstr "Читај излазну датотеку Орке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:529
 msgid "no file found"
-msgstr ""
+msgstr "нисам нашао датотеку"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:591
 #: src/extensions/orca/orcaanalysedialog.cpp:651
@@ -1964,64 +1972,64 @@ msgstr ""
 #: src/extensions/orca/orcaanalysedialog.cpp:766
 #: src/extensions/orca/orcaanalysedialog.cpp:780
 msgid "Somethings wrong in the file structure"
-msgstr ""
+msgstr "Нешто није у реду у структури датотеке"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:722
 msgid "Somethings wrong in the file structure - unitcells"
-msgstr ""
+msgstr "Нешто није у реду у структури датотеке — јединичне ћелије"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:857
 msgid "Something is wrong in the IR output! "
-msgstr ""
+msgstr "Нешто није у реду у ИР излазу! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:877
 msgid "Something is wrong in the raman output! "
-msgstr ""
+msgstr "Нешто није у реду у излазу рамана! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:906
 #: src/extensions/orca/orcaanalysedialog.cpp:929
 msgid "Something is wrong in the orbital energy output! "
-msgstr ""
+msgstr "Нешто није у реду у излазу енергије орбите! "
 
 #: src/extensions/orca/orcaanalysedialog.cpp:948
 msgid "No geometry found in file!"
-msgstr ""
+msgstr "Нисам нашао геометрију у датотеци!"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:963
 msgid ""
 "Molecule of the file does not fit the actual molecule structure! \n"
 " Would you like to override the actual molecule?"
 msgstr ""
+"Молекул датотеке не одговара структури стварног молекула! \n"
+" Да ли желите да препишете стварни молекул?"
 
 #: src/extensions/orca/orcaanalysedialog.cpp:1253
-#, fuzzy
 msgid "Could not read file!"
-msgstr "Не могу да прочитам датотеку „%1“."
+msgstr "Не могу да прочитам датотеку!"
 
 #: src/extensions/orca/orcaextension.cpp:78
-#, fuzzy
 msgid "Generate Orca Input..."
-msgstr "Образуј..."
+msgstr "Направи улаз Орке..."
 
 #: src/extensions/orca/orcaextension.cpp:84
 msgid "Analyse Orca Output..."
-msgstr ""
+msgstr "Анализирај излаз Орке..."
 
 #: src/extensions/orca/orcaextension.cpp:98
 msgid "&Orca"
-msgstr ""
+msgstr "&Орка"
 
 #: src/extensions/orca/orcaextension.h:52
 msgid "Orca Test Example"
-msgstr ""
+msgstr "Пример теста Орке"
 
 #: src/extensions/orca/orcaextension.h:54
 msgid "Provides a dialog box with the words \"H...\"."
-msgstr ""
+msgstr "Обезбеђује поље за унос текста са речима „H...“."
 
 #: src/extensions/orca/orcainputdialog.cpp:542
 msgid "ORCA Input Deck"
-msgstr ""
+msgstr "Улазна плоча Орке"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2035,7 +2043,7 @@ msgstr ""
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
 #: src/extensions/quantuminput/qcheminputdialog.cpp:169
-#: src/extensions/quantuminput/teracheminputdialog.cpp:183:3994
+#: src/extensions/quantuminput/teracheminputdialog.cpp:183 :3994
 msgid "Show Preview"
 msgstr "Прикажи преглед"
 
@@ -2069,25 +2077,26 @@ msgstr "Прикажи преглед"
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
 #: src/extensions/quantuminput/qcheminputdialog.cpp:173
-#: src/extensions/quantuminput/teracheminputdialog.cpp:187:1497
+#: src/extensions/quantuminput/teracheminputdialog.cpp:187 :1497
 msgid "Hide Preview"
 msgstr "Сакриј преглед"
 
 #: src/extensions/orca/orcainputdialog.cpp:719
 #: src/extensions/orca/orcainputdialog.cpp:797
-#, fuzzy
 msgid " Selection failure"
-msgstr "Режим избора:"
+msgstr " Неуспех избора"
 
 #: src/extensions/orca/orcainputdialog.cpp:720
 msgid "RijCosX option not available for the selected DFT functional!"
-msgstr ""
+msgstr "Опција „RijCosX“ није доступна за изабрани ДФТ функционал!"
 
 #: src/extensions/orca/orcainputdialog.cpp:798
 msgid ""
 "RijCosX not available for the selected DFT functional! \n"
 "RijCosX option reset!"
 msgstr ""
+"„RijCosX“ није доступно за изабрани ДФТ функционал! \n"
+"Повраћај опције „RijCosX“!"
 
 #: src/extensions/orca/orcainputdialog.cpp:1014
 msgid ""
@@ -2095,13 +2104,16 @@ msgid ""
 " Generating a new preview will lose all changes! \n"
 " Would you like to override them anyway?"
 msgstr ""
+"Несачуване измене су начињене у тексту стварног прегледа! \n"
+" Стварање новог прегледа ће поништити измене! \n"
+" Да ли ипак желите да их препишете?"
 
 #: src/extensions/orca/orcainputdialog.cpp:1362
 #: src/extensions/quantuminput/abinitinputdialog.cpp:417
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
 msgid "Save Input Deck"
-msgstr ""
+msgstr "Сачувај улазну плочу"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:200
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
@@ -2119,19 +2131,19 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#: src/extensions/orca/orcaspectra.cpp:84:2353 rc.cpp:3229 rc.cpp:3341
+#: src/extensions/orca/orcaspectra.cpp:84 :2353 rc.cpp:3229 rc.cpp:3341
 msgid "Frequencies"
 msgstr "Учесталост"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#: src/extensions/orca/orcaspectra.cpp:85:4679
+#: src/extensions/orca/orcaspectra.cpp:85 :4679
 msgid "Intensities"
-msgstr ""
+msgstr "Јакост"
 
 #: src/extensions/orca/orcaspectra.cpp:93
 msgid " OrcaSpectra::No vibration data found!"
-msgstr ""
+msgstr " СпектарОрке::Нисам нашао податке вибрације!"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -2155,7 +2167,7 @@ msgstr "Није достављен исправан назив датотеке
 
 #: src/extensions/povrayextension.cpp:136
 msgid "Does not compute."
-msgstr ""
+msgstr "Не рачунам."
 
 #: src/extensions/povrayextension.cpp:137
 msgid ""
@@ -2250,7 +2262,7 @@ msgstr "Својства саобразника"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:899
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:1741 rc.cpp:2242 rc.cpp:2584
+#: src/extensions/propextension.h:43 :1741 rc.cpp:2242 rc.cpp:2584
 msgid "Properties"
 msgstr "Својства"
 
@@ -2264,14 +2276,14 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:393:448
+#: src/extensions/propmodel.cpp:393 :448
 msgid "Element"
 msgstr "Елемент"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/extensions/propmodel.cpp:395 src/extensions/propmodel.cpp:438
-#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481:517
+#: src/extensions/propmodel.cpp:461 src/extensions/propmodel.cpp:481 :517
 msgid "Type"
 msgstr "Врста"
 
@@ -2349,7 +2361,7 @@ msgstr "Угао %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:475:538
+#: src/extensions/propmodel.cpp:475 :538
 msgid "Angle"
 msgstr "Угао"
 
@@ -2410,15 +2422,15 @@ msgstr "Међудејствени питонов терминал за скри
 
 #: src/extensions/qtaim/qtaimextension.cpp:69
 msgid "Molecular Graph..."
-msgstr ""
+msgstr "Молекуларни график..."
 
 #: src/extensions/qtaim/qtaimextension.cpp:75
 msgid "Molecular Graph with Lone Pairs..."
-msgstr ""
+msgstr "Молекуларни график са усамљеним паровима..."
 
 #: src/extensions/qtaim/qtaimextension.cpp:81
 msgid "Atomic Charge..."
-msgstr ""
+msgstr "Наелектрисање атома..."
 
 #: src/extensions/qtaim/qtaimextension.cpp:150
 msgid "Open WFN File"
@@ -2434,18 +2446,20 @@ msgstr "КуТАИМ проширење"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:328
 msgid "Abinit Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Абинита"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:329
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Abinit input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Абинита?"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:437
 #: src/extensions/quantuminput/abinitinputdialog.cpp:450
 msgid "Abinit_Input_Deck"
-msgstr ""
+msgstr "Улазна_плоча_Абинита"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:443
 msgid "Abinit Running."
@@ -2605,7 +2619,7 @@ msgstr "Направите улазне датотеке за квантне х�
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:632:1572
+#: src/extensions/quantuminput/gamessinputdialog.cpp:632 :1572
 msgid "Title"
 msgstr "Наслов"
 
@@ -2647,36 +2661,40 @@ msgstr ""
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1637
 msgid "GAMESS Input Deck"
-msgstr ""
+msgstr "Улазна плоча Гамеса"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:134
 msgid "GAMESS-UK Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Гамеса-УК"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:135
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "GAMESS-UK input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Гамеса-УК?"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:179
 msgid "GAMESS-UK Input Deck"
-msgstr ""
+msgstr "Улазна плоча Гамеса-УК"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Гауска"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:203
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Гауска?"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
 msgid "Gaussian Input Deck"
-msgstr ""
+msgstr "Улазна плоча Гауска"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -2713,7 +2731,8 @@ msgid "G03 Crashed."
 msgstr "Г03 се урушио."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:356
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Гауско није радио исправно. Можда није инсталиран исправно."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:60
@@ -2738,15 +2757,15 @@ msgstr "&МОЛПРО..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:85
 msgid "M&OPAC..."
-msgstr "М&ОПАЦ..."
+msgstr "М&ОПАК..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:90
 msgid "&NWChem..."
-msgstr "&НВ хемија..."
+msgstr "&НВ-Хемија..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:95
 msgid "&PSI4..."
-msgstr ""
+msgstr "&ПСИ4..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:100
 msgid "&Q-Chem..."
@@ -2754,11 +2773,11 @@ msgstr "&Ку-Хемија..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:105
 msgid "&TeraChem..."
-msgstr "&Тера хемија..."
+msgstr "&Тера-Хемија..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:109
 msgid "&LAMMPS..."
-msgstr ""
+msgstr "&ЛАМПС..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:196
 #, qt-format
@@ -2775,140 +2794,154 @@ msgstr "Направите улазне датотеке из квантних �
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:175
 msgid "Lammps Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Лампса"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:176
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Lammps input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Лампса?"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:233
 msgid "Lammps Input"
-msgstr ""
+msgstr "Улаз Лампса"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
 msgid "Molpro Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Молпроа"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Молпроа?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
 msgid "Molpro Input Deck"
-msgstr ""
+msgstr "Улазна плоча Молпроа"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
-msgstr "Упозорење улаза МОПАЦ-а"
+msgstr "Упозорење улаза МОПАК-а"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:138
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче МОПАК-а?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Input Deck"
-msgstr ""
+msgstr "Улазна плоча МОПАК-а"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
-msgstr "МОПАЦ је покренут."
+msgstr "МОПАК је покренут."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:181
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
 msgstr ""
-"МОПАЦ је већ покренут. Молим сачекајте док се не обаве претходни прорачуни."
+"МОПАК је већ покренут. Молим сачекајте док се не обаве претходни прорачуни."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:191
 msgid "MOPAC Not Installed."
-msgstr "МОПАЦ није инсталиран."
+msgstr "МОПАК није инсталиран."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:192
 msgid "The MOPAC executable, cannot be found."
-msgstr "Не могу да пронађем МОПАЦ извршни."
+msgstr "Не могу да пронађем извршну МОПАК-а."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:206
 msgid "MOPAC failed to start."
-msgstr "МОПАЦ није успео да се покрене."
+msgstr "МОПАК није успео да се покрене."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:207
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "МОПАЦ се није покренуо. Можда није инсталиран исправно."
+msgstr "МОПАК се није покренуо. Можда није исправно инсталиран."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:212
 msgid "Running MOPAC calculation..."
-msgstr "Извршавам МОПАЦ-ове прорачуне..."
+msgstr "Извршавам МОПАК-ове прорачуне..."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:247
 msgid "MOPAC Crashed."
-msgstr "МОПАЦ се урушио."
+msgstr "МОПАК се урушио."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:248
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr "МОПАЦ није радио исправно. Можда није инсталиран исправно."
+msgstr "МОПАК није радио исправно. Можда није инсталиран исправно."
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:126
 msgid "NWChem Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче НВ-Хемије"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:127
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче НВ-Хемије?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
 msgid "NWChem Input Deck"
-msgstr ""
+msgstr "Улазна плоча НВ-Хемије"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:116
 msgid "Psi4 Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Пси-а4"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:117
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Psi4 input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Пси-а4?"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:173
 msgid "Psi4 Input Deck"
-msgstr ""
+msgstr "Улазна плоча Пси-а4"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Ку-Хемије"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:120
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Ку-Хемије?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
 msgid "QChem Input Deck"
-msgstr ""
+msgstr "Улазна плоча Ку-Хемије"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:132
 msgid "TeraChem Input Deck Generator Warning"
-msgstr ""
+msgstr "Упозорење ствараоца улазне плоче Тера-Хемије"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "TeraChem input deck preview pane?"
 msgstr ""
+"Да ли желите да ажурирате текст прегледа, тако што ћете изгубити све измене "
+"учињене у окну прегледа улазне плоче Тера-Хемије?"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:175
 msgid "TeraChem Input Deck"
-msgstr ""
+msgstr "Улазна плоча Тера-Хемије"
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2952,7 +2985,7 @@ msgstr "Изабери према остатку"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231 :198
 msgid "Residue name"
 msgstr "Назив остатка"
 
@@ -3014,7 +3047,7 @@ msgstr "Датотеке параметара нијансера (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:4432
+#: src/extensions/shaderextension.h:41 :4432
 msgid "GLSL Shaders"
 msgstr "ГЛСЛ нијансери"
 
@@ -3078,7 +3111,7 @@ msgstr "Помак (ppm)"
 
 #: src/extensions/spectra/raman.cpp:45 src/extensions/spectra/raman.cpp:79
 msgid "Activity"
-msgstr "Радња"
+msgstr "Активност"
 
 #: src/extensions/spectra/raman.cpp:46
 msgid "Intensity"
@@ -3094,13 +3127,13 @@ msgstr "Y оса"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:188:4493
+#: src/extensions/spectra/spectradialog.cpp:188 :4493
 msgid "&Appearance"
 msgstr "&Изглед"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:189:4559
+#: src/extensions/spectra/spectradialog.cpp:189 :4559
 msgid "E&xport Image"
 msgstr "Извези &слику"
 
@@ -3134,7 +3167,7 @@ msgstr "Подешавања &густине стања"
 #: src/extensions/spectra/spectradialog.cpp:216
 msgctxt "Ultra-Violet spectrum"
 msgid "UV"
-msgstr "УВ"
+msgstr "UV"
 
 #: src/extensions/spectra/spectradialog.cpp:217
 msgid "&UV Settings"
@@ -3143,7 +3176,7 @@ msgstr "Подешавања &ултраљубичастог"
 #: src/extensions/spectra/spectradialog.cpp:223
 msgctxt "Circular Dichromism spectrum"
 msgid "CD"
-msgstr "ЦД"
+msgstr "CD"
 
 #: src/extensions/spectra/spectradialog.cpp:224
 msgid "&CD Settings"
@@ -3232,7 +3265,7 @@ msgstr "Вредности раздвојене зарезом"
 
 #: src/extensions/spectra/spectradialog.cpp:514
 msgid "JCAMP-DX"
-msgstr "ЈЦАМП-ДИкс"
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectra/spectradialog.cpp:517
 msgid "Import Spectra"
@@ -3253,7 +3286,7 @@ msgstr "Непознато проширење: %1"
 #: src/extensions/spectra/spectradialog.cpp:590
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
-msgstr "ПВсцф IR подаци (*.out)"
+msgstr "PWscf IR подаци (*.out)"
 
 #: src/extensions/spectra/spectradialog.cpp:591
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
@@ -3277,7 +3310,7 @@ msgstr "Облик података"
 #: src/extensions/spectra/spectradialog.cpp:595
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr "Облик:"
+msgstr "Запис:"
 
 #: src/extensions/spectra/spectradialog.cpp:604
 msgid "Load Spectral Data"
@@ -3328,7 +3361,7 @@ msgstr "Неисправан назив датотеке"
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1174
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: src/extensions/spectra/spectradialog.cpp:956
-#: src/extensions/surfaces/surfaceextension.cpp:568:1443
+#: src/extensions/surfaces/surfaceextension.cpp:568 :1443
 msgid "Error"
 msgstr "Грeшкa"
 
@@ -3352,7 +3385,7 @@ msgstr "&Напредно <<"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:998:4487
+#: src/extensions/spectra/spectradialog.cpp:998 :4487
 msgid "&Advanced >>"
 msgstr "&Напредно >>"
 
@@ -3378,13 +3411,13 @@ msgstr "Вибрације"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2588
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:204:3094
+#: src/extensions/spectra/vibrationextension.cpp:204 :3094
 msgid "Vibrational Analysis"
 msgstr "Вибрациона анализа"
 
 #: src/extensions/spectra/vibrationextension.cpp:205
 msgid "No vibrational displacements exist."
-msgstr "Не постоји вибрационо померање."
+msgstr "Не постоји вибрационо размештање."
 
 #: src/extensions/spectra/vibrationextension.h:47
 msgid "Vibration"
@@ -3402,7 +3435,7 @@ msgstr "Ређам %1 вибрације према учесталости..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:283
-#: src/extensions/spectra/vibrationwidget.cpp:293:4766
+#: src/extensions/spectra/vibrationwidget.cpp:293 :4766
 msgid "Start &Animation"
 msgstr "Пусти &покретне слике"
 
@@ -3415,7 +3448,7 @@ msgstr "Заустави &покретне слике"
 #: src/extensions/spectra/vibrationwidget.cpp:286
 #: src/extensions/spectra/vibrationwidget.cpp:295
 #: src/extensions/spectra/vibrationwidget.cpp:304
-#: src/extensions/spectra/vibrationwidget.cpp:307:4769
+#: src/extensions/spectra/vibrationwidget.cpp:307 :4769
 msgid "Pause"
 msgstr "Паузирај"
 
@@ -3560,7 +3593,7 @@ msgstr "Израчунавам густину електрона"
 
 #: src/extensions/surfaces/surfaceextension.cpp:458
 msgid "VdW"
-msgstr "ВдВ"
+msgstr "VdW"
 
 #: src/extensions/surfaces/surfaceextension.cpp:490
 msgid "Electron Density"
@@ -3580,7 +3613,7 @@ msgstr "Изграђивач &нано цеви..."
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, SWCNTBuilderWidget)
-#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66:4918
+#: src/extensions/swcntbuilder/swcntbuilderextension.cpp:66 :4918
 msgid "Nanotube Builder"
 msgstr "Изграђивач нано цеви"
 
@@ -3615,22 +3648,20 @@ msgid "Building..."
 msgstr "Изграђујем..."
 
 #: src/extensions/symmetry/symmetryextension.cpp:95
-#, fuzzy
 msgid "Symmetry Properties..."
-msgstr "Својства саобразника..."
+msgstr "Својства симетрије..."
 
 #: src/extensions/symmetry/symmetryextension.cpp:170
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/extensions/symmetry/symmetryextension.h:55
-#, fuzzy
 msgid "Symmetry Properties"
-msgstr "Својства саобразника"
+msgstr "Својства симетрије"
 
 #: src/extensions/symmetry/symmetryextension.h:56
 msgid "Display point group symmetry."
-msgstr ""
+msgstr "Прикажите тачку симетрије групе."
 
 #: src/extensions/trajvideomaker.cpp:52
 msgid "GL widget was not correctly initialized in order to make a video"
@@ -3720,7 +3751,7 @@ msgstr "Подаци за уклањање грешака"
 #: src/glwidget.cpp:1705
 #, qt-format
 msgid "FPS: %L1"
-msgstr "ФПС: %L1"
+msgstr "К/С: %L1"
 
 #: src/glwidget.cpp:1709
 #, qt-format
@@ -4045,15 +4076,15 @@ msgstr "Алгоритам:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:301:834
+#: src/tools/autoopttool.cpp:301 :834
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:302:837
+#: src/tools/autoopttool.cpp:302 :837
 msgid "Conjugate Gradients"
-msgstr ""
+msgstr "Конјуговани преливи"
 
 #: src/tools/autoopttool.cpp:303
 msgid "Molecular Dynamics (300K)"
@@ -4084,7 +4115,7 @@ msgstr "Занемарени атоми се могу померати"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, stopButton)
-#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224:1197
+#: src/tools/autoopttool.cpp:366 src/tools/autorotatetool.cpp:224 :1197
 msgid "Stop"
 msgstr "Заустави"
 
@@ -4156,7 +4187,7 @@ msgstr "z заокретање"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1500 rc.cpp:1701 rc.cpp:2260
+#: src/tools/autorotatetool.cpp:296 :1500 rc.cpp:1701 rc.cpp:2260
 msgid "Reset"
 msgstr "Врати"
 
@@ -4185,6 +4216,16 @@ msgid ""
 "Left Click & Drag one of the Atoms in the Bond to change the angle\n"
 "Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
+"Алат за управљање средишњом везом\n"
+"\n"
+"Леви тастер: \tПритисните и превуците да заокренете преглед.\n"
+"Средњи тастер:  Притисните и превуците да приближите или удаљите.\n"
+"Десни тастер: \tПритисните и превуците да преместите преглед.\n"
+"Двоструки: \tВраћа преглед.\n"
+"\n"
+"Леви притисак и превлачење на вези за подешавање равни управљања:\n"
+"Леви притисак и превлачење једног атома у вези за промену угла\n"
+"Десни притисак и превлачење једног атома у вези за промену дужине"
 
 #: src/tools/bondcentrictool.cpp:792
 #, qt-format
@@ -4206,11 +4247,11 @@ msgstr "Приони на праг: "
 
 #: src/tools/bondcentrictool.cpp:1658 src/tools/bondcentrictool.cpp:1673
 msgid "Bond Centric Manipulation"
-msgstr ""
+msgstr "Управљање средишњом везом"
 
 #: src/tools/bondcentrictool.h:67
 msgid "Bond Centric Manipulate"
-msgstr ""
+msgstr "Управљање средишњом везом"
 
 #: src/tools/bondcentrictool.h:68
 msgid "Manipulation of bond lengths, angles, and torsions"
@@ -4218,7 +4259,7 @@ msgstr "Управљање дужинама, угловима и увијањи�
 
 #: src/tools/bondcentrictool.h:69
 msgid "Bond Centric Manipulate Settings"
-msgstr ""
+msgstr "Подешавање управљања средишњом везом"
 
 #: src/tools/clickmeasuretool.cpp:59
 msgid ""
@@ -4229,6 +4270,13 @@ msgid ""
 "\tAngle is measured between 1-3 using 2 as the common point\n"
 "Right Mouse: \tReset the measurements.Double-Click: \tReset the view."
 msgstr ""
+"Притисните да измерите (Ф12)\n"
+"\n"
+"Леви тастер: \tИзаберите до три атома.\n"
+"\t\tРастојања се мере између 1-2 и 2-3\n"
+"\t\tУгао се мери између 1-3 а 2 заједничка тачка\n"
+"Десни тастер: \tВраћа мерења.\n"
+"Двоструки: \tВраћа преглед."
 
 #: src/tools/clickmeasuretool.cpp:151
 #, qt-format
@@ -4256,7 +4304,7 @@ msgstr "Растојање (3—>4): %L1 %2"
 #: src/tools/clickmeasuretool.cpp:214
 #, qt-format
 msgid "Dihedral Angle: %1 °"
-msgstr ""
+msgstr "Двострани угао: %1 °"
 
 #: src/tools/clickmeasuretool.cpp:254
 msgctxt "*1 is a number. You most likely do not need to translate this"
@@ -4288,7 +4336,7 @@ msgstr "Угао:"
 
 #: src/tools/clickmeasuretool.cpp:306
 msgid "Dihedral:"
-msgstr ""
+msgstr "Двострани:"
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure"
@@ -4304,7 +4352,7 @@ msgstr "Подешавања мерења"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
 msgid "Add Atom"
 msgstr "Додај атом"
 
@@ -4335,6 +4383,10 @@ msgid ""
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
 "Right Mouse: \tDelete Atom"
 msgstr ""
+"Алат за цртање (Ф8)\n"
+"\n"
+"Леви тастер: \tПритисните и превуците да направите атоме и везе\n"
+"Десни тастер: \tОбришите атом"
 
 #: src/tools/drawtool.cpp:405 src/tools/drawtool.cpp:411
 msgid "Draw Atom"
@@ -4354,7 +4406,7 @@ msgstr "Елемент:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1246
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:819:2725
+#: src/tools/drawtool.cpp:819 :2725
 msgid "Other..."
 msgstr "Друго..."
 
@@ -4364,13 +4416,13 @@ msgstr "Поредак везе:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:190
 #. i18n: ectx: property (text), widget (QRadioButton, singleStrandRadio)
-#: src/tools/drawtool.cpp:828:912
+#: src/tools/drawtool.cpp:828 :912
 msgid "Single"
 msgstr "Једноструко"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:197
 #. i18n: ectx: property (text), widget (QRadioButton, doubleStrandRadio)
-#: src/tools/drawtool.cpp:829:915
+#: src/tools/drawtool.cpp:829 :915
 msgid "Double"
 msgstr "Двоструко"
 
@@ -4399,6 +4451,12 @@ msgid ""
 "Right Mouse: \tClick and drag to rotate selected atoms.\n"
 "Double-Click: \tReset the view."
 msgstr ""
+"Алат управљања (Ф10)\n"
+"\n"
+"Леви тастер: \tПритисните и превуците да преместите атоме\n"
+"Средњи тастер:  Притисните и превуците да удаљите атоме или да их прибижите\n"
+"Десни тастер: \tПритисните и превуците да заокренете изабране атоме.\n"
+"Двоструки: \tВраћа преглед."
 
 #: src/tools/manipulatetool.h:56
 msgid "Manipulate"
@@ -4425,6 +4483,12 @@ msgid ""
 "Right Mouse: \tClick and drag to move the view.\n"
 "Double-Click: \tReset the view."
 msgstr ""
+"Алат кретања (Ф9)\n"
+"\n"
+"Леви тастер: \tПритисните и превуците да заокренете преглед\n"
+"Средњи тастер:  Притисните и превуците да увећате или да умањите\n"
+"Десни тастер: \tПритисните и превуците да преместите преглед.\n"
+"Двоструки: \tВраћа преглед."
 
 #: src/tools/navigatetool.h:52
 msgid "Navigate"
@@ -4521,7 +4585,7 @@ msgstr "Угао везе"
 
 #: src/tools/zmatrixmodel.cpp:92
 msgid "Dihedral Angle"
-msgstr ""
+msgstr "Двострани угао"
 
 #: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
@@ -4529,7 +4593,7 @@ msgstr "Уређивач Z матрице..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1569
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:2812
+#: src/tools/zmatrixtool.h:39 :2812
 msgid "Z-Matrix"
 msgstr "Z-матрица"
 
@@ -5108,7 +5172,7 @@ msgstr "Понављање"
 #. i18n: file: src/extensions/animationdialog.ui:198
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
-msgstr "кпс"
+msgstr "к/с"
 
 #. i18n: file: src/extensions/animationdialog.ui:225
 #. i18n: ectx: property (text), widget (QPushButton, saveVideoButton)
@@ -5224,10 +5288,10 @@ msgstr "Поврати измене"
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5236,10 +5300,10 @@ msgid ""
 "coordinates here. You may paste almost any fragment of text, containing "
 "coordinates</p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5339,7 +5403,7 @@ msgstr "Начин вредновања"
 #. i18n: file: src/extensions/conformersearchdialog.ui:165
 #. i18n: ectx: property (text), item, widget (QComboBox, scoringComboBox)
 msgid "RMSD"
-msgstr "РМСД"
+msgstr "RMSD"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:170
 #. i18n: ectx: property (text), item, widget (QComboBox, scoringComboBox)
@@ -5451,10 +5515,10 @@ msgstr "Атомски &идентитет:"
 #. i18n: file: src/extensions/crystallography/ui/cecoordinateeditor.ui:57
 #. i18n: ectx: property (html), widget (QTextEdit, edit_coords)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5462,10 +5526,10 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
 "size:11pt;\"> H 100.00000 100.00000 100.00000</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5499,10 +5563,10 @@ msgstr "Матрица ћелије"
 #. i18n: file: src/extensions/crystallography/ui/cematrixeditor.ui:74
 #. i18n: ectx: property (html), widget (Avogadro::TextMatrixEditor, edit_matrix)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5516,10 +5580,10 @@ msgid ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
 "size:12pt;\">  0.00000 0.00000 3.00000</span></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -5827,12 +5891,12 @@ msgstr "Истовредна датотека:"
 #. i18n: file: src/extensions/fileimportdialog.ui:68
 #. i18n: ectx: property (toolTip), widget (QCheckBox, perceiveBonds)
 msgid "Attempt to perceive bonds?"
-msgstr "Да покушам да опазим везе?"
+msgstr "Да покушам да спознам везе?"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:71
 #. i18n: ectx: property (text), widget (QCheckBox, perceiveBonds)
 msgid "Perceive bonds?"
-msgstr "Да опазим везе?"
+msgstr "Да спознам везе?"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ForceFieldDialog)
@@ -5936,7 +6000,7 @@ msgstr "C"
 #. i18n: file: src/extensions/insertdnadialog.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_G)
 msgid "Guanine"
-msgstr ""
+msgstr "Гуанин"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_G)
@@ -5962,7 +6026,7 @@ msgstr "Низ:"
 #. i18n: file: src/extensions/insertdnadialog.ui:150
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, bpTurnsSpin)
 msgid "the number of base pairs per helix turn"
-msgstr ""
+msgstr "број парова базе по завоју спирале"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:132
 #. i18n: ectx: property (text), item, widget (QComboBox, bpCombo)
@@ -5981,12 +6045,12 @@ msgstr "Друго"
 #. i18n: file: src/extensions/insertdnadialog.ui:172
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Bases Per Turn:"
-msgstr ""
+msgstr "Бр. база по спирали:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:183
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Strands:"
-msgstr ""
+msgstr "Снопови:"
 
 #. i18n: file: src/extensions/insertdnadialog.ui:227
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
@@ -6242,7 +6306,7 @@ msgstr "Л"
 #. i18n: file: src/extensions/insertpeptidedialog.ui:479
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "D"
-msgstr "Д"
+msgstr "D"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:310
 #. i18n: ectx: property (text), widget (QLabel, label_7)
@@ -6392,7 +6456,7 @@ msgstr "ЈУПАК назив молекула:"
 #. i18n: file: src/tools/navigatesettingswidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
 msgid "Form"
-msgstr ""
+msgstr "Облик"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:26
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
@@ -6429,60 +6493,50 @@ msgstr "Затвори"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Frames"
-msgstr ""
-",Launchpad Contributions:,Мирослав Николић, ,Launchpad Contributions:,"
-"Мирослав Николић"
+msgstr "Кадрови"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:160
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Scaling Factor"
-msgstr ""
+msgstr "Чинилац сразмеравања"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:190
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
-#, fuzzy
 msgid "Load File"
-msgstr "Учитавам датотеку..."
+msgstr "Учитај датотеку"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:210
 #. i18n: ectx: property (text), widget (QPushButton, plotButton)
-#, fuzzy
 msgid "Plot Spectra"
-msgstr "Увези спектар"
+msgstr "Исцртај спектре"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:226
 #. i18n: ectx: property (title), widget (QGroupBox, fragmentGroup)
-#, fuzzy
 msgid "Fragments"
-msgstr "Одломак..."
+msgstr "Одломци"
 
 #. i18n: file: src/extensions/orca/orcaanalysedialog.ui:238
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
-#, fuzzy
 msgid "select Fragment"
-msgstr "Уметни одломак"
+msgstr "изабери одломак"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:27
 #. i18n: ectx: attribute (title), widget (QWidget, basicSetupTab)
-#, fuzzy
 msgid "Basic"
-msgstr "Основе"
+msgstr "Основа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:836
 #. i18n: ectx: property (text), widget (QLabel, label_12)
-#, fuzzy
 msgid "Comment"
-msgstr "Наредба:"
+msgstr "Напомена"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#, fuzzy
 msgid "Calculation"
-msgstr "Израчунај"
+msgstr "Прорачун"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
@@ -6515,7 +6569,6 @@ msgstr "Енергија једне тачке"
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculationCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunTypeCombo)
-#, fuzzy
 msgid "Frequency"
 msgstr "Учесталост"
 
@@ -6568,7 +6621,7 @@ msgstr "ДФТ"
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MP2"
-msgstr "МП2"
+msgstr "MP2"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, basicMethodCombo)
@@ -6585,50 +6638,45 @@ msgstr "МП2"
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD"
-msgstr ""
+msgstr "CCSD"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:158
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Basis set"
-msgstr "Подешавања основе:"
+msgstr "Подешавање основе"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:744
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#, fuzzy
 msgid "Charge"
-msgstr "Наелектрисање:"
+msgstr "Наелектрисање"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:236
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:773
 #. i18n: ectx: property (text), widget (QLabel, label_17)
-#, fuzzy
 msgid "Multiplicity"
-msgstr "Вишеструкост:"
+msgstr "Вишеструкост"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Format"
-msgstr "Облик:"
+msgstr "Запис"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:871
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
-#, fuzzy
 msgid "z-Matrix"
-msgstr "Z-матрица"
+msgstr "z-матрица"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, basicFormatCombo)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:876
 #. i18n: ectx: property (text), item, widget (QComboBox, dataFormatCombo)
 msgid "z-Matrix compact"
-msgstr ""
+msgstr "Збијена z-матрица"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:350
 #. i18n: ectx: attribute (title), widget (QWidget, advancedSetupTab)
@@ -6643,9 +6691,8 @@ msgstr "Напредно"
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:429
 #. i18n: ectx: property (title), widget (QGroupBox, basisBasisGroup)
-#, fuzzy
 msgid "Basis Set"
-msgstr "Подешавања основе:"
+msgstr "Подешавање основе"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:373
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6659,14 +6706,14 @@ msgstr "Управљање"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:402
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "SCF"
-msgstr "СЦФ"
+msgstr "SCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:382
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:615
 #. i18n: ectx: property (text), widget (QCheckBox, controlCosXCheck)
 msgid "RijCosX"
-msgstr ""
+msgstr "RijCosX"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:393
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6677,15 +6724,13 @@ msgstr "Подаци"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:454
 #. i18n: ectx: property (text), widget (QCheckBox, basisECPCheck)
-#, fuzzy
 msgid "ECP"
-msgstr "ЕПС"
+msgstr "ECP"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:468
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxBasisGroup)
-#, fuzzy
 msgid "Aux. Basis Set"
-msgstr "Подешавања основе:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:493
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxECPCheck)
@@ -6694,37 +6739,33 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:507
 #. i18n: ectx: property (title), widget (QGroupBox, basisRelativisticGroup)
-#, fuzzy
 msgid "Relativistic"
-msgstr "Релативно"
+msgstr "Релативистички"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:529
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
 msgid "ZORA"
-msgstr ""
+msgstr "ZORA"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:534
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
 msgid "IORA"
-msgstr ""
+msgstr "IORA"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:539
 #. i18n: ectx: property (text), item, widget (QComboBox, basisRelativisticCombo)
-#, fuzzy
 msgid "DKH"
-msgstr "DnH"
+msgstr "DKH"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, basisDKHLabel)
-#, fuzzy
 msgid "Order"
-msgstr "Поредак везе"
+msgstr "Поредак"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:574
 #. i18n: ectx: property (title), widget (QGroupBox, basisAuxCorrBasisGroup)
-#, fuzzy
 msgid "Corr. Aux. Basis Set"
-msgstr "Подешавања основе:"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:599
 #. i18n: ectx: property (text), widget (QCheckBox, basisAuxCorrECPCheck)
@@ -6733,37 +6774,35 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:728
 #. i18n: ectx: property (text), widget (QLabel, label_13)
-#, fuzzy
 msgid "Run type"
-msgstr "Врста покретања:"
+msgstr "Врста покретања"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:794
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 msgid "Add. Print Options"
-msgstr ""
+msgstr "Додатне опције штампања"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:806
 #. i18n: ectx: property (text), widget (QCheckBox, MOPrintCheck)
 msgid "MOs"
-msgstr ""
+msgstr "MOs"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:819
 #. i18n: ectx: property (text), widget (QCheckBox, basisPrintCheck)
-#, fuzzy
 msgid "Basis Sets"
-msgstr "Подешавања основе:"
+msgstr "Подешавања основе"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:858
 #. i18n: ectx: property (text), widget (QLabel, label_23)
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:213
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Coordinates"
-msgstr ""
+msgstr "Координате"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:896
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Printlevel"
-msgstr ""
+msgstr "Ниво исписа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:904
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6774,14 +6813,13 @@ msgstr "Ништа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:909
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Mini"
-msgstr "Најмање:"
+msgstr "Мајушно"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:914
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
 msgid "Small"
-msgstr ""
+msgstr "Мало"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:919
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
@@ -6789,45 +6827,46 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Normal"
-msgstr "обична"
+msgstr "Нормално"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPrintCombo)
-#, fuzzy
 msgid "Large"
-msgstr "наелектрисање"
+msgstr "Велико"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:950
 #. i18n: ectx: property (title), widget (QGroupBox, scfDampingGroup)
 msgid "Damping"
-msgstr ""
+msgstr "Одлагање"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1012
 #. i18n: ectx: property (text), widget (QLabel, label_36)
 msgid "Factor"
-msgstr ""
+msgstr "Чинилац"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1025
 #. i18n: ectx: property (text), widget (QLabel, label_37)
-#, fuzzy
 msgid " Error "
-msgstr "Грeшкa"
+msgstr " Грешка "
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1038
 #. i18n: ectx: property (text), widget (QLabel, label_41)
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1200
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid ""
-"<html><head/><body><p><span style=\" font-size:10pt; font-style:italic;"
-"\">select only if no defaults are wanted</span></p></body></html>"
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">select only if no defaults are "
+"wanted</span></p></body></html>"
 msgstr ""
+"<html><head/><body><p><span style=\" font-size:10pt; font-"
+"style:italic;\">изабери само ако се основности не "
+"траже</span></p></body></html>"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1055
 #. i18n: ectx: property (text), widget (QLabel, label_38)
 msgid "Accuracy"
-msgstr ""
+msgstr "Тачност"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1068
 #. i18n: ectx: property (text), item, widget (QComboBox, scfAccCombo)
@@ -6846,102 +6885,93 @@ msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1095
 #. i18n: ectx: property (title), widget (QGroupBox, scfConvergerGroupBox)
-#, fuzzy
 msgid "Convergers"
-msgstr "Конвергенција"
+msgstr ""
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QRadioButton, scfDIISRadio)
 msgid "DIIS"
-msgstr ""
+msgstr "DIIS"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1120
 #. i18n: ectx: property (text), widget (QRadioButton, scfKDIISRadio)
 msgid "KDIIS"
-msgstr ""
+msgstr "KDIIS"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1134
 #. i18n: ectx: property (title), widget (QGroupBox, scfLevelShiftGroup)
-#, fuzzy
 msgid "Levelshift "
-msgstr "Помак натписа:"
+msgstr "Помак нивоа "
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1187
 #. i18n: ectx: property (text), widget (QLabel, label_16)
-#, fuzzy
 msgid "Levelshift"
-msgstr "Помак натписа:"
+msgstr "Помак нивоа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1236
 #. i18n: ectx: property (title), widget (QGroupBox, scf2ndOrderGroupBox)
-#, fuzzy
 msgid "2nd Order"
-msgstr "Поредак везе"
+msgstr "2° реда"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1248
 #. i18n: ectx: property (text), widget (QRadioButton, scfSOSCFRadio)
 msgid "SOSCF"
-msgstr ""
+msgstr "SOSCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1261
 #. i18n: ectx: property (text), widget (QRadioButton, scfNRSCFRadio)
 msgid "NRSCF"
-msgstr ""
+msgstr "НРСЦФ"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1274
 #. i18n: ectx: property (text), widget (QRadioButton, scfAHSCFRadio)
 msgid "AHSCF"
-msgstr ""
+msgstr "АХСЦФ"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1291
 #. i18n: ectx: property (text), widget (QLabel, label_40)
-#, fuzzy
 msgid "max. SCF iterations"
-msgstr "Највише СЦФ понављања:"
+msgstr "највише СЦФ понављања"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1320
 #. i18n: ectx: property (text), widget (QLabel, label_24)
-#, fuzzy
 msgid "SCF Type"
-msgstr "СЦФ врста:"
+msgstr "СЦФ врста"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1331
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
 msgid "restricted"
-msgstr ""
+msgstr "ограничено"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1336
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
 msgid "unrestricted"
-msgstr ""
+msgstr "неограничено"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1341
 #. i18n: ectx: property (text), item, widget (QComboBox, scfTypeCombo)
 msgid "restricted open-shell"
-msgstr ""
+msgstr "ограничена отворена шкољка"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1363
 #. i18n: ectx: property (text), widget (QCheckBox, cosXSFittingCheck)
-#, fuzzy
 msgid "SFitting"
-msgstr "&Подешавања"
+msgstr "С-испуњавање"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1379
 #. i18n: ectx: property (text), widget (QLabel, label_31)
-#, fuzzy
 msgid "GridX"
-msgstr "Мрежа"
+msgstr "Икс мрежа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1402
 #. i18n: ectx: property (text), widget (QLabel, label_32)
 msgid "FinalGridX"
-msgstr ""
+msgstr "Крајња Икс мрежа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1426
 #. i18n: ectx: property (text), widget (QLabel, label_21)
-#, fuzzy
 msgid "DFT Functional"
-msgstr "ДФТ функцијски:"
+msgstr "ДФТ функционал"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1448
 #. i18n: ectx: property (text), widget (QLabel, label_33)
@@ -6952,9 +6982,8 @@ msgstr "Мрежа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1471
 #. i18n: ectx: property (text), widget (QLabel, label_34)
-#, fuzzy
 msgid "FinalGrid"
-msgstr "Мрежа"
+msgstr "Крајња мрежа"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:1530
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -7143,7 +7172,7 @@ msgstr "5.e-5"
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:254
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "Tolerance on forces(Ha/bohr):"
-msgstr "Допуштеност на силама(Ha/bohr):"
+msgstr "Толеранција на силама(Ha/bohr):"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:264
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7197,7 +7226,7 @@ msgstr "Шема заузећа:"
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:474
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "SCF tolerance type:"
-msgstr "Врста СЦФ допуштености:"
+msgstr "Врста СЦФ толеранције:"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:493
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
@@ -7207,7 +7236,7 @@ msgstr "Укупна енергија"
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:498
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
 msgid "Wave Function norm"
-msgstr ""
+msgstr "Образац функције таласа"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:503
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceTypeCombo)
@@ -7232,7 +7261,7 @@ msgstr "1 — полупроводљивост"
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:547
 #. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
 msgid "3 - Fermi Dirac"
-msgstr ""
+msgstr "3 — Ферми-Дираково"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:552
 #. i18n: ectx: property (text), item, widget (QComboBox, occoptCombo)
@@ -7282,12 +7311,12 @@ msgstr "3 – БГФС са енергијом"
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:668
 #. i18n: ectx: property (text), widget (QLabel, label_23)
 msgid "# Geometrical time steps:"
-msgstr ""
+msgstr "Број корака геометријског времена"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:705
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "SCF tolerance:"
-msgstr "СЦФ допуштеност:"
+msgstr "СЦФ толеранције:"
 
 #. i18n: file: src/extensions/quantuminput/abinitinputdialog.ui:717
 #. i18n: ectx: property (text), widget (QLineEdit, tolXXXLineEdit)
@@ -7402,12 +7431,12 @@ msgstr "Теорија:"
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:116
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "HF"
-msgstr "ХФ"
+msgstr "HF"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:178
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "KS-DFT"
-msgstr "КС-ДФТ"
+msgstr "KS-DFT"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:197
 #. i18n: ectx: property (text), widget (QLabel, basis)
@@ -7844,7 +7873,7 @@ msgstr "q-"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:804
 #. i18n: ectx: property (text), widget (QLabel, functional)
 msgid "Functional:"
-msgstr "Функцијски:"
+msgstr "Функционал:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -8255,7 +8284,7 @@ msgstr "Беки (изворно)"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1344
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
 msgid "SSF"
-msgstr "ССФ"
+msgstr "SSF"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1358
 #. i18n: ectx: property (text), widget (QLabel, grid)
@@ -8290,17 +8319,17 @@ msgstr "Шема полупречника:"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1421
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
 msgid "LMG"
-msgstr "ЛМГ"
+msgstr "LMG"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1426
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
 msgid "GC2"
-msgstr "ГЦ2"
+msgstr "GC2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1443
 #. i18n: ectx: property (text), widget (QCheckBox, allfunctionalsCheck)
 msgid "Show all functionals"
-msgstr "Прикажи све функционалности"
+msgstr "Прикажи све функционале"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
@@ -8580,7 +8609,7 @@ msgstr "Основно"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:859
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Hessian"
-msgstr "Хесјан"
+msgstr "Хесијана"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:422
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
@@ -8615,7 +8644,7 @@ msgstr "Читај"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:487
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "SBKJC"
-msgstr "СБКЈЦ"
+msgstr "SBKJC"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:492
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
@@ -8697,7 +8726,7 @@ msgstr "Хеј/Вадт валентност"
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:211
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO"
-msgstr "МНДО"
+msgstr "MNDO"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:735
 #. i18n: ectx: property (text), widget (QLabel, label_22)
@@ -8761,7 +8790,7 @@ msgstr "Највише СЦФ понављања:"
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Gradient"
-msgstr "Постепено"
+msgstr "Прелив"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:864
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8776,7 +8805,7 @@ msgstr "Гажење"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:874
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Saddle Point"
-msgstr ""
+msgstr "Тачка оптерећења"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:879
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8786,7 +8815,7 @@ msgstr "ИРЦ"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:884
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Gradient Extremal"
-msgstr ""
+msgstr "Крајњости прелива"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:889
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8821,7 +8850,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:924
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "TDHF"
-msgstr "ТДХФ"
+msgstr "TDHF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:929
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8831,7 +8860,7 @@ msgstr "Општа оптимизација"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:934
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "VSCF"
-msgstr "ВСЦФ"
+msgstr "VSCF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:939
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8856,12 +8885,12 @@ msgstr "Направи ЕФП"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:985
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "UHF"
-msgstr "УХФ"
+msgstr "UHF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:990
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "ROHF"
-msgstr "РОХФ"
+msgstr "ROHF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:995
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
@@ -8911,7 +8940,7 @@ msgstr "Врста извршавања:"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1093
 #. i18n: ectx: property (text), widget (QLabel, label_29)
 msgid "CI:"
-msgstr "ЦИ:"
+msgstr "CI:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1106
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
@@ -8946,7 +8975,7 @@ msgstr "Општи ЦИ"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1139
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "CC:"
-msgstr "ЦЦ:"
+msgstr "CC:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1152
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
@@ -8956,7 +8985,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1157
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CCD: CC with Doubles"
-msgstr ""
+msgstr "CCD: ЦЦ са двоструким"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1162
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
@@ -8966,7 +8995,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1172
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "R-CC"
-msgstr "Р-ЦЦ"
+msgstr "R-CC"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1177
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
@@ -9280,7 +9309,7 @@ msgstr "Користи спољно представљање података з
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2011
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Initial Guess:"
-msgstr ""
+msgstr "Почетна процена:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2022
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
@@ -9315,7 +9344,7 @@ msgstr "Заокрени алфа и бета орбите"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2072
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessPrintCheck)
 msgid "Print the Initial Guess"
-msgstr ""
+msgstr "Испиши почетну процену"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2096
 #. i18n: ectx: property (title), widget (QGroupBox, miscInterfaceGroup)
@@ -9325,7 +9354,7 @@ msgstr "ГАМЕСС сучеље за друге кодове"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2102
 #. i18n: ectx: property (text), widget (QCheckBox, miscMolPltCheck)
 msgid "MolPlt"
-msgstr "Мол плт"
+msgstr "MolPlt"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2109
 #. i18n: ectx: property (text), widget (QCheckBox, miscPltOrbCheck)
@@ -9340,12 +9369,12 @@ msgstr "АИМПАЦ"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2123
 #. i18n: ectx: property (text), widget (QCheckBox, miscRPACCheck)
 msgid "RPAC"
-msgstr "РПАЦ"
+msgstr "RPAC"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2133
 #. i18n: ectx: property (title), widget (QGroupBox, miscForceGroup)
 msgid "Force a Check Run Type"
-msgstr ""
+msgstr "Приморај врсту покретања провере"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2149
 #. i18n: ectx: property (text), widget (QRadioButton, miscHondoRadio)
@@ -9370,7 +9399,7 @@ msgstr "Гаусово 9х"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2202
 #. i18n: ectx: property (text), widget (QCheckBox, miscWaterCheck)
 msgid "Solvate with Water"
-msgstr ""
+msgstr "Раствор са водом"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2241
 #. i18n: ectx: property (text), widget (QCheckBox, scfGenerateCheck)
@@ -9395,7 +9424,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2287
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Becke 1988 exchange"
-msgstr ""
+msgstr "Бекијева 1988 размена"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2292
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
@@ -9492,7 +9521,7 @@ msgstr "Слободна мрежа"
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:224
 #. i18n: ectx: property (text), widget (QLabel, dftFunctionalLabel)
 msgid "DFT Functional:"
-msgstr "ДФТ функцијски:"
+msgstr "ДФТ функционал:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2438
 #. i18n: ectx: property (text), widget (QLabel, label_40)
@@ -9509,12 +9538,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2471
 #. i18n: ectx: property (text), widget (QRadioButton, mp2DuplicatedRadio)
 msgid "Duplicated on Each Node"
-msgstr ""
+msgstr "Удвостручен на сваком чвору"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2478
 #. i18n: ectx: property (text), widget (QRadioButton, mp2DistributedRadio)
 msgid "Distributed Across All Nodes"
-msgstr ""
+msgstr "Расподељен по свим чворовима"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2491
 #. i18n: ectx: property (text), widget (QLabel, label_45)
@@ -9524,7 +9553,7 @@ msgstr "речи"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2505
 #. i18n: ectx: property (text), widget (QCheckBox, mp2ComputeCheck)
 msgid "Compute MP2 Properties"
-msgstr ""
+msgstr "Израчунај својства за МП2"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2512
 #. i18n: ectx: property (text), widget (QLabel, label_44)
@@ -9539,12 +9568,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2532
 #. i18n: ectx: property (text), widget (QLabel, label_42)
 msgid "# of Core Electrons:"
-msgstr ""
+msgstr "бр. електрона језгра:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2539
 #. i18n: ectx: property (title), widget (QGroupBox, mp2TransformationGroup)
 msgid "Transformation Method"
-msgstr ""
+msgstr "Начин трансформације"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2548
 #. i18n: ectx: property (text), widget (QRadioButton, mp2TwoRadio)
@@ -9559,7 +9588,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2604
 #. i18n: ectx: property (text), widget (QRadioButton, hessianAnalyticRadio)
 msgid "Analytic"
-msgstr ""
+msgstr "Аналитички"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2614
 #. i18n: ectx: property (text), widget (QRadioButton, hessianNumericRadio)
@@ -9569,7 +9598,7 @@ msgstr "Бројевни"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2624
 #. i18n: ectx: property (text), widget (QCheckBox, hessianDoubleCheck)
 msgid "Double Differenced Hessian"
-msgstr ""
+msgstr "Хесијана диференцијала другог реда"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2631
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPrintCheck)
@@ -9579,12 +9608,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2638
 #. i18n: ectx: property (text), widget (QLabel, label_33)
 msgid "Displacement Size:"
-msgstr ""
+msgstr "Величина размештаја:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2645
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPurifyCheck)
 msgid "Purify Hessian"
-msgstr ""
+msgstr "Прочисти Хесијану"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2652
 #. i18n: ectx: property (text), widget (QLabel, label_31)
@@ -9599,12 +9628,12 @@ msgstr "бора"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2693
 #. i18n: ectx: property (title), widget (QGroupBox, statPointHessianGroup)
 msgid "Initial Hessian"
-msgstr ""
+msgstr "Почетна Хесијана"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2699
 #. i18n: ectx: property (text), widget (QRadioButton, statPointGuessButton)
 msgid "Guess (+ define)"
-msgstr ""
+msgstr "Процени (+ одреди)"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2706
 #. i18n: ectx: property (text), widget (QRadioButton, statPointReadButton)
@@ -9614,37 +9643,37 @@ msgstr "Читам (из $HESS)"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2723
 #. i18n: ectx: property (text), widget (QCheckBox, statPointUpdateCheck)
 msgid "Update Step Size"
-msgstr ""
+msgstr "Освежи величину корака"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2733
 #. i18n: ectx: property (text), widget (QCheckBox, statPointPrintCheck)
 msgid "Print Orbs at Each Iteration"
-msgstr ""
+msgstr "Испиши орбите при сваком понављању"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2740
 #. i18n: ectx: property (text), widget (QLabel, label_35)
 msgid "Gradient Convergence Criteria:"
-msgstr ""
+msgstr "Услов конвергенције прелива:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2769
 #. i18n: ectx: property (text), widget (QLabel, label_50)
 msgid "Jump Size:"
-msgstr ""
+msgstr "Величина скока:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2776
 #. i18n: ectx: property (text), widget (QCheckBox, statPointStationaryCheck)
 msgid "Stationary Point"
-msgstr ""
+msgstr "Стационарна тачка"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2786
 #. i18n: ectx: property (text), widget (QLabel, label_51)
 msgid "Optimization Method:"
-msgstr ""
+msgstr "Начин оптимизације:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2796
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 msgid "Step Size"
-msgstr ""
+msgstr "Величина корака"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2802
 #. i18n: ectx: property (text), widget (QLabel, label_47)
@@ -9664,27 +9693,27 @@ msgstr "Почетно:"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2863
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Newton-Raphson"
-msgstr ""
+msgstr "Њутн-Рафсон"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2868
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Rational Function Optimization"
-msgstr ""
+msgstr "Оптимизација рационалне функције"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2873
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Quadratic Approximation"
-msgstr ""
+msgstr "Квадратна апроксимација"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2878
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Schlegel (quasi-NR)"
-msgstr ""
+msgstr "Шлегел (квази-НР)"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2883
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Constrained Optimization"
-msgstr ""
+msgstr "Ограничена оптимизација"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2896
 #. i18n: ectx: property (text), widget (QLabel, label_53)
@@ -9694,17 +9723,17 @@ msgstr "кораци"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2918
 #. i18n: ectx: property (text), widget (QLabel, label_46)
 msgid "Recalculate Hessian Every:"
-msgstr ""
+msgstr "Поново израчунај Хесијану сваког:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2928
 #. i18n: ectx: property (text), widget (QLabel, label_52)
 msgid "Follow Mode:"
-msgstr ""
+msgstr "Режим праћења:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2938
 #. i18n: ectx: property (text), widget (QLabel, label_34)
 msgid "Maximum Steps:"
-msgstr ""
+msgstr "Највише корака:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2971
 #. i18n: ectx: property (text), widget (QPushButton, resetAllButton)
@@ -9724,7 +9753,7 @@ msgstr "ГАМЕСС-УК улаз"
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:40
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 msgid "GAMESS-UK input generated by Avogadro"
-msgstr ""
+msgstr "ГАМЕСС-УК улаз створен Авогадром"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:51
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -9743,12 +9772,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Calculation:"
-msgstr ""
+msgstr "Прорачун:"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:77
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Transition State Search"
-msgstr ""
+msgstr "Претрага стања прелаза"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:105
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -9768,22 +9797,22 @@ msgstr "Основно:"
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:256
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SVWN"
-msgstr ""
+msgstr "SVWN"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:271
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "B97"
-msgstr ""
+msgstr "B97"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:276
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "HCTH"
-msgstr ""
+msgstr "HCTH"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "FT97"
-msgstr ""
+msgstr "FT97"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:371
 #. i18n: ectx: property (text), widget (QLabel, label_11)
@@ -9798,7 +9827,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:347
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Format:"
-msgstr ""
+msgstr "Запис:"
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:392
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
@@ -9823,16 +9852,20 @@ msgid ""
 "On modern systems with fast processors and slow disks, direct is often "
 "faster."
 msgstr ""
+"У непосредном режиму, интеграли се не чувају на диску, већ се израчунавају "
+"по потреби.\n"
+"На савременим системима са брзим процесорима и спорим дисковима, непосредни "
+"је често бржи."
 
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:433
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Run in direct mode:"
-msgstr ""
+msgstr "Покрени у непосредном режиму:"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
 msgid "Gaussian Input"
-msgstr ""
+msgstr "Улаз Гауска"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -9841,7 +9874,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:245
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LANL2DZ"
-msgstr ""
+msgstr "LANL2DZ"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:334
 #. i18n: ectx: property (text), widget (QLabel, label_8)
@@ -9851,22 +9884,22 @@ msgstr "Излаз:"
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:350
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Standard"
-msgstr ""
+msgstr "Стандард"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:355
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molden"
-msgstr ""
+msgstr "Молден"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:360
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molekel"
-msgstr ""
+msgstr "Молекел"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:383
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Checkpoint:"
-msgstr ""
+msgstr "Тачка провере:"
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
@@ -9877,57 +9910,59 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:376
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Z-matrix (compact)"
-msgstr ""
+msgstr "z-матрица (збијена)"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, LammpsInputDialog)
 msgid "LAMMPS Input"
-msgstr ""
+msgstr "Улаз ЛАММПС-а"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:37
 #. i18n: ectx: property (toolTip), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:50
 #. i18n: ectx: property (toolTip), widget (QLineEdit, titleLine)
 msgid "Input file comments"
-msgstr ""
+msgstr "Напомене улазне датотеке"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:67
 #. i18n: ectx: property (toolTip), widget (QLabel, label_units)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:87
 #. i18n: ectx: property (toolTip), widget (QComboBox, unitsCombo)
 msgid "Select the unit style to be used during the simulation."
-msgstr ""
+msgstr "Изаберите изглед јединице који ће се користити за време симулације."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:74
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_units)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:94
 #. i18n: ectx: property (whatsThis), widget (QComboBox, unitsCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/units.html\"><span style=\" text-decoration: underline; color:"
-"#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body></"
-"html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/units.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/units.html</span></a></p></body"
+"></html>"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:77
 #. i18n: ectx: property (text), widget (QLabel, label_units)
@@ -9937,27 +9972,27 @@ msgstr "Јединице"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:101
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
 msgid "lj"
-msgstr ""
+msgstr "lj"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:106
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
 msgid "real"
-msgstr ""
+msgstr "real"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:111
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
 msgid "metal"
-msgstr "метал"
+msgstr "metal"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:116
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
 msgid "si"
-msgstr ""
+msgstr "si"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:121
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
 msgid "cgs"
-msgstr ""
+msgstr "cgs"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:126
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsCombo)
@@ -9969,7 +10004,7 @@ msgstr "електрон"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:134
 #. i18n: ectx: property (text), widget (QLabel, label_waterPotential)
 msgid "Water Potential"
-msgstr ""
+msgstr "Потенцијал воде"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
@@ -9979,55 +10014,57 @@ msgstr "НИШТА"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
 msgid "SPC"
-msgstr "СПЦ"
+msgstr "SPC"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:152
 #. i18n: ectx: property (text), item, widget (QComboBox, waterPotentialCombo)
 msgid "SPC/E"
-msgstr ""
+msgstr "SPC/E"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:167
 #. i18n: ectx: property (toolTip), widget (QLabel, label_atomstyle)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:187
 #. i18n: ectx: property (toolTip), widget (QComboBox, atomStyleCombo)
 msgid "Select atom_style used by the data file."
-msgstr ""
+msgstr "Изаберите изглед атома који користи датотека података."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:174
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_atomstyle)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:194
 #. i18n: ectx: property (whatsThis), widget (QComboBox, atomStyleCombo)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-"
 "weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"http://lammps."
-"sandia.gov/doc/atom_style.html\"><span style=\" text-decoration: underline; "
-"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></"
-"p></body></html>"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><a "
+"href=\"http://lammps.sandia.gov/doc/atom_style.html\"><span style=\" text-"
+"decoration: underline; "
+"color:#0057ae;\">http://lammps.sandia.gov/doc/atom_style.html</span></a></p><"
+"/body></html>"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:177
 #. i18n: ectx: property (text), widget (QLabel, label_atomstyle)
 msgid "Atom Style"
-msgstr ""
+msgstr "Изглед атома"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:201
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
@@ -10037,7 +10074,7 @@ msgstr "угао"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:206
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "atomic"
-msgstr ""
+msgstr "атомска"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:211
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
@@ -10062,27 +10099,27 @@ msgstr "елипсоид"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:236
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "full"
-msgstr ""
+msgstr "пуна"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:241
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "line"
-msgstr ""
+msgstr "линија"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "meso"
-msgstr ""
+msgstr "мезо"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:251
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "molecular"
-msgstr ""
+msgstr "молекуларан"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:256
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "peri"
-msgstr ""
+msgstr "пери"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:261
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
@@ -10092,58 +10129,58 @@ msgstr "сфера"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:266
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "tri"
-msgstr ""
+msgstr "три"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:271
 #. i18n: ectx: property (text), item, widget (QComboBox, atomStyleCombo)
 msgid "wavepacket"
-msgstr ""
+msgstr "таласни пакет"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:279
 #. i18n: ectx: property (toolTip), widget (QLabel, label_readdata)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:289
 #. i18n: ectx: property (toolTip), widget (QLineEdit, readDataLine)
 msgid "Specify the name to be used for the coordinate file."
-msgstr ""
+msgstr "Наведите назив који ће се користити за датотеку координата."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:282
 #. i18n: ectx: property (text), widget (QLabel, label_readdata)
 msgid "Coordinate Data File"
-msgstr ""
+msgstr "Датотека података координата"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:296
 #. i18n: ectx: property (text), widget (QLabel, label_therm)
 msgid "Ensemble"
-msgstr ""
+msgstr "Заједништво"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:304
 #. i18n: ectx: property (text), item, widget (QComboBox, ensembleCombo)
 msgid "NVT"
-msgstr ""
+msgstr "NVT"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:309
 #. i18n: ectx: property (text), item, widget (QComboBox, ensembleCombo)
 msgid "NVE"
-msgstr ""
+msgstr "NVE"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:317
 #. i18n: ectx: property (text), widget (QLabel, label_temp)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:735
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Temperature"
-msgstr ""
+msgstr "Температура"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:337
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:347
 #. i18n: ectx: property (toolTip), widget (QSpinBox, nhChainSpin)
 msgid "Select the number of Nosé-Hoover chains in the NVT ensemble."
-msgstr ""
+msgstr "Изаберите број Нозе-Хуверових ланаца у НВТ заједништву"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:340
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "NH Chains"
-msgstr ""
+msgstr "НХ ланци"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:383
 #. i18n: ectx: property (toolTip), widget (QLabel, label_2)
@@ -10151,41 +10188,41 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, stepSpin)
 msgid ""
 "Time step for the simulation in units according to \"Units\" specification."
-msgstr ""
+msgstr "Корак времена за симулацију у јединицама према одредби „Јединице“."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:386
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Time Step"
-msgstr ""
+msgstr "Корак времена"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:406
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:632
 #. i18n: ectx: property (toolTip), widget (QLineEdit, dumpXYZEdit)
 msgid "Filename of the XYZ file to write during the simulation."
-msgstr ""
+msgstr "Назив „XYZ“ датотеке за упис у току симулације."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:409
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Dump XYZ"
-msgstr ""
+msgstr "Испиши „XYZ“"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:423
 #. i18n: ectx: property (toolTip), widget (QLabel, label_dimension)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:837
 #. i18n: ectx: property (toolTip), widget (QComboBox, dimensionCombo)
 msgid "Number of dimensions in the system."
-msgstr ""
+msgstr "Број димензија у систему."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:426
 #. i18n: ectx: property (text), widget (QLabel, label_dimension)
 msgid "Dimensions"
-msgstr ""
+msgstr "Димензије"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:436
 #. i18n: ectx: property (toolTip), widget (QComboBox, zBoundaryCombo)
 msgid "Change Z boundary style."
-msgstr ""
+msgstr "Мења изглед Z границе."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:443
 #. i18n: ectx: property (text), item, widget (QComboBox, zBoundaryCombo)
@@ -10244,121 +10281,121 @@ msgstr "fm"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:476
 #. i18n: ectx: property (toolTip), widget (QComboBox, yBoundaryCombo)
 msgid "Change Y boundary style."
-msgstr ""
+msgstr "Мења изглед Y границе."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:516
 #. i18n: ectx: property (toolTip), widget (QComboBox, xBoundaryCombo)
 msgid "Change X boundary style."
-msgstr ""
+msgstr "Мења изглед Х границе."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:556
 #. i18n: ectx: property (toolTip), widget (QLabel, label_boundary)
 msgid "Select bondary Styles in X, Y and Z directions."
-msgstr ""
+msgstr "Изаберите изгледе границе у правцима X, Y и Z."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:559
 #. i18n: ectx: property (text), widget (QLabel, label_boundary)
 msgid "Boundary"
-msgstr ""
+msgstr "Граница"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:579
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
 msgid "Number of replicants in X, Y and Z directions."
-msgstr ""
+msgstr "Број удвостручених у правцима X, Y и Z."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:582
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Replicate"
-msgstr ""
+msgstr "Удвостручи"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:602
 #. i18n: ectx: property (toolTip), widget (QSpinBox, xReplicateSpin)
 msgid "Replicate the X direction."
-msgstr ""
+msgstr "Удвостручи X правац."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:612
 #. i18n: ectx: property (toolTip), widget (QSpinBox, yReplicateSpin)
 msgid "Replicate the Y direction."
-msgstr ""
+msgstr "Удвостручи Y правац."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:622
 #. i18n: ectx: property (toolTip), widget (QSpinBox, zReplicateSpin)
 msgid "Replicate the Z direction."
-msgstr ""
+msgstr "Удвостручи Z правац."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:639
 #. i18n: ectx: property (toolTip), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:649
 #. i18n: ectx: property (toolTip), widget (QSpinBox, runSpin)
 msgid "Total number of timesteps to run the simulation."
-msgstr ""
+msgstr "Укупан број временских корака за покретање симулације."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:642
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Total Steps"
-msgstr ""
+msgstr "Укупно корака"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:675
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Dump Interval"
-msgstr ""
+msgstr "Период исписивања"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:705
 #. i18n: ectx: property (toolTip), widget (QLabel, label_8)
 msgid "Set the initial atom velocities for the simulation."
-msgstr ""
+msgstr "Подесите почетне брзине атома за симулацију."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:708
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Initial Velocities"
-msgstr ""
+msgstr "Почетне брзине"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:715
 #. i18n: ectx: property (toolTip), widget (QComboBox, velocityDistCombo)
 msgid "Select the distribution of initial atom velocities."
-msgstr ""
+msgstr "Изаберите расподелу почетних брзина атома."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:719
 #. i18n: ectx: property (text), item, widget (QComboBox, velocityDistCombo)
 msgid "gaussian"
-msgstr ""
+msgstr "гаусова"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:724
 #. i18n: ectx: property (text), item, widget (QComboBox, velocityDistCombo)
 msgid "uniform"
-msgstr ""
+msgstr "једнолична"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:732
 #. i18n: ectx: property (toolTip), widget (QLabel, label_9)
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:742
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, velocityTempSpin)
 msgid "Set the initial atom velocities to match this temperature."
-msgstr ""
+msgstr "Подесите почетне брзине атома да одговарају овој температури."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:758
 #. i18n: ectx: property (toolTip), widget (QCheckBox, zeroMOMCheck)
 msgid "Remove system linear momentum from initial velocities."
-msgstr ""
+msgstr "Уклоните линијски моменат система из почетних брзина."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:761
 #. i18n: ectx: property (text), widget (QCheckBox, zeroMOMCheck)
 msgid "Zero Linear Momentum"
-msgstr ""
+msgstr "Нулти линијски моменат"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:771
 #. i18n: ectx: property (toolTip), widget (QCheckBox, zeroLCheck)
 msgid "Remove system angular momentum from initial velocities."
-msgstr ""
+msgstr "Уклоните угаони моменат система из почетних брзина."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:774
 #. i18n: ectx: property (text), widget (QCheckBox, zeroLCheck)
 msgid "Zero Angular Momentum"
-msgstr ""
+msgstr "Нулти угаони моменат"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:797
 #. i18n: ectx: property (toolTip), widget (QLabel, label_10)
 msgid "Control the thermodynamic output during the simulation."
-msgstr ""
+msgstr "Управљајте термодинамичким излазом за време симулације."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:800
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -10368,40 +10405,40 @@ msgstr "Излаз"
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:807
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "Output Interval"
-msgstr ""
+msgstr "Период излаза"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:844
 #. i18n: ectx: property (text), item, widget (QComboBox, dimensionCombo)
 msgid "2d"
-msgstr ""
+msgstr "2д"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:849
 #. i18n: ectx: property (text), item, widget (QComboBox, dimensionCombo)
 msgid "3d"
-msgstr ""
+msgstr "3д"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:857
 #. i18n: ectx: property (toolTip), widget (QComboBox, thermoStyleCombo)
 msgid "Thermodynamic output style."
-msgstr ""
+msgstr "Изглед термодинамичког излаза."
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:861
 #. i18n: ectx: property (text), item, widget (QComboBox, thermoStyleCombo)
 msgid "One Line"
-msgstr ""
+msgstr "Једна линија"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:866
 #. i18n: ectx: property (text), item, widget (QComboBox, thermoStyleCombo)
 msgid "Multi Line"
-msgstr ""
+msgstr "Више линија"
 
 #. i18n: file: src/extensions/quantuminput/lammpsinputdialog.ui:922
 #. i18n: ectx: property (html), widget (QTextEdit, previewText)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -10409,10 +10446,10 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "family:'Courier New,courier'; font-size:10pt;\"></p></body></html>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:12pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -10423,7 +10460,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolproInputDialog)
 msgid "MOLPRO Input"
-msgstr ""
+msgstr "Улаз МОЛПРО-а"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:215
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -10460,7 +10497,7 @@ msgstr "AUG-cc-pVTZ"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Molpro Version:"
-msgstr ""
+msgstr "Издање Молпро-а:"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
@@ -10475,77 +10512,77 @@ msgstr "2009.1"
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
 msgid "MOPAC Input"
-msgstr ""
+msgstr "Улаз МОПАК-а"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:159
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quartet"
-msgstr ""
+msgstr "Квартет"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:164
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quintet"
-msgstr ""
+msgstr "Квинтет"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:216
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO-d"
-msgstr ""
+msgstr "MNDO-d"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:226
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PM6"
-msgstr ""
+msgstr "PM6"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:231
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "RM1"
-msgstr ""
+msgstr "RM1"
 
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
-msgstr ""
+msgstr "Улаз НВХемије"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, Psi4InputDialog)
 msgid "Psi4 Input"
-msgstr ""
+msgstr "Улаз Пси4"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "SAPT0"
-msgstr ""
+msgstr "SAPT0"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "SAPT2"
-msgstr ""
+msgstr "SAPT2"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP-D"
-msgstr ""
+msgstr "B3LYP-D"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B97-D"
-msgstr ""
+msgstr "B97-D"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "M05-2X"
-msgstr ""
+msgstr "M05-2X"
 
 #. i18n: file: src/extensions/quantuminput/psi4inputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "jun-cc-pVDZ"
-msgstr ""
+msgstr "jun-cc-pVDZ"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, QChemInputDialog)
 msgid "Q-Chem Input"
-msgstr ""
+msgstr "Улаз Ку-Хемије"
 
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -10562,32 +10599,32 @@ msgstr "M06-2X"
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:250
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LACVP"
-msgstr ""
+msgstr "LACVP"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, TeraChemInputDialog)
 msgid "TeraChem Input"
-msgstr ""
+msgstr "Улаз Тера-Хемије"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:131
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP1"
-msgstr ""
+msgstr "B3LYP1"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:146
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "REVPBE"
-msgstr ""
+msgstr "REVPBE"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:154
 #. i18n: ectx: property (text), widget (QCheckBox, checkUnrestricted)
 msgid "Unrestricted"
-msgstr ""
+msgstr "Неограничено"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:223
 #. i18n: ectx: property (text), item, widget (QComboBox, comboCoord)
 msgid "PBD"
-msgstr ""
+msgstr "PBD"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:393
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
@@ -10602,37 +10639,37 @@ msgstr "да"
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:403
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "D2"
-msgstr ""
+msgstr "D2"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:408
 #. i18n: ectx: property (text), item, widget (QComboBox, comboDisp)
 msgid "D3"
-msgstr ""
+msgstr "D3"
 
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:429
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Dispersion:"
-msgstr ""
+msgstr "Расипање:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:29
 #. i18n: ectx: attribute (title), widget (QWidget, loadTab)
 msgid "Load Shaders"
-msgstr ""
+msgstr "Учитај нијансере"
 
 #. i18n: file: src/extensions/shaderdialog.ui:35
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Shader Name:"
-msgstr ""
+msgstr "Назив нијансера:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Vertex Shader:"
-msgstr ""
+msgstr "Нијансер врхунца"
 
 #. i18n: file: src/extensions/shaderdialog.ui:76
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Fragment Shader:"
-msgstr ""
+msgstr "Нијансер одломка:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, label_8)
@@ -10644,22 +10681,22 @@ msgstr "Параметри:"
 #. i18n: file: src/extensions/shaderdialog.ui:245
 #. i18n: ectx: property (text), widget (QPushButton, shaderButton)
 msgid "Assign Shader"
-msgstr ""
+msgstr "Додели нијансера"
 
 #. i18n: file: src/extensions/shaderdialog.ui:170
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Display Type:"
-msgstr ""
+msgstr "Врста приказа:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:190
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Shader Program:"
-msgstr ""
+msgstr "Програм нијансера:"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SpectraDialog)
 msgid "Spectra Visualization"
-msgstr ""
+msgstr "Приказивање спектра"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:48
 #. i18n: ectx: property (toolTip), widget (Avogadro::PlotWidget, plot)
@@ -10670,11 +10707,16 @@ msgid ""
 "Middle click + drag: Zoom to region\n"
 "Scroll wheel: Zoom to cursor"
 msgstr ""
+"Контроле:\n"
+"Двоструки леви тастер: Враћа основна ограничења осе\n"
+"Десни тастер + превлачење: Премешта графикон\n"
+"Средњи тастер + превлачење: Зумира област\n"
+"Окретање точкића: Зумира на курзор"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:77
 #. i18n: ectx: property (text), widget (QPushButton, push_loadSpectra)
 msgid "&Load data..."
-msgstr ""
+msgstr "&Учитај податке..."
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:116
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
@@ -10684,7 +10726,7 @@ msgstr "&Затвори"
 #. i18n: file: src/extensions/spectra/spectradialog.ui:161
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Calculated Spectra:"
-msgstr ""
+msgstr "Израчунати спектар:"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:174
 #. i18n: ectx: property (text), widget (QPushButton, push_colorCalculated)
@@ -10695,12 +10737,12 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/spectradialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, push_colorForeground)
 msgid "Set Color..."
-msgstr ""
+msgstr "Подеси боју..."
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:181
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Imported Spectra:"
-msgstr ""
+msgstr "Увезени спектар:"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:204
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -10824,7 +10866,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/spectradialog.ui:631
 #. i18n: ectx: property (text), widget (QCheckBox, cb_imageFontAdjust)
 msgid "Auto-adjust F&ont Size"
-msgstr ""
+msgstr "Сам дотерај величину &слова"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:688
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
@@ -10848,7 +10890,7 @@ msgstr "Извези податке"
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
 msgid "Spectra Tab"
-msgstr ""
+msgstr "Језичак спектра"
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -10857,7 +10899,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_uv.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "&Gaussian Width:"
-msgstr ""
+msgstr "&Гаусова ширина:"
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:68
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
@@ -10871,7 +10913,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_cd.ui:97
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Rotatory Strength type:"
-msgstr ""
+msgstr "Врста јачине окретања:"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -10896,7 +10938,7 @@ msgstr "Натпис текста"
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
 msgid "States / Cell"
-msgstr ""
+msgstr "Стања / Ћелија"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -10916,22 +10958,22 @@ msgstr "eV"
 #. i18n: file: src/extensions/spectra/tab_dos.ui:102
 #. i18n: ectx: property (text), widget (QCheckBox, cb_fermi)
 msgid "Fermi energy at zero"
-msgstr ""
+msgstr "Фермијева енергија на нули"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:125
 #. i18n: ectx: property (text), widget (QCheckBox, cb_scaleIntegrated)
 msgid "Scale integrated DOS"
-msgstr ""
+msgstr "Сразмери обједињени ДОС"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:132
 #. i18n: ectx: property (text), widget (QCheckBox, cb_toggleIntegrated)
 msgid "Show integrated DOS"
-msgstr ""
+msgstr "Прикажи обједињени ДОС"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:139
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_valence)
 msgid " valence electrons"
-msgstr ""
+msgstr " валентни електрони"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_IR_Raman)
@@ -10941,12 +10983,12 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:29
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "&Y Axis Units:"
-msgstr ""
+msgstr "Јединице &Y осе:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:75
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Scaling Type:"
-msgstr ""
+msgstr "Врста сразмеравања:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
@@ -10961,7 +11003,7 @@ msgstr "Релативно"
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Scale &Factor:"
-msgstr ""
+msgstr "Чинилац &сразмере:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -10976,7 +11018,7 @@ msgstr " K"
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:332
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Laser Wavenumber:"
-msgstr ""
+msgstr "Таласни број ласера:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:348
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_W)
@@ -10996,22 +11038,22 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Nucleus:"
-msgstr ""
+msgstr "Језгро:"
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:36
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "&Reference:"
-msgstr ""
+msgstr "&Упута:"
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:46
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "Gaussian &Width:"
-msgstr ""
+msgstr "Гаусова &ширина:"
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:69
 #. i18n: ectx: property (text), widget (QPushButton, push_resetAxes)
 msgid "Reset &Plot Axes"
-msgstr ""
+msgstr "Поврати осе &графикона"
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:105
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
@@ -11028,7 +11070,7 @@ msgstr "ppm"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, VibrationWidget)
 msgid "Molecular Vibrations"
-msgstr ""
+msgstr "Вибрације молекула"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -11053,7 +11095,7 @@ msgstr "I (km/mol)"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:100
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Activity (A^4/amu)"
-msgstr ""
+msgstr "Активност (A^4/amu)"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
@@ -11063,17 +11105,17 @@ msgstr "&Прикажи спектар..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
+msgstr "више вибрације учесталости приказаће брже покрете"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:136
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
 msgid "Animation speed set by frequency"
-msgstr ""
+msgstr "Брзина анимације подешена учесталошћу"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:143
 #. i18n: ectx: property (text), widget (QCheckBox, displayForcesCheckBox)
 msgid "Display force &vectors"
-msgstr ""
+msgstr "Прикажи &векторе силе"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:195
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -11083,37 +11125,37 @@ msgstr "Амплитуда:"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:229
 #. i18n: ectx: property (text), widget (QCheckBox, normalizeDispCheckBox)
 msgid "&Normalize displacements"
-msgstr ""
+msgstr "&Нормализуј размештај"
 
 #. i18n: file: src/extensions/supercelldialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SuperCellDialog)
 msgid "Super Cell Parameters"
-msgstr ""
+msgstr "Параметри супер ћелије"
 
 #. i18n: file: src/extensions/supercelldialog.ui:22
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Super Cell Options"
-msgstr ""
+msgstr "Опције супер ћелије"
 
 #. i18n: file: src/extensions/supercelldialog.ui:28
 #. i18n: ectx: property (text), widget (QLabel, aRepeatLabel)
 msgid "A repeat:"
-msgstr ""
+msgstr "A понављање:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, bRepeatLabel)
 msgid "B repeat:"
-msgstr ""
+msgstr "B понављање:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:56
 #. i18n: ectx: property (text), widget (QLabel, cRepeaLabel)
 msgid "C repeat:"
-msgstr ""
+msgstr "C понављање:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:86
 #. i18n: ectx: property (text), widget (QPushButton, generateCell)
 msgid "Generate Cell"
-msgstr ""
+msgstr "Направи ћелију"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
@@ -11123,55 +11165,55 @@ msgstr "Прозорче"
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
 msgid "&Recalculate All"
-msgstr ""
+msgstr "&Поново израчунај све"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Default &Quality:"
-msgstr ""
+msgstr "Основни &квалитет:"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "&Isosurface Value:"
-msgstr ""
+msgstr "Вредност &исоповрши:"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 msgid "Low"
-msgstr ""
+msgstr "Ниска"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 msgid "Medium"
-msgstr ""
+msgstr "Средња"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 msgid "High"
-msgstr ""
+msgstr "Висока"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 msgid "Very High"
-msgstr ""
+msgstr "Врло висока"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
 msgid "Show occupied orbitals first"
-msgstr ""
+msgstr "Прво прикажи заузете орбитале"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:113
 #. i18n: ectx: property (text), widget (QCheckBox, cb_limit_precalc)
 msgid "Limit orbital precalculations to "
-msgstr ""
+msgstr "Ограничи предпрорачуне орбитале на "
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:123
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -11191,12 +11233,12 @@ msgstr "Подеси"
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
 msgid "Create Surfaces"
-msgstr ""
+msgstr "Направи површине"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Surface Type:"
-msgstr ""
+msgstr "Врста површине:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:46
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
@@ -11208,42 +11250,42 @@ msgstr "Електростатички потенцијал"
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:104
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Color By:"
-msgstr ""
+msgstr "Обој према:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very low resolution"
 msgid "Very Low"
-msgstr ""
+msgstr "Врло ниска"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
-msgstr ""
+msgstr "Ниска"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
-msgstr ""
+msgstr "Средња"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
-msgstr ""
+msgstr "Висока"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr ""
+msgstr "Врло висока"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgid "Custom"
-msgstr ""
+msgstr "Произвољно"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:272
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -11253,7 +11295,7 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:275
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
-msgstr ""
+msgstr "Исо вредност:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:308
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -11261,12 +11303,12 @@ msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
-msgstr ""
+msgstr "У врсту приказа:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:327
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
 msgid "New Display"
-msgstr ""
+msgstr "Нови приказ"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:377
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
@@ -11286,7 +11328,7 @@ msgstr "&m:"
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "&Length:"
-msgstr ""
+msgstr "&Дужина:"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -11296,7 +11338,7 @@ msgstr "&Јединица:"
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "periodic units"
-msgstr ""
+msgstr "јединица периоде"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
@@ -11334,7 +11376,7 @@ msgstr ""
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
 #. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
 msgid "Find &double bonds"
-msgstr ""
+msgstr "Нађи &двоструке везе"
 
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
 #. i18n: ectx: property (text), widget (QPushButton, push_hide)
@@ -11344,31 +11386,27 @@ msgstr "&Сакриј"
 #. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
 #. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
 msgid "&Hide when finished"
-msgstr ""
+msgstr "&Сакриј када завршиш"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SymmetryDialog)
-#, fuzzy
 msgid "Molecular Symmetry"
-msgstr "Својства молекула"
+msgstr "Симетрија молекула"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, toleranceLabel)
-#, fuzzy
 msgid "Tolerance:"
-msgstr "СЦФ допуштеност:"
+msgstr "Толеранција:"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:49
 #. i18n: ectx: property (text), widget (QPushButton, detectSymmetryButton)
-#, fuzzy
 msgid "Detect Symmetry"
-msgstr "Симетричност"
+msgstr "Откриј симетрију"
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
-#, fuzzy
 msgid "Tight"
-msgstr "Светло"
+msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, toleranceCombo)
@@ -11377,9 +11415,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/symmetry/symmetrydialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
-#, fuzzy
 msgid "Symmetrize"
-msgstr "Симетричност"
+msgstr "Симетризуј"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -11399,7 +11436,7 @@ msgstr "Z (Å)"
 #. i18n: file: src/tools/manipulatesettingswidget.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Translate by:"
-msgstr "Преводиоци:"
+msgstr "Преведи преко:"
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:150
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -11434,22 +11471,22 @@ msgstr "Геометрија"
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Прикажи видне знаке"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Python Settings"
-msgstr ""
+msgstr "Подешавања Питона"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, ZMatrixDialog)
 msgid "Z Matrix Editor"
-msgstr "Уређивач Z матрице"
+msgstr "Уређивач Z-матрице"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:25
 #. i18n: ectx: property (text), widget (QPushButton, importButton)
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "Увези изабране атоме"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:52
 #. i18n: ectx: property (text), widget (QPushButton, removeButton)
@@ -11459,9 +11496,11 @@ msgstr "Уклони атом"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Мирослав Николић, ,Launchpad Contributions:,"
-"Мирослав Николић"
+",Launchpad Contributions:,Мирослав Николић, ,Launchpad "
+"Contributions:,Мирослав Николић, ,Launchpad Contributions:,Мирослав Николић"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,miroslavnikolic@rocketmail.com,,,miroslavnikolic@rocketmail.com"
+msgstr ""
+",,miroslavnikolic@rocketmail.com,,,miroslavnikolic@rocketmail.com,,,miroslavn"
+"ikolic@rocketmail.com"
