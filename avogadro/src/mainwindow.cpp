@@ -2590,7 +2590,12 @@ protected:
   {
     return d->glWidget->fogLevel();
   }
-
+  void MainWindow::setErrorReport(bool value, bool send)
+  {
+	  QSettings settings;
+	  settings.setValue("noAskErrorReport", value);
+	  settings.setValue("sendErrorReport", send);
+  }
   void MainWindow::newView()
   {
     QWidget *widget = new QWidget();

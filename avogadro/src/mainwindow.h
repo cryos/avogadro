@@ -161,6 +161,7 @@ namespace Avogadro {
       void setBackgroundColor();
       void setPainterQuality(int quality);
       void setFogLevel(int level);
+	  void setErrorReport(bool value, bool send);
 
       /**
        * Slot to switch glWidget to the perspective projection mode
