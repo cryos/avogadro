@@ -332,31 +332,20 @@ void printHelp(const QString &appName)
 }
 
 bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
-	//TODO: check if 'do not ask again' setting is set
-	
-	//recreate an Application since the original may have crashed
-	//QMessageBox will not display without this
-	Application app(args->argc, args->argv);
-
-	//free memory from struct arginfo args
-	delete(args); 
-/**
 	QSettings settings;
-	
-	if (settings.contains("sendErrorReport") && settings.value("sendErrorReport").toBool() == true) {
-		return true;
-	}
-	else if (settings.contains("sendErrorReport") && settings.value("sendErrorReport").toBool() == false) {
-		return false;
-	}
+	if (settings.contains("noAskErrorReport") && settings.value("noAskErrorReport").toBool())
+		return settings.value("sendErrorReport").toBool();
 	else {
-	**/
-		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Send error report?", 0, NULL);
-		QCheckBox askAgain(QObject::tr("Do not ask again"), &msgBox);
+		//TODO: check if 'do not ask again' setting is set
 
-		askAgain.blockSignals(true);
-		
-		msgBox.addButton(&askAgain, QMessageBox::ActionRole);
+		//recreate an Application since the original may have crashed
+		//QMessageBox will not display without this
+		Application app(args->argc, args->argv);
+
+		//free memory from struct arginfo args
+		delete(args);
+
+		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Send error report?", 0, NULL);
 
 		QAbstractButton* yes = (QAbstractButton*)msgBox.addButton(QMessageBox::Yes);
 		QAbstractButton* no = (QAbstractButton*)msgBox.addButton(QMessageBox::No);
@@ -374,5 +363,6 @@ bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionIn
 		//	settings.setValue("sendErrorReport", send);
 	//	}
 		return send;
-	//}
+		//}
+	}
 }
