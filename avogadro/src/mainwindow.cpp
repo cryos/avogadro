@@ -1735,6 +1735,12 @@ protected:
     }
   }
 
+  void MainWindow::exportVRML() 
+  {
+	  //open VRML dialog
+
+  }
+
   void MainWindow::revert()
   {
     if ( !isDefaultFileName(d->fileName) ) {
@@ -3006,6 +3012,8 @@ protected:
              this, SLOT( importFile() ) );
     connect( ui.actionExportGraphics, SIGNAL( triggered() ),
              this, SLOT( exportGraphics() ) );
+	connect(ui.actionVRML, SIGNAL(triggered()),
+			this, SLOT(exportVRML()));
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( macQuit() ) );

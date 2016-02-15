@@ -132,6 +132,7 @@ namespace Avogadro {
       void revert();
       void importFile();
       void exportGraphics();
+	  void exportVRML();
 
       void closeFile();
 
