@@ -2580,6 +2580,12 @@ protected:
     return d->glWidget->quality();
   }
 
+  bool MainWindow::getNoAskErrorReport()
+  {
+	  QSettings settings;
+	  return settings.value("")
+  }
+
   void MainWindow::setFogLevel(int level)
   {
     d->glWidget->setFogLevel(level);
