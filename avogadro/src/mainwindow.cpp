@@ -1856,29 +1856,34 @@ protected:
     QDesktopServices::openUrl(QUrl("http://manual.avogadro.cc/"));
   }
 
+  void MainWindow::openForumURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://discuss.avogadro.cc/"));
+  }
+
   void MainWindow::openTutorialURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Tutorials"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/tutorials"));
   }
 
   void MainWindow::openFAQURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/FAQ"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/FAQ"));
   }
 
   void MainWindow::openWebsiteURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/"));
   }
 
   void MainWindow::openReleaseNotesURL() const
   {
-    QDesktopServices::openUrl(QUrl( "http://avogadro.cc/wiki/Avogadro_" + QString(VERSION) ));
+    QDesktopServices::openUrl(QUrl( "http://avogadro.cc/Avogadro_" + QString(VERSION) ));
   }
 
   void MainWindow::openBugURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));
+    QDesktopServices::openUrl(QUrl("http://github.com/cryos/avogadro/issues"));
   }
 
   void MainWindow::setView(int index)
@@ -3071,6 +3076,8 @@ protected:
              this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ),
              this, SLOT( openFAQURL() ) );
+    connect( ui.actionAvogadro_Forum, SIGNAL( triggered() ),
+             this, SLOT( openForumURL() ));
     connect( ui.actionRelease_Notes, SIGNAL( triggered() ),
              this, SLOT( openReleaseNotesURL() ));
     connect( ui.actionAvogadro_Website, SIGNAL( triggered() ),
