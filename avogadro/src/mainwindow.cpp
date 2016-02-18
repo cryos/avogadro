@@ -2586,10 +2586,16 @@ protected:
     return d->glWidget->quality();
   }
 
-  bool MainWindow::getNoAskErrorReport()
+  bool MainWindow::getNoAskErrorReport() const
   {
 	  QSettings settings;
-	  return settings.value("")
+	  return settings.value("noAskErrorReport").toBool();
+  }
+
+  bool MainWindow::getSendErrorReport() const
+  {
+	  QSettings settings;
+	  return settings.value("sendErrorReport").toBool();
   }
 
   void MainWindow::setFogLevel(int level)

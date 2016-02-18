@@ -333,7 +333,7 @@ void printHelp(const QString &appName)
 
 bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
 	QSettings settings;
-	if (settings.contains("noAskErrorReport") && settings.value("noAskErrorReport").toBool())
+	if (settings.value("noAskErrorReport").toBool())
 		return settings.value("sendErrorReport").toBool();
 	else {
 		//TODO: check if 'do not ask again' setting is set

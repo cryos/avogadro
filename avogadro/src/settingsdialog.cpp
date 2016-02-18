@@ -92,10 +92,11 @@ namespace Avogadro {
   {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setFogLevel(ui.fogSlider->value());
+
 	if (ui.radioButton->isChecked()) {
 		m_mainWindow->setErrorReport(ui.checkBox->isChecked(), true);
 	}
-	else if (ui.radioButton_2->isChecked()) {
+	else {
 		m_mainWindow->setErrorReport(ui.checkBox->isChecked(), false);
 	}
   }
