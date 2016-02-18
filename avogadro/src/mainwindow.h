@@ -76,6 +76,8 @@ namespace Avogadro {
       MainWindow(const QString &fileName);
       ~MainWindow();
       int painterQuality() const;
+	  bool getNoAskErrorReport() const;
+	  bool getSendErrorReport() const;
       int fogLevel() const;
       bool renderAxes() const;
       bool renderDebug() const;
