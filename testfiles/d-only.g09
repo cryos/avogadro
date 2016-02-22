@@ -89,7 +89,6 @@
  5/5=2,32=2,38=6/2;
  6/7=3,28=1/1;
  99/5=1,9=1/99;
- Leave Link    1 at Thu Jul 24 16:29:31 2014, MaxMem=           0 cpu:         0.7
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l101.exe)
  ----------------------
  ch4 high ang. mo. test
@@ -116,7 +115,6 @@
  NQMom=    0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
  NMagM=    0.0000000   2.7928460   2.7928460   2.7928460   2.7928460
  AtZNuc=   6.0000000   1.0000000   1.0000000   1.0000000   1.0000000
- Leave Link  101 at Thu Jul 24 16:29:31 2014, MaxMem=    33554432 cpu:         0.6
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l202.exe)
                           Input orientation:
  ---------------------------------------------------------------------
@@ -142,7 +140,6 @@
  Deg. of freedom     1
  Full point group                 TD      NOp  24
  Rotational constants (GHZ):    158.3717966    158.3717966    158.3717966
- Leave Link  202 at Thu Jul 24 16:29:32 2014, MaxMem=    33554432 cpu:         0.1
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l301.exe)
  General basis read from cards:  (5D, 7F)
  Centers:       1
@@ -305,24 +302,20 @@
  Integral buffers will be    131072 words long.
  Raffenetti 1 integral format.
  Two-electron integral symmetry is turned off.
- Leave Link  301 at Thu Jul 24 16:29:32 2014, MaxMem=    33554432 cpu:         0.4
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l302.exe)
  NPDir=0 NMtPBC=     1 NCelOv=     1 NCel=       1 NClECP=     1 NCelD=      1
          NCelK=      1 NCelE2=     1 NClLst=     1 CellRange=     0.0.
  One-electron integrals computed using PRISM.
  NBasis=   105 RedAO= T EigKep=  2.03D-03  NBF=   105
  NBsUse=   105 1.00D-06 EigRej= -1.00D+00 NBFU=   105
- Leave Link  302 at Thu Jul 24 16:29:32 2014, MaxMem=    33554432 cpu:         1.1
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l303.exe)
  DipDrv:  MaxL=1.
- Leave Link  303 at Thu Jul 24 16:29:32 2014, MaxMem=    33554432 cpu:         0.1
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l401.exe)
  Initial guess from the checkpoint file:  "gaus.chk"
  B after Tr=     0.000000    0.000000    0.000000
          Rot=    1.000000    0.000000    0.000000    0.000000 Ang=   0.00 deg.
  Guess basis will be translated and rotated to current coordinates.
  JPrj=2 DoOrth=T DoCkMO=T.
- Leave Link  401 at Thu Jul 24 16:29:32 2014, MaxMem=    33554432 cpu:         0.9
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l502.exe)
  Closed shell SCF:
  Using DIIS extrapolation, IDIIS=  1040.
@@ -355,7 +348,6 @@
  SCF Done:  E(RHF) =  -12.6997355897     A.U. after    1 cycles
             NFock=  1  Conv=0.00D+00     -V/T= 2.2997
  KE= 9.771602977154D+00 PE=-5.258744964519D+01 EE= 1.667658324763D+01
- Leave Link  502 at Thu Jul 24 16:29:33 2014, MaxMem=    33554432 cpu:         4.5
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l601.exe)
  Copying SCF densities to generalized density rwf, IOpCl= 0 IROHF=0.
 
@@ -5263,7 +5255,6 @@
  105         V                18.206565         27.165947
  Total kinetic energy from orbitals= 9.771602977154D+00
  No NMR shielding tensors so no spin-rotation constants.
- Leave Link  601 at Thu Jul 24 16:29:33 2014, MaxMem=    33554432 cpu:         1.4
  (Enter /data/pkg/gaussian/g09-D.01/TAR/g09/l9999.exe)
  1\1\GINC-N153\SP\RHF\Gen\C1H4\DEFUSCO\24-Jul-2014\0\\#p HF/GEN scf=tig
  ht nosymm pop=full gfprint guess=read gfinput\\ch4 high ang. mo. test\
@@ -5278,6 +5269,5 @@
  OF TRUE ART AND TRUE SCIENCE.
 
                                     -- ALBERT EINSTEIN
- Job cpu time:       0 days  0 hours  0 minutes 10.1 seconds.
  File lengths (MBytes):  RWF=      6 Int=      0 D2E=      0 Chk=      2 Scr=      1
  Normal termination of Gaussian 09 at Thu Jul 24 16:29:33 2014.
