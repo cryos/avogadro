@@ -1735,12 +1735,6 @@ protected:
     }
   }
 
-  void MainWindow::exportVRML() 
-  {
-	  //open VRML dialog
-
-  }
-
   void MainWindow::revert()
   {
     if ( !isDefaultFileName(d->fileName) ) {
