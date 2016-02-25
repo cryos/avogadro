@@ -340,22 +340,20 @@ void printHelp(const QString &appName)
 bool sendCrashServer(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
 	EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded) 
 {
-	//if (succeeded) {
-		//there is a .dmp to upload
+	if (succeeded) {
 		google_breakpad::CrashReportSender sender(L"crash.checkpoint");
 		std::map<std::wstring, std::wstring> params;
-		std::map<std::wstring, std::wstring> files;
 		std::wstring filename = dump_path;
 		filename += L"\\";
 		filename += minidump_id;
 		filename += L".dmp";
-		
+
 		sender.set_max_reports_per_day(-1);
-		
 
 		return(google_breakpad::RESULT_SUCCEEDED == sender.SendCrashReport(L"http://crash.avogadro.cc/crash_upload", params, filename, 0));
-	//}
-	
+	}
+	else
+		return false;
 }
 
 bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
@@ -363,33 +361,14 @@ bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionIn
 	if (settings.value("noAskErrorReport").toBool())
 		return settings.value("sendErrorReport").toBool();
 	else {
-		//TODO: check if 'do not ask again' setting is set
-
-		//recreate an Application since the original may have crashed
-		//QMessageBox will not display without this
 		Application app(args->argc, args->argv);
-
-		//free memory from struct arginfo args
 		delete(args);
 
-		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Send error report?", 0, NULL);
+		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Avogadro has crashed! Would you like to send an error report?", 0, NULL);
 
 		QAbstractButton* yes = (QAbstractButton*)msgBox.addButton(QMessageBox::Yes);
 		QAbstractButton* no = (QAbstractButton*)msgBox.addButton(QMessageBox::No);
 
-		int ret = msgBox.exec();
-		bool send;
-		if (ret == QMessageBox::Yes) {
-			send = true;
-		}
-		else {
-			send = false;
-		}
-
-		//if (askAgain.checkState() == Qt::Checked) {
-		//	settings.setValue("sendErrorReport", send);
-	//	}
-		return send;
-		//}
+		return (msgBox.exec() == QMessageBox::Yes);
 	}
 }
