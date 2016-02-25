@@ -117,9 +117,6 @@
 #include <Eigen/Geometry>
 #include <Eigen/Array>
 
-// Google breakpapd
-#include "client/windows/handler/exception_handler.h"
-
 #define USEQUAT
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
 #ifdef Q_WS_MAC
