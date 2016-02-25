@@ -55,7 +55,10 @@
 #include "application.h"
 
 // Google breakpapd
+#ifdef WIN32
 #include "client/windows/handler/exception_handler.h"
+#include "client/windows/sender/crash_report_sender.h"
+#endif
 
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
@@ -76,6 +79,9 @@ void printHelp(const QString &appName);
 
 //for Breakpad error reporting
 bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion);
+bool sendCrashServer(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
+	EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded);
+
 struct arginfo {
 	int argc;
 	char **argv;
@@ -292,7 +298,7 @@ int main(int argc, char *argv[])
   google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
 	  L"crash-reports",
 	  sendErrorDialog,
-	  NULL,
+	  sendCrashServer,
 	  args,
 	  google_breakpad::ExceptionHandler::HANDLER_ALL);
 
@@ -329,6 +335,27 @@ void printHelp(const QString &appName)
       "  -v, --version\t\tShow version information\n"
       ).arg(appName, VERSION).toStdWString();
   #endif
+}
+
+bool sendCrashServer(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
+	EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded) 
+{
+	//if (succeeded) {
+		//there is a .dmp to upload
+		google_breakpad::CrashReportSender sender(L"crash.checkpoint");
+		std::map<std::wstring, std::wstring> params;
+		std::map<std::wstring, std::wstring> files;
+		std::wstring filename = dump_path;
+		filename += L"\\";
+		filename += minidump_id;
+		filename += L".dmp";
+		
+		sender.set_max_reports_per_day(-1);
+		
+
+		return(google_breakpad::RESULT_SUCCEEDED == sender.SendCrashReport(L"http://crash.avogadro.cc/crash_upload", params, filename, 0));
+	//}
+	
 }
 
 bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
