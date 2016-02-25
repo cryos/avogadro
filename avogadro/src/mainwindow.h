@@ -38,9 +38,6 @@
 #include <QFileDialog>
 #include <QTabWidget>
 
-//Google Breakpad
-#include "client/windows/handler/exception_handler.h"
-
 class QUndoStack;
 class QUndoCommand;
 class QStackedLayout;
