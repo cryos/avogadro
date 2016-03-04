@@ -18,8 +18,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _MSC_VER
+typedef __int8 int8_t;
+typedef unsigned __int8 uint8_t;
+typedef __int16 int16_t;
+typedef unsigned __int16 uint16_t;
+typedef __int32 int32_t;
+typedef unsigned __int32 uint32_t;
+typedef __int64 int64_t;
+typedef unsigned __int64 uint64_t;
+#else
 #include <stdint.h>
-
+#endif
 
 using namespace std;
 
@@ -31,9 +41,9 @@ using namespace std;
 	// that we can't resolve, there's a constant, too:
 	//
 	typedef			uint32_t							TElementSymbol;
-	
+
 	#define     kANSRInvalidSymbol		(TElementSymbol)-1
-	
+
 //
 
 	/////////////////////////////////////////////////////////
@@ -45,7 +55,7 @@ using namespace std;
 	  TElementSymbol				chemSymbol;
 		double								weight;
 	} TElementInfo;
-	
+
 //
 
 	/////////////////////////////////////////////////////////
@@ -56,7 +66,7 @@ using namespace std;
 			ANSRDB();
 			ANSRDB(const char* filepath);
 			~ANSRDB();
-      
+
       static ANSRDB* DefaultANSRDB()
         {
 // Avogadro edit: This is hardcoded to a non-existant path, and is causing linker issues.
@@ -64,10 +74,10 @@ using namespace std;
 //        extern char* defaultANSRDBPath;
 		  char* defaultANSRDBPath = "";
           static ANSRDB* defaultANSRDBInstance = NULL;
-          
+
           if (!defaultANSRDBInstance) {
             FILE*     fptr;
-            
+
             if (fptr = fopen(defaultANSRDBPath,"r")) {
               fclose(fptr);
               defaultANSRDBInstance = new ANSRDB(defaultANSRDBPath);
@@ -81,15 +91,15 @@ using namespace std;
           }
           return defaultANSRDBInstance;
         }
-			
+
 			static TElementSymbol MakeSymbolFromString(const char* string)
         {
           TElementSymbol	newSym = 0;
           unsigned        length = strlen(string);
-        
+
           if (length) {
             char*         chars = (char*)&newSym;
-            
+
             if (length > 3) length = 3;
             switch (length) {
               case 3:
@@ -105,19 +115,19 @@ using namespace std;
           }
           return newSym;
         }
-			
+
 			TElementSymbol LookupSymbolForNumber(unsigned number);
 			unsigned LookupNumberForSymbol(TElementSymbol symbol);
 			TElementInfo* LookupElementInfoForNumber(unsigned number);
 			TElementInfo* LookupElementInfoForSymbol(TElementSymbol symbol);
-			
+
 			void print(ostream& os);
-			
+
 		protected:
 		  unsigned							elementsInTable;
 		  TElementInfo*					elements;
 		  unsigned*							lookupTable;
-			
+
 		private:
 			int DidInitializeTables();
 			int DidReadTableFromFile(const char* filepath);

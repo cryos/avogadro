@@ -26,7 +26,6 @@
 
 #include <avogadro/global.h>
 #include <openbabel/babelconfig.h>
-#include <iostream>
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif

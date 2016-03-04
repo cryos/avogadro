@@ -7,6 +7,7 @@ set(Avogadro_VERSION_MINOR 2)
 set(Avogadro_VERSION_PATCH 0)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
+
 set(CMAKE_MODULE_PATH ${Avogadro_SOURCE_DIR}/cmake/modules)
 
 cmake_policy(SET CMP0003 NEW)
@@ -50,7 +51,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 #  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wold-style-cast")
   endif()
   add_definitions (-D_BSD_SOURCE)
- 
   # Set some linker flags
   if(CMAKE_SYSTEM_NAME MATCHES Linux)
     set(CMAKE_SHARED_LINKER_FLAGS
