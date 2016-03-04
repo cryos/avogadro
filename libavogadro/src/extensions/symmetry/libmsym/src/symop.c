@@ -86,7 +86,7 @@ void symopPow(msym_symmetry_operation_t *A, int pow, msym_symmetry_operation_t *
     }
 }
 
-void symmetryOperationName(msym_symmetry_operation_t* sop, int l, char buf[]){
+void symmetryOperationName(msym_symmetry_operation_t* sop, int l, char buf[l]){
     switch (sop->type) {
         case PROPER_ROTATION   : snprintf(buf, l, "C%d^%d",sop->order,sop->power); break;
         case IMPROPER_ROTATION : snprintf(buf, l, "S%d^%d",sop->order,sop->power); break;
@@ -97,7 +97,7 @@ void symmetryOperationName(msym_symmetry_operation_t* sop, int l, char buf[]){
     }
 }
 
-void symmetryOperationShortName(msym_symmetry_operation_t* sop, int l, char buf[]){
+void symmetryOperationShortName(msym_symmetry_operation_t* sop, int l, char buf[l]){
     switch (sop->type) {
         case PROPER_ROTATION   : snprintf(buf, l, "C%d",sop->order); break;
         case IMPROPER_ROTATION : snprintf(buf, l, "S%d",sop->order); break;

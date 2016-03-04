@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include "msym.h"
 
-msym_error_t findGeometry(int length, msym_element_t **elements, double cm[3], msym_thresholds_t *thresholds, msym_geometry_t *g, double e[3], double v[3][3]);
-msym_error_t findCenterOfMass(int length, msym_element_t **elements, double v[3]);
+msym_error_t findGeometry(int length, msym_element_t *elements[length], double cm[3], msym_thresholds_t *thresholds, msym_geometry_t *g, double e[3], double v[3][3]);
+msym_error_t findCenterOfMass(int length, msym_element_t *elements[length], double v[3]);
 int geometryDegenerate(msym_geometry_t g);
 void printGeometry(msym_geometry_t g);
 

@@ -42,11 +42,11 @@ typedef struct _msym_permutation_morphism {
 } msym_permutation_morphism_t;
 
 
-msym_error_t findSymmetryOperationPermutations(int l, msym_symmetry_operation_t *sops, msym_thresholds_t *t, msym_permutation_t **ret);
-msym_error_t findPermutation(msym_symmetry_operation_t *sop, int l, double (**v)[3], msym_thresholds_t *t, msym_permutation_t *perm);
+msym_error_t findSymmetryOperationPermutations(int l, msym_symmetry_operation_t sops[l], msym_thresholds_t *t, msym_permutation_t **ret);
+msym_error_t findPermutation(msym_symmetry_operation_t *sop, int l, double (*v[l])[3], msym_thresholds_t *t, msym_permutation_t *perm);
 void freePermutationData(msym_permutation_t *perm);
-void permutationMatrix(msym_permutation_t *perm, double **m);
-msym_error_t findPermutationSubgroups(int l, msym_permutation_t *perm, int sgmax, msym_symmetry_operation_t *sops, int *subgroupl, msym_subgroup_t **subgroup);
+void permutationMatrix(msym_permutation_t *perm, double m[perm->p_length][perm->p_length]);
+msym_error_t findPermutationSubgroups(int l, msym_permutation_t perm[l], int sgmax, msym_symmetry_operation_t *sops, int *subgroupl, msym_subgroup_t **subgroup);
 
 void printPermutation(msym_permutation_t *perm);
 

@@ -17,16 +17,16 @@
 
 #define SQR(x) ((x)*(x))
 
-void inertialTensor(int length, msym_element_t *elements[], double cm[3], double e[3], double v[3][3], msym_thresholds_t *thresholds);
+void inertialTensor(int length, msym_element_t *elements[length], double cm[3], double e[3], double v[3][3], msym_thresholds_t *thresholds);
 msym_geometry_t eigenvaluesToGeometry(double e[3], msym_thresholds_t *thresholds);
 
-msym_error_t findGeometry(int length, msym_element_t *elements[], double cm[3], msym_thresholds_t *thresholds, msym_geometry_t *g, double e[3], double v[3][3]){
+msym_error_t findGeometry(int length, msym_element_t *elements[length], double cm[3], msym_thresholds_t *thresholds, msym_geometry_t *g, double e[3], double v[3][3]){
     inertialTensor(length, elements, cm, e, v, thresholds);
     *g = eigenvaluesToGeometry(e,thresholds);
     return MSYM_SUCCESS;
 }
 
-msym_error_t findCenterOfMass(int length, msym_element_t *elements[], double v[3]){
+msym_error_t findCenterOfMass(int length, msym_element_t *elements[length], double v[3]){
     msym_error_t ret = MSYM_SUCCESS;
     double t = 0;
     v[0] = v[1] = v[2] = 0.0;
@@ -96,7 +96,7 @@ int geometryDegenerate(msym_geometry_t g){
     return !(g == PLANAR_IRREGULAR || g == ASSYMETRIC) && g != GEOMETRY_UNKNOWN;
 }
 
-void inertialTensor(int length, msym_element_t *elements[], double cm[3], double e[3], double v[3][3], msym_thresholds_t *thresholds){
+void inertialTensor(int length, msym_element_t *elements[length], double cm[3], double e[3], double v[3][3], msym_thresholds_t *thresholds){
     double Ixx = 0, Iyy = 0, Izz = 0, Ixy = 0, Ixz = 0, Iyz = 0;
     for(int i = 0; i < length; i++){
         msym_element_t *a = elements[i];

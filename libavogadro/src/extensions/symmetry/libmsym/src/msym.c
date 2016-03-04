@@ -109,7 +109,7 @@ err:
     return ret;
 }
 
-msym_error_t msymGenerateElements(msym_context ctx, int length, msym_element_t elements[]){
+msym_error_t msymGenerateElements(msym_context ctx, int length, msym_element_t elements[length]){
     msym_error_t ret = MSYM_SUCCESS;
     msym_point_group_t *pg = NULL;
     msym_thresholds_t *t = NULL;
@@ -475,7 +475,7 @@ err:
     return ret;
 }
 
-msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double **c){
+msym_error_t msymGetOrbitalSubspaces(msym_context ctx, int l, double c[l][l]){
     msym_error_t ret = MSYM_SUCCESS;
     msym_subspace_t *ss = NULL;
     msym_orbital_t *basis = NULL;
@@ -512,7 +512,7 @@ err:
 
 }
 
-msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double **c){
+msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double c[l][l]){
     msym_error_t ret = MSYM_SUCCESS;
 
     msym_point_group_t *pg = NULL;
@@ -521,7 +521,7 @@ msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double **c){
     msym_thresholds_t *t = NULL;
     int *span = NULL;
     
-    double (**symc) = NULL;
+    double (*symc)[l] = NULL;
     
     int ssl = 0, basisl = 0;
     
@@ -552,7 +552,7 @@ msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double **c){
     }
     
     
-    symc = malloc(sizeof(c));
+    symc = malloc(sizeof(double[l][l]));
     
     start = clock();
 
@@ -565,8 +565,8 @@ msym_error_t msymSymmetrizeOrbitals(msym_context ctx, int l, double **c){
     
     end = clock();
     
-    //memcpy(c,symc,sizeof(double[l][l]));
-	memcpy(c, symc, sizeof(c));
+    memcpy(c,symc,sizeof(double[l][l]));
+    
     time = (double)(end - start) / CLOCKS_PER_SEC;
     
     printf("time: %lf seconds to symmetrize %d orbitals\n",time,basisl);
@@ -620,7 +620,7 @@ msym_error_t msymFindEquivalenceSetPermutations(msym_context ctx) {
         }
     }*/
     
-    esv = malloc(sizeof(double (*)[3])*pg->order);
+    esv = malloc(sizeof(double (*[pg->order])[3]));
     for(int i = 0; i < esl;i++){
         for(int j = 0; j < es[i].length;j++){
             esv[j] = &es[i].elements[j]->v;

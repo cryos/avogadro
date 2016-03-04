@@ -19,7 +19,7 @@
 
 #define SQR(x) ((x)*(x))
 
-msym_error_t projectOntoSubspace(int d, double orb[], msym_subspace_t *ss, msym_orbital_t basis[], double mem[], double proj[]);
+msym_error_t projectOntoSubspace(int d, double orb[d], msym_subspace_t *ss, msym_orbital_t basis[d], double mem[d], double proj[d]);
 
 msym_error_t symmetrizeMoleculeProject(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, msym_thresholds_t *thresholds, double *err);
 msym_error_t symmetrizeMoleculeLinear(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, msym_thresholds_t *thresholds, double *err);
@@ -44,14 +44,14 @@ msym_error_t symmetrizeMolecule(msym_point_group_t *pg, int esl, msym_equivalenc
 msym_error_t symmetrizeMoleculeProject(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, msym_thresholds_t *thresholds, double *err){
     msym_error_t ret = MSYM_SUCCESS;
     double e = 0.0;
-    double (*v)[3] = malloc(sizeof(double[3])*pg->order);
+    double (*v)[3] = malloc(sizeof(double[pg->order][3]));
     for(int i = 0; i < esl;i++){
         if(es[i].length > pg->order){
             ret = MSYM_SYMMETRIZATION_ERROR;
             msymSetErrorDetails("Equivalence set (%d elements) larger than order of point group (%d)",es[i].length,pg->order);
             goto err;
         }
-        memset(v, 0, sizeof(double[3])*pg->order);
+        memset(v, 0, sizeof(double[pg->order][3]));
         for(int j = 0; j < pg->sopsl;j++){
             for(int k = 0; k < es[i].length;k++){
                 int p = perm[i][j].p[k];
@@ -79,8 +79,8 @@ err:
 msym_error_t symmetrizeMoleculeLinear(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, msym_thresholds_t *thresholds, double *err){
     msym_error_t ret = MSYM_SUCCESS;
     double e = 0.0;
-    double (*v)[3] = malloc(sizeof(double[3])*pg->order);
-    double (*vinf)[3] =  malloc(sizeof(double[3])*pg->order);
+    double (*v)[3] = malloc(sizeof(double[pg->order][3]));
+    double (*vinf)[3] = malloc(sizeof(double[pg->order][3]));
     msym_symmetry_operation_t *cinf = NULL;
     
     for(int i = 0; i < pg->sopsl;i++){
@@ -103,7 +103,7 @@ msym_error_t symmetrizeMoleculeLinear(msym_point_group_t *pg, int esl, msym_equi
             goto err;
         }
         
-        memset(v, 0, sizeof(double[3])*pg->order);
+        memset(v, 0, sizeof(double[pg->order][3]));
         
         for(int k = 0; k < es[i].length;k++){
             vproj(es[i].elements[k]->v, cinf->v, vinf[k]);
@@ -137,14 +137,14 @@ err:
 }
 
 
-msym_error_t symmetrizeOrbitals(msym_point_group_t *pg, int ssl, msym_subspace_t *ss, int *span, int basisl, msym_orbital_t basis[], msym_thresholds_t *thresholds, double **orb,double **symorb){
+msym_error_t symmetrizeOrbitals(msym_point_group_t *pg, int ssl, msym_subspace_t *ss, int *span, int basisl, msym_orbital_t basis[basisl], msym_thresholds_t *thresholds, double orb[basisl][basisl],double symorb[basisl][basisl]){
     msym_error_t ret = MSYM_SUCCESS;
-    double (***proj) = malloc(sizeof(double)*basisl*basisl*pg->ct->l);
-    double *mem = malloc(sizeof(double)*basisl);
-    double (**comp) = malloc(sizeof(double)*basisl*pg->ct->l);
+    double (*proj)[pg->ct->l][basisl] = malloc(sizeof(double[basisl][pg->ct->l][basisl]));
+    double *mem = malloc(sizeof(double[basisl]));
+    double (*comp)[pg->ct->l] = malloc(sizeof(double[basisl][pg->ct->l]));
     int *icomp = calloc(basisl,sizeof(int));
     int (*ispan) = calloc(pg->ct->l,sizeof(int));
-    memset(proj,0,sizeof(double)*basisl*basisl*pg->ct->l);
+    memset(proj,0,sizeof(double[basisl][pg->ct->l][basisl]));
     
     for(int o = 0;o < basisl;o++){
         double mcomp = -1.0;
@@ -224,7 +224,7 @@ err:
     return ret;
 }
 
-msym_error_t projectOntoSubspace(int d, double orb[], msym_subspace_t *ss, msym_orbital_t basis[], double mem[], double proj[]){
+msym_error_t projectOntoSubspace(int d, double orb[d], msym_subspace_t *ss, msym_orbital_t basis[d], double mem[d], double proj[d]){
     msym_error_t ret = MSYM_SUCCESS;
     if(ss->subspacel){
         for(int i = 0;i < ss->subspacel;i++){
@@ -232,8 +232,8 @@ msym_error_t projectOntoSubspace(int d, double orb[], msym_subspace_t *ss, msym_
         }
     } else {
         for(int i = 0; i < ss->d;i++){
-            double (**space) =  ss->space;
-            memset(mem, 0, sizeof(double)*d);
+            double (*space)[ss->basisl] = (double (*)[ss->basisl]) ss->space;
+            memset(mem, 0, sizeof(double[d]));
             for(int j = 0; j < ss->basisl;j++){
                 mem[ss->basis.o[j] - basis] = space[i][j];
             }

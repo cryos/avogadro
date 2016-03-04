@@ -118,7 +118,7 @@ err:
 }
 
 
-msym_error_t msymSetElements(msym_context ctx, int length, msym_element_t elements[]){
+msym_error_t msymSetElements(msym_context ctx, int length, msym_element_t elements[length]){
     msym_error_t ret = MSYM_SUCCESS;
     msym_thresholds_t *thresholds = NULL;
     struct {msym_orbital_t *s; msym_orbital_t *e;} aorb = {.s= NULL, .e = NULL} ;
@@ -127,8 +127,8 @@ msym_error_t msymSetElements(msym_context ctx, int length, msym_element_t elemen
     
     if(MSYM_SUCCESS != (ret = msymGetThresholds(ctx, &thresholds))) goto err;
     
-    ctx->elements = malloc(sizeof(msym_element_t)*length);
-    ctx->pelements = malloc(sizeof(msym_element_t *)*length);
+    ctx->elements = malloc(sizeof(msym_element_t[length]));
+    ctx->pelements = malloc(sizeof(msym_element_t *[length]));
     
     for(int i = 0; i < length;i++){
         ctx->pelements[i] = &ctx->elements[i];
@@ -201,16 +201,16 @@ msym_error_t msymGetElements(msym_context ctx, int *length, msym_element_t **ele
     msym_element_t *relements = NULL;
     if(ctx == NULL) {ret = MSYM_INVALID_CONTEXT;goto err;}
     if(ctx->elements == NULL) {ret = MSYM_INVALID_ELEMENTS;goto err;}
-    if(ctx->ext.elements == NULL) ctx->ext.elements = malloc(sizeof(msym_element_t)*ctx->el);
+    if(ctx->ext.elements == NULL) ctx->ext.elements = malloc(sizeof(msym_element_t[ctx->el]));
     if(ctx->orbitals != NULL) {
-        if(ctx->ext.orbitals == NULL) ctx->ext.orbitals = malloc(sizeof(msym_orbital_t)*ctx->ol);
-        memcpy(ctx->ext.orbitals,ctx->orbitals,sizeof(msym_orbital_t)*ctx->ol);
+        if(ctx->ext.orbitals == NULL) ctx->ext.orbitals = malloc(sizeof(msym_orbital_t[ctx->ol]));
+        memcpy(ctx->ext.orbitals,ctx->orbitals,sizeof(msym_orbital_t[ctx->ol]));
     }
     if(ctx->porbitals != NULL){
         if(ctx->ext.porbitals == NULL) ctx->ext.orbitals = calloc(ctx->ol,sizeof(msym_orbital_t*));
     }
     
-    memcpy(ctx->ext.elements,ctx->elements,sizeof(msym_element_t)*ctx->el);
+    memcpy(ctx->ext.elements,ctx->elements,sizeof(msym_element_t[ctx->el]));
     msym_orbital_t **porb = ctx->ext.porbitals;
     for(msym_element_t *a = ctx->ext.elements; a < (ctx->ext.elements+ctx->el); a++){
         vadd(a->v,ctx->cm,a->v);
@@ -259,7 +259,7 @@ err:
 }
 
 
-msym_error_t msymGetPointGroup(msym_context ctx, int l, char buf[]){
+msym_error_t msymGetPointGroup(msym_context ctx, int l, char buf[l]){
     msym_error_t ret = MSYM_SUCCESS;
     if(ctx == NULL) {ret = MSYM_INVALID_CONTEXT;goto err;}
     if(ctx->pg == NULL) {ret = MSYM_INVALID_POINT_GROUP;goto err;}
@@ -290,10 +290,10 @@ msym_error_t msymGetSubgroups(msym_context ctx, int *sgl, msym_subgroup_t **sg){
     }
     
     if(ctx->ext.sg == NULL){
-        ctx->ext.sg = malloc(sizeof(msym_subgroup_t)*ctx->sgl);
-        memcpy(ctx->ext.sg, ctx->sg, sizeof(msym_subgroup_t)*ctx->sgl);
+        ctx->ext.sg = malloc(sizeof(msym_subgroup_t[ctx->sgl]));
+        memcpy(ctx->ext.sg, ctx->sg, sizeof(msym_subgroup_t[ctx->sgl]));
         for(int i = 0;i < ctx->sgl;i++){
-            ctx->ext.sg[i].sops = malloc(sizeof(msym_symmetry_operation_t *)*ctx->sg[i].sopsl);
+            ctx->ext.sg[i].sops = malloc(sizeof(msym_symmetry_operation_t *[ctx->sg[i].sopsl]));
             for(int j = 0;j < ctx->sg[i].sopsl;j++){
                 ctx->ext.sg[i].sops[j] = ctx->sg[i].sops[j] - ctx->pg->sops + ctx->ext.sops;
                 ctx->ext.sg[i].subgroup[0] = ctx->sg[i].subgroup[0] == NULL ? NULL : ctx->sg[i].subgroup[0] - ctx->sg + ctx->ext.sg;
@@ -372,8 +372,8 @@ msym_error_t msymGetSymmetryOperations(msym_context ctx, int *sopsl, msym_symmet
     msym_symmetry_operation_t *rsops = NULL;
     if(ctx == NULL) {ret = MSYM_INVALID_CONTEXT;goto err;}
     if(ctx->pg == NULL || ctx->pg->sops == NULL) {ret = MSYM_INVALID_POINT_GROUP;goto err;}
-    if(ctx->ext.sops == NULL) ctx->ext.sops = malloc(sizeof(msym_symmetry_operation_t)*ctx->pg->sopsl);
-    memcpy(ctx->ext.sops,ctx->pg->sops,sizeof(msym_symmetry_operation_t)*ctx->pg->sopsl);
+    if(ctx->ext.sops == NULL) ctx->ext.sops = malloc(sizeof(msym_symmetry_operation_t[ctx->pg->sopsl]));
+    memcpy(ctx->ext.sops,ctx->pg->sops,sizeof(msym_symmetry_operation_t[ctx->pg->sopsl]));
     *sops = ctx->ext.sops;
     *sopsl = ctx->pg->sopsl;
     return ret;

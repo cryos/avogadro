@@ -689,7 +689,7 @@ msym_error_t pointGroupFromSubgroup(msym_subgroup_t *sg, msym_thresholds_t *thre
     pg->type = sg->type;
     pg->primary = sg->primary;
     pg->n = sg->n;
-    pg->sops = malloc(sizeof(msym_symmetry_operation_t)*sg->sopsl);
+    pg->sops = malloc(sizeof(msym_symmetry_operation_t[sg->sopsl]));
     pg->sopsl = sg->sopsl;
     memcpy(pg->name,sg->name,sizeof(pg->name));
     
@@ -998,7 +998,7 @@ msym_error_t generateSymmetryOperations(msym_point_group_t *pg, msym_thresholds_
     msym_error_t ret = MSYM_SUCCESS;
     double origo[3] = {0.0,0.0,0.0};
 
-    pg->sops = malloc(sizeof(msym_symmetry_operation_t)*(pg->order+1));
+    pg->sops = malloc(sizeof(msym_symmetry_operation_t[pg->order+1]));
     vcopy(origo,pg->sops[0].v);
     
     pg->sops[0].type = IDENTITY;
@@ -1076,7 +1076,7 @@ msym_error_t generateSymmetryOperations(msym_point_group_t *pg, msym_thresholds_
         goto err;
     }
     
-    pg->sops = realloc(pg->sops,sizeof(msym_symmetry_operation_t)*pg->order);
+    pg->sops = realloc(pg->sops,sizeof(msym_symmetry_operation_t[pg->order]));
     
     return ret;
     
@@ -1529,8 +1529,8 @@ void generateSymmetryOperationsIh(msym_point_group_t *pg){
 
 int classifySymmetryOperations(msym_point_group_t *pg){
     int c = 1;
-    double (*mop)[3][3] = malloc(sizeof(double[3][3])*pg->sopsl);
-    double (*imop)[3][3] = malloc(sizeof(double[3][3])*pg->sopsl);
+    double (*mop)[3][3] = malloc(sizeof(double[pg->sopsl][3][3]));
+    double (*imop)[3][3] = malloc(sizeof(double[pg->sopsl][3][3]));
     
     //There may be a better way to do this
     for(int i = 0; i < pg->sopsl;i++){
@@ -1695,12 +1695,12 @@ msym_error_t findCharacterTable(msym_point_group_t *pg){
         goto err;
     }
     
-    ct = realloc(ct, sizeof(CharacterTable)+(sizeof(int)*ct->l)+ct->l*sizeof(*ct->name));
+    ct = realloc(ct, sizeof(CharacterTable)+sizeof(int[ct->l])+ct->l*sizeof(*ct->name));
 
     ct->classc = (int*)(ct + 1);
     ct->name = (char (*)[6]) ((int *)ct->classc + ct->l);
         
-    memset(ct->classc, 0, sizeof(int)*ct->l);
+    memset(ct->classc, 0, sizeof(int[ct->l]));
     memset(ct->name, 0, ct->l*sizeof(*(ct->name)));
     for(int i = 0; i < pg->sopsl;i++){
         ct->classc[pg->sops[i].cla]++;

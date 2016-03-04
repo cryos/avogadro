@@ -14,6 +14,6 @@
 #include "msym.h"
 #include "symop.h"
 
-msym_error_t findSymmetryOperations(int esl, msym_equivalence_set_t *es, msym_thresholds_t *t, int *lsops, msym_symmetry_operation_t **sops);
+msym_error_t findSymmetryOperations(int esl, msym_equivalence_set_t es[esl], msym_thresholds_t *t, int *lsops, msym_symmetry_operation_t **sops);
 
 #endif /* defined(__MSYM_SYMMETRY_h) */

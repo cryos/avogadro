@@ -21,12 +21,12 @@
 #include "permutation.h"
 #include "point_group.h"
 
-void printTransform(int r, int c, double **M);
-void tabPrintTransform(int r, int c, double **M,int indent);
+void printTransform(int r, int c, double M[r][c]);
+void tabPrintTransform(int r, int c, double M[r][c],int indent);
 void printSubspaceTree(CharacterTable *ct, msym_subspace_t *ss,int indent);
 void tabprintf(char *format, int indent, ...);
 
-msym_error_t getOrbitalSubspaceCoefficients(msym_subspace_t *ss, int basisl, msym_orbital_t basis[], int *offset, double **c);
+msym_error_t getOrbitalSubspaceCoefficients(msym_subspace_t *ss, int basisl, msym_orbital_t basis[basisl], int *offset, double c[basisl][basisl]);
 int filterSubspace(msym_subspace_t *ss);
 
 
@@ -134,17 +134,11 @@ err:
 }
 
 //We can split this into a part for each l and just build the subspaces, and we already have the permutation matrix so
-msym_error_t findProjection(CharacterTable *ct, int sopsl, msym_symmetry_operation_t sops[], msym_permutation_t perm[], int l, msym_orbital_t *basis[]){
+msym_error_t findProjection(CharacterTable *ct, int sopsl, msym_symmetry_operation_t sops[sopsl], msym_permutation_t perm[sopsl], int l, msym_orbital_t *basis[2*l+1]){
     msym_error_t ret = MSYM_SUCCESS;
     int kdim = ipow(3,l), setl = perm[0].p_length;
-	double(**mkron) = malloc(sizeof(double *) * kdim);
-	for (int i = 0; i < kdim; i++) {
-		mkron[i] = malloc(sizeof(double) * kdim);
-	}
-	double(**mperm) = malloc(sizeof(double *) * setl);
-	for (int i = 0; i < setl; i++) {
-		mperm[i] = malloc(sizeof(double) * setl);
-	}
+    double (*mkron)[kdim] = malloc(sizeof(double[kdim][kdim]));
+    double (*mperm)[setl] = malloc(sizeof(double[setl][setl]));
     
     for(int m = 0; m < 2*l+1;m++){
         permutationMatrix(&perm[m], mperm);
@@ -155,11 +149,11 @@ msym_error_t findProjection(CharacterTable *ct, int sopsl, msym_symmetry_operati
     return ret;
 }
 
-msym_error_t generateOrbitalTransforms(int sopsl, msym_symmetry_operation_t sops[], int l, double ***transform){
+msym_error_t generateOrbitalTransforms(int sopsl, msym_symmetry_operation_t sops[sopsl], int l, double transform[sopsl][2*l+1][2*l+1]){
     msym_error_t ret = MSYM_SUCCESS;
     int kdim = ipow(3,l), norbs = 2*l+1;
-    double (***mkron) = malloc(sizeof(double)*2*kdim*kdim);
-    double (**poly) = malloc(sizeof(double)*norbs*kdim);
+    double (*mkron)[kdim][kdim] = malloc(sizeof(double[2][kdim][kdim]));
+    double (*poly)[kdim] = malloc(sizeof(double[norbs][kdim]));
     
     for(int m = -l; m <= l;m++){
         if(MSYM_SUCCESS != (ret = orbitalPolynomial(l,m,poly[m+l]))) goto err;
@@ -193,7 +187,7 @@ err:
     return ret;
 }
 
-msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, int basisl, msym_orbital_t basis[], msym_thresholds_t *thresholds, int *subspacel, msym_subspace_t **subspace, int **pspan){
+msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, int basisl, msym_orbital_t basis[basisl], msym_thresholds_t *thresholds, int *subspacel, msym_subspace_t **subspace, int **pspan){
     msym_error_t ret = MSYM_SUCCESS;
     int lmax = -1, nmax = -1, eslmax = -1;
     for(int i = 0;i < basisl;i++){
@@ -206,16 +200,16 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
     for(int i = 0;i < esl;i++) eslmax = es[i].length > eslmax ? es[i].length : eslmax;
     
     struct _ltransforms {int d; void *t;} *lts = calloc(lmax+1,sizeof(struct _ltransforms));
-    double (**mkron) = malloc(sizeof(double)*((2 * lmax + 1)*pg->order)*((2 * lmax + 1)*pg->order));
-    double (**mperm) = malloc(sizeof(double)*pg->order*pg->order);
+    double (*mkron)[(2*lmax+1)*pg->order] = malloc(sizeof(double[(2*lmax+1)*pg->order][(2*lmax+1)*pg->order]));
+    double (*mperm)[pg->order] = malloc(sizeof(double[pg->order][pg->order]));
     
-    double (****mproj) = malloc(sizeof(double)*((2 * lmax + 1)*pg->order)*((2 * lmax + 1)*pg->order)*(pg->ct->l+1)*(lmax+1));
-    double (**lspan) = malloc(sizeof(double)*(lmax+1)*(pg->ct->l));
+    double (*mproj)[pg->ct->l+1][(2*lmax+1)*pg->order][(2*lmax+1)*pg->order] = malloc(sizeof(double[lmax+1][pg->ct->l+1][(2*lmax+1)*pg->order][(2*lmax+1)*pg->order]));
+    double (*lspan)[pg->ct->l] = malloc(sizeof(double[lmax+1][pg->ct->l]));
     int (*ispan) = calloc(pg->ct->l,sizeof(int));
     int *aspan = calloc(pg->ct->l,sizeof(int));
-    int *nl = malloc(sizeof(int)*(lmax+1));
+    int *nl = malloc(sizeof(int[lmax+1]));
     
-    msym_orbital_t ****(*omap)= malloc(sizeof(msym_orbital_t *)*(eslmax)*(nmax+1)*(lmax+1)*(2*lmax+1));
+    msym_orbital_t *(*omap)[nmax][lmax][2*lmax+1] = malloc(sizeof(msym_orbital_t *[eslmax][nmax+1][lmax+1][2*lmax+1]));
     
     *subspace = NULL;
     
@@ -229,23 +223,23 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
     
     for(int l = 0; l <= lmax;l++){
         lts[l].d = 2*l+1;
-        lts[l].t = malloc(sizeof(double)*(lts[1].d)*(lts[1].d)*(pg->sopsl));
+        lts[l].t = malloc(sizeof(double[pg->sopsl][lts[l].d][lts[l].d]));
         if(MSYM_SUCCESS != (ret = generateOrbitalTransforms(pg->sopsl, pg->sops, l, lts[l].t))) goto err;
     }
     
     for(int i = 0; i < esl;i++){
         int esilmax = -1, esinmax = -1;
         
-        memset(nl,0,sizeof(int)*(lmax+1));
+        memset(nl,0,sizeof(int[lmax+1]));
         for(int j = 0;j < es[i].elements[0]->aol;j++){
             esilmax = esilmax < es[i].elements[0]->ao[j]->l ? es[i].elements[0]->ao[j]->l : esilmax;
             esinmax = esinmax < es[i].elements[0]->ao[j]->n ? es[i].elements[0]->ao[j]->n : esinmax;
             nl[es[i].elements[0]->ao[j]->l] += es[i].elements[0]->ao[j]->m == 0;
         }
         
-        msym_orbital_t ****(*esomap)= omap;
+        msym_orbital_t *(*esomap)[esinmax+1][esilmax+1][2*esilmax+1] = omap;
         
-        memset(esomap,0,sizeof(msym_orbital_t *)*(es->length)*(esinmax+1)*(esilmax+1)*(2*esilmax+1));
+        memset(esomap,0,sizeof(msym_orbital_t *[es->length][esinmax+1][esilmax+1][2*esilmax+1]));
         for(int a = 0;a < es[i].length;a++){
             for(int ao = 0;ao < es[i].elements[a]->aol;ao++){
                 msym_orbital_t *o = es[i].elements[a]->ao[ao];
@@ -253,16 +247,16 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
             }
         }
         
-        memset(lspan,0,sizeof(double)*(lmax+1)*(pg->ct->l));
+        memset(lspan,0,sizeof(double[lmax+1][pg->ct->l]));
         
         for(int l = 0;l <= esilmax;l++){
             int d = es[i].length*lts[l].d;
-            double (***mlproj) = mproj[l];
-            memset(mlproj,0,sizeof(double)*d*d*pg->ct->l);
-            memset(ispan,0,sizeof(int)*pg->ct->l);
+            double (*mlproj)[d][d] = mproj[l];
+            memset(mlproj,0,sizeof(double[pg->ct->l][d][d]));
+            memset(ispan,0,sizeof(int[pg->ct->l]));
             
             for(int s = 0;s < pg->sopsl;s++){
-                double (***lt) = lts[l].t;
+                double (*lt)[lts[l].d][lts[l].d] = lts[l].t;
                 permutationMatrix(&perm[i][s], mperm);
                 kron(perm[i][s].p_length,mperm,lts[l].d,lt[s],d,mkron);
                 
@@ -275,7 +269,7 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
                     mladd(d, mlproj[pg->ct->l], mlproj[k], mlproj[k]); //Could do this based on the span later, but it's not a huge amount of work
                 }
             }
-            memset(mlproj[pg->ct->l],0,sizeof(double)*d*d);
+            memset(mlproj[pg->ct->l],0,sizeof(double[d][d]));
             int nirrepl = 0;
             for(int k = 0;k < pg->ct->l;k++){
                 int lirrepl = nirrepl;
@@ -296,7 +290,7 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
                 ss->irrep = k;
                 
                 if(ispan[k] > 0){
-                    ss->subspace = realloc(ss->subspace, sizeof(msym_subspace_t)*(ss->subspacel+nl[l]));
+                    ss->subspace = realloc(ss->subspace, sizeof(msym_subspace_t[ss->subspacel+nl[l]]));
                     for(int n = l+1; n <= esinmax;n++){
                         if(esomap[0][n][l][0] == NULL) continue;
                         
@@ -307,13 +301,13 @@ msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equi
                         nss->type = ATOMIC_ORBITAL;
                         nss->irrep = ss->irrep;
                         nss->d = ispan[k]*pg->ct->irrep[k].d;
-                        double (**space) = malloc(sizeof(double)*d*nss->d);
+                        double (*space)[d] = malloc(sizeof(double[nss->d][d]));
                         for(int dim = 0; dim < ss->subspace[ss->subspacel].d;dim++){
                             vlnorm2(d, mlproj[pg->ct->l][lirrepl+dim], space[dim]);
                         }
                         nss->space = (double*) space;
                         nss->basisl = 0;
-                        nss->basis.o = malloc(sizeof(msym_orbital_t *)*d);
+                        nss->basis.o = malloc(sizeof(msym_orbital_t *[d]));
                         for(int e = 0;e < es[i].length;e++){
                             for(int m = -l;m <= l;m++){
                                 nss->basis.o[nss->basisl++] = esomap[e][n][l][m+l];
@@ -377,10 +371,10 @@ err:
     return ret;
 }
 
-msym_error_t getOrbitalSubspaces(int ssl, msym_subspace_t ss[], int basisl, msym_orbital_t basis[], double **c){
+msym_error_t getOrbitalSubspaces(int ssl, msym_subspace_t ss[ssl], int basisl, msym_orbital_t basis[basisl], double c[basisl][basisl]){
     msym_error_t ret = MSYM_SUCCESS;
     int index = 0;
-    memset(c,0,sizeof(c));
+    memset(c,0,sizeof(double[basisl][basisl]));
     for(int i = 0;i < ssl;i++){
         if(MSYM_SUCCESS != (ret = getOrbitalSubspaceCoefficients(&ss[i],basisl,basis,&index,c))) goto err;
     }
@@ -396,7 +390,7 @@ err:
     return ret;
 }
 
-msym_error_t getOrbitalSubspaceCoefficients(msym_subspace_t *ss, int basisl, msym_orbital_t basis[], int *offset, double **c){
+msym_error_t getOrbitalSubspaceCoefficients(msym_subspace_t *ss, int basisl, msym_orbital_t basis[basisl], int *offset, double c[basisl][basisl]){
     msym_error_t ret = MSYM_SUCCESS;
     
     int index = *offset;
@@ -407,7 +401,7 @@ msym_error_t getOrbitalSubspaceCoefficients(msym_subspace_t *ss, int basisl, msy
     }
     
     if(ss->subspacel == 0){
-        double (**space) =  ss->space;
+        double (*space)[ss->basisl] = (double (*)[ss->basisl]) ss->space;
         if(index+ss->d > basisl) {
             msymSetErrorDetails("Generated subspaces (%d) is larger than basis length (%d)",index+ss->d,basisl);
             ret = MSYM_INVALID_SUBSPACE;
@@ -449,7 +443,7 @@ int filterSubspace(msym_subspace_t *ss){
                     break;
                 } else {
                     memcpy(&ss->subspace[i], &ss->subspace[ss->subspacel], sizeof(msym_subspace_t));
-                    ss->subspace = realloc(ss->subspace, sizeof(msym_subspace_t)*ss->subspacel);
+                    ss->subspace = realloc(ss->subspace, sizeof(msym_subspace_t[ss->subspacel]));
                     i--;
                 }
                 
@@ -487,7 +481,7 @@ void printSubspaceTree(CharacterTable *ct, msym_subspace_t *ss,int indent){
             tabprintf("", indent);
             for(int i = 0;i < ss->basisl;i++) printf("  %s\t",ss->basis.o[i]->name);
             printf("\n");
-            double (**space) =  ss->space;
+            double (*space)[ss->basisl] = (double (*)[ss->basisl]) ss->space;
             tabPrintTransform(ss->d,ss->basisl,space,indent);
         } else {
             tabprintf("No subspaces spaned\n", indent);
@@ -509,8 +503,8 @@ void tabprintf(char *format, int indent, ...){
 
 
 //Density matrix without occupation numbers
-void densityMatrix(int l, double **M, double **D){
-    memset(D,0,sizeof(D));
+void densityMatrix(int l, double M[l][l], double D[l][l]){
+    memset(D,0,sizeof(double[l][l]));
     for(int i = 0; i < l;i++){
         for(int j = 0;j < l;j++){
             for(int k = 0;k < l;k++){
@@ -524,7 +518,7 @@ void printOrbital(msym_orbital_t *orb){
     printf("Orbital(%d,%d,%d) : %s\n",orb->n, orb->l, orb->m, orb->name);
 }
 
-void printTransform(int r, int c, double **M) {
+void printTransform(int r, int c, double M[r][c]) {
     
     printf("\n[");
     for(int i = 0;i < r;i++){
@@ -540,7 +534,7 @@ void printTransform(int r, int c, double **M) {
     
 }
 
-void tabPrintTransform(int r, int c, double **M,int indent) {
+void tabPrintTransform(int r, int c, double M[r][c],int indent) {
     if(r == 0 || c == 0) {tabprintf("[]\n",indent);return;}
     //printf("\n");
     tabprintf("[",indent);

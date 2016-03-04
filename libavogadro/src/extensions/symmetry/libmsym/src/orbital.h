@@ -52,10 +52,10 @@ typedef struct {
 msym_error_t orbitalFromName(char *, msym_orbital_t *orb);
 msym_error_t orbitalFromQuantumNumbers(int n, int l, int m, msym_orbital_t *orb);
 void printOrbital(msym_orbital_t *orb);
-msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, int basisl, msym_orbital_t *basis, msym_thresholds_t *thresholds, int *subspacel, msym_subspace_t **subspace, int **pspan);
-msym_error_t generateOrbitalTransforms(int sopsl, msym_symmetry_operation_t *sops, int l, double ***transform);
+msym_error_t generateOrbitalSubspaces(msym_point_group_t *pg, int esl, msym_equivalence_set_t *es, msym_permutation_t **perm, int basisl, msym_orbital_t basis[basisl], msym_thresholds_t *thresholds, int *subspacel, msym_subspace_t **subspace, int **pspan);
+msym_error_t generateOrbitalTransforms(int sopsl, msym_symmetry_operation_t sops[sopsl], int l, double transform[sopsl][2*l+1][2*l+1]);
 void freeSubspace(msym_subspace_t *ss);
-msym_error_t getOrbitalSubspaces(int ssl, msym_subspace_t *ss,int basisl, msym_orbital_t *basis, double **c);
+msym_error_t getOrbitalSubspaces(int ssl, msym_subspace_t ss[ssl],int basisl, msym_orbital_t basis[basisl], double c[basisl][basisl]);
 
 void printSubspace(CharacterTable *ct, msym_subspace_t *ss);
 

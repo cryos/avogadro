@@ -19,20 +19,20 @@
 
 #define SQR(x) ((x)*(x))
 
-msym_error_t partitionEquivalenceSets(int length, msym_element_t *elements[], msym_element_t *pelements[], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds);
-msym_error_t partitionPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[], msym_element_t *pelements[], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds);
+msym_error_t partitionEquivalenceSets(int length, msym_element_t *elements[length], msym_element_t *pelements[length], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds);
+msym_error_t partitionPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[length], msym_element_t *pelements[length], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds);
 
 
 
-msym_error_t copyEquivalenceSets(int length, msym_equivalence_set_t es[], msym_equivalence_set_t **ces){
+msym_error_t copyEquivalenceSets(int length, msym_equivalence_set_t es[length], msym_equivalence_set_t **ces){
     msym_error_t ret = MSYM_SUCCESS;
     int el = 0;
     
     for(int i = 0;i < length;i++) el += es[i].length;
-    msym_equivalence_set_t *nes = malloc(sizeof(msym_equivalence_set_t)*length + sizeof(msym_element_t *)*el);
+    msym_equivalence_set_t *nes = malloc(sizeof(msym_equivalence_set_t[length]) + sizeof(msym_element_t *[el]));
     msym_element_t **ep = (msym_element_t **) &es[length];
     msym_element_t **nep = (msym_element_t **) &nes[length];
-    memcpy(nes, es, sizeof(msym_equivalence_set_t)*length + sizeof(msym_element_t *)*el);
+    memcpy(nes, es, sizeof(msym_equivalence_set_t[length]) + sizeof(msym_element_t *[el]));
     for(int i = 0;i < length;i++) nes[i].elements = nes[i].elements - ep + nep;
     *ces = nes;
 err:
@@ -40,9 +40,9 @@ err:
 }
 
 //TODO: Use a preallocated pointer array instead of multiple mallocs
-msym_error_t generateEquivalenceSet(msym_point_group_t *pg, int length, msym_element_t elements[], int *glength, msym_element_t **gelements, int *esl, msym_equivalence_set_t **es,msym_thresholds_t *thresholds){
+msym_error_t generateEquivalenceSet(msym_point_group_t *pg, int length, msym_element_t elements[length], int *glength, msym_element_t **gelements, int *esl, msym_equivalence_set_t **es,msym_thresholds_t *thresholds){
     msym_error_t ret = MSYM_SUCCESS;
-    msym_element_t *ge = calloc(length,sizeof(msym_element_t)*pg->order);
+    msym_element_t *ge = calloc(length,sizeof(msym_element_t[pg->order]));
     msym_equivalence_set_t *ges = calloc(length,sizeof(msym_equivalence_set_t));
     int gel = 0;
     int gesl = 0;
@@ -89,12 +89,12 @@ msym_error_t generateEquivalenceSet(msym_point_group_t *pg, int length, msym_ele
             goto err;
         }
         
-        aes->elements = realloc(aes->elements,sizeof(msym_element_t*)*aes->length);
+        aes->elements = realloc(aes->elements,sizeof(msym_element_t*[aes->length]));
     }
     
     msym_element_t *geo = ge;
-    ge = realloc(ge,sizeof(msym_element_t)*gel);
-    ges = realloc(ges,sizeof(msym_equivalence_set_t)*gesl + sizeof(msym_element_t *)*gel);
+    ge = realloc(ge,sizeof(msym_element_t[gel]));
+    ges = realloc(ges,sizeof(msym_equivalence_set_t[gesl]) + sizeof(msym_element_t *[gel]));
     
     msym_element_t **ep = (msym_element_t **) &ges[gesl];
     for(int i = 0;i < gesl;i++){
@@ -120,7 +120,7 @@ err:
     return ret;
 }
 
-msym_error_t splitPointGroupEquivalenceSets(msym_point_group_t *pg, int esl, msym_equivalence_set_t es[], int *sesl, msym_equivalence_set_t **ses, msym_thresholds_t *thresholds){
+msym_error_t splitPointGroupEquivalenceSets(msym_point_group_t *pg, int esl, msym_equivalence_set_t es[esl], int *sesl, msym_equivalence_set_t **ses, msym_thresholds_t *thresholds){
     msym_error_t ret = MSYM_SUCCESS;
     int length = 0, gesl = 0;
     for(int i = 0;i < esl;i++) length += es[i].length;
@@ -132,15 +132,15 @@ msym_error_t splitPointGroupEquivalenceSets(msym_point_group_t *pg, int esl, msy
         msym_equivalence_set_t *pes = NULL;
         int pesl = 0;
         if(MSYM_SUCCESS != (ret = partitionPointGroupEquivalenceSets(pg, es[i].length, es[i].elements, es[i].elements - ep + pelements, &pesl, &pes, thresholds))) goto err;
-        ges = realloc(ges, sizeof(msym_equivalence_set_t)*(gesl+pesl));
-        memcpy(&ges[gesl], pes, sizeof(msym_equivalence_set_t)*pesl);
+        ges = realloc(ges, sizeof(msym_equivalence_set_t[gesl+pesl]));
+        memcpy(&ges[gesl], pes, sizeof(msym_equivalence_set_t[pesl]));
         free(pes);
         gesl += pesl;
     }
     
-    ges = realloc(ges, sizeof(msym_equivalence_set_t)*gesl + sizeof(msym_element_t *)*length);
+    ges = realloc(ges, sizeof(msym_equivalence_set_t[gesl]) + sizeof(msym_element_t *[length]));
     ep = (msym_element_t **) &ges[gesl];
-    memcpy(ep, pelements, sizeof(msym_element_t *)*length);
+    memcpy(ep, pelements, sizeof(msym_element_t *[length]));
     
     for(int i = 0;i < gesl;i++){
         ges[i].elements = ep;
@@ -158,17 +158,17 @@ err:
     return ret;
 }
 
-msym_error_t findPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds){
+msym_error_t findPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[length], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds){
     msym_error_t ret = MSYM_SUCCESS;
     msym_equivalence_set_t *ges = NULL;
     msym_element_t **pelements = calloc(length,sizeof(msym_element_t*));
     int gesl = 0;
     if(MSYM_SUCCESS != (ret = partitionPointGroupEquivalenceSets(pg, length, elements, pelements, &gesl, &ges, thresholds))) goto err;
     
-    ges = realloc(ges,sizeof(msym_equivalence_set_t)*gesl + sizeof(msym_element_t *)*length);
+    ges = realloc(ges,sizeof(msym_equivalence_set_t[gesl]) + sizeof(msym_element_t *[length]));
     msym_element_t **ep = (msym_element_t **) &ges[gesl];
     msym_element_t **epo = ep;
-    memcpy(ep, pelements, sizeof(msym_element_t *)*length);
+    memcpy(ep, pelements, sizeof(msym_element_t *[length]));
     for(int i = 0;i < gesl;i++){
         if(ep > epo + length){
             msymSetErrorDetails("Equivalence set pointer (%ld) extends beyond number of elements (%d)",ep-epo,length);
@@ -190,11 +190,11 @@ err:
 
 }
 
-msym_error_t partitionPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[], msym_element_t *pelements[], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds){
+msym_error_t partitionPointGroupEquivalenceSets(msym_point_group_t *pg, int length, msym_element_t *elements[length], msym_element_t *pelements[length], int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds){
     msym_error_t ret = MSYM_SUCCESS;
     msym_equivalence_set_t *ges = calloc(length,sizeof(msym_equivalence_set_t));
-    int *eqi = malloc(sizeof(int)*length);
-    memset(eqi,-1,sizeof(int)*length);
+    int *eqi = malloc(sizeof(int[length]));
+    memset(eqi,-1,sizeof(int[length]));
     int gesl = 0, pelementsl = 0;
     for(int i = 0;i < length;i++){
         if(eqi[i] >= 0) continue;
@@ -258,7 +258,7 @@ err:
 
 }
 
-msym_error_t findEquivalenceSets(int length, msym_element_t *elements[], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds) {
+msym_error_t findEquivalenceSets(int length, msym_element_t *elements[length], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds) {
     msym_error_t ret = MSYM_SUCCESS;
     int sesl = 0;
     msym_equivalence_set_t *ses = NULL;
@@ -275,8 +275,8 @@ msym_error_t findEquivalenceSets(int length, msym_element_t *elements[], msym_ge
             if(rsesl > 1){
                 ses[i].elements = rses[0].elements;
                 ses[i].length = rses[0].length;
-                ses = realloc(ses, sizeof(msym_equivalence_set_t)*(sesl + rsesl - 1));
-                memcpy(&ses[sesl], &rses[1], sizeof(msym_equivalence_set_t)*(rsesl-1));
+                ses = realloc(ses, sizeof(msym_equivalence_set_t[sesl+rsesl-1]));
+                memcpy(&ses[sesl], &rses[1], sizeof(msym_equivalence_set_t[rsesl-1]));
                 sesl += rsesl-1;
                 i--;
             }
@@ -284,11 +284,11 @@ msym_error_t findEquivalenceSets(int length, msym_element_t *elements[], msym_ge
         }
     }
 
-    ses = realloc(ses, sizeof(msym_equivalence_set_t)*sesl + sizeof(msym_element_t *)*length);
+    ses = realloc(ses, sizeof(msym_equivalence_set_t[sesl]) + sizeof(msym_element_t *[length]));
     msym_element_t **ep = (msym_element_t **) &ses[sesl];
     
     for(int i = 0;i < sesl;i++){
-        memcpy(ep, ses[i].elements, sizeof(msym_element_t *)*(ses[i].length));
+        memcpy(ep, ses[i].elements, sizeof(msym_element_t *[ses[i].length]));
         ses[i].elements = ep;
         ep += ses[i].length;
     }
@@ -305,7 +305,7 @@ err:
 }
 
 
-msym_error_t partitionEquivalenceSets(int length, msym_element_t *elements[], msym_element_t *pelements[], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds) {
+msym_error_t partitionEquivalenceSets(int length, msym_element_t *elements[length], msym_element_t *pelements[length], msym_geometry_t g, int *esl, msym_equivalence_set_t **es, msym_thresholds_t *thresholds) {
     
     int ns = 0, gd = geometryDegenerate(g);
     double *e = calloc(length,sizeof(double));
@@ -414,8 +414,8 @@ msym_error_t partitionEquivalenceSets(int length, msym_element_t *elements[], ms
     msym_element_t **pe = pelements;
     
     if(elements == pelements){
-        lelements = malloc(sizeof(msym_element_t *)*length);
-        memcpy(lelements, elements, sizeof(msym_element_t *)*length);
+        lelements = malloc(sizeof(msym_element_t *[length]));
+        memcpy(lelements, elements, sizeof(msym_element_t *[length]));
     }
     
     for(int i = 0, ni = 0; i < length;i++){
