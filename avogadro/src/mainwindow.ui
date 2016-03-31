@@ -669,6 +669,11 @@
     <string>IUPAC InChI identifier</string>
    </property>
   </action>
+  <action name="actionAvogadro_Forum">
+   <property name="text">
+    <string>Discussion Forum</string>
+   </property>
+  </action>
   <action name="actionVRML">
    <property name="text">
     <string>VRML</string>
