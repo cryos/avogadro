@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -36,7 +36,6 @@
     <addaction name="actionAvogadro_Help"/>
     <addaction name="actionTutorials"/>
     <addaction name="actionFAQ"/>
-    <addaction name="actionAvogadro_Forum"/>
     <addaction name="separator"/>
     <addaction name="actionRelease_Notes"/>
     <addaction name="actionReport_a_Bug"/>
@@ -670,9 +669,9 @@
     <string>IUPAC InChI identifier</string>
    </property>
   </action>
-  <action name="actionAvogadro_Forum">
+  <action name="actionVRML">
    <property name="text">
-    <string>Discussion Forum</string>
+    <string>VRML</string>
    </property>
   </action>
  </widget>
