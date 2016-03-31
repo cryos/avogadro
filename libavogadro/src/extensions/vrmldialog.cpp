@@ -39,7 +39,7 @@ namespace Avogadro
 		ui.setupUi(this);
 		connect(ui.selectFileName, SIGNAL(clicked()), this, SLOT(selectFileName()));
 		connect(ui.render, SIGNAL(clicked()), this, SLOT(renderClicked()));
-		
+		ui.doubleSpinBox->setValue = 1.0;
 	}
 
 	VRMLDialog::~VRMLDialog()
