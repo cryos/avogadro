@@ -33,7 +33,6 @@
 #include <openbabel/mol.h>
 
 #include <Eigen/Geometry>
-#include <Eigen/LeastSquares>
 
 #include <vector>
 
@@ -123,7 +122,7 @@ OrcaInputDialog::OrcaInputDialog(QWidget *parent, Qt::WindowFlags f ) :
   OrcaInputDialog::~OrcaInputDialog()
   {
       QSettings settings;
-      writeSettings(settings);   
+      writeSettings(settings);
       delete basicData;
       delete basisData;
       delete controlData;

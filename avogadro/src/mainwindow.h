@@ -26,7 +26,6 @@
 
 #include "config.h"
 
-#include <Eigen/Geometry>
 #include "ui_mainwindow.h"
 #include "flattabwidget.h"
 

@@ -15,6 +15,7 @@
 ******************************************************************************/
 
 #include "gamessukout.h"
+#include <iostream>
 
 using Eigen::Vector3d;
 using std::vector;

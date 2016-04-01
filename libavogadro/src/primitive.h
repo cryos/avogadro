@@ -29,6 +29,7 @@
 #include "config.h"
 
 #include "global.h"
+#include "Eigen/Core"
 
 #include <QObject>
 #include <QMetaType>

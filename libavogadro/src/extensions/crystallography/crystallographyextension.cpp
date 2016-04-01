@@ -1989,7 +1989,8 @@ namespace Avogadro
     // fix coordinates
     // Apply COB matrix:
     Eigen::Matrix3d invCob;
-    cob.computeInverse(&invCob);
+    bool tInvert;
+    cob.computeInverseWithCheck(invCob,tInvert);
     for (QList<Eigen::Vector3d>::iterator
            it = fcoords.begin(),
            it_end = fcoords.end();

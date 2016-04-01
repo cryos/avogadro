@@ -115,9 +115,9 @@ namespace Avogadro
     qint64 numberOfGaussianPrimitives() const { return m_numberOfGaussianPrimitives; }
     qint64 numberOfNuclei() const { return m_numberOfNuclei; }
 
-    const qreal* xNuclearCoordinates() const { return m_xNuclearCoordinates.constData(); }
-    const qreal* yNuclearCoordinates() const { return m_yNuclearCoordinates.constData(); }
-    const qreal* zNuclearCoordinates() const { return m_zNuclearCoordinates.constData(); }
+    qreal* xNuclearCoordinates()  { return m_xNuclearCoordinates.data(); }
+    qreal* yNuclearCoordinates()  { return m_yNuclearCoordinates.data(); }
+    qreal* zNuclearCoordinates()  { return m_zNuclearCoordinates.data(); }
     qreal xNuclearCoordinate( qint64 i ) const { return m_xNuclearCoordinates.at(i); }
     qreal yNuclearCoordinate( qint64 i ) const { return m_yNuclearCoordinates.at(i); }
     qreal zNuclearCoordinate( qint64 i ) const { return m_zNuclearCoordinates.at(i); }
