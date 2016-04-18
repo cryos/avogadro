@@ -71,7 +71,7 @@ namespace Avogadro
 		void selectFileName();
 		void renderClicked();
 		void resized();
-
+		void calcVRML();
 	};
 
 } // End namespace Avogadro

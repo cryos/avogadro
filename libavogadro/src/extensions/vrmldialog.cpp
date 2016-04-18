@@ -39,7 +39,7 @@ namespace Avogadro
 		ui.setupUi(this);
 		connect(ui.selectFileName, SIGNAL(clicked()), this, SLOT(selectFileName()));
 		connect(ui.render, SIGNAL(clicked()), this, SLOT(renderClicked()));
-		ui.doubleSpinBox->setValue = 1.0;
+		connect(ui.doubleSpinBox, SIGNAL(clicked()), this, SLOT(calcVRML()));
 	}
 
 	VRMLDialog::~VRMLDialog()
@@ -58,6 +58,7 @@ namespace Avogadro
 
 	double VRMLDialog::scale()
 	{
+		//figure out output size
 		return ui.doubleSpinBox->value();
 	}
 	void VRMLDialog::selectFileName()
@@ -79,5 +80,9 @@ namespace Avogadro
 		
 	}
 
+	void VRMLDialog::calcVRML()
+	{
+
+	}
 } // End namespace Avogadro
 

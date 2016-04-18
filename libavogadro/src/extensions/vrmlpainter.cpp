@@ -152,7 +152,7 @@ namespace Avogadro
 			<< "\n\tscale " << " 1 " << length*this->scale << " 1" 
 			<< "\n\trotation " << ax << " " << ay << " " << az << " " << angle
 			<< "\n\tchildren Shape {\n"
-			<< "\t\tgeometry Cylinder {\n\t\t\tradius\t" << radius << "\n\t\t}\n"
+			<< "\t\tgeometry Cylinder {\n\t\t\tradius\t" << radius*this->scale << "\n\t\t}\n"
 			<< "\t\tappearance Appearance {\n"
 			<< "\t\t\tmaterial Material {\n"
 			<< "\t\t\t\tdiffuseColor\t" << d->color.red() << "\t" << d->color.green()
@@ -229,138 +229,94 @@ namespace Avogadro
 
 	void VRMLPainter::drawMesh(const Mesh & mesh, int mode)
 	{
-		// Now we draw the given mesh to the OpenGL widget
-		switch (mode)
-		{
-		case 0: // Filled triangles
-			break;
-		case 1: // Lines
-			break;
-		case 2: // Points
-			break;
-		}
-
-		// Render the triangles of the mesh
 		std::vector<Eigen::Vector3f> t = mesh.vertices();
 		std::vector<Eigen::Vector3f> n = mesh.normals();
+		std::vector<Color3f> c;
+		
+		//take color from d->color
+		for (unsigned int j = 0; j < t.size(); j++) {
+			Color3f new_col;
+			new_col.set(d->color.red(), d->color.green(), d->color.blue());
+			c.push_back(new_col);
+		}
 
 		// If there are no triangles then don't bother doing anything
-		if (t.size() == 0)
+		if (t.size() == 0 || t.size() != c.size())
 			return;
 
-		QString vertsStr, ivertsStr, normsStr, inormsStr;
+		QString vertsStr, ivertsStr, colorStr;
 		QTextStream verts(&vertsStr);
-		verts << "vertex_vectors{" << t.size() << ",\n";
 		QTextStream iverts(&ivertsStr);
-		iverts << "face_indices{" << t.size() / 3 << ",\n";
-		QTextStream norms(&normsStr);
-		norms << "normal_vectors{" << n.size() << ",\n";
+		QTextStream colors(&colorStr);
+
 		for (unsigned int i = 0; i < t.size(); ++i) {
-			verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
-			norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-			if (i != t.size() - 1) {
-				verts << ", ";
-				norms << ", ";
+			if (i == t.size() - 1) {
+				verts << t[i].x()*this->scale << " " << t[i].y()*this->scale << " " << t[i].z()*this->scale;
+				colors << c[i].red() << " " << c[i].green() << " " << c[i].blue();
+				break;
 			}
-			if (i != 0 && i % 3 == 0) {
-				verts << '\n';
-				norms << '\n';
-			}
+			verts << t[i].x()*this->scale << " " << t[i].y()*this->scale << " " << t[i].z()*this->scale << ",\n";
+			colors << c[i].red() << " " << c[i].green() << " " << c[i].blue() << ", ";
 		}
 		// Now to write out the indices
 		for (unsigned int i = 0; i < t.size(); i += 3) {
-			iverts << "<" << i << "," << i + 1 << "," << i + 2 << ">";
-			if (i != t.size() - 3) {
-				iverts << ", ";
-			}
-			if (i != 0 && ((i + 1) / 3) % 3 == 0) {
-				iverts << '\n';
-			}
-		}
-		// Now to close off all the arrays
-		verts << "\n}";
-		norms << "\n}";
-		iverts << "\n}";
-		// Now to write out the full mesh - could be pretty big...
-		*(d->output) << "mesh2 {\n"
-			<< vertsStr << '\n'
-			<< normsStr << '\n'
-			<< ivertsStr << '\n'
-			<< "\tpigment { rgbt <" << d->color.red() << ", "
-			<< d->color.green() << ", "
-			<< d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
-			<< "}\n\n";
+			iverts << i << ", " << i + 1 << ", " << i + 2 << ", -1,\n";
 
+		}
+
+		// Now to write out the full mesh - could be pretty big...
+		*(d->output) << "Shape {\n"
+			<< "\tgeometry IndexedFaceSet {\n"
+			<< "\t\tcoord Coordinate {\n"
+			<< "\t\t\tpoint ["
+			<< vertsStr << "\t\t\t]\n\t\t}\n"
+			<< "\t\tcoordIndex["
+			<< ivertsStr << "\t\t\t]\n"
+			<< "color Color {\n color ["
+			<< colorStr << "]\n}\n}\n}";
 	}
 
 	void VRMLPainter::drawColorMesh(const Mesh & mesh, int mode)
 	{
-		// Now we draw the given mesh to the OpenGL widget
-		switch (mode)
-		{
-		case 0: // Filled triangles
-			break;
-		case 1: // Lines
-			break;
-		case 2: // Points
-			break;
-		}
-
-		// Render the triangles of the mesh
-		std::vector<Eigen::Vector3f> v = mesh.vertices();
+		std::vector<Eigen::Vector3f> t = mesh.vertices();
 		std::vector<Eigen::Vector3f> n = mesh.normals();
 		std::vector<Color3f> c = mesh.colors();
-
+		
 		// If there are no triangles then don't bother doing anything
-		if (v.size() == 0 || v.size() != c.size())
+		if (t.size() == 0 || t.size() != c.size())
 			return;
 
-		QString vertsStr, ivertsStr, normsStr, texturesStr;
+		QString vertsStr, ivertsStr, colorStr;
 		QTextStream verts(&vertsStr);
-		verts << "vertex_vectors{" << v.size() << ",\n";
 		QTextStream iverts(&ivertsStr);
-		iverts << "face_indices{" << v.size() / 3 << ",\n";
-		QTextStream norms(&normsStr);
-		norms << "normal_vectors{" << n.size() << ",\n";
-		QTextStream textures(&texturesStr);
-		textures << "texture_list{" << c.size() << ",\n";
-		for (unsigned int i = 0; i < v.size(); ++i) {
-			verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
-			norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-			textures << "texture{pigment{rgbt<" << c[i].red() << ","
-				<< c[i].green() << "," << c[i].blue() << ","
-				<< 1.0 - d->color.alpha() << ">}}";
-			if (i != v.size() - 1) {
-				verts << ", ";
-				norms << ", ";
-				textures << ",\n";
+		QTextStream colors(&colorStr);
+
+		for (unsigned int i = 0; i < t.size(); ++i) {
+			if (i == t.size() - 1) {
+				verts << t[i].x()*this->scale << " " << t[i].y()*this->scale << " " << t[i].z()*this->scale;
+				colors << c[i].red() << " " << c[i].green() << " " << c[i].blue();
+				break;
 			}
-			if (i != 0 && i % 3 == 0) {
-				verts << '\n';
-				norms << '\n';
-			}
+			verts << t[i].x()*this->scale << " " << t[i].y()*this->scale << " " << t[i].z()*this->scale << ",\n";
+			colors << c[i].red() << " " << c[i].green() << " " << c[i].blue() << ", ";
 		}
 		// Now to write out the indices
-		for (unsigned int i = 0; i < v.size(); i += 3) {
-			iverts << "<" << i << "," << i + 1 << "," << i + 2 << ">";
-			iverts << "," << i << "," << i + 1 << "," << i + 2;
-			if (i != v.size() - 3)
-				iverts << ", ";
-			if (i != 0 && ((i + 1) / 3) % 3 == 0)
-				iverts << '\n';
+		for (unsigned int i = 0; i < t.size(); i += 3) {
+			iverts << i << ", " << i + 1 << ", " << i + 2 << ", -1,\n";
+
 		}
-		// Now to close off all the arrays
-		verts << "\n}";
-		norms << "\n}";
-		iverts << "\n}";
-		textures << "\n}";
+
 		// Now to write out the full mesh - could be pretty big...
-		*(d->output) << "mesh2 {\n"
-			<< vertsStr << '\n'
-			<< normsStr << '\n'
-			<< texturesStr << '\n'
-			<< ivertsStr << '\n'
-			<< "}\n\n";
+		*(d->output) << "Shape {\n"
+			<< "\tgeometry IndexedFaceSet {\n"
+			<< "\t\tcoord Coordinate {\n"
+			<< "\t\t\tpoint ["
+			<< vertsStr << "\t\t\t]\n\t\t}\n"
+			<< "\t\tcoordIndex["
+			<< ivertsStr << "\t\t\t]\n"
+			<< "color Color {\n color ["
+			<< colorStr << "]\n}\n}\n}";
+	
 	}
 
 	int VRMLPainter::drawText(int, int, const QString &)
