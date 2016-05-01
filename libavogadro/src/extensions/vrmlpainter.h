@@ -6,6 +6,8 @@
 #include <avogadro/painterdevice.h>
 #include <avogadro/glwidget.h>
 
+#include "vrmldialog.h"
+
 class QFile;
 class QTextStream;
 
@@ -21,6 +23,8 @@ namespace Avogadro
 	{
 	public:
 		double scale;
+		double thinnestCyl;
+		double smallestSphere;
 		/**
 		* Constructor.
 		* @param quality defaults to -1, valid range from 0 to 4.
@@ -147,7 +151,7 @@ namespace Avogadro
 	class VRMLPainterDevice : public PainterDevice
 	{
 	public:
-		VRMLPainterDevice(const QString& filename, const GLWidget* glwidget, const double scale);
+		VRMLPainterDevice(const QString& filename, const GLWidget* glwidget, const double scale, VRMLDialog* m_VRMLDialog);
 		~VRMLPainterDevice();
 
 		void initializeVRML();

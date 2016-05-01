@@ -65,13 +65,15 @@ namespace Avogadro
 	
 	Q_SIGNALS:
 		void render();
+		void calc();
 		void preview(int, int);
 
 		public Q_SLOTS:
 		void selectFileName();
 		void renderClicked();
+		void calcSize();
 		void resized();
-		void calcVRML();
+		void calcVRML(double shortestCyl, double smallestSphere);
 	};
 
 } // End namespace Avogadro

@@ -37,9 +37,11 @@ namespace Avogadro
 		: QDialog(parent, f)
 	{
 		ui.setupUi(this);
+		ui.doubleSpinBox->setValue(1.00); //default to scale of 1.0 instead of 0.0
+
 		connect(ui.selectFileName, SIGNAL(clicked()), this, SLOT(selectFileName()));
 		connect(ui.render, SIGNAL(clicked()), this, SLOT(renderClicked()));
-		connect(ui.doubleSpinBox, SIGNAL(clicked()), this, SLOT(calcVRML()));
+		connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(calcSize()));
 	}
 
 	VRMLDialog::~VRMLDialog()
@@ -75,14 +77,23 @@ namespace Avogadro
 		emit render();
 	}
 
+	void VRMLDialog::calcSize()
+	{
+		emit calc();
+	}
+
 	void VRMLDialog::resized()
 	{
 		
 	}
 
-	void VRMLDialog::calcVRML()
+	void VRMLDialog::calcVRML(double thinnestCyl, double smallestSphere) //may need other args
 	{
+		ui.label_4->setEnabled(true);
+		ui.label_4->setText("Thinnest cyclinder (mm): " + QString::number(thinnestCyl) + " mm");
 
+		ui.label_5->setEnabled(true);
+		ui.label_5->setText("Smallest sphere (mm): " + QString::number(smallestSphere) + " mm");
 	}
 } // End namespace Avogadro
 

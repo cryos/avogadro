@@ -73,6 +73,8 @@ namespace Avogadro
 			//      m_VRMLDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
 			connect(m_VRMLDialog, SIGNAL(render()),
 				this, SLOT(render()));
+			connect(m_VRMLDialog, SIGNAL(calc()),
+				this, SLOT(calc()));
 			connect(m_glwidget, SIGNAL(resized()),
 				m_VRMLDialog, SLOT(resized()));
 			m_VRMLDialog->show();
@@ -94,6 +96,14 @@ namespace Avogadro
 		m_molecule = molecule;
 	}
 
+	void VRMLExtension::calc()
+	{
+		m_VRMLDialog->calcVRML(-1, -2);
+		double scale = m_VRMLDialog->scale();
+		VRMLPainterDevice pd(QString(), m_glwidget, scale, m_VRMLDialog);
+		
+	}
+
 	void VRMLExtension::render()
 	{
 		// Render the scene using VRML-
@@ -109,28 +119,17 @@ namespace Avogadro
 
 		double scale = m_VRMLDialog->scale();
 
-
-		// Check that the VRML executable exists - FIXME implement path search...
-		/*    QFileInfo info(m_VRMLDialog->command());
-		if (!info.exists()) {
-		QMessageBox::warning(m_VRMLDialog, "VRML- executable not found.",
-		"The VRML- executable, normally named 'VRML', cannot be found.");
-		return;
-		} */
-
-		// Check whether the .VRML file can be written
 		QFile VRMLFile(fileName + ".wrl");
 		if (VRMLFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
 
 			VRMLFile.close();
-			VRMLPainterDevice pd(fileName + ".wrl", m_glwidget, scale);
+			VRMLPainterDevice pd(fileName + ".wrl", m_glwidget, scale, m_VRMLDialog);
 		}
 		else {
 			QMessageBox::warning(m_VRMLDialog, tr("Cannot Write to File."),
 				tr("Cannot write to file %1. Do you have permissions to write to that location?").arg(fileName + ".wrl"));
 			return;
 		}
-
 
 		
 	}

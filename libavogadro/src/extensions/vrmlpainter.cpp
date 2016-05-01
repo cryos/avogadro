@@ -1,6 +1,7 @@
 #include "config.h"
 
 #include "vrmlpainter.h"
+#include "vrmldialog.h"
 
 #include <avogadro/color.h>
 #include <avogadro/engine.h>
@@ -14,6 +15,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QApplication>
+#include <QTemporaryFile>
 #include <Eigen/Geometry>
 
 #include <iomanip>
@@ -91,6 +93,9 @@ namespace Avogadro
 		double y = center.y() * this->scale;
 		double z = center.z() * this->scale;
 		double r = radius * this->scale * 0.45; //from py file
+		if (r < this->smallestSphere) {
+			this->smallestSphere = r*2; //keep track of the diameter
+		}
 		// Write out a VRMLRay sphere for rendering
 		*(d->output) << "Transform {\n"
 			<< "\ttranslation\t" << x << "\t" << y << "\t" << z
@@ -147,6 +152,10 @@ namespace Avogadro
 			angle = acos(dy);
 		}
 		length = length / 2.0;
+
+		if ((radius*this->scale) < this->thinnestCyl) //keep track of the thinnest cylinder
+			this->thinnestCyl = radius*this->scale*2; //diameter
+
 		*(d->output) << "Transform {\n"
 			<< "\ttranslation\t" << tx*this->scale << "\t" << ty*this->scale << "\t" << tz*this->scale
 			<< "\n\tscale " << " 1 " << length*this->scale << " 1" 
@@ -232,7 +241,7 @@ namespace Avogadro
 		std::vector<Eigen::Vector3f> t = mesh.vertices();
 		std::vector<Eigen::Vector3f> n = mesh.normals();
 		std::vector<Color3f> c;
-		
+	
 		//take color from d->color
 		for (unsigned int j = 0; j < t.size(); j++) {
 			Color3f new_col;
@@ -367,24 +376,36 @@ namespace Avogadro
 
 
 	VRMLPainterDevice::VRMLPainterDevice(const QString& filename,
-		const GLWidget* glwidget,const double scale)
+		const GLWidget* glwidget,const double scale, VRMLDialog* m_VRMLDialog)
 	{
 		m_output = 0;
 		m_glwidget = glwidget;
+
 		m_painter = new VRMLPainter;
 		m_painter->scale = scale;
-		m_file = new QFile(filename);
-		if (!m_file->open(QIODevice::WriteOnly | QIODevice::Text))
-			return;
-		m_output = new QTextStream(m_file);
+		m_painter->thinnestCyl = std::numeric_limits<double>::max(); //keep track of the thinnest cylinder
+		m_painter->smallestSphere = std::numeric_limits<double>::max(); //keep track of the smallest sphere
+		if (!filename.isEmpty()) {
+			m_file = new QFile(filename);
+			if (!m_file->open(QIODevice::WriteOnly | QIODevice::Text))
+				return;
+			m_output = new QTextStream(m_file);
+		}
+		else {
+			m_file = new QTemporaryFile();
+			m_output = new QTextStream();
+		}
 		m_output->setRealNumberPrecision(5);
 		m_painter->begin(m_output, m_glwidget->normalVector());
-
+		
 		m_engines = m_glwidget->engines();
 
 		initializeVRML();
 		render();
 		m_painter->end();
+
+		m_VRMLDialog->calcVRML(m_painter->thinnestCyl, m_painter->smallestSphere); //send the thinnest cylinder back to the dialog box
+
 		m_file->close();
 	}
 

@@ -79,6 +79,7 @@ namespace Avogadro
 
 		private Q_SLOTS:
 		void render();
+		void calc();
 		void finished(int exitCode);
 
 	};
