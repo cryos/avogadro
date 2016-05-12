@@ -435,6 +435,15 @@ namespace Avogadro {
                        (Eigen2OB(*it)));
       }
     }
+    // If cartesian, we need to scale the atoms with the scaling factor
+    else {
+      for (QList<Eigen::Vector3d>::iterator
+             it = positions.begin(),
+             it_end = positions.end();
+           it != it_end; ++it) {
+        *it *= scale;
+      }
+    }
 
     // Remove old atoms
     QList<Avogadro::Atom*> oldAtoms = m_molecule->atoms();
