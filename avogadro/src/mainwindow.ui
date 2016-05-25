@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -673,6 +673,11 @@
   <action name="actionAvogadro_Forum">
    <property name="text">
     <string>Discussion Forum</string>
+   </property>
+  </action>
+  <action name="actionVRML">
+   <property name="text">
+    <string>VRML</string>
    </property>
   </action>
  </widget>
