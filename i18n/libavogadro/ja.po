@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-09-09 11:30-0400\n"
+"POT-Creation-Date: 2016-05-25 18:46-0400\n"
 "PO-Revision-Date: 2015-11-23 08:32+0000\n"
 "Last-Translator: aoyama iwao <iwao.aoyama@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-24 05:10+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2016-05-26 05:18+0000\n"
+"X-Generator: Launchpad (build 18053)\n"
 "Language: ja\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -893,7 +893,7 @@ msgstr "分子のユニットセルが定義されていません。 -- フラ�
 msgid "Cartesian Editor..."
 msgstr "カルテシアンエディタ..."
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:209
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
 #: src/extensions/cartesianextension.cpp:580
 #: src/extensions/crystallography/crystallographyextension.cpp:175
@@ -1468,7 +1468,7 @@ msgstr "トラジェクトリ ..."
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:83
-#: src/extensions/povrayextension.cpp:64
+#: src/extensions/povrayextension.cpp:64 src/extensions/vrmlextension.cpp:62
 msgid "&File"
 msgstr "ファイル(&F)"
 
@@ -1600,6 +1600,7 @@ msgid "&Vector Graphics..."
 msgstr "ベクター画像(&V) ..."
 
 #: src/extensions/gl2psextension.cpp:47 src/extensions/povrayextension.cpp:64
+#: src/extensions/vrmlextension.cpp:62
 msgid "Export"
 msgstr "エクスポート"
 
@@ -2126,11 +2127,11 @@ msgstr "イメージファイル (*.png *.pbm)"
 msgid "POV-Ray..."
 msgstr "POV-Ray..."
 
-#: src/extensions/povrayextension.cpp:130
+#: src/extensions/povrayextension.cpp:130 src/extensions/vrmlextension.cpp:113
 msgid "No filename supplied."
 msgstr "ファイル名が入力されていません"
 
-#: src/extensions/povrayextension.cpp:131
+#: src/extensions/povrayextension.cpp:131 src/extensions/vrmlextension.cpp:114
 msgid "No valid filename was supplied."
 msgstr "有効なファイル名が入力されていません"
 
@@ -2148,12 +2149,12 @@ msgstr ""
 "Rayファイルを保存のうちどちらのオプションも選択されていません。これでは出力が保存されませんが、よろしいですか？"
 
 #: src/extensions/povrayextension.cpp:159
-#: src/extensions/povrayextension.cpp:182
+#: src/extensions/povrayextension.cpp:182 src/extensions/vrmlextension.cpp:127
 msgid "Cannot Write to File."
 msgstr "ファイルに書き込めません。"
 
 #: src/extensions/povrayextension.cpp:160
-#: src/extensions/povrayextension.cpp:183
+#: src/extensions/povrayextension.cpp:183 src/extensions/vrmlextension.cpp:128
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
@@ -2368,7 +2369,7 @@ msgstr "いいえ"
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
-#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
+#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:56
 msgid "Python Terminal"
 msgstr "Pythonターミナル"
 
@@ -2376,7 +2377,7 @@ msgstr "Pythonターミナル"
 msgid "pythonTerminalDock"
 msgstr "Pythonターミナルドック"
 
-#: src/extensions/pythonterminal.h:53
+#: src/extensions/pythonterminal.h:57
 msgid "Interactive python scripting terminal"
 msgstr "インタラクティブPythonスクリプト端末"
 
@@ -3638,6 +3639,26 @@ msgstr ""
 "例えば1000x1000の正方形の画像を作成するためには1を入力するなど、\n"
 "別の正の値を入力することもできます。"
 
+#: src/extensions/vrmldialog.cpp:73
+msgid "Save VRML rendered files"
+msgstr ""
+
+#: src/extensions/vrmldialog.cpp:74
+msgid "VRML files (*wrl)"
+msgstr ""
+
+#: src/extensions/vrmlextension.cpp:47
+msgid "VRML..."
+msgstr ""
+
+#: src/extensions/vrmlextension.h:40
+msgid "VRML"
+msgstr ""
+
+#: src/extensions/vrmlextension.h:41
+msgid "Create wrl files"
+msgstr ""
+
 #: src/extensions/wiitrackextension.cpp:58
 msgid "Connect"
 msgstr "接続"
@@ -4270,7 +4291,7 @@ msgstr "測定の設定"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5079
 msgid "Add Atom"
 msgstr "原子を追加"
 
@@ -5792,6 +5813,8 @@ msgstr "ファイルをインポート..."
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/extensions/povraydialog.ui:127
 #. i18n: ectx: property (text), widget (QLabel, label_4)
+#. i18n: file: src/extensions/vrmldialog.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Filename:"
 msgstr "ファイル名:"
 
@@ -6941,6 +6964,8 @@ msgstr "POV-Ray エクスポート"
 
 #. i18n: file: src/extensions/povraydialog.ui:30
 #. i18n: ectx: property (text), widget (QPushButton, selectFileName)
+#. i18n: file: src/extensions/vrmldialog.ui:68
+#. i18n: ectx: property (text), widget (QPushButton, selectFileName)
 msgid "Select..."
 msgstr "選択..."
 
@@ -6953,6 +6978,8 @@ msgstr "povray"
 #. i18n: ectx: property (text), widget (QPushButton, render)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:93
 #. i18n: ectx: property (text), widget (QPushButton, push_render)
+#. i18n: file: src/extensions/vrmldialog.ui:101
+#. i18n: ectx: property (text), widget (QPushButton, render)
 msgid "Render"
 msgstr "表示"
 
@@ -11241,52 +11268,52 @@ msgstr "詳細..."
 msgid "&n:"
 msgstr "&n:"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:58
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:61
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "&m:"
 msgstr "&m:"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:93
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "&Length:"
 msgstr "長さ(&L):"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:110
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Uni&t:"
 msgstr "単位(&T)"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "periodic units"
 msgstr "周期単位"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:132
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "angstrom"
 msgstr "オングストローム"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "bohr radii"
 msgstr "ボーア半径"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "nanometers"
 msgstr "ナノメートル"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "picometers"
 msgstr "ピコメートル"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:164
 #. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
 msgid "&Cap with hydrogen"
 msgstr "水素終端(&C)"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:170
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_dbonds)
 msgid ""
 "This may take a while. If only the atomic coordinates\n"
@@ -11297,17 +11324,17 @@ msgstr ""
 "原子座標のみが必要の場合（量子力学計算に必要な場合など）、\n"
 "単結合のみによる表示で十分でしょう。"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:176
 #. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
 msgid "Find &double bonds"
 msgstr "二重結合を検出(&D)"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:222
 #. i18n: ectx: property (text), widget (QPushButton, push_hide)
 msgid "&Hide"
 msgstr "隠す(&H)"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:237
 #. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
 msgid "&Hide when finished"
 msgstr "終了したら隠す(&H)"
@@ -11341,6 +11368,41 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
 msgid "Symmetrize"
 msgstr "対称化"
+
+#. i18n: file: src/extensions/vrmldialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, VRMLDialog)
+msgid "VRML Export"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:32
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Scale (mm/Å):"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:61
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Smallest sphere (mm): "
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:75
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "File Format:"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:83
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "VRML (color)"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:94
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Thinnest cylinder (mm): "
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:108
+#. i18n: ectx: property (text), widget (QPushButton, pushButton)
+msgid "Calculate Size..."
+msgstr ""
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)

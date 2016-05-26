@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-09-09 11:30-0400\n"
-"PO-Revision-Date: 2016-01-15 05:46+0000\n"
+"POT-Creation-Date: 2016-05-25 18:46-0400\n"
+"PO-Revision-Date: 2016-04-25 13:55+0000\n"
 "Last-Translator: Tiago S. <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-16 05:09+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-05-26 05:19+0000\n"
+"X-Generator: Launchpad (build 18053)\n"
 "Language: pt\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -45,7 +45,7 @@ msgstr "Cor Personalizada"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr "Atribuir côr personalizada aos objectos."
+msgstr "Definir cor personalizada para objectos"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -69,7 +69,7 @@ msgstr "Cor por resíduo"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr "Cor por resíudo (tipo de aminoácido, hidrofobicidade, ..."
+msgstr "Cor por resíudo (tipo de aminoácido, hidrofobicidade, ...)"
 
 #: src/colors/smartscolor.cpp:77
 msgid "SMARTS Pattern:"
@@ -286,7 +286,7 @@ msgstr "Índio"
 
 #: src/elementtranslator.cpp:187
 msgid "Tin"
-msgstr "Estanho"
+msgstr "Zinco"
 
 #: src/elementtranslator.cpp:190
 msgid "Antimony"
@@ -554,7 +554,7 @@ msgstr "Livermório"
 
 #: src/elementtranslator.cpp:388
 msgid "Ununseptium"
-msgstr "Ununseptio"
+msgstr "Ununséptio"
 
 #: src/elementtranslator.cpp:391
 msgid "Ununoctium"
@@ -578,7 +578,7 @@ msgstr "Mostra os eixos x, y e z na origem"
 
 #: src/engines/bsdyengine.h:41
 msgid "Ball and Stick"
-msgstr "Bola e vareta"
+msgstr "Bolas e Paus"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
@@ -904,7 +904,7 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "Editor Cartesiano"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:206
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:209
 #. i18n: ectx: property (text), widget (QPushButton, push_build)
 #: src/extensions/cartesianextension.cpp:580
 #: src/extensions/crystallography/crystallographyextension.cpp:175
@@ -1481,7 +1481,7 @@ msgstr "Trajectória..."
 #: src/extensions/gl2psextension.cpp:47
 #: src/extensions/insertfragmentextension.cpp:95
 #: src/extensions/networkfetchextension.cpp:83
-#: src/extensions/povrayextension.cpp:64
+#: src/extensions/povrayextension.cpp:64 src/extensions/vrmlextension.cpp:62
 msgid "&File"
 msgstr "&Ficheiro"
 
@@ -1614,6 +1614,7 @@ msgid "&Vector Graphics..."
 msgstr "Gráficos &Vectoriais..."
 
 #: src/extensions/gl2psextension.cpp:47 src/extensions/povrayextension.cpp:64
+#: src/extensions/vrmlextension.cpp:62
 msgid "Export"
 msgstr "Exportar"
 
@@ -2012,7 +2013,7 @@ msgstr "Apresenta uma caixa de diálogo \"H...\""
 
 #: src/extensions/orca/orcainputdialog.cpp:542
 msgid "ORCA Input Deck"
-msgstr ""
+msgstr "Entrada Deck ORCA"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -2091,7 +2092,7 @@ msgstr ""
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
 msgid "Save Input Deck"
-msgstr ""
+msgstr "Guardar Entrada Deck"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:200
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
@@ -2135,11 +2136,11 @@ msgstr "Ficheiros de imagem (*.png *.pbm)"
 msgid "POV-Ray..."
 msgstr "POV-Ray..."
 
-#: src/extensions/povrayextension.cpp:130
+#: src/extensions/povrayextension.cpp:130 src/extensions/vrmlextension.cpp:113
 msgid "No filename supplied."
 msgstr "Não foi fornecido o nome do ficheiro."
 
-#: src/extensions/povrayextension.cpp:131
+#: src/extensions/povrayextension.cpp:131 src/extensions/vrmlextension.cpp:114
 msgid "No valid filename was supplied."
 msgstr "O nome do ficheiro fornecido não é válido."
 
@@ -2155,12 +2156,12 @@ msgid ""
 msgstr ""
 
 #: src/extensions/povrayextension.cpp:159
-#: src/extensions/povrayextension.cpp:182
+#: src/extensions/povrayextension.cpp:182 src/extensions/vrmlextension.cpp:127
 msgid "Cannot Write to File."
 msgstr "Não é possível guardar o ficheiro."
 
 #: src/extensions/povrayextension.cpp:160
-#: src/extensions/povrayextension.cpp:183
+#: src/extensions/povrayextension.cpp:183 src/extensions/vrmlextension.cpp:128
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
@@ -2373,7 +2374,7 @@ msgstr "Não"
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
-#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
+#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:56
 msgid "Python Terminal"
 msgstr "Terminal Python"
 
@@ -2381,7 +2382,7 @@ msgstr "Terminal Python"
 msgid "pythonTerminalDock"
 msgstr ""
 
-#: src/extensions/pythonterminal.h:53
+#: src/extensions/pythonterminal.h:57
 msgid "Interactive python scripting terminal"
 msgstr "Consola Interativo do Python"
 
@@ -2411,13 +2412,15 @@ msgstr "Extensão QTAIM"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:328
 msgid "Abinit Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Entrada Deck Abinit"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:329
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Abinit input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck abinit?"
 
 #: src/extensions/quantuminput/abinitinputdialog.cpp:437
 #: src/extensions/quantuminput/abinitinputdialog.cpp:450
@@ -2618,41 +2621,45 @@ msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
-"Tem a certeza que pretende anular todas as definições básicas?\n"
+"Tem a certeza que quer anular todas as definições básicas?\n"
 "Todas as mudanças serão perdidas!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1637
 msgid "GAMESS Input Deck"
-msgstr ""
+msgstr "Entrada Deck GAMESS"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:134
 msgid "GAMESS-UK Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Entrada Deck GAMESS-UK"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:135
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "GAMESS-UK input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck GAMESS-UK?"
 
 #: src/extensions/quantuminput/gamessukinputdialog.cpp:179
 msgid "GAMESS-UK Input Deck"
-msgstr ""
+msgstr "Entrada Deck GAMESS-UK"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
-msgstr "Alerta do Gerador de Holerite Gaussiano"
+msgstr "Alerta do Gerador de Entrada Deck Gaussiana"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:203
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck Gaussiana?"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
 msgid "Gaussian Input Deck"
-msgstr ""
+msgstr "Entrada Deck Gaussiana"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -2754,13 +2761,15 @@ msgstr "Criar ficheiros de dados para aplicações de química quântica"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:175
 msgid "Lammps Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Entrada Deck Lammps"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:176
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Lammps input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck Lammps?"
 
 #: src/extensions/quantuminput/lammpsinputdialog.cpp:233
 msgid "Lammps Input"
@@ -2768,34 +2777,36 @@ msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
 msgid "Molpro Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Entrada Deck Lammps Molpro"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck Molpro?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
 msgid "Molpro Input Deck"
-msgstr ""
+msgstr "Entrada Deck Molpro"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
-msgstr "Alerta Holerite MOPAC"
+msgstr "Alerta da Entrada MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:138
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
-"Quer atualizar o texto, perdendo todas as alterações feitas no holerite "
-"MOPAC de segurança?"
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck MOPAC?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Input Deck"
-msgstr "Gerador de Holerite MOPAC"
+msgstr "Entrada Deck MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -2840,65 +2851,67 @@ msgstr ""
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:126
 msgid "NWChem Input Deck Generator Warning"
-msgstr "Alerta do Gerador de Holerite NWChem"
+msgstr "Alerta do Gerador de Entrada Deck Lammps NWChem"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:127
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
-"Quer atualizar o texto, perdendo todas as alterações feitas no holerite "
-"NWChem de segurança?"
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck NWChem?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
 msgid "NWChem Input Deck"
-msgstr "Gerador de Holerite NWChem"
+msgstr "Entrada Deck NWChem"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:116
 msgid "Psi4 Input Deck Generator Warning"
-msgstr "Alerta do Gerador de Holerite PSI4"
+msgstr "Alerta do Gerador de Entrada Deck Psi4"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:117
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Psi4 input deck preview pane?"
 msgstr ""
-"Quer atualizar o texto, perdendo todas as alterações feitas no holerite PSI4 "
-"de segurança?"
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck Psi4?"
 
 #: src/extensions/quantuminput/psi4inputdialog.cpp:173
 msgid "Psi4 Input Deck"
-msgstr "Gerador de Holerite PSI4"
+msgstr "Entrada Deck Psi4"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr "Alerta do Gerador de Holerite Q-Chem"
+msgstr "Alerta do Gerador de Entrada Deck Q-Chem"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:120
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
 msgstr ""
-"Quer atualizar o texto, perdendo todas as alterações feitas no holerite Q-"
-"Chem de segurança?"
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck Q-Chem?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
 msgid "QChem Input Deck"
-msgstr "Gerador de Holerite Q-Chem"
+msgstr "Entrada Deck QChem"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:132
 msgid "TeraChem Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Entrada Deck TeraChem"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "TeraChem input deck preview pane?"
 msgstr ""
+"Quer atualizar o texto, perdendo todas as alterações feitas no painel de "
+"previsão da entrada deck TeraChem?"
 
 #: src/extensions/quantuminput/teracheminputdialog.cpp:175
 msgid "TeraChem Input Deck"
-msgstr ""
+msgstr "Entrada Deck TeraChem"
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -3179,7 +3192,7 @@ msgstr "Confirme remoção do esquema"
 
 #: src/extensions/spectra/spectradialog.cpp:370
 msgid "Really remove current scheme?"
-msgstr "Pretende mesmo remover o esquema actual?"
+msgstr "Quer mesmo remover o esquema actual?"
 
 #: src/extensions/spectra/spectradialog.cpp:380
 msgid "Change Scheme Name"
@@ -3657,6 +3670,32 @@ msgid ""
 "value,\n"
 "for example 1 if you intend to use POV-Ray to produce a square image, like "
 "1000x1000 pixels."
+msgstr ""
+"A cena atual do Avogadro tem %1x%2 pixeis de largura e o seu rácio é %3.\n"
+"Pode manter este valor, por exemplo se quiser utilizar POV-Ray\n"
+"para produzir uma imagem de %4x1000 pixeis ou se introduzir outro valor\n"
+"positivo, como por exemplo 1 se quiser utilizar POV-Ray para produzir "
+"imagens\n"
+"quadradas tais como 1000x1000 pixeis."
+
+#: src/extensions/vrmldialog.cpp:73
+msgid "Save VRML rendered files"
+msgstr ""
+
+#: src/extensions/vrmldialog.cpp:74
+msgid "VRML files (*wrl)"
+msgstr ""
+
+#: src/extensions/vrmlextension.cpp:47
+msgid "VRML..."
+msgstr ""
+
+#: src/extensions/vrmlextension.h:40
+msgid "VRML"
+msgstr ""
+
+#: src/extensions/vrmlextension.h:41
+msgid "Create wrl files"
 msgstr ""
 
 #: src/extensions/wiitrackextension.cpp:58
@@ -4267,7 +4306,7 @@ msgstr "Definições de medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5049
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :5079
 msgid "Add Atom"
 msgstr "Adicionar um Átomo"
 
@@ -5729,6 +5768,8 @@ msgstr "Importar Ficheiro..."
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/extensions/povraydialog.ui:127
 #. i18n: ectx: property (text), widget (QLabel, label_4)
+#. i18n: file: src/extensions/vrmldialog.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Filename:"
 msgstr "Nome do ficheiro:"
 
@@ -6454,7 +6495,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:193
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "DFT"
-msgstr ""
+msgstr "DFT"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, basicMethodCombo)
@@ -6543,7 +6584,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:388
 #. i18n: ectx: property (text), widget (QTreeWidget, navigationTree)
 msgid "Advanced"
-msgstr ""
+msgstr "Avançadas"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:368
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6557,14 +6598,14 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:398
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Control"
-msgstr ""
+msgstr "Controlo"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:377
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:402
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "SCF"
-msgstr ""
+msgstr "SCF"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:382
 #. i18n: ectx: property (text), item, widget (QTreeWidget, advancedTree)
@@ -6578,7 +6619,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:428
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Data"
-msgstr ""
+msgstr "Dados"
 
 #. i18n: file: src/extensions/orca/orcainputdialog.ui:454
 #. i18n: ectx: property (text), widget (QCheckBox, basisECPCheck)
@@ -6876,6 +6917,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/povraydialog.ui:30
 #. i18n: ectx: property (text), widget (QPushButton, selectFileName)
+#. i18n: file: src/extensions/vrmldialog.ui:68
+#. i18n: ectx: property (text), widget (QPushButton, selectFileName)
 msgid "Select..."
 msgstr ""
 
@@ -6888,6 +6931,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, render)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:93
 #. i18n: ectx: property (text), widget (QPushButton, push_render)
+#. i18n: file: src/extensions/vrmldialog.ui:101
+#. i18n: ectx: property (text), widget (QPushButton, render)
 msgid "Render"
 msgstr ""
 
@@ -7298,7 +7343,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Basis Set:"
-msgstr ""
+msgstr "Conjunto Base:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
@@ -7449,7 +7494,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:598
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-2G"
-msgstr ""
+msgstr "STO-2G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:425
 #. i18n: ectx: property (text), item, widget (QComboBox, stoCombo)
@@ -7479,7 +7524,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:618
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-6G"
-msgstr ""
+msgstr "STO-6G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:448
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
@@ -7507,21 +7552,21 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:633
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "4-31G"
-msgstr ""
+msgstr "4-31G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:458
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:643
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-31G"
-msgstr ""
+msgstr "6-31G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:463
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:648
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-311G"
-msgstr ""
+msgstr "6-311G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:477
 #. i18n: ectx: property (text), widget (QCheckBox, basispolCheck)
@@ -8380,7 +8425,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:231
 #. i18n: ectx: property (text), item, widget (QComboBox, basicInCombo)
 msgid "Water"
-msgstr ""
+msgstr "Água"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:254
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8389,17 +8434,17 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:367
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
-msgstr ""
+msgstr "Calcular"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:264
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "With:"
-msgstr ""
+msgstr "Com:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:274
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "In:"
-msgstr ""
+msgstr "Em:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:300
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -8450,59 +8495,59 @@ msgstr "Dianião"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:354
 #. i18n: ectx: attribute (title), widget (QWidget, advancedWidget)
 msgid "&Advanced Setup"
-msgstr ""
+msgstr "Configurações &Avançadas"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:393
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Basis"
-msgstr ""
+msgstr "Base"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:417
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:859
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Hessian"
-msgstr ""
+msgstr "Hessian"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:422
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Stat Point"
-msgstr ""
+msgstr "Ponto Inicial"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:433
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:438
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "MO Guess"
-msgstr ""
+msgstr "Estimar OM"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:443
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Misc"
-msgstr ""
+msgstr "Diversos"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:464
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 msgid "#D Heavy Atom Polarization Functions:"
-msgstr ""
+msgstr "#D Funções de Polarisação de Átomos Pesados:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:482
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Read"
-msgstr ""
+msgstr "Ler"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:487
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "SBKJC"
-msgstr ""
+msgstr "SBKJC"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:492
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Hay-Wadt"
-msgstr ""
+msgstr "Hay-Wadt"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:517
 #. i18n: ectx: property (text), widget (QCheckBox, basisSCheck)
@@ -8517,37 +8562,37 @@ msgstr "Difusão Orbital-L em Átomos Pesados"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:593
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "MIDI"
-msgstr ""
+msgstr "MIDI"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:608
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-4G"
-msgstr ""
+msgstr "STO-4G"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:613
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-5G"
-msgstr ""
+msgstr "STO-5G"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:628
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-21G"
-msgstr ""
+msgstr "6-21G"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:638
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "5-31G"
-msgstr ""
+msgstr "5-31G"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:653
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Double Zeta Valence"
-msgstr ""
+msgstr "Valência Zeta Dupla"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:658
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Dunning/Hay DZ"
-msgstr ""
+msgstr "Dunning/Hay DZ"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:663
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
@@ -8557,51 +8602,51 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:668
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Triple Zeta Valence"
-msgstr ""
+msgstr "Valência Zeta Tripla"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:673
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "McLean/Chandler"
-msgstr ""
+msgstr "McLean/Chandler"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:678
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "SBKJA Valence"
-msgstr ""
+msgstr "Valência SBKJA"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:683
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Hay/Wadt Valence"
-msgstr ""
+msgstr "Valência Hay/Wadt"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:688
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:211
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO"
-msgstr ""
+msgstr "MNDO"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:735
 #. i18n: ectx: property (text), widget (QLabel, label_22)
 msgid "ECP Type:"
-msgstr ""
+msgstr "Tipo ECP:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:749
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1875
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:754
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople"
-msgstr ""
+msgstr "Pople"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:759
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople N311"
-msgstr ""
+msgstr "Pople N311"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:764
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
@@ -8611,22 +8656,22 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:769
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Huzinaga"
-msgstr ""
+msgstr "Huzinaga"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:774
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Hondo7"
-msgstr ""
+msgstr "Hondo7"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:782
 #. i18n: ectx: property (text), widget (QLabel, label_20)
 msgid "#F Heavy Atom Polarization Functions:"
-msgstr ""
+msgstr "#F Funções de Polarização de Átomos Pesados:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:792
 #. i18n: ectx: property (text), widget (QLabel, label_21)
 msgid "#light Atom Polarization Functions:"
-msgstr ""
+msgstr "#leve Funções de Polarização de Átomos:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:809
 #. i18n: ectx: property (text), widget (QLabel, label_23)
@@ -8643,7 +8688,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/teracheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Gradient"
-msgstr ""
+msgstr "Gradiente"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:864
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8663,7 +8708,7 @@ msgstr "Ponto de Inflexão"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:879
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:884
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8678,7 +8723,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:894
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Energy Surface"
-msgstr ""
+msgstr "Energia de Superfície"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:904
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8723,7 +8768,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:944
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Raman Intensities"
-msgstr ""
+msgstr "Intensidades Raman"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:949
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -8733,7 +8778,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:954
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Make EFP"
-msgstr ""
+msgstr "Construir EFP"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:985
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
@@ -8743,27 +8788,27 @@ msgstr "UHF"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:990
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "ROHF"
-msgstr ""
+msgstr "ROHF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:995
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "GVB"
-msgstr ""
+msgstr "GVB"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1000
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "MCSCF"
-msgstr ""
+msgstr "MCSCF"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1005
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "None (CI)"
-msgstr ""
+msgstr "Nenhum (CI)"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1036
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Foster-Boys"
-msgstr ""
+msgstr "Adotados"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1041
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
@@ -8773,12 +8818,12 @@ msgstr "Edmistron-Ruedenberg"
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1046
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Pipek-Mezey"
-msgstr ""
+msgstr "Pipek-Mezey"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1069
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "SCF Type:"
-msgstr ""
+msgstr "Tipo SCF:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1076
 #. i18n: ectx: property (text), widget (QLabel, label_28)
@@ -11134,52 +11179,52 @@ msgstr ""
 msgid "&n:"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:58
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:61
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "&m:"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:90
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:93
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "&Length:"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:107
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:110
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Uni&t:"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:124
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "periodic units"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:129
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:132
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "angstrom"
 msgstr "angstrom"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:134
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "bohr radii"
 msgstr "raio de bohr"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:139
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "nanometers"
 msgstr "nanómetros"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:144
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_lengthUnit)
 msgid "picometers"
 msgstr "picómetros"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:161
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:164
 #. i18n: ectx: property (text), widget (QCheckBox, cb_cap)
 msgid "&Cap with hydrogen"
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:170
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_dbonds)
 msgid ""
 "This may take a while. If only the atomic coordinates\n"
@@ -11187,17 +11232,17 @@ msgid ""
 "a single-bond-only representation should suffice."
 msgstr ""
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:173
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:176
 #. i18n: ectx: property (text), widget (QCheckBox, cb_dbonds)
 msgid "Find &double bonds"
 msgstr "Procurar ligações &duplas"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:219
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:222
 #. i18n: ectx: property (text), widget (QPushButton, push_hide)
 msgid "&Hide"
 msgstr "&Ocultar"
 
-#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:234
+#. i18n: file: src/extensions/swcntbuilder/swcntbuilderwidget.ui:237
 #. i18n: ectx: property (text), widget (QCheckBox, push_autohide)
 msgid "&Hide when finished"
 msgstr "&Esconder quando finalizado"
@@ -11231,6 +11276,41 @@ msgstr "Solto"
 #. i18n: ectx: property (text), widget (QPushButton, symmetrizeButton)
 msgid "Symmetrize"
 msgstr "Tornar Simétrico"
+
+#. i18n: file: src/extensions/vrmldialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, VRMLDialog)
+msgid "VRML Export"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:32
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Scale (mm/Å):"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:61
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Smallest sphere (mm): "
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:75
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "File Format:"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:83
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "VRML (color)"
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:94
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "Thinnest cylinder (mm): "
+msgstr ""
+
+#. i18n: file: src/extensions/vrmldialog.ui:108
+#. i18n: ectx: property (text), widget (QPushButton, pushButton)
+msgid "Calculate Size..."
+msgstr ""
 
 #. i18n: file: src/tools/manipulatesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -11330,7 +11410,7 @@ msgstr ""
 "Tavares,Geoff Hutchison,Ivo Xavier,Nuno Sousa Cerqueira,Tharmas,Tiago "
 "Silva,danielagos, ,Launchpad Contributions:,Almufadado,Arrepiadd,Avogadro "
 "Team,David Rodrigues,Frederico Tavares,Geoff Hutchison,Ivo Xavier,Manuel "
-"Silva,Nuno Sousa Cerqueira,Tharmas,Tiago S.,Tiago Silva,danielagos"
+"Silva,Nuno Sousa Cerqueira,Tharmas,Tiago S.,Tiago S.,Tiago Silva,danielagos"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -11347,8 +11427,8 @@ msgstr ""
 "com,,,,,,,avogadro-"
 "devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
 "com,,,,danielagostinho@sapo.pt,,,,,avogadro-"
-"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
-"com,manuel.n.silva@gmail.com,,,,,danielagostinho@sapo.pt"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivoxavier.8@gmail.com"
+",manuel.n.silva@gmail.com,,,,,,danielagostinho@sapo.pt"
 
 #~ msgid "Angles (°)"
 #~ msgstr "Ângulos (°)"
