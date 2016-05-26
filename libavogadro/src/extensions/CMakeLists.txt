@@ -123,10 +123,12 @@ avogadro_plugin(gl2psextension
 
 # Symmetry (libmsym) has compile issues on Windows
 # due to VLA not supported by C compiler
-include(CMakeDependentOption)
-cmake_dependent_option(BUILD_SYMMETRY
-  "Build symmetry extension and libmsym - not supported with Visual Studio" ON
-  "MSVC" OFF)
+if (MSVC)
+  OPTION(BUILD_SYMMETRY "Build symmetry extension and libmsym - not supported with Visual Studio" OFF)
+else()
+  OPTION(BUILD_SYMMETRY
+  "Build symmetry extension and libmsym" ON)
+endif()
 
 if(BUILD_SYMMETRY)
   add_subdirectory(symmetry)
