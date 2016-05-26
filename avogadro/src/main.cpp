@@ -119,8 +119,14 @@ int main(int argc, char *argv[])
                           + "/../share/openbabel/").toAscii());
   QByteArray babelLibDir((QCoreApplication::applicationDirPath()
                          + "/../lib/openbabel").toAscii());
+
+#ifdef _MSC_VER
+  int res1 = _putenv_s("BABEL_DATADIR", babelDataDir.data());
+  int res2 = _putenv_s("BABEL_LIBDIR", babelLibDir.data());
+#else
   int res1 = setenv("BABEL_DATADIR", babelDataDir.data(), 1);
   int res2 = setenv("BABEL_LIBDIR", babelLibDir.data(), 1);
+#endif
 
   qDebug() << "BABEL_LIBDIR" << babelLibDir.data();
 
