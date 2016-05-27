@@ -114,8 +114,21 @@ namespace Avogadro {
       if (!uc) // Should not happen
         return;
 
-      uc->SetData(a * uc->GetA(), b * uc->GetB(), c * uc->GetC(),
-                  uc->GetAlpha(), uc->GetBeta(), uc->GetGamma());
+      std::vector<vector3> cellVectors = uc->GetCellVectors();
+
+      vector3 A = vector3(cellVectors[0].x() * a,
+                          cellVectors[0].y() * a,
+                          cellVectors[0].z() * a);
+
+      vector3 B = vector3(cellVectors[1].x() * b,
+                          cellVectors[1].y() * b,
+                          cellVectors[1].z() * b);
+
+      vector3 C = vector3(cellVectors[2].x() * c,
+                          cellVectors[2].y() * c,
+                          cellVectors[2].z() * c);
+
+      uc->SetData(A, B, C);
       m_molecule->setOBUnitCell(uc);
       m_molecule->update();
 
