@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include <Eigen/Core>
 
-#include "ui_VRMLdialog.h"
+#include "ui_vrmldialog.h"
 
 class QSettings;
 
