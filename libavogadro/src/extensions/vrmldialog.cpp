@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 02110-1301, USA.
 **********************************************************************/
 
-#include "VRMLdialog.h"
+#include "vrmldialog.h"
 
 #include <QFileDialog>
 #include <QString>

@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 #include "vrmlextension.h"
 
-#include "VRMLpainter.h"
+#include "vrmlpainter.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/toolgroup.h>
