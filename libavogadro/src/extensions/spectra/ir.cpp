@@ -171,5 +171,9 @@ namespace Avogadro {
   QString IRSpectra::getTSV() {
     return SpectraType::getTSV("Frequencies", "Intensities");
   }
-  
+
+  QString IRSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream (plotObject, "Frequencies", "Intensities");
+  }
 }

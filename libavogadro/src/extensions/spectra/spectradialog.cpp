@@ -79,6 +79,7 @@ namespace Avogadro {
     ui.tab_widget->hide();
     ui.dataTable->hide();
     ui.push_exportData->hide();
+    ui.push_exportDressedData->hide();
 
     // setting the limits for the plot
     ui.plot->setAntialiasing(true);
@@ -130,6 +131,8 @@ namespace Avogadro {
             this, SLOT(exportSpectra()));
     connect(ui.push_exportData, SIGNAL(clicked()),
             this, SLOT(exportSpectra()));
+    connect(ui.push_exportDressedData, SIGNAL(clicked()),
+            this, SLOT(exportDressedSpectra()));
     connect(ui.plot, SIGNAL(mouseOverPoint(double,double)),
             this, SLOT(showCoordinates(double,double)));
 
@@ -498,6 +501,27 @@ namespace Avogadro {
     file.close();
   }
 
+  void SpectraDialog::exportDressedSpectra()
+  {
+    // Prepare filename
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty()) {
+      defaultPath = QDir::homePath();
+    }
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString filename = QFileDialog::getSaveFileName(this, tr("Export Dressed Calculated Spectrum"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
+
+    // Open file
+    QFile file (filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+      qWarning() << "Cannot open file " << filename << " for writing!";
+      return;
+    }
+    QTextStream out(&file);
+    if (currentSpectra()) out << currentSpectra()->getDataStream(m_calculatedSpectra);
+    file.close();
+  }
   void SpectraDialog::importSpectra()
   {
     // Setup filename
@@ -979,32 +1003,35 @@ namespace Avogadro {
     updatePlot();
   }
 
-  void SpectraDialog::toggleAdvanced() {
-    if (ui.tab_widget->isHidden()) {
-      ui.push_advanced->setText(tr("&Advanced <<"));
-      ui.tab_widget->show();
-      ui.dataTable->show();
-      ui.push_exportData->show();
-      QSize s = size();
-      s.setWidth(s.width() + ui.dataTable->size().width());
-      s.setHeight(s.height() + ui.tab_widget->size().height());
-      QRect rect = QApplication::desktop()->screenGeometry();
-      if (s.width() > rect.width() || s.height() > rect.height())
-        s = rect.size()*0.9;
-      resize(s);
-      move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
-    }
-    else {
-      ui.push_advanced->setText(tr("&Advanced >>"));
-      QSize s = size();
-      s.setWidth(s.width() - ui.dataTable->size().width());
-      s.setHeight(s.height() - ui.tab_widget->size().height());
-      resize(s);
-      ui.tab_widget->hide();
-      ui.dataTable->hide();
-      ui.push_exportData->hide();
-      QRect rect = QApplication::desktop()->screenGeometry();
-      move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
+  void SpectraDialog::toggleAdvanced()
+  {
+      if (ui.tab_widget->isHidden()) {
+          ui.push_advanced->setText(tr("&Advanced <<"));
+          ui.tab_widget->show();
+          ui.dataTable->show();
+          ui.push_exportData->show();
+          ui.push_exportDressedData->show();
+          QSize s = size();
+          s.setWidth(s.width() + ui.dataTable->size().width());
+          s.setHeight(s.height() + ui.tab_widget->size().height());
+          QRect rect = QApplication::desktop()->screenGeometry();
+          if (s.width() > rect.width() || s.height() > rect.height())
+              s = rect.size()*0.9;
+          resize(s);
+          move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
+      }
+      else {
+        ui.push_advanced->setText(tr("&Advanced >>"));
+        QSize s = size();
+        s.setWidth(s.width() - ui.dataTable->size().width());
+        s.setHeight(s.height() - ui.tab_widget->size().height());
+        resize(s);
+        ui.tab_widget->hide();
+        ui.dataTable->hide();
+        ui.push_exportData->hide();
+        ui.push_exportDressedData->hide();
+        QRect rect = QApplication::desktop()->screenGeometry();
+        move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
   }
 

@@ -85,7 +85,17 @@ namespace Avogadro {
     }
     return str;
   }
-
+  QString SpectraType::getDataStream( PlotObject *plotObject, QString xTitle, QString yTitle)
+  {
+    QString str;
+    QTextStream out (&str);
+    QString format = "%1\t%2\n";
+    out << xTitle << "\t" << yTitle << "\n";
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      out << format.arg(plotObject->points().at(i)->x(), 6, 'g').arg(plotObject->points().at(i)->y(), 6, 'g');
+    }
+    return str;
+  }
   void SpectraType::updateDataTable()
   {
     if ((!m_dialog) || (m_xList.size()==0))

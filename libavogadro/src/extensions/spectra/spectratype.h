@@ -52,6 +52,7 @@ namespace Avogadro {
     virtual bool checkForData(Molecule* mol) = 0;
     virtual void setupPlot(PlotWidget * plot) = 0;
     virtual QString getTSV() = 0;
+    virtual QString getDataStream(PlotObject *plotObject) = 0;
 
     // These function have default implementations, but may be overridden    
     virtual void getCalculatedPlotObject(PlotObject *plotObject);
@@ -63,6 +64,7 @@ namespace Avogadro {
     QList<double> getXPoints(double FWHM, uint dotsPerPeak);
     QWidget * getTabWidget() {return m_tab_widget;}
     QString getTSV(QString xTitle, QString yTitle);
+    QString getDataStream(PlotObject *plotObject, QString xTitle, QString yTitle);
     void clear();
     void gaussianWiden(PlotObject *plotObject, const double fwhm);
     static void assignGaussianLabels(PlotObject *plotObject, bool findMax, double yThreshold=0);

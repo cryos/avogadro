@@ -261,6 +261,11 @@ namespace Avogadro {
     return SpectraType::getTSV("Energy(eV)", "Density(e/UC)");
   }
 
+  QString DOSSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream( plotObject, "Energy(eV)", "Density(e/UC)");
+  }
+
   void DOSSpectra::toggleIntegratedDOS(bool b)
   {
     if (!b) {
