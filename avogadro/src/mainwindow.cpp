@@ -1851,29 +1851,39 @@ protected:
   // Unfortunately Qt signals/slots doesn't let us pass an arbitrary URL to a slot
   // or we'd have one openURL("string")
   // Instead, we've got a bunch of one-line actions...
+  void MainWindow::openManualURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://manual.avogadro.cc/"));
+  }
+
+  void MainWindow::openForumURL() const
+  {
+    QDesktopServices::openUrl(QUrl("http://discuss.avogadro.cc/"));
+  }
+
   void MainWindow::openTutorialURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Tutorials"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/tutorials"));
   }
 
   void MainWindow::openFAQURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/Avogadro:FAQ"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/FAQ"));
   }
 
   void MainWindow::openWebsiteURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://avogadro.cc/wiki/"));
+    QDesktopServices::openUrl(QUrl("http://avogadro.cc/"));
   }
 
   void MainWindow::openReleaseNotesURL() const
   {
-    QDesktopServices::openUrl(QUrl( "http://avogadro.cc/wiki/Avogadro_" + QString(VERSION) ));
+    QDesktopServices::openUrl(QUrl( "http://avogadro.cc/Avogadro_" + QString(VERSION) ));
   }
 
   void MainWindow::openBugURL() const
   {
-    QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));
+    QDesktopServices::openUrl(QUrl("http://github.com/cryos/avogadro/issues"));
   }
 
   void MainWindow::setView(int index)
@@ -3060,10 +3070,14 @@ protected:
     connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 
+    connect( ui.actionAvogadro_Help, SIGNAL( triggered() ),
+             this, SLOT( openManualURL() ));
     connect( ui.actionTutorials, SIGNAL( triggered() ),
              this, SLOT( openTutorialURL() ));
     connect( ui.actionFAQ, SIGNAL( triggered() ),
              this, SLOT( openFAQURL() ) );
+    connect( ui.actionAvogadro_Forum, SIGNAL( triggered() ),
+             this, SLOT( openForumURL() ));
     connect( ui.actionRelease_Notes, SIGNAL( triggered() ),
              this, SLOT( openReleaseNotesURL() ));
     connect( ui.actionAvogadro_Website, SIGNAL( triggered() ),

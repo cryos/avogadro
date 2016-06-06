@@ -2,20 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:47+0000\n"
-"Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2015-11-27 18:16+0000\n"
+"Last-Translator: Jean-Marc <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:11+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: \n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "OK"
+msgstr "Valider"
 
 #: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
@@ -26,8 +26,8 @@ msgstr "(Révision Git : %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Version de l'application : %2<br/><br/>Version de la "
 "librairie : %3<br/><br/>Version d'Open Babel : %4"
@@ -36,24 +36,23 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Version de Qt: %1<br/><br/>Pour plus d'informations, visitez le <a "
-"href=\"http://avogadro.openmolecules.net/\"> site d'Avogadro</a>.<br/><br/"
-">Le programme est fourni EN L'ETAT, sans AUCUNE SORTE DE GARANTIE, NI "
-"EXPLICITE, \n"
-"NI IMPLICITE, Y COMPRIS LES GARANTIES DE CONCEPTION, DE COMMERCIALISATION OU "
+"<br/><br/>Version de QT : %1<br/><br/>Pour plus d'information, visitez le <a "
+"href=\"http://avogadro.cc/\">site d'Avogadro</a>.<br/><br/>Le programme est "
+"fourni EN L'ÉTAT, sans AUCUNE SORTE DE GARANTIE, NI EXPLICITE,  NI "
+"IMPLICITE, Y COMPRIS LES GARANTIES DE CONCEPTION, DE COMMERCIALISATION OU "
 "D'ADAPTATION DANS UN BUT PARTICULIER.<br/>"
 
 #: src/editcommands.cpp:44
@@ -81,13 +80,13 @@ msgstr "Effacer les atomes"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Paramètres"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:970
 msgid "Open File"
-msgstr "Ouvrir fichier"
+msgstr "Ouvrir un fichier"
 
 #: src/mainwindow.cpp:408
 msgid "Messages"
@@ -157,7 +156,7 @@ msgstr "Sortie de logiciel de calcul de chimie"
 
 #: src/mainwindow.cpp:958
 msgid "Crystallographic Interchange CIF"
-msgstr "Echange cristallographique CIF"
+msgstr "Échange cristallographique CIF"
 
 #: src/mainwindow.cpp:959
 msgid "GAMESS-US Output"
@@ -248,11 +247,11 @@ msgstr "Titre de la molécule"
 
 #: src/mainwindow.cpp:1312
 msgid "Atoms: "
-msgstr "Atomes: "
+msgstr "Atomes : "
 
 #: src/mainwindow.cpp:1313
 msgid " Bonds: "
-msgstr " Liaisons: "
+msgstr " Liaisons : "
 
 #: src/mainwindow.cpp:1329
 msgid "File Loaded..."
@@ -260,11 +259,11 @@ msgstr "Fichier chargé..."
 
 #: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
-msgstr "Voulez-vous sauvegarder les modifications apportées au document ?"
+msgstr "Voulez-vous enregistrer les modifications apportées au document ?"
 
 #: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
-msgstr "Vos modifications seront perdues si vous ne les sauvegardez pas."
+msgstr "Vos modifications seront perdues si vous ne les enregistrez pas."
 
 #: src/mainwindow.cpp:1355
 msgctxt "Save"
@@ -338,87 +337,86 @@ msgstr "Impossible d'enregistrer le fichier %1."
 msgid "Untitled %1"
 msgstr "Sans titre %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "Impossible de coller la molécule."
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr "Le collage a échoué (format non disponible)."
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "La copie a échoué (mdl non disponible)."
+msgstr "Échec de la copie (format non disponible)"
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr "La copie a échoué (mdl non disponible)."
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "Vue %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Vue %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
-msgstr "Avogadro : Nouvelle vue"
+msgstr "Avogadro : nouvelle vue"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "Taille normale"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "Plein écran"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "Ajouter"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "Dupliquer"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "Enlever"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "Aucun outil ou moteur n'est chargé."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "Aucun moteur n'est chargé."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "Aucun outil n'est chargé."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -426,35 +424,35 @@ msgstr ""
 " Il est peu probable que cette application fonctionne correctement. Veuillez "
 "corriger cette erreur."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "Objets"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "Couleurs"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " copier"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr "Nom: "
+msgstr "Nom : "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr "Identifiant : "
+msgstr "Identifiant : "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr "Fichier : "
+msgstr "Fichier : "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr "Description :\n"
+msgstr "Description :\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:467
@@ -486,13 +484,13 @@ msgstr "Résidus"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr "liaison%1"
+msgstr "liaison %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:495
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr "Etiquettes"
+msgstr "Étiquette"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:505 src/projecttreemodel.cpp:214
@@ -509,9 +507,9 @@ msgstr "seuls les étiquettes peuvent avoir un sous-élément"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
-msgstr "Element"
+msgstr "Élément"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
@@ -524,7 +522,7 @@ msgstr "Basse"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Moyenne"
@@ -532,7 +530,7 @@ msgstr "Moyenne"
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "Elevée"
+msgstr "Élevée"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
@@ -541,7 +539,7 @@ msgstr "Indéterminée"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Aucune"
@@ -587,17 +585,17 @@ msgstr "Ajouter type d'affichage"
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr "Type:"
+msgstr "Type :"
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr "Nom:"
+msgstr "Nom :"
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr "Description:"
+msgstr "Description :"
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
@@ -607,7 +605,7 @@ msgstr "Formulaire"
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr "Colorer selon"
+msgstr "Colorer selon :"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
@@ -658,7 +656,7 @@ msgstr "Sélectionner..."
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr "Format:"
+msgstr "Format :"
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
@@ -678,7 +676,7 @@ msgstr "Interpréter les ordres de liaison"
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr "Les coordonnées sont en Ångstroms"
+msgstr "Les coordonnées sont en ångströms"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
@@ -727,20 +725,18 @@ msgstr "&Vue"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "Arborescence du projet"
+msgstr "Projection"
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Edition"
+msgstr "&Éditer"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Copier"
+msgstr "Copier comme"
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -876,7 +872,7 @@ msgstr "&Plein écran"
 #. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr "Echappement"
+msgstr "Échap"
 
 #. i18n: file: src/mainwindow.ui:379
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -886,7 +882,7 @@ msgstr "&Couleur d'arrière-plan..."
 #. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr "&A propos"
+msgstr "&À propos"
 
 #. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -901,7 +897,7 @@ msgstr "Ctrl+Z"
 #. i18n: file: src/mainwindow.ui:408
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr "&Refaire"
+msgstr "&Rétablir"
 
 #. i18n: file: src/mainwindow.ui:411
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -966,7 +962,7 @@ msgstr "Effacer"
 #. i18n: file: src/mainwindow.ui:484
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr "Sélectionner Tout"
+msgstr "Tout sélectionner"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -1001,7 +997,7 @@ msgstr "Dupliquer la vue"
 #. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Afficher axes"
+msgstr "Afficher les axes"
 
 #. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1021,7 +1017,7 @@ msgstr "Notes sur cette version"
 #. i18n: file: src/mainwindow.ui:558
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr "Rapporter un bogue"
+msgstr "Signaler un bogue"
 
 #. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1031,7 +1027,7 @@ msgstr "Questions fréquentes"
 #. i18n: file: src/mainwindow.ui:568
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr "Site Web d'Avogadro"
+msgstr "Site web d'Avogadro"
 
 #. i18n: file: src/mainwindow.ui:577
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1041,7 +1037,7 @@ msgstr "Gestionnaire de greffons..."
 #. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr "Editeur d'arborescence de projet..."
+msgstr "Éditeur d'arborescence de projet..."
 
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1080,29 +1076,28 @@ msgstr "Réinitialiser les types d'affichage"
 
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Perspective"
-msgstr "Positif"
+msgstr "Perspective"
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
-msgstr ""
+msgstr "Orthographique"
 
 #. i18n: file: src/mainwindow.ui:661
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "SMILES"
-msgstr ""
+msgstr "SMILES"
 
 #. i18n: file: src/mainwindow.ui:666
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "InChI"
-msgstr ""
+msgstr "InChi"
 
 #. i18n: file: src/mainwindow.ui:669
 #. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
 msgid "IUPAC InChI identifier"
-msgstr ""
+msgstr "Identifiant InChi IUPAC"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1126,7 +1121,7 @@ msgstr "Détails"
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr "Eléments de l'arborescence"
+msgstr "Éléments de l'arborescence"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -1227,7 +1222,7 @@ msgstr "Général"
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr "Qualité:"
+msgstr "Qualité :"
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
@@ -1244,73 +1239,51 @@ msgstr "Brume :"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,"
-"Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,"
-"Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
-"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis Ricard,"
-"Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,"
-"Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet, ,"
-"Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
-"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad Contributions:,"
-"Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu "
-"Pasquet,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
-"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,"
-"Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
-"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad Contributions:,"
-"Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu "
-"Pasquet,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
-"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,"
-"Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
-"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni"
+",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, "
+",Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, "
+",Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
+"Contributions:,Benoit Jacob,Geoff Hutchison,Louis Ricard,Nizar "
+"Kerkeni,Pierre Slamich, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Jean-Marc,Louis Ricard,Nizar Kerkeni,Pierre Slamich"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,"
-"psycojoker@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail."
-"com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
-"ricard@polytechnique.edu,,,nizar.kerkeni@gmail.com,,,jacob.benoit.1@gmail."
-"com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizar."
-"kerkeni@gmail.com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
-"ricard@polytechnique.edu,,,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,"
-"louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail."
-"com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus."
-"org,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
-"ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,"
-"psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,"
-"jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique."
-"edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,"
-"louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail."
-"com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus."
-"org"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-#~ msgstr ""
-#~ "Avogadro: \t%1 (Hachage %2)\n"
-#~ "LibAvogadro: \t%3 (Hachage %4)\n"
-#~ "Qt: \t\t%5\n"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Usage: %1 [options] [files]\n"
-#~ "\n"
-#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
-#~ "\n"
-#~ "Options:\n"
-#~ "  -h, --help\t\tShow help options (this)\n"
-#~ "  -v, --version\t\tShow version information\n"
-#~ msgstr ""
-#~ "Utilisation : %1 [options] [fichiers]\n"
-#~ "\n"
-#~ "Avogadro - Editeur évolué de molécules (version %2)\n"
-#~ "\n"
-#~ "Options : \n"
-#~ "  -h, --help\t\t Afficher l'aide (this))\n"
-#~ "  -v, --version\t\t Informations sur la version\n"
+"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,psycojoker"
+"@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail.com,,,jacob.be"
+"noit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizar"
+".kerkeni@gmail.com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis.ric"
+"ard@polytechnique.edu,,,nizar.kerkeni@gmail.com,,,jacob.benoit.1@gmail.com,,p"
+"sycojoker@gmail.com,louis.ricard@polytechnique.edu,,,,,jacob.benoit.1@gmail.c"
+"om,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus.org"
+",,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique."
+"edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,lo"
+"uis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com"
+",,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,"
+",jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique.ed"
+"u,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,loui"
+"s.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,jacob.benoit.1@gmail.com,,"
+"psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizarus@nizarus.org,,,j"
+"acob.benoit.1@gmail.com,,louis.ricard@polytechnique.edu,nizarus@nizarus.tn,pi"
+"erre.slamich@gmail.com,,,jacob.benoit.1@gmail.com,,,louis.ricard@polytechniqu"
+"e.edu,nizarus@nizarus.tn,pierre.slamich@gmail.com"
 
 #~ msgid "Load File..."
 #~ msgstr "Ouvrir fichier..."
@@ -1351,6 +1324,7 @@ msgstr ""
 #~ msgid "Open trajectory file"
 #~ msgstr "Ouvrir fichier de trajectoire"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1360,9 +1334,11 @@ msgstr ""
 #~ msgid "&Extensions"
 #~ msgstr "&Extensions"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Impossible de lire le format du fichier %1."
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "La lecture du fichier de trajectoire %1 a échoué."
 
@@ -1426,6 +1402,7 @@ msgstr ""
 #~ msgid "AutoOpt: Could not setup force field...."
 #~ msgstr "Auto-optimisation: impossible de configurer le champ de force...."
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1481,12 +1458,12 @@ msgstr ""
 #~ "Bouton droit: déplacement de la vue\n"
 #~ "\n"
 #~ "Clic sur la molécule:\n"
-#~ "Glisser-déposer avec le bouton gauche sur une liaison pour choisir le "
-#~ "plan de manipulation, puis:\n"
-#~ "- Glisser-déposer avec le bouton gauche sur un des atomes de la liaison "
-#~ "pour changer l'angle\n"
-#~ "- Glisser-déposer avec le bouton droit sur un des atomes de la liaison "
-#~ "pour changer la longueur"
+#~ "Glisser-déposer avec le bouton gauche sur une liaison pour choisir le plan "
+#~ "de manipulation, puis:\n"
+#~ "- Glisser-déposer avec le bouton gauche sur un des atomes de la liaison pour "
+#~ "changer l'angle\n"
+#~ "- Glisser-déposer avec le bouton droit sur un des atomes de la liaison pour "
+#~ "changer la longueur"
 
 #~ msgid " Show Angles"
 #~ msgstr " Montrer les angles"
@@ -1500,6 +1477,7 @@ msgstr ""
 #~ msgid "Bond Centric Manipulate"
 #~ msgstr "Manipulation des liaisons"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Angle: %1 %2"
 
@@ -1524,12 +1502,15 @@ msgstr ""
 #~ msgid "Measure"
 #~ msgstr "Mesure"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distance (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distance (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distance (3->4): %1 %2"
 
@@ -1538,9 +1519,11 @@ msgstr ""
 #~ msgid "*4"
 #~ msgstr "*4"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Nombre d'atomes: %1"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Nombre de liaisons pouvant subir une rotation: %1"
 
@@ -1985,6 +1968,7 @@ msgstr ""
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "Echec de la configuration du champ de force pour cette molécule."
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energie = %1 %2"
 
@@ -2072,6 +2056,7 @@ msgstr ""
 #~ msgid "Remove Hydrogens"
 #~ msgstr "Retirer Hydrogènes"
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Impossible de lire le fichier %1."
 
@@ -2090,6 +2075,7 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Fichiers avogadro (*.*)"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -2100,6 +2086,7 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Enregistrement du fichier."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Impossible d'écrire le fichier %1."
 
@@ -2110,6 +2097,7 @@ msgstr ""
 #~ "Ce document a été modifié.\n"
 #~ "Voulez-vous enregistrer vos changements?"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -2121,6 +2109,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -2151,13 +2140,14 @@ msgstr ""
 #~ msgstr ""
 #~ "Outil de manipulation (F10)\n"
 #~ "\n"
-#~ "Bouton gauche: Cliquer et glisser-déposer pour déplacer des atomes dans "
-#~ "le plan de l'écran\n"
+#~ "Bouton gauche: Cliquer et glisser-déposer pour déplacer des atomes dans le "
+#~ "plan de l'écran\n"
 #~ "Bouton central: Cliquer et glisser-déposer pour déplacer des atomes vers "
 #~ "vous ou loin de vous\n"
-#~ "Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur "
-#~ "les atomes sélectionnés."
+#~ "Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur les "
+#~ "atomes sélectionnés."
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atome %1"
 
@@ -2231,21 +2221,25 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Tournable"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Liaison %1"
 
 #~ msgid "Vertex"
 #~ msgstr "Sommet"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Angle %1"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsion %1"
 
 #~ msgid "Energy"
 #~ msgstr "Energie"
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Conformère %1"
 
@@ -2315,11 +2309,10 @@ msgstr ""
 #~ "Drag to select a range of atoms\n"
 #~ "Use Ctrl to toggle the selection and shift to add to the selection"
 #~ msgstr ""
-#~ "Cliquer pour sélectionner individuellement des atomes, résidus, "
-#~ "fragments\n"
+#~ "Cliquer pour sélectionner individuellement des atomes, résidus, fragments\n"
 #~ "Glisser pour sélectionner un groupe d'atomes\n"
-#~ "Maintenir Ctrl enfoncé pour inverser la sélection et Shift pour ajouter à "
-#~ "la sélection"
+#~ "Maintenir Ctrl enfoncé pour inverser la sélection et Shift pour ajouter à la "
+#~ "sélection"
 
 #~ msgid "Renders atoms as Van der Waals spheres"
 #~ msgstr "Rendu des atomes avec leurs rayons de van der Waals"
@@ -3389,6 +3382,9 @@ msgstr ""
 #~ msgid "Color:"
 #~ msgstr "Couleur:"
 
+#~ msgid "Positive"
+#~ msgstr "Positif"
+
 #~ msgid "Negative"
 #~ msgstr "Négatif"
 
@@ -3410,8 +3406,8 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
-#~ "Tous les atomes dont la distance à ce ligand est inférieure au rayon "
-#~ "feront partie de la poche de liaison"
+#~ "Tous les atomes dont la distance à ce ligand est inférieure au rayon feront "
+#~ "partie de la poche de liaison"
 
 #~ msgid "GAMESS"
 #~ msgstr "GAMESS"
@@ -3479,21 +3475,22 @@ msgstr ""
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Choisir le rapport largeur/hauteur"
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
 #~ "La vue courante d'Avogadro mesure %1x%2 pixels, et a donc un rapport "
 #~ "largeur/hauteur égal à %3.\n"
-#~ "Vous pouvez conserver cette valeur, par exemple si vous voulez utiliser "
-#~ "POV-Ray\n"
-#~ "pour produire une image de %4x1000 pixels, ou bien vous pouvez entrer "
-#~ "toute autre valeur positive,\n"
+#~ "Vous pouvez conserver cette valeur, par exemple si vous voulez utiliser POV-"
+#~ "Ray\n"
+#~ "pour produire une image de %4x1000 pixels, ou bien vous pouvez entrer toute "
+#~ "autre valeur positive,\n"
 #~ "par exemple 1 si vous voulez utiliser POV-Ray pour produire une image "
 #~ "carrée, par exemple de 1000x1000 pixels."
 
@@ -3583,8 +3580,8 @@ msgstr ""
 #~ "Cliquer pour mesurer (F12)\n"
 #~ "\n"
 #~ "Bouton gauche: Choisir jusqu'à trois atomes.\n"
-#~ "Les distances sont mesurées entre le 1er et le 2ème et entre le 2ème et "
-#~ "le 3ème\n"
+#~ "Les distances sont mesurées entre le 1er et le 2ème et entre le 2ème et le "
+#~ "3ème\n"
 #~ "L'angle est mesuré entre le 1er et le 3ème autour du 2ème\n"
 #~ "Bouton droit: réinitialise les mesures."
 
@@ -3594,6 +3591,7 @@ msgstr ""
 #~ msgid "Spin Orbit"
 #~ msgstr "Spin-orbite"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Angle dièdre: %1 %2"
 
@@ -3734,13 +3732,13 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Contexte OpenGL invalide.\n"
 #~ "Soit quelque chose ne vas pas du tout dans votre configuration OpenGL "
-#~ "(pouvez-vous exécuter n'importe quelle application OpenGL?), soit vous "
-#~ "avez trouvé un bogue."
+#~ "(pouvez-vous exécuter n'importe quelle application OpenGL?), soit vous avez "
+#~ "trouvé un bogue."
 
 #~ msgid "VdW Opacity:"
 #~ msgstr "Transparence VdW:"
@@ -3787,6 +3785,7 @@ msgstr ""
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Potentiel électrostatique (PES)"
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Impossible d'écrire dans le format de fichier %1."
 
@@ -3829,8 +3828,8 @@ msgstr ""
 #~ "répertoire."
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nom de fichier vidéo invalide. Il doit inclure le nom complet de son "
 #~ "répertoire et son nom, terminé par .avi"
@@ -3838,12 +3837,12 @@ msgstr ""
 #~ msgid "could not set format to XYZ"
 #~ msgstr "impossible d'utiliser le format XYZ"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 #~ msgstr ""
-#~ "Le fichier de trajectoire %1 ne contient pas le même nombre d'atomes que "
-#~ "la molécule actuelle"
+#~ "Le fichier de trajectoire %1 ne contient pas le même nombre d'atomes que la "
+#~ "molécule actuelle"
 
 #~ msgid "Trajectory..."
 #~ msgstr "Trajectoire..."
@@ -3860,6 +3859,7 @@ msgstr ""
 #~ msgid "Any files (*.*)"
 #~ msgstr "Tous les fichiers (*.*)"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Erreur de lecture du fichier %1"
 
@@ -3887,6 +3887,7 @@ msgstr ""
 #~ msgid "Open chemical file format"
 #~ msgstr "Ouvrir un fichier au format de chimie"
 
+#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Problème de lecture du fichier de trajectoire %1"
 
@@ -3896,6 +3897,7 @@ msgstr ""
 #~ msgid "movie files (*.avi)"
 #~ msgstr "fichiers de film (*.avi)"
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Le fichier %1 a été écrit."
 
@@ -3949,8 +3951,8 @@ msgstr ""
 
 #~ msgid "GL widget was not correctly initialized in order to make a video"
 #~ msgstr ""
-#~ "Le widget GL n'est pas correctement initialisé pour permettre la "
-#~ "réalisation d'une vidéo"
+#~ "Le widget GL n'est pas correctement initialisé pour permettre la réalisation "
+#~ "d'une vidéo"
 
 #~ msgid "GL widget has no molecule"
 #~ msgstr "Le widget GL ne contient pas de molécule"
@@ -4147,8 +4149,8 @@ msgstr ""
 #~ "Load a second confromation and computer a linear interpolation with the "
 #~ "current conformation."
 #~ msgstr ""
-#~ "Charger un second conformère et procéder à une interpolation linéaire "
-#~ "avec l'actuelle."
+#~ "Charger un second conformère et procéder à une interpolation linéaire avec "
+#~ "l'actuelle."
 
 #~ msgid "Iso Value:"
 #~ msgstr "Valeur iso :"
@@ -4229,9 +4231,9 @@ msgstr ""
 #~ msgstr "Enregistrer le fichier de trajectoire"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 #~ msgstr ""
 #~ "Vous n'avez pas demandé de rendu direct avec POV-Ray, ni enregistré le "
 #~ "fichier POV-Ray. Etes-vous certain de vouloir poursuivre ?"
@@ -4297,6 +4299,7 @@ msgstr ""
 #~ msgid "Enable the tabbed tool layout."
 #~ msgstr "Activer l'outil d'affichage d'onglets"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Enregistrerait le fichier sous %1."
 
@@ -4306,820 +4309,6 @@ msgstr ""
 #~ msgid "Lin Morph..."
 #~ msgstr "Interpolation linéaire..."
 
-#~ msgid "Untitled"
-#~ msgstr "Sans titre"
-
-#~ msgid "Renders the x, y, and z axes at the origin"
-#~ msgstr "Afficher les axes x, y et z à l'origine"
-
-#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-#~ msgstr ""
-#~ "Afficher les primitives avec des boules (atomes) et des bâtonnets "
-#~ "(liaisons)."
-
-#~ msgid "Renders color scale for gradients"
-#~ msgstr "Afficher la palette de couleur des gradients"
-
-#~ msgid "Renders protein secundary structure"
-#~ msgstr "Afficher la structure secondaire de la protéine"
-
-#~ msgid "Renders molecular dipole moments"
-#~ msgstr "Afficher les moments dipolaires"
-
-#~ msgid "Renders force displacements on atoms"
-#~ msgstr "Afficher les forces de déplacement sur les atomes"
-
-#~ msgid "Renders molecular orbitals"
-#~ msgstr "Afficher les orbitales moléculaires"
-
-#~ msgid "Renders rings with colored planes"
-#~ msgstr "Représenter les cycles par des plans colorés"
-
-#~ msgid "Renders molecules as sticks"
-#~ msgstr "Représenter les molécules par des bâtonnets"
-
-#~ msgid "Save Video File"
-#~ msgstr "Enregistrer le fichier vidéo"
-
-#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-#~ msgstr ""
-#~ "Représenter les liaisons en fild de fer (lignes), idéal pour de très "
-#~ "grosses (bio)molécules"
-
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "Afficher les surfaces moléculaires calculées"
-
-#~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics "
-#~ "force fields"
-#~ msgstr ""
-#~ "Optimiser la géométrie moléculaire et générer les conformères à l'aide "
-#~ "des champs de force de la mécanique moléculaire"
-
-#~ msgid "Import trajectory files"
-#~ msgstr "Importer les fichiers de trajectoire"
-
-#~ msgid "Linear Morph"
-#~ msgstr "Interpolation linéaire"
-
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "Générer une interpolation linéaire pour les animations."
-
-#~ msgid "Transform hydrogens to methyl groups"
-#~ msgstr "Transformer les hydrogènes en méthyles"
-
-#~ msgid "Add or remove hydrogens"
-#~ msgstr "Ajouter ou enlever les hydrogènes"
-
-#~ msgid "Gaussian Input Deck Generator Warning"
-#~ msgstr "Avertissement du générateur de fichier d'entrée de Gaussian"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Gaussian input deck preview pane?"
-#~ msgstr ""
-#~ "Souhaitez-vous mettre à jour le texte pré-visualisé, en perdant les "
-#~ "modifications apportées dans le panneau de pré-visualisation du "
-#~ "générateur de fichier d'entrée de Gaussian ?"
-
-#~ msgid "Create input files for quantum chemistry packages like Gaussian"
-#~ msgstr "Créer les fichiers d'entrée pour Gaussian"
-
-#~ msgid "MOPAC Input..."
-#~ msgstr "Fichier d'entrée MOPAC..."
-
-#~ msgid "Create input files for the GAMESS quantum chemistry package"
-#~ msgstr "Créer les fichiers d'entrée pour GAMESS"
-
-#~ msgid "Input Generator..."
-#~ msgstr "Editeur de fichier d'entrée..."
-
-#~ msgid "MOPAC Crashed."
-#~ msgstr "Plantage de MOPAC."
-
-#~ msgid "Running MOPAC calculation..."
-#~ msgstr "Calcul MOPAC en cours..."
-
-#~ msgid "The MOPAC executable, cannot be found."
-#~ msgstr "Impossible de trouver l'exécutable de MOPAC."
-
-#~ msgid "MOPAC Not Installed."
-#~ msgstr "MOPAC n'est pas installé."
-
-#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
-#~ msgstr "MOPAC n'a pas démarré. Il est peut-être mal installé."
-
-#~ msgid "MOPAC Running."
-#~ msgstr "Calcul MOPAC en cours."
-
-#~ msgid ""
-#~ "MOPAC is already running. Wait until the previous calculation is finished."
-#~ msgstr ""
-#~ "Il y a déjà un calcul MOPAC en cours. Attendez que le calcul précédent "
-#~ "soit terminé."
-
-#~ msgid "MOPAC Input Warning"
-#~ msgstr "Avertissement données MOPAC"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "MOPAC input deck preview pane?"
-#~ msgstr ""
-#~ "Souhaitez-vous mettre à jour le texte pré-visualisé, en perdant tous les "
-#~ "changements apportés dans le panneau de pré-visualisation de MOPAC ?"
-
-#~ msgid "MOPAC failed to start."
-#~ msgstr "MOPAC ne démarre pas."
-
-#~ msgid "ESP"
-#~ msgstr "PES"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "Fichier de données MOPAC (*.mop)"
-
-#~ msgid "Save MOPAC Input Deck"
-#~ msgstr "Enregistrer le fichier de données de MOPAC"
-
-#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-#~ msgstr ""
-#~ "MOPAC n'a pas fonctionné correctement. Il  n'est peut-être pas "
-#~ "correctement installé."
-
-#~ msgid "Calculate molecular orbitals and other surfaces"
-#~ msgstr "Calculer les orbitales moléculaires et d'autres surfces"
-
-#~ msgid ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray "
-#~ "program."
-#~ msgstr ""
-#~ "Générer les fichiers POV-Ray et les afficher en utilisant la ligne de "
-#~ "commande du programme POV-Ray."
-
-#~ msgid "Interactive python scripting terminal"
-#~ msgstr "Terminal de script python interactif"
-
-#~ msgid "Q-Chem Input Deck Generator Warning"
-#~ msgstr "Avertissement du générateur de fichier de données de Q-Chem"
-
-#~ msgid "Warning"
-#~ msgstr "Attention"
-
-#~ msgid "Start Animation"
-#~ msgstr "Démarrer l'Animation"
-
-#~ msgid "Stop Animation"
-#~ msgstr "Stopper l'Animation"
-
-#~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a "
-#~ "unit cell."
-#~ msgstr ""
-#~ "Ce document contient une molécule isolée. Vous devez créer une maille "
-#~ "conventionnelle."
-
-#~ msgid "Select atoms, bonds, residues..."
-#~ msgstr "Sélection d'atome, liaisons, résidus..."
-
-#~ msgid "Super Cell Builder..."
-#~ msgstr "Générateur de maille étendue"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Q-Chem input deck preview pane?"
-#~ msgstr ""
-#~ "Souhaitez-vous mettre à jour le texte pré-visualisé, en perdant les "
-#~ "modifications apportées dans le panneau de pré-visualisation du "
-#~ "générateur de fichier d'entrée de Q-Chem ?"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Données d'entrée QChem (*.qcin)"
-
-#~ msgid "Unit Cell"
-#~ msgstr "Maille conventionnelle"
-
-#~ msgid "Could not run mencoder."
-#~ msgstr "Impossible de lancer memcoder"
-
-#~ msgid "Could not run povray."
-#~ msgstr "Impossible de lancer povray"
-
-#~ msgid "Example extension"
-#~ msgstr "Exemple d'extension"
-
-#~ msgid "Build and display crystallographic super cells"
-#~ msgstr "Construire et afficher des mailles cristallographiques étendues"
-
-#~ msgid "Super Cell"
-#~ msgstr "Maille étendue"
-
-#~ msgid "Build and display crystallographic unit cells"
-#~ msgstr ""
-#~ "Construire et afficher des mailles cristallographiques conventionnelles"
-
-#~ msgid "No vibrational displacements exist."
-#~ msgstr "Aucun déplacement de fréquence n'existe."
-
-#~ msgid "The computed vibrations do not match this molecule."
-#~ msgstr "Les fréquences calculées ne correspondent pas à cette molécule."
-
-#~ msgid "Vibrations..."
-#~ msgstr "Fréquences..."
-
-#~ msgid "Unknown Python Extension"
-#~ msgstr "Extension Python inconnue"
-
-#~ msgid "Unknown Python Engine"
-#~ msgstr "Moteur Python inconnu"
-
-#~ msgid "Visualize vibrational modes from quantum chemistry calculations"
-#~ msgstr "Visualiser les fréquences pour les calculs de chimie quantique"
-
-#~ msgid "No vibrations have been computed for this molecule."
-#~ msgstr "Aucune fréquence n'a été calculée pour cette molécule."
-
-#~ msgid "Vibration"
-#~ msgstr "Fréquence"
-
-#~ msgid "PythonEngine: checking "
-#~ msgstr "Moteur Python : vérification "
-
-#~ msgid "  - no module"
-#~ msgstr "  - pas de module"
-
-#~ msgid "Manipulation of bond lengths, angles, and torsions"
-#~ msgstr ""
-#~ "Manipulation des distances de liaison, des angles et des angles de torsion"
-
-#~ msgid "Automatic rotation of molecules"
-#~ msgstr "Rotation automatique de molécules"
-
-#~ msgid "Automatic optimization of molecular geometry"
-#~ msgstr "Optimisation automatique de la géométrie moléculaire"
-
-#~ msgid "Align molecules to a Cartesian axis"
-#~ msgstr "Aligner les molécules selon un axe cartésien"
-
-#~ msgid "Measure bond lengths, angles, and dihedrals"
-#~ msgstr "Mesurer des distances de liaison, des angles et des angles dièdres"
-
-#~ msgid "  - script has no 'Tool' class defined"
-#~ msgstr "  -aucune classe 'Outil' n'est définie pour le script"
-
-#~ msgid "PythonTool: checking "
-#~ msgstr "Outil Python : vérification "
-
-#~ msgid "PythonExtension: checking "
-#~ msgstr "Extension Python : vérification "
-
-#~ msgid "Unknown Python Tool"
-#~ msgstr "Outil Python inconnu"
-
-#~ msgid "  - script has no 'Extension' class defined"
-#~ msgstr "  - aucune classe 'Extension'  n'est définie pour le script"
-
-#~ msgid "Select atoms, residues, and molecules"
-#~ msgstr "Sélectionner des atomes, des résidus et des molécules"
-
-#~ msgid "Translate, rotate, and zoom around the current view"
-#~ msgstr "Déplacer, tourner et zoomer la vue actuelle"
-
-#~ msgid "Translate, rotate, and adjust atoms and fragments"
-#~ msgstr "Déplacer, tourner et ajuster des atomes et des fragments"
-
-#~ msgid "Draw and edit atoms and bonds"
-#~ msgstr "Dessiner et éditer des atomes et des liaisons"
-
-#~ msgid "Amino Colors"
-#~ msgstr "Couleurs des acides aminés"
-
-#~ msgid "Residue Color Settings"
-#~ msgstr "Choix de la couleur des résidus"
-
-#~ msgid "Color residues by:"
-#~ msgstr "Colorer les résidus selon :"
-
-#~ msgid "Quintet"
-#~ msgstr "Quintuplet"
-
-#~ msgid "Quartet"
-#~ msgstr "Quartet"
-
-#~ msgid "PM6"
-#~ msgstr "PM6"
-
-#~ msgid "MNDO-d"
-#~ msgstr "MNDO-d"
-
-#~ msgid "RM1"
-#~ msgstr "PM1"
-
-#~ msgid "Generate..."
-#~ msgstr "Générer..."
-
-#~ msgid "MOPAC Input"
-#~ msgstr "Données MOPAC"
-
-#~ msgid "Hydrophobicity"
-#~ msgstr "Hydrophobie"
-
-#~ msgid "Frequency (cm-1)"
-#~ msgstr "Fréquence (cm-1)"
-
-#~ msgid "Generate Cell"
-#~ msgstr "Générer la maille"
-
-#~ msgid "Molecular Vibrations"
-#~ msgstr "Fréquences"
-
-#~ msgid "Intensity (a.u.)"
-#~ msgstr "Intensité (u.a)"
-
-#~ msgid "Scale:"
-#~ msgstr "Echelle :"
-
-#~ msgid "Compute..."
-#~ msgstr "Calculer..."
-
-#~ msgid "HF"
-#~ msgstr "HF"
-
-#~ msgid "ESP (approximate)"
-#~ msgstr "PES (approximatif)"
-
-#~ msgid "Super Cell Options"
-#~ msgstr "Options de maille étendue"
-
-#~ msgid "Super Cell Parameters"
-#~ msgstr "Paramètres de maille étendue"
-
-#~ msgid "Display Force Vectors"
-#~ msgstr "Afficher les vecteurs de force"
-
-#~ msgid "Cartoon"
-#~ msgstr "Cartoon"
-
-#~ msgid "Atom Index %1"
-#~ msgstr "Atome numéro %1"
-
-#~ msgid "Animate trajectories, reactions, and vibratins."
-#~ msgstr "Animer les trajectoires, les réactions et les fréquences."
-
-#~ msgid "Shapely Colors"
-#~ msgstr "Couleurs \"shapely\""
-
-#~ msgid "Custom Data"
-#~ msgstr "Données personnalisées"
-
-#~ msgid "N/A"
-#~ msgstr "N/D"
-
-#~ msgid "  - script has no 'Engine' class defined"
-#~ msgstr "  - aucune classe 'Moteur' n'est définie pour le script"
-
-#~ msgid "Track motion using Wii remotes"
-#~ msgstr "Suivre les mouvements à l'aide de la télécommande Wii"
-
-#~ msgid "Wii Tracking"
-#~ msgstr "Suivi Wii"
-
-#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
-#~ msgstr ""
-#~ "Rendu des liaisons en fils (lignes), idéal pour de grosses molécules"
-
-#~ msgid "Simple Wireframe"
-#~ msgstr "Fil de fer"
-
-#~ msgid "MOLPRO Input..."
-#~ msgstr "Entrée MOLPRO..."
-
-#~ msgid "&NWChem Input..."
-#~ msgstr "&Entrée NWChem..."
-
-#~ msgid "Save Molpro Input Deck"
-#~ msgstr "Enregistrer le fichier d'entrée Molpro"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Données Molpro (*.qcin)"
-
-#~ msgid "Specified PDB could not be loaded: "
-#~ msgstr "Le PDB spécifié n'a pas pu être ouvert: "
-
-#~ msgid "PDB Loading Failed"
-#~ msgstr "L'ouverture du PDB a échoué"
-
-#~ msgid "Fetch molecule files over the network."
-#~ msgstr "Rechercher les fichiers de molécule sur le réseau"
-
-#~ msgid "NWChem Input Deck Generator Warning"
-#~ msgstr "Avertissement du générateur de fichier d'entrée de NWChem"
-
-#~ msgid "Network Fetch"
-#~ msgstr "Recherche réseau"
-
-#~ msgid "PDB Download Failed"
-#~ msgstr "Le téléchargement du PDB a échoué"
-
-#~ msgid "Specified PDB could not be found: "
-#~ msgstr "Le PDB spécifié n'a pas pu être trouvé: "
-
-#~ msgid "PDB Entry"
-#~ msgstr "Entrée PDB"
-
-#~ msgid "PDB entry to download."
-#~ msgstr "Entrée PDB a téléchargé"
-
-#~ msgid "Infrared"
-#~ msgstr "Infrarouge"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "Fichier de données NWChem (*.nw)"
-
-#~ msgid "Save NWChem Input Deck"
-#~ msgstr "Enregistrer le fichier de données NWChem"
-
-#~ msgid "Y Axis"
-#~ msgstr "Axe Y"
-
-#~ msgid "X Axis"
-#~ msgstr "Axe X"
-
-#~ msgid "&Infrared Spectra Settings"
-#~ msgstr "&Paramètres du spectre infrarouge"
-
-#~ msgid "&Appearance"
-#~ msgstr "&Apparence"
-
-#~ msgid "E&xport Image"
-#~ msgstr "E&xporter l'image"
-
-#~ msgid "No data"
-#~ msgstr "Aucune donnée"
-
-#~ msgid "Dark"
-#~ msgstr "Sombre"
-
-#~ msgid "Light"
-#~ msgstr "Clair"
-
-#~ msgid "Publication"
-#~ msgstr "Publication"
-
-#~ msgid "Handdrawn"
-#~ msgstr "Dessiné à main levée"
-
-#~ msgid "Export Calculated Spectrum"
-#~ msgstr "Exporter le spectre calculé"
-
-#~ msgid "Wavenumber (cm<sup>-1</sup>)"
-#~ msgstr "Fréquence (cm<sup>-1</sup>)"
-
-#~ msgid "Windows Bitmap"
-#~ msgstr "bmp"
-
-#~ msgid "Portable Pixmap"
-#~ msgstr "ppm"
-
-#~ msgid "Unknown extension: %1"
-#~ msgstr "Extension inconnue : %1"
-
-#~ msgid "Portable Network Graphics"
-#~ msgstr "png"
-
-#~ msgid "jpeg"
-#~ msgstr "jpeg"
-
-#~ msgid "Tagged Image File Format"
-#~ msgstr "tiff"
-
-#~ msgid "Spectra Import"
-#~ msgstr "Importation de spectres"
-
-#~ msgid ""
-#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
-#~ "jdx);;All Files (* *.*)"
-#~ msgstr ""
-#~ "Valeurs séparées par des tabulations (*.tsv);;Valeurs séparées par des "
-#~ "virgules (*.csv);;JCAMP-DX (*.jdx);;Tous les fichiers (* *.*)"
-
-#~ msgid "Import Spectra"
-#~ msgstr "Importer des spectres"
-
-#~ msgid "Tab Separated Values (*.tsv)"
-#~ msgstr "Valeurs séparées par des tabulations (*.tsv)"
-
-#~ msgid "All Files"
-#~ msgstr "Tous les fichiers"
-
-#~ msgid "Save Spectra Image"
-#~ msgstr "Enregistrer le spectre"
-
-#~ msgid "Customi&ze <<"
-#~ msgstr "Personnalis&er <<"
-
-#~ msgid "X11 Bitmap"
-#~ msgstr "xbm"
-
-#~ msgid "X11 Pixmap"
-#~ msgstr "xpm"
-
-#~ msgid "Customi&ze >>"
-#~ msgstr "Personnalis&er <<"
-
-#~ msgid "A problem occurred while writing file %1"
-#~ msgstr "Un problème est survenu pendant l'enregistrement du fichier %1"
-
-#~ msgid "Invalid Filename"
-#~ msgstr "Nom de fichier invalide"
-
-#~ msgid "Image successfully written to %1"
-#~ msgstr "L'image a été enregistrée avec succès dans %1"
-
-#~ msgid "Success!"
-#~ msgstr "Succès !"
-
-#~ msgid "Symbol"
-#~ msgstr "Symbole"
-
-#~ msgid "Bond Length"
-#~ msgstr "Longueur de liaison"
-
-#~ msgid "&Vibrations..."
-#~ msgstr "&Vibrations..."
-
-#~ msgid "Periodic Table"
-#~ msgstr "Tableau périodique"
-
-#~ msgid "Stop &Animation"
-#~ msgstr "Arrêter &L'animation"
-
-#~ msgid "Export Vibrational Data"
-#~ msgstr "Exporter les données vibrationelles"
-
-#~ msgid "Spectra"
-#~ msgstr "Spectres"
-
-#~ msgid "&Spectra..."
-#~ msgstr "&Spectres..."
-
-#~ msgid "Start &Animation"
-#~ msgstr "Commencer &L'animation"
-
-#~ msgid "Visualize spectral data from quantum chemistry calculations"
-#~ msgstr "Visualiser les données spectrales de calculs de chimie quantique"
-
-#~ msgid "Bond Angle"
-#~ msgstr "Angle de liaison"
-
-#~ msgid "Dihedral Angle"
-#~ msgstr "Angle dièdre"
-
-#~ msgid "Z Matrix Editor..."
-#~ msgstr "Editeur de matrice Z..."
-
-#~ msgid "Create/edit a z-matrix"
-#~ msgstr "Crée/éditer une matrice Z"
-
-#~ msgid "Colors:"
-#~ msgstr "Couleurs"
-
-#~ msgid "Style:"
-#~ msgstr "Style"
-
-#~ msgid "Selected Colors"
-#~ msgstr "Couleurs sélectionnées"
-
-#~ msgid "Backspace, Ctrl+Backspace"
-#~ msgstr "Retour, Ctrl+Retour"
-
-#~ msgid "M06-2X"
-#~ msgstr "M06-2X"
-
-#~ msgid "EDF1"
-#~ msgstr "EDF1"
-
-#~ msgid "AUG-cc-pVDZ"
-#~ msgstr "AUG-cc-pVDZ"
-
-#~ msgid "cc-pVTZ"
-#~ msgstr "cc-pVTZ"
-
-#~ msgid "B3LYP5"
-#~ msgstr "B3LYP5"
-
-#~ msgid "AUG-cc-pVTZ"
-#~ msgstr "AUG-cc-pVTZ"
-
-#~ msgid "MOLPRO Input"
-#~ msgstr "Données MOLPRO"
-
-#~ msgid "6-31+G(d)"
-#~ msgstr "6-31+G(d)"
-
-#~ msgid "6-311G(d)"
-#~ msgstr "6-311G(d)"
-
-#~ msgid "cc-pVDZ"
-#~ msgstr "cc-pVDZ"
-
-#~ msgid "Spectra Visualization"
-#~ msgstr "Visualisation de spectres"
-
-#~ msgid "LACVP"
-#~ msgstr "LACVP"
-
-#~ msgid "Calculated Spectra:"
-#~ msgstr "Spectres calculés :"
-
-#~ msgid "Imported Spectra:"
-#~ msgstr "Spectres importés :"
-
-#~ msgid "Font:"
-#~ msgstr "Fonte :"
-
-#~ msgid "Change Font..."
-#~ msgstr "Changer de fonte..."
-
-#~ msgid "Show"
-#~ msgstr "Montrer"
-
-#~ msgid "Imports a tsv of experimental spectra to overlay on the plot."
-#~ msgstr "Importe un tsv de spectres expérimentaux à superposer au tracé."
-
-#~ msgid "&Import..."
-#~ msgstr "&Importer..."
-
-#~ msgid "Background:"
-#~ msgstr "Arrière plan :"
-
-#~ msgid "Foreground:"
-#~ msgstr "Premier plan :"
-
-#~ msgid "New..."
-#~ msgstr "Nouveau..."
-
-#~ msgid "Remove..."
-#~ msgstr "Enlever..."
-
-#~ msgid "&Width:"
-#~ msgstr "&Largeur :"
-
-#~ msgid "&DPI:"
-#~ msgstr "&DPI :"
-
-#~ msgid "&Export..."
-#~ msgstr "&Exporter..."
-
-#~ msgid "TODO"
-#~ msgstr "A FAIRE"
-
-#~ msgid "Rename..."
-#~ msgstr "Renommer..."
-
-#~ msgid "Set Color..."
-#~ msgstr "Définir la couleur..."
-
-#~ msgid "Mapped Colors"
-#~ msgstr "Mappage de couleurs"
-
-#~ msgid "New Scheme"
-#~ msgstr "Nouveau projet"
-
-#~ msgid "Enter new name for current scheme:"
-#~ msgstr "Saisissez le nouveau nom du projet :"
-
-#~ msgid "Change Scheme Name"
-#~ msgstr "Modifier le nom du projet"
-
-#~ msgid "Really remove current scheme?"
-#~ msgstr "Réellement détruire le projet actuel ?"
-
-#~ msgid "Confirm Scheme Removal"
-#~ msgstr "Confirmer le retrait du projet"
-
-#~ msgid "&Schemes:"
-#~ msgstr "&Projets :"
-
-#~ msgid "px"
-#~ msgstr "px"
-
-#~ msgid "&Save Image..."
-#~ msgstr "&Enregistrer l'image..."
-
-#~ msgid "mm"
-#~ msgstr "mm"
-
-#~ msgid "in"
-#~ msgstr "in"
-
-#~ msgid ""
-#~ "Use an optimized value for the font size instead of the scheme-specified "
-#~ "value (screen to image point sizes don't translate well!)"
-#~ msgstr ""
-#~ "Utiliser une valeur optimisée de la taille de fonte au lieu de la valeur "
-#~ "spécifiée dans le projet (les tailles de point écran-image ne se mette "
-#~ "pas bien à l'échelle)"
-
-#~ msgid "Auto-adjust F&ont Size"
-#~ msgstr "Auto-ajuster la taille de f&onte"
-
-#~ msgid "cm"
-#~ msgstr "cm"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "&Filename:"
-#~ msgstr "&Nom de fichier :"
-
-#~ msgid "&Height"
-#~ msgstr "&Hauteur"
-
-#~ msgid "Transmittance (%)"
-#~ msgstr "Transmittance (%)"
-
-#~ msgid "Absorbance (%)"
-#~ msgstr "Absorbance (%)"
-
-#~ msgid "&Y Axis Units:"
-#~ msgstr "&Unités de l'axe des Y"
-
-#~ msgid "&Gaussian Width:"
-#~ msgstr "&Elargissement gaussien"
-
-#~ msgid "Sc&ale:"
-#~ msgstr "Ec&helle"
-
-#~ msgid "&Label peaks"
-#~ msgstr "&Etiquette des pics"
-
-#~ msgid "&Scale:"
-#~ msgstr "&Echelle :"
-
-#~ msgid ""
-#~ "Controls:\n"
-#~ "Double left click: Restore default axis limits\n"
-#~ "Right click + drag: Move plot\n"
-#~ "Middle click + drag: Zoom to region\n"
-#~ "Scroll wheel: Zoom to cursor"
-#~ msgstr ""
-#~ "Contrôles :\n"
-#~ "Double click gauche : restaure les limites des axes par défaut\n"
-#~ "Click droit + drag : déplace le tracé\n"
-#~ "Click central : agrandir la région\n"
-#~ "Molette : zoom curseur"
-
-#~ msgid "E&xport..."
-#~ msgstr "E&xporter..."
-
-#~ msgid "Display Force &Vectors"
-#~ msgstr "Afficher les forces et les vecteurs"
-
-#~ msgid "Remove Atom"
-#~ msgstr "Effacer l'atome"
-
-#~ msgid "Import Selected Atoms"
-#~ msgstr "Importer les atomes sélectionnés"
-
-#~ msgid "Z Matrix Editor"
-#~ msgstr "Editeur de matrice Z"
-
-#~ msgid "Fetch from PDB..."
-#~ msgstr "Chercher dans le PDB..."
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "NWChem input deck preview pane?"
-#~ msgstr ""
-#~ "Souhaitez-vous mettre à jour le texte pré-visualisé, en perdant les "
-#~ "modifications apportées dans le panneau de pré-visualisation du "
-#~ "générateur de fichier d'entrée de NWChem ?"
-
-#~ msgid "URL of molecule to download."
-#~ msgstr "URL de la molécule à télécharger"
-
-#~ msgid "Network Download Failed"
-#~ msgstr "Le téléchargement depuis le réseau a échoué"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Fetch from URL..."
-#~ msgstr "Récupération depuis l'URL…"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Version de l'application : %2<br/><br/>Version de la "
-#~ "librairie : %3<br/><br/> Pour plus d'informations, visitez le <a href="
-#~ "\"http://avogadro.openmolecules.net/\">site d'Avogadro</a>.<br/><br/>Le "
-#~ "programme est fourni EN L'ETAT sans AUCUNE SORTE DE GARANTIE, NI "
-#~ "EXPLICITE, NI IMPLICITE, Y COMPRIS LES GARANTIES DE COMMERCIALISATION OU "
-#~ "D'ADAPTATION DANS UN BUT PARTICULIER.<br/>"
-
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
@@ -5128,13 +4317,12 @@ msgstr ""
 #~ "puissiez pas l'ouvrir ou le modifier normalement."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "Ce fichier semble contenir plusieurs enregistrements de molécules. "
-#~ "Avogadro va seulement lire la première molécule. Si vous enregistrez, "
-#~ "toutes les autres molécules risquent d'être perdues."
+#~ "Ce fichier semble contenir plusieurs enregistrements de molécules. Avogadro "
+#~ "va seulement lire la première molécule. Si vous enregistrez, toutes les "
+#~ "autres molécules risquent d'être perdues."
 
 #~ msgid "Color by Index"
 #~ msgstr "Colorier selon l'indice"
@@ -5151,58 +4339,31 @@ msgstr ""
 #~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
 #~ msgstr "Colorier selon l'indice (rouge, orange, jaune, vert, bleu, violet)."
 
-#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
-#~ msgstr ""
-#~ "Colorier selon la charge atomique partielle (bleu = positive, rouge = "
-#~ "négative)."
-
-#~ msgid "Color by Partial Charge"
-#~ msgstr "Colorier selon la charge partielle"
-
-#~ msgid "Color by distance from the first atom."
-#~ msgstr "Colorier selon la distance"
-
-#~ msgid "Color by Distance"
-#~ msgstr "Colorier selon la distance"
-
-#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-#~ msgstr "Colorier selon le résidu (type d'amino-acide, hydrophobie, ...)"
-
 #~ msgid "Mid"
 #~ msgstr "Moyenne"
 
-#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-#~ msgstr ""
-#~ "Représenter les atomes comme tétraèdres, octaèdres, et autres polygones"
-
-#~ msgid "Renders protein backbones as ribbons"
-#~ msgstr "Représenter les chaînes protéiques en rubans"
-
 #~ msgid "GL widget was not correctly initialized in order to save video"
 #~ msgstr ""
-#~ "Le widget GL n'a pas été initialisé correctement pour enregistrer une "
-#~ "vidéo"
+#~ "Le widget GL n'a pas été initialisé correctement pour enregistrer une vidéo"
 
 #~ msgid "Your molecule must contain at least one atom to add a constraint"
 #~ msgstr ""
 #~ "Votre molécule doit contenir au moins un atome pour pouvoir ajouter une "
 #~ "contrainte"
 
-#~ msgid "Renders atom and bond labels"
-#~ msgstr "Afficher les étiquettes des atomes et des liaisons"
-
 #~ msgid ""
 #~ "Your molecule must contain at least two atoms to add a bond constraint"
 #~ msgstr ""
-#~ "Votre molécule doit contenir au moins deux atomes pour pouvoir ajouter "
-#~ "une contrainte de liaison"
+#~ "Votre molécule doit contenir au moins deux atomes pour pouvoir ajouter une "
+#~ "contrainte de liaison"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Les deux molécules n'ont pas le même nombre d'atomes: %1 contre %2"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nom de fichier film invalide. Il doit inclure le chemin complet du "
 #~ "répertoire et son nom, finissant en .avi"
@@ -5215,121 +4376,38 @@ msgstr ""
 #~ msgid "Ignore Selection"
 #~ msgstr "Ignorer la sélection"
 
-#~ msgid ""
-#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
-#~ "includes a cartesian coordinate editor."
-#~ msgstr ""
-#~ "Fenêtres d'affichage des distances, angles et angles de torsion inter-"
-#~ "atomiques. Inclut aussi un éditeur de coordonnées cartésiennes."
-
 #~ msgid "Abort Calculation"
 #~ msgstr "Interrompre le calcul"
-
-#~ msgid "Specified molecule could not be found: "
-#~ msgstr "La molécule spécifiée n'a pas été trouvée: "
-
-#~ msgid "MO %1"
-#~ msgstr "OM %1"
-
-#~ msgid "efp"
-#~ msgstr "pef"
-
-#~ msgid "Angle: %1 °"
-#~ msgstr "Angle : %1°"
-
-#~ msgid "Bond Length: %1"
-#~ msgstr "Longueur de liaison : %1"
-
-#~ msgid "AutoOptimization Settings"
-#~ msgstr "Paramètres d'optimisation automatique"
-
-#~ msgid "AutoRotate Settings"
-#~ msgstr "Paramètres de rotation automatique"
-
-#~ msgid "Molecule %1"
-#~ msgstr "Molécule %1"
-
-#~ msgid "Atom %1 %2"
-#~ msgstr "Atome %1 %2"
-
-#~ msgid "Residue %1 %2"
-#~ msgstr "Résidu %1 %2"
-
-#~ msgid "Aign Settings"
-#~ msgstr "Paramètres aign"
-
-#~ msgid "Bonds: %1"
-#~ msgstr "Liaisons : %1"
-
-#~ msgid "Z-Matrix Settings"
-#~ msgstr "Propriétés de la matrice Z"
-
-#~ msgid "Selection Settings"
-#~ msgstr "Propriétés de sélection"
-
-#~ msgid "Dihedral Angle: %1 °"
-#~ msgstr "Angle dièdre : %1°"
-
-#~ msgid "Navigate Settings"
-#~ msgstr "Propriétés de navigation"
-
-#~ msgid "Manipulate Settings"
-#~ msgstr "Propriétés de manupilation"
-
-#~ msgid "Draw Settings"
-#~ msgstr "Propriétés de dessin"
-
-#~ msgid "Measure Settings"
-#~ msgstr "Propriétés des mesures"
-
-#~ msgid "Dynamic Bonds"
-#~ msgstr "Liaisons dynamiques"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Référence :"
 
 #~ msgid ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Ce fichier ne contient que des coordonnées 2D. Souhaitez-vous "
-#~ "qu'Avogadro\n"
+#~ "Ce fichier ne contient que des coordonnées 2D. Souhaitez-vous qu'Avogadro\n"
 #~ "les mette à l'échelle et effectue une optimisation rapide ?"
-
-#~ msgctxt "%1 is element, %L2 is atom index"
-#~ msgid "Atom %1 %L2"
-#~ msgstr "Atome %1 %L2"
-
-#~ msgctxt "%1 is residue name, %2 is residue index"
-#~ msgid "Residue %1 %2"
-#~ msgstr "Résidu %1 %2"
-
-#~ msgctxt "%L1 is bond index"
-#~ msgid "Bond %L1"
-#~ msgstr "Liaison %L1"
 
 #~ msgid "Backspace"
 #~ msgstr "Retour"
 
-#~ msgid "This file contains does not contain 3D coordinates."
-#~ msgstr "Ce fichier ne contient pas de coordonnées 3D."
-
+#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Version de l'application : %2<br/><br/>Version de la "
-#~ "librairie : %3<br/><br/> Version d'Open Babel : %4<br/><br/>Version de "
-#~ "Qt : %5<br/><br/>Pour plus d'informations, visitez le <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">site d'Avogadro</a>.<br/><br/>Le programme "
-#~ "est fourni EN L'ETAT sans AUCUNE SORTE DE GARANTIE, NI EXPLICITE, NI "
-#~ "IMPLICITE, Y COMPRIS LES GARANTIES DE COMMERCIALISATION OU D'ADAPTATION "
+#~ "librairie : %3<br/><br/> Version d'Open Babel : %4<br/><br/>Version de Qt : "
+#~ "%5<br/><br/>Pour plus d'informations, visitez le <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">site d'Avogadro</a>.<br/><br/>Le "
+#~ "programme est fourni EN L'ETAT sans AUCUNE SORTE DE GARANTIE, NI EXPLICITE, "
+#~ "NI IMPLICITE, Y COMPRIS LES GARANTIES DE COMMERCIALISATION OU D'ADAPTATION "
 #~ "DANS UN BUT PARTICULIER.<br/>"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -5380,5 +4458,13 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Test du support OpenGL en cours."
 
-#~ msgid "Better View"
-#~ msgstr "Vue optimale"
+#, qt-format
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hachage %2)\n"
+#~ "LibAvogadro: \t%3 (Hachage %4)\n"
+#~ "Qt: \t\t%5\n"

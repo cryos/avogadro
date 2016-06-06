@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:34+0000\n"
-"Last-Translator: David Rodrigues <david.rodrigues@gmail.com>\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2016-01-15 05:27+0000\n"
+"Last-Translator: Mykas0 <Mykas0@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:12+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: pt\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,8 +31,8 @@ msgstr "(Revisão Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da Biblioteca: "
 "%3<br/><br/>Versão do Open Babel: %4"
@@ -41,24 +41,24 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Versão do Qt: %1<br/><br/>Para mais informações visite a <a href="
-"\"http://avogadro.openmolecules.net/\">página do Avogadro</a>.<br/><br/>O "
-"programa é fornecido COMO ESTÁ SEM GARANTIAS DE QUALQUER TIPO, INCLUINDO A "
-"GARANTIA DE CONSTRUÇÃO, COMERCIALIZAÇÃO OU ADEQUAÇÃO PARA USO OU FIM "
-"ESPECÍFICO.<br/>"
+"<br/><br/>Versão Qt: %1<br/><br/>Confira outras informações na <a "
+"href=\"http://avogadro.cc/\">página do Avogadro</a>.<br/><br/>O programa é "
+"fornecido COMO ESTÁ, SEM GARANTIA DE QUALQUER TIPO, INCLUINDO A GARANTIA DE "
+"PROJETO, \r\n"
+"COMERCIALIZAÇÃO E ADEQUAÇÃO A UM DETERMINADO FIM.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,7 +85,7 @@ msgstr "Limpar Átomos"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Preferências"
 
@@ -111,19 +111,19 @@ msgstr "Ctrl+M"
 
 #: src/mainwindow.cpp:555
 msgid "&Zoom"
-msgstr "&Zoom"
+msgstr "&Ampliação"
 
 #: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
-msgstr "Trazer todos para a frente"
+msgstr "Trazer Todos Para a Frente"
 
 #: src/mainwindow.cpp:591
 msgid "Record Test..."
-msgstr ""
+msgstr "Gravar Teste..."
 
 #: src/mainwindow.cpp:594
 msgid "Play Test..."
-msgstr ""
+msgstr "Tocar Teste..."
 
 #: src/mainwindow.cpp:896
 msgid "&Tool Settings..."
@@ -136,7 +136,7 @@ msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:904
 msgid "&Display Settings..."
-msgstr "Definições do Ecrã"
+msgstr "&Definições do Ecrã..."
 
 #: src/mainwindow.cpp:907
 msgctxt "Display Settings shortcut"
@@ -339,87 +339,86 @@ msgstr "Não foi possível salvar o arquivo %1."
 msgid "Untitled %1"
 msgstr "Sem título %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "Não foi possível colar a molécula."
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr "Colar falhou (formato indisponível)."
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "Copiar falhou (mdl indisponível)."
+msgstr "A cópia falhou (formato indisponível)"
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copiar falhou (mdl indisponível)."
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Visualizar %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista Separada"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "Tamanho Normal"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "Ecrã Completo"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "Remover"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "Nenhuma ferramenta ou motor carregado."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "Nenhum motor carregado."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "Nenhuma ferramenta carregada."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -427,17 +426,17 @@ msgstr ""
 " É improvável que a aplicação funcione correctamente. Por favor, corrija "
 "este erro."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "Objetos"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "Cores"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " copiar"
 
@@ -510,7 +509,7 @@ msgstr "apenas os nomes podem ter sub-items"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "Item"
 
@@ -525,7 +524,7 @@ msgstr "Baixa"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Média"
@@ -542,7 +541,7 @@ msgstr "Indefinida"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nenhum"
@@ -728,9 +727,8 @@ msgstr "&Ver"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "Árvore de Projecto"
+msgstr "Projecção"
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
@@ -739,9 +737,8 @@ msgstr "&Editar"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Copiar"
+msgstr "Copiar Como"
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -852,7 +849,7 @@ msgstr "Ctrl+S"
 #. i18n: file: src/mainwindow.ui:345
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr "Gravar &Como"
+msgstr "Guard&ar Como..."
 
 #. i18n: file: src/mainwindow.ui:348
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -867,7 +864,7 @@ msgstr "Voltar ao Guardado"
 #. i18n: file: src/mainwindow.ui:358
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr "&Imagens..."
+msgstr "&Gráficos..."
 
 #. i18n: file: src/mainwindow.ui:367
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -912,12 +909,12 @@ msgstr "Ctrl+Shift+Z"
 #. i18n: file: src/mainwindow.ui:420
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr "Nova Janela"
+msgstr "Nova Vista"
 
 #. i18n: file: src/mainwindow.ui:432
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
-msgstr "Fechar Janela"
+msgstr "Fechar Vista"
 
 #. i18n: file: src/mainwindow.ui:441
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -987,7 +984,7 @@ msgstr "Ctrl+Shift+A"
 #. i18n: file: src/mainwindow.ui:504
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
-msgstr "Configurar o Avogadro..."
+msgstr "Configurar Avogadro..."
 
 #. i18n: file: src/mainwindow.ui:515
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -997,12 +994,12 @@ msgstr "Tutoriais"
 #. i18n: file: src/mainwindow.ui:524
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr "Duplicar Janela"
+msgstr "Duplicar Vista"
 
 #. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Mostrar os Eixos"
+msgstr "Mostrar Eixos"
 
 #. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1022,12 +1019,12 @@ msgstr "Notas de Lançamento"
 #. i18n: file: src/mainwindow.ui:558
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr "Reportar Bug"
+msgstr "Reportar um Erro"
 
 #. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Questões Frequentes"
 
 #. i18n: file: src/mainwindow.ui:568
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1052,7 +1049,7 @@ msgstr "Separar Janela"
 #. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
-msgstr "Ficheiro da Molécula..."
+msgstr "Ficheiro de Molécula..."
 
 #. i18n: file: src/mainwindow.ui:611
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1082,27 +1079,27 @@ msgstr "Repor Tipo de Visualização"
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Perspective"
-msgstr ""
+msgstr "Perspectiva"
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
-msgstr ""
+msgstr "Ortográfica"
 
 #. i18n: file: src/mainwindow.ui:661
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "SMILES"
-msgstr ""
+msgstr "SMILES"
 
 #. i18n: file: src/mainwindow.ui:666
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "InChI"
-msgstr ""
+msgstr "InChI"
 
 #. i18n: file: src/mainwindow.ui:669
 #. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
 msgid "IUPAC InChI identifier"
-msgstr ""
+msgstr "Identificador IUPAC InChI"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1173,7 +1170,7 @@ msgstr "Mover Item para a Esquerda (antes do Ítem Inicial)"
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
 msgid "L"
-msgstr "L"
+msgstr "E"
 
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
@@ -1184,7 +1181,7 @@ msgstr ""
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
 msgid "R"
-msgstr "R"
+msgstr "D"
 
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
@@ -1194,7 +1191,7 @@ msgstr "Mover item para cima"
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
 msgid "U"
-msgstr "U"
+msgstr "C"
 
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
@@ -1204,7 +1201,7 @@ msgstr "Mover item para baixo"
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
 msgid "D"
-msgstr "D"
+msgstr "B"
 
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -1244,57 +1241,42 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Arrepiadd,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Tiago Silva,nitrofurano, ,Launchpad Contributions:,Arrepiadd,"
-"Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
-"nitrofurano, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,Geoff "
-"Hutchison,Ivo Fernandes,Leandro Boscariol,Luis Pratas,Tiago,nitrofurano, ,"
-"Launchpad Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo "
-"Fernandes,Leandro Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
+"Boscariol,Tiago Silva,nitrofurano, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
-"Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad Contributions:,"
-"Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo Fernandes,"
-"Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
+"Boscariol,Tiago Silva,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
+"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
+"Boscariol,Luis Pratas,Tiago,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Geoff Hutchison,Ivo Fernandes,Leandro "
+"Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo "
-"Fernandes,Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano"
+"Fernandes,Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Geoff Hutchison,Ivo "
+"Fernandes,Leandro Boscariol,Luis Pratas,Tiago Silva,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Frederico "
+"Tavares,Geoff Hutchison,Ivo Xavier,Leandro Boscariol,Luis Pratas,Marcelo R. "
+"de Sa,Mykas0,Sérgio Marques,Tharmas,Tiago Silva,nitrofurano, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,David Rodrigues,Frederico "
+"Tavares,Geoff Hutchison,Ivo Xavier,Leandro Boscariol,Luis Pratas,Marcelo R. "
+"de Sa,Mykas0,Sérgio Marques,Tharmas,Tiago S.,Tiago Silva,nitrofurano"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,ivofernandes12@gmail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,"
-"ivofernandes12@gmail.com,,,,,,,avogadro-devel@lists.sourceforge.net,,"
-"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
-"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
-"ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists.sourceforge.net,david."
-"rodrigues@gmail.com,,ivofernandes12@gmail.com,,,,,,,,avogadro-devel@lists."
-"sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.com,,,,"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-#~ msgstr ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Usage: %1 [options] [files]\n"
-#~ "\n"
-#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
-#~ "\n"
-#~ "Options:\n"
-#~ "  -h, --help\t\tShow help options (this)\n"
-#~ "  -v, --version\t\tShow version information\n"
-#~ msgstr ""
-#~ "Utilização: %1 [opções] [ficheiros]\n"
-#~ "\n"
-#~ "Avogadro - Editor Molecular Avançado (versão %2)\n"
-#~ "\n"
-#~ "Opções:\n"
-#~ "  -h, --help\t\tMostra estas opções de ajuda\n"
-#~ "  -v, --version\t\tMostra a informação da versão\n"
+",,,,ivofernandes12@gmail.com,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,ivofernandes12@gmail.com,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.c"
+"om,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,ivofernandes12@gmail.c"
+"om,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
+"com,,,,Mykas0@gmail.com,,,,,,,,avogadro-"
+"devel@lists.sourceforge.net,david.rodrigues@gmail.com,,,ivofernandes12@gmail."
+"com,,,,Mykas0@gmail.com,,,,,"
 
 #~ msgid "Lead"
 #~ msgstr "Chumbo"
@@ -1326,6 +1308,7 @@ msgstr ""
 #~ msgid "Radium"
 #~ msgstr "Rádio"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1333,9 +1316,11 @@ msgstr ""
 #~ "Não foi possível ler o arquivo %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Não foi possível ler o formato do arquivo %1"
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Não foi possível ler o arquivo %1"
 
@@ -1347,17 +1332,17 @@ msgstr ""
 #~ "visualizar adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá "
-#~ "ler apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá ler "
+#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
 #~ "poderão ser perdidas."
 
 #~ msgid "Navigate"
 #~ msgstr "Navegar"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1368,6 +1353,7 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Salvando Arquivo."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Não foi possível escrever no arquivo %1."
 
@@ -1384,6 +1370,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1420,6 +1407,7 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animação..."
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1456,9 +1444,6 @@ msgstr ""
 
 #~ msgid "Tool Settings"
 #~ msgstr "Ferramenta de definições"
-
-#~ msgid "Untitled"
-#~ msgstr "Sem título"
 
 #~ msgid "Medium"
 #~ msgstr "Médio"
@@ -1505,35 +1490,22 @@ msgstr ""
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
+#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Versão da "
-#~ "Biblioteca: %3<br/><br/>Para mais informações consulte a <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">Página do Avogadro</a>.<br/><br/>O programa "
-#~ "é disponibilizado COMO ESTÁ com NENHUMA GARANTIA DE QUALQUER TIPO, "
-#~ "INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO E APLICAÇÃO A UM "
-#~ "PROPÓSITO PARTICULAR.<br/>"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Vesão da "
-#~ "biblioteca: %3<br/><br/>Versão Open Babel: %4<br/><br/>Qt Version: %5<br/"
-#~ "><br/>Para mais informações veja a <a href=\"http://avogadro."
-#~ "openmolecules.net/\">página inicial Avogadro</a>.<br/><br/>O programa e "
-#~ "fornecido COMO ESTÁ e sem GARANTIAS DE QUALQUER TIPO, INCLUÍNDO A "
-#~ "GARANTIA DE DESIGN, COMERCIALIZAÇÃO E AJUSTAMENTO A QUALQUER USO "
-#~ "PARTICULAR.<br/>"
+#~ "<h3>%1</h3><br/><br/>Versão da Aplicação: %2<br/><br/>Vesão da biblioteca: "
+#~ "%3<br/><br/>Versão Open Babel: %4<br/><br/>Qt Version: %5<br/><br/>Para mais "
+#~ "informações veja a <a href=\"http://avogadro.openmolecules.net/\">página "
+#~ "inicial Avogadro</a>.<br/><br/>O programa e fornecido COMO ESTÁ e sem "
+#~ "GARANTIAS DE QUALQUER TIPO, INCLUÍNDO A GARANTIA DE DESIGN, COMERCIALIZAÇÃO "
+#~ "E AJUSTAMENTO A QUALQUER USO PARTICULAR.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Double Buffering."
@@ -1567,6 +1539,7 @@ msgstr ""
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Sobre como testar os recursos OpenGL."
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -1585,5 +1558,13 @@ msgstr ""
 #~ "  -h, --help\t\tMostra a ajuda (isto)\n"
 #~ "  -v, --version\t\tMostra a informação da versão\n"
 
-#~ msgid "Better View"
-#~ msgstr "Melhor Vista"
+#, qt-format
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"

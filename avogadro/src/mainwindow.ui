@@ -36,6 +36,7 @@
     <addaction name="actionAvogadro_Help"/>
     <addaction name="actionTutorials"/>
     <addaction name="actionFAQ"/>
+    <addaction name="actionAvogadro_Forum"/>
     <addaction name="separator"/>
     <addaction name="actionRelease_Notes"/>
     <addaction name="actionReport_a_Bug"/>
@@ -542,7 +543,7 @@
   </action>
   <action name="actionAvogadro_Help">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Avogadro Help</string>
@@ -667,6 +668,11 @@
    </property>
    <property name="toolTip">
     <string>IUPAC InChI identifier</string>
+   </property>
+  </action>
+  <action name="actionAvogadro_Forum">
+   <property name="text">
+    <string>Discussion Forum</string>
    </property>
   </action>
  </widget>

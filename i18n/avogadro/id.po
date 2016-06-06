@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:43+0000\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2015-09-09 17:21+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Indonesian <id@li.org>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:12+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: id\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,34 +31,29 @@ msgstr "(Revisi Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Aplikasi Versi: %2<br/><br/>Versi Pustaka: %3<br/><br/"
-">Versi Open Babel: %4"
+"<h3>%1</h3><br/><br/>Aplikasi Versi: %2<br/><br/>Versi Pustaka: "
+"%3<br/><br/>Versi Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Versi Qt: %1<br/><br/>Informasi lanjut kinjungi <a href=\"http://"
-"avogadro.openmolecules.net/\">Halaman Utama Avogadro</a>.<br/><br/>Program "
-"ini harap diterima APA ADANYA dan TIDAK MEMBERIKAN JAMINAN DALAM BENTUK "
-"APAPUN, TIDAK ADA JAMINAN RANCANG BANGUN, PERDANGANGAN DAN KESESUAIAN UNTUK "
-"TUJUAN TERTENTU.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -66,7 +61,7 @@ msgstr "Potong Molekul"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr "Potong Atom"
+msgstr "Potong Atom-atom"
 
 #: src/editcommands.cpp:101
 msgid "Paste"
@@ -78,14 +73,14 @@ msgstr "Hapus Molekul"
 
 #: src/editcommands.cpp:138
 msgid "Clear Atoms"
-msgstr "Hapus Atom"
+msgstr "Hapus Atom-atom"
 
 #. i18n: file: src/projecttreeeditor.ui:179
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Setelan"
 
@@ -115,7 +110,7 @@ msgstr "&Zum"
 
 #: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
-msgstr "Menampilkan semua paing depan"
+msgstr "Pindahkan Semua ke Depan"
 
 #: src/mainwindow.cpp:591
 msgid "Record Test..."
@@ -339,87 +334,86 @@ msgstr "Tidak bisa menyimpan berkas %1."
 msgid "Untitled %1"
 msgstr "Tanpa nama %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "Tidak bisa menempel molekul"
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr "Penempelan gagal (format tidak tersedia)"
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "Penyalinan gagal (mdl tidak tersedia)"
+msgstr ""
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr "Penyalinan gagal (mdl tidak tersedia)"
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "Tampilan %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Lihat %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Tampilan Terpisah"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "Ukuran Normal"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "Layar Penuh"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "Tambah"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "Duplikat"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "Hapus"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "Tidak ada alat bantuan atau mesin yang dimuat."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "Tidak ada mesin yang dimuat."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "Tidak ada alat bantuan yang dimuat."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -427,17 +421,17 @@ msgstr ""
 " tampaknya ada aplikasi yang tidak berfungsi dengan benar. Mohon koreksi "
 "kesalahan ini."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "Obyek"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "Warna"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " salin"
 
@@ -510,7 +504,7 @@ msgstr "hanya label yang mempunyai sub item"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "Item"
 
@@ -525,7 +519,7 @@ msgstr "Rendah"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Sedang"
@@ -542,7 +536,7 @@ msgstr "Tidak Didefinisikan"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Kosong"
@@ -728,9 +722,8 @@ msgstr "&Tampilan"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "Pohon Proyek"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
@@ -739,9 +732,8 @@ msgstr "&Suntingan"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Salin"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -1081,9 +1073,8 @@ msgstr "Balik Semula Tipe Tampilan"
 
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Perspective"
-msgstr "Positif"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1244,67 +1235,31 @@ msgstr "Kabut:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:, ,"
-"Launchpad Contributions:,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
+",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:, "
+",Launchpad Contributions:,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto"
+"Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Muhammad Radifar,Waluyo Adi "
+"Siswanto, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Muhammad "
+"Radifar,Waluyo Adi Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-devel@lists."
-"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,,,"
-"avogadro-devel@lists.sourceforge.net,,"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-#~ msgstr ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Usage: %1 [options] [files]\n"
-#~ "\n"
-#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
-#~ "\n"
-#~ "Options:\n"
-#~ "  -h, --help\t\tShow help options (this)\n"
-#~ "  -v, --version\t\tShow version information\n"
-#~ msgstr ""
-#~ "Penggunaan: %1 [options] [files]\n"
-#~ "\n"
-#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
-#~ "\n"
-#~ "Pilihan:\n"
-#~ "  -h, --help\t\tMenampilkan bantuan (seperti ini)\n"
-#~ "  -v, --version\t\tMenampilkan informasi versi\n"
-
-#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
-#~ msgstr ""
-#~ "Warna berdasarkan muatan parsial atom (biru = positif, merah = negatif)"
-
-#~ msgid "Color by Partial Charge"
-#~ msgstr "Warna berdasarkan Muatan Parsial"
-
-#~ msgid "Color by distance from the first atom."
-#~ msgstr "Warna berdasarkan jarak dari atom pertama"
-
-#~ msgid "Color by Distance"
-#~ msgstr "Warna berdasarkan Jarak"
+",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,"
 
 #~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-#~ msgstr ""
-#~ "Warna berdasarkan Indeks (merah, oranye, kuning, hijau, biru, ungu)."
+#~ msgstr "Warna berdasarkan Indeks (merah, oranye, kuning, hijau, biru, ungu)."
 
 #~ msgid "Color by Index"
 #~ msgstr "Warna berdasarkan Indeks"
@@ -1314,9 +1269,6 @@ msgstr ""
 
 #~ msgid "Color by Element"
 #~ msgstr "Warna berdasarkan Unsur"
-
-#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-#~ msgstr "Warna berdasarkan Residu (tipe asam amino, hidropobisiti, ..."
 
 #~ msgid "Color by Residue"
 #~ msgstr "Warna berdasarkan Residu"
@@ -1438,35 +1390,11 @@ msgstr ""
 #~ msgid "Selenium"
 #~ msgstr "Selenium"
 
-#~ msgid "Remove Atom"
-#~ msgstr "Hapus Atom"
-
 #~ msgid "Python Settings"
 #~ msgstr "Setelan Python"
 
 #~ msgid "Add Directory"
 #~ msgstr "Tambahkan Directori"
-
-#~ msgid "Import Selected Atoms"
-#~ msgstr "Impor Atom yang dipilih"
-
-#~ msgid "Z Matrix Editor"
-#~ msgstr "Penyunting Z Matrix"
-
-#~ msgid "Frequency (cm-1)"
-#~ msgstr "Frekuensi (cm-1)"
-
-#~ msgid "Molecular Vibrations"
-#~ msgstr "Getaran Molekuler"
-
-#~ msgid "Intensity (km/mol)"
-#~ msgstr "Intensitas (km/mol)"
-
-#~ msgid "E&xport..."
-#~ msgstr "Ekspor..."
-
-#~ msgid "Display Force &Vectors"
-#~ msgstr "Tampilkan Gaya &Vektor"
 
 #~ msgid "gamma:"
 #~ msgstr "gamma:"
@@ -1479,12 +1407,6 @@ msgstr ""
 
 #~ msgid "C:"
 #~ msgstr "C:"
-
-#~ msgid "&Scale:"
-#~ msgstr "&Skala:"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Referensi:"
 
 #~ msgid "Indium"
 #~ msgstr "Indium"
@@ -1708,9 +1630,6 @@ msgstr ""
 #~ msgid "Engines"
 #~ msgstr "Mesin"
 
-#~ msgid "Cartoon"
-#~ msgstr "Kartun"
-
 #~ msgid "Force"
 #~ msgstr "Gaya"
 
@@ -1729,14 +1648,12 @@ msgstr ""
 #~ msgid "Ring"
 #~ msgstr "Ring"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "video files (*.avi)"
 #~ msgstr "berkas video (*.avi)"
-
-#~ msgid "Save Video File"
-#~ msgstr "Simpan Berkas Video"
 
 #~ msgid "Bismuth"
 #~ msgstr "Bismut"
@@ -1765,6 +1682,7 @@ msgstr ""
 #~ msgid "Thorium"
 #~ msgstr "Torium"
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Gagal membaca berkas trajectory %1"
 
@@ -1777,12 +1695,14 @@ msgstr ""
 #~ msgid "Trajectory files (*.xtc *.xyz)"
 #~ msgstr "Berkas trajectory (*.xtc *.xyz)"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tidak bisa membaca format berkas %1."
 
 #~ msgid "Must specify a valid .avi file name"
 #~ msgstr "Harus menyatakan berkas .avi yang sahih"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Jumlah atom: %1"
 
@@ -1795,55 +1715,11 @@ msgstr ""
 #~ msgid "Open chemical file format"
 #~ msgstr "Buka berkas format kimia"
 
-#~ msgid "Label Peaks:"
-#~ msgstr "Label Puncak:"
-
-#~ msgid "&Load data..."
-#~ msgstr "&Muat data..."
-
-#~ msgid "Gaussian &Width:"
-#~ msgstr "&Lebar Gaussian"
-
-#~ msgid "Reset &Plot Axes"
-#~ msgstr "Tata ulang Sumbu &Plot"
-
 #~ msgid "Reset List"
 #~ msgstr "Tata Ulang Daftar"
 
 #~ msgid "Orbitals"
 #~ msgstr "Orbit"
-
-#~ msgid "Renders molecular orbitals"
-#~ msgstr "Menampilkan gambar orbit molekul"
-
-#~ msgid "Renders color scale for gradients"
-#~ msgstr "Menampilkan skala warna"
-
-#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-#~ msgstr ""
-#~ "Menampilkan gambar atom dalam bentuk tetrahedra, oktahedra, dan bentuk "
-#~ "poligon lainnya"
-
-#~ msgid "Renders protein backbones as ribbons"
-#~ msgstr "Menampilkan gambar pendukung utama protein sebagai pita"
-
-#~ msgid "Renders molecular dipole moments"
-#~ msgstr "Menampilkan gambar momen molekul dua kutub"
-
-#~ msgid "Renders force displacements on atoms"
-#~ msgstr "Menampilkan gambar gaya pada atom"
-
-#~ msgid "Renders atom and bond labels"
-#~ msgstr "Menampilkan gambar atom dan label ikatan"
-
-#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
-#~ msgstr "Menampilkan gambar ikatan sebagai garis, sesuai untuk melekul besar"
-
-#~ msgid "Renders rings with colored planes"
-#~ msgstr "Menampilkan gambar cincin dengan bidang berwarna"
-
-#~ msgid "Renders molecules as sticks"
-#~ msgstr "Menampilkan gambar molekul sebagai bentuk batang"
 
 #~ msgid "Surface"
 #~ msgstr "Permukaan"
@@ -1854,12 +1730,10 @@ msgstr ""
 #~ msgid "Stick"
 #~ msgstr "Batang"
 
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "Menampilkan gambar permukaan molekul hasil perhitungan"
-
 #~ msgid "could not set format to XYZ"
 #~ msgstr "Tidak bisa merubah format menjadi XYZ"
 
+#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Ada masalah dalam membaca berkas traj %1"
 
@@ -1869,6 +1743,7 @@ msgstr ""
 #~ msgid "Chemical files (*.parm7)"
 #~ msgstr "Berkas Kimia (*.parm7)"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Jumlah ikatan yang dapat diputar: %1"
 
@@ -1884,9 +1759,6 @@ msgstr ""
 #~ msgid "Ignore Selection"
 #~ msgstr "Lupakan pilihan"
 
-#~ msgid "Import trajectory files"
-#~ msgstr "Impor berkas trajectory"
-
 #~ msgid "ForceField"
 #~ msgstr "BidangGaya"
 
@@ -1896,6 +1768,7 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Batalkan"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energi = %1 %2"
 
@@ -1916,9 +1789,6 @@ msgstr ""
 
 #~ msgid "&GAMESS"
 #~ msgstr "&GAMESS"
-
-#~ msgid "efp"
-#~ msgstr "efp"
 
 #~ msgid " ("
 #~ msgstr " ("
@@ -1951,19 +1821,7 @@ msgstr ""
 #~ msgid "Advanced Settings Reset"
 #~ msgstr "Tata Ulang Setelan Lanjut"
 
-#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-#~ msgstr ""
-#~ "Menampilkan gambar menggunakan bentuk bola (atom) dan batang (ikatan)"
-
-#~ msgid "Renders the x, y, and z axes at the origin"
-#~ msgstr "Menampilkan gambar sumbu x, y dan z di origin"
-
-#~ msgid "Renders protein secundary structure"
-#~ msgstr "Menampilkan gambar struktur protein sekunder"
-
-#~ msgid "Display Settings..."
-#~ msgstr "Setelan Tampilan..."
-
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1971,11 +1829,9 @@ msgstr ""
 #~ "Tidak bisa membaca berkas %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Tidak bisa membaca berkas %1."
-
-#~ msgid "Ctrl+D"
-#~ msgstr "Ctrl+D"
 
 #~ msgid "Save succeeded."
 #~ msgstr "Berhasil disimpan."
@@ -1983,6 +1839,7 @@ msgstr ""
 #~ msgid "Saving molecular file failed."
 #~ msgstr "Tidak berhasil menyimpan berkas molekul."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1990,12 +1847,14 @@ msgstr ""
 #~ "Tidak bisa menulis dalaam berkas %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Tidak bisa menulis dalam format dari berkas %1."
 
 #~ msgid "Saving file."
 #~ msgstr "Menyimpan berkas."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Tidak bisa menulis berkas %1."
 
@@ -2014,6 +1873,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -2044,9 +1904,6 @@ msgstr ""
 #~ msgid "1"
 #~ msgstr "1"
 
-#~ msgid "Tool Settings..."
-#~ msgstr "Kotak Pengaturan..."
-
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Gagal membaca berkas molekul."
 
@@ -2058,9 +1915,8 @@ msgstr ""
 #~ "menampilkan dengan sempurna."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Berkas ini mempunyai catatan berbagai molekul. Avogadro hanya membaca "
 #~ "molekul pertama saja. Apabila anda menyimpan, data molekul lain akan "
@@ -2070,61 +1926,28 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Berkas ini hanya mengandung koordinat 2D. Apakah anda menghendaki "
-#~ "Avogadro merubah skala ikatan dan melakukan optimisasi cepat?"
+#~ "Berkas ini hanya mengandung koordinat 2D. Apakah anda menghendaki Avogadro "
+#~ "merubah skala ikatan dan melakukan optimisasi cepat?"
 
 #~ msgid "Backspace"
 #~ msgstr "Spasimundur"
 
+#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versi Aplikasi: %2<br/><br/>Versi Pustaka: %3<br/"
-#~ "><br/>Untuk informasi lain lihat di <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Halaman Web Avogadro</a>.<br/><br/>Program Ini "
-#~ "dibuat SEPERTI INI tanpa ADA JAMINAN DALAM BENTUK APAPUN, TERMASUK TIDAK "
-#~ "ADA JAMINAN BILA DIGUNAKAN UNTUK DESAIN, PERDAGANGAN DAN KESUAIAN UNTUK "
-#~ "TUJUAN TERTENTU.<br/>"
-
-#~ msgid "Ctrl+T"
-#~ msgstr "Ctrl+T"
-
-#~ msgid "Updated Version of Avogadro Available"
-#~ msgstr "Ada Versi Terbaru dari Avogadro"
-
-#~ msgctxt "%1 is element, %L2 is atom index"
-#~ msgid "Atom %1 %L2"
-#~ msgstr "Atom %1 %L2"
-
-#~ msgctxt "%1 is residue name, %2 is residue index"
-#~ msgid "Residue %1 %2"
-#~ msgstr "Residu %1 %2"
-
-#~ msgctxt "%L1 is bond index"
-#~ msgid "Bond %L1"
-#~ msgstr "Ikatan %L1"
-
-#~ msgid "This file contains does not contain 3D coordinates."
-#~ msgstr "Isi berkas tidak mengandung informasi koordinat 3D."
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Halaman Web Avogadro</a>.<br/><br/>Program ini harap diterima APA "
-#~ "ADANYA dan TIDAK MEMBERIKAN JAMINAN DALAM BENTUK APAPUN, TERMASUK JAMINAN "
-#~ "RANCANG BANGUN, PERDAGANGAN DAN KESESUAIAN UNTUK SEMUA PENGGUNAAN.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a href=\"http://avogadro.openmolecules.net/\">Halaman "
+#~ "Web Avogadro</a>.<br/><br/>Program ini harap diterima APA ADANYA dan TIDAK "
+#~ "MEMBERIKAN JAMINAN DALAM BENTUK APAPUN, TERMASUK JAMINAN RANCANG BANGUN, "
+#~ "PERDAGANGAN DAN KESESUAIAN UNTUK SEMUA PENGGUNAAN.<br/>"
 
 #~ msgctxt "main.cpp"
 #~ msgid "System has OpenGL support."
@@ -2138,6 +1961,18 @@ msgstr ""
 #~ msgid "Avogadro"
 #~ msgstr "Avogadro"
 
+#, qt-format
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -2239,12 +2074,12 @@ msgstr ""
 #~ "Nama berkas video tidak sahih.  Perlu menyertakan direktori berkas secara "
 #~ "lengkap"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 #~ msgstr ""
-#~ "Berkas trayektori %1 mempunyai jumlah atom yang tidak sesuai dengan "
-#~ "molekul yang ada"
+#~ "Berkas trayektori %1 mempunyai jumlah atom yang tidak sesuai dengan molekul "
+#~ "yang ada"
 
 #~ msgid ""
 #~ "Your molecule must contain at least four atoms to add a torsion constraint"
@@ -2273,8 +2108,8 @@ msgstr ""
 #~ msgstr "Tambahkan kendala"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nama berkas video tidak sahih. Perlu menyertakan direktori berkas secara "
 #~ "lengkap, diakhiri dengan .avi"
@@ -2428,15 +2263,19 @@ msgstr ""
 #~ msgid "Lin Morph..."
 #~ msgstr "Lin Morph..."
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Gagal membaca berkas mol %1."
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Akan menulis berkas ke %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Sudah menulis berkas %1."
 
@@ -2452,8 +2291,8 @@ msgstr ""
 #~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap, "
 #~ "diakhiri dengan .avi"
@@ -2504,8 +2343,8 @@ msgstr ""
 #~ "POV-Ray failed to start. May be the path to the executable is not set "
 #~ "correctly."
 #~ msgstr ""
-#~ "POV-Ray gagal dijalankan. Kemungkinan karena lokasi berkas yang "
-#~ "dijalankan tidak tepat."
+#~ "POV-Ray gagal dijalankan. Kemungkinan karena lokasi berkas yang dijalankan "
+#~ "tidak tepat."
 
 #~ msgid "Does not compute."
 #~ msgstr "Tidak melakukan perhitungan"
@@ -2555,6 +2394,7 @@ msgstr ""
 #~ msgid "Partial Charge"
 #~ msgstr "Muatan Parsial"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -2582,6 +2422,7 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Dapat diputar"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Ikatan %1"
 
@@ -2591,12 +2432,14 @@ msgstr ""
 #~ msgid "Angle (°)"
 #~ msgstr "Sudut (°)"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Sudut %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Torsi (°)"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsi %1"
 
@@ -2609,6 +2452,7 @@ msgstr ""
 #~ msgid "&Scripts"
 #~ msgstr "&Skrip"
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Conformer %1"
 
@@ -2717,23 +2561,24 @@ msgstr ""
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Parameter Unit Sel..."
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
 #~ "Pengaturan sekarang untuk layar adalah %1x%2 piksel, dan mempunyai aspek "
 #~ "rasio %3.\n"
-#~ "Anda dapat memakai ukuran ini, apabila anda ingin menggunakan misalnya "
-#~ "POV-Ray\n"
-#~ "untuk mendapatkan gambar of %4x1000 piksel, atau anda bisa mengganti "
-#~ "dengan ukuran lain,\n"
-#~ "apabila anda ingin menggunakan POV-Ray untuk membuat gambar, seperti "
-#~ "ukuran 1000x1000 piksel."
+#~ "Anda dapat memakai ukuran ini, apabila anda ingin menggunakan misalnya POV-"
+#~ "Ray\n"
+#~ "untuk mendapatkan gambar of %4x1000 piksel, atau anda bisa mengganti dengan "
+#~ "ukuran lain,\n"
+#~ "apabila anda ingin menggunakan POV-Ray untuk membuat gambar, seperti ukuran "
+#~ "1000x1000 piksel."
 
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Atur Aspek Rasio"
@@ -2767,8 +2612,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Konteks OpenGL ada kesalahan.\n"
 #~ "Kemungkingan ada kesalahan dalam pengaturan OpenGL (apakah anda bisa "
@@ -2825,6 +2670,7 @@ msgstr ""
 #~ msgid "Force Field:"
 #~ msgstr "Bidang Gaya:"
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -2967,12 +2813,15 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Jarak (3->4): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Jarak (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Jarak (1->2): %1 %2"
 
@@ -3094,8 +2943,7 @@ msgstr ""
 #~ "Alat Navigasi (F9)\n"
 #~ "\n"
 #~ "Tetikus Kiri:   Klik dan seret untuk memutar tampilan\n"
-#~ "Tetikus Tengah: Klik dan seret untuk memperbesar atau memperkecil "
-#~ "tampilan\n"
+#~ "Tetikus Tengah: Klik dan seret untuk memperbesar atau memperkecil tampilan\n"
 #~ "Tetikus Kanan:  Klik dan seret untuk menggeser tampilan"
 
 #~ msgid "Open Directory"
@@ -3231,6 +3079,9 @@ msgstr ""
 
 #~ msgid "Rendering:"
 #~ msgstr "Penggambaran:"
+
+#~ msgid "Positive"
+#~ msgstr "Positif"
 
 #~ msgid "Negative"
 #~ msgstr "Negatif"
@@ -3962,9 +3813,9 @@ msgstr ""
 #~ "Pencitraan molekul secara langsung menggunakan perintah baris POV-Ray"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 #~ msgstr ""
 #~ "Anda meminta tidak melakukan pencitraan langsung menggunakan POV-Ray dan "
 #~ "tidak menyimpan berkas POV-Ray. Keluaran yang dihasilkan tidak akan "
@@ -4031,8 +3882,8 @@ msgstr ""
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
 #~ "then be used to make a movie."
 #~ msgstr ""
-#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas "
-#~ "ini dapat digunakan untuk membuat filem."
+#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas ini "
+#~ "dapat digunakan untuk membuat filem."
 
 #~ msgid "Load Second Conformation ..."
 #~ msgstr "Memuat Konformasi Kedua..."
@@ -4044,8 +3895,8 @@ msgstr ""
 #~ "Load a second confromation and computer a linear interpolation with the "
 #~ "current conformation."
 #~ msgstr ""
-#~ "Memuat konformasi kedua dan penghitung interpolasi linier dengan "
-#~ "konformasi sekarang."
+#~ "Memuat konformasi kedua dan penghitung interpolasi linier dengan konformasi "
+#~ "sekarang."
 
 #~ msgid "Linear Morph Trajectory"
 #~ msgstr "Trayektori Linear Morph"
@@ -4536,9 +4387,11 @@ msgstr ""
 #~ msgid "Debug"
 #~ msgstr "Awakutu"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Sudut Dihedral: %1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Sudut: %1 %2"
 
@@ -4555,11 +4408,8 @@ msgstr ""
 #~ "Enables the use of transitional animations when performing automatic "
 #~ "positioning of the GLWidget."
 #~ msgstr ""
-#~ "Aktifkan penggunaan animasi transisi ketika menggunakan posisi otomatis "
-#~ "dari GLWidget."
+#~ "Aktifkan penggunaan animasi transisi ketika menggunakan posisi otomatis dari "
+#~ "GLWidget."
 
 #~ msgid "Enable the tabbed tool layout."
 #~ msgstr "Aktifkan tata letak piranti tabulasi"
-
-#~ msgid "Better View"
-#~ msgstr "Tampilan Lebih Cantik"

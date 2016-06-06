@@ -68,13 +68,13 @@ msym_thresholds_t medium_thresholds = {
 };
 
 msym_thresholds_t loose_thresholds = {
-    0.06, // zero
-    0.06, // geometry
-    0.06, // angle
-    0.025, // equivalence
-    1.0e-1, // permutation
+    0.040, // zero
+    0.040, // geometry
+    0.016, // angle
+    0.032, // equivalence
+    0.050, // permutation
     1.0e-3, // eigfact
-    0.1 // orthogonalization
+    0.1 // orthognalization
 };
 
 msym_thresholds_t sloppy_thresholds = {

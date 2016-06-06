@@ -1,22 +1,21 @@
 # Serbian translation for avogadro
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-03-19 19:37+0000\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2016-01-23 00:53+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <sr@li.org>\n"
-"Language: sr\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:12+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: sr\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -26,40 +25,47 @@ msgstr "У реду"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Ревизија гита: %1)"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
+"<h3>%1</h3><br/><br/>Издање програма: %2<br/><br/>Издање библиотеке: "
+"%3<br/><br/>Издање Опен Бабела: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Авогадро"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
+"<br/><br/>Издање Кут-а: %1<br/><br/>За више података проверите <a "
+"href=\"http://avogadro.cc/\">матичну страницу Авогадра</a>.<br/><br/>Програм "
+"је достављен ТАКАВ КАКАВ ЈЕ без ГАРАНЦИЈЕ БИЛО КАКВЕ ВРСТЕ, УКЉУЧУЈУЋИ "
+"ГАРАНЦИЈУ О ДИЗАЈНУ, ТРЖИШНОЈ ВРЕДНОСТИ И ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ "
+"НАМЕНИ.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr ""
+msgstr "Исеци молекул"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr ""
+msgstr "Исеци атоме"
 
 #: src/editcommands.cpp:101
 msgid "Paste"
@@ -67,18 +73,18 @@ msgstr "Убаци"
 
 #: src/editcommands.cpp:136
 msgid "Clear Molecule"
-msgstr ""
+msgstr "Одстрани молекул"
 
 #: src/editcommands.cpp:138
 msgid "Clear Atoms"
-msgstr ""
+msgstr "Одстрани атоме"
 
 #. i18n: file: src/projecttreeeditor.ui:179
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -96,378 +102,381 @@ msgstr "Прозор"
 
 #: src/mainwindow.cpp:549
 msgid "&Minimize"
-msgstr ""
+msgstr "У&мањи"
 
 #: src/mainwindow.cpp:550
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ктрл+М"
 
 #: src/mainwindow.cpp:555
 msgid "&Zoom"
-msgstr ""
+msgstr "У&већај"
 
 #: src/mainwindow.cpp:562 src/mainwindow.cpp:1794
 msgid "Bring All to Front"
-msgstr ""
+msgstr "Пребаци све у први план"
 
 #: src/mainwindow.cpp:591
 msgid "Record Test..."
-msgstr ""
+msgstr "Забележи тест..."
 
 #: src/mainwindow.cpp:594
 msgid "Play Test..."
-msgstr ""
+msgstr "Репродукуј тест..."
 
 #: src/mainwindow.cpp:896
 msgid "&Tool Settings..."
-msgstr ""
+msgstr "Подешавања &алата..."
 
 #: src/mainwindow.cpp:899
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ктрл+Т"
 
 #: src/mainwindow.cpp:904
 msgid "&Display Settings..."
-msgstr ""
+msgstr "Подешавања &приказа..."
 
 #: src/mainwindow.cpp:907
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ктрл+Д"
 
 #: src/mainwindow.cpp:950 src/mainwindow.cpp:1434
 msgid "Common molecule formats"
-msgstr ""
+msgstr "Општи облици молекула"
 
 #: src/mainwindow.cpp:955 src/mainwindow.cpp:1431 src/mainwindow.cpp:1668
 msgid "All files"
-msgstr ""
+msgstr "Све датотеке"
 
 #: src/mainwindow.cpp:956 src/mainwindow.cpp:1428 src/mainwindow.cpp:1440
 msgid "CML"
-msgstr ""
+msgstr "ЦМЛ"
 
 #: src/mainwindow.cpp:957
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Излаз прорачунске хемије"
 
 #: src/mainwindow.cpp:958
 msgid "Crystallographic Interchange CIF"
-msgstr ""
+msgstr "Кристалографска измена ЦИФ"
 
 #: src/mainwindow.cpp:959
 msgid "GAMESS-US Output"
-msgstr ""
+msgstr "ГАМЕСС-УС излаз"
 
 #: src/mainwindow.cpp:960
 msgid "Gaussian 98/03 Output"
-msgstr ""
+msgstr "Гаусов 98/03 излаз"
 
 #: src/mainwindow.cpp:961
 msgid "Gaussian Formatted Checkpoint"
-msgstr ""
+msgstr "Гаусова обликована контролна тачка"
 
 #: src/mainwindow.cpp:962
 msgid "HyperChem"
-msgstr ""
+msgstr "ХиперХем"
 
 #: src/mainwindow.cpp:963
 msgid "MDL Mol"
-msgstr ""
+msgstr "МДЛ мол"
 
 #: src/mainwindow.cpp:964
 msgid "NWChem Output"
-msgstr ""
+msgstr "Излаз НВХемије"
 
 #: src/mainwindow.cpp:965 src/mainwindow.cpp:1445
 msgid "PDB"
-msgstr ""
+msgstr "ПДБ"
 
 #: src/mainwindow.cpp:966 src/mainwindow.cpp:1447
 msgid "Sybyl Mol2"
-msgstr ""
+msgstr "Сибил Мол2"
 
 #: src/mainwindow.cpp:967 src/mainwindow.cpp:1448
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/mainwindow.cpp:1040 src/mainwindow.cpp:1045 src/savedialog.cpp:83
 msgid "untitled"
-msgstr ""
+msgstr "неименовано"
 
 #: src/mainwindow.cpp:1061
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr ""
+msgstr "Учитавам %1..."
 
 #: src/mainwindow.cpp:1065
 #, qt-format
 msgid "Loading %1..."
-msgstr ""
+msgstr "Учитавам %1..."
 
 #: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr ""
+msgstr "Нисам успео да прочитам молекуларну датотеку, датотека „%1“."
 
 #: src/mainwindow.cpp:1108
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr ""
+msgstr "Читам датотеку више-молекула. Ово може да потраје..."
 
 #: src/mainwindow.cpp:1135
 msgid "This file does not contain 3D coordinates."
-msgstr ""
+msgstr "Ова датотека не садржи 3Д координате."
 
 #: src/mainwindow.cpp:1139
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Да ли желите да Авогадро изгради грубу геометрију?"
 
 #: src/mainwindow.cpp:1157
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
+"Ова датотека не садржи 3Д координате. Нећете\n"
+"моћи исправно да измените или да прегледате."
 
 #: src/mainwindow.cpp:1214
 msgid "Select Molecule to View"
-msgstr ""
+msgstr "Изабери молекул за преглед"
 
 #: src/mainwindow.cpp:1239
 msgid "Molecule Title"
-msgstr ""
+msgstr "Назив молекула"
 
 #: src/mainwindow.cpp:1312
 msgid "Atoms: "
-msgstr ""
+msgstr "Атоми: "
 
 #: src/mainwindow.cpp:1313
 msgid " Bonds: "
-msgstr ""
+msgstr " Везе: "
 
 #: src/mainwindow.cpp:1329
 msgid "File Loaded..."
-msgstr ""
+msgstr "Датотека је учитана..."
 
 #: src/mainwindow.cpp:1342
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
+msgstr "Да ли желите да сачувате измене које сте направили у документу?"
 
 #: src/mainwindow.cpp:1351
 msgid "Your changes will be lost if you don't save them."
-msgstr ""
+msgstr "Ваше измене ће бити изгубљене ако их не сачувате."
 
 #: src/mainwindow.cpp:1355
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ктрл+С"
 
 #: src/mainwindow.cpp:1356
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ктрл+Д"
 
 #: src/mainwindow.cpp:1358
 msgid "Save..."
-msgstr ""
+msgstr "Сачувај..."
 
 #: src/mainwindow.cpp:1358 src/savedialog.cpp:65
 msgid "Save"
-msgstr ""
+msgstr "Сачувајте"
 
 #: src/mainwindow.cpp:1441
 msgid "GAMESS Input"
-msgstr ""
+msgstr "ГАМЕСОВ улаз"
 
 #: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
-msgstr ""
+msgstr "Гаусов Картезијски улаз"
 
 #: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
-msgstr ""
+msgstr "Гаусов унос Z-матрице"
 
 #: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
-msgstr ""
+msgstr "МДЛ СД датотека"
 
 #: src/mainwindow.cpp:1446
 msgid "NWChem Input"
-msgstr ""
+msgstr "Улаз НВХемије"
 
 #: src/mainwindow.cpp:1451
 msgid "Save Molecule As"
-msgstr ""
+msgstr "Сачувај молекул као"
 
 #: src/mainwindow.cpp:1658 src/mainwindow.cpp:1670
 msgid "PNG"
-msgstr ""
+msgstr "ПНГ"
 
 #: src/mainwindow.cpp:1665
 msgid "Common image formats"
-msgstr ""
+msgstr "Општи запис слике"
 
 #: src/mainwindow.cpp:1669
 msgid "BMP"
-msgstr ""
+msgstr "БМП"
 
 #: src/mainwindow.cpp:1671
 msgid "JPEG"
-msgstr ""
+msgstr "ЈПЕГ"
 
 #: src/mainwindow.cpp:1677
 msgid "Export Bitmap Graphics"
-msgstr ""
+msgstr "Извези Битмап графику"
 
 #: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
-msgstr ""
+msgstr "Не могу да сачувам датотеку %1."
 
 #: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
-msgstr ""
+msgstr "Неименован %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
-msgstr ""
+msgstr "Не могу да убацим молекул."
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
-msgstr ""
+msgstr "Убацивање није успело (није доступан запис)."
 
-#: src/mainwindow.cpp:2413
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr ""
+msgstr "Умножавање није успело (није доступан запис)."
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
-msgstr ""
+msgstr "Умножавање није успело (није доступан мдл)."
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
-msgstr ""
+msgstr "Прикажи %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr ""
+msgstr "Прикажи %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
-msgstr ""
+msgstr "Авогадро: Откачени преглед"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
-msgstr ""
+msgstr "Уобичајена величина"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
-msgstr ""
+msgstr "Цео екран"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
-msgstr ""
+msgstr "Ктрл+Повратница"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
-msgstr ""
+msgstr "[*]Авогадро"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] — %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
-msgstr ""
+msgstr "Додај"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
-msgstr ""
+msgstr "Удвостручи"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
-msgstr ""
+msgstr "Уклони"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
-msgstr ""
+msgstr "Нису учитани алати или погони."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
-msgstr ""
+msgstr "Нису учитани погони."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
-msgstr ""
+msgstr "Нису учитани алати."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
+" Мало је вероватно да ће овај програм радити исправно. Исправите ову грешку."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
-msgstr ""
+msgstr "Објекти"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
-msgstr ""
+msgstr "Боје"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
-msgstr ""
+msgstr " умножи"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
-msgstr ""
+msgstr "Назив: "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr ""
+msgstr "Одредник: "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
-msgstr ""
+msgstr "Датотека: "
 
 #: src/pluginsettings.cpp:56
 msgid "Description:\n"
-msgstr ""
+msgstr "Опис:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:467
 #: src/projecttreeeditor.cpp:497 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr ""
+msgstr "Молекул"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:499
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr ""
+msgstr "Атоми"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:501
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr ""
+msgstr "Везе"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:503
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr ""
+msgstr "Остаци"
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -475,760 +484,1964 @@ msgstr ""
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr ""
+msgstr "веза %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:495
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr ""
+msgstr "Натпис"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:505 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr ""
+msgstr "Избор корисника"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr ""
+msgstr "Грешка"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr ""
+msgstr "само натписи могу имати садржане ставке"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
-msgstr ""
+msgstr "Ставка"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr ""
+msgstr "Попис"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr ""
+msgstr "Низак"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr ""
+msgstr "Средњи"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr ""
+msgstr "Висок"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr ""
+msgstr "Неодређен"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr ""
+msgstr "Ништа"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr ""
+msgstr "Неки"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "Средње"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "Много"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr ""
+msgstr "Неодређено"
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Није успела провера ажурирања мреже"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Истекло је време мреже или нека друга грешка."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr ""
+msgstr "Доступно је новије издање Авогадра"
 
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
 msgid "Add Display Type"
-msgstr ""
+msgstr "Додај врсту површи"
 
 #. i18n: file: src/addenginedialog.ui:19
 #. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
-msgstr ""
+msgstr "Врста:"
 
 #. i18n: file: src/addenginedialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
-msgstr ""
+msgstr "Назив:"
 
 #. i18n: file: src/addenginedialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
-msgstr ""
+msgstr "Опис:"
 
 #. i18n: file: src/enginecolorswidget.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
 msgid "Form"
-msgstr ""
+msgstr "Образац"
 
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr ""
+msgstr "Боја за:"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:44
 #. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
-msgstr ""
+msgstr "Додај изабране примитиве"
 
 #. i18n: file: src/engineprimitiveswidget.ui:55
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
-msgstr ""
+msgstr "Уклони изабране примитиве"
 
 #. i18n: file: src/engineprimitiveswidget.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr ""
+msgstr "Додај све примитиве"
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr ""
+msgstr "Прикажи само изабране примитиве"
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr ""
+msgstr "Додели у избор"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Увези датотеку молекула"
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Filename:"
-msgstr ""
+msgstr "Назив датотеке:"
 
 #. i18n: file: src/importdialog.ui:34
 #. i18n: ectx: property (text), widget (QPushButton, selectButton)
 msgid "Select..."
-msgstr ""
+msgstr "Изабери..."
 
 #. i18n: file: src/importdialog.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
-msgstr ""
+msgstr "Облик:"
 
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr ""
+msgstr "Самостално откриј проширења"
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Опази повезивање"
 
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Опази редослед веза"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr ""
+msgstr "Координате су у ангстромима (Å)"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
 msgid "&Help"
-msgstr ""
+msgstr "По&моћ"
 
 #. i18n: file: src/mainwindow.ui:46
 #. i18n: ectx: property (title), widget (QMenu, menuFile)
 msgid "&File"
-msgstr ""
+msgstr "&Датотека"
 
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr ""
+msgstr "Отвори &скорашње"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
 msgid "Export"
-msgstr ""
+msgstr "Извези"
 
 #. i18n: file: src/mainwindow.ui:61
 #. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
-msgstr ""
+msgstr "Увези"
 
 #. i18n: file: src/mainwindow.ui:80
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
-msgstr ""
+msgstr "&Подешавања"
 
 #. i18n: file: src/mainwindow.ui:84
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr ""
+msgstr "Траке алата"
 
 #. i18n: file: src/mainwindow.ui:93
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr ""
+msgstr "&Изгради"
 
 #. i18n: file: src/mainwindow.ui:98
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
-msgstr ""
+msgstr "&Приказ"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
 msgid "Projection"
-msgstr ""
+msgstr "Пројекција"
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr ""
+msgstr "&Уређивање"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
 msgid "Copy As"
-msgstr ""
+msgstr "Умножи као"
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
-msgstr ""
+msgstr "П&роширења"
 
 #. i18n: file: src/mainwindow.ui:154
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
-msgstr ""
+msgstr "&Изабери"
 
 #. i18n: file: src/mainwindow.ui:171
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Главна трака алата"
 
 #. i18n: file: src/mainwindow.ui:208
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
-msgstr ""
+msgstr "Стабло пројекта"
 
 #. i18n: file: src/mainwindow.ui:241
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
-msgstr ""
+msgstr "Врсте приказа"
 
 #. i18n: file: src/mainwindow.ui:250
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
 #. i18n: file: src/pluginsettings.ui:28
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
-msgstr ""
+msgstr "Алатке"
 
 #. i18n: file: src/mainwindow.ui:267
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:275
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
-msgstr ""
+msgstr "&Отвори"
 
 #. i18n: file: src/mainwindow.ui:270
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ктрл+О"
 
 #. i18n: file: src/mainwindow.ui:280
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:291
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
-msgstr ""
+msgstr "&Изађи"
 
 #. i18n: file: src/mainwindow.ui:283
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
-msgstr ""
+msgstr "Ктрл+Ку"
 
 #. i18n: file: src/mainwindow.ui:296
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr ""
+msgstr "Скорашње"
 
 #. i18n: file: src/mainwindow.ui:301
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr ""
+msgstr "&Очисти скорашње"
 
 #. i18n: file: src/mainwindow.ui:306
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
-msgstr ""
+msgstr "&Ново"
 
 #. i18n: file: src/mainwindow.ui:309
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ктрл+Н"
 
 #. i18n: file: src/mainwindow.ui:319
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:327
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
-msgstr ""
+msgstr "&Затвори"
 
 #. i18n: file: src/mainwindow.ui:322
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
-msgstr ""
+msgstr "Ктрл+ДублВе"
 
 #. i18n: file: src/mainwindow.ui:332
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 #. i18n: file: src/mainwindow.ui:340
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
-msgstr ""
+msgstr "&Сачувај"
 
 #. i18n: file: src/mainwindow.ui:335
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ктрл+С"
 
 #. i18n: file: src/mainwindow.ui:345
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
-msgstr ""
+msgstr "Сачувај &као..."
 
 #. i18n: file: src/mainwindow.ui:348
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
-msgstr ""
+msgstr "Ктрл+Помак+С"
 
 #. i18n: file: src/mainwindow.ui:353
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Врати на сачувано"
 
 #. i18n: file: src/mainwindow.ui:358
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr ""
+msgstr "&Графици..."
 
 #. i18n: file: src/mainwindow.ui:367
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr ""
+msgstr "&Преко целог екрана"
 
 #. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr ""
+msgstr "Есц"
 
 #. i18n: file: src/mainwindow.ui:379
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr ""
+msgstr "Постави боју &позадине..."
 
 #. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr ""
+msgstr "&О програму"
 
 #. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
-msgstr ""
+msgstr "&Опозови"
 
 #. i18n: file: src/mainwindow.ui:399
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
-msgstr ""
+msgstr "Ктрл+З"
 
 #. i18n: file: src/mainwindow.ui:408
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
-msgstr ""
+msgstr "&Понови"
 
 #. i18n: file: src/mainwindow.ui:411
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
-msgstr ""
+msgstr "Ктрл+Помак+З"
 
 #. i18n: file: src/mainwindow.ui:420
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr ""
+msgstr "Нови приказ"
 
 #. i18n: file: src/mainwindow.ui:432
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
-msgstr ""
+msgstr "Затвори приказ"
 
 #. i18n: file: src/mainwindow.ui:441
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
-msgstr ""
+msgstr "Средина"
 
 #. i18n: file: src/mainwindow.ui:450
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
-msgstr ""
+msgstr "Поравнај преглед на осе"
 
 #. i18n: file: src/mainwindow.ui:455
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
-msgstr ""
+msgstr "&Убаци"
 
 #. i18n: file: src/mainwindow.ui:458
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ктрл+В"
 
 #. i18n: file: src/mainwindow.ui:463
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
-msgstr ""
+msgstr "Умножи"
 
 #. i18n: file: src/mainwindow.ui:466
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ктрл+Ц"
 
 #. i18n: file: src/mainwindow.ui:471
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
-msgstr ""
+msgstr "Исеци"
 
 #. i18n: file: src/mainwindow.ui:474
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
-msgstr ""
+msgstr "Ктрл+Х"
 
 #. i18n: file: src/mainwindow.ui:479
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
-msgstr ""
+msgstr "Очисти"
 
 #. i18n: file: src/mainwindow.ui:484
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
-msgstr ""
+msgstr "Изабери све"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
-msgstr ""
+msgstr "Ктрл+А"
 
 #. i18n: file: src/mainwindow.ui:492
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
-msgstr ""
+msgstr "Поништи избор"
 
 #. i18n: file: src/mainwindow.ui:495
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
-msgstr ""
+msgstr "Ктрл+Помак+А"
 
 #. i18n: file: src/mainwindow.ui:504
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
-msgstr ""
+msgstr "Подеси Авогардо..."
 
 #. i18n: file: src/mainwindow.ui:515
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr ""
+msgstr "Упутства"
 
 #. i18n: file: src/mainwindow.ui:524
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr ""
+msgstr "Удвостручи приказ"
 
 #. i18n: file: src/mainwindow.ui:532
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr ""
+msgstr "Осе приказа"
 
 #. i18n: file: src/mainwindow.ui:540
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
-msgstr ""
+msgstr "Подаци о уклањању грешака"
 
 #. i18n: file: src/mainwindow.ui:548
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
-msgstr ""
+msgstr "Авогадрова помоћ"
 
 #. i18n: file: src/mainwindow.ui:553
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
-msgstr ""
+msgstr "Белешке о издању"
 
 #. i18n: file: src/mainwindow.ui:558
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
-msgstr ""
+msgstr "Пријави грешку"
 
 #. i18n: file: src/mainwindow.ui:563
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr ""
+msgstr "ЧПП"
 
 #. i18n: file: src/mainwindow.ui:568
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
-msgstr ""
+msgstr "Авогадров веб сајт"
 
 #. i18n: file: src/mainwindow.ui:577
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
-msgstr ""
+msgstr "Управник прикључака..."
 
 #. i18n: file: src/mainwindow.ui:586
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr ""
+msgstr "Уређивач стабла пројекта..."
 
 #. i18n: file: src/mainwindow.ui:595
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
-msgstr ""
+msgstr "Откачи преглед"
 
 #. i18n: file: src/mainwindow.ui:600
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
-msgstr ""
+msgstr "Датотека молекула..."
 
 #. i18n: file: src/mainwindow.ui:611
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
-msgstr ""
+msgstr "Користи брзо исцртавање"
 
 #. i18n: file: src/mainwindow.ui:616
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Векторска графика..."
 
 #. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
-msgstr ""
+msgstr "Прикажи осе поља јединице"
 
 #. i18n: file: src/mainwindow.ui:632
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
-msgstr ""
+msgstr "Све молекуле у датотеци..."
 
 #. i18n: file: src/mainwindow.ui:637
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
-msgstr ""
+msgstr "Поврати врсте приказа"
 
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Perspective"
-msgstr ""
+msgstr "Перспектива"
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
-msgstr ""
+msgstr "Правописни"
 
 #. i18n: file: src/mainwindow.ui:661
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "SMILES"
-msgstr ""
+msgstr "СМАЈЛИЋИ"
 
 #. i18n: file: src/mainwindow.ui:666
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "InChI"
-msgstr ""
+msgstr "МенХеО"
 
 #. i18n: file: src/mainwindow.ui:669
 #. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
 msgid "IUPAC InChI identifier"
-msgstr ""
+msgstr "МУЧПХ МенХеО"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
-msgstr ""
+msgstr "Прикључци"
 
 #. i18n: file: src/pluginsettings.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
-msgstr ""
+msgstr "Проширења"
 
 #. i18n: file: src/pluginsettings.ui:52
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
-msgstr ""
+msgstr "Детаљи"
 
 #. i18n: file: src/projecttreeeditor.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr ""
+msgstr "Стабло ставки"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #. i18n: file: src/projecttreeeditor.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
-msgstr ""
+msgstr "Врста"
 
 #. i18n: file: src/projecttreeeditor.ui:48
 #. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
-msgstr ""
+msgstr "Нова ставка"
 
 #. i18n: file: src/projecttreeeditor.ui:51
 #. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
-msgstr ""
+msgstr "&Нова ставка"
 
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
-msgstr ""
+msgstr "Нова подставка"
 
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr ""
+msgstr "Нова &подставка"
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
-msgstr ""
+msgstr "Обриши ставку"
 
 #. i18n: file: src/projecttreeeditor.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
-msgstr ""
+msgstr "&Обриши ставку"
 
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr ""
+msgstr "Помери ставку на лево (пре родитељске ставке)"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
 msgid "L"
-msgstr ""
+msgstr "Л"
 
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr ""
+msgstr "Помери ставку на десно (као прву подставку следеће ставке суизданка)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
 msgid "R"
-msgstr ""
+msgstr "Р"
 
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
-msgstr ""
+msgstr "Помери ставку на горе"
 
 #. i18n: file: src/projecttreeeditor.ui:136
 #. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
 msgid "U"
-msgstr ""
+msgstr "У"
 
 #. i18n: file: src/projecttreeeditor.ui:147
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
-msgstr ""
+msgstr "Помери ставку на доле"
 
 #. i18n: file: src/projecttreeeditor.ui:150
 #. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
 msgid "D"
-msgstr ""
+msgstr "Д"
 
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr ""
+msgstr "Псеудоним"
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
 msgid "Settings..."
-msgstr ""
+msgstr "Подешавања..."
 
 #. i18n: file: src/settingsdialog.ui:34
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "General"
-msgstr ""
+msgstr "Опште"
 
 #. i18n: file: src/settingsdialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
-msgstr ""
+msgstr "Квалитет:"
 
 #. i18n: file: src/settingsdialog.ui:49
 #. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
 #. i18n: file: src/settingsdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
-msgstr ""
+msgstr "Подесите квалитет општег исцртавања."
 
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
 msgid "Fog:"
-msgstr ""
+msgstr "Магла:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,Мирослав Николић"
+msgstr ""
+",Launchpad Contributions:,Мирослав Николић, ,Launchpad Contributions:,Danilo "
+"Nusic,Nikola Petković,Иван Старчевић,Мирослав Николић, ,Launchpad "
+"Contributions:,Danilo Nusic,Nikola Petković,Иван Старчевић,Мирослав Николић"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,miroslavnikolic@rocketmail.com"
+msgstr ""
+",,miroslavnikolic@rocketmail.com,,,,,ivanstar61@gmail.com,miroslavnikolic@roc"
+"ketmail.com,,,,,ivanstar61@gmail.com,miroslavnikolic@rocketmail.com"
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#~ msgctxt "main.cpp"
+#~ msgid "This system does not support OpenGL."
+#~ msgstr "Овај систем не подржава ОпенГЛ."
+
+#~ msgctxt "main.cpp"
+#~ msgid "Avogadro"
+#~ msgstr "Авогадро"
+
+#~ msgid "Load File..."
+#~ msgstr "Учитавам датотеку..."
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Анимирана путања"
+
+#~ msgid "Axis:"
+#~ msgstr "Оса:"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Отвори директоријум путање"
+
+#~ msgid "Align"
+#~ msgstr "Поравнање"
+
+#~ msgid "Everything"
+#~ msgstr "Све"
+
+#~ msgid "Align:"
+#~ msgstr "Поравнај:"
+
+#, qt-format
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Читање путање датотеке %1 неуспешно."
+
+#~ msgid "Animation..."
+#~ msgstr "Анимација..."
+
+#, qt-format
+#~ msgid "%1/%2"
+#~ msgstr "%1. %2."
+
+#~ msgid "Force Field:"
+#~ msgstr "Поље силе:"
+
+#, qt-format
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "АутоОпт: E = %1 %2 (dE = %3)"
+
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "АутоОпт: Не могу да поставим поље силе..."
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "Алат аутоматске оптимизације\n"
+#~ "\n"
+#~ "Функције навигације када кликнете на празан простор.\n"
+#~ "Леви тастер: Ротира простор\n"
+#~ "Средњи тастер: Зумира простор\n"
+#~ "Десни тастер: Помера простор\n"
+#~ "\n"
+#~ "Додатна функција када је покренут\n"
+#~ "Леви тастер: Кликните и држите атоме да их померите"
+
+#~ msgid "Steps per Update:"
+#~ msgstr "Кораци по надоградњи:"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Молекуларна динамика (300К)"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Учвршћени атоми су покретљиви"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Алгоритам:"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Молекуларна динамика (900К)"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Занемарени атоми се могу померати"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Молекуларна динамика (600К)"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "АутоОптимизација"
+
+#~ msgid "x rotation:"
+#~ msgstr "x ротација:"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Алат ауто ротирања"
+
+#~ msgid "y rotation:"
+#~ msgstr "y ротација:"
+
+#~ msgid "y rotation"
+#~ msgstr "y ротација"
+
+#~ msgid "x rotation"
+#~ msgstr "x ротација"
+
+#~ msgid "z rotation"
+#~ msgstr "z ротација"
+
+#~ msgid "z rotation:"
+#~ msgstr "z ротација:"
+
+#~ msgid "Axes"
+#~ msgstr "Осе"
+
+#~ msgid "AutoRotate"
+#~ msgstr "Ауто ротација"
+
+#~ msgid ""
+#~ "Bond Centric Manipulation Tool\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view\n"
+#~ "\n"
+#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
+#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
+#~ msgstr ""
+#~ "Алат померања главне везе\n"
+#~ "Леви клик: Кликни и вуци да ротираш поглед.\n"
+#~ "Средњи клик: Кликни и вуци да увећаш или одаљиш.\n"
+#~ "Десни клик: Кликни и вуци да помериш поглед.\n"
+#~ "\n"
+#~ "Леви клик & вуци на везу да наместиш раван обраде:\n"
+#~ "- Леви клик & вуци један од атома у вези да промениш угао\n"
+#~ "- Десни клик & вуци један од атома у вези да промениш дужину"
+
+#, qt-format
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Растојање (2->3): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Растојање (3->4): %1 %2"
+
+#, qt-format
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Угао: %1 %2"
+
+#, qt-format
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Растојање (1->2): %1 %2"
+
+#~ msgid " Show Angles"
+#~ msgstr " Прикажи углове"
+
+#~ msgid "Bond Centric Manipulate"
+#~ msgstr "Руковање главном везом"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " Привежи за везе"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Привежи за праг: "
+
+#, qt-format
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Број атома: %1"
+
+#~ msgid "Measure"
+#~ msgstr "Измери"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#, qt-format
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Број ротационих веза: %1"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Растојање(а):"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Dipole"
+#~ msgstr "Дипол"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Твој молекул мора садржати бар четири атома да би се додало торзионо "
+#~ "ограничење"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Твој молекул мора садржати бар три атома да би се додало ограничење угла"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Твој молекул мора садржати бар два атома да би се додало ограничење везе"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr "Твој молекул мора садржати бар један атом да би се додало ограничење"
+
+#~ msgid "Add constraint"
+#~ msgstr "Додај ограничење"
+
+#~ msgid "Draw"
+#~ msgstr "Цртање"
+
+#~ msgid "Element:"
+#~ msgstr "Елемент:"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Нацртај атом"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Нацртај везу"
+
+#~ msgid "Helium"
+#~ msgstr "Хелијум"
+
+#~ msgid "Lithium"
+#~ msgstr "Литијум"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Водоник"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Библиотека одломка..."
+
+#~ msgid "Single"
+#~ msgstr "Једнострука"
+
+#~ msgid "Double"
+#~ msgstr "Двострука"
+
+#~ msgid "Bond Order:"
+#~ msgstr "Поредак везе:"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Подеси водонике"
+
+#~ msgid "Triple"
+#~ msgstr "Трострука"
+
+#~ msgid "Beryllium"
+#~ msgstr "Берилијум"
+
+#~ msgid "Boron"
+#~ msgstr "Бор"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Азот"
+
+#~ msgid "Carbon"
+#~ msgstr "Угљеник"
+
+#~ msgid "Fluorine"
+#~ msgstr "Флуор"
+
+#~ msgid "Oxygen"
+#~ msgstr "Кисеоник"
+
+#~ msgid "Sodium"
+#~ msgstr "Натријум"
+
+#~ msgid "Neon"
+#~ msgstr "Неон"
+
+#~ msgid "Aluminum"
+#~ msgstr "Алуминијум"
+
+#~ msgid "Magnesium"
+#~ msgstr "Магнезијум"
+
+#~ msgid "Calcium"
+#~ msgstr "Калцијум"
+
+#~ msgid "Scandium"
+#~ msgstr "Скандијум"
+
+#~ msgid "Titanium"
+#~ msgstr "Титан"
+
+#~ msgid "Vanadium"
+#~ msgstr "Ванадијум"
+
+#~ msgid "Sulfur"
+#~ msgstr "Сумпор"
+
+#~ msgid "Chlorine"
+#~ msgstr "Хлор"
+
+#~ msgid "Argon"
+#~ msgstr "Аргон"
+
+#~ msgid "Potassium"
+#~ msgstr "Калијум"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Фосфор"
+
+#~ msgid "Silicon"
+#~ msgstr "Силицијум"
+
+#~ msgid "Chromium"
+#~ msgstr "Хром"
+
+#~ msgid "Manganese"
+#~ msgstr "Манган"
+
+#~ msgid "Copper"
+#~ msgstr "Бакар"
+
+#~ msgid "Nickel"
+#~ msgstr "Никл"
+
+#~ msgid "Cobalt"
+#~ msgstr "Кобалт"
+
+#~ msgid "Iron"
+#~ msgstr "Гвожђе"
+
+#~ msgid "Arsenic"
+#~ msgstr "Арсен"
+
+#~ msgid "Germanium"
+#~ msgstr "Германијум"
+
+#~ msgid "Gallium"
+#~ msgstr "Галијум"
+
+#~ msgid "Zinc"
+#~ msgstr "Цинк"
+
+#~ msgid "Krypton"
+#~ msgstr "Криптон"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Молибден"
+
+#~ msgid "Zirconium"
+#~ msgstr "Цирконијум"
+
+#~ msgid "Niobium"
+#~ msgstr "Ниобијум"
+
+#~ msgid "Strontium"
+#~ msgstr "Стронцијум"
+
+#~ msgid "Yttrium"
+#~ msgstr "Итријум"
+
+#~ msgid "Rubidium"
+#~ msgstr "Рубидијум"
+
+#~ msgid "Bromine"
+#~ msgstr "Бром"
+
+#~ msgid "Selenium"
+#~ msgstr "Селен"
+
+#~ msgid "Technetium"
+#~ msgstr "Технецијум"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Рутенијум"
+
+#~ msgid "Rhodium"
+#~ msgstr "Родијум"
+
+#~ msgid "Antimony"
+#~ msgstr "Антимон"
+
+#~ msgid "Iodine"
+#~ msgstr "Јод"
+
+#~ msgid "Tellurium"
+#~ msgstr "Телур"
+
+#~ msgid "Silver"
+#~ msgstr "Сребро"
+
+#~ msgid "Palladium"
+#~ msgstr "Паладијум"
+
+#~ msgid "Indium"
+#~ msgstr "Индијум"
+
+#~ msgid "Cadmium"
+#~ msgstr "Кадмијум"
+
+#~ msgid "Tin"
+#~ msgstr "Калај"
+
+#~ msgid "Europium"
+#~ msgstr "Еуропијум"
+
+#~ msgid "Barium"
+#~ msgstr "Баријум"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Лантан"
+
+#~ msgid "Cerium"
+#~ msgstr "Церијум"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Празеодијум"
+
+#~ msgid "Neodymium"
+#~ msgstr "Неодијум"
+
+#~ msgid "Promethium"
+#~ msgstr "Прометијум"
+
+#~ msgid "Samarium"
+#~ msgstr "Самаријум"
+
+#~ msgid "Caesium"
+#~ msgstr "Цезијум"
+
+#~ msgid "Xenon"
+#~ msgstr "Ксенон"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Гадолинијум"
+
+#~ msgid "Terbium"
+#~ msgstr "Тербијум"
+
+#~ msgid "Erbium"
+#~ msgstr "Ербијум"
+
+#~ msgid "Tantalum"
+#~ msgstr "Тантал"
+
+#~ msgid "Hafnium"
+#~ msgstr "Хафнијум"
+
+#~ msgid "Lutetium"
+#~ msgstr "Лутецијум"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Итербијум"
+
+#~ msgid "Thulium"
+#~ msgstr "Тулијум"
+
+#~ msgid "Holmium"
+#~ msgstr "Холмијум"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Диспрозијум"
+
+#~ msgid "Platinum"
+#~ msgstr "Платина"
+
+#~ msgid "Gold"
+#~ msgstr "Злато"
+
+#~ msgid "Osmium"
+#~ msgstr "Осмијум"
+
+#~ msgid "Iridium"
+#~ msgstr "Иридијум"
+
+#~ msgid "Lead"
+#~ msgstr "Олово"
+
+#~ msgid "Mercury"
+#~ msgstr "Жива"
+
+#~ msgid "Thallium"
+#~ msgstr "Талијум"
+
+#~ msgid "Rhenium"
+#~ msgstr "Ренијум"
+
+#~ msgid "Tungsten"
+#~ msgstr "Волфрам"
+
+#~ msgid "Bismuth"
+#~ msgstr "Бизмут"
+
+#~ msgid "Polonium"
+#~ msgstr "Полонијум"
+
+#~ msgid "Astatine"
+#~ msgstr "Астат"
+
+#~ msgid "Francium"
+#~ msgstr "Францијум"
+
+#~ msgid "Radon"
+#~ msgstr "Радон"
+
+#~ msgid "Actinium"
+#~ msgstr "Актинијум"
+
+#~ msgid "Radium"
+#~ msgstr "Радијум"
+
+#~ msgid "Protactinium"
+#~ msgstr "Протактинијум"
+
+#~ msgid "Thorium"
+#~ msgstr "Торијум"
+
+#~ msgid "Neptunium"
+#~ msgstr "Нептунијум"
+
+#~ msgid "Uranium"
+#~ msgstr "Уран"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Лоренцијум"
+
+#~ msgid "Nobelium"
+#~ msgstr "Нобелијум"
+
+#~ msgid "Berkelium"
+#~ msgstr "Берклијум"
+
+#~ msgid "Curium"
+#~ msgstr "Киријум"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Ајнштајнијум"
+
+#~ msgid "Californium"
+#~ msgstr "Калифорнијум"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Мендељевијум"
+
+#~ msgid "Fermium"
+#~ msgstr "Фермијум"
+
+#~ msgid "Americium"
+#~ msgstr "Америцијум"
+
+#~ msgid "Plutonium"
+#~ msgstr "Плутонијум"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Рентгенијум"
+
+#~ msgid "Hassium"
+#~ msgstr "Хасијум"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Мејтнеријум"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Сиборгијум"
+
+#~ msgid "Bohrium"
+#~ msgstr "Боријум"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Унунтријум"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Дармштатијум"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Радефордијум"
+
+#~ msgid "Dubnium"
+#~ msgstr "Дубнијум"
+
+#~ msgid "Ununbium"
+#~ msgstr "Унунбијум"
+
+#~ msgid "Force"
+#~ msgstr "Сила"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Унунквадијум"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Унунпентијум"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Унуноктијум"
+
+#~ msgid "Optimize Geometry"
+#~ msgstr "Оптимизуј геометрију"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Подеси поље силе..."
+
+#~ msgid "Ununseptium"
+#~ msgstr "Унунсептијум"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Унунсексијум"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "Пронађи конформер..."
+
+#~ msgid "Constraints..."
+#~ msgstr "Ограничења..."
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Израчунај енергију"
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Игнориши избор"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Молекуларне механизме"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Не могу да подесим поље силе за овај молекул."
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Причврсти изабране атоме"
+
+#, qt-format
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Енергија = %1 %2"
+
+#~ msgid "FPS"
+#~ msgstr "ФПС"
+
+#~ msgid "View Size"
+#~ msgstr "Величина прегледа"
+
+#~ msgid ""
+#~ "Invalid OpenGL context.\n"
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
+#~ msgstr ""
+#~ "Неважећи ОпенГЛ контекст.\n"
+#~ "Или је нешто сасвим оштећено у Вашој поставци ОпенГЛ-а (да ли можете да "
+#~ "покренете било коју ОпенГЛ апликацију?) или сте пронашли грешку."
+
+#~ msgid "OpenGL error"
+#~ msgstr "ОпенГЛ грешка"
+
+#~ msgid "QM Matches"
+#~ msgstr "QM поклапања"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "SMILES претварање недоступно"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Мораш направити избор!"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Нема изабраних атома"
+
+#~ msgid "Delete"
+#~ msgstr "Обриши"
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "GAMESS EFP податци"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "gamessEfpDock"
+
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP избор..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "QM избор..."
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "Group Name"
+#~ msgstr "Назив групе"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Да ли си сигуран да желиш да поништиш напредна подешавања?\n"
+#~ "Све промене ће бити изгубљење!"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Промењена су напредна подешавања.\n"
+#~ "Одбаци?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Поништавање напредних подешавања"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Промењена напредна подешавања"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Да ли си сигуран да желиш да поништиш основна подешавања?\n"
+#~ "Све измене ће бити поништене!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Поништавање основних подешавања"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Изрази везе водоника"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Везе водоника"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Измени H на метил"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Додај водонике за pH..."
+
+#~ msgid "Open Directory"
+#~ msgstr "Отворите директоријум"
+
+#~ msgid "Stop Inserting"
+#~ msgstr "Заустави убацивање"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Отвори директоријум лиганда"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Авогардо датотеке (*.*)"
+
+#~ msgid "Tool Settings"
+#~ msgstr "Подешавање алата"
+
+#, qt-format
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Не могу да прочитам датотеку %1:\n"
+#~ "%2."
+
+#~ msgid ""
+#~ "This file does not contain 3D coordinates. You may not be able to edit or "
+#~ "view properly."
+#~ msgstr ""
+#~ "Ова датотека не садржи 3Д координате. Нећете бити у могућности да измените "
+#~ "или да прегледате."
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ msgstr ""
+#~ "Ова датотека садржи вишеструка снимања молекула. Авогадро ће прочитати само "
+#~ "први молекул. Ако снимите, сви остали молекули ће бити изгубљени."
+
+#~ msgid "Reading molecular file failed."
+#~ msgstr "Читање датотеке молекула је неуспешно."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Снимање успешно."
+
+#, qt-format
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Не могу да пишем на датотеку %1.\n"
+#~ "%2"
+
+#, qt-format
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "Не могу да упишем тип датотеке за датотеку %1."
+
+#~ msgid "Saving file."
+#~ msgstr "Снимам датотеку."
+
+#, qt-format
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Не могу да пишем по датотеци %1."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "Снимање датотеке молекула је неуспешно."
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Документ је измењен.\n"
+#~ "Да ли желиш да снимиш промене?"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Авогадро"
+
+#, qt-format
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "Алат управљања (F10)\n"
+#~ "\n"
+#~ "Леви тастер:   Кликните и држите да померите атоме\n"
+#~ "Средњи тастер: Кликните и држите да померате атоме даље или ближе\n"
+#~ "Десни тастер:  Кликните и држите да окренете изабране атоме."
+
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Ова датотека садржи само 2Д координате. Да ли желиш да Авогардо одмери везе "
+#~ "и уради брзу оптимизацију?"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "Алат навигације (F9)\n"
+#~ "\n"
+#~ "Леви тастер:   Кликните и држите да окренете преглед\n"
+#~ "Средњи тастер: Кликните и држите да увећате или умањите\n"
+#~ "Десни тастер:  Кликните и држите да померите преглед"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Прекини рачунање"
+
+#~ msgid "MO "
+#~ msgstr "MO "
+
+#~ msgid "Polygon"
+#~ msgstr "Полигон"
+
+#~ msgid "&Properties"
+#~ msgstr "&Својства"
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Декартов уређивач"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Својства атома..."
+
+#~ msgid "Conformers..."
+#~ msgstr "Конформери..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Торзиона својства..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "Својства углова..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Својства везе..."
+
+#~ msgid "Atomic Number"
+#~ msgstr "Атомски број"
+
+#~ msgid "Valence"
+#~ msgstr "Валенца"
+
+#~ msgid "Bond Order"
+#~ msgstr "Ред везе"
+
+#~ msgid "Start Atom"
+#~ msgstr "Почетни атом"
+
+#, qt-format
+#~ msgid "Atom %1"
+#~ msgstr "Атом %1"
+
+#~ msgid "End Atom"
+#~ msgstr "Крајњи атом"
+
+#, qt-format
+#~ msgid "Torsion %1"
+#~ msgstr "Торзија %1"
+
+#~ msgid "Rotatable"
+#~ msgstr "Окретљиво"
+
+#, qt-format
+#~ msgid "Bond %1"
+#~ msgstr "Веза %1"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Угао %1"
+
+#~ msgid "Torsion"
+#~ msgstr "Торзија"
+
+#~ msgid "Conformer"
+#~ msgstr "Конформер"
+
+#, qt-format
+#~ msgid "Conformer %1"
+#~ msgstr "Конформер %1"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Скрипте"
+
+#~ msgid "Select Solvent"
+#~ msgstr "Изабери растварач"
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Изабери према остатку"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Изабери по елементу"
+
+#~ msgid "Ribbon"
+#~ msgstr "Трака"
+
+#~ msgid "Ring"
+#~ msgstr "Прстен"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "Изабери SMARTS..."
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Изврни избор"
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "Додај именован одабир..."
+
+#~ msgid "There is no current selection."
+#~ msgstr "Нема тренутно одабира."
+
+#~ msgid "Select by residue"
+#~ msgstr "Изабери по остатку"
+
+#~ msgid "SMARTS pattern to select"
+#~ msgstr "SMARTS образце за изабрати"
+
+#~ msgid "SMARTS Selection"
+#~ msgstr "SMARTS избор"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Атом/веза"
+
+#~ msgid "name"
+#~ msgstr "назив"
+
+#~ msgid ""
+#~ "Selection Tool (F11)\n"
+#~ "Click to pick individual atoms, residues, or fragments\n"
+#~ "Drag to select a range of atoms\n"
+#~ "Use Ctrl to toggle the selection and shift to add to the selection"
+#~ msgstr ""
+#~ "Алат избора (F11)\n"
+#~ "Кликни да изабереш појединачне атоме, остатке или делиће\n"
+#~ "Вуци да изабереш распон атома.\n"
+#~ "Користи CTRL да промениш одабир и додаш у одабир"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Начин избора:"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Назив не може бити празан"
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Већ је направљен одабир са овим називом."
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Ван дер Валсове сфере"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Склапање атома као Ван дер Валсових сфера"
+
+#~ msgid "Stick"
+#~ msgstr "Прилепи"
+
+#~ msgid "Surface"
+#~ msgstr "Површина"
+
+#~ msgid "First Action"
+#~ msgstr "Прва акција"
+
+#~ msgid "Second Action"
+#~ msgstr "Друга акција"
+
+#~ msgid "&Template"
+#~ msgstr "&Предложак"
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "Параметри јединичне ћелије..."
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "Овај документ је тренутно изолован молекул.\n"
+#~ "\n"
+#~ "Да ли желиш да направиш кристалну јединичну ћелију?"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Радијус везе:"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Радијус атома:"
+
+#~ msgid "Wireframe"
+#~ msgstr "Жичаног рама"
+
+#~ msgid "Disconnect"
+#~ msgstr "Прекини"
+
+#~ msgid "Connect"
+#~ msgstr "Повежи"
+
+#~ msgid "Conformer Search"
+#~ msgstr "Претрага конформера"
+
+#~ msgid "Constraints"
+#~ msgstr "Ограничења"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Број атома"
+
+#~ msgid "Number of rotatable bonds:"
+#~ msgstr "Број ротационих веза:"
+
+#~ msgid "Number of conformers"
+#~ msgstr "Број конформера"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Привежи атом Z"
+
+#~ msgid "Add Constraints"
+#~ msgstr "Додај ограничења"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Игнориши атом"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Привежи атом Y"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Привежи атом X"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Привежи атом"
+
+#~ msgid "Torsion angle"
+#~ msgstr "Торзиони угао"
+
+#~ msgid "Distance"
+#~ msgstr "Удаљеност"
+
+#~ msgid "Delete All"
+#~ msgstr "Уклони све"
+
+#~ msgid "Constraint Value"
+#~ msgstr "Величина ограничења"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Уклони одабрано"
+
+#~ msgid "Load"
+#~ msgstr "Учитај"
+
+#~ msgid "Force Field"
+#~ msgstr "Поље силе"
+
+#~ msgid "Ghemical"
+#~ msgstr "Ghemical"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "Подеси поље силе"
+
+#~ msgid "Algorithm"
+#~ msgstr "Алгоритам"
+
+#~ msgid "Number of steps"
+#~ msgstr "Број корака"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "Convergence"
+#~ msgstr "Конвенгенција"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "Neutral"
+#~ msgstr "Неутралан"
+
+#~ msgid "Triplet"
+#~ msgstr "Триплет"
+
+#~ msgid "Doublet"
+#~ msgstr "Дублет"
+
+#~ msgid "Memory:"
+#~ msgstr "Меморија:"
+
+#~ msgid "Singlet"
+#~ msgstr "Синглет"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Core Potential"
+#~ msgstr "Потенцијал језгра"
+
+#~ msgid "On:"
+#~ msgstr "На:"
+
+#~ msgid "Dianion"
+#~ msgstr "Дианјон"
+
+#~ msgid "Anion"
+#~ msgstr "Анјон"
+
+#~ msgid "Transition State"
+#~ msgstr "Прелазно стање"
+
+#~ msgid "Water"
+#~ msgstr "Вода"
+
+#~ msgid "Gas"
+#~ msgstr "Гас"
+
+#~ msgid "Advanced"
+#~ msgstr "Напредно"
+
+#~ msgid "In:"
+#~ msgstr "У:"
+
+#~ msgid "With:"
+#~ msgstr "Са:"
+
+#~ msgid "Time Limit:"
+#~ msgstr "Временско ограничење:"
+
+#~ msgid "Control"
+#~ msgstr "Управљање"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "&Основне поставке"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "Basis"
+#~ msgstr "Основа"

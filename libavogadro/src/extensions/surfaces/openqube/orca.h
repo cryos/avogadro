@@ -45,6 +45,7 @@ private:
   QIODevice *m_in;
   void processLine(GaussianSet *basis);
   void load(GaussianSet *basis);
+  void calculateDensityMatrix();
 
   // OrcaStuff
 
@@ -72,6 +73,8 @@ private:
   bool m_openShell;
   bool m_useBeta;
 
+  int m_homo;
+
   int m_currentAtom;
   unsigned int m_numBasisFunctions;
   std::vector<orbital> m_shellTypes;
@@ -82,6 +85,8 @@ private:
   std::vector<double> m_csp;
   std::vector<double> m_orbitalEnergy;
   std::vector<double> m_MOcoeffs;
+
+  Eigen::MatrixXd m_density;     /// Total density matrix
 };
 
 } // End namespace

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:42+0000\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2015-09-09 17:24+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Kannada <kn@li.org>\n"
-"Language: kn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:12+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: kn\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,24 +31,24 @@ msgstr "(ಗಿಟ್ ರಿವಿಶನ್: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "ಅವೊಗಡ್ರೊ"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr ""
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "ಸಂಯೋಜನೆಗಳು"
 
@@ -330,102 +330,102 @@ msgstr ""
 msgid "Untitled %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr ""
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2413
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr ""
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr ""
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr ""
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr ""
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr ""
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr ""
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr ""
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr ""
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr ""
 
@@ -513,7 +513,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -530,7 +530,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -1228,20 +1228,29 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro Team,"
-"ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ, ,Launchpad "
+",Launchpad Contributions:,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro "
+"Team,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ, ,Launchpad "
 "Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro "
 "Team,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ, ,Launchpad "
-"Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ"
+"Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro "
+"Team,ಸುಧೀಂದ್ರ, ,Launchpad Contributions:,Avogadro Team,ಸುಧೀಂದ್ರ"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
-"sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,,,,"
-"avogadro-devel@lists.sourceforge.net,"
+",,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,"
 
+#~ msgctxt "main.cpp"
+#~ msgid "Double Buffering."
+#~ msgstr "ದ್ವಿಗುಣ ತಾತ್ಕಾಲಿಕ ಸಂಗ್ರಹ."
+
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Avogadro: \t%1 (Hash %2)\n"
@@ -1251,10 +1260,6 @@ msgstr ""
 #~ "ಅವೊಗಡ್ರೊ: \t%1 (Hash %2)\n"
 #~ "ಲಿಬ್ ಅವೊಗಡ್ರೊ: \t%3 (Hash %4)\n"
 #~ "ಕ್ಯೂಟಿ: \t\t%5\n"
-
-#~ msgctxt "main.cpp"
-#~ msgid "Double Buffering."
-#~ msgstr "ದ್ವಿಗುಣ ತಾತ್ಕಾಲಿಕ ಸಂಗ್ರಹ."
 
 #~ msgctxt "main.cpp"
 #~ msgid "System has OpenGL support."

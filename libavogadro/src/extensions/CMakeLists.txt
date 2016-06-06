@@ -92,6 +92,11 @@ avogadro_plugin_nogl(povrayextension
   "povrayextension.cpp;povpainter.cpp;povraydialog.cpp"
   povraydialog.ui)
 
+### VRML export extension
+avogadro_plugin_nogl(vrmlextension
+  "vrmlextension.cpp;vrmlpainter.cpp;vrmldialog.cpp"
+  vrmldialog.ui)
+
 ### File import extension
 avogadro_plugin_nogl(fileimportextension fileimportextension.cpp fileimportdialog.ui)
 
@@ -121,12 +126,24 @@ target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
 avogadro_plugin(gl2psextension
   "gl2psextension.cpp;gl2ps/gl2ps.c")
 
+# Symmetry (libmsym) has compile issues on Windows
+# due to VLA not supported by C compiler
+if (MSVC)
+  OPTION(BUILD_SYMMETRY "Build symmetry extension and libmsym - not supported with Visual Studio" OFF)
+else()
+  OPTION(BUILD_SYMMETRY
+  "Build symmetry extension and libmsym" ON)
+endif()
+
+if(BUILD_SYMMETRY)
+  add_subdirectory(symmetry)
+endif()
+
 # Subdirs
 add_subdirectory(crystallography)
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
 add_subdirectory(swcntbuilder)
-add_subdirectory(symmetry)
 add_subdirectory(qtaim)
 add_subdirectory(quantuminput)
 add_subdirectory(orca)

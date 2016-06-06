@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2012-05-08 08:12+0000\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2015-09-09 17:24+0000\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
-"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-09-04 04:45+0000\n"
-"X-Generator: Launchpad (build 15890)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:12+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: sl\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,8 +31,8 @@ msgstr "(Predelava Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Različica programa: %2<br/><br/>Različica knjižnice: "
 "%3<br/><br/>Različica Open Babel: %4"
@@ -41,22 +41,19 @@ msgstr ""
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Različica Qt: %1<br/><br/>Več podrobnosti je navedenih na spletnih "
-"straneh <a href=\"http://avogadro.openmolecules.net/\">programa Avogadro</a>."
-"<br/><br/>Program je objavljen brez vsakršne garancije.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -83,7 +80,7 @@ msgstr "Počisti atome"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Nastavitve"
 
@@ -338,104 +335,103 @@ msgstr "Ni mogoče shraniti datoteke %1."
 msgid "Untitled %1"
 msgstr "Neimenovano %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "Ni mogoče prilepiti molekule."
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr "Prilepljenje je spodletelo (zapis ni na voljo)"
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "Kopiranje je spodletelo (MDL ni na voljo)"
+msgstr "Kopiranje je spodletelo (zapis ni na voljo)."
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopiranje je spodletelo (MDL ni na voljo)"
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "Poglej %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Poglej %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: odpet pogled"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "Običajna velikost"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "Celozaslonski način"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Povratna tipka"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "Podvoji"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "Odstrani"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "Ni naloženih orodij ali programnikov."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "Ni naloženih programnikov."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "Ni naloženih orodij."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Najverjetneje program ne bo deloval pravilno. Težavo je treba odpraviti."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "Predmeti"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "Barve"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " kopiraj"
 
@@ -508,7 +504,7 @@ msgstr "podrejene predmete imajo lahko le oznake"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "Predmet"
 
@@ -523,7 +519,7 @@ msgstr "Nizka"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Srednja"
@@ -540,7 +536,7 @@ msgstr "Nedoločena"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Brez"
@@ -737,9 +733,8 @@ msgstr "&Uredi"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Kopiraj"
+msgstr "Kopiraj kot"
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -1090,17 +1085,17 @@ msgstr "Pravokotno"
 #. i18n: file: src/mainwindow.ui:661
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "SMILES"
-msgstr ""
+msgstr "SMILES"
 
 #. i18n: file: src/mainwindow.ui:666
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "InChI"
-msgstr ""
+msgstr "InChI"
 
 #. i18n: file: src/mainwindow.ui:669
 #. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
 msgid "IUPAC InChI identifier"
-msgstr ""
+msgstr "Določilo IUPAC InChI"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1241,11 +1236,16 @@ msgstr "Zamegljenost:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,Matej Urbančič,Miha Gašperšič"
+msgstr ""
+",Launchpad Contributions:,Matej Urbančič,Miha Gašperšič, ,Launchpad "
+"Contributions:,Matej Urbančič,Miha Gašperšič, ,Launchpad "
+"Contributions:,Matej Urbančič,Miha Gašperšič"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,mateju@svn.gnome.org,mihec.gaspersic@gmail.com"
+msgstr ""
+",,mateju@svn.gnome.org,mihec.gaspersic@gmail.com,,,mateju@svn.gnome.org,mihec"
+".gaspersic@gmail.com,,,mateju@svn.gnome.org,mihec.gaspersic@gmail.com"
 
 #~ msgctxt "main.cpp"
 #~ msgid "This system does not support OpenGL."
@@ -1267,6 +1267,7 @@ msgstr ",,mateju@svn.gnome.org,mihec.gaspersic@gmail.com"
 #~ msgid "Backspace"
 #~ msgstr "Vračalka"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"
@@ -1288,6 +1289,7 @@ msgstr ",,mateju@svn.gnome.org,mihec.gaspersic@gmail.com"
 #~ msgid "Common vector image formats"
 #~ msgstr "Splošni vektorski zapisi slik"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Avogadro: \t%1 (Hash %2)\n"
@@ -1322,19 +1324,20 @@ msgstr ",,mateju@svn.gnome.org,mihec.gaspersic@gmail.com"
 #~ msgid "About to test OpenGL capabilities."
 #~ msgstr "Začel se bo preiskus zmožnosti OpenGL."
 
+#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Različica programa: %2<br/><br/>Različica knjižnice: "
-#~ "%3<br/><br/>Različica Open Babel: %4<br/><br/>Različica okolja Qt: %5<br/"
-#~ "><br/>Več podrobnosti je mogoče najti na spletni strani <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">programa Avogadro</a>.<br/><br/>Program je "
-#~ "objavljen KOT JE, BREZ VSAKRŠNEGA\n"
-#~ "JAMSTVA; tudi brez posredne zagotovitve CENOVNE VREDNOSTI ali "
-#~ "PRIMERNOSTI\n"
+#~ "%3<br/><br/>Različica Open Babel: %4<br/><br/>Različica okolja Qt: "
+#~ "%5<br/><br/>Več podrobnosti je mogoče najti na spletni strani <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">programa "
+#~ "Avogadro</a>.<br/><br/>Program je objavljen KOT JE, BREZ VSAKRŠNEGA\n"
+#~ "JAMSTVA; tudi brez posredne zagotovitve CENOVNE VREDNOSTI ali PRIMERNOSTI\n"
 #~ "ZA DOLOČEN NAMEN.<br/>"

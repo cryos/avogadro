@@ -119,8 +119,14 @@ int main(int argc, char *argv[])
                           + "/../share/openbabel/").toAscii());
   QByteArray babelLibDir((QCoreApplication::applicationDirPath()
                          + "/../lib/openbabel").toAscii());
+
+#ifdef _MSC_VER
+  int res1 = _putenv_s("BABEL_DATADIR", babelDataDir.data());
+  int res2 = _putenv_s("BABEL_LIBDIR", babelLibDir.data());
+#else
   int res1 = setenv("BABEL_DATADIR", babelDataDir.data(), 1);
   int res2 = setenv("BABEL_LIBDIR", babelLibDir.data(), 1);
+#endif
 
   qDebug() << "BABEL_LIBDIR" << babelLibDir.data();
 
@@ -167,6 +173,12 @@ int main(int argc, char *argv[])
 #endif
 
   qDebug() << "Locale: " << translationCode;
+
+  // As suggested by iwao aoyama to make sure Windows opens files with kanji characters
+#ifdef WIN32
+  QString lang = QLocale::languageToString(QLocale::system().language());
+  std::locale::global(std::locale(lang.toLocal8Bit().constData()));
+#endif
 
   // Load Qt translations first
   bool tryLoadingQtTranslations = false;

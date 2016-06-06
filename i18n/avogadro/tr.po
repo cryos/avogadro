@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:47+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2016-03-10 05:23+0000\n"
+"Last-Translator: Hüseyin Kozan <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-03-11 05:19+0000\n"
+"X-Generator: Launchpad (build 17939)\n"
+"Language: tr\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -26,38 +26,34 @@ msgstr "Tamam"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr "(Git sürüm: %1)"
+msgstr "Git gözden geçirme: %1"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: %3<br/"
-"><br/>Open Babel Sürümü: %4"
+"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: "
+"%3<br/><br/>Open Babel Sürümü: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<br/><br/>Qt Sürümü: %1<br/><br/>Daha fazla bilgi için <a href=\"http://"
-"avogadro.openmolecules.net/\">Avogadro ana sayfası</a>nı ziyaret edin.<br/"
-"><br/>Bu program OLDUĞU GİBİ sunulmaktadır, HERHANGİ BELİRLİ AMAÇ İÇİN "
-"TASARIM, TİCARİ UYGUNLUK VE YETERLİLİK DAHİL HİÇBİR GARANTİSİ YOKTUR.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -84,7 +80,7 @@ msgstr "Atomları temizle"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -118,15 +114,15 @@ msgstr "Hepsini Öne Getir"
 
 #: src/mainwindow.cpp:591
 msgid "Record Test..."
-msgstr ""
+msgstr "Kayıt Testi..."
 
 #: src/mainwindow.cpp:594
 msgid "Play Test..."
-msgstr ""
+msgstr "Oynatma Testi..."
 
 #: src/mainwindow.cpp:896
 msgid "&Tool Settings..."
-msgstr "Araç Ayarları"
+msgstr "&Araç Ayarları"
 
 #: src/mainwindow.cpp:899
 msgctxt "Tool Settings shortcut"
@@ -135,7 +131,7 @@ msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:904
 msgid "&Display Settings..."
-msgstr "Görüntü Ayarları..."
+msgstr "&Görüntü Ayarları..."
 
 #: src/mainwindow.cpp:907
 msgctxt "Display Settings shortcut"
@@ -156,7 +152,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:957
 msgid "Computational Chemistry Output"
-msgstr "Teorik Hesaplamalı Kimya Çıktısı"
+msgstr "Hesapsal Kimya Çıktısı"
 
 #: src/mainwindow.cpp:958
 msgid "Crystallographic Interchange CIF"
@@ -216,7 +212,7 @@ msgstr "Yükleniyor %1..."
 #: src/mainwindow.cpp:1085 src/mainwindow.cpp:1320
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr "%1 molekül dosyasının okuması başarısız oldu."
+msgstr "Molekül dosyasının okuması başarısız oldu, dosya %1."
 
 #: src/mainwindow.cpp:1108
 msgid "Reading multi-molecule file. This may take a while..."
@@ -248,7 +244,7 @@ msgstr "Molekül Başlığı"
 
 #: src/mainwindow.cpp:1312
 msgid "Atoms: "
-msgstr "Atomlar "
+msgstr "Atomlar: "
 
 #: src/mainwindow.cpp:1313
 msgid " Bonds: "
@@ -290,11 +286,11 @@ msgstr "GAMESS Girdisi"
 
 #: src/mainwindow.cpp:1442
 msgid "Gaussian Cartesian Input"
-msgstr "Gaussian Cartesian Girdisi"
+msgstr "Gauss Kartezyen Girdisi"
 
 #: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
-msgstr "Gaussian Z-matrix Girdisi"
+msgstr "Gauss Z-matriks Girdisi"
 
 #: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
@@ -331,94 +327,93 @@ msgstr "Bitmap Olarak Dışa Aktar"
 #: src/mainwindow.cpp:1729
 #, qt-format
 msgid "Cannot save file %1."
-msgstr "%1 dosyası kaydedilemiyor."
+msgstr "Dosya kaydedilemiyor %1."
 
 #: src/mainwindow.cpp:1826
 #, qt-format
 msgid "Untitled %1"
 msgstr "isimsiz %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "Molekül yapıştırılamadı."
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
-msgstr "Yapıştırma başarısız (biçim erişilemez)."
+msgstr "Yapıştırma başarısız (biçim uygun değil)."
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "Kopyalama başarısız (mdl erişilemez)."
+msgstr "Kopyalama hatası (format uygun değil)."
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
-msgstr "Kopyalama başarısız (mdl erişilemez)."
+msgstr "Kopyalama başarısız (mdl uygun değil)."
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Ayrılmış Görüntü"
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "Normal Boyut"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "Tam Ekran"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "Ekle"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "Çoğalt"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "Herhangi bir araç veya motor yüklenmedi."
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "Herhangi bir motor yüklenmedi."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "Herhangi bir araç yüklenmedi."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -426,17 +421,17 @@ msgstr ""
 " Bu program doğru bir şekilde çalışacağa benzemiyor. Lütfen bu hatayı "
 "düzeltin."
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "Nesneler"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "Renkler"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " kopyala"
 
@@ -505,11 +500,11 @@ msgstr "Hata"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr "sadece etiketler alt öğe sahip olabilirler"
+msgstr "sadece etiketler alt öğeye sahip olabilirler"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "Öğe"
 
@@ -524,7 +519,7 @@ msgstr "Düşük"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Orta"
@@ -541,10 +536,10 @@ msgstr "Tanımlanmamış"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr "Hiç"
+msgstr "Hiçbiri"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
@@ -559,7 +554,7 @@ msgstr "Orta"
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr "Epey"
+msgstr "Birçok"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
@@ -568,11 +563,11 @@ msgstr "Tanımlanmamış"
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr "Ağdan günceleme kontrolü başarısız"
+msgstr "Ağ Güncelleme Kontrolü Başarısız"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr "Ağda zaman aşımı veya diğer bir hata."
+msgstr "Ağ zaman aşımı veya başka bir hata."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
@@ -708,7 +703,7 @@ msgstr "İçe Aktar"
 #. i18n: file: src/mainwindow.ui:80
 #. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
-msgstr "&Ayarlar"
+msgstr "A&yarlar"
 
 #. i18n: file: src/mainwindow.ui:84
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
@@ -718,29 +713,27 @@ msgstr "Araç Çubukları"
 #. i18n: file: src/mainwindow.ui:93
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
-msgstr "İnşa Et"
+msgstr "&İnşa Et"
 
 #. i18n: file: src/mainwindow.ui:98
 #. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
-msgstr "&Görünüm"
+msgstr "&Göster"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "Proje Ağacı"
+msgstr "Projeksiyon"
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Düzen"
+msgstr "Dü&zenle"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "Kopyala"
+msgstr "Farklı Kopyala"
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -817,7 +810,7 @@ msgstr "Son Kullanılan Dosyaları Temizle"
 #. i18n: file: src/mainwindow.ui:314
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
-msgstr "&Yeni"
+msgstr "Ye&ni"
 
 #. i18n: file: src/mainwindow.ui:309
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -876,17 +869,17 @@ msgstr "&Tam Ekran Modu"
 #. i18n: file: src/mainwindow.ui:370
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr "Esc"
+msgstr "Çık"
 
 #. i18n: file: src/mainwindow.ui:379
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
-msgstr "Art Alan Rengini Ata..."
+msgstr "Arka&plan Rengini Ayarla..."
 
 #. i18n: file: src/mainwindow.ui:384
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
-msgstr "Hakkında"
+msgstr "&Hakkında"
 
 #. i18n: file: src/mainwindow.ui:396
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -926,7 +919,7 @@ msgstr "Ortala"
 #. i18n: file: src/mainwindow.ui:450
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Align View To Axes"
-msgstr ""
+msgstr "Görünümü Eksene Hizala"
 
 #. i18n: file: src/mainwindow.ui:455
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -991,7 +984,7 @@ msgstr "Avagadro'yu Yapılandır..."
 #. i18n: file: src/mainwindow.ui:515
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
-msgstr "Eğitici Belgeler"
+msgstr "Eğitim"
 
 #. i18n: file: src/mainwindow.ui:524
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1056,7 +1049,7 @@ msgstr "Molekül Dosyası..."
 #. i18n: file: src/mainwindow.ui:611
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
-msgstr "Çabuk Kaplamayı Kullan"
+msgstr "Hızlı Yorumlamayı Kullan"
 
 #. i18n: file: src/mainwindow.ui:616
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1081,27 +1074,27 @@ msgstr "Görüntü Biçimlerini Sıfırla"
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Perspective"
-msgstr ""
+msgstr "Perspektif"
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Orthographic"
-msgstr ""
+msgstr "İmla"
 
 #. i18n: file: src/mainwindow.ui:661
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "SMILES"
-msgstr ""
+msgstr "SMILES"
 
 #. i18n: file: src/mainwindow.ui:666
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "InChI"
-msgstr ""
+msgstr "InChl"
 
 #. i18n: file: src/mainwindow.ui:669
 #. i18n: ectx: property (toolTip), widget (QToolBar, toolBar)
 msgid "IUPAC InChI identifier"
-msgstr ""
+msgstr "IUPAC InChI tanımlayıcı"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1118,7 +1111,7 @@ msgstr "Eklentiler"
 #. i18n: file: src/pluginsettings.ui:52
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
-msgstr "Detaylar"
+msgstr "Ayrıntılar"
 
 #. i18n: file: src/projecttreeeditor.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
@@ -1244,65 +1237,51 @@ msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
 "Contributions:,Efe Çiftci,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
-"Contributions:,Efe Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,"
-"huseyinkozan, ,Launchpad Contributions:,Efe Çiftci,Macky,Osman Tosun,Yahuda,"
-"aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe Çiftci,Macky,"
-"Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,"
-"Efe Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
-"Contributions:,Efe Çiftci,K. Deniz Ogut,Macky,Osman Tosun,Yahuda,aLsanCaK,"
-"hknrgl,huseyinkozan, ,Launchpad Contributions:,Avogadro Team,Efe Çiftci,K. "
-"Deniz Ogut,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
-"Contributions:,Avogadro Team,Efe Çiftci,K. Deniz Ogut,Macky,Osman Tosun,"
-"Yahuda,aLsanCaK,hknrgl,huseyinkozan"
+"Contributions:,Efe Çiftci,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe "
+"Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Efe Çiftci,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad Contributions:,Efe "
+"Çiftci,Macky,Osman Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Avogadro Team,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Avogadro Team,Efe Çiftci,K. Deniz Ogut,Macky,Osman "
+"Tosun,Yahuda,aLsanCaK,hknrgl,huseyinkozan, ,Launchpad "
+"Contributions:,Abdurrahman OLĞAÇ,Avogadro Team,Cihan Ersoy,Efe Çiftci,Erkut "
+"Tiryakioglu,Hüseyin Kozan,K. Deniz Ogut,Mustafa Yılmaz,Osman Tosun,Sinan "
+"Özgün,Yahuda,Yildiray Topcu,aLsanCaK,ubuntuki, ,Launchpad "
+"Contributions:,Abdurrahman OLĞAÇ,Avogadro Team,Cihan Ersoy,Efe Çiftci,Erkut "
+"Tiryakioglu,Hüseyin Kozan,K. Deniz Ogut,Mustafa Yılmaz,Osman Tosun,Sinan "
+"Özgün,Yahuda,Yildiray Topcu,aLsanCaK,haydar,ubuntuki"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,"
-"hknrgl@gmail.com,huseyinkozan@gmail.com,,,efeciftci@gmail.com,,,hknrgl@gmail."
-"com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,,"
-"carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,"
-"huseyinkozan@gmail.com,,,avogadro-devel@lists.sourceforge.net,efe."
-"ciftci@linux.org.tr,,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail."
-"com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,efe.ciftci@linux.org.tr,,carl_friedrich_gauss_77@hotmail.com,"
-"rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-#~ msgstr ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Usage: %1 [options] [files]\n"
-#~ "\n"
-#~ "Avogadro - Advanced Molecular Editor (version %2)\n"
-#~ "\n"
-#~ "Options:\n"
-#~ "  -h, --help\t\tShow help options (this)\n"
-#~ "  -v, --version\t\tShow version information\n"
-#~ msgstr ""
-#~ "Kullanım: %1 [seçenekler] [dosyalar]\n"
-#~ "\n"
-#~ "Avogadro - Gelişmiş Moleküler Düzenleyici (sürüm %2)\n"
-#~ "\n"
-#~ "Seçenekler:\n"
-#~ "  -h, --help\t\tYardım seçeneklerini göster (bu seçenekler)\n"
-#~ "  -v, --version\t\tSürüm bilgisini göster\n"
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,hknrgl@g"
+"mail.com,huseyinkozan@gmail.com,,,efeciftci@gmail.com,,,hknrgl@gmail.com,huse"
+"yinkozan@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedrich_gauss_77@hotmail."
+"com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.cif"
+"tci@linux.org.tr,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,"
+"hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedr"
+"ich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkoza"
+"n@gmail.com,,,efe.ciftci@linux.org.tr,carl_friedrich_gauss_77@hotmail.com,rai"
+"nman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@lin"
+"ux.org.tr,,carl_friedrich_gauss_77@hotmail.com,rainman.neu@gmail.com,,,hknrgl"
+"@gmail.com,huseyinkozan@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,efe.ciftci@linux.org.tr,,carl_friedrich_gauss_77@"
+"hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,"
+",avogadro-"
+"devel@lists.sourceforge.net,efe.ciftci@linux.org.tr,,carl_friedrich_gauss_77@"
+"hotmail.com,rainman.neu@gmail.com,,,hknrgl@gmail.com,huseyinkozan@gmail.com,,"
+",abdurrahmanolgac@bireczaci.com,avogadro-"
+"devel@lists.sourceforge.net,,efe.ciftci@linux.org.tr,,posta@huseyinkozan.com."
+"tr,,apshalasha@gmail.com,rainman.neu@gmail.com,para4360@gmail.com,,ytopcu@gma"
+"il.com,,,,,abdurrahmanolgac@bireczaci.com,avogadro-"
+"devel@lists.sourceforge.net,,efe.ciftci@linux.org.tr,,,,apshalasha@gmail.com,"
+"rainman.neu@gmail.com,para4360@gmail.com,,ytopcu@gmail.com,,hhaydarakdag@gmai"
+"l.com,"
 
 #~ msgid "Load File..."
 #~ msgstr "Dosya yükle..."
@@ -1316,9 +1295,11 @@ msgstr ""
 #~ msgid "Tool Settings"
 #~ msgstr "Araç ayarları"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Dosya biçimi okunamıyor %1."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1326,6 +1307,7 @@ msgstr ""
 #~ "Dosya Okunamıyor %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Dosya okunamıyor %1."
 
@@ -1340,9 +1322,8 @@ msgstr ""
 #~ "düzenleme yapamayabilirsiniz."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Bu dosyada birden fazla molekül kaydı var. Avagadro sadece ilk molekülü "
 #~ "okuyacak. Kaydederseniz diğerleri kaybolabilir."
@@ -1357,9 +1338,11 @@ msgstr ""
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Molekül dosyası okunamadı."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "%1 dosyasının formatı yazılamıyor."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1370,6 +1353,7 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Dosya kaydediliyor."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "%1 dosyasına yazılamıyor."
 
@@ -1391,41 +1375,11 @@ msgstr ""
 #~ msgid "EPS"
 #~ msgstr "EPS"
 
-#~ msgctxt "%1 is residue name, %2 is residue index"
-#~ msgid "Residue %1 %2"
-#~ msgstr "Kalıntı %1 %2"
-
-#~ msgctxt "%1 is element, %L2 is atom index"
-#~ msgid "Atom %1 %L2"
-#~ msgstr "Atom %1 %L2"
-
-#~ msgctxt "%L1 is bond index"
-#~ msgid "Bond %L1"
-#~ msgstr "Bağ %L1"
-
 #~ msgid "Backspace"
 #~ msgstr "Backspace"
 
 #~ msgid "1"
 #~ msgstr "1"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: %3<br/"
-#~ "><br/>Daha fazla bilgi için <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro ana sayfasını</a> kontrol edin.<br/><br/>Program, tasarım, "
-#~ "satılabilirlik ve özel bir duruma uygunluk gibi durumlar için yetki "
-#~ "vermemektedir. (The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE).<br/>"
-
-#~ msgid "This file contains does not contain 3D coordinates."
-#~ msgstr "Bu dosya 3D koordinatlarını içermiyor."
 
 #~ msgctxt "main.cpp"
 #~ msgid "System has OpenGL support."
@@ -1450,6 +1404,17 @@ msgstr ""
 #~ msgctxt "main.cpp"
 #~ msgid "OpenGL capabilities found: "
 #~ msgstr "OpenGL yetenekleri bulundu: "
+
+#, qt-format
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
 
 #~ msgctxt "main.cpp"
 #~ msgid "Direct Rendering."
@@ -1574,20 +1539,23 @@ msgstr ""
 #~ msgid "Mendelevium"
 #~ msgstr "Mendelevyum"
 
+#, qt-format
 #~ msgid ""
 #~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For "
-#~ "more information check the <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-#~ "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY "
-#~ "AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+#~ "information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+#~ "he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+#~ "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+#~ "PURPOSE.<br/>"
 #~ msgstr ""
 #~ "<h3>%1</h3><br/><br/>Uygulama Versiyonu: %2<br/><br/>Kütüphane Versiyonu: "
 #~ "%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Versiyon: %5<br/><br/>Daha "
 #~ "fazla bilgi için <a href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "anasayfasını ziyaret edin</a>.<br/><br/>Bu program hiçbir tasarım, ticari "
-#~ "ve belirli bir amaca uygunluk garantisi vermez..<br/>"
+#~ "anasayfasını ziyaret edin</a>.<br/><br/>Bu program hiçbir tasarım, ticari ve "
+#~ "belirli bir amaca uygunluk garantisi vermez..<br/>"
 
+#, qt-format
 #~ msgctxt "main.cpp"
 #~ msgid ""
 #~ "Usage: %1 [options] [files]\n"

@@ -25,6 +25,10 @@
 #ifndef PYTHONTOOL_H
 #define PYTHONTOOL_H
 
+#ifdef Q_MOC_RUN
+#define BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
+#endif
+
 #include <avogadro/global.h>
 #include <avogadro/tool.h>
 #include <boost/python.hpp>

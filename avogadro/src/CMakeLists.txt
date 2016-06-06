@@ -116,6 +116,7 @@ if(QtTesting)
   target_link_libraries(avogadro-app QtTesting)
 endif()
 if(Q_WS_X11)
+  find_package(X11 REQUIRED)
   target_link_libraries(avogadro-app ${X11_X11_LIB})
 endif()
 

@@ -125,6 +125,13 @@ public:
   unsigned int numMOs();
 
   /**
+   * Use different calculations/normalization if the data have been written by Orca
+   * used for orca output files and molden files written by orca_2mkl
+   */
+  void setUseOrcaNormalization(bool b){m_useOrcaNorm = b;}
+  bool getUseOrcaNormalization() {return (m_useOrcaNorm);}
+
+  /**
    * Calculate the MO over the entire range of the supplied Cube.
    * @param cube The cube to write the values of the MO into.
    * @note This function starts a threaded calculation. Use watcher()
@@ -184,14 +191,18 @@ private:
   unsigned int m_numAtoms;  //! Total number of atoms in the basis set
   bool m_init;              //! Has the calculation been initialised?
 
+
   QFuture<void> m_future;
   QFutureWatcher<void> m_watcher;
   Cube *m_cube; //! Cube to put the results into
   QVector<GaussianShell> *m_gaussianShells;
 
+  bool m_useOrcaNorm;       //! if the data come from Orca use different calculations/normalizations
+
   static bool isSmall(double val);
 
   void initCalculation();  //! Perform initialisation before any calculations
+  void initCalculationForOrca();  //! Perform initialisation before any calculations for Orca output files or Orca written molden files
   /// Re-entrant single point forms of the calculations
   static void processPoint(GaussianShell &shell);
   static void processDensity(GaussianShell &shell);
@@ -212,13 +223,19 @@ private:
   static double pointF7(GaussianSet *set, unsigned int moIndex,
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
-  static double pointG9(GaussianSet *set, unsigned int moIndex,
+  static double pointOrcaD5(GaussianSet *set, unsigned int moIndex,
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
-  static double pointH11(GaussianSet *set, unsigned int moIndex,
+  static double pointOrcaF7(GaussianSet *set, unsigned int moIndex,
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
-  static double pointI13(GaussianSet *set, unsigned int moIndex,
+  static double pointOrcaG9(GaussianSet *set, unsigned int moIndex,
+                        const Eigen::Vector3d &delta,
+                        double dr2, unsigned int indexMO);
+  static double pointOrcaH11(GaussianSet *set, unsigned int moIndex,
+                        const Eigen::Vector3d &delta,
+                        double dr2, unsigned int indexMO);
+  static double pointOrcaI13(GaussianSet *set, unsigned int moIndex,
                         const Eigen::Vector3d &delta,
                         double dr2, unsigned int indexMO);
   /// Calculate the basis for the density
@@ -233,6 +250,16 @@ private:
   static void pointF(GaussianSet *set, const Eigen::Vector3d &delta,
                       double dr2, int basis, Eigen::MatrixXd &out);
   static void pointF7(GaussianSet *set, const Eigen::Vector3d &delta,
+                      double dr2, int basis, Eigen::MatrixXd &out);
+  static void pointOrcaD5(GaussianSet *set, const Eigen::Vector3d &delta,
+                      double dr2, int basis, Eigen::MatrixXd &out);
+  static void pointOrcaF7(GaussianSet *set, const Eigen::Vector3d &delta,
+                      double dr2, int basis, Eigen::MatrixXd &out);
+  static void pointOrcaG9(GaussianSet *set, const Eigen::Vector3d &delta,
+                      double dr2, int basis, Eigen::MatrixXd &out);
+  static void pointOrcaH11(GaussianSet *set, const Eigen::Vector3d &delta,
+                      double dr2, int basis, Eigen::MatrixXd &out);
+  static void pointOrcaI13(GaussianSet *set, const Eigen::Vector3d &delta,
                       double dr2, int basis, Eigen::MatrixXd &out);
 };
 

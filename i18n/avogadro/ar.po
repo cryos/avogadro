@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2015-03-23 00:00-0400\n"
-"PO-Revision-Date: 2011-02-04 13:29+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2016-01-29 13:02-0500\n"
+"PO-Revision-Date: 2015-09-09 17:06+0000\n"
+"Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-11 15:21+0000\n"
-"X-Generator: Launchpad (build 12792)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:11+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
+"Language: ar\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
@@ -31,24 +31,24 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:1084 src/mainwindow.cpp:1134
 #: src/mainwindow.cpp:1156 src/mainwindow.cpp:1319 src/mainwindow.cpp:1341
-#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3158
-#: src/mainwindow.cpp:3695:69
+#: src/mainwindow.cpp:1495 src/mainwindow.cpp:1728 src/mainwindow.cpp:3165
+#: src/mainwindow.cpp:3702 :69
 msgid "Avogadro"
 msgstr "أفوجادرو"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.cc/\">Avogadro homepage</a>.<br/><br/>The program is "
 "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
 "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr "إمسح ذرات"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3713 src/mainwindow.cpp:3730:402 rc.cpp:414
+#: src/mainwindow.cpp:3720 src/mainwindow.cpp:3737 :402 rc.cpp:414
 msgid "Settings"
 msgstr "إعدادات"
 
@@ -112,11 +112,11 @@ msgstr "أحضر الكل إلى الأمام"
 
 #: src/mainwindow.cpp:591
 msgid "Record Test..."
-msgstr ""
+msgstr "تسجيل اختبار..."
 
 #: src/mainwindow.cpp:594
 msgid "Play Test..."
-msgstr ""
+msgstr "تشغيل اختبار..."
 
 #: src/mainwindow.cpp:896
 msgid "&Tool Settings..."
@@ -288,7 +288,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1443
 msgid "Gaussian Z-matrix Input"
-msgstr ""
+msgstr "مدخل مصفوفة جاوس"
 
 #: src/mainwindow.cpp:1444
 msgid "MDL SDfile"
@@ -332,103 +332,102 @@ msgstr "لا يمكن حفظ الملف %1."
 msgid "Untitled %1"
 msgstr "غير معنون %1"
 
-#: src/mainwindow.cpp:1929
+#: src/mainwindow.cpp:1934
 msgid "Unable to paste molecule."
 msgstr "تعذر لصق الجزيء"
 
-#: src/mainwindow.cpp:1958
+#: src/mainwindow.cpp:1963
 msgid "Paste failed (format unavailable)."
 msgstr "فشلت عملية اللصق، (التنسيق غير متوفر)"
 
-#: src/mainwindow.cpp:2413
-#, fuzzy
+#: src/mainwindow.cpp:2418
 msgid "Copy failed (format unavailable)."
-msgstr "فشلت عملية النسخ (mdl غير متوفرة)"
+msgstr ""
 
-#: src/mainwindow.cpp:2428
+#: src/mainwindow.cpp:2433
 msgid "Copy failed (mdl unavailable)."
 msgstr "فشلت عملية النسخ (mdl غير متوفرة)"
 
-#: src/mainwindow.cpp:2595 src/mainwindow.cpp:2627 src/mainwindow.cpp:2693
-#: src/mainwindow.cpp:3304
+#: src/mainwindow.cpp:2600 src/mainwindow.cpp:2632 src/mainwindow.cpp:2698
+#: src/mainwindow.cpp:3311
 #, qt-format
 msgid "View %1"
 msgstr "عرض %1"
 
-#: src/mainwindow.cpp:2653
+#: src/mainwindow.cpp:2658
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "عرض %1"
 
-#: src/mainwindow.cpp:2662
+#: src/mainwindow.cpp:2667
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2893
+#: src/mainwindow.cpp:2898
 msgid "Normal Size"
 msgstr "الحجم العادي"
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2915
 msgid "Full Screen"
 msgstr "ملئ الشاشة"
 
-#: src/mainwindow.cpp:3013
+#: src/mainwindow.cpp:3018
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:3151
+#: src/mainwindow.cpp:3158
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]أفوجادرو"
 
-#: src/mainwindow.cpp:3157
+#: src/mainwindow.cpp:3164
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3649
+#: src/mainwindow.cpp:3656
 msgid "Add"
 msgstr "أضِف"
 
-#: src/mainwindow.cpp:3654
+#: src/mainwindow.cpp:3661
 msgid "Duplicate"
 msgstr "نسخة مطابقة"
 
-#: src/mainwindow.cpp:3659
+#: src/mainwindow.cpp:3666
 msgid "Remove"
 msgstr "أزل"
 
-#: src/mainwindow.cpp:3687
+#: src/mainwindow.cpp:3694
 msgid "No tools or engines loaded."
 msgstr "لم تحمل أي أدوات أو محركات"
 
-#: src/mainwindow.cpp:3689
+#: src/mainwindow.cpp:3696
 msgid "No engines loaded."
 msgstr "لم تحمل أي محركات.."
 
-#: src/mainwindow.cpp:3691
+#: src/mainwindow.cpp:3698
 msgid "No tools loaded."
 msgstr "لم تحمل أي أدوات.."
 
-#: src/mainwindow.cpp:3692
+#: src/mainwindow.cpp:3699
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:3736
+#: src/mainwindow.cpp:3743
 msgid "Objects"
 msgstr "أجسام"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3742:342
+#: src/mainwindow.cpp:3749 :342
 msgid "Colors"
 msgstr "ألوان"
 
-#: src/mainwindow.cpp:3775
+#: src/mainwindow.cpp:3782
 msgid " copy"
 msgstr " إنسخ"
 
@@ -501,7 +500,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:399
+#: src/projecttreemodel.cpp:65 :399
 msgid "Item"
 msgstr "عنصر"
 
@@ -516,7 +515,7 @@ msgstr "منخفض"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:426
+#: src/settingsdialog.cpp:107 :426
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "متوسط"
@@ -533,7 +532,7 @@ msgstr "غيرُ مُعرَّف"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:435
+#: src/settingsdialog.cpp:122 :435
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "لاشيء"
@@ -719,9 +718,8 @@ msgstr "&اعرض"
 
 #. i18n: file: src/mainwindow.ui:102
 #. i18n: ectx: property (title), widget (QMenu, menuProjection)
-#, fuzzy
 msgid "Projection"
-msgstr "شجرة المشروع"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:128
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
@@ -730,9 +728,8 @@ msgstr "&تحرير"
 
 #. i18n: file: src/mainwindow.ui:132
 #. i18n: ectx: property (title), widget (QMenu, menuCopy_As)
-#, fuzzy
 msgid "Copy As"
-msgstr "انسخ"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:149
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -1072,9 +1069,8 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:648
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Perspective"
-msgstr "موجب"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:656
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1234,48 +1230,49 @@ msgstr "ضباب:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), ,Launchpad "
-"Contributions:,AtomCell,Nizar Kerkeni,Propeng,TheLight,عبدالله شلي (Abdellah "
-"Chelli), ,Launchpad Contributions:,AtomCell,Avogadro Team,Nizar Kerkeni,"
-"Propeng,TheLight,عبدالله شلي (Abdellah Chelli), ,Launchpad Contributions:,"
-"AtomCell,Avogadro Team,Nizar Kerkeni,Propeng,TheLight,عبدالله شلي (Abdellah "
-"Chelli), ,Launchpad Contributions:,Ahmed El-Mahdawy,AtomCell,Avogadro Team,"
-"Nizar Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli), ,Launchpad "
-"Contributions:,Ahmed El-Mahdawy,AtomCell,Avogadro Team,Nizar Kerkeni,"
-"TheLight,عبدالله شلي (Abdellah Chelli),منصور اليوسف, ,Launchpad "
+",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,Nizar Kerkeni,Propeng,TheLight,عبدالله "
+"شلي (Abdellah Chelli), ,Launchpad Contributions:,AtomCell,Avogadro "
+"Team,Nizar Kerkeni,Propeng,TheLight,عبدالله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,Avogadro Team,Nizar "
+"Kerkeni,Propeng,TheLight,عبدالله شلي (Abdellah Chelli), ,Launchpad "
+"Contributions:,Ahmed El-Mahdawy,AtomCell,Avogadro Team,Nizar "
+"Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli), ,Launchpad "
+"Contributions:,Ahmed El-Mahdawy,AtomCell,Avogadro Team,Nizar "
+"Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli),منصور اليوسف, ,Launchpad "
 "Contributions:,Ahmed El-Mahdawy,Ahmed Mohammed,AtomCell,Avogadro Team,Nizar "
 "Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli),منصور اليوسف, ,Launchpad "
 "Contributions:,Ahmed El-Mahdawy,Ahmed Mohammed,AtomCell,Avogadro Team,Nizar "
-"Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli),منصور اليوسف"
+"Kerkeni,TheLight,عبدالله شلي (Abdellah Chelli),منصور اليوسف, ,Launchpad "
+"Contributions:,Ahmed El-Mahdawy,Ahmed Mohammed,AtomCell,Avogadro Team,Nizar "
+"Kerkeni,Sneetsher,TheLight,ayoooub أيوب,منصور اليوسف, ,Launchpad "
+"Contributions:,Ahmed El-Mahdawy,Ahmed Mohammed,AtomCell,Avogadro Team,Geoff "
+"Hutchison,Nizar Kerkeni,Sneetsher,TheLight,ayoooub أيوب,منصور اليوسف"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd."
-"ox@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail.com,"
-"sneetsher@gmail.com,,,shelhatem@gmail.com,sneetsher@gmail.com,,,"
-"shelhatem@gmail.com,nizarus@nizarus.org,,houd.ox@gmail.com,,,,"
-"shelhatem@gmail.com,avogadro-devel@lists.sourceforge.net,nizarus@nizarus."
-"org,,houd.ox@gmail.com,,,,shelhatem@gmail.com,avogadro-devel@lists."
-"sourceforge.net,nizarus@nizarus.org,,,,,,,shelhatem@gmail.com,avogadro-"
-"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,shelhatem@gmail.com,"
-"avogadro-devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,,,"
-"shelhatem@gmail.com,avogadro-devel@lists.sourceforge.net,nizarus@nizarus."
-"org,,,,,,,,shelhatem@gmail.com,avogadro-devel@lists.sourceforge.net,"
-"nizarus@nizarus.org,,,"
-
-#~ msgctxt "main.cpp"
-#~ msgid ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
-#~ msgstr ""
-#~ "Avogadro: \t%1 (Hash %2)\n"
-#~ "LibAvogadro: \t%3 (Hash %4)\n"
-#~ "Qt: \t\t%5\n"
+",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail"
+".com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail.com,sneetsher@gm"
+"ail.com,,,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,nizar"
+"us@nizarus.org,,houd.ox@gmail.com,,,,shelhatem@gmail.com,avogadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,houd.ox@gmail.com,,,,shelhat"
+"em@gmail.com,avogadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,,shelhatem@gmail.com,avo"
+"gadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,shelhatem@gmail.com,avog"
+"adro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,,,shelhatem@gmail.com,av"
+"ogadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,,,shelhatem@gmail.com,av"
+"ogadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.org,,,,,,,,shelhatem@gmail.com,av"
+"ogadro-"
+"devel@lists.sourceforge.net,nizarus@nizarus.tn,,,,,,,,,shelhatem@gmail.com,av"
+"ogadro-devel@lists.sourceforge.net,,nizarus@nizarus.tn,,,,"
 
 #~ msgid "0/0"
 #~ msgstr "0/0"
@@ -1292,6 +1289,7 @@ msgstr ""
 #~ msgid "Align:"
 #~ msgstr "المحاذاة:"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1784,6 +1782,9 @@ msgstr ""
 #~ msgid "Steps:"
 #~ msgstr "الخطوات:"
 
+#~ msgid "Positive"
+#~ msgstr "موجب"
+
 #~ msgid "Negative"
 #~ msgstr "سالب"
 
@@ -1820,6 +1821,17 @@ msgstr ""
 #~ msgctxt "main.cpp"
 #~ msgid "Direct Rendering."
 #~ msgstr "إعادة توجيه مباشرة"
+
+#, qt-format
+#~ msgctxt "main.cpp"
+#~ msgid ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
+#~ msgstr ""
+#~ "Avogadro: \t%1 (Hash %2)\n"
+#~ "LibAvogadro: \t%3 (Hash %4)\n"
+#~ "Qt: \t\t%5\n"
 
 #~ msgid "Common vector image formats"
 #~ msgstr "التنسيقات المشتركة العامة للصورة"

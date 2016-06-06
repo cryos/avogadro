@@ -19,6 +19,10 @@
 #include <QtCore/QFile>
 #include <QtCore/QStringList>
 #include <QtCore/QDebug>
+#ifdef WIN32
+#define _USE_MATH_DEFINES
+#include <math.h> // needed for M_PI
+#endif
 
 using Eigen::Vector3d;
 using std::vector;
@@ -32,7 +36,7 @@ namespace OpenQube
 
 MoldenFile::MoldenFile(const QString &filename, GaussianSet* basis):
     m_coordFactor(1.0), m_currentMode(NotParsing), m_electrons(0), m_sphericalD(false),
-    m_sphericalG(false), m_orcaWritten(false)
+    m_sphericalG(false)
 {
   // Open the file for reading and process it
   QFile* file = new QFile(filename);
@@ -44,7 +48,7 @@ MoldenFile::MoldenFile(const QString &filename, GaussianSet* basis):
 
   // Process the formatted checkpoint and extract all the information we need
   while (!m_in->atEnd()) {
-    processLine();
+    processLine(basis);
   }
 
   // check for spherical components of D, F and G shells
@@ -67,7 +71,7 @@ MoldenFile::MoldenFile(const QString &filename, GaussianSet* basis):
 
   // Now it should all be loaded load it into the basis set
 
-  if (m_orcaWritten) unnormalizeBasis();        // Molden files written by ORCA_2mkl have always normalized basissets
+  if (basis->getUseOrcaNormalization()) unnormalizeBasis();        // Molden files written by ORCA_2mkl have always normalized basissets
   load(basis);
 
   delete file;
@@ -77,7 +81,7 @@ MoldenFile::~MoldenFile()
 {
 }
 
-void MoldenFile::processLine()
+void MoldenFile::processLine(GaussianSet* basis)
 {
   // First truncate the line, remove trailing white space and check for blank lines
   QString key = m_in->readLine().trimmed();
@@ -95,12 +99,14 @@ void MoldenFile::processLine()
   //      enum mode { NotParsing, Atoms, GTO, STO, MO, SCF }
   if (key.contains("[Title]", Qt::CaseInsensitive)) {
         key = m_in->readLine().trimmed();
-        if (key.contains("created by orca_2mkl", Qt::CaseInsensitive))
-              m_orcaWritten = true;
+        if (key.contains("created by orca_2mkl", Qt::CaseInsensitive)) {
+              basis->setUseOrcaNormalization(true);
+        }
   } else if (key.contains("[atoms]", Qt::CaseInsensitive)) {
-    if (list.size() > 1 && list[1].contains("au", Qt::CaseInsensitive))
-      m_coordFactor = 1.;       //BOHR_TO_ANGSTROM;
-    m_currentMode = Atoms;
+      m_coordFactor = 1./BOHR_TO_ANGSTROM;      // convert to Bohr
+      if (list.size() > 1 && list[1].contains("au", Qt::CaseInsensitive))
+          m_coordFactor = 1.;       //already in Bohr;
+      m_currentMode = Atoms;
   } else if (key.contains("[gto]", Qt::CaseInsensitive)) {
     m_currentMode = GTO;
   } else if (key.contains("[mo]", Qt::CaseInsensitive)) {

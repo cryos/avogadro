@@ -258,7 +258,7 @@ namespace Avogadro {
 
     m_inchi = inchi; // cache for next use
 
-    QString requestURL = QLatin1String("http://cactus.nci.nih.gov/chemical/structure/") + m_inchi + QLatin1String("/iupac_name");
+    QString requestURL = QLatin1String("https://cactus.nci.nih.gov/chemical/structure/") + m_inchi + QLatin1String("/iupac_name");
     qDebug() << " requesting URL: " << requestURL;
 
     m_network->get(QNetworkRequest(QUrl(requestURL)));
@@ -270,4 +270,3 @@ namespace Avogadro {
 
 Q_EXPORT_PLUGIN2(molecularpropextension,
                  Avogadro::MolecularPropertiesExtensionFactory)
-
