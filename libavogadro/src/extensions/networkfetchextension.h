@@ -31,6 +31,7 @@
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QSslError;
 class QString;
 
 namespace Avogadro
@@ -92,6 +93,7 @@ namespace Avogadro
 
   private slots:
     void replyFinished(QNetworkReply*);
+    void printSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
     QUrl checkRedirect(const QUrl& possibleRedirect, const QUrl& oldURL);
   };
 

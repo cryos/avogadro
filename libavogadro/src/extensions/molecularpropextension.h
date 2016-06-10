@@ -36,6 +36,7 @@
 // Forward declarations
 class QNetworkAccessManager;
 class QNetworkReply;
+class QSslError;
 
 namespace Avogadro {
 
@@ -92,6 +93,7 @@ namespace Avogadro {
 
       private Q_SLOTS:
       void requestIUPACName();
+      void printSslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
       void replyFinished(QNetworkReply*);
 
   };
