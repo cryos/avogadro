@@ -33,6 +33,7 @@
 #include <QtGui/QMessageBox>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
+#include <QtNetwork/QSslSocket>
 #include <QtCore/QFileInfo>
 #include <QtCore/QDebug>
 
@@ -93,6 +94,8 @@ namespace Avogadro
       m_network = new QNetworkAccessManager(this);
       connect(m_network, SIGNAL(finished(QNetworkReply*)),
               this, SLOT(replyFinished(QNetworkReply*)));
+      connect(m_network, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError>&)),
+              this, SLOT(printSslErrors(QNetworkReply*, const QList<QSslError>&)));
     }
     if (action->data() == "PDB") {
       // Prompt for a PDB name
@@ -184,8 +187,22 @@ namespace Avogadro
     return redirectUrl;
   }
 
+  void NetworkFetchExtension::printSslErrors(QNetworkReply*,
+                                             const QList<QSslError> &errors)
+  {
+    foreach(const QSslError &error, errors) {
+      qDebug() << tr("SSL Error: %1").arg(error.errorString());
+    }
+  }
+
   void NetworkFetchExtension::replyFinished(QNetworkReply *reply)
   {
+    // Print error messages
+    if (reply->error() != QNetworkReply::NoError) {
+      qDebug() << tr("Network Error: %1").arg(reply->errorString());
+      return;
+    }
+
     // Read in all the data
     if (!reply->isReadable()) {
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
