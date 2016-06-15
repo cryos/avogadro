@@ -36,6 +36,7 @@
 
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
+#include <QtNetwork/QSslSocket>
 
 using namespace OpenBabel;
 
@@ -98,6 +99,8 @@ namespace Avogadro {
       m_network = new QNetworkAccessManager(this);
       connect(m_network, SIGNAL(finished(QNetworkReply*)),
               this, SLOT(replyFinished(QNetworkReply*)));
+      connect(m_network, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError>&)),
+              this, SLOT(printSslErrors(QNetworkReply*, const QList<QSslError>&)));
     }
 
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(update()));
@@ -207,8 +210,23 @@ namespace Avogadro {
       m_molecule->setProperty("name", QVariant()); // set an invalid name, since we don't have one
   }
 
+  void MolecularPropertiesExtension::printSslErrors(
+                                                QNetworkReply*,
+                                                const QList<QSslError> &errors)
+  {
+    foreach(const QSslError &error, errors) {
+      qDebug() << tr("SSL Error: %1").arg(error.errorString());
+    }
+  }
+
   void MolecularPropertiesExtension::replyFinished(QNetworkReply *reply)
   {
+    // Print error messages
+    if (reply->error() != QNetworkReply::NoError) {
+      qDebug() << tr("Network Error: %1").arg(reply->errorString());
+      return;
+    }
+
     // Read in all the data
     if (!reply->isReadable()) {
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
