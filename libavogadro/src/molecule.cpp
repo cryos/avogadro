@@ -786,7 +786,7 @@ namespace Avogadro{
       // convert from electrons * Angstrom to Debye
       // (1.602176487×10−19 C / electron) *  (1.0e-10 m/Ang / 3.33564e-30 C/m)
       // use the negative to go from positive to negative charge (Chemistry)
-      dipoleMoment *= -4.80321;
+      dipoleMoment *= -4.8032046729977;
 
       if (estimate)
         *estimate = true;
