@@ -113,6 +113,10 @@ namespace Avogadro {
      * Note that when the format character is 't', the fieldWidth and prec
      * values are ignored.
      *
+     * If the format character is set to 'c', the tick marks should be
+     * set by the user using setCustomTickStrings(). The tick marks
+     * are simply custom strings in this case.
+     *
      * @param format the format specification character
      * @param fieldWidth the number of characters in the output string.
      * If set to 0, the string will be as wide as it needs to be to fully
@@ -146,6 +150,18 @@ namespace Avogadro {
      * @sa minorTickMarks()
      */
     void setTickMarks( double x0, double length );
+
+    /**
+     * Set custom strings for tick marks at specific values.
+     * This function automatically sets the tick format to be 'c', the
+     * format for custom tick marks.
+     * @param values The values for the tick marks to be set. Must be equal
+     *               in size to 'strings'.
+     * @param strings The strings for the tick marks to be set. Must be equal
+     *                in size to 'values'.
+     */
+    void setTickCustomStrings( const QList<double>& values,
+                               const QStringList& strings );
 
     /**
      * @return the list of coordinates of the major tickmarks for this axis

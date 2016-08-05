@@ -28,6 +28,7 @@
 
 #include "plotaxis.h"
 #include <QDebug>
+#include <QStringList>
 #include <math.h> //for log10(), pow(), modf()
 
 namespace Avogadro {
@@ -42,6 +43,9 @@ namespace Avogadro {
       , m_labelFmt( 'g' )
       , m_labelFieldWidth( 0 )
       , m_labelPrec( -1 )
+      , m_MajorTickMarks(QList<double>())
+      , m_MinorTickMarks(QList<double>())
+      , m_tickCustomStrings(QStringList())
     {
     }
 
@@ -54,6 +58,7 @@ namespace Avogadro {
     int m_labelFieldWidth; // Field width for number labels, see QString::arg()
     int m_labelPrec; // Number precision for number labels, see QString::arg()
     QList<double> m_MajorTickMarks, m_MinorTickMarks;
+    QStringList m_tickCustomStrings; // Custom strings for the tick markers
   };
 
   PlotAxis::PlotAxis( const QString &label )
@@ -192,6 +197,22 @@ namespace Avogadro {
     }
   }
 
+  void PlotAxis::setTickCustomStrings(const QList<double>& values,
+                                      const QStringList& strings) {
+    if (values.size() != strings.size()) {
+      qDebug() << "Error in " << __FUNCTION__ << ": values and strings"
+               << "are not the same size!";
+      return;
+    }
+
+    d->m_MajorTickMarks = values;
+    d->m_tickCustomStrings = strings;
+
+    // Set the label format for that of custom strings
+    // Leave the other values the same
+    setTickLabelFormat( 'c', d->m_labelFieldWidth, d->m_labelPrec );
+  }
+
   QString PlotAxis::tickLabel( double val ) const {
     if ( d->m_labelFmt == 't' ) {
       while ( val <   0.0 ) val += 24.0;
@@ -200,6 +221,28 @@ namespace Avogadro {
       int h = int(val);
       int m = int( 60.*(val - h) );
       return QString( "%1:%2" ).arg( h, 2, 10, QLatin1Char('0') ).arg( m, 2, 10, QLatin1Char('0') );
+    }
+
+    // Custom tick labels
+    else if ( d->m_labelFmt == 'c' ) {
+      // This should not be the case, but make sure our sizes match
+      if ( d->m_MajorTickMarks.size() != d->m_tickCustomStrings.size() )
+        return QString("");
+      // Good to go! Find the index of val, that will be the
+      // index of m_tickCustomStrings
+      int ind = -1;
+      for (size_t i = 0; i < d->m_MajorTickMarks.size(); ++i) {
+        if (qFuzzyCompare(val, d->m_MajorTickMarks[i])) {
+          ind = i;
+          break;
+        }
+      }
+
+      // If we didn't find it, return an empty string
+      if (ind == -1)
+        return QString("");
+      else
+        return d->m_tickCustomStrings[ind];
     }
 
     return QString( "%1" ).arg( val, d->m_labelFieldWidth, d->m_labelFmt, d->m_labelPrec );
