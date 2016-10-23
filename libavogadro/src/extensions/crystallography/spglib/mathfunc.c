@@ -1,5 +1,36 @@
-/* mathfunc.c */
 /* Copyright (C) 2008 Atsushi Togo */
+/* All rights reserved. */
+
+/* This file is part of spglib. */
+
+/* Redistribution and use in source and binary forms, with or without */
+/* modification, are permitted provided that the following conditions */
+/* are met: */
+
+/* * Redistributions of source code must retain the above copyright */
+/*   notice, this list of conditions and the following disclaimer. */
+
+/* * Redistributions in binary form must reproduce the above copyright */
+/*   notice, this list of conditions and the following disclaimer in */
+/*   the documentation and/or other materials provided with the */
+/*   distribution. */
+
+/* * Neither the name of the phonopy project nor the names of its */
+/*   contributors may be used to endorse or promote products derived */
+/*   from this software without specific prior written permission. */
+
+/* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS */
+/* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT */
+/* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS */
+/* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE */
+/* COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, */
+/* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, */
+/* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; */
+/* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER */
+/* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT */
+/* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN */
+/* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE */
+/* POSSIBILITY OF SUCH DAMAGE. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -288,7 +319,6 @@ int mat_inverse_matrix_d3(double m[3][3],
   det = mat_get_determinant_d3(a);
   if (mat_Dabs(det) < precision) {
     warning_print("spglib: No inverse matrix (det=%f)\n", det);
-    debug_print("No inverse matrix\n");
     return 0;
   }
 
@@ -314,7 +344,6 @@ int mat_get_similar_matrix_d3(double m[3][3],
   double c[3][3];
   if (!mat_inverse_matrix_d3(c, b, precision)) {
     warning_print("spglib: No similar matrix due to 0 determinant.\n");
-    debug_print("No similar matrix due to 0 determinant.\n");
     return 0;
   }
   mat_multiply_matrix_d3(m, a, b);
@@ -397,14 +426,23 @@ double mat_Dmod1(const double a)
 MatINT * mat_alloc_MatINT(const int size)
 {
   MatINT *matint;
-  matint = (MatINT*) malloc( sizeof( MatINT ) );
+
+  matint = NULL;
+  
+  if ((matint = (MatINT*) malloc(sizeof(MatINT))) == NULL) {
+    warning_print("spglib: Memory could not be allocated.");
+    return NULL;
+  }
+
   matint->size = size;
-  if ( size > 0 ) {
-    if ( ( matint->mat = (int (*)[3][3]) malloc( sizeof(int[3][3]) * size) )
-	 == NULL ) {
+  if (size > 0) {
+    if ((matint->mat = (int (*)[3][3]) malloc(sizeof(int[3][3]) * size))
+	== NULL) {
       warning_print("spglib: Memory could not be allocated ");
       warning_print("(MatINT, line %d, %s).\n", __LINE__, __FILE__);
-      exit(1);
+      free(matint);
+      matint = NULL;
+      return NULL;
     }
   }
   return matint;
@@ -412,25 +450,33 @@ MatINT * mat_alloc_MatINT(const int size)
 
 void mat_free_MatINT(MatINT * matint)
 {
-  if ( matint->size > 0 ) {
-    free( matint->mat );
+  if (matint->size > 0) {
+    free(matint->mat);
     matint->mat = NULL;
   }
-  free( matint );
-  matint = NULL;
+  free(matint);
 }
 
 VecDBL * mat_alloc_VecDBL(const int size)
 {
   VecDBL *vecdbl;
-  vecdbl = (VecDBL*) malloc( sizeof( VecDBL ) );
+
+  vecdbl = NULL;
+
+  if ((vecdbl = (VecDBL*) malloc(sizeof(VecDBL))) == NULL) {
+    warning_print("spglib: Memory could not be allocated.");
+    return NULL;
+  }
+
   vecdbl->size = size;
-  if ( size > 0 ) {
-    if ( ( vecdbl->vec = (double (*)[3]) malloc( sizeof(double[3]) * size) )
-	 == NULL ) {
+  if (size > 0) {
+    if ((vecdbl->vec = (double (*)[3]) malloc(sizeof(double[3]) * size))
+	== NULL) {
       warning_print("spglib: Memory could not be allocated ");
       warning_print("(VecDBL, line %d, %s).\n", __LINE__, __FILE__);
-      exit(1);
+      free(vecdbl);
+      vecdbl = NULL;
+      return NULL;
     }
   }
   return vecdbl;
@@ -438,21 +484,20 @@ VecDBL * mat_alloc_VecDBL(const int size)
 
 void mat_free_VecDBL(VecDBL * vecdbl)
 {
-  if ( vecdbl->size > 0 ) {
-    free( vecdbl->vec );
+  if (vecdbl->size > 0) {
+    free(vecdbl->vec);
     vecdbl->vec = NULL;
   }
-  free( vecdbl );
-  vecdbl = NULL;
+  free(vecdbl);
 }
 
 
 int mat_is_int_matrix(SPGCONST double mat[3][3], const double symprec)
 {
-  int i,j ;
-  for ( i = 0; i < 3; i++ ) {
-    for ( j = 0; j < 3; j++ ) {
-      if ( mat_Dabs( mat_Nint( mat[i][j] ) - mat[i][j] ) > symprec ) {
+  int i, j;
+  for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      if (mat_Dabs(mat_Nint(mat[i][j]) - mat[i][j]) > symprec) {
 	return 0;
       }
     }

@@ -1,7 +1,7 @@
-/* Copyright (C) 2008 Atsushi Togo */
+/* Copyright (C) 2015 Atsushi Togo */
 /* All rights reserved. */
 
-/* This file is part of spglib. */
+/* This file is part of niggli. */
 
 /* Redistribution and use in source and binary forms, with or without */
 /* modification, are permitted provided that the following conditions */
@@ -32,50 +32,16 @@
 /* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE */
 /* POSSIBILITY OF SUCH DAMAGE. */
 
-#ifndef __pointgroup_H__
-#define __pointgroup_H__
+#ifndef __NIGGLI_H__
+#define __NIGGLI_H__
 
-#include "mathfunc.h"
-#include "symmetry.h"
+#define NIGGLI_MAJOR_VERSION 0
+#define NIGGLI_MINOR_VERSION 1
+#define NIGGLI_MICRO_VERSION 2
 
-typedef enum {
-  HOLOHEDRY_NONE,
-  TRICLI,
-  MONOCLI,
-  ORTHO,
-  TETRA,
-  TRIGO,
-  HEXA,
-  CUBIC,
-} Holohedry;
+int niggli_get_major_version(void);
+int niggli_get_minor_version(void);
+int niggli_get_micro_version(void);
+int niggli_reduce(double *lattice_, const double eps_);
 
-typedef enum {
-  LAUE_NONE,
-  LAUE1,
-  LAUE2M,
-  LAUEMMM,
-  LAUE4M,
-  LAUE4MMM,
-  LAUE3,
-  LAUE3M,
-  LAUE6M,
-  LAUE6MMM,
-  LAUEM3,
-  LAUEM3M,
-} Laue;
-
-typedef struct {
-  int number;
-  char symbol[6];
-  char schoenflies[4];
-  Holohedry holohedry;
-  Laue laue;
-} Pointgroup;
-
-Pointgroup ptg_get_transformation_matrix(int transform_mat[3][3],
-					 SPGCONST int rotations[][3][3],
-					 const int num_rotations);
-Pointgroup ptg_get_pointgroup(const int pointgroup_number);
-PointSymmetry ptg_get_pointsymmetry(SPGCONST int rotations[][3][3],
-				    const int num_rotations);
 #endif

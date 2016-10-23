@@ -1,4 +1,4 @@
-/* Copyright (C) 2008 Atsushi Togo */
+/* Copyright (C) 2010 Atsushi Togo */
 /* All rights reserved. */
 
 /* This file is part of spglib. */
@@ -32,50 +32,17 @@
 /* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE */
 /* POSSIBILITY OF SUCH DAMAGE. */
 
-#ifndef __pointgroup_H__
-#define __pointgroup_H__
+#ifndef __delaunay_H__
+#define __delaunay_H__
 
 #include "mathfunc.h"
-#include "symmetry.h"
 
-typedef enum {
-  HOLOHEDRY_NONE,
-  TRICLI,
-  MONOCLI,
-  ORTHO,
-  TETRA,
-  TRIGO,
-  HEXA,
-  CUBIC,
-} Holohedry;
+int del_delaunay_reduce(double lattice_new[3][3],
+			SPGCONST double lattice[3][3],
+			const double symprec);
+int del_delaunay_reduce_2D(double min_lattice[3][3],
+			   SPGCONST double lattice[3][3],
+			   const int unique_axis,
+			   const double symprec);
 
-typedef enum {
-  LAUE_NONE,
-  LAUE1,
-  LAUE2M,
-  LAUEMMM,
-  LAUE4M,
-  LAUE4MMM,
-  LAUE3,
-  LAUE3M,
-  LAUE6M,
-  LAUE6MMM,
-  LAUEM3,
-  LAUEM3M,
-} Laue;
-
-typedef struct {
-  int number;
-  char symbol[6];
-  char schoenflies[4];
-  Holohedry holohedry;
-  Laue laue;
-} Pointgroup;
-
-Pointgroup ptg_get_transformation_matrix(int transform_mat[3][3],
-					 SPGCONST int rotations[][3][3],
-					 const int num_rotations);
-Pointgroup ptg_get_pointgroup(const int pointgroup_number);
-PointSymmetry ptg_get_pointsymmetry(SPGCONST int rotations[][3][3],
-				    const int num_rotations);
 #endif

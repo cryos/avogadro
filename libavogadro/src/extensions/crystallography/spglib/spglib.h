@@ -1,5 +1,36 @@
-/* spglib.h version 1.5.1 */
 /* Copyright (C) 2008 Atsushi Togo */
+/* All rights reserved. */
+
+/* This file is part of spglib. */
+
+/* Redistribution and use in source and binary forms, with or without */
+/* modification, are permitted provided that the following conditions */
+/* are met: */
+
+/* * Redistributions of source code must retain the above copyright */
+/*   notice, this list of conditions and the following disclaimer. */
+
+/* * Redistributions in binary form must reproduce the above copyright */
+/*   notice, this list of conditions and the following disclaimer in */
+/*   the documentation and/or other materials provided with the */
+/*   distribution. */
+
+/* * Neither the name of the phonopy project nor the names of its */
+/*   contributors may be used to endorse or promote products derived */
+/*   from this software without specific prior written permission. */
+
+/* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS */
+/* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT */
+/* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS */
+/* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE */
+/* COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, */
+/* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, */
+/* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; */
+/* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER */
+/* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT */
+/* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN */
+/* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE */
+/* POSSIBILITY OF SUCH DAMAGE. */
 
 #ifndef __spglib_H__
 #define __spglib_H__
@@ -16,15 +47,15 @@
   lattice: Lattice vectors (in Cartesian)
 
   [ [ a_x, b_x, c_x ],
-  [ a_y, b_y, c_y ],
-  [ a_z, b_z, c_z ] ]
+    [ a_y, b_y, c_y ],
+    [ a_z, b_z, c_z ] ]
 
   position: Atomic positions (in fractional coordinates)
   
   [ [ x1_a, x1_b, x1_c ], 
-  [ x2_a, x2_b, x2_c ], 
-  [ x3_a, x3_b, x3_c ], 
-  ...                   ]
+    [ x2_a, x2_b, x2_c ], 
+    [ x3_a, x3_b, x3_c ], 
+    ...                   ]
 
   types: Atom types, i.e., species identified by number
 
@@ -34,8 +65,8 @@
 
   each rotation is:
   [ [ r_aa, r_ab, r_ac ],
-  [ r_ba, r_bb, r_bc ],
-  [ r_ca, r_cb, r_cc ] ]
+    [ r_ba, r_bb, r_bc ],
+    [ r_ca, r_cb, r_cc ] ]
 
   translation: Translation vectors of symmetry operations
 
@@ -59,30 +90,61 @@
   ------------------------------------------------------------------
 */
 
+typedef enum {
+  SPGLIB_SUCCESS = 0,
+  SPGERR_SPACEGROUP_SEARCH_FAILED,
+  SPGERR_CELL_STANDARDIZATION_FAILED,
+  SPGERR_SYMMETRY_OPERATION_SEARCH_FAILED,
+  SPGERR_ATOMS_TOO_CLOSE,
+  SPGERR_POINTGROUP_NOT_FOUND,
+  SPGERR_NIGGLI_FAILED,
+  SPGERR_DELAUNAY_FAILED,
+  SPGERR_ARRAY_SIZE_SHORTAGE,
+  SPGERR_NONE,
+} SpglibError;
+
 typedef struct {
   int spacegroup_number;
   int hall_number;
   char international_symbol[11];
   char hall_symbol[17];
-  double transformation_matrix[3][3]; /* bravais_lattice = T * original_lattice */
-  double origin_shift[3]; /* Origin shift in Bravais lattice */
-  int n_operations; /* Symmetry operations from database */
+  char choice[6];
+  double transformation_matrix[3][3];
+  double origin_shift[3];
+  int n_operations;
   int (*rotations)[3][3];
   double (*translations)[3];
   int n_atoms;
-  int *wyckoffs; /* Wyckoff letters */
+  int *wyckoffs;
   int *equivalent_atoms;
+  int n_std_atoms;
+  double std_lattice[3][3];
+  int *std_types;
+  double (*std_positions)[3];
+  /* int pointgroup_number; */
+  char pointgroup_symbol[6];
 } SpglibDataset;
 
-/* This is a copy from spg_database.h except for holohedry. */
 typedef struct {
   int number;
+  char international_short[11];
+  char international_full[20];
+  char international[32];
   char schoenflies[7];
   char hall_symbol[17];
-  char international[32];
-  char international_full[20];
-  char international_short[11];
+  char choice[6];
+  char pointgroup_international[6];
+  char pointgroup_schoenflies[4];
+  int arithmetic_crystal_class_number;
+  char arithmetic_crystal_class_symbol[7];
 } SpglibSpacegroupType;
+
+int spg_get_major_version(void);
+int spg_get_minor_version(void);
+int spg_get_micro_version(void);
+
+SpglibError spg_get_error_code(void);
+char * spg_get_error_message(SpglibError spglib_error);
 
 SpglibDataset * spg_get_dataset(SPGCONST double lattice[3][3],
 				SPGCONST double position[][3],
@@ -96,6 +158,24 @@ SpglibDataset * spgat_get_dataset(SPGCONST double lattice[3][3],
 				  const int num_atom,
 				  const double symprec,
 				  const double angle_tolerance);
+
+/* hall_number = 0 gives the same as spg_get_dataset. */
+SpglibDataset * spg_get_dataset_with_hall_number(SPGCONST double lattice[3][3],
+						 SPGCONST double position[][3],
+						 const int types[],
+						 const int num_atom,
+						 const int hall_number,
+						 const double symprec);
+
+/* hall_number = 0 gives the same as spgat_get_dataset. */
+SpglibDataset *
+spgat_get_dataset_with_hall_number(SPGCONST double lattice[3][3],
+				   SPGCONST double position[][3],
+				   const int types[],
+				   const int num_atom,
+				   const int hall_number,
+				   const double symprec,
+				   const double angle_tolerance);
 
 void spg_free_dataset(SpglibDataset *dataset);
 
@@ -127,6 +207,7 @@ int spgat_get_symmetry(int rotation[][3][3],
 /* Find symmetry operations with collinear spins on atoms. */
 int spg_get_symmetry_with_collinear_spin(int rotation[][3][3],
 					 double translation[][3],
+					 int equivalent_atoms[],
 					 const int max_size,
 					 SPGCONST double lattice[3][3],
 					 SPGCONST double position[][3],
@@ -137,6 +218,7 @@ int spg_get_symmetry_with_collinear_spin(int rotation[][3][3],
 
 int spgat_get_symmetry_with_collinear_spin(int rotation[][3][3],
 					   double translation[][3],
+					   int equivalent_atoms[],
 					   const int max_size,
 					   SPGCONST double lattice[3][3],
 					   SPGCONST double position[][3],
@@ -148,10 +230,7 @@ int spgat_get_symmetry_with_collinear_spin(int rotation[][3][3],
 
 /* Return exact number of symmetry operations. This function may */
 /* be used in advance to allocate memoery space for symmetry */
-/* operations. Only upper bound is required, */
-/* ``spg_get_max_multiplicity`` can be used instead of this */
-/* function and ``spg_get_max_multiplicity`` is faster than this */
-/* function. */
+/* operations. */
 int spg_get_multiplicity(SPGCONST double lattice[3][3],
 			 SPGCONST double position[][3],
 			 const int types[],
@@ -164,29 +243,6 @@ int spgat_get_multiplicity(SPGCONST double lattice[3][3],
 			   const int num_atom,
 			   const double symprec,
 			   const double angle_tolerance);
-
-/* Considering periodicity of crystal, one of the possible smallest */
-/* lattice is searched. The lattice is stored in ``smallest_lattice``. */
-int spg_get_smallest_lattice(double smallest_lattice[3][3],
-			     SPGCONST double lattice[3][3],
-			     const double symprec);
-
-/* A primitive cell is found from an input cell. Be careful that  */
-/* ``lattice``, ``position``, and ``types`` are overwritten. */
-/* ``num_atom`` is returned as return value. */
-/* When any primitive cell is not found, 0 is returned. */
-int spg_find_primitive(double lattice[3][3],
-		       double position[][3],
-		       int types[],
-		       const int num_atom,
-		       const double symprec);
-
-int spgat_find_primitive(double lattice[3][3],
-			 double position[][3],
-			 int types[],
-			 const int num_atom,
-			 const double symprec,
-			 const double angle_tolerance);
 
 /* Space group is found in international table symbol (``symbol``) and */
 /* number (return value). 0 is returned when it fails. */
@@ -229,10 +285,54 @@ int spg_get_pointgroup(char symbol[6],
 		       SPGCONST int rotations[][3][3],
 		       const int num_rotations);
 
-/* Space-group type information is accessed by index of hall symbol. */
-/* The index is defined from 1 to 530. */
-SpglibSpacegroupType spg_get_spacegroup_type(int hall_number);
+/* Space-group operations in built-in database are accessed by index */
+/* of hall symbol. The index is defined as number from 1 to 530. */
+/* The muximum number of symmetry operations is 192. */
+int spg_get_symmetry_from_database(int rotations[192][3][3],
+				   double translations[192][3],
+				   const int hall_number);
 
+/* Space-group type information is accessed by index of hall symbol. */
+/* The index is defined as number from 1 to 530. */
+SpglibSpacegroupType spg_get_spacegroup_type(const int hall_number);
+
+
+int spg_standardize_cell(double lattice[3][3],
+			 double position[][3],
+			 int types[],
+			 const int num_atom,
+			 const int to_primitive,
+			 const int no_idealize,
+			 const double symprec);
+
+int spgat_standardize_cell(double lattice[3][3],
+			   double position[][3],
+			   int types[],
+			   const int num_atom,
+			   const int to_primitive,
+			   const int no_idealize,
+			   const double symprec,
+			   const double angle_tolerance);
+
+/* This is a wrapper of spg_standardize_cell. */
+/* A primitive cell is found from an input cell. */
+/* Be careful that ``lattice``, ``position``, and ``types`` are overwritten. */
+/* ``num_atom`` is returned as return value. */
+/* When any primitive cell is not found, 0 is returned. */
+int spg_find_primitive(double lattice[3][3],
+		       double position[][3],
+		       int types[],
+		       const int num_atom,
+		       const double symprec);
+
+int spgat_find_primitive(double lattice[3][3],
+			 double position[][3],
+			 int types[],
+			 const int num_atom,
+			 const double symprec,
+			 const double angle_tolerance);
+
+/* This is a wrapper of spg_standardize_cell. */
 /* Bravais lattice with internal atomic points are returned. */
 /* The arrays are require to have 4 times larger memory space */
 /* those of input cell. */
@@ -251,6 +351,21 @@ int spgat_refine_cell(double lattice[3][3],
 		      const double symprec,
 		      const double angle_tolerance);
 
+/* Delaunay reduction for lattice parameters */
+/* ``lattice`` is overwritten when the redution ends succeeded. */
+int spg_delaunay_reduce(double lattice[3][3], const double symprec);
+
+/*---------*/
+/* kpoints */
+/*---------*/
+
+/* Translate grid address to grid point index in the kspclib definition */
+/* (see the comment in kgrid.h.) */
+/* A q-point in fractional coordinates is given as */
+/* ((grid_address * 2 + (shift != 0)) / (mesh * 2)). */
+/* Each element of shift[] is 0 or non-zero. */
+int spg_get_grid_point_from_address(const int grid_address[3],
+				    const int mesh[3]);
 
 /* Irreducible reciprocal grid points are searched from uniform */
 /* mesh grid points specified by ``mesh`` and ``is_shift``. */
@@ -297,6 +412,24 @@ int spg_get_stabilized_reciprocal_mesh(int grid_address[][3],
 				       const int num_q,
 				       SPGCONST double qpoints[][3]);
 
+/* Rotation operations in reciprocal space ``rot_reciprocal`` are applied */
+/* to a grid address ``address_orig`` and resulting grid points are stored in */
+/* ``rot_grid_points``. Return 0 if failed. */
+int spg_get_grid_points_by_rotations(int rot_grid_points[],
+				     const int address_orig[3],
+				     const int num_rot,
+				     SPGCONST int rot_reciprocal[][3][3],
+				     const int mesh[3],
+				     const int is_shift[3]);
+
+int spg_get_BZ_grid_points_by_rotations(int rot_grid_points[],
+					const int address_orig[3],
+					const int num_rot,
+					SPGCONST int rot_reciprocal[][3][3],
+					const int mesh[3],
+					const int is_shift[3],
+					const int bz_map[]);
+
 /* Grid addresses are relocated inside Brillouin zone. */
 /* Number of ir-grid-points inside Brillouin zone is returned. */
 /* It is assumed that the following arrays have the shapes of */
@@ -326,34 +459,6 @@ int spg_relocate_BZ_grid_address(int bz_grid_address[][3],
 				 SPGCONST double rec_lattice[3][3],
 				 const int is_shift[3]);
 
-/* Irreducible triplets of k-points are searched under conservation of */
-/* :math:``\mathbf{k}_1 + \mathbf{k}_2 + \mathbf{k}_3 = \mathbf{G}``. */
-/* Memory spaces of grid_address[prod(mesh)][3], weights[prod(mesh)] */
-/* and third_q[prod(mesh)] are required. rotations are point-group- */
-/* operations in real space for which duplicate operations are allowed */
-/* in the input. */
-int spg_get_triplets_reciprocal_mesh_at_q(int weights[],
-					  int grid_address[][3],
-					  int third_q[],
-					  const int grid_point,
-					  const int mesh[3],
-					  const int is_time_reversal,
-					  const int num_rot,
-					  SPGCONST int rotations[][3][3]);
-
-/* Irreducible grid-point-triplets in BZ are stored. */
-/* triplets are recovered from grid_point and triplet_weights. */
-/* BZ boundary is considered in this recovery. Therefore grid addresses */
-/* are given not by grid_address, but by bz_grid_address. */
-/* triplets[num_ir_triplets][3] = number of non-zero triplets weights*/
-/* Number of ir-triplets is returned. */
-int spg_get_BZ_triplets_at_q(int triplets[][3],
-			     const int grid_point,
-			     SPGCONST int bz_grid_address[][3],
-			     const int bz_map[],
-			     const int triplet_weights[],
-			     const int mesh[3]);
-
 void spg_get_neighboring_grid_points(int relative_grid_points[],
 				     const int grid_point,
 				     SPGCONST int relative_grid_address[][3],
@@ -362,19 +467,11 @@ void spg_get_neighboring_grid_points(int relative_grid_points[],
 				     SPGCONST int bz_grid_address[][3],
 				     const int bz_map[]);
 
-void
-spg_get_tetrahedra_relative_grid_address(int relative_grid_address[24][4][3],
-					 SPGCONST double rec_lattice[3][3]);
-double
-spg_get_tetrahedra_integration_weight(const double omega,
-				      SPGCONST double tetrahedra_omegas[24][4],
-				      const char function);
-void
-spg_get_tetrahedra_integration_weight_at_omegas
-(double integration_weights[],
- const int num_omegas,
- const double omegas[],
- SPGCONST double tetrahedra_omegas[24][4],
- const char function);
+/*--------*/
+/* Niggli */
+/*--------*/
+/* Return 0 if failed */
+int spg_niggli_reduce(double lattice[3][3], const double symprec);
+
 #endif
 
