@@ -1610,7 +1610,7 @@ namespace Avogadro {
 
           //Draw ticklabel
           if ( a->areTickLabelsShown() ) {
-            QRect r( int(px) - BIGTICKSIZE, (int)-1.5*BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
+            QRect r( int(px) - BIGTICKSIZE, (int)-2*BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
             p->drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
           }
         }
@@ -1626,7 +1626,7 @@ namespace Avogadro {
 
       // Draw TopAxis Label
       if ( ! a->label().isEmpty() ) {
-        QRect r( 0, 0 - 3*YPADDING, d->pixRect.width(), YPADDING );
+        QRect r( 0, 0 - 2.5*YPADDING, d->pixRect.width(), YPADDING );
         p->drawText( r, Qt::AlignCenter, a->label() );
       }
     }  //End of TopAxis
