@@ -68,5 +68,5 @@ avogadro_plugin(qtaimengine qtaimengine.cpp qtaimsettingswidget.ui)
 
 if(ALL_PYTHON_FOUND)
   file(GLOB python_SCRIPTS "python/*.py")
-  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/engineScripts)
+  install(FILES ${python_SCRIPTS} DESTINATION ${SHARE_INSTALL_PREFIX}/libavogadro/engineScripts)
 endif()

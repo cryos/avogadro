@@ -55,5 +55,5 @@ endif( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
 # Manpages
 if(UNIX)
    file(GLOB man_1 *.1)
-   install(FILES ${man_1} DESTINATION share/man/man1)
+   install(FILES ${man_1} DESTINATION ${SHARE_INSTALL_PREFIX}/man/man1)
 endif(UNIX)
