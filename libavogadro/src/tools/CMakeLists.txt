@@ -64,5 +64,5 @@ avogadro_plugin(aligntool aligntool.cpp aligntool.qrc)
 
 if(ALL_PYTHON_FOUND)
   file(GLOB python_SCRIPTS "python/*.py")
-  install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/toolScripts)
+  install(FILES ${python_SCRIPTS} DESTINATION ${SHARE_INSTALL_PREFIX}/libavogadro/toolScripts)
 endif()
