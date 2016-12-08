@@ -40,6 +40,9 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(forcefieldextension PROPERTIES COMPILE_FLAGS "-fvisibility=default")
 endif()
 
+### selection indices
+avogadro_plugin_nogl(selectionindicesextension selectionindices.cpp)
+
 ### hydrogens
 avogadro_plugin_nogl(hydrogensextension hydrogensextension.cpp)
 
