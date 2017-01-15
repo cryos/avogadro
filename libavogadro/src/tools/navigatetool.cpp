@@ -92,7 +92,8 @@ namespace Avogadro {
       double sumOfWeights = 0.;
       QList<Atom*> atoms = widget->molecule()->atoms();
       foreach (Atom *atom, atoms) {
-        Vector3d transformedAtomPos = widget->camera()->modelview() * *atom->pos();
+        Vector3d transformedAtomPos = (widget->camera()->modelview() *
+                                       atom->pos()->homogeneous()).head<3>();
         double atomDistance = transformedAtomPos.norm();
         double dot = transformedAtomPos.z() / atomDistance;
         double weight = exp(-30. * (1. + dot));

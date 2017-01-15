@@ -40,7 +40,7 @@ namespace Avogadro {
   void Navigate::zoom(GLWidget *widget, const Eigen::Vector3d &goal,
                       double delta)
   {
-    Vector3d transformedGoal = widget->camera()->modelview() * goal;
+    Vector3d transformedGoal = (widget->camera()->modelview() * goal.homogeneous()).head<3>();
     double distanceToGoal = transformedGoal.norm();
 
     double t = ZOOM_SPEED * delta;

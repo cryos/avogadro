@@ -789,13 +789,13 @@ namespace Avogadro
         } else {
           points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * u;
         }
-        points[theta-1] = d->widget->camera()->modelview() * (origin + points[theta-1]);
+        points[theta-1] = (d->widget->camera()->modelview() * (origin + points[theta-1]).homogeneous()).head<3>();
       }
 
     // Get vectors representing the points' positions in terms of the model view.
-    Eigen::Vector3d _origin = d->widget->camera()->modelview() * origin;
-    Eigen::Vector3d _direction1 = d->widget->camera()->modelview() * (origin+u);
-    Eigen::Vector3d _direction2 = d->widget->camera()->modelview() * (origin+v);
+    Eigen::Vector3d _origin = (d->widget->camera()->modelview() * origin.homogeneous()).head<3>();
+    Eigen::Vector3d _direction1 = (d->widget->camera()->modelview() * (origin+u).homogeneous()).head<3>();
+    Eigen::Vector3d _direction2 = (d->widget->camera()->modelview() * (origin+v).homogeneous()).head<3>();
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
@@ -880,12 +880,12 @@ namespace Avogadro
         } else {
           points[theta-1] = Eigen::AngleAxisd(theta * (M_PI / 180.0) / 2, n) * u;
         }
-        points[theta-1] = d->widget->camera()->modelview() * (origin + points[theta-1]);
+        points[theta-1] = (d->widget->camera()->modelview() * (origin + points[theta-1]).homogeneous()).head<3>();
       }
 
     // Get vectors representing the points' positions in terms of the model view.
-    Eigen::Vector3d _direction1 = d->widget->camera()->modelview() * (origin + u);
-    Eigen::Vector3d _direction2 = d->widget->camera()->modelview() * (origin + v);
+    Eigen::Vector3d _direction1 = (d->widget->camera()->modelview() * (origin + u).homogeneous()).head<3>();
+    Eigen::Vector3d _direction2 = (d->widget->camera()->modelview() * (origin + v).homogeneous()).head<3>();
 
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
