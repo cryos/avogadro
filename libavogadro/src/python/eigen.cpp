@@ -305,9 +305,9 @@ template <> struct ScalarTraits<double>
     struct innerclass
     {
       //
-      //  Eigen::Transform3d --> python array (4x4)
+      //  Eigen::Projective3d --> python array (4x4)
       //
-      static PyObject* convert(Eigen::Transform3d const &trans)
+      static PyObject* convert(Eigen::Projective3d const &trans)
       {
         npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
@@ -321,9 +321,9 @@ template <> struct ScalarTraits<double>
         return incref(result);
       }
       //
-      //  Eigen::Transform3d* --> python array (4x4)
+      //  Eigen::Projective3d* --> python array (4x4)
       //
-      static PyObject* convert(Eigen::Transform3d *trans)
+      static PyObject* convert(Eigen::Projective3d *trans)
       {
         npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
@@ -337,9 +337,9 @@ template <> struct ScalarTraits<double>
         return incref(result);
       }
       //
-      //  const Eigen::Transform3d* --> python array (4x4)
+      //  const Eigen::Projective3d* --> python array (4x4)
       //
-      static PyObject* convert(const Eigen::Transform3d *trans)
+      static PyObject* convert(const Eigen::Projective3d *trans)
       {
         npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
@@ -358,10 +358,10 @@ template <> struct ScalarTraits<double>
     Transform3d_to_python_array()
     {
       #ifndef WIN32
-      to_python_converter<Eigen::Transform3d, innerclass>();
+      to_python_converter<Eigen::Projective3d, innerclass>();
       #endif
-      to_python_converter<Eigen::Transform3d*, innerclass>();
-      to_python_converter<const Eigen::Transform3d*, innerclass>();
+      to_python_converter<Eigen::Projective3d*, innerclass>();
+      to_python_converter<const Eigen::Projective3d*, innerclass>();
     }
 
   };
@@ -373,17 +373,17 @@ template <> struct ScalarTraits<double>
       // Insert an rvalue from_python converter at the tail of the
       // chain. Used for implicit conversions
       //
-      //  python array --> Eigen::Transform3d
+      //  python array --> Eigen::Projective3d
       //
       // used for:
       //
-      //  void function(Eigen::Transform3d vec)
-      //  void function(Eigen::Transform3d & vec)
-      //  void function(const Eigen::Transform3d & vec)
+      //  void function(Eigen::Projective3d vec)
+      //  void function(Eigen::Projective3d & vec)
+      //  void function(const Eigen::Projective3d & vec)
       //
-      converter::registry::push_back( &convertible, &construct, type_id<Eigen::Transform3d>() );
+      converter::registry::push_back( &convertible, &construct, type_id<Eigen::Projective3d>() );
       
-      converter::registry::insert( &convert, type_id<Eigen::Transform3d>() );
+      converter::registry::insert( &convert, type_id<Eigen::Projective3d>() );
     }
 
     static void* convert(PyObject *obj_ptr)
@@ -401,7 +401,7 @@ template <> struct ScalarTraits<double>
         throw_error_already_set(); // the 1D array does not have exactly 3 elements
 
       double *values = reinterpret_cast<double*>(array->data);
-      Eigen::Transform3d *c_obj = new Eigen::Transform3d();
+      Eigen::Projective3d *c_obj = new Eigen::Projective3d();
       double *dataPtr = c_obj->data();
 
       for (int i = 0; i < 16; ++i)
@@ -432,7 +432,7 @@ template <> struct ScalarTraits<double>
       // I think this is a better way to get at the double array, where is this
       // deleted though? Does Boost::Python do it?
       double *values = reinterpret_cast<double*>(array->data);
-      Eigen::Transform3d *storage = new Eigen::Transform3d();
+      Eigen::Projective3d *storage = new Eigen::Projective3d();
       double *dataPtr = storage->data();
 
       for (int i = 0; i < 16; ++i)
@@ -467,21 +467,21 @@ class EigenUnitTestHelper
     void set_vector3d_ptr(Eigen::Vector3d* vec)                 { m_vector3d = *vec; }
     void set_const_vector3d_ptr(const Eigen::Vector3d* const vec) { m_vector3d = *vec; }
 
-    //Eigen::Transform3d             transform3d()              { return m_transform3d; }
-    //Eigen::Transform3d&            transform3d_ref()          { return m_transform3d; }
-    const Eigen::Transform3d&      const_transform3d_ref()    { return m_transform3d; }
-    Eigen::Transform3d*            transform3d_ptr()          { return &m_transform3d; }
-    const Eigen::Transform3d*      const_transform3d_ptr()    { return &m_transform3d; }
+    //Eigen::Projective3d             transform3d()              { return m_transform3d; }
+    //Eigen::Projective3d&            transform3d_ref()          { return m_transform3d; }
+    const Eigen::Projective3d&      const_transform3d_ref()    { return m_transform3d; }
+    Eigen::Projective3d*            transform3d_ptr()          { return &m_transform3d; }
+    const Eigen::Projective3d*      const_transform3d_ptr()    { return &m_transform3d; }
 
-    //void set_transform3d(Eigen::Transform3d vec)                      { m_transform3d = vec; }
-    //void set_transform3d_ref(Eigen::Transform3d& vec)                 { m_transform3d = vec; }
-    void set_const_transform3d_ref(const Eigen::Transform3d& vec)     { m_transform3d = vec; }
-    void set_transform3d_ptr(Eigen::Transform3d* vec)                 { m_transform3d = *vec; }
-    void set_const_transform3d_ptr(const Eigen::Transform3d* const vec) { m_transform3d = *vec; }
+    //void set_transform3d(Eigen::Projective3d vec)                      { m_transform3d = vec; }
+    //void set_transform3d_ref(Eigen::Projective3d& vec)                 { m_transform3d = vec; }
+    void set_const_transform3d_ref(const Eigen::Projective3d& vec)     { m_transform3d = vec; }
+    void set_transform3d_ptr(Eigen::Projective3d* vec)                 { m_transform3d = *vec; }
+    void set_const_transform3d_ptr(const Eigen::Projective3d* const vec) { m_transform3d = *vec; }
  
   private:
     Eigen::Vector3d m_vector3d;
-    Eigen::Transform3d m_transform3d;
+    Eigen::Projective3d m_transform3d;
 
 };
 #endif
@@ -529,7 +529,7 @@ void export_Eigen()
   Vector3x_to_python_array<Eigen::Vector3i>();
   Vector3x_from_python_array<Eigen::Vector3i>();
 
-  // Eigen::Transform3d
+  // Eigen::Projective3d
   Transform3d_to_python_array();
   Transform3d_from_python_array();
 
