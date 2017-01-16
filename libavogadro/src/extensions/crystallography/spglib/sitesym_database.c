@@ -1,5 +1,36 @@
-/* sitesym_database.c */
-/* Copyright (C) 2008 Atsushi Togo */
+/* Copyright (C) 2011 Atsushi Togo */
+/* All rights reserved. */
+
+/* This file is part of spglib. */
+
+/* Redistribution and use in source and binary forms, with or without */
+/* modification, are permitted provided that the following conditions */
+/* are met: */
+
+/* * Redistributions of source code must retain the above copyright */
+/*   notice, this list of conditions and the following disclaimer. */
+
+/* * Redistributions in binary form must reproduce the above copyright */
+/*   notice, this list of conditions and the following disclaimer in */
+/*   the documentation and/or other materials provided with the */
+/*   distribution. */
+
+/* * Neither the name of the phonopy project nor the names of its */
+/*   contributors may be used to endorse or promote products derived */
+/*   from this software without specific prior written permission. */
+
+/* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS */
+/* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT */
+/* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS */
+/* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE */
+/* COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, */
+/* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, */
+/* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; */
+/* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER */
+/* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT */
+/* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN */
+/* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE */
+/* POSSIBILITY OF SUCH DAMAGE. */
 
 static const int position_wyckoff[] =
   {    0, /* The first element is dummy. */
@@ -1031,22 +1062,22 @@ static const int num_sitesym[] =
       4,   4,  32,  16,  16,  16,   8,   8,   8,   4,
       4,  32,  16,  16,  16,  16,   8,   8,  32,  16,
      16,  16,  16,   8,   8,   3,   1,   1,   1,   3,
-      3,   3,   1,   3,   1,   6,   3,   3,   2,   2,
-      1,   1,   6,   3,   3,   2,   1,   1,   6,   3,
+      3,   9,   3,   3,   1,   6,   3,   3,   2,   2,
+      1,   1,  18,   9,   9,   6,   3,   3,   6,   3,
       3,   2,   1,   1,   6,   3,   3,   2,   2,   2,
       1,   1,   1,   1,   1,   1,   6,   3,   3,   2,
       2,   1,   1,   6,   3,   3,   6,   3,   3,   6,
-      3,   3,   6,   3,   3,   6,   3,   3,   2,   1,
-      1,   6,   3,   3,   2,   1,   1,   6,   3,   1,
+      3,   3,   6,   3,   3,  18,   9,   9,   6,   3,
+      3,   6,   3,   3,   2,   1,   1,   6,   3,   1,
       1,   1,   6,   3,   2,   1,   6,   2,   2,   2,
-      6,   2,   2,   6,   3,   1,   6,   3,   1,   6,
-      2,   6,   2,  12,   6,   6,   6,   4,   3,   3,
+      6,   2,   2,  18,   9,   3,   6,   3,   1,  18,
+      6,   6,   2,  12,   6,   6,   6,   4,   3,   3,
       2,   2,   2,   1,   1,  12,   6,   6,   4,   4,
       2,   2,   2,   2,  12,   6,   6,   6,   3,   3,
       2,   2,   1,   1,  12,   6,   6,   4,   4,   2,
-      2,  12,   6,   6,   6,   3,   3,   2,   1,   1,
-     12,   6,   6,   6,   3,   3,   2,   1,   1,  12,
-      6,   6,   4,   2,   2,  12,   6,   6,   4,   2,
+      2,  36,  18,  18,  18,   9,   9,   6,   3,   3,
+     12,   6,   6,   6,   3,   3,   2,   1,   1,  36,
+     18,  18,  12,   6,   6,  12,   6,   6,   4,   2,
       2,   6,   3,   2,   1,   6,   6,   6,   3,   3,
       6,   3,   3,   6,   2,   2,   6,   3,   3,   2,
       2,   2,   1,   1,   1,   1,   1,   1,  12,   6,
@@ -1108,9 +1139,9 @@ static const int num_sitesym[] =
      16,  16, };
 
 
-int ssmdb_get_coordinate( int rot[3][3],
-			  double trans[3],
-			  const int index )
+int ssmdb_get_coordinate(int rot[3][3],
+			 double trans[3],
+			 const int index)
 {
   int i, rot_enc, trans_enc;
   int rows[3], trans_int[3];
@@ -1125,28 +1156,28 @@ int ssmdb_get_coordinate( int rot[3][3],
 
   rot_enc = coordinates_first[index] % 91125; /* = 45**3 */
   rows[0] = rot_enc / 2025;        /* = 45**2 */
-  rows[1] = ( rot_enc % 2025 ) / 45;
+  rows[1] = (rot_enc % 2025) / 45;
   rows[2] = rot_enc % 45;
 
-  for ( i = 0; i < 3; i++ ) {
+  for (i = 0; i < 3; i++) {
     rot[i][0] = rows[i] / 9 - 2;
-    rot[i][1] = ( rows[i] % 9 ) / 3 - 1;
+    rot[i][1] = (rows[i] % 9) / 3 - 1;
     rot[i][2] = rows[i] % 3 - 1;
   }
 
   trans_enc = coordinates_first[index] / 91125; /* = 45**3 */
   trans_int[0] = trans_enc / 576;
-  trans_int[1] = ( trans_enc % 576 ) / 24 ;
+  trans_int[1] = (trans_enc % 576) / 24 ;
   trans_int[2] = trans_enc % 24 ;
-  for ( i = 0; i < 3; i++ ) {
+  for (i = 0; i < 3; i++) {
     trans[i] = ((double) trans_int[i]) / 24;
   }
 
-  return num_sitesym[ index ];
+  return num_sitesym[index];
 }
 
-void ssmdb_get_wyckoff_indices( int indices[2], const int index )
+void ssmdb_get_wyckoff_indices(int indices[2], const int index)
 {
-  indices[0] = position_wyckoff[ index ];
-  indices[1] = position_wyckoff[ index + 1 ] - position_wyckoff[ index ];
+  indices[0] = position_wyckoff[index];
+  indices[1] = position_wyckoff[index + 1] - position_wyckoff[index];
 }
