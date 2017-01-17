@@ -250,9 +250,9 @@ bool SlaterSet::initialize()
 
   SelfAdjointEigenSolver<MatrixXd> s(m_overlap);
   MatrixXd p = s.eigenvectors();
-  // TODO check if this is correct
-  MatrixXd m1 = (s.eigenvalues().array().inverse().sqrt());
-  MatrixXd m = p.array()*(m1.diagonal().array())*p.inverse().array();
+
+  MatrixXd m = p * s.eigenvalues().array().inverse().sqrt().matrix().asDiagonal() * p.inverse();
+
   m_normalized = m * m_eigenVectors;
 
   if (!(m_overlap*m*m).isIdentity())

@@ -36,9 +36,9 @@
 #include "primitivelist.h"
 #include "residue.h"
 #include "zmatrix.h"
+#include "leastsquares.h"
 
 #include <Eigen/Geometry>
-#include <Eigen/Eigenvalues>
 
 #include <vector>
 
@@ -1908,28 +1908,7 @@ namespace Avogadro{
         }
         d->center /= static_cast<double>(nAtoms);
         Eigen::Hyperplane<double, 3> planeCoeffs;
-        //Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
-
-        // TODO check if this is OK
-        /************************/
-        typedef Eigen::Matrix<double,3,3> CovMatrixType;
-        typedef Eigen::Vector3d VectorType;
-        
-        VectorType mean = d->center;
-        int size=3;
-        int numPoints=numAtoms();
-        VectorType ** points=atomPositions;
-        CovMatrixType covMat = CovMatrixType::Zero(size, size);
-        VectorType remean = VectorType::Zero(size);
-        for(int i = 0; i < numPoints; ++i)
-        {
-          VectorType diff = (*(points[i]) - mean).conjugate();
-          covMat += diff * diff.adjoint();
-        }
-        Eigen::SelfAdjointEigenSolver<CovMatrixType> eig(covMat);
-        planeCoeffs.normal() = eig.eigenvectors().col(0);
-        /************************/
-
+        fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
 
         delete[] atomPositions;
         d->normalVector = planeCoeffs.normal();
