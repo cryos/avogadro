@@ -46,6 +46,7 @@ namespace Avogadro {
       MainWindow *m_mainWindow;
 
     private Q_SLOTS:
+	  void checkChanged(bool value);
       void buttonClicked(QAbstractButton *button);
       void saveValues();
       void loadValues();

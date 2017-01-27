@@ -72,8 +72,9 @@ namespace Avogadro {
       MainWindow();
       MainWindow(const QString &fileName);
       ~MainWindow();
-
       int painterQuality() const;
+	  bool getNoAskErrorReport() const;
+	  bool getSendErrorReport() const;
       int fogLevel() const;
       bool renderAxes() const;
       bool renderDebug() const;
@@ -159,6 +160,7 @@ namespace Avogadro {
       void setBackgroundColor();
       void setPainterQuality(int quality);
       void setFogLevel(int level);
+	  void setErrorReport(bool value, bool send);
 
       /**
        * Slot to switch glWidget to the perspective projection mode

@@ -47,13 +47,18 @@ namespace Avogadro {
         SLOT(qualityChanged(int)));
     connect(ui.fogSlider, SIGNAL(valueChanged(int)), this,
         SLOT(fogChanged(int)));
+	connect(ui.checkBox, SIGNAL(clicked(bool)), this,
+		SLOT(checkChanged(bool)));
   }
 
   void SettingsDialog::insertWidget(int index, QWidget *widget)
   {
     ui.stackedWidget->insertWidget(index, widget);
   }
-  
+  void SettingsDialog::checkChanged(bool value) {
+	  ui.radioButton->setEnabled(value);
+	  ui.radioButton_2->setEnabled(value);
+  }
   void SettingsDialog::buttonClicked(QAbstractButton *button)
   {
     QDialogButtonBox::ButtonRole role = ui.dialogButtonBox->buttonRole(button);
@@ -87,6 +92,12 @@ namespace Avogadro {
   {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setFogLevel(ui.fogSlider->value());
+	if (ui.radioButton->isChecked()) {
+		m_mainWindow->setErrorReport(ui.checkBox->isChecked(), true);
+	}
+	else {
+		m_mainWindow->setErrorReport(ui.checkBox->isChecked(), false);
+	}
   }
 
   void SettingsDialog::loadValues()
@@ -94,6 +105,14 @@ namespace Avogadro {
     ui.qualitySlider->setValue(m_mainWindow->painterQuality());
     fogChanged(m_mainWindow->fogLevel());
     qualityChanged(m_mainWindow->painterQuality());
+	ui.checkBox->setChecked(m_mainWindow->getNoAskErrorReport());
+	if (ui.checkBox->isChecked()) {
+		bool send = m_mainWindow->getSendErrorReport();
+		if (send)
+			ui.radioButton->setChecked(true);
+		else
+			ui.radioButton->setChecked(false);
+	}
   }
 
   void SettingsDialog::qualityChanged(int value)

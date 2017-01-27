@@ -26,7 +26,6 @@
 
 #include <avogadro/global.h>
 #include <openbabel/babelconfig.h>
-
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
@@ -41,6 +40,9 @@
 #include <QLibraryInfo>
 #include <QProcess>
 #include <QFont>
+#include <QDir>
+#include <QDialog>
+#include <QCheckBox>
 
 #include <iostream>
 
@@ -50,6 +52,12 @@
 // Avogadro Includes
 #include "mainwindow.h"
 #include "application.h"
+
+// Google breakpapd
+#ifdef WIN32
+#include "client/windows/handler/exception_handler.h"
+#include "client/windows/sender/crash_report_sender.h"
+#endif
 
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
@@ -68,8 +76,23 @@ using namespace Avogadro;
 void printVersion(const QString &appName);
 void printHelp(const QString &appName);
 
+//for Breakpad error reporting
+bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion);
+bool sendCrashServer(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
+	EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded);
+
+struct arginfo {
+	int argc;
+	char **argv;
+}*args;
+
 int main(int argc, char *argv[])
 {
+	//save main args in case of crash
+	args = new struct arginfo;
+	args->argc = argc;
+	args->argv = argv;
+
 #ifdef Q_WS_X11
   if(Library::threadedGL()) {
     std::cout << "Enabling Threads" << std::endl;
@@ -85,6 +108,12 @@ int main(int argc, char *argv[])
         QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
     }
 #endif
+  //set up Google Breakpad directory
+
+  if (!(QDir().mkdir("crash-reports")) && !(QDir("crash-reports").exists())) 
+	qDebug() << "Could not create crash-reports directory.";
+  else
+	qDebug() << "/crash-reports successfully created.";
 
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");
@@ -269,6 +298,15 @@ int main(int argc, char *argv[])
       }
     }
   }
+
+  //initate Google Breakpad
+  google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
+	  L"crash-reports",
+	  sendErrorDialog,
+	  sendCrashServer,
+	  args,
+	  google_breakpad::ExceptionHandler::HANDLER_ALL);
+
   window->show();
   return app.exec();
 }
@@ -302,4 +340,40 @@ void printHelp(const QString &appName)
       "  -v, --version\t\tShow version information\n"
       ).arg(appName, VERSION).toStdWString();
   #endif
+}
+
+bool sendCrashServer(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
+	EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded) 
+{
+	if (succeeded) {
+		google_breakpad::CrashReportSender sender(L"crash.checkpoint");
+		std::map<std::wstring, std::wstring> params;
+		std::wstring filename = dump_path;
+		filename += L"\\";
+		filename += minidump_id;
+		filename += L".dmp";
+
+		sender.set_max_reports_per_day(-1);
+
+		return(google_breakpad::RESULT_SUCCEEDED == sender.SendCrashReport(L"http://crash.avogadro.cc/crash_upload", params, filename, 0));
+	}
+	else
+		return false;
+}
+
+bool sendErrorDialog(void* context, EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion) {
+	QSettings settings;
+	if (settings.value("noAskErrorReport").toBool())
+		return settings.value("sendErrorReport").toBool();
+	else {
+		Application app(args->argc, args->argv);
+		delete(args);
+
+		QMessageBox msgBox(QMessageBox::Question, "Avogadro", "Avogadro has crashed! Would you like to send an error report?", 0, NULL);
+
+		QAbstractButton* yes = (QAbstractButton*)msgBox.addButton(QMessageBox::Yes);
+		QAbstractButton* no = (QAbstractButton*)msgBox.addButton(QMessageBox::No);
+
+		return (msgBox.exec() == QMessageBox::Yes);
+	}
 }
