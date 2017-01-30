@@ -578,8 +578,13 @@ namespace Avogadro {
 
           Vector3d clicked = *m_clickedAtom->pos();
 
-          Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other.homogeneous()).z() >=
-                (widget->camera()->modelview() * center.homogeneous()).z() ? -1 : 1));
+          Eigen::Vector4d otherTransformedHomog = widget->camera()->modelview() * other.homogeneous();
+          Vector3d otherTransformed = otherTransformedHomog.hnormalized();
+          Eigen::Vector4d centerTransformedHomog = (widget->camera()->modelview() * center.homogeneous());
+          Vector3d centerTransformed = centerTransformedHomog.hnormalized();
+
+          Vector3d axis = Vector3d(0, 0, (otherTransformed.z() >=
+                                          centerTransformed.z() ? -1 : 1));
 
           Vector3d centerProj = widget->camera()->project(center);
           centerProj -= Vector3d(0,0,centerProj.z());
@@ -673,8 +678,13 @@ namespace Avogadro {
 
           Vector3d clicked = *m_clickedAtom->pos();
 
-          Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other.homogeneous()).z() >=
-                (widget->camera()->modelview() * center.homogeneous()).z() ? -1 : 1));
+          Eigen::Vector4d otherTransformedHomog = (widget->camera()->modelview() * other.homogeneous());
+          Vector3d otherTransformed = otherTransformedHomog.hnormalized();
+          Eigen::Vector4d centerTransformedHomog = (widget->camera()->modelview() * center.homogeneous());
+          Vector3d centerTransformed = centerTransformedHomog.hnormalized();
+
+          Vector3d axis = Vector3d(0, 0, (otherTransformed.z() >=
+                                          centerTransformed.z() ? -1 : 1));
 
           Vector3d centerProj = widget->camera()->project(center);
           centerProj -= Vector3d(0,0,centerProj.z());
