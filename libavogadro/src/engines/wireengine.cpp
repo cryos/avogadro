@@ -109,7 +109,7 @@ namespace Avogadro {
     const Camera *camera = pd->camera();
 
     // perform a rough form of frustum culling
-    Eigen::Vector3d transformedPos = pd->camera()->modelview() * v;
+    Eigen::Vector3d transformedPos = (pd->camera()->modelview() * v.homogeneous()).head<3>();
     double dot = transformedPos.z() / transformedPos.norm();
     if(dot > -0.8)
       return true;
@@ -167,7 +167,7 @@ namespace Avogadro {
       map = pd->colorMap(); // fall back to global color map
 
     // perform a rough form of frustum culling
-    Eigen::Vector3d transformedEnd1 = pd->camera()->modelview() * v1;
+    Eigen::Vector3d transformedEnd1 = (pd->camera()->modelview() * v1.homogeneous()).head<3>();
     double dot = transformedEnd1.z() / transformedEnd1.norm();
     if(dot > -0.8)
       return true; // i.e., don't bother rendering

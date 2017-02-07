@@ -139,7 +139,7 @@ namespace Avogadro
   {
     // View into a Miller plane
     Camera *camera = m_glWidget->camera();
-    Eigen::Transform3d modelView;
+    Eigen::Projective3d modelView;
     modelView.setIdentity();
 
     // OK, so we want to rotate to look along the normal at the plane

@@ -35,21 +35,21 @@ namespace Avogadro
     m_nprim=wfn.numberOfGaussianPrimitives();
     m_nnuc=wfn.numberOfNuclei();
 
-    m_nucxcoord=Map<Matrix<qreal,Dynamic,1> >(wfn.xNuclearCoordinates(),m_nnuc);
-    m_nucycoord=Map<Matrix<qreal,Dynamic,1> >(wfn.yNuclearCoordinates(),m_nnuc);
-    m_nuczcoord=Map<Matrix<qreal,Dynamic,1> >(wfn.zNuclearCoordinates(),m_nnuc);
-    m_nucz=Map<Matrix<qint64,Dynamic,1> >(wfn.nuclearCharges(),m_nnuc);
-    m_X0=Map<Matrix<qreal,Dynamic,1> >(wfn.xGaussianPrimitiveCenterCoordinates(),m_nprim,1);
-    m_Y0=Map<Matrix<qreal,Dynamic,1> >(wfn.yGaussianPrimitiveCenterCoordinates(),m_nprim,1);
-    m_Z0=Map<Matrix<qreal,Dynamic,1> >(wfn.zGaussianPrimitiveCenterCoordinates(),m_nprim,1);
-    m_xamom=Map<Matrix<qint64,Dynamic,1> >(wfn.xGaussianPrimitiveAngularMomenta(),m_nprim,1);
-    m_yamom=Map<Matrix<qint64,Dynamic,1> >(wfn.yGaussianPrimitiveAngularMomenta(),m_nprim,1);
-    m_zamom=Map<Matrix<qint64,Dynamic,1> >(wfn.zGaussianPrimitiveAngularMomenta(),m_nprim,1);
-    m_alpha=Map<Matrix<qreal,Dynamic,1> >(wfn.gaussianPrimitiveExponentCoefficients(),m_nprim,1);
+    m_nucxcoord=Map<const Matrix<qreal,Dynamic,1> >(wfn.xNuclearCoordinates(),m_nnuc);
+    m_nucycoord=Map<const Matrix<qreal,Dynamic,1> >(wfn.yNuclearCoordinates(),m_nnuc);
+    m_nuczcoord=Map<const Matrix<qreal,Dynamic,1> >(wfn.zNuclearCoordinates(),m_nnuc);
+    m_nucz=Map<const Matrix<qint64,Dynamic,1> >(wfn.nuclearCharges(),m_nnuc);
+    m_X0=Map<const Matrix<qreal,Dynamic,1> >(wfn.xGaussianPrimitiveCenterCoordinates(),m_nprim,1);
+    m_Y0=Map<const Matrix<qreal,Dynamic,1> >(wfn.yGaussianPrimitiveCenterCoordinates(),m_nprim,1);
+    m_Z0=Map<const Matrix<qreal,Dynamic,1> >(wfn.zGaussianPrimitiveCenterCoordinates(),m_nprim,1);
+    m_xamom=Map<const Matrix<qint64,Dynamic,1> >(wfn.xGaussianPrimitiveAngularMomenta(),m_nprim,1);
+    m_yamom=Map<const Matrix<qint64,Dynamic,1> >(wfn.yGaussianPrimitiveAngularMomenta(),m_nprim,1);
+    m_zamom=Map<const Matrix<qint64,Dynamic,1> >(wfn.zGaussianPrimitiveAngularMomenta(),m_nprim,1);
+    m_alpha=Map<const Matrix<qreal,Dynamic,1> >(wfn.gaussianPrimitiveExponentCoefficients(),m_nprim,1);
     // TODO Implement screening for unoccupied molecular orbitals.
-    m_occno=Map<Matrix<qreal,Dynamic,1> >(wfn.molecularOrbitalOccupationNumbers(),m_nmo,1);
-    m_orbe=Map<Matrix<qreal,Dynamic,1> >(wfn.molecularOrbitalEigenvalues(),m_nmo,1);
-    m_coef=Map<Matrix<qreal,Dynamic,Dynamic,RowMajor> >(wfn.molecularOrbitalCoefficients(),m_nmo,m_nprim);
+    m_occno=Map<const Matrix<qreal,Dynamic,1> >(wfn.molecularOrbitalOccupationNumbers(),m_nmo,1);
+    m_orbe=Map<const Matrix<qreal,Dynamic,1> >(wfn.molecularOrbitalEigenvalues(),m_nmo,1);
+    m_coef=Map<const Matrix<qreal,Dynamic,Dynamic,RowMajor> >(wfn.molecularOrbitalCoefficients(),m_nmo,m_nprim);
     m_totalEnergy=wfn.totalEnergy();
     m_virialRatio=wfn.virialRatio();
 

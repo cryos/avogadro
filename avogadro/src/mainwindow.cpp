@@ -115,7 +115,6 @@
 #include <QDebug>
 
 #include <Eigen/Geometry>
-#include <Eigen/Array>
 #define USEQUAT
 // This is a "hidden" exported Qt function on the Mac for Qt-4.x.
 #ifdef Q_WS_MAC
@@ -2775,7 +2774,7 @@ protected:
     linearGoal.row(1) = linearGoal.row(2).cross(linearGoal.row(0));
 
     // calculate the translation matrix
-    Transform3d goal(linearGoal);
+    Projective3d goal(linearGoal);
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
 
@@ -2840,7 +2839,7 @@ protected:
     Matrix3d linearGoal = Matrix3d::Identity();
 
     // calculate the translation matrix
-    Transform3d goal(linearGoal);
+    Projective3d goal(linearGoal);
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
 

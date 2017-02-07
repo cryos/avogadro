@@ -578,8 +578,13 @@ namespace Avogadro {
 
           Vector3d clicked = *m_clickedAtom->pos();
 
-          Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
-                (widget->camera()->modelview() * center).z() ? -1 : 1));
+          Eigen::Vector4d otherTransformedHomog = widget->camera()->modelview() * other.homogeneous();
+          Vector3d otherTransformed = otherTransformedHomog.hnormalized();
+          Eigen::Vector4d centerTransformedHomog = (widget->camera()->modelview() * center.homogeneous());
+          Vector3d centerTransformed = centerTransformedHomog.hnormalized();
+
+          Vector3d axis = Vector3d(0, 0, (otherTransformed.z() >=
+                                          centerTransformed.z() ? -1 : 1));
 
           Vector3d centerProj = widget->camera()->project(center);
           centerProj -= Vector3d(0,0,centerProj.z());
@@ -673,8 +678,13 @@ namespace Avogadro {
 
           Vector3d clicked = *m_clickedAtom->pos();
 
-          Vector3d axis = Vector3d(0, 0, ((widget->camera()->modelview() * other).z() >=
-                (widget->camera()->modelview() * center).z() ? -1 : 1));
+          Eigen::Vector4d otherTransformedHomog = (widget->camera()->modelview() * other.homogeneous());
+          Vector3d otherTransformed = otherTransformedHomog.hnormalized();
+          Eigen::Vector4d centerTransformedHomog = (widget->camera()->modelview() * center.homogeneous());
+          Vector3d centerTransformed = centerTransformedHomog.hnormalized();
+
+          Vector3d axis = Vector3d(0, 0, (otherTransformed.z() >=
+                                          centerTransformed.z() ? -1 : 1));
 
           Vector3d centerProj = widget->camera()->project(center);
           centerProj -= Vector3d(0,0,centerProj.z());
@@ -1362,10 +1372,10 @@ namespace Avogadro {
 
     planeVec = length * (planeVec / planeVec.norm());
 
-    Vector3d topLeft = widget->camera()->modelview() * (left + planeVec);
-    Vector3d topRight = widget->camera()->modelview() * (right + planeVec);
-    Vector3d botRight = widget->camera()->modelview() * (right - planeVec);
-    Vector3d botLeft = widget->camera()->modelview() * (left - planeVec);
+    Vector3d topLeft = (widget->camera()->modelview() * (left + planeVec).homogeneous()).head<3>();
+    Vector3d topRight = (widget->camera()->modelview() * (right + planeVec).homogeneous()).head<3>();
+    Vector3d botRight = (widget->camera()->modelview() * (right - planeVec).homogeneous()).head<3>();
+    Vector3d botLeft = (widget->camera()->modelview() * (left - planeVec).homogeneous()).head<3>();
 
     float alpha = 0.4;
     double lineWidth = 1.5;
@@ -1444,10 +1454,10 @@ namespace Avogadro {
       C = D + ((C-D).normalized() * minWidth);
     }
 
-    Vector3d topLeft = widget->camera()->modelview() * D;
-    Vector3d topRight = widget->camera()->modelview() * C;
-    Vector3d botRight = widget->camera()->modelview() * B;
-    Vector3d botLeft = widget->camera()->modelview() * A;
+    Vector3d topLeft = (widget->camera()->modelview() * D.homogeneous()).head<3>();
+    Vector3d topRight = (widget->camera()->modelview() * C.homogeneous()).head<3>();
+    Vector3d botRight = (widget->camera()->modelview() * B.homogeneous()).head<3>();
+    Vector3d botLeft = (widget->camera()->modelview() * A.homogeneous()).head<3>();
 
     float alpha = 0.4;
     double lineWidth = 1.5;
@@ -1506,12 +1516,12 @@ namespace Avogadro {
       Vector3d positionVector)
   {
     //Rotate skeleton around a particular axis and center point
-    Eigen::Transform3d rotation;
+    Eigen::Projective3d rotation;
     rotation = Eigen::AngleAxisd(angle, rotationVector);
     rotation.pretranslate(centerVector);
     rotation.translate(-centerVector);
 
-    return rotation*positionVector;
+    return (rotation*positionVector.homogeneous()).head<3>();
   }
 
   // ##########  showAnglesChanged  ##########

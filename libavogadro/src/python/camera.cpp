@@ -10,7 +10,7 @@ using namespace Avogadro;
 void export_Camera()
 {
 
-  const Eigen::Transform3d& (Camera::*modelview_ptr)() const = &Camera::modelview;
+  const Eigen::Projective3d& (Camera::*modelview_ptr)() const = &Camera::modelview;
   Eigen::Vector3d (Camera::*unProject_ptr1)(const Eigen::Vector3d&) const = &Camera::unProject;
   Eigen::Vector3d (Camera::*unProject_ptr2)(const QPoint&, const Eigen::Vector3d&) const = &Camera::unProject;
   Eigen::Vector3d (Camera::*unProject_ptr3)(const QPoint&) const = &Camera::unProject;

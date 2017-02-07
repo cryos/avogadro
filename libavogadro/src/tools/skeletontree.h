@@ -230,7 +230,7 @@ namespace Avogadro {
        * @param centerVector Center location to rotate around.
        */
       void recursiveRotate(Node* n,
-                           const Eigen::Transform3d &rotationMatrix);
+                           const Eigen::Projective3d &rotationMatrix);
 
   };
 } // End namespace Avogadro

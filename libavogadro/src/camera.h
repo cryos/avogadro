@@ -101,16 +101,16 @@ namespace Avogadro {
       double angleOfViewY() const;
       /** Sets 4x4 "modelview" matrix representing the camera orientation and position.
         * @param matrix the matrix to copy from
-        * @sa Eigen::Transform3d & modelview(), applyModelview() */
-      void setModelview(const Eigen::Transform3d &matrix);
+        * @sa Eigen::Projective3d & modelview(), applyModelview() */
+      void setModelview(const Eigen::Projective3d &matrix);
       /** @return a constant reference to the 4x4 "modelview" matrix representing
         *         the camera orientation and position
-        * @sa setModelview(), Eigen::Transform3d & modelview() */
-      const Eigen::Transform3d & modelview() const;
+        * @sa setModelview(), Eigen::Projective3d & modelview() */
+      const Eigen::Projective3d & modelview() const;
       /** @return a non-constant reference to the 4x4 "modelview" matrix representing
         *         the camera orientation and position
-        * @sa setModelview(), const Eigen::Transform3d & modelview() const */
-      Eigen::Transform3d & modelview();
+        * @sa setModelview(), const Eigen::Projective3d & modelview() const */
+      Eigen::Projective3d & modelview();
       /** Calls gluPerspective() or glOrtho() with parameters automatically chosen
         * for rendering the GLWidget's molecule with this camera. Should be called
         * only in GL_PROJECTION matrix mode. Example code is given
@@ -342,7 +342,7 @@ namespace Avogadro {
        * @return {x/w, y/w, z/w} vector
        */
       Eigen::Vector3d V4toV3DivW(const Eigen::Vector4d & v4) {
-        return v4.start<3>()/v4.w();
+        return v4.head<3>()/v4.w();
       }
   };
 

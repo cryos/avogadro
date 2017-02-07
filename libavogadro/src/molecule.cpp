@@ -36,9 +36,9 @@
 #include "primitivelist.h"
 #include "residue.h"
 #include "zmatrix.h"
+#include "leastsquares.h"
 
 #include <Eigen/Geometry>
-#include <Eigen/LeastSquares>
 
 #include <vector>
 
@@ -1908,7 +1908,8 @@ namespace Avogadro{
         }
         d->center /= static_cast<double>(nAtoms);
         Eigen::Hyperplane<double, 3> planeCoeffs;
-        Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
+        fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
+
         delete[] atomPositions;
         d->normalVector = planeCoeffs.normal();
       }

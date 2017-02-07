@@ -765,7 +765,7 @@ namespace Avogadro {
       GLfloat fogColor[4]= {static_cast<GLfloat>(d->background.redF()), static_cast<GLfloat>(d->background.greenF()),
                             static_cast<GLfloat>(d->background.blueF()), static_cast<GLfloat>(d->background.alphaF())};
       glFogfv(GL_FOG_COLOR, fogColor);
-      Vector3d distance = camera()->modelview() * d->center;
+      Vector3d distance = (camera()->modelview() * d->center.homogeneous()).head<3>();
       double distanceToCenter = distance.norm();
       glFogf(GL_FOG_DENSITY, 1.0);
       glHint(GL_FOG_HINT, GL_NICEST);
@@ -1711,7 +1711,7 @@ namespace Avogadro {
 
       if (d->renderModelViewDebug) {
         // Model view matrix:
-        const Eigen::Transform3d &modelview = d->camera->modelview();
+        const Eigen::Projective3d &modelview = d->camera->modelview();
         y += d->pd->painter()->drawText
             (x, y, tr("ModelView row 1: %L1 %L2 %L3 %L4")
              .arg(modelview(0, 0), 6, 'f', 2, ' ')
