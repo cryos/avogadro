@@ -3,6 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/cryos/avogadro.svg?maxAge=86400)](https://sourceforge.net/projects/avogadro/files/latest/download)
 [![Download Avogadro](https://img.shields.io/sourceforge/dt/avogadro.svg?maxAge=86400)](https://sourceforge.net/projects/avogadro/files/latest/download)
 [![Google Scholar Citations](https://avogadro.cc/citations.svg?maxAge=86400)](https://scholar.google.com/scholar?cites=618227831851025693&as_sdt=5,38&sciodt=0,38&hl=en)
+[![DOI Article](https://img.shields.io/badge/DOI-10.1186/1758--2946--4--17-brightgreen.svg)](http://doi.org/10.1186/1758-2946-4-17)
 
 Avogadro is an advanced molecular editor designed for cross-platform use
 in computational chemistry, molecular modeling, bioinformatics, materials
