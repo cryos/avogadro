@@ -26,6 +26,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/primitivelist.h>
+#include <avogadro/toolgroup.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
@@ -271,6 +272,8 @@ namespace Avogadro {
     *m_molecule = fragment;
     m_molecule->update();
     emit moleculeChanged(m_molecule, Extension::NewWindow);
+    if (m_widget)
+      m_widget->toolGroup()->setActiveTool("Navigate");
     m_justFinished = true;
   }
 
@@ -320,4 +323,3 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(insertfragmentextension, Avogadro::InsertFragmentExtensionFactory)
-
