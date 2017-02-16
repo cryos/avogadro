@@ -26,7 +26,7 @@
 #include <openbabel/mol.h>
 
 #include <QAction>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QDialogButtonBox>
 #include <QDir>
@@ -40,8 +40,10 @@
 #include <QTextEdit>
 #include <QVector3D>
 
+#include "numvalenceelectrons.h"
 #include "yaehmopbanddialog.h"
 #include "yaehmopextension.h"
+#include "yaehmoptotaldosdialog.h"
 #include "yaehmopout.h"
 
 using namespace std;
@@ -49,36 +51,64 @@ using namespace Eigen;
 
 namespace Avogadro
 {
-
-  YaehmopExtension::YaehmopExtension(QObject *parent) : Extension(parent)
+  enum YaehmopExtensionIndex
   {
-    // create an action for our first action
+    ActionIndex = 0,
+    SeparatorIndex
+  };
+
+  YaehmopExtension::YaehmopExtension(QObject *parent)
+    : Extension(parent),
+      m_bandNumKPoints(40),
+      m_dosKPoints("15x15x15"),
+      m_useSmoothing(true),
+      m_eStep(0.1),
+      m_broadening(0.1),
+      m_displayData(false),
+      m_limitY(false),
+      m_minY(0.0),
+      m_maxY(0.0),
+      m_plotFermi(false),
+      m_fermi(0.0),
+      m_zeroFermi(false)
+  {
     QAction *action = new QAction( this );
-    action->setText(tr("Calculate Band Structure"));
+    action->setSeparator(true);
+    action->setData(SeparatorIndex);
+    m_actions.append(action);
+
+    // create an action for our first action
+    action = new QAction( this );
+    action->setText(tr("Calculate Band Structure..."));
+    action->setData(ActionIndex);
     m_actions.append(action);
     connect(action, SIGNAL(triggered()), SLOT(calculateBandStructure()));
 
-// These will be added soon!
-/*
     // create an action for our second action
     action = new QAction(this);
-    action->setText(tr("Plot Total Density of States"));
+    action->setText(tr("Calculate Total Density of States..."));
+    action->setData(ActionIndex);
     m_actions.append(action);
-    connect(action, SIGNAL(triggered()), SLOT(plotTotalDOS()));
+    connect(action, SIGNAL(triggered()), SLOT(calculateTotalDOS()));
 
+// This will be added soon!
+/*
     // create an action for our third action
     action = new QAction( this );
     action->setText( tr("Plot Partial Density of States"));
+    action->setData(ActionIndex);
     m_actions.append(action);
     connect(action, SIGNAL(triggered()), SLOT(plotPartialDOS()));
 */
     action = new QAction( this );
-    action->setText( tr("Set Parameters File"));
+    action->setText(tr("Set Parameters File..."));
+    action->setData(ActionIndex);
     m_actions.append(action);
     connect(action, SIGNAL(triggered()), SLOT(setParametersFile()));
 
     action = new QAction( this );
-    action->setText(tr("Execute Custom Input"));
+    action->setText(tr("Execute Custom Input..."));
+    action->setData(ActionIndex);
     m_actions.append(action);
     connect(action, SIGNAL(triggered()), SLOT(executeCustomInput()));
   }
@@ -94,7 +124,12 @@ namespace Avogadro
 
   QString YaehmopExtension::menuPath(QAction *action) const
   {
-    return tr("E&xtensions") + '>' + tr("Yaehmop");
+    int i = action->data().toInt();
+
+    if (i == SeparatorIndex)
+      return QString();
+
+    return tr("E&xtensions") + '>' + tr("&Yaehmop");
   }
 
   QDockWidget * YaehmopExtension::dockWidget()
@@ -117,11 +152,91 @@ namespace Avogadro
     return distance(a.coords, b.coords);
   }
 
-  void YaehmopExtension::calculateBandStructure() const
+  void YaehmopExtension::writeSettings(QSettings &settings) const
   {
-    // This boolean will be set to true if we are to display band data
-    bool displayBandData = false;
-    QString input = createYaehmopBandInput(displayBandData);
+    settings.beginGroup("yaehmopextension");
+
+    settings.beginGroup("generic");
+    settings.setValue("displayData", m_displayData);
+    settings.setValue("limitY", m_limitY);
+    settings.setValue("minY", m_minY);
+    settings.setValue("maxY", m_maxY);
+    settings.setValue("zeroFermi", m_zeroFermi);
+    settings.endGroup();
+
+    settings.beginGroup("bandStructure");
+    settings.setValue("bandNumKPoints",
+                      static_cast<unsigned long long>(m_bandNumKPoints));
+    settings.setValue("plotFermi", m_plotFermi);
+    settings.setValue("fermi", m_fermi);
+    settings.endGroup();
+
+    settings.beginGroup("DOS");
+    settings.setValue("dosKPoints", m_dosKPoints);
+    settings.setValue("useSmoothing", m_useSmoothing);
+    settings.setValue("eStep", m_eStep);
+    settings.setValue("broadening", m_broadening);
+    settings.endGroup();
+
+    settings.endGroup();
+  }
+
+  void YaehmopExtension::readSettings(QSettings &settings)
+  {
+    settings.beginGroup("yaehmopextension");
+
+    settings.beginGroup("generic");
+    m_displayData = settings.value("displayData", m_displayData).toBool();
+    m_limitY = settings.value("limitY", m_limitY).toBool();
+    m_minY = settings.value("minY", m_minY).toDouble();
+    m_maxY = settings.value("maxY", m_minY).toDouble();
+    m_zeroFermi = settings.value("zeroFermi", m_zeroFermi).toBool();
+    settings.endGroup();
+
+    settings.beginGroup("bandStructure");
+    m_bandNumKPoints =
+      settings.value("bandNumKPoints",
+                     static_cast<unsigned long long>(m_bandNumKPoints))
+                       .toULongLong();
+    m_plotFermi = settings.value("plotFermi", m_plotFermi).toBool();
+    m_fermi = settings.value("fermi", m_fermi).toDouble();
+    settings.endGroup();
+
+    settings.beginGroup("DOS");
+    m_dosKPoints = settings.value("dosKPoints", m_dosKPoints).toString();
+    m_useSmoothing = settings.value("useSmoothing", m_useSmoothing).toBool();
+    m_eStep = settings.value("eStep", m_eStep).toDouble();
+    m_broadening = settings.value("broadening", m_broadening).toDouble();
+    settings.endGroup();
+
+    settings.endGroup();
+  }
+
+  // Returns false if an error was found
+  bool YaehmopExtension::checkForErrors(const QString& output, QString& error)
+  {
+    QStringList lines = output.split(QRegExp("[\r\n]"),
+                                     QString::SkipEmptyParts);
+    bool zhegvErrorFound = false;
+
+    for (size_t i = 0; i < lines.size(); ++i) {
+      // This usually means that ZHEGV failed
+      if (lines[i].contains("ERROR: Problems in the diagonalization, try") &&
+          !zhegvErrorFound) {
+        error += "Error during diagonalization. ZHEGV returned with an error.";
+        error += "\nTry changing the k points.\n";
+        zhegvErrorFound = true;
+      }
+    }
+
+    if (zhegvErrorFound)
+      return false;
+    return true;
+  }
+
+  void YaehmopExtension::calculateBandStructure()
+  {
+    QString input = createYaehmopBandInput();
     // If the input is empty, either the user cancelled
     // or an error box has already popped up...
     if (input.isEmpty())
@@ -131,6 +246,17 @@ namespace Avogadro
 
     // Execute Yaehmop
     executeYaehmop(input, output);
+
+    QString error;
+    if (!checkForErrors(output, error)) {
+      QMessageBox::warning(NULL,
+                        tr("Yaehmop"),
+                        tr((QString("Data may be invalid. "
+                                    "Error received in calculation:\n")
+                            + error).toStdString().c_str()));
+      qDebug() << "Full Yaehmop output is as follows:\n" << output;
+      qDebug() << "Data may be invalid. Error received in calculation:\n" + error;
+    }
 
     // qDebug() << "Output is:";
     // qDebug() << output;
@@ -200,7 +326,7 @@ namespace Avogadro
 
         // x is k-point distance so far. y is energy
         double x = distanceSoFar;
-        double y = bands[i][j];
+        double y = (m_zeroFermi ? bands[i][j] - m_fermi : bands[i][j]);
         energies.append(QPointF(x, y));
 
         // Correct the min_y and max_y values
@@ -236,16 +362,22 @@ namespace Avogadro
     }
 
     PlotWidget *pw = new PlotWidget;
-    pw->setWindowTitle("Yaehmop Band Structure");
+    pw->setWindowTitle(tr("Yaehmop Band Structure"));
 
     // Let's make our widget a reasonable size
     pw->resize(500, 500);
 
-    // setting our limits for the plot
+    // Set our limits for the plot
+    // If we are limiting y, then change min_y and max_y
+    if (m_limitY) {
+      min_y = m_minY;
+      max_y = m_maxY;
+    }
     pw->setDefaultLimits(min_x, max_x, min_y, max_y);
 
     // Set up our axes
-    pw->axis(PlotWidget::BottomAxis)->setTickCustomStrings(kpointlabels_x, kpointlabels);
+    pw->axis(PlotWidget::BottomAxis)->setTickCustomStrings(kpointlabels_x,
+                                                           kpointlabels);
     pw->axis(PlotWidget::LeftAxis)->setLabel(tr("Energy (eV)"));
 
     // White background
@@ -262,8 +394,24 @@ namespace Avogadro
       pw->addPlotObject(po);
     }
 
+    // If we have the fermi energy, plot that as a dashed line
+    if (m_plotFermi) {
+      double tempFermi = (m_zeroFermi ? 0 : m_fermi);
+      size_t num = 75;
+      for (size_t i = 0; i < num; i += 2) {
+        PlotObject *tempPo = new PlotObject(Qt::black, PlotObject::Lines);
+        tempPo->addPoint(QPointF(static_cast<double>(i) /
+                                 static_cast<double>(num) *
+                                 static_cast<double>(max_x), tempFermi));
+        tempPo->addPoint(QPointF(static_cast<double>(i + 1) /
+                                 static_cast<double>(num) *
+                                 static_cast<double>(max_x), tempFermi));
+        pw->addPlotObject(tempPo);
+      }
+    }
+
     // If we are to display band data, show that first
-    if (displayBandData) {
+    if (m_displayData) {
       QString bandDataStr;
 
       // Add in special k point info first
@@ -287,10 +435,10 @@ namespace Avogadro
         if (i != 0)
           distanceSoFar += distance(kpoints[i - 1], kpoints[i]);
         double x = distanceSoFar;
-        bandDataStr += (QString().sprintf("%10.4f", x) + " ");
+        bandDataStr += (QString().sprintf("%10.6f", x) + " ");
         for (size_t j = 0; j < numOrbitals; ++j) {
           // Unfortunately, these are accessed out of order here...
-          bandDataStr += (QString().sprintf("%10.4f", bands[j][i]) + " ");
+          bandDataStr += (QString().sprintf("%10.6f", bands[j][i]) + " ");
         }
         bandDataStr += "\n";
       }
@@ -318,17 +466,257 @@ namespace Avogadro
     pw->show();
   }
 
-  void YaehmopExtension::plotTotalDOS() const
+  void YaehmopExtension::calculateTotalDOS()
+  {
+    QString input = createYaehmopTotalDOSInput();
+    // If the input is empty, either the user cancelled
+    // or an error box has already popped up...
+    if (input.isEmpty())
+      return;
+
+    QString output;
+
+    // Execute Yaehmop
+    if (!executeYaehmop(input, output)) {
+      qDebug() << "Error while executing Yaehmop in " <<  __FUNCTION__;
+      return;
+    }
+
+    QString error;
+    if (!checkForErrors(output, error)) {
+      QMessageBox::warning(NULL,
+                        tr("Yaehmop"),
+                        tr((QString("Data may be invalid. "
+                                    "Error received in calculation:\n")
+                            + error).toStdString().c_str()));
+      qDebug() << "Full Yaehmop output is as follows:\n" << output;
+      qDebug() << "Data may be invalid. Error received in calculation:\n" + error;
+    }
+
+    //qDebug() << "input is " << input;
+    //qDebug() << "output is " << output;
+
+    // First, let's get the fermi energy
+    bool fermiFound = true;
+    double unadjustedFermi, fermi = 0.0;
+    if (!YaehmopOut::getFermiLevelFromDOSData(output, unadjustedFermi)) {
+      qDebug() << "Fermi level could not be obtained in " << __FUNCTION__;
+      fermiFound = false;
+    }
+
+    if (!m_zeroFermi)
+      fermi = unadjustedFermi;
+
+    // Trim the output so it only contains the total DOS
+    // Remove everything before TOTAL DENSITY OF STATES
+    int ind = output.indexOf("TOTAL DENSITY OF STATES");
+    if (ind == -1) {
+      qDebug() << "Error in " << __FUNCTION__ << ": total DOS data not found in"
+               << "Yaehmop output!";
+      return;
+    }
+    output.remove(0, ind - 1);
+
+    // Remove everything after END OF DOS
+    ind = output.indexOf("END OF DOS");
+    if (ind == -1) {
+      qDebug() << "Error in " << __FUNCTION__ << ": total DOS data did not"
+               << "complete in Yaehmop output!";
+      return;
+    }
+    output.remove(ind + QString("END OF DOS\n").size(), output.size());
+
+    //qDebug() << "After trimming, output is now:";
+    //qDebug() << output;
+
+    QVector<double> densities;
+    QVector<double> energies;
+
+    if (!YaehmopOut::readTotalDOSData(output, densities, energies) ||
+        densities.size() == 0 || energies.size() != densities.size()) {
+      qDebug() << "Error in " << __FUNCTION__
+               << ": failed to read total DOS data!";
+      return;
+    }
+
+    // If we need to zero the Fermi energy, go ahead and do that
+    if (fermiFound && m_zeroFermi) {
+      for (size_t i = 0; i < energies.size(); ++i)
+        energies[i] -= unadjustedFermi;
+    }
+
+    // If we smooth data, this will be calculated
+    QList<double> integration;
+
+    // Let's smooth the data if we need to
+    if (m_useSmoothing) {
+      smoothData(densities, energies, m_eStep, m_broadening);
+
+      // Let's get the integration data as well
+      // This assumes uniform spacing between the energy levels
+      double xDiff = (energies.size() > 1 ? energies[1] - energies[0]: 0.0);
+      integration = integrateDataTrapezoidal(xDiff, densities);
+    }
+
+    // Plotting is fairly simple - densities on x axis and energies on y
+    // These values are close to the limits of doubles
+    double min_y = 1e300, max_y = -1e300;
+    double min_x = 0.0, max_x = -1e300;
+
+    for (size_t i = 0; i < densities.size(); ++i) {
+      // Correct the max_x, min_y, and max_y
+      if (densities[i] > max_x)
+        max_x = densities[i];
+      if (energies[i] < min_y)
+        min_y = energies[i];
+      if (energies[i] > max_y)
+        max_y = energies[i];
+    }
+
+    PlotWidget *pw = new PlotWidget;
+    pw->setWindowTitle(tr("Yaehmop Total DOS"));
+
+    // Let's make our widget a reasonable size
+    pw->resize(500, 500);
+
+    // Set our limits for the plot
+    // If we are limiting y, then change min_y and max_y
+    if (m_limitY) {
+      min_y = m_minY;
+      max_y = m_maxY;
+    }
+    pw->setDefaultLimits(min_x, max_x, min_y, max_y);
+
+    // Set up our axes
+    pw->axis(PlotWidget::BottomAxis)->setLabel(tr("Density of States"));
+    pw->axis(PlotWidget::LeftAxis)->setLabel(tr("Energy (eV)"));
+
+    // White background
+    pw->setBackgroundColor(Qt::white);
+    pw->setForegroundColor(Qt::black);
+
+    // Add the objects
+    PlotObject *po = new PlotObject(Qt::red, PlotObject::Lines);
+    for (size_t i = 0; i < densities.size(); ++i)
+      po->addPoint(QPointF(densities[i], energies[i]));
+
+    // If we have the fermi energy, plot that as a dashed line
+    if (fermiFound) {
+      size_t num = 75;
+      for (size_t i = 0; i < num; i += 2) {
+        PlotObject *tempPo = new PlotObject(Qt::black, PlotObject::Lines);
+        tempPo->addPoint(QPointF(static_cast<double>(i) /
+                                 static_cast<double>(num) *
+                                 static_cast<double>(max_x), fermi));
+        tempPo->addPoint(QPointF(static_cast<double>(i + 1) /
+                                 static_cast<double>(num) *
+                                 static_cast<double>(max_x), fermi));
+        pw->addPlotObject(tempPo);
+
+      }
+      // Also set the unadjusted fermi level in memory
+      m_fermi = unadjustedFermi;
+    }
+
+    // If we have the integration data, plot that as well. Make it blue.
+    if (integration.size() != 0) {
+      double maxVal = integration[integration.size() - 1];
+      PlotObject *tempPo = new PlotObject(Qt::blue, PlotObject::Lines);
+      for (size_t i = 0; i < integration.size(); ++i) {
+        tempPo->addPoint(QPointF(integration[i] / maxVal * max_x,
+                                 energies[i]));
+      }
+      pw->addPlotObject(tempPo);
+      // Now let's add a label for it and use secondary axes
+      pw->setSecondaryLimits(0, qRound(maxVal), min_y, max_y);
+      pw->axis(PlotWidget::TopAxis)->setLabel(tr("Integration (# electrons)"));
+      pw->axis(PlotWidget::TopAxis)->setVisible(true);
+      pw->axis(PlotWidget::TopAxis)->setTickLabelsShown(true);
+      pw->setTopPadding(60);
+    }
+
+    pw->addPlotObject(po);
+    pw->setAttribute(Qt::WA_DeleteOnClose);
+
+    // If we are to display band data, show that first
+    if (m_displayData) {
+      QString DOSDataStr;
+
+      // Let's print the fermi energy first
+      if (fermiFound)
+        DOSDataStr += QString("# Unadjusted Fermi level: ") +
+                      QString::number(unadjustedFermi) + "\n";
+      else
+        DOSDataStr += "# Fermi level not found!\n";
+
+      // Add in k point info first
+/*
+      DOSDataStr += "\n# k points\n";
+      DOSDataStr += "# <x> <y> <z> <weight>\n";
+
+      QStringList inputSplit = input.split(QRegExp("[\r\n]"),
+                                           QString::SkipEmptyParts);
+
+      while (inputSplit.size() != 0 && !inputSplit[0].contains("k points"))
+        inputSplit.removeFirst();
+
+      for (size_t i = 0; i < inputSplit.size(); ++i) {
+        if (inputSplit[i].split(QRegExp(" "),
+                                QString::SkipEmptyParts).size() == 0) {
+          break;
+        }
+        if (inputSplit[i].split(QRegExp(" "),
+                                QString::SkipEmptyParts).size() != 4) {
+          continue;
+        }
+        DOSDataStr += QString("# ") + inputSplit[i] + "\n";
+      }
+*/
+      // Now for the actual data
+      DOSDataStr += "\n# <density (x)> <energy (y)>\n";
+
+      for (size_t i = 0; i < densities.size(), i < energies.size(); ++i) {
+        DOSDataStr += (QString().sprintf("%10.6f", densities[i]) + " " +
+                       QString().sprintf("%10.6f", energies[i]) + "\n");
+      }
+
+      // If we have integration data, add that too
+      if (integration.size() != 0) {
+        DOSDataStr += "\n\n# Integration Data:\n";
+        DOSDataStr += "\n# <integration> <energies>\n";
+        for (size_t i = 0; i < energies.size(), i < integration.size(); ++i) {
+          DOSDataStr += (QString().sprintf("%10.6f", integration[i]) + " " +
+                         QString().sprintf("%10.6f", energies[i]) + "\n");
+        }
+      }
+
+      // Done! Let's make the dialog and show it.
+      QDialog* dialog = new QDialog;
+      QVBoxLayout* layout = new QVBoxLayout;
+      dialog->setLayout(layout);
+      dialog->setWindowTitle(tr("Yaehmop Total DOS Results"));
+      QTextEdit* edit = new QTextEdit;
+      layout->addWidget(edit);
+      dialog->resize(500, 500);
+
+      // Show the user the output
+      edit->setText(DOSDataStr);
+
+      // Make sure this gets deleted upon closing
+      dialog->setAttribute(Qt::WA_DeleteOnClose);
+      dialog->show();
+    }
+
+    // Show the plot!
+    pw->show();
+  }
+
+  void YaehmopExtension::plotPartialDOS()
   {
 
   }
 
-  void YaehmopExtension::plotPartialDOS() const
-  {
-
-  }
-
-  QString YaehmopExtension::createYaehmopBandInput(bool& displayBandData) const
+  QString YaehmopExtension::createYaehmopBandInput()
   {
     if (!m_molecule) {
       qDebug() << "Error in " << __FUNCTION__ << ": the molecule is not set";
@@ -337,7 +725,7 @@ namespace Avogadro
 
     OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
     if (!cell) {
-      QMessageBox::critical(NULL,
+      QMessageBox::warning(NULL,
                         tr("Avogadro"),
                         tr("Cannot calculate band structure: no unit cell!"));
       qDebug() << "Error in " << __FUNCTION__ << ": there is no unit cell";
@@ -346,10 +734,11 @@ namespace Avogadro
 
     // Let's get the k-point info from the user first so we don't have to run
     // through the rest of the algorithm if they cancel...
-    size_t numKPoints = 0;
     QString specialKPointString;
     YaehmopBandDialog d;
-    if (!d.getKPointInfo(numKPoints, specialKPointString, displayBandData))
+    if (!d.getKPointInfo(m_molecule, m_bandNumKPoints, specialKPointString,
+                         m_displayData, m_limitY, m_minY, m_maxY, m_plotFermi,
+                         m_fermi, m_zeroFermi))
       return "";
 
     // Proceed with the function
@@ -363,7 +752,7 @@ namespace Avogadro
     input += "Band\n";
 
     // This is the number of kpoints connecting each special k point
-    input += (QString::number(numKPoints) + "\n");
+    input += (QString::number(m_bandNumKPoints) + "\n");
     // Num special k points
     size_t numSK = specialKPointString.split(QRegExp("[\r\n]"),
                                              QString::SkipEmptyParts).size();
@@ -374,6 +763,66 @@ namespace Avogadro
     // qDebug() << "Input is:";
     // qDebug() << input;
 
+    return input;
+  }
+
+  QString YaehmopExtension::createYaehmopTotalDOSInput()
+  {
+    if (!m_molecule) {
+      qDebug() << "Error in " << __FUNCTION__ << ": the molecule is not set";
+      return "";
+    }
+
+    OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
+    if (!cell) {
+      QMessageBox::warning(NULL,
+                           tr("Avogadro"),
+                           tr("Cannot calculate total DOS: no unit cell!"));
+      qDebug() << "Error in " << __FUNCTION__ << ": there is no unit cell";
+      return "";
+    }
+
+    // Let's get the k points from the user first so we don't have to run
+    // through the rest of the algorithm if they cancel...
+    QList<Atom*> atoms = m_molecule->atoms();
+    std::vector<unsigned char> atomicNums;
+    for (size_t i = 0; i < atoms.size(); ++i)
+      atomicNums.push_back(atoms[i]->atomicNumber());
+    size_t numValElectrons = numValenceElectrons(atomicNums);
+    size_t numKPoints = 0;
+    QString tempDOSKPoints = m_dosKPoints;
+    YaehmopTotalDOSDialog d;
+    if (!d.getNumValAndKPoints(this, numValElectrons, numKPoints,
+                               tempDOSKPoints, m_displayData, m_useSmoothing,
+                               m_eStep, m_broadening, m_limitY,
+                               m_minY, m_maxY, m_zeroFermi)) {
+      return "";
+    }
+
+    // Proceed with the function
+    QString input;
+    input += "Title\n"; // Title
+
+    // Crystal geometry
+    input += createGeometryAndLatticeInput();
+
+    // Total DOS is calculated in an average properties calculation
+    input += "average properties\n";
+
+    // According to the manual, we can save a lot of time by avoiding
+    // calculations of extraneous data if we use this keyword
+    input += "Just Average E\n";
+
+    // Now we need to input the number of valence electrons
+    input += "electrons\n";
+    input += (QString::number(numValElectrons) + "\n");
+
+    // k points!
+    input += "k points\n";
+    input += (QString::number(numKPoints) + "\n");
+    input += tempDOSKPoints;
+
+    // We're done!
     return input;
   }
 
@@ -432,14 +881,19 @@ namespace Avogadro
 
   bool YaehmopExtension::executeYaehmop(QString input, QString& output) const
   {
-
 #ifdef __APPLE__
     // For apple, find yaehmop relative to the application directory
     QString program = QCoreApplication::applicationDirPath() + "/../bin/yaehmop";
-#else
-    // Otherwise, we assume yaehmop is in the same directory as avogadro
+#elif defined _WIN32
+    // For Windows, assume yaehmop is in the same directory as avogadro
     QString program = "yaehmop";
+#else
+    // For Linux, assume yaehmop is int he same directory as well.
+    // The following format is needed for packages
+    QString program = QCoreApplication::applicationDirPath() + "/yaehmop";
 #endif
+
+    //qDebug() << "input is: \n" << input;
 
     QStringList arguments;
     arguments << "--use_stdin_stdout";
@@ -452,6 +906,9 @@ namespace Avogadro
     p.start(program, arguments);
 
     if (!p.waitForStarted()) {
+      QMessageBox::warning(NULL,
+                        tr("Avogadro"),
+                        tr("Error: Yaehmop failed to start!"));
       qDebug() << "Error: Yaehmop executable at" << program
                << "failed to start.";
       return false;
@@ -464,6 +921,9 @@ namespace Avogadro
     p.closeWriteChannel();
 
     if (!p.waitForFinished()) {
+      QMessageBox::warning(NULL,
+                        tr("Avogadro"),
+                        tr("Error: Yaehmop failed to finish!"));
       qDebug() << "Error: Yaehmop executable at" << program
                << "failed to finish.";
       output = p.readAll();
@@ -475,6 +935,9 @@ namespace Avogadro
     output = p.readAll();
 
     if (exitStatus == QProcess::CrashExit) {
+      QMessageBox::warning(NULL,
+                        tr("Avogadro"),
+                        tr("Error: Yaehmop crashed!"));
       qDebug() << "Error: Yaehmop crashed!\n";
       qDebug() << "Output is as follows:\n" << output;
       return false;
@@ -487,6 +950,8 @@ namespace Avogadro
       return false;
     }
 
+    //qDebug() << "output is: \n" << output;
+
     // We did it!
     return true;
   }
@@ -495,7 +960,7 @@ namespace Avogadro
   {
     OpenBabel::OBUnitCell *cell = m_molecule->OBUnitCell();
     if (!cell) {
-      QMessageBox::critical(NULL,
+      QMessageBox::warning(NULL,
                         tr("Avogadro"),
                         tr("Cannot calculate band structure: no unit cell!"));
       qDebug() << "Error in " << __FUNCTION__ << ": there is no unit cell";
@@ -588,12 +1053,100 @@ namespace Avogadro
     return input;
   }
 
+  // This assumes constant spacing between points.
+  // It uses the trapezoid rule.
+  QList<double> YaehmopExtension::integrateDataTrapezoidal(double xDist,
+                                                const QVector<double>& y)
+  {
+    if (xDist <= 0.0) {
+      qDebug() << "Error in " << __FUNCTION__ << ": xDist is less than "
+               << "or equal to zero!";
+      return QList<double>();
+    }
+
+    QList<double> integration;
+    for (size_t i = 0; i < y.size(); ++i) {
+      if (i == 0)
+        continue;
+
+      // Start with the last number if possible
+      double integ = 0.0;
+      if (integration.size() != 0)
+        integ = integration.last();
+      integ += xDist * (y[i] + y[i - 1]);
+      integration.append(integ);
+    }
+
+    return integration;
+  }
+
+  void YaehmopExtension::smoothData(QVector<double>& densities,
+                                    QVector<double>& energies,
+                                    double stepE, double broadening)
+  {
+    if (densities.size() == 0) {
+      qDebug() << "Error in " << __FUNCTION__ << ": densities is zero!";
+      return;
+    }
+
+    if (densities.size() != energies.size()) {
+      qDebug() << "Error in " << __FUNCTION__ << ": densities and energies "
+               << "do not match in size!";
+      return;
+    }
+
+    QVector<double> finalDensities;
+    QVector<double> finalEnergies;
+
+    size_t numPoints = densities.size();
+    double pi = 3.14159265358979;
+    // Normalization factor
+    double normFact = 1 / sqrt(2.0 * pow(broadening, 2.0) * pi);
+    double minE = energies[0];
+    double maxE = energies[numPoints - 1];
+    size_t numSteps = ceil(fabs(maxE - minE) / stepE) + 1;
+/*
+    qDebug() << "normFact is " << QString::number(normFact);
+    qDebug() << "minE is " << QString::number(minE);
+    qDebug() << "maxE is " << QString::number(maxE);
+    qDebug() << "numSteps is " << QString::number(numSteps);
+    qDebug() << "broadening is " << QString::number(broadening);
+    qDebug() << "stepE is " << QString::number(stepE);
+*/
+    // Loop over the new points
+    double currE = minE;
+    for (size_t i = 0; i < numSteps; ++i, currE += stepE) {
+      double density = 0;
+
+      // Loop over all the points in the curve
+      for (size_t j = 0; j < numPoints; ++j){
+        double diffE = pow(currE - energies[j], 2.0);
+        //qDebug() << "diffE is " << QString::number(diffE);
+        if (diffE <= 25.0) {
+          density += densities[j] * exp(-diffE / (2 * pow(broadening, 2.0)));
+          //qDebug() << "densities[j] is " << QString::number(densities[j]);
+          //qDebug() << "exp(-broadening * diffE) is "
+          //         << QString::number(exp(-broadening * diffE));
+          //qDebug() << "density is NoW " << QString::number(density);
+        }
+      }
+      density *= normFact;
+      //qDebug() << "Density is finally:" << QString::number(density);
+
+      finalDensities.append(density);
+      finalEnergies.append(currE);
+    }
+    densities = finalDensities;
+    energies = finalEnergies;
+  }
+
   void YaehmopExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
   }
 
-  QUndoCommand* YaehmopExtension::performAction(QAction *action, GLWidget *widget)
+  QUndoCommand* YaehmopExtension::performAction(QAction *action,
+                                                GLWidget *widget)
   {
     return 0;
   }

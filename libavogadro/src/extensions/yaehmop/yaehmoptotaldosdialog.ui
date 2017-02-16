@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Avogadro::YaehmopTotalDOSDialog</class>
+ <widget class="QDialog" name="Avogadro::YaehmopTotalDOSDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>566</width>
+    <height>429</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Yaehmop Total DOS</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Number of valence electrons:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>k points</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Energy step size:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QSpinBox" name="spin_numValElectrons">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the number of k-points that will be connecting the special k-points. More of these k-points will smooth out the graph, but the calculation may take longer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="suffix">
+      <string/>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>999999</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QTextEdit" name="edit_kpoints">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the k-points for the calculation in a grid format as follows:&lt;/p&gt;&lt;p&gt;&amp;lt;l&amp;gt;x&amp;lt;m&amp;gt;x&amp;lt;n&amp;gt;&lt;/p&gt;&lt;p&gt;where l, m, and n are integers. For example, 5x5x5 would be a grid with 5 elements in every direction. You may also enter k-points in the following format:&lt;/p&gt;&lt;p&gt;&amp;lt;x&amp;gt; &amp;lt;y&amp;gt; &amp;lt;z&amp;gt; &amp;lt;weight&amp;gt;&lt;/p&gt;&lt;p&gt;where x, y, and z are the three dimensional coordinates of the k-point in reciprocal space, and the weight is the weight of the k-point. &lt;/p&gt;&lt;p&gt;More k-points will result in a more accurate calculation. However, your computer may shut down the process if it uses up too much memory.&lt;/p&gt;&lt;p&gt;Please note that the orientation of your cell may have an effect on the locations of these reciprocal space points.&lt;/p&gt;&lt;p&gt;Default: 15x15x15&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;15x15x15&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Gaussian broadening:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QCheckBox" name="cb_useSmoothing">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Whether or not to use Gaussian smoothing to smooth the data.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Smoothing is typically performed for density of states data.&lt;/p&gt;&lt;p&gt;Default: on&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Use Gaussian Smoothing?</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QDoubleSpinBox" name="spin_energyStep">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The energy step size for Gaussian smoothing. &lt;/p&gt;&lt;p&gt;Default: 0.1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="prefix">
+      <string/>
+     </property>
+     <property name="suffix">
+      <string> eV</string>
+     </property>
+     <property name="decimals">
+      <number>8</number>
+     </property>
+     <property name="maximum">
+      <double>10000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QDoubleSpinBox" name="spin_broadening">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gaussian broadening for Gaussian smoothing. The Gaussian broadening is the standard deviation.&lt;/p&gt;&lt;p&gt;Default: 0.1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="suffix">
+      <string> eV</string>
+     </property>
+     <property name="decimals">
+      <number>8</number>
+     </property>
+     <property name="maximum">
+      <double>100000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1">
+    <widget class="QDoubleSpinBox" name="spin_maxY">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="prefix">
+      <string>Max Y: </string>
+     </property>
+     <property name="suffix">
+      <string> eV</string>
+     </property>
+     <property name="decimals">
+      <number>5</number>
+     </property>
+     <property name="minimum">
+      <double>-10000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>10000.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QCheckBox" name="cb_displayData">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Whether or not to display the density of states data in a&lt;/p&gt;&lt;p&gt;pop-up box after the calculation finishes.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Data may be copied and pasted into a separate file.&lt;/p&gt;&lt;p&gt;Default: off&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Display DOS data?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0">
+    <widget class="QDoubleSpinBox" name="spin_minY">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="prefix">
+      <string>Min Y: </string>
+     </property>
+     <property name="suffix">
+      <string> eV</string>
+     </property>
+     <property name="decimals">
+      <number>5</number>
+     </property>
+     <property name="minimum">
+      <double>-10000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>10000.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QCheckBox" name="cb_zeroFermi">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Subtracts the Fermi energy from all other energies so that the Fermi energy is set to be zero.&lt;/p&gt;&lt;p&gt;Default: off&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Zero the Fermi level?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="1">
+    <widget class="QCheckBox" name="cb_limitY">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Limit the y-range?&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Default: off&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Limit y-range?</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>spin_numValElectrons</tabstop>
+  <tabstop>cb_zeroFermi</tabstop>
+  <tabstop>cb_displayData</tabstop>
+  <tabstop>cb_useSmoothing</tabstop>
+  <tabstop>spin_energyStep</tabstop>
+  <tabstop>spin_broadening</tabstop>
+  <tabstop>cb_limitY</tabstop>
+  <tabstop>spin_minY</tabstop>
+  <tabstop>spin_maxY</tabstop>
+  <tabstop>edit_kpoints</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Avogadro::YaehmopTotalDOSDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Avogadro::YaehmopTotalDOSDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_useSmoothing</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spin_energyStep</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>421</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_useSmoothing</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spin_broadening</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>421</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_limitY</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spin_minY</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>421</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_limitY</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spin_maxY</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>421</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
