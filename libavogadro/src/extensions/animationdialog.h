@@ -56,6 +56,8 @@ namespace Avogadro
       void fileName(QString filename);
       void videoFileInfo(QString filename); 
       void sliderChanged(int i);
+      void sliderPressed();
+      void sliderReleased();
       void fpsChanged(int i);
       void dynamicBondsChanged(int state);
       bool loopChanged(int state);
