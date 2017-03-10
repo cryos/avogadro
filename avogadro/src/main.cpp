@@ -41,6 +41,7 @@
 #include <QLibraryInfo>
 #include <QProcess>
 #include <QFont>
+#include <QDir>
 
 #include <iostream>
 
@@ -51,6 +52,8 @@
 #include "mainwindow.h"
 #include "application.h"
 
+// Google breakpapd
+#include "client/windows/handler/exception_handler.h"
 #ifdef Q_WS_X11
   #include <X11/Xlib.h>
 #endif
@@ -85,6 +88,23 @@ int main(int argc, char *argv[])
         QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
     }
 #endif
+  //set up Google Breakpad
+
+  if (!(QDir().mkdir("crash-reports")) && !(QDir("crash-reports").exists())) 
+	qDebug() << "Could not create crash-reports directory.";
+  else
+	qDebug() << "/creash-reports successfully created.";
+
+  google_breakpad::ExceptionHandler *pHandler = new google_breakpad::ExceptionHandler(
+	  L"crash_reports",
+	  NULL,
+	  NULL,
+	  0,
+	  google_breakpad::ExceptionHandler::HANDLER_ALL,
+	  MiniDumpNormal,
+	  L"",
+	  0);
+
 
   // set up groups for QSettings
   QCoreApplication::setOrganizationName("SourceForge");
