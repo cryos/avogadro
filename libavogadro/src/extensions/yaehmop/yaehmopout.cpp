@@ -30,7 +30,7 @@ YaehmopOut::~YaehmopOut()
 
 inline bool printAndReturnFalse(const QString& error)
 {
-  qDebug() << "Error in YaehmopOut::readBandData():" << error;
+  qDebug() << "Error in YaehmopOut:" << error;
   return false;
 }
 
@@ -132,6 +132,85 @@ bool YaehmopOut::readBandData(const QString& data, QVector<band>& bands,
       ++ind;
       bands[j].append(lines[ind].trimmed().toDouble());
     }
+    ++ind;
+  }
+
+  // We made it!
+  return true;
+}
+
+bool YaehmopOut::getFermiLevelFromDOSData(const QString& data,
+                                          double& fermi)
+{
+  QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
+
+  for (size_t i = 0; i < lines.size(); ++i) {
+    if (lines[i].contains("Fermi_Energy")) {
+      QStringList lineSplit = lines[i].split(" ", QString::SkipEmptyParts);
+
+      if (lineSplit.size() != 2) {
+        qDebug() << "Error obtaining Fermi level in " << __FUNCTION__;
+        return false;
+      }
+
+      bool ok = false;
+      double fermiEnergy = lineSplit[1].toFloat(&ok);
+      if (!ok) {
+        qDebug() << "Error reading Fermi level in " << __FUNCTION__;
+        return false;
+      }
+
+      fermi = fermiEnergy;
+      return true;
+    }
+  }
+  return false;
+}
+
+bool YaehmopOut::readTotalDOSData(const QString& data,
+                                  QVector<double>& densities,
+                                  QVector<double>& energies)
+{
+  densities.clear();
+  energies.clear();
+
+  QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
+
+  while (!lines[0].contains("TOTAL DENSITY OF STATES"))
+    lines.removeFirst();
+
+  size_t ind = 1;
+
+  // The next line should contain <num> states are present
+  if (!lines[ind].contains("states are present"))
+    return printAndReturnFalse("Number of states present is missing!");
+
+  size_t numDensities = lines[ind].toInt();
+  densities.reserve(numDensities);
+  energies.reserve(numDensities);
+
+  ++ind;
+  // Next line should contain BEGIN CURVE
+  if (!lines[ind].contains("BEGIN CURVE"))
+    return printAndReturnFalse("BEGIN CURVE is missing!");
+
+  ++ind;
+  while (!lines[ind].contains("END CURVE")) {
+    QStringList splitLine = lines[ind].split(" ", QString::SkipEmptyParts);
+    if (splitLine.size() != 2)
+      return printAndReturnFalse("Total DOS data is incomplete!");
+
+    bool ok = true;
+    double density = splitLine[0].toFloat(&ok);
+    if (!ok)
+      return printAndReturnFalse("Invalid number in total DOS data!");
+
+    double energy = splitLine[1].toFloat(&ok);
+    if (!ok)
+      return printAndReturnFalse("Invalid number in total DOS data!");
+
+    densities.append(density);
+    energies.append(energy);
     ++ind;
   }
 

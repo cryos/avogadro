@@ -14,6 +14,7 @@
 
 ******************************************************************************/
 
+#include "specialkpoints.h"
 #include "yaehmopbanddialog.h"
 #include "ui_yaehmopbanddialog.h"
 
@@ -35,11 +36,26 @@ namespace Avogadro {
     delete m_ui;
   }
 
-  bool YaehmopBandDialog::getKPointInfo(size_t& numKPoints, QString& kPointInfo,
-                                        bool& displayBandData)
+  bool YaehmopBandDialog::getKPointInfo(Molecule* mol, size_t& numKPoints,
+                                        QString& kPointInfo,
+                                        bool& displayBandData, bool& limitY,
+                                        double& minY, double& maxY,
+                                        bool& plotFermi, double& fermi,
+                                        bool& zeroFermi)
   {
-    numKPoints = 0;
+    m_ui->spin_numKPoints->setValue(numKPoints);
+    m_ui->cb_displayBandData->setChecked(displayBandData);
+    m_ui->cb_limitY->setChecked(limitY);
+    m_ui->spin_minY->setValue(minY);
+    m_ui->spin_maxY->setValue(maxY);
+    m_ui->cb_plotFermi->setChecked(plotFermi);
+    m_ui->spin_fermi->setValue(fermi);
+    m_ui->cb_zeroFermi->setChecked(zeroFermi);
+
     kPointInfo = "";
+    QString specialKPoints = SpecialKPoints::getSpecialKPoints(mol);
+    if (!specialKPoints.isEmpty())
+      m_ui->edit_specialKPoints->setText(specialKPoints);
 
     if (this->exec() == QDialog::Rejected)
       return false;
@@ -79,6 +95,12 @@ namespace Avogadro {
     numKPoints = numKPointsVal;
     kPointInfo = text;
     displayBandData = m_ui->cb_displayBandData->isChecked();
+    limitY = m_ui->cb_limitY->isChecked();
+    minY = m_ui->spin_minY->value();
+    maxY = m_ui->spin_maxY->value();
+    plotFermi = m_ui->cb_plotFermi->isChecked();
+    fermi = m_ui->spin_fermi->value();
+    zeroFermi = (plotFermi ? m_ui->cb_zeroFermi->isChecked() : false);
     return true;
   }
 

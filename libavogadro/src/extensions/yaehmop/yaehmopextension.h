@@ -19,6 +19,8 @@
 
 #include <avogadro/extension.h>
 
+#include <QMutex>
+
 namespace Avogadro {
 
   class YaehmopExtension : public Extension
@@ -44,18 +46,65 @@ namespace Avogadro {
     // failure. The output is always written to QString output.
     bool executeYaehmop(QString input, QString& output) const;
 
+    // Used in yaehmoptotaldosdialog.cpp to set the kpoint string
+    void setDOSKPoints(const QString& dosKPoints)
+      { m_dosKPoints = dosKPoints; };
+
+    void writeSettings(QSettings &settings) const;
+    void readSettings(QSettings &settings);
+
+    // Check the output for known errors
+    // Return false if an error was found
+    bool checkForErrors(const QString& output, QString& error);
+
   public slots:
-    void calculateBandStructure() const;
-    void plotTotalDOS() const;
-    void plotPartialDOS() const;
+    void calculateBandStructure();
+    void calculateTotalDOS();
+    void plotPartialDOS();
     void setParametersFile();
     void executeCustomInput() const;
 
   private:
-    // @param displayBandData This will be set to true if we are to
-    // display the band data for the user.
-    QString createYaehmopBandInput(bool& displayBandData) const;
+    // @return The band calculation input.
+    QString createYaehmopBandInput();
+
+    // @return The total DOS calculation input.
+    QString createYaehmopTotalDOSInput();
+
     QString createGeometryAndLatticeInput() const;
+
+    // Assuming a constant x difference, integrate the data using the
+    // trapezoid rule and return it as a QList.
+    // Each point adds the last point to it. The final value
+    // in the QList is the total integration.
+    // @param xDiff The distance between x values.
+    // @param y The y value data.
+    // @return The integration data.
+    static QList<double> integrateDataTrapezoidal(double xDist,
+                                                  const QVector<double>& y);
+
+    // Smooths data using Gaussian smoothing.
+    // @param densities The x values to be smoothed
+    // @param energies The y values to be smoothed
+    // @param stepE The new distance between energy points
+    // @param broadening The broadening for the smoothing
+    static void smoothData(QVector<double>& densities,
+                           QVector<double>& energies,
+                           double stepE, double broadening);
+
+    size_t m_bandNumKPoints;
+    QString m_dosKPoints;
+    bool m_useSmoothing;
+    double m_eStep;
+    double m_broadening;
+    bool m_displayData;
+    bool m_limitY;
+    double m_minY;
+    double m_maxY;
+    bool m_plotFermi;
+    // This is just the Fermi level the user sets in the band dialog
+    double m_fermi;
+    bool m_zeroFermi;
 
     QList<QAction *> m_actions;
     Molecule *m_molecule;

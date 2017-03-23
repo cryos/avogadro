@@ -1,6 +1,6 @@
 /******************************************************************************
 
-  This source file is part of the OpenQube project.
+  This source file is part of the Avogadro project.
 
   Copyright 2016 Kitware
 
@@ -50,6 +50,21 @@ public:
                            QVector<band>& bands,
                            QVector<kpoint>& kpoints,
                            QVector<specialKPoint>& specialKPoints);
+
+  // Pass in the yaehmop DOS data as 'data'. This searches the data for
+  // the fermi level and sets it to @param fermi. If the fermi energy
+  // is found, this returns true. Otherwise, it returns false.
+  static bool getFermiLevelFromDOSData(const QString& data, double& fermi);
+
+
+  // Pass the yaehmop output in as 'data'. It would be faster if this only
+  // included the section from TOTAL DENSITY OF STATES and END OF DOS, but
+  // it is not necessary. This sets densities and energies to be the
+  // densities and energies for the DOS plot. Returns true if the read
+  // was successful, and false if the read failed.
+  static bool readTotalDOSData(const QString& data,
+                               QVector<double>& densities,
+                               QVector<double>& energies);
 };
 
 #endif
