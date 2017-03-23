@@ -120,7 +120,7 @@ namespace Avogadro {
                 this, SLOT(showSpectra()));
         m_dialog->setMolecule(m_molecule);
         m_animation = new Animation(this);
-        m_animation->setLoopCount(0); // continual loopback
+        m_animation->setLoop(true);
       }
     }
     m_dock->setWidget(m_dialog);

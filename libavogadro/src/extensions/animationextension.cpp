@@ -96,7 +96,9 @@ namespace Avogadro {
       m_animationDialog = new AnimationDialog(static_cast<QWidget*>(parent()));
 
       connect(m_animationDialog, SIGNAL(fileName(QString)), this, SLOT(loadFile(QString)));
-      connect(m_animationDialog, SIGNAL(sliderChanged(int)), m_animation, SLOT(setFrame(int)));
+      connect(m_animationDialog, SIGNAL(sliderChanged(int)), m_animation, SLOT(sliderChanged(int)));
+      connect(m_animationDialog, SIGNAL(sliderPressed()), m_animation, SLOT(sliderPressed()));
+      connect(m_animationDialog, SIGNAL(sliderReleased()), m_animation, SLOT(sliderReleased()));
       connect(m_animationDialog, SIGNAL(fpsChanged(int)), m_animation, SLOT(setFps(int)));
       connect(m_animationDialog, SIGNAL(loopChanged(int)), this, SLOT(setLoop(int)));
       connect(m_animationDialog, SIGNAL(dynamicBondsChanged(int)), this, SLOT(setDynamicBonds(int)));
@@ -157,11 +159,7 @@ namespace Avogadro {
 
   void AnimationExtension::setLoop(int state)
   {
-    if (state == Qt::Checked) {
-      m_animation->setLoopCount(0);
-    } else {
-      m_animation->setLoopCount(1);
-    }
+    m_animation->setLoop(state == Qt::Checked);
   }
 
   void AnimationExtension::setDynamicBonds(int state)
