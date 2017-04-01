@@ -1,6 +1,6 @@
 /******************************************************************************
 
-  This source file is part of the OpenQube project.
+  This source file is part of the Avogadro project.
 
   Copyright (C) 2016 Kitware
 
@@ -86,6 +86,9 @@ bool YaehmopOut::readBandData(const QString& data, QVector<band>& bands,
       return printAndReturnFalse("Special points line too small");
 
     kp.label = lines[ind].split(" ")[0];
+    // If the label is "GM", use "Γ" instead
+    if (kp.label.toLower() == "gm")
+      kp.label = QString::fromUtf8("Γ");
     kp.coords = Vector3(lines[ind].split(" ")[1].toDouble(),
                         lines[ind].split(" ")[2].toDouble(),
                         lines[ind].split(" ")[3].toDouble());
