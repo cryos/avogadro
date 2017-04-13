@@ -183,7 +183,12 @@ namespace Avogadro {
   }*/
 
   QString RamanSpectra::getTSV() {
-    return SpectraType::getTSV("Frequencies", "Activities");
+      return SpectraType::getTSV("Frequencies", "Activities");
+  }
+
+  QString RamanSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream(plotObject, "Frequencies" , "Activities");
   }
 
   void RamanSpectra::updateT(double T)

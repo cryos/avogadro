@@ -86,6 +86,7 @@ namespace Avogadro {
     void removeScheme();
     void renameScheme();
     void exportSpectra();
+    void exportDressedSpectra();
     void saveImageFileDialog();
     void showCoordinates(double x,double y);
 

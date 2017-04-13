@@ -152,5 +152,9 @@ namespace Avogadro {
   QString UVSpectra::getTSV() {
     return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
-
+  QString UVSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream ( plotObject, "Wavelength (nm)" ,"Intensity (arb)");
+//      return SpectraType::getDataStream ( *plotObject, "Frequencies" , "Activities");
+  }
 }

@@ -49,7 +49,7 @@ namespace Avogadro {
   //  void setImportedData(const QList<double> & xList, const QList<double> & yList);
   //  void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
-
+    QString getDataStream(PlotObject *plotObject);
   private:
     Ui::Tab_UV ui;
     double m_fermi;

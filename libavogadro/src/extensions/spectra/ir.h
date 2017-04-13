@@ -41,6 +41,7 @@ namespace Avogadro {
     void getCalculatedPlotObject(PlotObject *plotObject);
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
     QString getTSV();
+    QString getDataStream(PlotObject *plotObject);
   };
 }
 

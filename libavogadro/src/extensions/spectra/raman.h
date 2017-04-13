@@ -41,7 +41,7 @@ namespace Avogadro {
 
     void getCalculatedPlotObject(PlotObject *plotObject);
     QString getTSV();
-
+    QString getDataStream(PlotObject *plotObject);
   private slots:
     void updateT(double);
     void updateW(double);

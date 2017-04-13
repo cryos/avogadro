@@ -180,6 +180,10 @@ namespace Avogadro {
     return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
 
+  QString CDSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream(plotObject, "Wavelength (nm)", "Intensity (arb)");
+  }
   void CDSpectra::rotatoryTypeChanged(const QString & str) {
     if (str == "Velocity")
       m_yList = (*m_yListVelocity);

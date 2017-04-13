@@ -46,6 +46,7 @@ namespace Avogadro {
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
    // virtual void getImportedPlotObject(PlotObject *plotObject);
     virtual QString getTSV();
+    virtual QString getDataStream(PlotObject *plotObject);
 
   public slots:
     void setAtom(QString symbol);

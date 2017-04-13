@@ -196,6 +196,11 @@ namespace Avogadro {
     return SpectraType::getTSV("Isotropic Shift", "Intensities");
   }
 
+  QString NMRSpectra::getDataStream(PlotObject *plotObject)
+  {
+      return SpectraType::getDataStream ( plotObject, "Isotropic Shift", "Intensities");
+  }
+
   bool NMRSpectra::checkForData(Molecule * mol)
   {
     OpenBabel::OBMol obmol = mol->OBMol();
