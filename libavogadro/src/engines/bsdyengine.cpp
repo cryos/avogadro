@@ -177,8 +177,9 @@ namespace Avogadro
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
 
-    // Render the atoms
-    foreach(const Atom *a, atoms()) {
+    // Render the atoms and atom images
+    QList<Atom *> allAtoms = atoms() + atomImages();
+    foreach(const Atom *a, allAtoms) {
       map->setFromPrimitive(a);
       if (a->customColorName().isEmpty())
         pd->painter()->setColor( map );
@@ -206,7 +207,10 @@ namespace Avogadro
 
     glDisable( GL_NORMALIZE );
     glEnable( GL_RESCALE_NORMAL );
-    foreach(const Atom *a, atoms()) {
+
+    // Render the atoms and atom images
+    QList<Atom *> allAtoms = atoms() + atomImages();
+    foreach(const Atom *a, allAtoms) {
       // First render the atom if it is transparent.
       if (m_alpha < 0.999 && m_alpha > 0.001) {
         if (a->customColorName().isEmpty()) {
@@ -329,8 +333,9 @@ namespace Avogadro
     glDisable(GL_NORMALIZE);
     glEnable(GL_RESCALE_NORMAL);
 
-    // Render the atoms
-    foreach(Atom *a, atoms()) {
+    // Render the atoms and atom images
+    QList<Atom *> allAtoms = atoms() + atomImages();
+    foreach(Atom *a, allAtoms) {
       if (pd->isSelected(a)) {
         pd->painter()->setColor(&cSel);
         pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
@@ -358,7 +363,7 @@ namespace Avogadro
       pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), m_bondRadius+0.05);
     }
 
-    // Render the atoms
+    // Render the atoms (no atom images - they should not be selectable)
     foreach(Atom *a, atoms())  {
       pd->painter()->setName(a);
       // add a slight "slop" factor to make it easier to pick

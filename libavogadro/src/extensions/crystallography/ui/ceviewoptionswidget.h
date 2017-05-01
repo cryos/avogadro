@@ -28,6 +28,7 @@ namespace Avogadro
 {
   class CrystallographyExtension;
   class GLWidget;
+  class Molecule;
 
   class CEViewOptionsWidget : public CEAbstractDockWidget
   {
@@ -38,6 +39,7 @@ namespace Avogadro
     ~CEViewOptionsWidget();
 
     GLWidget * glWidget() const {return m_glWidget;}
+    Molecule * molecule() const {return m_molecule;}
 
     enum NumCellChoice {
       NCC_Invalid = -1,
@@ -47,14 +49,21 @@ namespace Avogadro
     };
 
   public slots:
-    void setGLWidget(GLWidget *g) {m_glWidget = g;}
+    void setGLWidget(GLWidget *g);
+    void setMolecule(Molecule *m);
 
   protected slots:
+    void makeMoleculeConnections();
+    void disconnectMoleculeConnections();
     void updateRepeatCells();
     void updateCamera();
     void updateMillerPlane();
     void millerIndexChanged();
     void updateCellRenderOptions();
+    void setDisplayAllAtomImages(bool b);
+    void generateExtraAtomImages();
+    void removeExtraAtomImages();
+    void resetExtraAtomImages();
 
     // Color selection
     void selectCellColor();
@@ -74,10 +83,13 @@ namespace Avogadro
   protected:
     Ui::CEViewOptionsWidget ui;
     GLWidget *m_glWidget;
+    Molecule *m_molecule;
+    Molecule *m_extraImagesMolecule;
     Qt::DockWidgetArea m_currentArea;
     NumCellChoice m_ncc;
     QColorDialog *m_colorDialog;
     QColor *m_origColor;
+    bool m_displayAllAtomImages;
   };
 
 }

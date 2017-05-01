@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>445</width>
-    <height>253</height>
+    <height>278</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -442,7 +442,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -454,6 +454,16 @@
        </size>
       </property>
      </spacer>
+    </item>
+    <item row="1" column="0">
+     <widget class="QCheckBox" name="cb_displayAllAtomImages">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If an atom is on a face, edge, or vertex, its image will also be shown on the other corresponding faces, edges, or vertices.&lt;/p&gt;&lt;p&gt;For example, if an atom is on one AB face, and this box is checked, the atom's image will be displayed on the opposite AB face as well.&lt;/p&gt;&lt;p&gt;The atom must be very close to the edge, face, or vertex in order for this to take effect.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Display all atom images?</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
