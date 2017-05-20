@@ -21,7 +21,7 @@ if (WIN32)
   target_link_libraries(python-module avogadro ${PYTHON_LIBRARIES})
 else()
   target_link_libraries(python-module stdc++ avogadro
-    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
+    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} ${OPENBABEL2_LIBRARIES})
 endif()
 
 # Let's try to use this instead:
