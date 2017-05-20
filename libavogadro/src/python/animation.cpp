@@ -20,8 +20,8 @@ void export_Animation()
         "molecule topology before the trajectory. The trajectory frames can "
         "be used to call setFrames() later.") // @todo unit test conversion for argument
     .add_property("fps", &Animation::fps, &Animation::setFps, "The number of frames per second.")
-    .add_property("loopCount", &Animation::loopCount, &Animation::setLoopCount, 
-        "The number of loops (0 = repeat forever).")
+    .add_property("loop", &Animation::loop, &Animation::setLoop,
+        "Whether to loop the animation.")
     .add_property("numFrames", &Animation::numFrames, "The total number of frames in the animation.")
     .add_property("dynamicBonds", &Animation::dynamicBonds, &Animation::setDynamicBonds, 
         "True if dynamic bond detection is enabled.")
