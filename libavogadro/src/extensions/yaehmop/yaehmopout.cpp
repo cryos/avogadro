@@ -44,10 +44,10 @@ bool YaehmopOut::readBandData(const QString& data, QVector<band>& bands,
 
   QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
 
-  while (lines.size() != 0 && !lines[0].contains("#BAND_DATA"))
+  while (!lines.isEmpty() && !lines[0].contains("#BAND_DATA"))
     lines.removeFirst();
 
-  if (lines.size() == 0)
+  if (lines.isEmpty())
     return printAndReturnFalse("Band Data not found in readBandData()!");
 
   // These get printed from the status file and are not needed...
@@ -179,8 +179,11 @@ bool YaehmopOut::readTotalDOSData(const QString& data,
 
   QStringList lines = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
 
-  while (!lines[0].contains("TOTAL DENSITY OF STATES"))
+  while (!lines.isEmpty() && !lines[0].contains("TOTAL DENSITY OF STATES"))
     lines.removeFirst();
+
+  if (lines.isEmpty())
+    return printAndReturnFalse("DOS Data not found in readTotalDOSData!");
 
   size_t ind = 1;
 

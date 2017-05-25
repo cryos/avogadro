@@ -19,8 +19,6 @@
 
 #include <avogadro/extension.h>
 
-#include <QMutex>
-
 namespace Avogadro {
 
   class YaehmopExtension : public Extension
@@ -37,6 +35,8 @@ namespace Avogadro {
     virtual QString menuPath(QAction *action) const;
 
     virtual void setMolecule(Molecule *molecule);
+    Molecule* getMolecule() { return m_molecule; };
+    const Molecule* getMolecule() const { return m_molecule; };
 
     virtual QDockWidget * dockWidget();
     virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
@@ -60,7 +60,6 @@ namespace Avogadro {
   public slots:
     void calculateBandStructure();
     void calculateTotalDOS();
-    void plotPartialDOS();
     void setParametersFile();
     void executeCustomInput() const;
 
@@ -105,6 +104,7 @@ namespace Avogadro {
     // This is just the Fermi level the user sets in the band dialog
     double m_fermi;
     bool m_zeroFermi;
+    unsigned short m_numDimensions;
 
     QList<QAction *> m_actions;
     Molecule *m_molecule;

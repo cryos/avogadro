@@ -36,12 +36,13 @@ namespace Avogadro {
     delete m_ui;
   }
 
-  bool YaehmopBandDialog::getKPointInfo(Molecule* mol, size_t& numKPoints,
-                                        QString& kPointInfo,
-                                        bool& displayBandData, bool& limitY,
-                                        double& minY, double& maxY,
-                                        bool& plotFermi, double& fermi,
-                                        bool& zeroFermi)
+  bool YaehmopBandDialog::getUserOptions(Molecule* mol, size_t& numKPoints,
+                                         QString& kPointInfo,
+                                         bool& displayBandData, bool& limitY,
+                                         double& minY, double& maxY,
+                                         bool& plotFermi, double& fermi,
+                                         bool& zeroFermi,
+                                         unsigned short& numDimensions)
   {
     m_ui->spin_numKPoints->setValue(numKPoints);
     m_ui->cb_displayBandData->setChecked(displayBandData);
@@ -51,6 +52,7 @@ namespace Avogadro {
     m_ui->cb_plotFermi->setChecked(plotFermi);
     m_ui->spin_fermi->setValue(fermi);
     m_ui->cb_zeroFermi->setChecked(zeroFermi);
+    m_ui->spin_numDim->setValue(numDimensions);
 
     kPointInfo = "";
     QString specialKPoints = SpecialKPoints::getSpecialKPoints(mol);
@@ -101,6 +103,8 @@ namespace Avogadro {
     plotFermi = m_ui->cb_plotFermi->isChecked();
     fermi = m_ui->spin_fermi->value();
     zeroFermi = (plotFermi ? m_ui->cb_zeroFermi->isChecked() : false);
+    numDimensions = m_ui->spin_numDim->value();
+
     return true;
   }
 
