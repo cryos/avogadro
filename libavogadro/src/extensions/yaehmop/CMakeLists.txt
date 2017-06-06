@@ -73,4 +73,4 @@ if(NOT ${USE_SYSTEM_YAEHMOP} AND
                       GROUP_READ GROUP_EXECUTE
                       WORLD_READ WORLD_EXECUTE)
 
-endif(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/${YAEHMOP_NAME})
+endif()
