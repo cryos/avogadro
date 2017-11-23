@@ -56,12 +56,18 @@ public:
   //              true.
   // @param zeroFermi Whether or not to zero the Fermi level. This will only
   //                  take effect if plotFermi is true.
+  // @param numDimensions The number of dimensions. If this is 1, then
+  //                      periodicity is only along the A vector. If this
+  //                      is 2, then periodicity is along both the A and
+  //                      the B vectors. If it is 3, then periodicity is
+  //                      along all three vectors.
   // If the user checks the box to display band data, displayBandData
   // will be set to be true
-  bool getKPointInfo(Molecule* mol, size_t& numKPoints,
-                     QString& kPointInfo, bool& displayBandData,
-                     bool& limitY, double& minY, double& maxY, bool& plotFermi,
-                     double& fermi, bool& zeroFermi);
+  bool getUserOptions(Molecule* mol, size_t& numKPoints,
+                      QString& kPointInfo, bool& displayBandData,
+                      bool& limitY, double& minY, double& maxY, bool& plotFermi,
+                      double& fermi, bool& zeroFermi,
+                      unsigned short& numDimensions);
 
   void displayInvalidFormatMessage();
 
