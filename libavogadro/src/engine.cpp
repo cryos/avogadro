@@ -196,6 +196,32 @@ namespace Avogadro {
     emit changed();
   }
 
+  void Engine::addAtomImage(Atom *a)
+  {
+    if (m_customPrims) {
+      if (!m_atomImages.contains(a))
+        m_atomImages.append(a);
+    }
+    else {
+      useCustomPrimitives();
+      if (!m_atomImages.contains(a))
+        m_atomImages.append(a);
+    }
+    emit changed();
+  }
+
+  void Engine::removeAtomImage(Atom *a)
+  {
+    if (m_customPrims) {
+      m_atomImages.removeAll(a);
+    }
+    else {
+      useCustomPrimitives();
+      m_atomImages.removeAll(a);
+    }
+    emit changed();
+  }
+
   void Engine::addBond(Bond *b)
   {
     if (m_customPrims) {
@@ -366,6 +392,14 @@ namespace Avogadro {
       return m_atoms;
     else
       return m_molecule->atoms();
+  }
+
+  const QList<Atom *> Engine::atomImages() const
+  {
+    if (m_customPrims)
+      return m_atomImages;
+    else
+      return QList<Atom *>();
   }
 
   const QList<Bond *> Engine::bonds() const

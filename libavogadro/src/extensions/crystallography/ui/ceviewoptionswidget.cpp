@@ -23,8 +23,12 @@
 #include <avogadro/atom.h>
 #include <avogadro/camera.h>
 #include <avogadro/color.h>
+#include <avogadro/engine.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/obeigenconv.h>
 #include <avogadro/primitivelist.h>
+
+#include <openbabel/mol.h>
 
 #include <QtGui/QColorDialog>
 
@@ -35,10 +39,13 @@ namespace Avogadro
   CEViewOptionsWidget::CEViewOptionsWidget(CrystallographyExtension *ext)
     : CEAbstractDockWidget(ext),
       m_glWidget(NULL),
+      m_molecule(NULL),
+      m_extraImagesMolecule(new Molecule()),
       m_currentArea(Qt::NoDockWidgetArea),
       m_ncc(NCC_Invalid),
       m_colorDialog(0),
-      m_origColor(new QColor())
+      m_origColor(new QColor()),
+      m_displayAllAtomImages(false)
   {
     this->setPreferredDockWidgetArea(Qt::BottomDockWidgetArea);
 
@@ -86,6 +93,8 @@ namespace Avogadro
 
     connect(ext, SIGNAL(cellChanged()),
             this, SLOT(cellChanged()));
+    connect(ext, SIGNAL(cellChanged()),
+            this, SLOT(resetExtraAtomImages()));
 
     // Rearrange the widgets when we change from left/right to top/bottom
     // position
@@ -94,6 +103,10 @@ namespace Avogadro
     // Also update when the floating state changes
     connect(this, SIGNAL(topLevelChanged(bool)),
             this, SLOT(updateLayout(bool)));
+
+    // Display all atom images?
+    connect(ui.cb_displayAllAtomImages, SIGNAL(toggled(bool)),
+            this, SLOT(setDisplayAllAtomImages(bool)));
 
     this->updateLayout(this->isFloating());
 
@@ -108,12 +121,46 @@ namespace Avogadro
 
   CEViewOptionsWidget::~CEViewOptionsWidget()
   {
+    delete m_extraImagesMolecule;
     if (m_colorDialog) {
       this->rejectColor(); // This will delete the dialog, too
     }
 
     delete m_origColor;
     m_origColor = NULL;
+  }
+
+  void CEViewOptionsWidget::makeMoleculeConnections()
+  {
+    if (m_molecule) {
+      connect(m_molecule, SIGNAL(atomAdded(Atom*)),
+              this, SLOT(resetExtraAtomImages()));
+      connect(m_molecule, SIGNAL(atomUpdated(Atom*)),
+              this, SLOT(resetExtraAtomImages()));
+      connect(m_molecule, SIGNAL(atomRemoved(Atom*)),
+              this, SLOT(resetExtraAtomImages()));
+    }
+  }
+
+  void CEViewOptionsWidget::disconnectMoleculeConnections()
+  {
+    if (m_molecule)
+      m_molecule->disconnect(this);
+  }
+
+  void CEViewOptionsWidget::setGLWidget(GLWidget *w)
+  {
+    m_glWidget = w;
+    // Cache the pointer to the molecule...
+    if (m_glWidget)
+      setMolecule(m_glWidget->molecule());
+  }
+
+  void CEViewOptionsWidget::setMolecule(Molecule *m)
+  {
+    disconnectMoleculeConnections();
+    m_molecule = m;
+    makeMoleculeConnections();
   }
 
   void CEViewOptionsWidget::updateRepeatCells()
@@ -227,6 +274,133 @@ namespace Avogadro
 
       m_glWidget->update();
     }
+  }
+
+  void CEViewOptionsWidget::setDisplayAllAtomImages(bool b)
+  {
+    m_displayAllAtomImages = b;
+
+    if (!m_glWidget)
+      return;
+
+    if (m_displayAllAtomImages)
+      generateExtraAtomImages();
+    else
+      removeExtraAtomImages();
+  }
+
+  // Whatever we pass to this needs to have values for [0], [1], and [2]
+  template<typename T1, typename T2>
+  inline double distance(const T1& a, const T2& b)
+  {
+    return sqrt(pow(a[0] - b[0], 2.0) +
+                pow(a[1] - b[1], 2.0) +
+                pow(a[2] - b[2], 2.0));
+  }
+
+  bool atomAlreadyPresent(Atom* atom, const QList<Atom*>& atoms, double tol)
+  {
+    for (int i = 0; i < atoms.size(); ++i) {
+      if (distance(*atoms[i]->pos(), *atom->pos()) < tol)
+        return true;
+    }
+    return false;
+  }
+
+  void CEViewOptionsWidget::generateExtraAtomImages()
+  {
+    if (!m_glWidget || !m_molecule || !m_molecule->OBUnitCell())
+      return;
+
+    OpenBabel::OBUnitCell* cell = m_molecule->OBUnitCell();
+
+    QList<Atom*> atoms = m_molecule->atoms();
+
+    // Set a tolerance. We will use 1e-5.
+    double cartTol = 1e-5;
+    double fracTol = 1e-5;
+
+    // Loop through A, B, and C
+    for (unsigned short vecInd = 0; vecInd < 3; ++vecInd) {
+      for (int i = 0; i < atoms.size(); ++i) {
+        OpenBabel::vector3 fracPos =
+          cell->CartesianToFractional(Eigen2OB(*atoms[i]->pos()));
+
+        // This will be true if the atom is close to the face of interest
+        if (std::fabs(fracPos[vecInd] - 0.0) < fracTol ||
+            std::fabs(fracPos[vecInd] - 1.0) < fracTol) {
+          Atom* newAtom = m_extraImagesMolecule->addAtom();
+          newAtom->setAtomicNumber(atoms[i]->atomicNumber());
+          OpenBabel::vector3 newFracPos = fracPos;
+
+          // Unfortunately, we can't do vector3[vecInd] = 1.0 ...
+          OpenBabel::vector3 one(0.0, 0.0, 0.0);
+          if (vecInd == 0)
+            one.x() = 1.0;
+          else if (vecInd == 1)
+            one.y() = 1.0;
+          else
+            one.z() = 1.0;
+          // Check if we are near (in frac coords) 0.0 or if we are near 1.0
+          if (std::fabs(fracPos[vecInd] - 0.0) < fracTol)
+            newFracPos += one;
+          else
+            newFracPos -= one;
+          newAtom->setPos(OB2Eigen(cell->FractionalToCartesian(newFracPos)));
+          if (!atomAlreadyPresent(newAtom, atoms, cartTol))
+            atoms.append(newAtom);
+          else
+            // This should delete the atom
+            m_extraImagesMolecule->removeAtom(newAtom);
+        }
+      }
+    }
+
+    QList<Atom*> extraImages = m_extraImagesMolecule->atoms();
+
+    // Add the atoms to each of the engines that draw atoms
+    QList<Engine*> engines = m_glWidget->engines();
+
+    for (int i = 0; i < engines.size(); ++i) {
+      // Does this engine draw atoms?
+      if (engines[i]->primitiveTypes() & Engine::Atoms) {
+        // If yes, add the extra atom images
+        for (int j = 0; j < extraImages.size(); ++j)
+          engines[i]->addAtomImage(extraImages[j]);
+      }
+    }
+  }
+
+  void CEViewOptionsWidget::removeExtraAtomImages()
+  {
+    QList<Atom*> extraAtomImages = m_extraImagesMolecule->atoms();
+    if (extraAtomImages.empty())
+      return;
+
+    if (!m_glWidget) {
+      m_extraImagesMolecule->clear();
+      return;
+    }
+
+    // Remove the atoms from each of the engines that draw atoms
+    QList<Engine*> engines = m_glWidget->engines();
+
+    for (int i = 0; i < engines.size(); ++i) {
+      // Does this engine draw atoms?
+      if (engines[i]->primitiveTypes() & Engine::Atoms) {
+        // If yes, remove all the extra atoms
+        for (int j = 0; j < extraAtomImages.size(); ++j)
+          engines[i]->removeAtomImage(extraAtomImages[j]);
+      }
+    }
+    m_extraImagesMolecule->clear();
+  }
+
+  void CEViewOptionsWidget::resetExtraAtomImages()
+  {
+    removeExtraAtomImages();
+    if (m_displayAllAtomImages)
+      generateExtraAtomImages();
   }
 
   void CEViewOptionsWidget::selectCellColor()

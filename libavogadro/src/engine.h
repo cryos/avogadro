@@ -323,6 +323,13 @@ namespace Avogadro {
       virtual const QList<Atom *> atoms() const;
 
       /**
+       * @return the engine's Atom images list containing all atoms the engine
+       * can render (but not to be selectable in the view). If m_customPrims
+       * is not on, it will return an empty list.
+       */
+      virtual const QList<Atom *> atomImages() const;
+
+      /**
        * @return the engine's Bond list containing all bonds the engine
        * can render.
        */
@@ -421,7 +428,7 @@ namespace Avogadro {
 
       /**
        * Signals that the engine has been enabled or disabled.
-       */ 
+       */
       void enableToggled(bool enabled);
 
     public Q_SLOTS:
@@ -454,6 +461,21 @@ namespace Avogadro {
        * @param atom to be removed from the atom list.
        */
       virtual void removeAtom(Atom *atom);
+
+      /**
+       * Add the Atom to the engine's atom images list. This atom will be
+       * drawn but will not be selectable in the GUI. It should be an Atom
+       * in a Molecule object stored somewhere (not the Molecule stored in
+       * this class).
+       * @param atom to be added to the atom images list.
+       */
+      virtual void addAtomImage(Atom *atom);
+
+      /**
+       * Remove the Atom from the engine's atom images list.
+       * @param atom to be removed from the atom images list.
+       */
+      virtual void removeAtomImage(Atom *atom);
 
       /**
        * Add the Bond to the engines bond list.
@@ -499,6 +521,7 @@ namespace Avogadro {
       bool m_customPrims;
       PrimitiveList m_primitives;
       QList<Atom *> m_atoms;
+      QList<Atom *> m_atomImages;
       QList<Bond *> m_bonds;
       QString m_alias;
       QString m_description;

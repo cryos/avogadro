@@ -72,7 +72,8 @@ namespace Avogadro {
       // Render the atoms as VdW spheres
       glDisable(GL_NORMALIZE);
       glEnable(GL_RESCALE_NORMAL);
-      foreach(Atom *a, atoms())
+      QList<Atom *> allAtoms = atoms() + atomImages();
+      foreach(Atom *a, allAtoms)
         render(pd, a);
       glDisable(GL_RESCALE_NORMAL);
       glEnable(GL_NORMALIZE);
@@ -95,7 +96,10 @@ namespace Avogadro {
       // with a slightly smaller radius than the actual VdW spheres. Works but
       // not pretty...
       pd->painter()->setColor(0.0, 0.0, 0.0, 1.0);
-      foreach(Atom *a, atoms()) {
+
+      // Render all atoms and atom images
+      QList<Atom *> allAtoms = atoms() + atomImages();
+      foreach(Atom *a, allAtoms) {
         pd->painter()->drawSphere(a->pos(), radius(a)*0.9999);
       }
 
@@ -107,7 +111,7 @@ namespace Avogadro {
       glDisable(GL_NORMALIZE);
       glEnable(GL_RESCALE_NORMAL);
 
-      foreach(Atom *a, atoms())
+      foreach(Atom *a, allAtoms)
         render(pd, a);
 
       glDisable(GL_RESCALE_NORMAL);
@@ -137,6 +141,8 @@ namespace Avogadro {
     Color *map = colorMap();
     if (!map) map = pd->colorMap();
 
+    // We won't render atom images here because this is called by renderPick(),
+    // and we don't want the atom images to be selectable
     foreach(Atom *a, atoms()) {
       map->setFromPrimitive(a);
       pd->painter()->setColor(map);
