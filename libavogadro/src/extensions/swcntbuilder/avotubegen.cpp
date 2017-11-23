@@ -219,14 +219,12 @@ void AvoTubeGen::capTube()
     int numBonds = obatom->CountBondsOfOrder(1);
     // We know that we are dealing with sp2 hybridized carbons:
     if (numBonds == 2) {
-      obatom->SetImplicitValence(obatom->GetValence() + 1);
-      obmol.SetImplicitValencePerceived();
+      // Removed SetImplicitValence. May cause problems
       obatom->SetHyb(2);
       obmol.SetHybridizationPerceived();
     }
     else if (numBonds == 1) {
-      obatom->SetImplicitValence(obatom->GetValence() + 2);
-      obmol.SetImplicitValencePerceived();
+      // Removed SetImplicitValence. May need a problems
       obatom->SetHyb(2);
       obmol.SetHybridizationPerceived();
     }

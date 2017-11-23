@@ -28,6 +28,7 @@
 #include <avogadro/atom.h>
 #include <QtPlugin>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 namespace Avogadro {
@@ -48,10 +49,11 @@ namespace Avogadro {
     const Atom *atom = static_cast<const Atom*>(p);
 
     if (atom->atomicNumber()) {
-      std::vector<double> rgb = OpenBabel::etab.GetRGB(atom->atomicNumber());
-      m_channels[0] = rgb[0];
-      m_channels[1] = rgb[1];
-      m_channels[2] = rgb[2];
+      double r, g, b;
+      OpenBabel::OBElements::GetRGB(atom->atomicNumber(), &r, &g, &b);
+      m_channels[0] = r;
+      m_channels[1] = g;
+      m_channels[2] = b;
     } else {
       m_channels[0] = 0.2;
       m_channels[1] = 0.2;

@@ -30,6 +30,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/periodictableview.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <Eigen/Geometry>
@@ -122,7 +123,7 @@ OrcaInputDialog::OrcaInputDialog(QWidget *parent, Qt::WindowFlags f ) :
   OrcaInputDialog::~OrcaInputDialog()
   {
       QSettings settings;
-      writeSettings(settings);   
+      writeSettings(settings);
       delete basicData;
       delete basisData;
       delete controlData;
@@ -1207,7 +1208,7 @@ OrcaInputDialog::OrcaInputDialog(QWidget *parent, Qt::WindowFlags f ) :
 
           foreach (Atom *atom, atoms) {
               mol << qSetFieldWidth(4) << right
-                  << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+                  << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()))
                   << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
                   << fixed << right << atom->pos()->x() << atom->pos()->y()
                   << atom->pos()->z()
@@ -1240,7 +1241,7 @@ OrcaInputDialog::OrcaInputDialog(QWidget *parent, Qt::WindowFlags f ) :
               b = vic[atom->GetIdx()]->_b;
               c = vic[atom->GetIdx()]->_c;
 
-              mol << qSetFieldWidth(3) << QString(etab.GetSymbol(atom->GetAtomicNum()));
+              mol << qSetFieldWidth(3) << QString(OBElements::GetSymbol(atom->GetAtomicNum()));
 
               if (atom->GetIdx() > 1)
                   mol << qSetFieldWidth(0) << "  " << qSetFieldWidth(3) << QString::number(a->GetIdx())
@@ -1316,21 +1317,21 @@ OrcaInputDialog::OrcaInputDialog(QWidget *parent, Qt::WindowFlags f ) :
                   t += 360.0;
 
               mol << qSetFieldWidth(4) << right
-                  << QString(etab.GetSymbol(atom->GetAtomicNum())
+                  << QString(OBElements::GetSymbol(atom->GetAtomicNum())
                              + QString::number(atom->GetIdx()));
               if (atom->GetIdx() > 1)
                   mol << qSetFieldWidth(6) << right
-                      << QString(etab.GetSymbol(a->GetAtomicNum())
+                      << QString(OBElements::GetSymbol(a->GetAtomicNum())
                                  + QString::number(a->GetIdx())) << qSetFieldWidth(15)
                       << qSetRealNumberPrecision(5) << forcepoint << fixed << right << r;
               if (atom->GetIdx() > 2)
                   mol << qSetFieldWidth(6) << right
-                      << QString(etab.GetSymbol(b->GetAtomicNum())
+                      << QString(OBElements::GetSymbol(b->GetAtomicNum())
                                  + QString::number(b->GetIdx())) << qSetFieldWidth(15)
                       << qSetRealNumberPrecision(5) << forcepoint << fixed << right << w;
               if (atom->GetIdx() > 3)
                   mol << qSetFieldWidth(6) << right
-                      << QString(etab.GetSymbol(c->GetAtomicNum())
+                      << QString(OBElements::GetSymbol(c->GetAtomicNum())
                                  + QString::number(c->GetIdx())) << qSetFieldWidth(15)
                       << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
               mol << qSetFieldWidth(0) << '\n';
