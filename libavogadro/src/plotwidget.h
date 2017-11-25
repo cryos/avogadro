@@ -124,19 +124,19 @@ namespace Avogadro {
                 RightAxis,     ///< the right axis
                 TopAxis        ///< the top axis
             };
-            
+
         /**
          * The four directions for label shift.
          */
         enum Direction
             {
                 None = 0,
-                Left,  ///< 
+                Left,  ///<
                 Down,    ///<
-                Right,     ///< 
-                Up        ///< 
+                Right,     ///<
+                Up        ///<
             };
-            
+
         /**
          *@return suggested minimum size for the plot widget
          */
@@ -374,6 +374,12 @@ namespace Avogadro {
         void setAntialiasing( bool b );
 
         /**
+         * Set the axis and tick marker widths. Default width is 1.
+         * @param w The width of the plot axes and tick markers.
+         */
+        void setAxisWidth( int w );
+
+        /**
          * @return the number of pixels to the left of the plot area.
          *
          * Padding values are set to -1 by default; if unchanged, this
@@ -606,7 +612,7 @@ namespace Avogadro {
          * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection()
          */
         void setPointFollowMouse(bool b);
-        
+
         /**
          * Don't permit moving away from default limits
          */

@@ -61,7 +61,8 @@ namespace Avogadro {
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
         showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
         font( QFont() ), followingMouse(false), jailedInDefaults(false),
-        labelShiftDirection(None)
+        labelShiftDirection(None),
+        axisWidth(1)
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -131,6 +132,9 @@ namespace Avogadro {
     // Wether can move away default limits rectangle
     bool jailedInDefaults;
     Direction labelShiftDirection;
+
+    // The width of the axes and tick markers. Default is 1.
+    int axisWidth;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -539,6 +543,12 @@ namespace Avogadro {
   void PlotWidget::setAntialiasing( bool b )
   {
     d->useAntialias = b;
+    update();
+  }
+
+  void PlotWidget::setAxisWidth( int w )
+  {
+    d->axisWidth = w;
     update();
   }
 
@@ -1533,7 +1543,9 @@ namespace Avogadro {
       }
     }
 
-    p->setPen( foregroundColor() );
+    QPen pen(foregroundColor());
+    pen.setWidth(d->axisWidth);
+    p->setPen(pen);
     p->setBrush( Qt::NoBrush );
 
     /*** BottomAxis ***/
