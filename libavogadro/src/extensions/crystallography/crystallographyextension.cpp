@@ -2440,6 +2440,7 @@ namespace Avogadro
            QMessageBox::Yes | QMessageBox::No,
            QMessageBox::Yes)
           == QMessageBox::Yes) {
+        actionSpgTolerance();
         return actionPerceiveSpacegroup();
       }
       else {
@@ -2614,6 +2615,7 @@ namespace Avogadro
            QMessageBox::Yes | QMessageBox::No,
            QMessageBox::Yes)
           == QMessageBox::Yes) {
+        actionSpgTolerance();
         return actionSymmetrizeCrystal();
       }
       else {
@@ -2629,6 +2631,7 @@ namespace Avogadro
            QMessageBox::Yes | QMessageBox::No,
            QMessageBox::Yes)
           == QMessageBox::Yes) {
+        actionSpgTolerance();
         return actionSymmetrizeCrystal();
       }
       else {
@@ -2796,7 +2799,8 @@ namespace Avogadro
            QMessageBox::Yes | QMessageBox::No,
            QMessageBox::Yes)
           == QMessageBox::Yes) {
-        return actionPrimitiveReduce();
+        actionSpgTolerance();
+        return actionPrimitiveReduceStandard();
       }
       else {
         return;
