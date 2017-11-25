@@ -279,6 +279,7 @@ p, li { white-space: pre-wrap; }
  </widget>
  <tabstops>
   <tabstop>spin_numValElectrons</tabstop>
+  <tabstop>edit_kpoints</tabstop>
   <tabstop>cb_zeroFermi</tabstop>
   <tabstop>cb_displayData</tabstop>
   <tabstop>cb_useSmoothing</tabstop>
@@ -287,7 +288,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>cb_limitY</tabstop>
   <tabstop>spin_minY</tabstop>
   <tabstop>spin_maxY</tabstop>
-  <tabstop>edit_kpoints</tabstop>
+  <tabstop>spin_numDim</tabstop>
  </tabstops>
  <resources/>
  <connections>
