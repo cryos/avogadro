@@ -22,15 +22,9 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-if(EIGEN3_FOUND)
-	include_directories(
-		${EIGEN3_INCLUDE_DIR}
-	)
-elseif(EIGEN2_FOUND)
-	include_directories(
-		${EIGEN2_INCLUDE_DIR}
-	)
-endif(EIGEN3_FOUND)
+include_directories(
+    ${EIGEN3_INCLUDE_DIR}
+)
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})

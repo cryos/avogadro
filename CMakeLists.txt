@@ -231,7 +231,7 @@ if(NOT Linguist_FOUND)
   message(WARNING " Qt4 Linguist not found, please install it if you want Avogadro translations")
 endif()
 
-find_package(Eigen3 REQUIRED) # find and setup Eigen3 if available
+find_package(Eigen3 REQUIRED) # find and setup Eigen3
 
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
@@ -466,7 +466,6 @@ install(FILES
 
 # Install the find modules we require to be present
 install(FILES
-  "${CMAKE_MODULE_PATH}/FindEigen2.cmake"
   "${CMAKE_MODULE_PATH}/FindEigen3.cmake"
   "${CMAKE_MODULE_PATH}/FindGLEW.cmake"
   DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}/cmake")
