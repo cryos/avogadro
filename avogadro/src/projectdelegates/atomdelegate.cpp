@@ -25,6 +25,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QDebug>
@@ -39,11 +40,11 @@ namespace Avogadro
   AtomDelegate::AtomDelegate(ProjectTreeModel *model) : ProjectTreeModelDelegate(model), m_label(0), m_widget(0)
   {
   }
- 
+
   AtomDelegate::~AtomDelegate()
   {
   }
-    
+
   void AtomDelegate::initStructure(GLWidget *widget, ProjectTreeItem *parent)
   {
     // save the widget
@@ -58,7 +59,7 @@ namespace Avogadro
   {
     // the user has expanded our label, we now initialize the bond items
     // and keep track of the using the signals...
-    
+
     Molecule *molecule = m_widget->molecule();
     disconnect(molecule, 0, this, 0);
     // connect some signals to keep track of changes
@@ -77,11 +78,11 @@ namespace Avogadro
     if (m_label->childCount())
       model()->removeRows(m_label, 0, m_label->childCount());
 
-    // add the atoms...  
+    // add the atoms...
     model()->insertRows(m_label, 0, molecule->numAtoms());
     for (int i = 0; i < m_label->childCount(); ++i) {
       ProjectTreeItem *item = m_label->child(i);
-      item->setData(0, QString(OpenBabel::etab.GetSymbol(molecule->atom(i)->atomicNumber())));
+      item->setData(0, QString(OpenBabel::OBElements::GetSymbol(molecule->atom(i)->atomicNumber())));
       item->setData(1, QString("%1").arg(i));
       // set the primitive
       PrimitiveList primitives;
@@ -90,25 +91,25 @@ namespace Avogadro
     }
 
   }
-  
+
   void AtomDelegate::primitiveAdded(Primitive *primitive)
   {
     if (primitive->type() != Primitive::AtomType)
       return;
-    
+
     Atom *atom = static_cast<Atom*>(primitive);
-    
+
     // add the new primitive to the end
     model()->insertRows(m_label, m_label->childCount(), 1);
     ProjectTreeItem *item = m_label->child(m_label->childCount() - 1);
-    item->setData(0, QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())));
-    item->setData(1, QString("%1").arg(primitive->index())); 
+    item->setData(0, QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber())));
+    item->setData(1, QString("%1").arg(primitive->index()));
     // set the primitive
     PrimitiveList primitives;
     primitives.append(primitive);
     item->setPrimitives(primitives);
   }
- 
+
   void AtomDelegate::primitiveUpdated(Primitive *primitive)
   {
     if (primitive->type() == Primitive::MoleculeType) {
@@ -116,19 +117,19 @@ namespace Avogadro
       return;
     }
 
-    if (primitive->type() != Primitive::AtomType) 
+    if (primitive->type() != Primitive::AtomType)
       return;
 
     Atom *atom = static_cast<Atom*>(primitive);
-    
+
     ProjectTreeItem *item = m_label->child(primitive->index());
-    item->setData(0, QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())));
-    item->setData(1, QString("%1").arg(primitive->index())); 
- 
+    item->setData(0, QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber())));
+    item->setData(1, QString("%1").arg(primitive->index()));
+
 
     model()->emitDataChanged(m_label, primitive->index());
   }
- 
+
   void AtomDelegate::primitiveRemoved(Primitive *primitive)
   {
     if (primitive->type() != Primitive::AtomType)
@@ -145,12 +146,12 @@ namespace Avogadro
       }
     }
   }
- 
+
   void AtomDelegate::writeSettings(QSettings &settings) const
   {
     ProjectTreeModelDelegate::writeSettings(settings);
   }
-  
+
   void AtomDelegate::readSettings(QSettings &settings)
   {
     ProjectTreeModelDelegate::readSettings(settings);

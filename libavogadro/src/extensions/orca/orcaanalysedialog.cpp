@@ -38,6 +38,8 @@
 #include <avogadro/toolgroup.h>
 #include <avogadro/extension.h>
 #include <avogadro/primitivelist.h>
+
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <Eigen/Geometry>
@@ -1067,7 +1069,7 @@ QString OrcaAnalyseDialog::readOutputFile()
         OBAtom *atom  = m_obmol->NewAtom();
         int atomicNum;
         if (atomicLabel) {
-            atomicNum = etab.GetAtomicNum(atomText.at(i).toAscii());
+            atomicNum = OBElements::GetAtomicNum(atomText.at(i).toAscii());
         } else {
             atomicNum = atomText.at(i).toInt();
         }

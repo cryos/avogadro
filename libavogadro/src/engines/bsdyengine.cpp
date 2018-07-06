@@ -36,6 +36,7 @@
 #include <QGLWidget> // for OpenGL bits
 #include <QDebug>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 using namespace std;
@@ -91,12 +92,12 @@ namespace Avogadro
   {
     double radiusCovalent(const Atom *atom)
     {
-      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
+      return OpenBabel::OBElements::GetCovalentRad(atom->atomicNumber());
     }
 
     double radiusVdW(const Atom *atom)
     {
-      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+      return OpenBabel::OBElements::GetVdwRad(atom->atomicNumber());
     }
   } // End of anonymous namespace
 

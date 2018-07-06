@@ -33,6 +33,7 @@
 #include <avogadro/camera.h>
 #include <avogadro/painterdevice.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QMessageBox>
@@ -136,12 +137,12 @@ namespace Avogadro {
     if (pd->isSelected(a)) {
       map->setToSelectionColor();
       map->apply();
-      glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * (size + 1.0));
+      glPointSize(OpenBabel::OBElements::GetVdwRad(a->atomicNumber()) * (size + 1.0));
     }
     else {
       map->setFromPrimitive(a);
       map->apply();
-      glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * size);
+      glPointSize(OpenBabel::OBElements::GetVdwRad(a->atomicNumber()) * size);
     }
 
     glBegin(GL_POINTS);
@@ -153,7 +154,7 @@ namespace Avogadro {
 
   inline double WireEngine::radius (const Atom *atom) const
   {
-    return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+    return OpenBabel::OBElements::GetVdwRad(atom->atomicNumber());
   }
 
   bool WireEngine::renderOpaque(PainterDevice *pd, const Bond *b)

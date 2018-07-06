@@ -28,6 +28,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QString>
@@ -76,7 +77,7 @@ namespace Avogadro
 
     QSettings settings;
     readSettings(settings);
-    
+
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
@@ -276,7 +277,7 @@ namespace Avogadro
       QList<Atom *> atoms = m_molecule->atoms();
       foreach (Atom *atom, atoms) {
         mol << qSetFieldWidth(2) << left
-            << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+            << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->pos()->x() << atom->pos()->y()
             << atom->pos()->z()
@@ -335,7 +336,7 @@ namespace Avogadro
         b = vic[atom->GetIdx()]->_b;
         c = vic[atom->GetIdx()]->_c;
 
-        mol << QString(etab.GetSymbol(atom->GetAtomicNum()));
+        mol << QString(OBElements::GetSymbol(atom->GetAtomicNum()));
         if (atom->GetIdx() > 1)
           mol << ", " << QString::number(a->GetIdx())
               << ", r" << atom->GetIdx();
@@ -359,7 +360,7 @@ namespace Avogadro
 
       mol << "geometry={" << '\n';
       if(!m_2009) {
-        mol << "nosym" << '\n'; /* FIXME */        
+        mol << "nosym" << '\n'; /* FIXME */
       }
       mol << "ang" << '\n';
       /* Taken from OpenBabel's gzmat file format converter */
@@ -383,18 +384,18 @@ namespace Avogadro
         if (t < 0.0)
           t += 360.0;
 
-        mol << QString(etab.GetSymbol(atom->GetAtomicNum()));
+        mol << QString(OBElements::GetSymbol(atom->GetAtomicNum()));
         if (atom->GetIdx() > 1)
           mol << ", " << QString::number(a->GetIdx()) << ", "
-              << qSetRealNumberPrecision(5) << forcepoint 
+              << qSetRealNumberPrecision(5) << forcepoint
 	      << fixed << right << r;
         if (atom->GetIdx() > 2)
           mol << ", " << QString::number(b->GetIdx()) << ", "
-              << qSetRealNumberPrecision(5) << forcepoint 
+              << qSetRealNumberPrecision(5) << forcepoint
 	      << fixed << right << w;
         if (atom->GetIdx() > 3)
-          mol << ", " << QString::number(c->GetIdx()) << ", " 
-              << qSetRealNumberPrecision(5) << forcepoint 
+          mol << ", " << QString::number(c->GetIdx()) << ", "
+              << qSetRealNumberPrecision(5) << forcepoint
               << fixed << right << t;
         mol << qSetFieldWidth(0) << '\n';
       }
@@ -414,7 +415,7 @@ namespace Avogadro
       mol << "{" << getTheoryType(m_theoryType) << '\n';
       mol << getWavefunction() << "}\n";
     }
-    
+
     mol << '\n';
 
     // Now for the calculation type
@@ -525,7 +526,7 @@ namespace Avogadro
   {
     m_savePath = settings.value("molpro/savepath").toString();
   }
-  
+
   void MolproInputDialog::writeSettings(QSettings& settings) const
   {
     settings.setValue("molpro/savepath", m_savePath);

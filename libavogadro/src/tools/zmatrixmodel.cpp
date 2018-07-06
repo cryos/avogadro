@@ -133,7 +133,7 @@ namespace Avogadro {
       // Main segment of the display - actually display the z matrix
       switch (index.column()) {
         case 0: // Element symbol
-          return etab.GetSymbol(m_zMatrix->m_items[index.row()].atomicNumber);
+          return OBElements::GetSymbol(m_zMatrix->m_items[index.row()].atomicNumber);
           break;
         case 1: // Connectivity element 0
           return m_zMatrix->m_items[index.row()].indices[0] + 1;
@@ -177,7 +177,7 @@ namespace Avogadro {
       switch (index.column()) {
         case 0: {// Element symbol - take symbol and get number
           QByteArray element(value.toByteArray());
-          int aNum = etab.GetAtomicNum(element.data());
+          int aNum = OBElements::GetAtomicNum(element.data());
           qDebug() << "Atomic num" << value << aNum;
           m_zMatrix->m_items[index.row()].atomicNumber = aNum;
           break;

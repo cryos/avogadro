@@ -29,7 +29,7 @@
 #include <QTimer>
 #include <QKeyEvent>
 
-// for OpenBabel::etab
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 namespace Avogadro {
@@ -94,7 +94,7 @@ namespace Avogadro {
         clearKeyPressBuffer();
       } else {
         // try parsing as a symbol
-        element  = OpenBabel::etab.GetAtomicNum(m_keyPressBuffer.toAscii().data());
+        element  = OpenBabel::OBElements::GetAtomicNum(m_keyPressBuffer.toAscii().data());
       }
     }
 

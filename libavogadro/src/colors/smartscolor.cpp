@@ -29,6 +29,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/colorbutton.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/atom.h>
 #include <openbabel/parsmart.h>
@@ -45,14 +46,14 @@ namespace Avogadro {
 
   /// Constructor
   SmartsColor::SmartsColor() : _highlightColor(255, 0, 128), _settingsWidget(NULL)
-  { 
+  {
     _pattern = new OBSmartsPattern;
     _smartsString.clear();
   }
 
   /// Destructor
   SmartsColor::~SmartsColor()
-  { 
+  {
     if (_pattern) {
       delete _pattern;
       _pattern = NULL;
@@ -132,8 +133,9 @@ namespace Avogadro {
     // Start with the default "element color"
     QColor newcolor;
     if (atom->atomicNumber()) {
-      std::vector<double> rgb = OpenBabel::etab.GetRGB(atom->atomicNumber());
-      newcolor.setRgbF(rgb[0], rgb[1], rgb[2]);
+      double r, g, b;
+      OpenBabel::OBElements::GetRGB(atom->atomicNumber(), &r, &g, &b);
+      newcolor.setRgbF(r, g, b);
     } else {
       newcolor.setRgbF(0.2f, 0.2f, 0.2f);
     }
@@ -160,7 +162,7 @@ namespace Avogadro {
           if (matched)
             break; // no need to check other matches
         } // matches
-        
+
       } // matched molecule
     } // finite, valid SMARTS
 

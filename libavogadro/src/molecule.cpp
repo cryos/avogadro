@@ -42,6 +42,7 @@
 
 #include <vector>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/math/vector3.h>
 #include <openbabel/griddata.h>
@@ -667,9 +668,8 @@ namespace Avogadro{
       case 55:
       case 85:
       case 87:
-        obatom->SetImplicitValence(1);
+        // Removed SetImplicitValence. May cause problems.
         obatom->SetHyb(1);
-        obmol.SetImplicitValencePerceived();
         break;
 
       case 4:
@@ -678,15 +678,13 @@ namespace Avogadro{
       case 38:
       case 56:
       case 88:
-        obatom->SetImplicitValence(2);
+        // Removed SetImplicitValence. May cause problems.
         obatom->SetHyb(2);
-        obmol.SetImplicitValencePerceived();
         break;
 
       case 84: // Po
-        obatom->SetImplicitValence(2);
+        // Removed SetImplicitValence. May cause problems.
         obatom->SetHyb(3);
-        obmol.SetImplicitValencePerceived();
         break;
 
       default: // do nothing
@@ -700,7 +698,7 @@ namespace Avogadro{
     unsigned int numberAtoms = numAtoms();
     int j = 0;
     for (unsigned int i = numberAtoms+1; i <= obmol.NumAtoms(); ++i, ++j) {
-      if (obmol.GetAtom(i)->IsHydrogen()) {
+      if (obmol.GetAtom(i)->GetAtomicNum() == OpenBabel::OBElements::Hydrogen) {
         OpenBabel::OBAtom *obatom = obmol.GetAtom(i);
         Atom *atom;
         if (atomIds.isEmpty())
@@ -1231,7 +1229,7 @@ namespace Avogadro{
         if (!atomLabel.isEmpty())
           r->SetAtomID(a, atomLabel.toStdString());
         else {
-          r->SetAtomID(a, OpenBabel::etab.GetSymbol(avoAtom->atomicNumber()));
+          r->SetAtomID(a, OpenBabel::OBElements::GetSymbol(avoAtom->atomicNumber()));
           r->SetHetAtom(a, true);
         }
       }
@@ -1318,9 +1316,9 @@ namespace Avogadro{
         int numCarbons = 0;
         int numHydrogens = 0;
         for (OpenBabel::OBAtom *obatom = obmol->BeginAtom(i); obatom; obatom = obmol->NextAtom(i)) {
-          if (obatom->IsCarbon())
+          if (obatom->GetAtomicNum() == OpenBabel::OBElements::Carbon)
             numCarbons++;
-          if (obatom->IsHydrogen())
+          if (obatom->GetAtomicNum() == OpenBabel::OBElements::Hydrogen)
             numHydrogens++;
         }
         // Here's the heuristic. If there are >4 carbons and/or carbon + hydrogen (e.g. methane),

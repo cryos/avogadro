@@ -18,6 +18,7 @@
 #include <avogadro/bond.h>
 
 #include <openbabel/atom.h>
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <ctype.h>
@@ -1199,7 +1200,7 @@ void GamessSystemGroup::WriteToFile( ostream &File )
   if (MemDDI || GetParallel() || KDiag || GetCoreFlag()
       || GetBalanceType() || GetXDR() || Memory > 0 || TimeLimit > 0) {
     File << " $SYSTEM ";
-    
+
     //Time limit
     //long test = TimeLimit;
     //if ( test==0 ) test = 600;
@@ -1212,7 +1213,7 @@ void GamessSystemGroup::WriteToFile( ostream &File )
       sprintf( Out, "MWORDS=%ld ", ( long )Memory );
       File << Out;
     }
-    
+
     if ( MemDDI ) {
       sprintf( Out, "MEMDDI=%ld ", ( long )MemDDI );
       File << Out;
@@ -1791,7 +1792,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
         char atomicNumber = atom ->atomicNumber();
 
         sprintf( Out, "%s   %5.1f  %10.8f  %10.8f  %10.8f",
-                  OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
+                  OpenBabel::OBElements::GetSymbol( atomicNumber ), ( float ) atomicNumber,
                   atom->pos()->x(), atom->pos()->y(), atom->pos()->z() );
         File << Out << endl;
       }
@@ -1859,7 +1860,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
         char atomicNumber = atomIdx[i]->atomicNumber();
 
         sprintf( Out, "%s%d    %10.8f  %10.8f  %10.8f",
-                  OpenBabel::etab.GetSymbol( atomicNumber ), i+1, 
+                  OpenBabel::OBElements::GetSymbol( atomicNumber ), i+1,
                   atomIdx[i]->pos()->x(), atomIdx[i]->pos()->y(), atomIdx[i]->pos()->z() );
         File << Out << endl;
       }
@@ -1871,7 +1872,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
               if(atom)
               {
                 sprintf(Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-                        etab.GetSymbol(atomicNumber), (float) atomicNumber,
+                        OBElements::GetSymbol(atomicNumber), (float) atomicNumber,
                                        atom->GetX(), atom->GetY(), atom->GetZ());
                 File << Out << endl;
               }
@@ -1885,7 +1886,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
     foreach (Atom *atom, molecule->atoms()) {
       int atomicNumber = atom->atomicNumber();
       sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
-               OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
+               OpenBabel::OBElements::GetSymbol( atomicNumber ), ( float ) atomicNumber,
                atom->pos()->x(), atom->pos()->y(), atom->pos()->z() );
       File << Out << endl;
       //       if (BasisTest) lBasis->WriteBasis(File, iatom);

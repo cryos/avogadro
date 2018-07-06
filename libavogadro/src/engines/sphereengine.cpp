@@ -36,6 +36,7 @@
 #include <QMessageBox>
 #include <QDebug>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 using namespace Eigen;
@@ -172,7 +173,7 @@ namespace Avogadro {
 
   inline double SphereEngine::radius(const Atom *a) const
   {
-    return OpenBabel::etab.GetVdwRad(a->atomicNumber());
+    return OpenBabel::OBElements::GetVdwRad(a->atomicNumber());
   }
 
   double SphereEngine::radius(const PainterDevice *pd, const Primitive *p) const

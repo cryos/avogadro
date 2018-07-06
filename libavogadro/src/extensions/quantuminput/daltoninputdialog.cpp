@@ -12,6 +12,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QString>
@@ -100,7 +101,7 @@ namespace Avogadro
 
     QSettings settings;
     readSettings(settings);
-    
+
     // Generate an initial preview of the input deck
     resetClicked();
     updatePreviewText();
@@ -1103,7 +1104,7 @@ namespace Avogadro
     }
 
     mol << "Atomtypes=" << natomtypes << " Angstrom";
-    
+
     if (m_propType == exci) {
        mol << " Nosymm" << '\n';
     } else {
@@ -1123,7 +1124,7 @@ namespace Avogadro
         oldatomtype = newatomtype;
       }
       mol << qSetFieldWidth(3) << left
-          << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+          << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()))
           << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
           << fixed << right << atom->pos()->x() << atom->pos()->y()
           << atom->pos()->z()
@@ -1635,7 +1636,7 @@ namespace Avogadro
   {
     m_savePath = settings.value("dalton/savepath").toString();
   }
-  
+
   void DaltonInputDialog::writeSettings(QSettings& settings) const
   {
     settings.setValue("dalton/savepath", m_savePath);

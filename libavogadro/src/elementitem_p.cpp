@@ -28,6 +28,7 @@
 #include "elementitem_p.h"
 #include "elementtranslator.h"
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QGraphicsSceneMouseEvent>
@@ -45,12 +46,13 @@ namespace Avogadro{
     // Want these items to be selectable
     setFlags(QGraphicsItem::ItemIsSelectable);
 
-    m_symbol = OpenBabel::etab.GetSymbol(m_element);
+    m_symbol = OpenBabel::OBElements::GetSymbol(m_element);
     if(!m_symbol.isEmpty())
       m_valid = true;
-    std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
+    double r, g, b;
+    OpenBabel::OBElements::GetRGB(m_element, &r, &g, &b);
     m_color = new QColor();
-    m_color->setRgbF(color[0], color[1], color[2]);
+    m_color->setRgbF(r, g, b);
     // Set some custom data to make it easy to figure out which element we are
     setData(0, m_element);
   }

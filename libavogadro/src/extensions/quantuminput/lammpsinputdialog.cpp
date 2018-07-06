@@ -28,6 +28,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/atom.h>
 
@@ -860,7 +861,7 @@ namespace Avogadro
     QList<Atom *> atoms = m_molecule->atoms();
     foreach (Atom *atom, atoms) {
       ThisMass=atom->OBAtom().GetAtomicMass();
-      ThisAtom=etab.GetSymbol(atom->atomicNumber());
+      ThisAtom=OBElements::GetSymbol(atom->atomicNumber());
       AtomMass[ThisAtom] = ThisMass;
     }
     int AtomIndex=0;

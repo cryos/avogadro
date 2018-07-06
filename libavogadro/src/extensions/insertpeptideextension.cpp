@@ -25,6 +25,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/residue.h>
 #include <openbabel/atom.h>
@@ -221,7 +222,7 @@ namespace Avogadro {
       allAtoms.SetRangeOn(0, obfragment.NumAtoms());
       allAtoms.SetBitOff(obfragment.NumAtoms() - 1); // Don't add bonds for the terminus
       resdat.AssignBonds(obfragment, allAtoms);
-      
+
       // some of the fragments still miss bonds
       obfragment.ConnectTheDots();
 
@@ -422,7 +423,7 @@ namespace Avogadro {
       tokenize(vs, buffer);
 
       atom = mol.NewAtom();
-      atom->SetAtomicNum(etab.GetAtomicNum(vs[0].c_str()));
+      atom->SetAtomicNum(OBElements::GetAtomicNum(vs[0].c_str()));
       atom->SetPartialCharge(atof(vs[7].c_str()));
       res->InsertAtom(atom);
       res->SetHetAtom(atom, false);

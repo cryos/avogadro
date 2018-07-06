@@ -74,6 +74,7 @@
 #include <avogadro/color.h>
 
 #include <openbabel/obconversion.h>
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
 #include <openbabel/forcefield.h>
@@ -1999,7 +2000,7 @@ protected:
 
   int GetAtomicNum(string name, int &iso)
   {
-    int n = OpenBabel::etab.GetAtomicNum(name.c_str(), iso);
+    int n = OpenBabel::OBElements::GetAtomicNum(name.c_str());
     if (iso != 0)
       return 0;  // "D" ot "T"
     if (n != 0)
@@ -2012,8 +2013,10 @@ protected:
       if (name == (*i)->GetSymbol())
       return((*i)->GetAtomicNum());*/
 
-    for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
-      if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))
+    // 118 elements right now in Open Babel. We can change in the future if
+    // needed
+    for (unsigned int i=0; i < 118; i++)
+      if (!QString::compare(name.c_str(), OBElements::GetName(i), Qt::CaseInsensitive))
 	      return i;
 
     if (!QString::compare(name.c_str(), "Deuterium", Qt::CaseInsensitive))
@@ -2271,7 +2274,7 @@ protected:
     QStringList ids;
     for (QList<Atom*>::const_iterator it = atoms.constBegin(),
            it_end = atoms.constEnd(); it != it_end; ++it) {
-      ids << OpenBabel::etab.GetSymbol((*it)->atomicNumber());
+      ids << OpenBabel::OBElements::GetSymbol((*it)->atomicNumber());
     }
 
     // Fractional coordinates
