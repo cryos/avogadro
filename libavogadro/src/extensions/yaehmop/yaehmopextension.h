@@ -19,7 +19,12 @@
 
 #include <avogadro/extension.h>
 
+#include <QStringList>
+
 namespace Avogadro {
+
+  // Forward declarations...
+  class PlotWidget;
 
   class YaehmopExtension : public Extension
   {
@@ -60,6 +65,8 @@ namespace Avogadro {
   public slots:
     void calculateBandStructure();
     void calculateTotalDOS();
+    void calculateProjectedDOS();
+    void calculateCOOP();
     void setParametersFile();
     void executeCustomInput() const;
 
@@ -69,6 +76,12 @@ namespace Avogadro {
 
     // @return The total DOS calculation input.
     QString createYaehmopTotalDOSInput();
+
+    // @return The projected DOS calculation input.
+    QString createYaehmopProjectedDOSInput();
+
+    // @return The COOP calculation input.
+    QString createYaehmopCOOPInput();
 
     QString createGeometryAndLatticeInput() const;
 
@@ -91,11 +104,27 @@ namespace Avogadro {
                            QVector<double>& energies,
                            double stepE, double broadening);
 
+    // This is not currently being used, but in case we use it in
+    // the future
+    // Adds a dashed line to @p pw that has a color of @p color and a
+    // line width of @p lineWidth. It uses the data in @p xVals and
+    // @p yVals. xVals.size() must equal yVals.size().
+    /*
+    static void addDashedLine(const QVector<double>& xVals,
+                              const QVector<double>& yVals,
+                              PlotWidget* pw, const QColor& color,
+                              double lineWidth = 2.0,
+                              size_t numDashes = 50);
+    */
+
     size_t m_bandNumKPoints;
     QString m_dosKPoints;
+    QStringList m_projDOSTitles;
+    bool m_integratePDOS;
     bool m_useSmoothing;
     double m_eStep;
     double m_broadening;
+    bool m_pdosDisplayTotalDOS;
     bool m_displayData;
     bool m_limitY;
     double m_minY;

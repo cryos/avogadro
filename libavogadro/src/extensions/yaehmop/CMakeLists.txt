@@ -7,13 +7,17 @@ set(PLUGIN_TARGET extensions)
 set(yaehmopextension_SRCS
   specialkpoints.cpp
   yaehmopbanddialog.cpp
+  yaehmopcoopdialog.cpp
   yaehmopextension.cpp
+  yaehmopprojecteddosdialog.cpp
   yaehmoptotaldosdialog.cpp
   yaehmopout.cpp
 )
 
 set(yaehmopextension_UIS
   yaehmopbanddialog.ui
+  yaehmopcoopdialog.ui
+  yaehmopprojecteddosdialog.ui
   yaehmoptotaldosdialog.ui
 )
 
@@ -73,4 +77,4 @@ if(NOT ${USE_SYSTEM_YAEHMOP} AND
                       GROUP_READ GROUP_EXECUTE
                       WORLD_READ WORLD_EXECUTE)
 
-endif()
+endif(NOT EXISTS ${CMAKE_BINARY_DIR}/bin/${YAEHMOP_NAME})

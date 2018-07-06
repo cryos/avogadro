@@ -228,6 +228,7 @@ p, li { white-space: pre-wrap; }
  </widget>
  <tabstops>
   <tabstop>spin_numKPoints</tabstop>
+  <tabstop>edit_specialKPoints</tabstop>
   <tabstop>cb_displayBandData</tabstop>
   <tabstop>cb_limitY</tabstop>
   <tabstop>spin_minY</tabstop>
@@ -235,7 +236,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>cb_plotFermi</tabstop>
   <tabstop>spin_fermi</tabstop>
   <tabstop>cb_zeroFermi</tabstop>
-  <tabstop>edit_specialKPoints</tabstop>
+  <tabstop>spin_numDim</tabstop>
  </tabstops>
  <resources/>
  <connections>
