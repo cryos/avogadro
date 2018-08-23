@@ -65,6 +65,7 @@ namespace Avogadro
     unsigned int orbital;
     double resolution;
     double isovalue;
+    double boxPadding;
     unsigned int priority;
     CalcState state;
   };
@@ -129,11 +130,13 @@ namespace Avogadro
      * @param orbital Orbital number
      * @param resolution Resolution of grid
      * @param isoval Isovalue for surface
+     * @param boxPadding Box padding for orbital render cube
      * @param priority Priority. Default = 0 (user requested)
      */
     void addCalculationToQueue(unsigned int orbital,
                                double resolution,
                                double isoval,
+                               double boxPadding,
                                unsigned int priority = 0);
     /**
      * Check that no calculations are currently running and start the

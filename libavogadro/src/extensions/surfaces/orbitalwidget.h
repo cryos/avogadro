@@ -52,6 +52,7 @@ namespace Avogadro {
       virtual ~OrbitalWidget();
 
       double isovalue() {return m_isovalue;};
+      double boxPadding() {return m_boxPadding;};
       OrbitalQuality defaultQuality() {return m_quality;};
 
       bool precalcLimit() {return m_precalc_limit;}
@@ -68,7 +69,7 @@ namespace Avogadro {
       void fillTable(QList<Orbital> list);
       void setQuality(OrbitalQuality q);
       void selectOrbital(unsigned int orbital);
-      void setDefaults(OrbitalWidget::OrbitalQuality quality, double isovalue, bool HOMOFirst);
+      void setDefaults(OrbitalWidget::OrbitalQuality quality, double isovalue, double boxPadding, bool HOMOFirst);
       void setPrecalcSettings(bool limit, int range);
       void initializeProgress(int orbital, int min, int max, int stage, int totalStages);
       void nextProgressStage(int orbital, int newmin, int newmax);
@@ -91,6 +92,7 @@ namespace Avogadro {
       OrbitalSettingsDialog *m_settings;
       OrbitalQuality m_quality;
       double m_isovalue;
+      double m_boxPadding;
 
       bool m_precalc_limit;
       int m_precalc_range;

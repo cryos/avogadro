@@ -396,7 +396,7 @@ namespace Avogadro
   void OrbitalExtension::calculateOrbitalFromWidget(unsigned int orbital,
                                                     double resolution)
   {
-    addCalculationToQueue(orbital, resolution, m_widget->isovalue(), 0);
+    addCalculationToQueue(orbital, resolution, m_widget->isovalue(), m_widget->boxPadding(), 0);
     checkQueue();
   }
 
@@ -437,6 +437,7 @@ namespace Avogadro
         addCalculationToQueue(i+1,  // orbital
                               OrbitalWidget::OrbitalQualityToDouble(m_widget->defaultQuality()),
                               m_widget->isovalue(),
+                              m_widget->boxPadding(),
                               priority);
 
         // Update priority. Stays the same when i = homo.
@@ -450,6 +451,7 @@ namespace Avogadro
   void OrbitalExtension::addCalculationToQueue(unsigned int orbital,
                                                double resolution,
                                                double isovalue,
+                                               double boxPadding,
                                                unsigned int priority)
   {
     // Create new queue entry
@@ -457,6 +459,7 @@ namespace Avogadro
     newCalc.orbital = orbital;
     newCalc.resolution = resolution;
     newCalc.isovalue = isovalue;
+    newCalc.boxPadding = boxPadding;
     newCalc.priority = priority;
     newCalc.state = NotStarted;
 
@@ -506,7 +509,8 @@ namespace Avogadro
       calcInfo *cI = &m_queue[i];
       if (cI->state == Completed &&
           cI->orbital == info->orbital &&
-          cI->resolution == info->resolution) {
+          cI->resolution == info->resolution &&
+          cI->boxPadding == info->boxPadding) {
         info->cube = cI->cube;
         qDebug() << "Reusing cube from calculation " << i << ":\n"
                  << "\tOrbital " << cI->orbital << "\n"
@@ -519,7 +523,7 @@ namespace Avogadro
     // Create new cube
     Cube *cube = m_molecule->addCube();
     info->cube = cube;
-    cube->setLimits(m_molecule, info->resolution, 2.5);
+    cube->setLimits(m_molecule, info->resolution, info->boxPadding);
 
     if (m_qube) {
       delete m_qube;
@@ -575,12 +579,14 @@ namespace Avogadro
       if (cI->state == Completed &&
           cI->orbital == info->orbital &&
           cI->resolution == info->resolution &&
-          cI->isovalue == info->isovalue) {
+          cI->isovalue == info->isovalue &&
+          cI->boxPadding == info->boxPadding) {
         info->posMesh = cI->posMesh;
         qDebug() << "Reusing posMesh from calculation " << i << ":\n"
                  << "\tOrbital " << cI->orbital << "\n"
                  << "\tResolution " << cI->resolution << "\n"
-                 << "\tIsovalue " << cI->isovalue;
+                 << "\tIsovalue " << cI->isovalue << "\n"
+                 << "\tBoxpadding " << cI->boxPadding;
         m_widget->nextProgressStage(info->orbital, 0, 100);
         calculateNegMesh();
         return;
@@ -642,12 +648,14 @@ namespace Avogadro
       if (cI->state == Completed &&
           cI->orbital == info->orbital &&
           cI->resolution == info->resolution &&
-          cI->isovalue == info->isovalue) {
+          cI->isovalue == info->isovalue &&
+          cI->boxPadding == info->boxPadding) {
         info->negMesh = cI->negMesh;
-        qDebug() << "Reusing posMesh from calculation " << i << ":\n"
+        qDebug() << "Reusing negMesh from calculation " << i << ":\n"
                  << "\tOrbital " << cI->orbital << "\n"
                  << "\tResolution " << cI->resolution << "\n"
-                 << "\tIsovalue " << cI->isovalue;
+                 << "\tIsovalue " << cI->isovalue << "\n"
+                 << "\tBoxpadding " << cI->boxPadding;
         m_widget->nextProgressStage(info->orbital, 0, 100);
         calculationComplete();
         return;

@@ -33,6 +33,7 @@ namespace Avogadro {
     : QDialog(parent, f),
       m_quality(OrbitalWidget::OQ_Low),
       m_isoval(0.02),
+      m_boxPadding(2.5),
       m_HOMOFirst(false),
       m_limit_precalc(true),
       m_precalc_range(10)
@@ -44,8 +45,8 @@ namespace Avogadro {
 
     connect(this, SIGNAL(calculateAll()),
             parent, SIGNAL(calculateAll()));
-    connect(this, SIGNAL(defaultsUpdated(OrbitalWidget::OrbitalQuality, double, bool)),
-            parent, SLOT(setDefaults(OrbitalWidget::OrbitalQuality, double, bool)));
+    connect(this, SIGNAL(defaultsUpdated(OrbitalWidget::OrbitalQuality, double, double, bool)),
+            parent, SLOT(setDefaults(OrbitalWidget::OrbitalQuality, double, double, bool)));
     connect(this, SIGNAL(precalcSettingsUpdated(bool,int)),
             parent, SLOT(setPrecalcSettings(bool,int)));
   }
@@ -64,6 +65,12 @@ namespace Avogadro {
   {
     ui.spin_isoval->setValue(i);
     m_isoval = i;
+  }
+
+  void OrbitalSettingsDialog::setBoxPadding(double i)
+  {
+    ui.spin_boxPadding->setValue(i);
+    m_boxPadding = i;
   }
 
   void OrbitalSettingsDialog::setHOMOFirst(bool HOMOFirst)
@@ -88,8 +95,9 @@ namespace Avogadro {
   {
     m_quality = OrbitalWidget::OrbitalQuality(ui.combo_quality->currentIndex());
     m_isoval = ui.spin_isoval->value();
+    m_boxPadding = ui.spin_boxPadding->value();
     m_HOMOFirst = ui.cb_HOMOFirst->isChecked();
-    emit defaultsUpdated(m_quality, m_isoval, m_HOMOFirst);
+    emit defaultsUpdated(m_quality, m_isoval, m_boxPadding, m_HOMOFirst);
   }
 
   void OrbitalSettingsDialog::updatePrecalcSettings()
@@ -110,6 +118,7 @@ namespace Avogadro {
   {
     setDefaultQuality(m_quality);
     setIsoValue(m_isoval);
+    setBoxPadding(m_boxPadding);
     setHOMOFirst(m_HOMOFirst);
     hide();
   }
