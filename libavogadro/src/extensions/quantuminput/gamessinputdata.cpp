@@ -408,7 +408,7 @@ void GamessControlGroup::InitProgPaneData( void )
 }
 GAMESS_SCFType GamessControlGroup::SetSCFType( GAMESS_SCFType NewSCFType )
 {
-  if (( NewSCFType >= GAMESSDefaultSCFType )||( NewSCFType<NumGAMESSSCFTypes ) )
+  if (( NewSCFType >= GAMESSDefaultSCFType )&&( NewSCFType<NumGAMESSSCFTypes ) )
     SCFType = NewSCFType;
   return SCFType;
 }
@@ -1398,7 +1398,7 @@ short GamessBasisGroup::SetDiffuseS( bool state )
 }
 GAMESS_BS_Polarization GamessBasisGroup::SetPolar( GAMESS_BS_Polarization NewPolar )
 {
-  if (( NewPolar>=GAMESS_BS_No_Polarization )||( NewPolar<NumGAMESSBSPolarItems ) ) {
+  if (( NewPolar>=GAMESS_BS_No_Polarization )&&( NewPolar<NumGAMESSBSPolarItems ) ) {
     Polar = NewPolar;
   }
   return Polar;
@@ -1712,7 +1712,7 @@ CoordinateType GamessDataGroup::SetCoordType( const char * CoordText )
 }
 CoordinateType GamessDataGroup::SetCoordType( CoordinateType NewType )
 {
-  if (( NewType<UniqueCoordType )&&( NewType>NumberCoordinateTypes ) ) return invalidCoordinateType;
+  if (( NewType<UniqueCoordType )||( NewType>NumberCoordinateTypes ) ) return invalidCoordinateType;
   Coord = NewType;
   return ( CoordinateType ) Coord;
 }
