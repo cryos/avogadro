@@ -288,28 +288,61 @@ void ORCAOutput::processLine(GaussianSet *basis)
                 key = m_in->readLine(); // skip -----------
                 key = m_in->readLine(); // now we've got coefficients
 
-                QRegExp rx("[.][0-9]{6}[0-9-]");
-                while (rx.indexIn(key) != -1){          // avoid wrong splitting
-                    key.insert(rx.indexIn(key)+1, " ");
-                }
+                QRegExp rx("[0-9-]+[.][0-9]{6}");
                 list = key.split(' ', QString::SkipEmptyParts);
+                if (list.size() < 2) {
+                    m_orcaSuccess = false;
+                    qDebug() << "Initial list line didn't match " << key;
+                    break;
+                }
+                QString orbitalDesc = list[1];
 
-                numColumns = list.size() - 2;
+                int pos = rx.indexIn(key);
+                if (pos == -1) {
+                    m_orcaSuccess = false;
+                    qDebug() << "Initial regex didn't match " << key;
+                    break;
+                }
+
+                list.clear();
+                while ((pos = rx.indexIn(key, pos)) != -1) {
+                    list << rx.cap(0);
+                    pos += rx.matchedLength();
+                }
+
+                numColumns = list.size();
                 columns.resize(numColumns);
-                while (list.size() > 2) {
-                    orcaOrbitals += list[1];
+                while (true) {
+                    orcaOrbitals += orbitalDesc;
                     for (unsigned int i = 0; i < numColumns; ++i) {
-                        columns[i].push_back(list[i + 2].toDouble());
+                        bool ok;
+                        columns[i].push_back(list[i].toDouble(&ok));
+                        if (!ok) {
+                            m_orcaSuccess = false;
+                            qDebug() << "Failed to parse double in line " << list;
+                            break;
+                        }
                     }
 
                     key = m_in->readLine();
-                    while (rx.indexIn(key) != -1){          // avoid wrong splitting
-                        key.insert(rx.indexIn(key)+1, " ");
+                    list = key.split(' ', QString::SkipEmptyParts);
+                    if (list.size() < 2) {
+                        // We reached the end of molecular orbitals (hopefully)
+                        break;
+                    }
+                    orbitalDesc = list[1];
+
+                    pos = rx.indexIn(key);
+                    if (pos == -1) {
+                        // We reached a line the next set of orbital sequence numbers
+                        break;
                     }
 
-                    list = key.split(' ', QString::SkipEmptyParts);
-                    if (list.size() != numColumns+2)
-                        break;
+                    list.clear();
+                    while ((pos = rx.indexIn(key, pos)) != -1) {
+                        list << rx.cap(0);
+                        pos += rx.matchedLength();
+                    }
 
                 } // ok, we've finished one batch of MO coeffs
                 // now reorder the p orbitals from "orcaStyle" (pz, px,py) to expected (px,py,pz)
@@ -343,7 +376,7 @@ void ORCAOutput::processLine(GaussianSet *basis)
             } // finished parsing MOs
             if (m_MOcoeffs.size() != numRows*numRows) {
                 m_orcaSuccess = false;
-                qDebug() << "Something went wrong during read of MOs\n check columns!!!";
+                qDebug() << "Something went wrong during read of MOs. Expected " << numRows*numRows << " coeffs but got " << m_MOcoeffs.size() << "\n";
             }
             m_numBasisFunctions = numRows;
             if (m_openShell && m_useBeta) {
