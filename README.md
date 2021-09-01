@@ -5,6 +5,14 @@
 [![Google Scholar Citations](https://avogadro.cc/citations.svg?maxAge=86400)](https://scholar.google.com/scholar?cites=618227831851025693&as_sdt=5,38&sciodt=0,38&hl=en)
 [![DOI Article](https://img.shields.io/badge/DOI-10.1186/1758--2946--4--17-brightgreen.svg)](http://doi.org/10.1186/1758-2946-4-17)
 
+The development team put a lot of work in to developing Avogadro 1, in
+September, 2021 we decided to archive the repository as it depends on a number
+of very old libraries. The team shifted their focus to Avogadro 2 several years
+ago, using more modern depdencies and a rewritten core under the more
+permissive 3-clause BSD license. We hope you will move to Avogadro 2 if you
+have not already as we work towards making the successor more widely useful to
+the community. The original text is left below before archiving the repository.
+
 Avogadro is an advanced molecular editor designed for cross-platform use
 in computational chemistry, molecular modeling, bioinformatics, materials
 science, and related areas. It offers flexible rendering and a powerful
