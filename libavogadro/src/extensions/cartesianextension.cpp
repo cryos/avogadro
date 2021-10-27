@@ -28,6 +28,8 @@
 #include <avogadro/bond.h>
 #include <avogadro/primitivelist.h>
 
+#include <openbabel/elements.h>
+
 #include <QtGui/QAction>
 #include <QtGui/QDialog>
 #include <QtGui/QClipboard>
@@ -271,7 +273,7 @@ namespace Avogadro
               QString s = data.at(i);
               while (s.length()!=0) { // recognize name with number
                 iso = 0;
-                n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
+                n = OpenBabel::OBElements::GetAtomicNum(s.toStdString().c_str());
                 if (iso != 0)
                   n = 1;
 
@@ -325,7 +327,7 @@ namespace Avogadro
               QString _s = s_data.at(i);
               while (_s.length()!=0) { // recognize name with number
                 _iso=0;
-                _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
+                _n = OpenBabel::OBElements::GetAtomicNum(_s.toStdString().c_str());
                 if (_iso != 0)
                   _n = 1;
 
@@ -444,7 +446,7 @@ namespace Avogadro
           switch (m_format) {
           case XYZ:
             coordStream.setFieldWidth(3);
-            coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
+            coordStream << left << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()));
             coordStream.setFieldWidth(18);
             coordStream << fixed << forcepoint << right << pos.x() << pos.y()
                 << pos.z() << endl;
@@ -458,7 +460,7 @@ namespace Avogadro
 
           case XYZ_NUM:
             coordStream.setFieldWidth(6);
-            coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))+
+            coordStream << left << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()))+
             QString::number(i+1);
             coordStream.setFieldWidth(18);
             coordStream << fixed << forcepoint << right << pos.x() << pos.y()
@@ -467,7 +469,7 @@ namespace Avogadro
 
           case GAMESS:
             coordStream.setFieldWidth(3);
-            coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
+            coordStream << left << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()));
             coordStream.setFieldWidth(3);
             coordStream << right << atom->atomicNumber();
             coordStream.setFieldWidth(2);
@@ -479,7 +481,7 @@ namespace Avogadro
 
           case GAMESS2:
             coordStream.setFieldWidth(12);
-            coordStream << left << QString(OpenBabel::etab.GetName(atom->atomicNumber()).c_str());
+            coordStream << left << QString(OpenBabel::OBElements::GetName(atom->atomicNumber()));
             coordStream.setFieldWidth(3);
             coordStream << right << atom->atomicNumber();
             coordStream.setFieldWidth(2);
@@ -496,7 +498,7 @@ namespace Avogadro
             coordStream << pos.y()
               << pos.z();
             coordStream.setFieldWidth(5);
-            coordStream << left << right << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())) << endl;
+            coordStream << left << right << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber())) << endl;
             break;
 
           case PRIRODA:

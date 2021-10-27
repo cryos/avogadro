@@ -29,6 +29,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 #include <QString>
@@ -312,7 +313,7 @@ namespace Avogadro
         mol << qSetFieldWidth(12) << qSetRealNumberPrecision(8) << forcepoint << fixed << right
             << atom->pos()->x() << atom->pos()->y()<< atom->pos()->z()
             << qSetFieldWidth(4) << right << atom->atomicNumber()
-            << qSetFieldWidth(4) << right << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+            << qSetFieldWidth(4) << right << QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(0) << '\n';
       }
       // End
@@ -341,7 +342,7 @@ namespace Avogadro
         b = vic[atom->GetIdx()]->_b;
         c = vic[atom->GetIdx()]->_c;
 
-        mol << qSetFieldWidth(3) << QString(etab.GetSymbol(atom->GetAtomicNum()));
+        mol << qSetFieldWidth(3) << QString(OBElements::GetSymbol(atom->GetAtomicNum()));
 
         if (atom->GetIdx() > 1)
           mol << qSetFieldWidth(0) << "  " << qSetFieldWidth(3) << QString::number(a->GetIdx())

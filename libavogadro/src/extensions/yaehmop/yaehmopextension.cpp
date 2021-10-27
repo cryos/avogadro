@@ -22,6 +22,7 @@
 #include <avogadro/plotaxis.h>
 #include <avogadro/plotpoint.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
 
@@ -2054,7 +2055,7 @@ namespace Avogadro
 
     // Now loop through atom positions and add them
     for (int i = 0; i < numAtoms; ++i) {
-      QString symbol = OpenBabel::etab.GetSymbol(atoms[i]->atomicNumber());
+      QString symbol = OpenBabel::OBElements::GetSymbol(atoms[i]->atomicNumber());
       const Vector3d& pos = *atoms[i]->pos();
       input += (QString::number(i + 1) + " ");
       input += (symbol + " ");

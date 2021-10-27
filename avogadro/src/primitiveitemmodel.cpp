@@ -34,6 +34,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/engine.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 
 namespace Avogadro {
@@ -263,7 +264,7 @@ namespace Avogadro {
         }
         else if(type == Primitive::AtomType) {
           Atom *atom = static_cast<Atom*>(primitive);
-          str = QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())) + ' '
+          str = QString(OpenBabel::OBElements::GetSymbol(atom->atomicNumber())) + ' '
                 + QString::number(atom->index()+1);
         }
         else if(type == Primitive::BondType){

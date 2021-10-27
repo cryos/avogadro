@@ -21,6 +21,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/obeigenconv.h>
 
+#include <openbabel/elements.h>
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
@@ -116,7 +117,7 @@ namespace {
            it = ids.constBegin(),
            it_end = ids.constEnd();
          it != it_end; ++it) {
-      atomicNums.append(OpenBabel::etab.GetAtomicNum
+      atomicNums.append(OpenBabel::OBElements::GetAtomicNum
                         (it->toStdString().c_str()));
     }
     return atomicNums;
@@ -132,7 +133,7 @@ namespace {
            it = atomicNums.constBegin(),
            it_end = atomicNums.constEnd();
          it != it_end; ++it) {
-      ids.append(OpenBabel::etab.GetSymbol(*it));
+      ids.append(OpenBabel::OBElements::GetSymbol(*it));
     }
     return ids;
   }

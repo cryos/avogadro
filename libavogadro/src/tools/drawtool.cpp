@@ -45,6 +45,7 @@
 
 #include <Eigen/Core>
 
+#include <openbabel/elements.h>
 #include <openbabel/forcefield.h>
 #include <openbabel/obiter.h>
 #include <openbabel/obconversion.h>
@@ -643,7 +644,7 @@ namespace Avogadro {
 
     m_keyPressBuffer.append(event->text());
     // try setting an element symbol from this string
-    int element = OpenBabel::etab.GetAtomicNum(m_keyPressBuffer.toAscii().data());
+    int element = OpenBabel::OBElements::GetAtomicNum(m_keyPressBuffer.toAscii().data());
     if (element == 0) {
       // Invalid element. If we've tried 2-character elements, start over.
       if (m_keyPressBuffer.length() > 3) {
