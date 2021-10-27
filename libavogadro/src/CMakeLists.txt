@@ -14,15 +14,9 @@ include_directories(
   ${OPENBABEL2_INCLUDE_DIR}
 )
 
-if(EIGEN3_FOUND)
-	include_directories(
-		${EIGEN3_INCLUDE_DIR}
-	)
-elseif(EIGEN2_FOUND)
-	include_directories(
-		${EIGEN2_INCLUDE_DIR}
-	)
-endif(EIGEN3_FOUND)
+include_directories(
+    ${EIGEN3_INCLUDE_DIR}
+)
 
 # I think this is necessary now in order to tell the linker where openbabel is
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
